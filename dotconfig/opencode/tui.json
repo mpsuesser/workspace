@@ -1,0 +1,10 @@
+{
+    "$schema": "https://opencode.ai/tui.json",
+    "keybinds": {
+      "leader": "ctrl+o",
+      "agent_list": "ctrl+a,<leader>a",
+      "model_list": "ctrl+m,<leader>m",
+      "session_fork": "ctrl+f",
+      "session_list": "ctrl+s,<leader>l"
+    }
+}

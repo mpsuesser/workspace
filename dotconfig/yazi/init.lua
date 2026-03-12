@@ -8,26 +8,21 @@ require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
 		{ key = "c", path = "~/repos/curationspace" },
-		{ key = "w", path = "~/repos/workspace" },
 		{ key = "m", path = "~/repos/multitude" },
+		{ key = "w", path = "~/repos/workspace" },
 
-		{ key = "9", path = "~/repos/multitude/99e" },
-		{ key = "p", path = "~/repos/multitude/packages" },
-		{ key = "o", path = "~/repos/multitude/.opencode" },
-		{ key = "a", path = "~/repos/multitude/.opencode/agents" },
-		{ key = "s", path = "~/repos/multitude/.opencode/skills" },
-		{ key = "t", path = "~/repos/multitude/.opencode/tool" },
-
+		{ key = "o", path = "~/.config/opencode" },
+		{ key = "s", path = "~/.config/opencode/skills" },
 		{ key = "y", path = "~/.config/yazi" },
 		{ key = "g", path = "~/.config/ghostty" },
 		{ key = { "h", "e" }, path = "~/.config/helix" },
 		{ key = { "h", "a" }, path = "~/.config/hammerspoon" },
 
-		{ key = "D", path = "~/Downloads" },
-
 		{ key = { ".", "c" }, path = "~/.config" },
 		{ key = { ".", "s" }, path = "~/.state" },
 		{ key = { ".", "b" }, path = "~/.bin" },
+
+		{ key = "D", path = "~/Downloads" },
 	},
 
 	tabs = true,
