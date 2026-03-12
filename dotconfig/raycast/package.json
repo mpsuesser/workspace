@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/raycast-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/raycast"
+  }
+}

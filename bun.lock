@@ -89,6 +89,9 @@
     "dotconfig/espanso": {
       "name": "@workspace/espanso-dotconfig",
     },
+    "dotconfig/gh": {
+      "name": "@workspace/gh-dotconfig",
+    },
     "dotconfig/ghostty": {
       "name": "@workspace/ghostty-dotconfig",
     },
@@ -113,11 +116,20 @@
     "dotconfig/presenterm": {
       "name": "@workspace/presenterm-dotconfig",
     },
+    "dotconfig/raycast": {
+      "name": "@workspace/raycast-dotconfig",
+    },
     "dotconfig/ripgrep": {
       "name": "@workspace/ripgrep-dotconfig",
     },
     "dotconfig/shell": {
       "name": "@workspace/shell-dotconfig",
+    },
+    "dotconfig/skhd": {
+      "name": "@workspace/skhd-dotconfig",
+    },
+    "dotconfig/starship": {
+      "name": "@workspace/starship-dotconfig",
     },
     "dotconfig/tmux": {
       "name": "@workspace/tmux-dotconfig",
@@ -341,6 +353,8 @@
 
     "@workspace/espanso-dotconfig": ["@workspace/espanso-dotconfig@workspace:dotconfig/espanso"],
 
+    "@workspace/gh-dotconfig": ["@workspace/gh-dotconfig@workspace:dotconfig/gh"],
+
     "@workspace/ghostty-binding": ["@workspace/ghostty-binding@workspace:bindings/ghostty"],
 
     "@workspace/ghostty-dotconfig": ["@workspace/ghostty-dotconfig@workspace:dotconfig/ghostty"],
@@ -367,11 +381,17 @@
 
     "@workspace/presenterm-dotconfig": ["@workspace/presenterm-dotconfig@workspace:dotconfig/presenterm"],
 
+    "@workspace/raycast-dotconfig": ["@workspace/raycast-dotconfig@workspace:dotconfig/raycast"],
+
     "@workspace/ripgrep-dotconfig": ["@workspace/ripgrep-dotconfig@workspace:dotconfig/ripgrep"],
 
     "@workspace/runtime": ["@workspace/runtime@workspace:runtime"],
 
     "@workspace/shell-dotconfig": ["@workspace/shell-dotconfig@workspace:dotconfig/shell"],
+
+    "@workspace/skhd-dotconfig": ["@workspace/skhd-dotconfig@workspace:dotconfig/skhd"],
+
+    "@workspace/starship-dotconfig": ["@workspace/starship-dotconfig@workspace:dotconfig/starship"],
 
     "@workspace/tmux-binding": ["@workspace/tmux-binding@workspace:bindings/tmux"],
 

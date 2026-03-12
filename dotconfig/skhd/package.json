@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/skhd-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/skhd"
+  }
+}

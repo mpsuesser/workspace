@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/starship-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/starship"
+  }
+}
