@@ -62,7 +62,7 @@ const setTabTitle = (title: string) =>
 	});
 
 export class ITerm extends ServiceMap.Service<ITerm>()(
-	'@multitude/binding-iterm-core/ITerm',
+	'@workspace/iterm-binding/ITerm',
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;

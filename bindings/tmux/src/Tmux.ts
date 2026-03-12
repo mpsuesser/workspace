@@ -359,7 +359,7 @@ const sessionSnapshotKey = (sessions: ReadonlyArray<TmuxSession>): string =>
 		.join(',');
 
 export class Tmux extends ServiceMap.Service<Tmux>()(
-	'@multitude/binding-tmux-core/Tmux',
+	'@workspace/tmux-binding/Tmux',
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;

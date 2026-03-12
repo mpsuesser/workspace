@@ -227,7 +227,7 @@ export type AppContext = typeof AppContext.Type;
 // --- Service ---
 
 export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
-	'@multitude/binding-hammerspoon-core/Hammerspoon',
+	'@workspace/hammerspoon-binding/Hammerspoon',
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;

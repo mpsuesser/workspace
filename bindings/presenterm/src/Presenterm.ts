@@ -37,7 +37,7 @@ export type ExportFormat = typeof ExportFormat.Type;
 // ---------------------------------------------------------------------------
 
 export class Presenterm extends ServiceMap.Service<Presenterm>()(
-	'@multitude/binding-presenterm-core/Presenterm',
+	'@workspace/presenterm-binding/Presenterm',
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;

@@ -344,7 +344,7 @@ const listClients = Effect.gen(function* () {
 // ---------------------------------------------------------------------------
 
 export class Zellij extends ServiceMap.Service<Zellij>()(
-	'@multitude/binding-zellij-core/Zellij',
+	'@workspace/zellij-binding/Zellij',
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;

@@ -178,7 +178,7 @@ export class GhosttyConfig extends ServiceMap.Service<
 		readonly validate: () => Effect.Effect<boolean, GhosttyCliError>;
 		readonly show: () => Effect.Effect<string, GhosttyCliError>;
 	}
->()('@multitude/binding-ghostty-core/GhosttyConfig') {
+>()('@workspace/ghostty-binding/GhosttyConfig') {
 	static readonly layer: Layer.Layer<
 		GhosttyConfig,
 		never,

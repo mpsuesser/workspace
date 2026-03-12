@@ -694,7 +694,7 @@ const getKeyCode = (key: string): number => {
 };
 
 export class Ghostty extends ServiceMap.Service<Ghostty>()(
-	'@multitude/binding-ghostty-core/Ghostty',
+	'@workspace/ghostty-binding/Ghostty',
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;

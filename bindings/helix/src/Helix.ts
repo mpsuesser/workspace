@@ -1,29 +1,19 @@
 import * as BunServices from '@effect/platform-bun/BunServices';
-import helixConfig from '@multitude/helix-dotconfig/config.toml';
-import themesByMode from '@multitude/helix-dotconfig/themes-by-mode.yaml';
+import helixConfig from '@workspace/helix-dotconfig/config.toml';
+import themesByMode from '@workspace/helix-dotconfig/themes-by-mode.yaml';
 import * as Clock from 'effect/Clock';
 import * as Effect from 'effect/Effect';
 import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
 import type { PlatformError } from 'effect/PlatformError';
 import * as Random from 'effect/Random';
-import * as Schema from 'effect/Schema';
 import * as ServiceMap from 'effect/ServiceMap';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 import * as TOML from 'smol-toml';
 
-export class HelixBuffer extends Schema.Class<HelixBuffer>('HelixBuffer')({
-	buffer_name: Schema.String,
-	cursor_column: Schema.Int.check(Schema.isGreaterThan(0)),
-	cursor_line: Schema.Int.check(Schema.isGreaterThan(0)),
-	language: Schema.String,
-	selection_line_end: Schema.Int.check(Schema.isGreaterThan(0)),
-	selection_line_start: Schema.Int.check(Schema.isGreaterThan(0))
-}) {}
-
 export class Helix extends ServiceMap.Service<Helix>()(
-	'@multitude/binding-helix-core/Helix',
+	'@workspace/helix-binding/Helix',
 	{
 		make: Effect.gen(function* () {
 			const fs = yield* FileSystem.FileSystem;

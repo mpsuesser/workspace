@@ -17,6 +17,14 @@
         "vitest": "catalog:",
       },
     },
+    "apps/hx-wrapped": {
+      "name": "@workspace/hx-wrapped",
+      "version": "0.0.0",
+      "dependencies": {
+        "@effect/platform-bun": "catalog:",
+        "effect": "catalog:",
+      },
+    },
     "bindings/ghostty": {
       "name": "@workspace/ghostty-binding",
       "version": "0.0.0",
@@ -344,6 +352,8 @@
     "@workspace/helix-binding": ["@workspace/helix-binding@workspace:bindings/helix"],
 
     "@workspace/helix-dotconfig": ["@workspace/helix-dotconfig@workspace:dotconfig/helix"],
+
+    "@workspace/hx-wrapped": ["@workspace/hx-wrapped@workspace:apps/hx-wrapped"],
 
     "@workspace/iterm-binding": ["@workspace/iterm-binding@workspace:bindings/iterm"],
 

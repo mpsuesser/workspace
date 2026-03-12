@@ -18,7 +18,7 @@ export class FontConfig extends Schema.Class<FontConfig>('FontConfig')({
 }) {}
 
 export class GhosttyFont extends ServiceMap.Service<GhosttyFont>()(
-	'@multitude/binding-ghostty-core/GhosttyFont',
+	'@workspace/ghostty-binding/GhosttyFont',
 	{
 		make: Effect.gen(function* () {
 			const ghostty = yield* Ghostty;

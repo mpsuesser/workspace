@@ -60,7 +60,7 @@ const formatConfig = (config: ThemeConfig): string => {
 };
 
 export class GhosttyTheme extends ServiceMap.Service<GhosttyTheme>()(
-	'@multitude/binding-ghostty-core/GhosttyTheme',
+	'@workspace/ghostty-binding/GhosttyTheme',
 	{
 		make: Effect.gen(function* () {
 			const ghostty = yield* Ghostty;

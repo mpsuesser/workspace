@@ -1,2 +1,3 @@
-export { Helix, HelixBuffer } from './Helix.ts';
-export { HelixConfig } from './internal/HelixConfig.ts';
+export { Helix } from './Helix.ts';
+export { HelixBuffer } from './schemas/HelixBuffer.ts';
+export { HelixConfig } from './schemas/HelixConfig.ts';
