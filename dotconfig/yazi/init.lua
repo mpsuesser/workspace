@@ -7,29 +7,22 @@ togglepane:entry("min-preview")
 require("bunny"):setup({
 	hops = {
 		{ key = "c", path = "~/curationspace" },
-
-		{ key = "e", path = "~/multitude" },
+		{ key = "w", path = "~/repos/workspace" },
+		{ key = "m", path = "~/multitude" },
 
 		{ key = "9", path = "~/multitude/99e" },
 		{ key = "p", path = "~/multitude/packages" },
 		{ key = "o", path = "~/multitude/.opencode" },
 		{ key = "a", path = "~/multitude/.opencode/agents" },
 		{ key = "s", path = "~/multitude/.opencode/skills" },
-		{ key = "m", path = "~/multitude/.opencode/memories" },
 		{ key = "t", path = "~/multitude/.opencode/tool" },
 
-		{ key = "y", path = "~/multitude/bindings/yazi/dotconfig" },
-
-		{ key = { "h", "e" }, path = "~/multitude/packages/helix/dotconfig" },
-		{ key = { "h", "a" }, path = "~/multitude/packages/hammerspoon/dotconfig" },
-
+		{ key = "y", path = "~/.config/yazi" },
 		{ key = "g", path = "~/.config/ghostty" },
+		{ key = { "h", "e" }, path = "~/.config/helix" },
+		{ key = { "h", "a" }, path = "~/.config/hammerspoon" },
 
-		{ key = "w", path = "~/" },
 		{ key = "D", path = "~/Downloads" },
-
-		{ key = "_", path = "~/_" },
-		{ key = "3", path = "~/_/3core" },
 
 		{ key = { ".", "c" }, path = "~/.config" },
 		{ key = { ".", "s" }, path = "~/.state" },

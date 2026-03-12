@@ -1,0 +1,21 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+format = '''
+$directory
+$character
+'''
+
+[fill]
+symbol = ' '
+
+[directory]
+format = '[$path]($style)'
+style = 'bold #ff1493'
+truncation_length = 5
+truncate_to_repo = false
+
+[character]
+success_symbol = '[➜](#708090)'
+
+[package]
+disabled = true

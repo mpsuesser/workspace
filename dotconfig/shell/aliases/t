@@ -1,0 +1,9 @@
+treee() {
+  tree \
+    -I node_modules \
+    --filelimit 33 \
+    --noreport \
+    --filesfirst \
+    --sort name \
+    "$@"
+}

@@ -1,0 +1,3 @@
+gclip() {
+	cd "$(git rev-parse --show-toplevel)" && { pbpaste | git apply --3way - || pbpaste | patch -p1; }
+}

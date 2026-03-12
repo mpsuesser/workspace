@@ -1,0 +1,15 @@
+# Wrapper for yazi to change directory in parent shell after quitting
+# Usage: yazi-cd [yazi options]
+# Allows yazi to change the current directory when exiting
+
+yazi-cd() {
+  local tmp
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  command yazi "$@" --cwd-file="$tmp"
+  # If yazi wrote a directory to the temp file, change to it.
+  if local cwd="$(command cat -- "$tmp")" && [[ -n "$cwd" ]] && [[ "$cwd" != "$PWD" ]]; then
+    command cd -- "$cwd"
+  fi
+  command rm -f -- "$tmp"
+  clear
+}

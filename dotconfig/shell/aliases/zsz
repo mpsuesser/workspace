@@ -1,0 +1,13 @@
+zsz() {
+    echo "Entering hotkey mode. Press 'q' to quit."
+    # Use -n 1 for Bash to read a single character
+    while read -n 1 -s key; do
+        case "$key" in
+            a) zellij action resize increase left ;;
+            w) zellij action resize increase up ;;
+            d) zellij action resize increase right ;;
+            s) zellij action resize increase down ;;
+            q) echo "Exiting hotkey mode."; break ;;
+        esac
+    done
+}

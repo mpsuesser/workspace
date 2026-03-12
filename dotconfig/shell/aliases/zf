@@ -1,0 +1,3 @@
+zf() {
+	zellij run -f --width 70% --height 70% --x 15% --y 15% -- $@
+}

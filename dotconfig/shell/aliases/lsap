@@ -1,0 +1,3 @@
+lsap() {
+  eza -1 --sort=Extension --absolute "$@"
+}

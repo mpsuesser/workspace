@@ -1,0 +1,3 @@
+zp() {
+  zellij action rename-pane $(gum input --placeholder "name this pane")
+}

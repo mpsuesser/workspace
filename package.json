@@ -31,7 +31,8 @@
 		"packages": [
 			"apps/*",
 			"bindings/*",
-			"dotconfig/*"
+			"dotconfig/*",
+			"runtime"
 		],
 		"catalog": {
 			"effect": "^4.0.0-beta.20",

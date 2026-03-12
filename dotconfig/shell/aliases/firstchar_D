@@ -1,0 +1,13 @@
+firstchar_D() {
+  # Is the current buffer (command line) empty?
+  if [[ -z "$BUFFER" ]]; then
+    BUFFER="yazinext"
+    zle accept-line
+  else
+    # Behave like a normal 'D'
+    LBUFFER+="D"
+  fi
+}
+
+zle -N firstchar_D
+bindkey "D" firstchar_D

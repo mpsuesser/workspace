@@ -1,0 +1,3 @@
+zl() {
+  zellij --layout "$XDG_CONFIG_HOME/zellij/layouts/$1.kdl"
+}

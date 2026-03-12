@@ -1,0 +1,26 @@
+{
+  "name": "@workspace/runtime",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ."
+  },
+  "exports": {
+    ".": "./runtime.ts",
+    "./*": "./*.ts",
+    "./internal/*": null
+  },
+  "dependencies": {
+    "@effect/platform-bun": "catalog:",
+    "@workspace/ghostty-binding": "workspace:*",
+    "@workspace/hammerspoon-binding": "workspace:*",
+    "@workspace/helix-binding": "workspace:*",
+    "@workspace/iterm-binding": "workspace:*",
+    "@workspace/presenterm-binding": "workspace:*",
+    "@workspace/tmux-binding": "workspace:*",
+    "@workspace/zellij-binding": "workspace:*",
+    "effect": "catalog:"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@multitude/shell-aliases",
+  "private": true,
+  "scripts": {
+    "lint": "biome check ."
+  }
+}

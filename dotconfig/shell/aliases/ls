@@ -1,0 +1,3 @@
+ls() {
+  eza -1 --sort=Extension --icons=auto "$@"
+}

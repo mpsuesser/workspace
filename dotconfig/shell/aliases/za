@@ -1,0 +1,3 @@
+za() {
+  zellij action "$@"
+}
