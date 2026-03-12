@@ -33,7 +33,7 @@ cursor-style = bar
 title = "Ghostty"
 
 # Launch into tmux — sessions persist across Ghostty restarts
-# command = /bin/zsh -l -c 'exec /Users/m/multitude/.flox/run/aarch64-darwin.multitude.dev/bin/tmux'
+# command = /bin/zsh -l -c 'exec tmux'
 
 initial-window = false
 

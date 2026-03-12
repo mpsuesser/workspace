@@ -1,5 +1,5 @@
 layout {
-	cwd "/Users/m/multitude"
+	cwd "/Users/m/repos/multitude"
 
 	pane split_direction="vertical" {
 		pane command="yazinext" borderless=true {

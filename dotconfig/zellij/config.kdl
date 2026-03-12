@@ -58,7 +58,7 @@ keybinds clear-defaults=true {
         // Opencode tabs
         bind "Super n" {
             NewTab {
-                cwd "/Users/m/multitude"
+                cwd "/Users/m/repos/multitude"
                 layout "/Users/m/.config/zellij/layouts/opencode-session.kdl"
             }
         }

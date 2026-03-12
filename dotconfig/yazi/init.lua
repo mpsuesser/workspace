@@ -6,16 +6,17 @@ togglepane:entry("min-preview")
 
 require("bunny"):setup({
 	hops = {
-		{ key = "c", path = "~/curationspace" },
+		{ key = "r", path = "~/repos" },
+		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "w", path = "~/repos/workspace" },
-		{ key = "m", path = "~/multitude" },
+		{ key = "m", path = "~/repos/multitude" },
 
-		{ key = "9", path = "~/multitude/99e" },
-		{ key = "p", path = "~/multitude/packages" },
-		{ key = "o", path = "~/multitude/.opencode" },
-		{ key = "a", path = "~/multitude/.opencode/agents" },
-		{ key = "s", path = "~/multitude/.opencode/skills" },
-		{ key = "t", path = "~/multitude/.opencode/tool" },
+		{ key = "9", path = "~/repos/multitude/99e" },
+		{ key = "p", path = "~/repos/multitude/packages" },
+		{ key = "o", path = "~/repos/multitude/.opencode" },
+		{ key = "a", path = "~/repos/multitude/.opencode/agents" },
+		{ key = "s", path = "~/repos/multitude/.opencode/skills" },
+		{ key = "t", path = "~/repos/multitude/.opencode/tool" },
 
 		{ key = "y", path = "~/.config/yazi" },
 		{ key = "g", path = "~/.config/ghostty" },

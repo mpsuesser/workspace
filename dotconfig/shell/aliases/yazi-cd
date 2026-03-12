@@ -3,13 +3,10 @@
 # Allows yazi to change the current directory when exiting
 
 yazi-cd() {
-  local tmp
-  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   command yazi "$@" --cwd-file="$tmp"
-  # If yazi wrote a directory to the temp file, change to it.
-  if local cwd="$(command cat -- "$tmp")" && [[ -n "$cwd" ]] && [[ "$cwd" != "$PWD" ]]; then
-    command cd -- "$cwd"
-  fi
-  command rm -f -- "$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
   clear
 }

@@ -26,7 +26,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/_/.bin:$PATH"
-export PATH="$HOME/multitude/.bin:$PATH"
+export PATH="$HOME/repos/multitude/.bin:$PATH"
 
 # =============================================================================
 
@@ -42,7 +42,7 @@ eval "$(zoxide init zsh)"
 
 # Recursively find and source all regular files in aliases directory
 # Ignore any subdirectories beginning with a dot
-for config_file in $(find "$HOME/.config/aliases" -type f -name "[!.]*" -not -name "package.json" 2>/dev/null); do
+for config_file in $(find -L "$HOME/.config/aliases" -type f -name "[!.]*" -not -name "package.json" 2>/dev/null); do
     if [[ -f "$config_file" && -r "$config_file" ]]; then
         source "$config_file"
     fi
