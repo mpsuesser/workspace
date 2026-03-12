@@ -1,0 +1,6 @@
+matches:
+  - triggers: [;;Aim]
+    replace: "import { type } from 'arktype'"
+
+  - triggers: [;;At, ;;t]
+    replace: 'const $|$ = type(SPACED)'

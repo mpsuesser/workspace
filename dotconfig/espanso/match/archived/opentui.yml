@@ -1,0 +1,28 @@
+matches:
+  - triggers: [;;otui;useKeyboard]
+    replace: |-
+      	useKeyboard((key) =>
+      		{
+      			switch (key.name)
+      			{
+      				case 'w':
+      				{
+      					break;
+      				}
+
+      				case 's':
+      				{
+      					break;
+      				}
+
+      				case 'a':
+      				{
+      					break;
+      				}
+
+      				case 'd':
+      				{
+      					break;
+      				}
+      			}
+      	})

@@ -1,0 +1,21 @@
+layout {
+	cwd "/Users/m/multitude"
+
+	pane split_direction="vertical" {
+		pane command="yazinext" borderless=true {
+			size "20%"
+			focus true
+		}
+
+		pane command="opencode" name="" {
+			size "60%"
+		}
+
+		// pane command="ocsession-data-panel" name="" {
+		pane borderless=true {
+			size "20%"
+		}
+	}
+}
+
+pane_frames true

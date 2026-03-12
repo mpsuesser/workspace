@@ -1,0 +1,19 @@
+darks = [
+  "ashen",
+  "beans",
+  "curzon",
+  "dark-synthwave",
+  "github_dark_high_contrast",
+  "modus_vivendi",
+  "modus_vivendi_tritanopia",
+]
+
+lights = [
+  "acme",
+  "emacs",
+  "eiffel",
+  "github_light_high_contrast",
+  "modus_operandi_tritanopia",
+  "papercolor-light",
+  "serika-light",
+]

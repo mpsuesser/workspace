@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/zellij-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/zellij",
+    "lint": "biome check ."
+  }
+}

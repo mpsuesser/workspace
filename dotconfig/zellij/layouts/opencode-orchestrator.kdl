@@ -1,0 +1,36 @@
+layout {
+	pane split_direction="vertical" {
+		pane command="bash" {
+			args "-c" "echo 'Pane 1 - Left'; read"
+			name "left"
+			size "25%"
+		}
+		pane split_direction="horizontal" {
+			pane command="bash" {
+				args "-c" "echo 'Pane 2 - Center-Left Top'; read"
+				name "center-left-top"
+			}
+			pane command="bash" {
+				args "-c" "echo 'Pane 3 - Center-Left Bottom'; read"
+				name "center-left-bottom"
+			}
+		}
+		pane split_direction="horizontal" {
+			pane command="bash" {
+				args "-c" "echo 'Pane 4 - Center-Right Top'; read"
+				name "center-right-top"
+			}
+			pane command="bash" {
+				args "-c" "echo 'Pane 5 - Center-Right Bottom'; read"
+				name "center-right-bottom"
+			}
+		}
+		pane command="bash" {
+			args "-c" "echo 'Pane 6 - Right'; read"
+			name "right"
+			size "25%"
+		}
+	}
+}
+
+pane_frames true

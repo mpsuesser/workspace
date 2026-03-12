@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+.tsbuildinfo
+*.tsbuildinfo
+
+# Turbo
+.turbo/
+
+# Environment
+.env
+
+# Secrets
+secrets.yaml
+*.age-key
+
+# gh CLI auth tokens
+dotconfig/gh/hosts.yml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Lock files (bun workspace)
+dotconfig/opencode/bun.lock
+dotconfig/opencode/node_modules/
+dotconfig/opencode/package-lock.json
+
+# Temporary
+tmp/

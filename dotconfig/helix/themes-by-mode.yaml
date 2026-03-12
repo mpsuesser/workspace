@@ -1,0 +1,9 @@
+dark:
+  NORMAL: rose_pine
+  INSERT: beans
+  SELECT: github_dark_high_contrast
+
+light:
+  NORMAL: emacs
+  INSERT: modus_operandi_tritanopia
+  SELECT: github_light_high_contrast

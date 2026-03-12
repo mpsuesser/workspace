@@ -1,0 +1,4 @@
+matches:
+  - triggers: [;pm., ;pmc.]
+    replace: |-
+      Just give me the final result, no additional commentary needed.

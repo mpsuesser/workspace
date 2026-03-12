@@ -1,0 +1,336 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+[
+  {
+    "context": "!menu",
+    "bindings": {
+      "cmd-shift-z": [
+        "action::Sequence",
+        [
+          ["editor::ToggleLineNumbers", {}],
+          ["editor::ToggleTabBar", {}],
+          ["editor::ToggleIndentGuides", {}],
+          ["workspace::ToggleAllDocks", {}],
+          ["workspace::ToggleCenteredLayout", {}]
+        ]
+      ],
+      "cmd-t": "editor::ToggleTabBar",
+      "cmd-shift-t": "editor::ToggleLineNumbers",
+      "cmd-shift-d": "workspace::ToggleRightDock",
+      "cmd-shift-a": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "VimControl && vim_mode == helix_normal && !menu",
+    "bindings": {
+      "w": "vim::Up",
+      "s": "vim::Down",
+      "a": "vim::WrappingLeft",
+      "d": "vim::WrappingRight",
+
+      "W": [
+        "action::Sequence",
+        [
+          ["vim::Up", {}],
+          ["vim::Up", {}],
+          ["vim::Up", {}],
+          ["vim::Up", {}],
+          ["vim::Up", {}]
+        ]
+      ],
+      "S": [
+        "action::Sequence",
+        [
+          ["vim::Down", {}],
+          ["vim::Down", {}],
+          ["vim::Down", {}],
+          ["vim::Down", {}],
+          ["vim::Down", {}]
+        ]
+      ],
+
+      "A": "vim::StartOfLine",
+      "D": ["workspace::SendKeystrokes", "g l l"],
+
+      "o": [
+        "action::Sequence",
+        [
+          ["editor::MoveToEndOfLine", {}],
+          ["editor::Newline", {}],
+          ["vim::HelixInsert", {}]
+        ]
+      ],
+      "O": [
+        "action::Sequence",
+        [
+          ["vim::InsertEmptyLineAbove", {}],
+          ["vim::Up", {}],
+          ["vim::HelixInsert", {}]
+        ]
+      ],
+
+      "e": "vim::HelixSubstituteNoYank",
+      "c": "vim::HelixYank",
+      "x": "vim::HelixSelectLine",
+
+      "q": "vim::HelixInsert",
+      "u": [
+        "action::Sequence",
+        [
+          ["vim::HelixInsert", {}],
+          ["editor::InsertSnippet", { "snippet": "qu" }]
+        ]
+      ],
+
+      "k": "vim::Undo",
+      "K": "editor::Redo",
+
+      "r": "vim::ToggleVisual",
+      "v": "vim::ToggleVisual",
+
+      "enter": "command_palette::Toggle",
+
+      "g g": "vim::StartOfDocument",
+      "G": "vim::EndOfDocument",
+
+      "F": "pane::DeploySearch",
+
+      "space q": ["pane::CloseActiveItem", { "save_intent": "save_all" }],
+      "space Q": ["pane::CloseActiveItem", { "save_intent": "skip" }],
+
+      "space w": ["workspace::SendKeystrokes", "m i w"],
+      "space W": ["workspace::SendKeystrokes", "m i shift-w"],
+
+      "space A": "vim::StartOfLine",
+      "space S": "vim::HelixSelectLine",
+
+      "space i": ["workspace::SendKeystrokes", "m i"],
+
+      "space d": ["workspace::SendKeystrokes", "g l h h h m i w"],
+
+      "space e": ["workspace::SendKeystrokes", "m a m"],
+      "space e enter": "vim::HelixSubstituteNoYank",
+
+      "space a": "editor::SelectAll",
+      "space space": "editor::SelectAll",
+
+      "space s": ["workspace::SendKeystrokes", "m i"],
+
+      "space f": "vim::HelixSelectLine",
+
+      "; d": ["workspace::SendKeystrokes", "] b alt-c"],
+
+      "; q": ["pane::CloseActiveItem", { "save_intent": "save_all" }],
+      "; Q": ["pane::CloseActiveItem", { "save_intent": "skip" }],
+
+      "; w": ["workspace::SendKeystrokes", "m i w"],
+      "; W": ["workspace::SendKeystrokes", "m i shift-w"],
+
+      "; A": "vim::StartOfLine",
+      "; S": "vim::HelixSelectLine",
+
+      "; i": ["workspace::SendKeystrokes", "m i"],
+      "; e": ["workspace::SendKeystrokes", "m a m"],
+      "; e enter": "vim::HelixSubstituteNoYank",
+
+      "; a": "editor::SelectAll",
+      "; space": "editor::SelectAll",
+
+      "; s": ["workspace::SendKeystrokes", "m i"],
+
+      "; f": "vim::HelixSelectLine",
+
+      "; ;": "editor::GoToDiagnostic",
+
+      "Q": "editor::DeleteLine",
+      "R": ["workspace::SendKeystrokes", "shift-x y"],
+      "X": ["workspace::SendKeystrokes", "shift-x d"]
+    }
+  },
+  {
+    "context": "vim_mode == helix_select && !menu",
+    "bindings": {
+      "w": "vim::Up",
+      "s": "vim::Down",
+      "a": "vim::WrappingLeft",
+      "d": "vim::WrappingRight",
+
+      "W": [
+        "action::Sequence",
+        [
+          ["vim::Up", {}],
+          ["vim::Up", {}],
+          ["vim::Up", {}],
+          ["vim::Up", {}],
+          ["vim::Up", {}]
+        ]
+      ],
+      "S": [
+        "action::Sequence",
+        [
+          ["vim::Down", {}],
+          ["vim::Down", {}],
+          ["vim::Down", {}],
+          ["vim::Down", {}],
+          ["vim::Down", {}]
+        ]
+      ],
+      "x": ["workspace::SendKeystrokes", "alt-d escape"],
+      "X": ["workspace::SendKeystrokes", "d escape"],
+      "e": "vim::HelixSubstituteNoYank",
+      "c": "vim::HelixYank",
+
+      "q": "vim::SwitchToHelixNormalMode",
+      "escape": "vim::SwitchToHelixNormalMode",
+
+      "r": "vim::HelixSelectLine"
+    }
+  },
+  {
+    "context": "VimControl && vim_mode == insert && menu",
+    "bindings": {
+      "q": "vim::SwitchToHelixNormalMode"
+    }
+  },
+  {
+    "context": "vim_mode == insert && !menu",
+    "bindings": {
+      "q": "vim::NormalBefore",
+      "escape": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "KeybindEditorModal > Editor",
+    "bindings": {
+      "s": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "SettingsWindow > NavigationMenu",
+    "bindings": {
+      "s": "settings_editor::FocusNextNavEntry"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-w": "outline_panel::ToggleFocus",
+      "cmd-a": "project_panel::ToggleFocus",
+      "cmd-s": "editor::ToggleFocus",
+      "cmd-d": "agent::ToggleFocus",
+      "cmd-x": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "cmd-w": "outline_panel::ToggleFocus",
+      "cmd-a": null,
+      "cmd-s": "editor::ToggleFocus",
+      "cmd-d": "agent::ToggleFocus",
+      "cmd-shift-d": "workspace::ToggleRightDock",
+      "cmd-x": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "cmd-w": null,
+      "cmd-a": "project_panel::ToggleFocus",
+      "cmd-s": "editor::ToggleFocus",
+      "cmd-d": "agent::ToggleFocus",
+      "cmd-x": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "cmd-w": "outline_panel::ToggleFocus",
+      "cmd-a": "project_panel::ToggleFocus",
+      "cmd-s": "editor::ToggleFocus",
+      "cmd-d": "agent::ToggleFocus",
+      "cmd-x": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-w": ["terminal::SendText", "exit"],
+      "cmd-r": "terminal::RerunTask",
+      "cmd-a": "project_panel::ToggleFocus",
+      "cmd-s": "editor::ToggleFocus",
+      "cmd-d": "agent::ToggleFocus",
+      "cmd-x": null
+    }
+  },
+  {
+    "context": "Workspace && !ProjectPanel",
+    "bindings": {
+      "cmd-a": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-e": null
+    }
+  },
+  {
+    "context": "(Workspace && !AgentPanel)",
+    "bindings": {
+      "cmd-d": "agent::ToggleFocus"
+    }
+  },
+  {
+    "context": "(Workspace && !Editor)",
+    "bindings": {
+      "cmd-s": "editor::ToggleFocus"
+    }
+  },
+  {
+    "context": "(ProjectPanel && not_editing)",
+    "bindings": {
+      "w": "vim::MenuSelectPrevious",
+      "s": "vim::MenuSelectNext",
+      "a": "project_panel::FoldDirectory",
+      "d": "project_panel::UnfoldDirectory",
+      "W": "project_panel::ScrollUp",
+      "S": "project_panel::ScrollDown",
+      // "W": [
+      //   "action::Sequence",
+      //   [
+      //     ["vim::MenuSelectPrevious", {}],
+      //     ["vim::MenuSelectPrevious", {}],
+      //     ["vim::MenuSelectPrevious", {}],
+      //     ["vim::MenuSelectPrevious", {}],
+      //     ["vim::MenuSelectPrevious", {}],
+      //   ],
+      // ],
+      // "S": [
+      //   "action::Sequence",
+      //   [
+      //     ["vim::MenuSelectNext", {}],
+      //     ["vim::MenuSelectNext", {}],
+      //     ["vim::MenuSelectNext", {}],
+      //     ["vim::MenuSelectNext", {}],
+      //     ["vim::MenuSelectNext", {}],
+      //   ],
+      // ],
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "n": "project_panel::NewFile",
+      "N": "project_panel::NewDirectory",
+      "backspace": "project_panel::Delete"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-q": null
+    }
+  }
+]

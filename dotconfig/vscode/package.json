@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/vscode-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)/settings.json\" \"$HOME/Library/Application Support/Code/User/settings.json\" && ln -sfn \"$(pwd)/keybindings.json\" \"$HOME/Library/Application Support/Code/User/keybindings.json\" && ln -sfn \"$(pwd)/tasks.json\" \"$HOME/Library/Application Support/Code/User/tasks.json\"",
+    "lint": "biome check ."
+  }
+}

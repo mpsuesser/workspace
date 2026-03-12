@@ -1,0 +1,52 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  // Tab navigation
+  {
+    "key": "cmd+a",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "cmd+shift+w",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "cmd+shift+i", // Or your preferred hotkey
+    "command": "workbench.action.tasks.runTask",
+    "args": "Bun Format"
+  },
+  // WASD navigation - d for cursor right (vim.handleKeys bypasses this to VS Code)
+  {
+    "key": "d",
+    "command": "cursorRight",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "shift+d",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "cursorEnd",
+        { "command": "vim.remap", "args": { "after": ["i"] } }
+      ]
+    },
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "d",
+    "command": "cursorRightSelect",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  },
+  {
+    "key": "shift+d",
+    "command": "cursorEndSelect",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  }
+]

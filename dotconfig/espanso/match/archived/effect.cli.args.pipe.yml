@@ -1,0 +1,30 @@
+matches:
+  - triggers: [;ecap.]
+    replace: "Args.repeated"
+
+  - triggers: [;ecap.]
+    replace: "Args.optional"
+
+  - triggers: [;ecap.]
+    replace: "Args.withDescription('$|$')"
+
+  - triggers: [;ecap.]
+    replace: "Args.withFallbackConfig($|$)"
+
+  - triggers: [;ecap.]
+    replace: "Args.withSchema($|$)"
+
+  - triggers: [;ecap.]
+    replace: "Args.withDefault($|$)"
+
+  - triggers: [;ecap.]
+    replace: "Args.atLeast($|$)"
+
+  - triggers: [;ecap.]
+    replace: "Args.atMost($|$)"
+
+  - triggers: [;ecap.]
+    replace: "Args.between($|$, 999)"
+
+  - triggers: [;ecap.]
+    replace: "Args.validate($|$)"

@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/ripgrep-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/ripgrep",
+    "lint": "biome check ."
+  }
+}

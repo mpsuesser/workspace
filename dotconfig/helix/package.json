@@ -1,0 +1,11 @@
+{
+  "name": "@workspace/helix-dotconfig",
+  "private": true,
+  "exports": {
+    "./*": "./*"
+  },
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/helix",
+    "lint": "biome check ."
+  }
+}

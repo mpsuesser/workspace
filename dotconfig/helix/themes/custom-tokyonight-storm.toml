@@ -1,0 +1,27 @@
+inherits = "tokyonight_storm"
+
+# Override Theme
+"ui.selection" = { bg = "#2E3C64" }
+"ui.selection.primary" = { bg = "#2E3C64" }
+"ui.bufferline" = { bg = "bg-menu", fg = "comment" }
+"ui.bufferline.active" = { fg = "white", bg = "bg", modifiers = ["bold"] }
+"ui.statusline.separator" = "|"
+"ui.linenr" = { fg = "comment", modifiers = ["dim"] }
+"ui.linenr.selected" = { fg = "orange", modifiers = [""] }
+
+# Treesitter
+# constructor = { fg = "red" }
+attribute = { fg = "green" }
+punctuation = { fg = "fg-dark" }
+"ui.text.directory" = { fg = "comment" }
+
+# Redefining colors to remove italic modifiers.
+function = { fg = "blue" }
+"variable.parameter" = { fg = "yellow" }
+"keyword.control" = { fg = "magenta", modifiers = ["italic"] }
+
+# Override text by setting only the fg without the bg.
+# This fixes highlighting in the picker preview (especially in grep),
+# where the matched whole line is not highlighted—only the background.
+# We remove the bg from the previous fix since it changes the text color in hover docs.
+"ui.text" = { fg = "fg" }

@@ -1,0 +1,35 @@
+matches:
+  - triggers: [;ecop.]
+    replace: "Options.repeated /* note: if this option is not provided, an empty array will be parsed as its value */"
+
+  - triggers: [;ecop.]
+    replace: "Options.optional"
+
+  - triggers: [;ecop.]
+    replace: "Options.withDescription('$|$')"
+
+  - triggers: [;ecop.]
+    replace: "Options.withFallbackConfig($|$)"
+
+  - triggers: [;ecop.]
+    replace: "Options.withAlias('$|$')"
+
+  - triggers: [;ecop.]
+    replace: "Options.withFallbackPrompt($|$)"
+  - triggers: [;ecop.]
+    replace: "Options.withPseudoName('$|$')"
+
+  - triggers: [;ecop.]
+    replace: "Options.withSchema($|$)"
+
+  - triggers: [;ecop.]
+    replace: "Options.withDefault($|$)"
+
+  - triggers: [;ecop.]
+    replace: "Options.atLeast($|$)"
+
+  - triggers: [;ecop.]
+    replace: "Options.atMost($|$)"
+
+  - triggers: [;ecop.]
+    replace: "Options.between($|$, 999)"

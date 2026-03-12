@@ -1,0 +1,43 @@
+config-file = "./keys"
+config-file = "./shader"
+
+shell-integration = "zsh"
+
+# theme = prisma-dark
+# font-family = Annotation Mono
+theme = Rose Pine
+font-family = Maple Mono
+
+quick-terminal-position = center
+quick-terminal-size = 33%,85%
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0
+quick-terminal-autohide = true
+quick-terminal-space-behavior = move
+
+background-opacity = 1
+background-blur = true
+
+maximize = true
+fullscreen = non-native
+window-decoration = none
+
+window-padding-x = 8
+window-padding-y = 8
+window-padding-color = extend
+
+confirm-close-surface = false
+
+cursor-style = bar
+
+title = "Ghostty"
+
+# Launch into tmux — sessions persist across Ghostty restarts
+# command = /bin/zsh -l -c 'exec /Users/m/multitude/.flox/run/aarch64-darwin.multitude.dev/bin/tmux'
+
+initial-window = false
+
+link-url = true
+
+auto-update = "check"
+auto-update-channel = "tip"

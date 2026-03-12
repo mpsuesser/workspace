@@ -1,0 +1,13 @@
+layout {
+	cwd "/Users/m/multitude"
+
+	pane size=1 borderless=true {
+		plugin location="tab-bar"
+	}
+
+	pane {
+		focus true
+	}
+}
+
+pane_frames true

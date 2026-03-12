@@ -1,0 +1,20 @@
+{
+  "name": "@workspace/helix-binding",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ."
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "dependencies": {
+    "@effect/platform-bun": "catalog:",
+    "@workspace/helix-dotconfig": "workspace:*",
+    "effect": "catalog:",
+    "smol-toml": "catalog:"
+  }
+}

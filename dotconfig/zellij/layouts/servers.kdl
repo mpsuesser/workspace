@@ -1,0 +1,10 @@
+layout {
+	cwd "/Users/m/_"
+
+	pane command="bun" {
+		args "--watch" "/Users/m/_/cli/servers.ts" "start"
+		borderless true
+		size 5
+		name "servers"
+	}
+}

@@ -1,0 +1,10 @@
+layout {
+    pane split_direction="vertical" {
+        pane command="monitor-events" name="Events"
+        pane command="monitor-message-queue" name="Message Queue"
+        pane split_direction="horizontal" {        
+            pane command="monitor-localservers" name="Local Servers"
+            pane command="monitor-workers" name="Workers"
+        }
+    }
+}

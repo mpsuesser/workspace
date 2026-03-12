@@ -1,0 +1,8 @@
+matches:
+  - trigger: ;;D
+    replace: |-
+      import { Data, Effect, Schema } from 'effect';
+
+      export class $|$ extends Data.Class<{
+
+      }> {}

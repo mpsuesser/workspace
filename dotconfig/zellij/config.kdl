@@ -1,0 +1,109 @@
+default_shell "zsh"
+theme "dracula"
+
+keybinds clear-defaults=true {
+    shared {
+        bind "Super x" { NewPane "Right"; }
+        bind "Super Shift x" { NewPane "Down"; }
+
+        bind "Super q" { CloseFocus; }
+        bind "Super Shift q" { CloseTab; }
+
+        bind "Super t" {
+            NewTab {
+                cwd "/Users/m"
+                name "unnamed"
+                layout "/Users/m/.config/zellij/layouts/default.kdl"
+            }
+            SwitchToMode "locked";
+        }
+
+        bind "Super Shift a" { GoToPreviousTab; }
+        bind "Super Shift d" { GoToNextTab; }
+        bind "Super Shift w" { Run "echo" "TODO" "search-tabs"; }
+        bind "Super Shift s" { Run "echo" "TODO" "rename-tab"; }
+
+        bind "Super w" { MoveFocus "Up"; }
+        bind "Super a" { MoveFocus "Left"; }
+        bind "Super d" { MoveFocus "Right"; }
+
+        bind "Super Left" { Resize "Left"; }
+        bind "Super Right" { Resize "Right"; }
+        bind "Super Up" { Resize "Up"; }
+        bind "Super Down" { Resize "Down"; }
+
+        bind "Super e" { ToggleFocusFullscreen; }
+        bind "Super Shift e" { EditScrollback; }
+
+        bind "Super Ctrl w" { HalfPageScrollUp; }
+        bind "Super Ctrl s" { HalfPageScrollDown; }
+
+        bind "Super /" {
+            Run "tv" "pj" {
+                cwd "/Users/m/_"
+                // close_on_exit true
+                floating true
+                x "67%"
+                y "1%"
+                width "33%"
+                height "98%"
+            }
+        }
+
+        bind "Super r" { Detach; }
+        bind "Super o" { Run "echo" "hi"; }
+        bind "Super p" { Run "echo" "TODO" "open-pane-renamer-in-floating-pane"; }
+        bind "Super k" { Run "echo" "TODO"; }
+
+        // Opencode tabs
+        bind "Super n" {
+            NewTab {
+                cwd "/Users/m/multitude"
+                layout "/Users/m/.config/zellij/layouts/opencode-session.kdl"
+            }
+        }
+        bind "Super s" {
+            Run "ocsession-switcher" {
+                floating true
+                close_on_exit true
+            }
+        }
+
+        // Enter
+        bind "Super Enter" { ToggleFloatingPanes; }
+        bind "Ctrl Enter" { Run "echo" "TODO" "screenshot-and-open-floating-ai-pane"; }
+
+        bind "Alt w" { Resize "Up"; }
+        bind "Alt a" { Resize "Left"; }
+        bind "Alt s" { Resize "Down"; }
+        bind "Alt d" { Resize "Right"; }
+    }
+
+    shared_except "locked" {
+        bind "Super F8" { SwitchToMode "locked"; }
+    }
+
+    locked {
+        bind "Super F8" { SwitchToMode "normal"; }
+    }
+}
+
+ui {
+    // pane_frames {
+        // rounded_corners true
+        // hide_session_name true
+    // }
+}
+
+plugins {
+    // https://github.com/b0o/zellij-tools
+    //
+    // - Focus a pane by ID
+    zellij-tools location="https://github.com/b0o/zellij-tools/releases/latest/download/zellij-tools.wasm"
+}
+
+load_plugins {
+    zellij-tools
+}
+
+show_startup_tips false

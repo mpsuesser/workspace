@@ -1,0 +1,37 @@
+matches:
+  - triggers: [;;Eg, ;;Egen, ;;gen]
+    replace: |-
+      Effect.gen(function*() { $|$ })
+
+  - triggers: [;;Ecmd, ;;cmd]
+    replace: |-
+      Command.make(
+        'command',
+        'argument1',
+        'argument2',
+        'argument3',
+        'argument4',
+        'argument5',
+        'argument6',
+        'argument7',
+        'argument8',
+        'argument9',
+        'argument10',
+        'argument11',
+        'argument12',
+        'argument13',
+        'argument14',
+        'argument15',
+      )
+      .pipe(
+        Command.env({
+          CUSTOM_VAR_1: "VALUE_1",
+          CUSTOM_VAR_2: "VALUE_2",
+          CUSTOM_VAR_3: "VALUE_3",
+        }),
+        Command.runInShell(true),
+        Command.feed("PROVIDE STANDARD INPUT TEXT"),
+        Command.stdout("inherit"),
+        Command.stdin("inherit"),
+        Command.stderr("inherit")
+      )

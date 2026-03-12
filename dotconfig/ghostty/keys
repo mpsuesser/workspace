@@ -1,0 +1,36 @@
+keybind = global:f8=toggle_visibility
+keybind = global:cmd+f8=toggle_quick_terminal
+
+keybind = ctrl+s=text:s\x0d
+keybind = ctrl+a=text:clear\x0d
+keybind = cmd+o=text:bun check\x0d
+
+keybind = cmd+shift+w=new_split:up
+keybind = cmd+shift+a=new_split:left
+keybind = cmd+shift+s=new_split:down
+keybind = cmd+shift+d=new_split:right
+
+keybind = cmd+n=unbind
+
+keybind = cmd+t=new_tab
+
+keybind = cmd+w=previous_tab
+keybind = cmd+s=next_tab
+keybind = cmd+a=goto_split:left
+keybind = cmd+d=goto_split:right
+keybind = cmd+r=prompt_tab_title
+
+keybind = cmd+q=close_surface
+
+keybind = alt+w=resize_split:up,15
+keybind = alt+a=resize_split:left,15
+keybind = alt+s=resize_split:down,15
+keybind = alt+d=resize_split:right,15
+
+keybind = alt+e=equalize_splits
+keybind = cmd+e=toggle_split_zoom
+
+keybind = cmd+ctrl+w=scroll_page_up
+keybind = cmd+ctrl+s=scroll_page_down
+
+keybind = cmd+shift+enter=unbind

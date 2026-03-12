@@ -1,0 +1,50 @@
+matches:
+  - trigger: ;eco.
+    replace: Options.boolean('$|$')
+
+  - trigger: ;eco.
+    replace: Options.choice('$|$', ['choice1', 'choice2', 'choice3'])
+
+  - trigger: ;eco.
+    replace: |-
+      Options.choiceWithValue(
+        '$|$',
+        [
+          ['choice1', Choice1Value()],
+          ['choice2', Choice2Value()],
+          ['choice3', Choice3Value()]
+        ]
+      )
+
+  - trigger: ;eco.
+    replace: Options.date('$|$')
+
+  - trigger: ;eco.
+    replace: Options.directory('$|$')
+
+  - trigger: ;eco.
+    replace: Options.file('$|$')
+
+  - trigger: ;eco.
+    replace: Options.fileContent('$|$')
+
+  - trigger: ;eco.
+    replace: Options.fileParse('$|$')
+
+  - trigger: ;eco.
+    replace: Options.fileSchema('$|$')
+
+  - trigger: ;eco.
+    replace: Options.fileText('$|$')
+
+  - trigger: ;eco.
+    replace: Options.float('$|$')
+
+  - trigger: ;eco.
+    replace: Options.integer('$|$')
+
+  - trigger: ;eco.
+    replace: Options.redacted('$|$')
+
+  - trigger: ;eco.
+    replace: Options.text('$|$')

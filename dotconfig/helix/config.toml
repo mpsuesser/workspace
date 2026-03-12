@@ -1,0 +1,210 @@
+theme = 'rose_pine'
+
+# -----------------------------------------------------------------------------
+
+[keys.normal]
+w = 'move_visual_line_up'
+s = 'move_visual_line_down'
+a = 'move_char_left'
+d = 'move_char_right'
+
+W = ['move_visual_line_up', 'move_visual_line_up', 'move_visual_line_up', 'move_visual_line_up', 'move_visual_line_up']
+S = [
+  'move_visual_line_down',
+  'move_visual_line_down',
+  'move_visual_line_down',
+  'move_visual_line_down',
+  'move_visual_line_down',
+]
+A = 'goto_line_start'
+D = ['goto_line_end', "move_char_right"]
+
+o = ['open_below', ':theme %sh{echo $HX_MODETHEME_INSERT}']
+O = ['open_above', ':theme %sh{echo $HX_MODETHEME_INSERT}']
+
+e = ['change_selection_noyank', ':theme %sh{echo $HX_MODETHEME_INSERT}']
+c = 'yank'
+# x = 'delete_selection'
+x = '@mim'
+
+f = 'goto_word'
+
+u = ['insert_mode', ':theme %sh{echo $HX_MODETHEME_INSERT}', ':insert-output echo qu', 'move_char_right', 'move_char_right']
+k = 'undo'
+K = 'redo'
+
+r = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}']
+v = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}']
+'{' = '@mim'
+'}' = '@mam'
+
+space.q = ':wq'
+space.Q = ':q!'
+space.w = '@miw'
+space.W = '@miW'
+space.A = 'goto_line_start'
+space.S = 'extend_to_line_bounds'
+space.i = 'select_textobject_inner'
+space.d = '@jdaaamiw' # jump to end of line, move char left x3, select word
+space.e = '@mame' # select around textobject, edit no yank
+space.a = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}', 'select_all']
+space.space = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}', 'select_all']
+space.s = ['select_textobject_inner', 'surround_add']
+space.f = ['extend_to_line_bounds', 'select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}']
+
+';'.d = '@]edaamiwe' # jump to next pair, edit the value
+
+';'.q = ':wq'
+';'.Q = ':q!'
+';'.w = '@miw'
+';'.W = '@miW'
+';'.A = 'goto_line_start'
+';'.S = 'extend_to_line_bounds'
+';'.i = 'select_textobject_inner'
+';'.e = '@mame' # select around textobject, edit no yank
+';'.a = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}', 'select_all']
+';'.space = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}', 'select_all']
+';'.s = ['select_textobject_inner', 'surround_add']
+';'.f = ['extend_to_line_bounds', 'select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}']
+
+';'.';' = 'diagnostics_picker'
+
+ret = 'command_palette'
+
+Q = ['extend_to_line_bounds', 'delete_selection_noyank']
+R = ['extend_to_line_bounds', 'yank']
+X = ['extend_to_line_bounds', 'delete_selection']
+E = 'replace_selections_with_clipboard'
+
+g.g = 'goto_file_start'
+G = 'goto_file_end'
+
+q = ['insert_mode', ':theme %sh{echo $HX_MODETHEME_INSERT}']
+
+F = '@/' # Ctrl+F style text search
+
+j.w = 'goto_file_start'
+j.a = 'goto_line_start'
+j.s = 'goto_file_end'
+j.d = 'goto_line_end'
+j.l = 'goto_line_end'
+
+b = '@ms*ms*' # bold it, .md-specific for now
+
+
+[keys.select]
+w = 'extend_line_up'
+a = 'extend_char_left'
+s = 'extend_line_down'
+d = 'extend_char_right'
+
+# W = 'select_regex' # "within"
+W = [
+  'extend_line_up',
+  'extend_line_up',
+  'extend_line_up',
+  'extend_line_up',
+  'extend_line_up',
+]
+A = 'extend_prev_word_start'
+# S = 'split_selection' # "slice"
+S = [
+  'extend_line_down',
+  'extend_line_down',
+  'extend_line_down',
+  'extend_line_down',
+  'extend_line_down',
+]
+D = 'extend_next_word_end'
+
+r = 'extend_to_line_bounds'
+
+x = [
+  'delete_selection_noyank',
+  'normal_mode',
+  ':theme %sh{echo $HX_MODETHEME_NORMAL}',
+]
+X = ['delete_selection', 'normal_mode', ':theme %sh{echo $HX_MODETHEME_NORMAL}']
+
+# bold it, .md-specific for now
+b = '@ms*ms*'
+
+# action: BroadcastHighlightedText
+# executable: bht
+q = [
+  ":w",
+  ":sh bht --buffer_name '%sh{pwd}/%[buffer_name]' --cursor_column %{cursor_column} --cursor_line %{cursor_line} --language '%{language}' --selection_line_start %{selection_line_start} --selection_line_end %{selection_line_end}",
+]
+
+e = ['change_selection_noyank', ':theme %sh{echo $HX_MODETHEME_NORMAL}']
+c = 'yank'
+
+esc = ['normal_mode', ':theme %sh{echo $HX_MODETHEME_NORMAL}']
+
+[keys.insert]
+q = ['normal_mode', ':theme %sh{echo $HX_MODETHEME_NORMAL}']
+esc = ['normal_mode', ':theme %sh{echo $HX_MODETHEME_NORMAL}']
+"Cmd-;" = "goto_line_end"
+"Cmd-S-;" = "goto_line_start"
+
+# -----------------------------------------------------------------------------
+
+[editor]
+text-width = 80
+
+soft-wrap.enable = true
+soft-wrap.max-indent-retain = 40
+soft-wrap.wrap-at-text-width = true
+soft-wrap.wrap-indicator = ""
+
+smart-tab.enable = false
+
+mouse = false
+bufferline = "never"
+cursorline = true
+color-modes = true
+true-color = true
+popup-border = "all"
+completion-replace = true
+gutters = ["diagnostics"]
+default-yank-register = '+'
+file-picker.hidden = false
+trim-final-newlines = true
+trim-trailing-whitespace = true
+end-of-line-diagnostics = "hint"
+jump-label-alphabet = "qweasdrf"
+inline-diagnostics.cursor-line = "warning"
+
+[editor.cursor-shape]
+normal = 'bar'
+insert = 'bar'
+select = 'bar'
+
+[editor.indent-guides]
+render = false
+# character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+
+[editor.statusline]
+left = ["spinner", "diagnostics"]
+center = ["file-name"]
+right = ["position", "mode"]
+
+separator = "│"
+mode.normal = "_"
+mode.insert = "+"
+mode.select = "&"
+diagnostics = ["warning", "error"]
+workspace-diagnostics = ["warning", "error"]
+
+[editor.lsp]
+enable = true
+snippets = true
+display-messages = true
+display-signature-help-docs = false
+
+# -----------------------------------------------------------------------------

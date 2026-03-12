@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/presenterm-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/presenterm",
+    "lint": "biome check ."
+  }
+}

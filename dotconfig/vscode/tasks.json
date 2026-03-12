@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Bun Format",
+      "type": "shell",
+      "command": "bun fmt",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "focus": false,
+        "echo": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+matches:
+  - trigger: ;eca.
+    replace: 'Args.file({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.fileContent({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.fileParse({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.fileSchema({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.fileText({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.directory({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.path({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.boolean({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.choice({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.text({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.integer({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.float({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.secret({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.redacted({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.date({ name: "$|$" })'
+
+  - trigger: ;eca.
+    replace: 'Args.all({ name: "$|$" })'

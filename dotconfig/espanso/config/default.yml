@@ -1,0 +1,23 @@
+# # espanso configuration file
+
+undo_backspace: false # If enabled, espanso listens for backspaces to revert
+# backspace_limit: 0 # How many backspace espanso tracks
+
+# # Customize the key used to disable and enable espanso (when double tapped)
+# # Available options: CTRL, [LEFT_CTRL,] SHIFT, [RIGHT_SHIFT,] ALT, [...,] CMD, OFF
+# # toggle_key: ALT
+# toggle_key: OFF
+
+# # Espanso supports multiple ways of injecting text into applications. Each of
+# # them has its quirks, therefore you may want to change it if you are having problems.
+# # By default, espanso uses the "Auto" backend which should work well in most cases,
+# # but you may want to try the "Clipboard" or "Inject" backend in case of issues.
+backend: clipboard
+
+# # Because injecting long texts char-by-char is a slow operation, espanso automatically
+# # uses the clipboard if the text is longer than 'clipboard_threshold' characters.
+# clipboard_threshold: 40
+
+# show_notifications: true # Default is true
+# show_icon: false # System tray
+# # preserve_clipboard: true # Attempt to preserve the previous clipboard content

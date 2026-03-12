@@ -1,0 +1,47 @@
+# ;;cat <filename-partial>;;
+# ---------------------------------------------------------------------------
+# produces the `cat` output of a fuzzy-matched-by-filename file inside code blocks with header
+#
+# if multiple files are matched, it picks the one with the shortest path (in character count)
+#
+# trigger:
+#
+#   ;;cat file.ts;;
+#
+# output:
+#
+#   ./path/to/file.ts
+#   ```
+#   {{contents of file.ts}}
+#   ```
+# ---------------------------------------------------------------------------
+
+global_vars:
+  - name: absolutePathToUnderscoreDirectory
+    type: echo
+    params:
+      echo: /Users/m/_
+
+matches:
+  - regex: ";;cat (?P<filenamePartial>.*);;"
+    replace: |-
+      .{{relativeFilePath}}
+      ```
+      {{fileContents}}
+      ```
+    vars:
+      - name: absoluteFilePath
+        type: shell
+        params:
+          cmd: "find {{absolutePathToUnderscoreDirectory}} -type f -name '*{{filenamePartial}}*' | awk '{ print length, $0 }' | sort -n | cut -d' ' -f2- | head -n 1"
+          shell: bash
+      - name: fileContents
+        type: shell
+        params:
+          cmd: "cat {{absoluteFilePath}}"
+          shell: bash
+      - name: relativeFilePath
+        type: shell
+        params:
+          cmd: "abs='{{absoluteFilePath}}'; echo \"${abs#'{{absolutePathToUnderscoreDirectory}}'}\""
+          shell: bash

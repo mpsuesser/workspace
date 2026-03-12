@@ -1,0 +1,5 @@
+#!/bin/bash
+
+kb-remap --reset
+
+kb-remap --map capslock:f8 --map rcommand:rcontrol

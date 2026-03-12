@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/shell-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)/.zshrc\" ~/.zshrc",
+    "lint": "biome check ."
+  }
+}

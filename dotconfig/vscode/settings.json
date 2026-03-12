@@ -1,0 +1,220 @@
+{
+  "editor.wordSeparators": "`~!@$%^&*()=+[{]}\\|;:'\",<>\/.?",
+  "editor.formatOnSave": true,
+  "breadcrumbs.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "off",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontFamily": "annotation mono, monaco, monospace",
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "vscode.typescript-language-features",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "workbench.editor.showTabs": "multiple",
+  "search.showLineNumbers": true,
+  "editor.accessibilitySupport": "off",
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "oxc.lint.run": "onSave",
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "explorer.compactFolders": false,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.experimental.expandableHover": true,
+  "typescriptHero.imports.organizeOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.formatOnSave": true
+  },
+  "files.exclude": {
+    "**/.git": false,
+    "node_modules": true,
+    "bun.lock": true,
+    ".github": false,
+    ".git": true,
+    "nexus": false,
+    "inbox": false,
+    ".n": false,
+    ".i": false,
+    ".logs": false,
+    "tsconfig.json": false,
+    ".oxlintrc.json": false,
+    "dprint.json": false,
+    "bunfig.toml": false,
+    ".gitignore": false
+  },
+  "[search-result]": {
+    "editor.lineNumbers": "on"
+  },
+  "cursor.cpp.disabledLanguages": ["markdown", "plaintext", "untitled"],
+  "repomix.output.includeEmptyDirectories": true,
+  "repomix.ignore.customPatterns": ["node_modules"],
+  "editor.useTabStops": false,
+  "editor.guides.indentation": false,
+  "editor.wordWrap": "on",
+  "cursor.composer.shouldAllowCustomModes": true,
+  "cursor.terminal.usePreviewBox": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "cursor.windowSwitcher.sidebarHoverCollapsed": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "Vesper",
+  "workbench.colorCustomizations": {},
+  "evenBetterToml.formatter.alignComments": true,
+  "evenBetterToml.formatter.alignEntries": true,
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.visualline": "underline",
+  "vim.cursorStylePerMode.visualblock": "underline",
+  "vim.cursorStylePerMode.visual": "underline",
+  "vim.cursorStylePerMode.replace": "block",
+
+  // Use system clipboard (matches Helix default-yank-register = '+')
+  "vim.useSystemClipboard": true,
+
+  // ---------------------------------------------------------------------------
+  // NORMAL MODE - WASD Navigation (matching Helix config)
+  // ---------------------------------------------------------------------------
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Basic WASD movement (d handled via vim.handleKeys + keybindings.json)
+    { "before": ["w"], "commands": ["cursorUp"] },
+    { "before": ["s"], "commands": ["cursorDown"] },
+    { "before": ["a"], "commands": ["cursorLeft"] },
+
+    // Shift+WASD - 5 lines / line start (D handled via keybindings.json)
+    { "before": ["W"], "after": ["5", "k"] }, // move up 5 lines
+    { "before": ["S"], "after": ["5", "j"] }, // move down 5 lines
+    { "before": ["A"], "after": ["0"] }, // goto line start
+
+    // Mode switching
+    { "before": ["q"], "after": ["i"] }, // enter insert mode
+    { "before": ["r"], "after": ["v"] }, // enter visual mode
+    { "before": ["v"], "after": ["v"] }, // enter visual mode (alternate)
+
+    // Open line below/above (same as Vim default)
+    { "before": ["o"], "after": ["o"] },
+    { "before": ["O"], "after": ["O"] },
+
+    // Edit/Change operations (delete without yank, enter insert)
+    { "before": ["e"], "after": ["\"", "_", "s"] }, // substitute char (no yank) + insert mode
+
+    // Yank/Copy
+    { "before": ["c"], "after": ["y"] }, // yank
+
+    // Delete
+    { "before": ["x"], "after": ["d"] }, // delete
+
+    // Undo/Redo
+    { "before": ["k"], "after": ["u"] }, // undo
+    { "before": ["K"], "after": ["<C-r>"] }, // redo
+
+    // Insert "qu" and stay in insert mode (since q exits insert, this lets you type 'qu')
+    {
+      "before": ["u"],
+      "commands": [{ "command": "type", "args": { "text": "qu" } }]
+    },
+
+    // File navigation
+    { "before": ["g", "g"], "after": ["g", "g"] }, // goto file start
+    { "before": ["G"], "after": ["G"] }, // goto file end
+
+    // Paste
+    { "before": ["E"], "after": ["p"] }, // paste (replace_selections_with_clipboard)
+
+    // Search
+    { "before": ["F"], "after": ["/"] }, // search
+
+    // Line operations
+    { "before": ["Q"], "after": ["d", "d"] }, // delete line (extend_to_line_bounds + delete_noyank)
+    { "before": ["R"], "after": ["y", "y"] }, // yank line (extend_to_line_bounds + yank)
+    { "before": ["X"], "after": ["d", "d"] }, // cut line (extend_to_line_bounds + delete)
+
+    // Jump shortcuts (j prefix)
+    { "before": ["j", "w"], "after": ["g", "g"] }, // goto file start
+    { "before": ["j", "a"], "after": ["0"] }, // goto line start
+    { "before": ["j", "s"], "after": ["G"] }, // goto file end
+    { "before": ["j", "d"], "after": ["$"] }, // goto line end
+    { "before": ["j", "l"], "after": ["$"] }, // goto line end (alternate)
+
+    // Word selection with space prefix
+    { "before": ["<leader>", "w"], "after": ["v", "i", "w"] }, // select inner word
+    { "before": ["<leader>", "W"], "after": ["v", "i", "W"] }, // select inner WORD
+    { "before": ["<leader>", "A"], "after": ["0"] }, // goto line start
+    { "before": ["<leader>", "S"], "after": ["V"] }, // select line
+    {
+      "before": ["<leader>", "i"],
+      "commands": ["editor.action.smartSelect.shrink"]
+    }, // select inner textobject
+    { "before": ["<leader>", "a"], "after": ["g", "g", "V", "G"] }, // select all
+    { "before": ["<leader>", "space"], "after": ["g", "g", "V", "G"] }, // select all
+    { "before": ["<leader>", "f"], "after": ["V"] }, // select line (visual line mode)
+
+    // Command palette
+    { "before": ["<CR>"], "commands": ["workbench.action.showCommands"] },
+
+    // Quit commands with space prefix
+    { "before": ["<leader>", "q"], "commands": [":wq"] },
+    { "before": ["<leader>", "Q"], "commands": [":q!"] }
+  ],
+
+  // ---------------------------------------------------------------------------
+  // VISUAL MODE - WASD Extend Selection (matching Helix select mode)
+  // ---------------------------------------------------------------------------
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // WASD extend selection (d handled via keybindings.json)
+    { "before": ["w"], "after": ["k"] }, // extend up
+    { "before": ["s"], "after": ["j"] }, // extend down
+    { "before": ["a"], "after": ["h"] }, // extend left
+
+    // Shift+WASD - 5 lines / word boundaries (D handled via keybindings.json)
+    { "before": ["W"], "after": ["5", "k"] }, // extend up 5 lines
+    { "before": ["S"], "after": ["5", "j"] }, // extend down 5 lines
+    { "before": ["A"], "after": ["b"] }, // extend to prev word start
+
+    // Line extension
+    { "before": ["r"], "after": ["$"] }, // extend to line end
+
+    // Delete/Cut
+    { "before": ["x"], "after": ["\"", "_", "d"] }, // delete no yank (black hole register)
+    { "before": ["X"], "after": ["d"] }, // delete (with yank)
+
+    // Edit/Change (delete without yank, enter insert)
+    { "before": ["e"], "after": ["\"", "_", "c"] }, // change selection (no yank) + insert mode
+
+    // Yank/Copy
+    { "before": ["c"], "after": ["y"] }
+  ],
+
+  // ---------------------------------------------------------------------------
+  // INSERT MODE
+  // ---------------------------------------------------------------------------
+  "vim.insertModeKeyBindingsNonRecursive": [
+    // Exit insert mode with q (matching Helix) - move right to compensate for Vim's left shift
+    { "before": ["q"], "after": ["<Esc>", "l"] },
+
+    // Line navigation while in insert
+    { "before": ["<D-;>"], "after": ["<Esc>", "A"] }, // Cmd+; goto line end
+    { "before": ["<D-S-;>"], "after": ["<Esc>", "I"] } // Cmd+Shift+; goto line start
+  ],
+
+  // Set leader key to space (matching Helix space prefix)
+  "vim.leader": "<space>",
+
+  // Let VS Code handle these keys directly (bypasses Vim entirely)
+  "vim.handleKeys": {
+    "d": false,
+    "D": false
+  },
+
+  // Claude Code
+  "claudeCode.preferredLocation": "panel"
+}

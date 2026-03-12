@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/tmux-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/tmux",
+    "lint": "biome check ."
+  }
+}

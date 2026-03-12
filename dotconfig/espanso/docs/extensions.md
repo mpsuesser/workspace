@@ -1,0 +1,575 @@
+---
+sidebar_position: 1
+title: Extensions
+---
+
+Extensions are the heart of Espanso's dynamic matches and can be used to
+accomplish complex tasks.
+
+## Date Extension
+
+The **Date Extension** can be used to include *date* and *time* information in a match.
+For example, the following match will be expanded into `It's 09:30` if triggered at 9:30 am:
+
+```yaml
+  - trigger: ":now"
+    replace: "It's {{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M"
+```
+
+The most important aspect to consider is the `format` parameter,
+which specifies how the date will be rendered.
+
+To see a list of all the possible <b>formatting options</b>, follow this link to refer to the <a href="https://docs.rs/chrono/latest/chrono/format/strftime/index.html">official chrono documentation</a>.
+
+
+### Future and past dates
+
+In the previous section, we discussed how to add the _current_ date to your matches, but
+you might also want to add **future and past** dates.
+
+Luckily, Espanso supports the concept of _offset_, that is, the number of seconds to be added to the
+current time when expanding a match.
+An example will surely make it easier to understand:
+
+Let's say we need tomorrow's date as part of a snippet. We could do that with:
+
+```yaml
+  - trigger: ":tomorrow"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%x"
+          offset: 86400
+```
+
+If you now type `:tomorrow`, you should see tomorrow's date appear (something like `03/20/2022`)!
+
+What made this possible was the `offset` parameter set to `86400`, which **equals to 24 hours in the future**,
+expressed in seconds (60 seconds x 60 minutes x 24 hours = 86400 seconds).
+
+If you need **past dates**, you can specify a _negative offset_ as well. Such as:
+
+```yaml
+  - trigger: ":yesterday"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%x"
+          offset: -86400
+```
+
+### Advanced: Localized dates
+
+:::info
+
+Localized dates have been introduced in version v2.1.4-beta, so make sure to have an up-to-date release.
+
+:::
+
+Espanso automatically localizes dates based on your system's country and language,
+but advanced users might want to force a particular locale.
+
+For this reason, the Date extension supports the `locale` option to override your system preferences.
+For example, the following snippet always expand to the current date in US format:
+
+```yaml
+matches:
+  - trigger: ":today"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%x"
+          locale: "en-US"
+```
+
+The `locale` parameter must be specified in the BCP47 format.
+You can find a list of the available locales [here](https://gist.github.com/typpo/b2b828a35e683b9bf8db91b5404f1bd1).
+
+## Choice Extension
+
+:::info New in version 2.1.2
+
+The Choice extension was introduced in version 2.1.2.
+
+:::
+
+The _Choice extension_ can be used to open a selection dialog, letting you choose
+the right value from a list.
+For example, lets consider the following snippet:
+
+```yaml
+  - trigger: ":quote"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: choice
+        params:
+          values:
+            - "Every moment is a fresh beginning."
+            - "Everything you can imagine is real."
+            - "Whatever you do, do it well."
+```
+
+
+In this case, typing `:quote` will open the Search bar, letting you choose the right
+value:
+
+![Choice Extension](/img/docs/choice-extension.png)
+
+:::info Difference with Match Disambiguation
+
+If your goal is to choose between different replacements starting from a single trigger,
+you should prefer the built-in [Match Disambiguation](../basics/#match-disambiguation) feature.
+
+In a nutshell, Espanso automatically shows a selection dialog after typing a trigger
+that's shared between multiple matches.
+For example, the previous example is functionally equivalent to adding these 3 matches:
+
+```yaml
+  - trigger: ":quote"
+    replace: "Every moment is a fresh beginning."
+  - trigger: ":quote"
+    replace: "Everything you can imagine is real."
+  - trigger: ":quote"
+    replace: "Whatever you do, do it well."
+```
+
+Because all three matches share the same trigger, Espanso will let you choose the right
+one after typing `:quote`.
+
+At this point, you might be wondering why the Choice extension was needed in the first place.
+The answer is that for some advanced use-cases (including scripts and other transformations),
+having an extension that lets you choose a value comes handy.
+
+:::
+
+### Advanced use with IDs
+
+Using the Choice extension as shown in the previous section is enough for most use-cases,
+but it has one significant limitation: the label shown in the list and the final value are the same.
+
+For example, if you select "Every moment is a fresh beginning." from the search bar, the value
+of `output` will be "Every moment is a fresh beginning."
+
+For advanced use-cases, you might want to differentiate between the label (the text shown
+in the selection dialog), with the actual value of the item:
+
+```yaml
+matches:
+  - trigger: ":quote"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: choice
+        params:
+          values:
+            - label: "Every moment is a fresh beginning."
+              id: "bar"
+            - label: "Everything you can imagine is real."
+              id: "foo"
+            - label: "Whatever you do, do it well."
+              id: "foobar"
+```
+
+In this case, typing `:quote` and selecting "Every moment is a fresh beginning" will insert `bar` instead.
+
+## Random Extension
+
+The _Random Extension_ can be used to write non-deterministic replacement texts. In other words,
+you can specify a set of possible expansions for a match and Espanso will choose a random
+one, useful to avoid repetitions.
+
+You can use this feature by declaring a variable of type `random` and then passing a number of `choices` as a parameter:
+
+
+```yaml
+  - trigger: ":quote"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: random
+        params:
+          choices:
+            - "Every moment is a fresh beginning."
+            - "Everything you can imagine is real."
+            - "Whatever you do, do it well."
+```
+
+
+In this case, typing `:quote` will expand randomly to one of the tree quotes.
+
+## Clipboard Extension
+
+The _Clipboard Extension_ enables to include the current clipboard content in a match.
+
+For example, let's imagine you want to create the ultimate HTML link shortcut:
+
+
+```yaml
+  - trigger: ":a"
+    replace: "<a href='{{clipb}}' />$|$</a>"
+    vars:
+      - name: "clipb"
+        type: "clipboard"
+```
+
+
+If you now copy a link in the clipboard (for example by selecting it and then CTRL+C) and then type `:a`, you'll
+see the following replacement appear:
+
+```
+<a href='YOUR_COPIED_LINK'></a>
+```
+
+## Echo Extension
+
+The _Echo extension_ makes it easy to create variables containing a fixed value. For example:
+
+```yaml
+  - trigger: ":greet"
+    replace: "Hello {{myname}}"
+    vars:
+      - name: myname
+        type: echo
+        params:
+          echo: "John"
+```
+
+In this case, typing `:greet` gets expanded to `Hello John`.
+
+This extension is particularly useful to define common global variables, such as:
+
+```yaml
+global_vars:
+  - name: myname
+    type: echo
+    params:
+      echo: "John"
+
+matches:
+  - trigger: ":greet"
+    replace: "Hello {{myname}}"
+
+  - trigger: ":sig"
+    replace: "Best regards, {{myname}}"
+```
+
+## Script Extension
+
+There will be tasks for which espanso was not designed. For those cases, espanso offers the
+**Script Extension**, that enables you to call a **script**, written in **any language**,
+ and use its output in a match.
+
+To better understand this feature, let's dive into an example:
+
+We want to use the output of a **Python** script as an expansion. Let's create the `script.py` file,
+place it anywhere you want and paste the following code:
+
+```python
+print("Hello from python")
+```
+
+Now take note of the **path** of the script, and add the following match to the espanso configuration:
+
+
+```yaml
+  - trigger: ":pyscript"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: script
+        params:
+          args:
+            - python
+            - /path/to/your/script.py
+```
+or
+```yml
+          args: [python, /path/to/your/script.py]
+```
+
+If you now try to type `:pyscript` anywhere, you should see `Hello from python` appear.
+
+You can do the same thing with any programming language - just change the `args` array accordingly.
+
+:::tip script location
+
+The current best-practice when creating Script matches is to create a `scripts` directory in the `espanso` directory
+(at the same level of the `match` and `config` directory) and store the scripts there.
+
+That way, you can use the `%CONFIG%` wildcard to automatically replace the config directory with the correct path, such as:
+
+
+```yaml
+  - trigger: ":pyscript"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: script
+        params:
+          args:
+            - python
+            - "%CONFIG%/scripts/script.py"
+            - parameter_1
+            - parameter_2
+```
+
+
+This makes it easier to create matches that work across many machines.
+
+For packages, the easiest place to locate the script is in their own directory, however.
+
+:::
+
+:::caution a note about performance
+
+Because of the execution time, you should limit yourself to fast-running scripts to avoid any lag.
+
+:::
+
+### Inline scripts
+Scripts can be included inline within an expansion by changing the `args:` in the above trigger, e.g.:
+```py
+          args:
+            - python
+            - -c
+            - |
+              fruits = ["apple", "banana", "cherry"]
+              for x in fruits:
+                print(x)
+```
+These avoid the need to keep track of the scripts' locations, and can use Espanso `{{variables}}` directly in the code, without having to pass them as arguments or Environment Variables. However, they're less easy to debug, and Windows has an 8191 character limit on them.
+
+#### Global variables
+
+If you're going to share such a script with several triggers it can be useful to put it into a variable. One method is to use the `echo` extension to assign a global variable, e.g.:
+```yml
+global_vars:
+  - name: pscript
+    type: echo
+    params:
+      echo: |
+        fruits = ["apple", "banana", "cherry"]
+        for x in fruits:
+          print(x)
+
+matches:
+  - trigger: :test
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: script
+        params:
+          args: [python, -c, "{{pscript}}"]
+```
+#### Anchors and Aliases
+
+An alternative is to use the YAML Anchor/Alias facility. This requires a named section which can contain several anchors but, unlike `global_vars:`, Espanso requires it *precede* the `matches:` section of the *same file*. The section name can be anything, so use something like `anchors:`. The *anchor* names themselves have a `&` prefix but when used in the trigger their *alias* exchanges this for a `*`. Otherwise the layout is very similar to that above, but more compact:
+```yml
+anchors:
+  - &script1 |
+      fruits = ["apple", "banana", "cherry"]
+      for x in fruits:
+        print(x)
+
+matches:
+  - trigger: :testt
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: script
+        params:
+          args: [python, -c, *script1]
+```
+It is also possible to embed anchors inside trigger scripts. E.g.:
+```yml
+  - trigger: :test
+    replace: '{{output}}'
+    anchor: &script1 |
+      fruits = ["apple", "banana", "cherry"]
+      for x in fruits:
+        print(x)
+    vars:
+      - name: output
+        type: script
+        params:
+          args: [python, -c, *script1]
+```
+The anchor will also be available for use in any other triggers that *follow*.
+
+
+### Useful Environment Variables
+
+When triggering the shell command, Espanso also injects a few useful Environment Variables that you can use:
+
+* `CONFIG`: Points to the path of the espanso config directory
+* All the values of the previously evaluated match variables.
+For more information, check out the [Variables](../variables) section.
+
+### UTF-8 characters
+By default, some scripts and shell expansions don't return UTF-8 characters, which can interfere with those generating foreign-language letters.
+
+A solution for Python scripts is to include the following in the script:
+```py
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+```
+For PowerShell:
+```powershell
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+```
+For HTML:
+```html
+html: |
+  <meta charset="UTF-8">
+```
+For Bash:
+```bash
+cmd: |
+  export LANG='cs_CZ.UTF-8'
+```
+using your `locale` language setting.
+
+## Shell Extension
+
+The **Shell Extension** is similar to the [Script Extension](#script-extension), but instead of executing
+a script, it executes **shell commands**. This offers a lot of flexibility on Unix systems thanks to the
+`bash` shell (and thanks to PowerShell/WSL support also on Windows).
+
+Let's say you regularly send your IP address to your coworkers. You can setup a match to fetch your public
+IP from [ipify](https://www.ipify.org/).
+
+> Note: this example uses the `curl` command, usually preinstalled on most Unix systems.
+
+```yml
+  - trigger: ":ip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+```
+
+Now every time you type `:ip`, it gets expanded to your public
+IP address!
+
+Like the Script extension, the Shell extension can call external shell scripts and run inline multiline code.
+
+### Choosing the Shell
+
+The shell extension supports many different shells out of the box. By default it uses:
+
+* `Powershell` on Windows
+* `bash` on Linux
+* In macOS Espanso detects the user's configured shell
+
+You can also specify different shells by using the `shell` param. For example, let's say we want to use bash on Windows through the `Windows Subsystem for Linux`. We would use:
+
+```yml
+  - trigger: ":ip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+          shell: wsl
+```
+
+Possible values for the `shell` parameter are:
+
+* Windows: `cmd`, `powershell`, `pwsh`, `wsl`, `nu`
+* macOS: `sh`, `bash`, `pwsh`, `nu`
+* Linux: `sh`, `bash`, `pwsh`, `nu`
+
+> Note that Windows `cmd` doesn't work with multiline inline code.
+
+### Bash pipes
+
+This extension also supports bash **pipes** as your shell does, such as:
+
+
+```yml
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
+```
+
+
+### Trimming the output
+
+It's very common for commands to have outputs that also spawn a newline at the end. By default a trim option is enabled to remove any excess spaces/newlines. You can optionally disable the `trim` option:
+
+
+```yml
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
+          trim: false
+```
+
+
+### Useful Environment Variables
+
+When triggering the shell command, espanso also injects a few useful Environment Variables that you can use:
+
+* `CONFIG`: Points to the path of the espanso config directory
+* All the values of the previously evaluated match variables.
+For more information, check out the [Variables](../variables) section.
+
+### Using Linux commands on Windows
+
+As you might have understood from previous sections, Espanso supports the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) through the `shell: wsl` parameter.
+This allows Windows users to execute Linux commands from their machine.
+
+### Debugging
+
+Sometimes it's useful to understand what get's executed exactly, what are the return codes and error messages returned by the command. In order to do that, you can use the `debug: true` option:
+
+
+```yml
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
+          debug: true
+```
+
+
+At this point, after triggering a match, the logs will be populated with useful information. Too see them, use the `espanso log` command.
+
+
+## Form Extension
+
+Espanso's forms are implemented as extensions under the hood, and therefore you can use
+them as you would do with any other extension.
+
+![Espanso Form](/img/docs/macform.png)
+
+Besides regular expansions, you can also pass the values inserted inside the
+form to other extensions, such as scripts, opening up a world of possibilities.
+
+For more information, please visit the [Forms section](../forms).

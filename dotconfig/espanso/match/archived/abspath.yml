@@ -1,0 +1,6 @@
+matches:
+  - triggers: [;ap., ;ap_.]
+    replace: '/Users/m/_/'
+
+  - triggers: [;ap., ;apd.]
+    replace: '/Users/m/_/Domain/'

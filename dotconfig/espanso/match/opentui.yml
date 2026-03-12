@@ -1,0 +1,12 @@
+matches:
+  - trigger: ;;<b
+    replace: |-
+      <box>
+        $|$
+      </box>
+
+  - trigger: ;;<t
+    replace: |-
+      <text>
+        $|$
+      </text>

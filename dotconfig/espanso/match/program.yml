@@ -1,0 +1,12 @@
+matches:
+  - trigger: ;;Ep
+    replace: |-
+      import { Effect } from 'effect';
+      import { MainRuntime } from 'runtimes/main';
+
+      const program = Effect.gen(function*()
+      {
+        $|$
+      });
+
+      MainRuntime.runPromise(program);

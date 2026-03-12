@@ -1,0 +1,6 @@
+
+# custom-shader = ./shaders/hackr-sh/cursor_blaze.glsl
+
+# custom-shader = ./shaders/hackr-sh/inside-the-matrix.glsl
+
+# custom-shader-animation = always
