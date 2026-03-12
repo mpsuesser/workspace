@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "bun build --compile --bytecode --minify src/main.ts --outfile $HOME/.local/bin/hx-wrapped",
     "typecheck": "tsc --noEmit",
     "lint": "biome check ."
   },
