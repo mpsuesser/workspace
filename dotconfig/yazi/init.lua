@@ -1,3 +1,14 @@
+ya.ignore({
+	"node_modules",
+	".git",
+	"*.tsbuildinfo",
+	".turbo",
+	".react-router",
+	".gitmodules",
+	"bun.lock",
+	"package-lock.json",
+})
+
 require("no-status"):setup()
 
 local togglepane = require("toggle-pane")
@@ -8,6 +19,7 @@ require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
 		{ key = "c", path = "~/repos/curationspace" },
+		{ key = "e", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/multitude" },
 		{ key = "w", path = "~/repos/workspace" },
 
