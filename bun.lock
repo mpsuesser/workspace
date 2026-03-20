@@ -111,7 +111,7 @@
       "name": "@workspace/opencode-dotconfig",
       "dependencies": {
         "@effect/platform-bun": "catalog:",
-        "@opencode-ai/plugin": "0.0.0-beta-202603160745",
+        "@opencode-ai/plugin": "1.2.27",
         "effect": "catalog:",
         "picomatch": "^4.0.3",
         "zod": "^4.0.0",
@@ -294,9 +294,9 @@
 
     "@msgpackr-extract/msgpackr-extract-win32-x64": ["@msgpackr-extract/msgpackr-extract-win32-x64@3.0.3", "", { "os": "win32", "cpu": "x64" }, "sha512-x0fWaQtYp4E6sktbsdAqnehxDgEc/VwM7uLsRCYWaiGu0ykYdZPiS8zCWdnjHwyiumousxfBm4SO31eXqwEZhQ=="],
 
-    "@opencode-ai/plugin": ["@opencode-ai/plugin@0.0.0-beta-202603160745", "", { "dependencies": { "@opencode-ai/sdk": "0.0.0-beta-202603160745", "zod": "4.1.8" } }, "sha512-AkKF6Vgam7Y99/mtu6tHnKXQ9PXHwFsZLECnqxK4nTdiWcOFe1IR2FadxF+28JCwo7vjDIgMqWikPRH1q0lRUA=="],
+    "@opencode-ai/plugin": ["@opencode-ai/plugin@1.2.27", "", { "dependencies": { "@opencode-ai/sdk": "1.2.27", "zod": "4.1.8" } }, "sha512-h+8Bw9v9nghMg7T+SUCTzxlIhOrsTqXW7U0HVLGQST5DjbN7uyCUM51roZWZ8LRjGxzbzFhvPnY1bj8i+ioZyw=="],
 
-    "@opencode-ai/sdk": ["@opencode-ai/sdk@0.0.0-beta-202603160745", "", {}, "sha512-SCAYVcYgCDAZNDQuP8JIbq4WU86OWI1CQXPYhcvWOrAxOw4ZSy7hblFWtTKCu9ugV/ErmnzBHljPDDv6J64lHQ=="],
+    "@opencode-ai/sdk": ["@opencode-ai/sdk@1.2.27", "", {}, "sha512-Wk0o/I+Fo+wE3zgvlJDs8Fb67KlKqX0PrV8dK5adSDkANq6r4Z25zXJg2iOir+a8ntg3rAcpel1OY4FV/TwRUA=="],
 
     "@rollup/rollup-android-arm-eabi": ["@rollup/rollup-android-arm-eabi@4.59.0", "", { "os": "android", "cpu": "arm" }, "sha512-upnNBkA6ZH2VKGcBj9Fyl9IGNPULcjXRlg0LLeaioQWueH30p6IXtJEbKAgvyv+mJaMxSm1l6xwDXYjpEMiLMg=="],
 
