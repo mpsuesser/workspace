@@ -1,0 +1,3 @@
+gpom() {
+  git push origin main
+}

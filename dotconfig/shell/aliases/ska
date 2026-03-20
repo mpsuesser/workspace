@@ -1,0 +1,9 @@
+ska() {
+  bunx skills add "$@" &&
+    if [ -d ".agents/skills" ]; then
+      mkdir -p .opencode/skills
+      cp -a .agents/skills/. .opencode/skills/
+      rm -rf .agents
+      echo "Moved skills to .opencode/skills/"
+    fi
+}
