@@ -10,11 +10,21 @@ dist/
 .turbo/
 
 # Environment
-.env
+.env*
 
 # Secrets
 secrets.yaml
 *.age-key
+
+# Keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.cert
+*.crt
+*.jks
+*.keystore
 
 # gh CLI auth tokens
 dotconfig/gh/hosts.yml
