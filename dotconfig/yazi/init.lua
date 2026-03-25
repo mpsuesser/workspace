@@ -28,7 +28,7 @@ require("bunny"):setup({
 		{ key = "y", path = "~/.config/yazi" },
 		{ key = "g", path = "~/.config/ghostty" },
 		{ key = { "h", "e" }, path = "~/.config/helix" },
-		{ key = { "h", "a" }, path = "~/.config/hammerspoon" },
+		{ key = { "h", "a" }, path = "~/.hammerspoon" },
 
 		{ key = { ".", "c" }, path = "~/.config" },
 		{ key = { ".", "s" }, path = "~/.state" },
