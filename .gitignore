@@ -36,6 +36,7 @@ Thumbs.db
 dotconfig/opencode/bun.lock
 dotconfig/opencode/node_modules/
 dotconfig/opencode/package-lock.json
+dotconfig/raycast/extensions/node_modules
 
 # Temporary
 tmp/
