@@ -1,7 +1,6 @@
 {
 	"$schema": "https://opencode.ai/config.json",
 	"plugin": [
-		"opencode-anthropic-auth@latest",
 		"@franlol/opencode-md-table-formatter",
 		"opencode-pty",
 		"opencode-scheduler",
