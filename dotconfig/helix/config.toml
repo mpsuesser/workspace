@@ -131,10 +131,10 @@ b = '@ms*ms*'
 
 # action: BroadcastHighlightedText
 # executable: bht
-q = [
-  ":w",
-  ":sh bht --buffer_name '%sh{pwd}/%[buffer_name]' --cursor_column %{cursor_column} --cursor_line %{cursor_line} --language '%{language}' --selection_line_start %{selection_line_start} --selection_line_end %{selection_line_end}",
-]
+# q = [
+#   ":w",
+#   ":sh bht --buffer_name '%sh{pwd}/%[buffer_name]' --cursor_column %{cursor_column} --cursor_line %{cursor_line} --language '%{language}' --selection_line_start %{selection_line_start} --selection_line_end %{selection_line_end}",
+# ]
 
 e = ['change_selection_noyank', ':theme %sh{echo $HX_MODETHEME_NORMAL}']
 c = 'yank'
