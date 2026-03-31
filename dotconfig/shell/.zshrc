@@ -67,3 +67,33 @@ source ~/.config/ls-colors.sh
 
 # bun completions
 [ -s "/Users/m/.bun/_bun" ] && source "/Users/m/.bun/_bun"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
+
+# <<< littlebird wt
+wt() {
+  if [ "${1:-}" = "-" ]; then
+    if [ -z "${_WT_PREV:-}" ]; then
+      echo "No previous worktree." >&2
+      return 1
+    fi
+    local prev="$_WT_PREV"
+    export _WT_PREV="$PWD"
+    cd "$prev"
+    return
+  fi
+  local scripts_dir
+  scripts_dir="$(git worktree list --porcelain | head -1 | sed 's/worktree //')/scripts"
+  local result
+  result="$(bash "$scripts_dir/worktree.sh" "$@")" || return $?
+  if [ -n "$result" ] && [ -d "$result" ]; then
+    export _WT_PREV="$PWD"
+    cd "$result"
+  elif [ -n "$result" ]; then
+    echo "$result"
+  fi
+}
+# >>> littlebird wt
+
+eval "$(direnv hook zsh)"
