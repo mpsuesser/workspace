@@ -1,11 +1,11 @@
-import * as Array from 'effect/Array';
+import * as Arr from 'effect/Array';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Schema from 'effect/Schema';
 import * as ServiceMap from 'effect/ServiceMap';
-import * as String from 'effect/String';
+import * as Str from 'effect/String';
+
 import { type FontInfo, Ghostty } from './Ghostty.ts';
-import type { GhosttyCliError } from './GhosttyError.ts';
 
 export type { FontInfo } from './Ghostty.ts';
 
@@ -28,10 +28,10 @@ export class GhosttyFont extends ServiceMap.Service<GhosttyFont>()(
 				listFamilies: Effect.fn('GhosttyFont.listFamilies')(
 					function* () {
 						const fonts = yield* ghostty.listFonts();
-						return Array.dedupe(
-							Array.sort(
-								Array.map(fonts, (f) => f.family),
-								String.Order
+						return Arr.dedupe(
+							Arr.sort(
+								Arr.map(fonts, (f) => f.family),
+								Str.Order
 							)
 						);
 					}
@@ -41,7 +41,7 @@ export class GhosttyFont extends ServiceMap.Service<GhosttyFont>()(
 				) {
 					const fonts = yield* ghostty.listFonts();
 					const lowerFamily = family.toLowerCase();
-					return Array.filter(fonts, (f) =>
+					return Arr.filter(fonts, (f) =>
 						f.family.toLowerCase().includes(lowerFamily)
 					);
 				}),
@@ -50,7 +50,7 @@ export class GhosttyFont extends ServiceMap.Service<GhosttyFont>()(
 				) {
 					const fonts = yield* ghostty.listFonts();
 					const lowerFamily = family.toLowerCase();
-					return Array.some(
+					return Arr.some(
 						fonts,
 						(f) => f.family.toLowerCase() === lowerFamily
 					);

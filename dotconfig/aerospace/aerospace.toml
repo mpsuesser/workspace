@@ -33,7 +33,7 @@ persistent-workspaces = ["main", "display", "chrome"]
 on-mode-changed = []
 
 [key-mapping]
-    preset = 'qwerty'
+preset = 'qwerty'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -44,12 +44,12 @@ on-mode-changed = []
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 8
-    inner.vertical =   8
-    outer.left =       8
-    outer.bottom =     8
-    outer.top =        8
-    outer.right =      8
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
 
 
 # All possible keys:
@@ -67,47 +67,47 @@ on-mode-changed = []
 # All possible modifiers: cmd, alt, ctrl, shift
 
 [mode.main.binding]
-    alt-slash = 'layout tiles horizontal vertical'
-    alt-comma = 'layout accordion horizontal vertical'
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
 
-    alt-a = 'focus left'
-    alt-s = 'focus down'
-    alt-w = 'focus up'
-    alt-d = 'focus right'
+alt-a = 'focus left'
+alt-s = 'focus down'
+alt-w = 'focus up'
+alt-d = 'focus right'
 
-    # cmd-a = 'focus left'
-    # cmd-s = 'focus down'
-    # cmd-w = 'focus up'
-    # cmd-d = 'focus right'
+# cmd-a = 'focus left'
+# cmd-s = 'focus down'
+# cmd-w = 'focus up'
+# cmd-d = 'focus right'
 
-    alt-cmd-a = 'move left'
-    alt-cmd-s = 'move down'
-    alt-cmd-w = 'move up'
-    alt-cmd-d = 'move right'
+alt-cmd-a = 'move left'
+alt-cmd-s = 'move down'
+alt-cmd-w = 'move up'
+alt-cmd-d = 'move right'
 
-    alt-cmd-shift-a = 'join-with left'
-    alt-cmd-shift-s = 'join-with down'
-    alt-cmd-shift-w = 'join-with up'
-    alt-cmd-shift-d = 'join-with right'
+alt-cmd-shift-a = 'join-with left'
+alt-cmd-shift-s = 'join-with down'
+alt-cmd-shift-w = 'join-with up'
+alt-cmd-shift-d = 'join-with right'
 
-    alt-minus = 'resize smart -50'
-    alt-equal = 'resize smart +50'
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
 
-    alt-1 = 'workspace 1'
-    alt-m = 'workspace main'
-    alt-o = 'workspace display'
-    alt-c = 'workspace chrome'
+alt-1 = 'workspace 1'
+alt-m = 'workspace main'
+alt-o = 'workspace display'
+alt-c = 'workspace chrome'
 
-    alt-cmd-m = 'move-node-to-workspace main'
-    alt-cmd-o = 'move-node-to-workspace display'
-    alt-cmd-c = 'move-node-to-workspace chrome'
+alt-cmd-m = 'move-node-to-workspace main'
+alt-cmd-o = 'move-node-to-workspace display'
+alt-cmd-c = 'move-node-to-workspace chrome'
 
-    alt-tab = 'workspace-back-and-forth'
-    alt-shift-cmd-o = 'move-workspace-to-monitor --wrap-around next'
+alt-tab = 'workspace-back-and-forth'
+alt-shift-cmd-o = 'move-workspace-to-monitor --wrap-around next'
 
-    # alt-semicolon = 'mode service'
-    alt-semicolon = 'reload-config'
-    alt-quote = 'flatten-workspace-tree'
+# alt-semicolon = 'mode service'
+alt-semicolon = 'reload-config'
+alt-quote = 'flatten-workspace-tree'
 
 # [mode.service.binding]
 #     r = ['reload-config', 'mode main']

@@ -30,54 +30,86 @@ ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
-  { run = '${EDITOR:-vi} %s', desc = "$EDITOR", block = true, for = "unix" },
-  { run = 'code %s', orphan = true, desc = "code", for = "windows" },
-  { run = 'code -w %s', block = true, desc = "code (block)", for = "windows" },
+	{ run = '${EDITOR:-vi} %s', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = 'code %s', orphan = true, desc = "code", for = "windows" },
+	{ run = 'code -w %s', block = true, desc = "code (block)", for = "windows" }
 ]
 open = [
-  { run = 'xdg-open %s1', desc = "Open", for = "linux" },
-  { run = 'open %s', desc = "Open", for = "macos" },
-  { run = 'start "" %s1', orphan = true, desc = "Open", for = "windows" },
-  { run = 'termux-open %s1', desc = "Open", for = "android" },
+	{ run = 'xdg-open %s1', desc = "Open", for = "linux" },
+	{ run = 'open %s', desc = "Open", for = "macos" },
+	{ run = 'start "" %s1', orphan = true, desc = "Open", for = "windows" },
+	{ run = 'termux-open %s1', desc = "Open", for = "android" }
 ]
 reveal = [
-  { run = 'xdg-open %d1', desc = "Reveal", for = "linux" },
-  { run = 'open -R %s1', desc = "Reveal", for = "macos" },
-  { run = 'explorer /select,%s1', orphan = true, desc = "Reveal", for = "windows" },
-  { run = 'termux-open %d1', desc = "Reveal", for = "android" },
-  { run = "clear; exiftool %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show EXIF", for = "unix" },
+	{ run = 'xdg-open %d1', desc = "Reveal", for = "linux" },
+	{ run = 'open -R %s1', desc = "Reveal", for = "macos" },
+	{ run = 'explorer /select,%s1', orphan = true, desc = "Reveal", for = "windows" },
+	{ run = 'termux-open %d1', desc = "Reveal", for = "android" },
+	{ run = "clear; exiftool %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show EXIF", for = "unix" }
 ]
-extract = [
-  { run = 'ya pub extract --list %s', desc = "Extract here" },
-]
+extract = [{ run = 'ya pub extract --list %s', desc = "Extract here" }]
 play = [
-  { run = 'mpv --force-window %s', orphan = true, for = "unix" },
-  { run = 'mpv --force-window %s', orphan = true, for = "windows" },
-  { run = "mediainfo %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" },
+	{ run = 'mpv --force-window %s', orphan = true, for = "unix" },
+	{ run = 'mpv --force-window %s', orphan = true, for = "windows" },
+	{ run = "mediainfo %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" }
 ]
 
 [open]
 rules = [
-  # TypeScript - explicit rule to prevent binary-detected files from falling through
-  { url = "*.ts", use = [ "edit", "reveal" ] },
-  { url = "*.tsx", use = [ "edit", "reveal" ] },
-  # Folder
-  { url = "*/", use = ["edit", "open", "reveal"] },
-  # Text
-  { mime = "text/*", use = ["edit", "reveal"] },
-  # Image
-  { mime = "image/*", use = ["open", "reveal"] },
-  # Media
-  { mime = "{audio,video}/*", use = ["play", "reveal"] },
-  # Archive
-  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "reveal"] },
-  # JSON
-  { mime = "application/{json,ndjson}", use = ["edit", "reveal"] },
-  { mime = "*/javascript", use = ["edit", "reveal"] },
-  # Empty file
-  { mime = "inode/empty", use = ["edit", "reveal"] },
-  # Fallback
-  { url = "*", use = ["open", "reveal"] },
+	# TypeScript - explicit rule to prevent binary-detected files from falling through
+	{ url = "*.ts", use = [
+		"edit",
+		"reveal"
+	] },
+	{ url = "*.tsx", use = [
+		"edit",
+		"reveal"
+	] },
+	# Folder
+	{ url = "*/", use = [
+		"edit",
+		"open",
+		"reveal"
+	] },
+	# Text
+	{ mime = "text/*", use = [
+		"edit",
+		"reveal"
+	] },
+	# Image
+	{ mime = "image/*", use = [
+		"open",
+		"reveal"
+	] },
+	# Media
+	{ mime = "{audio,video}/*", use = [
+		"play",
+		"reveal"
+	] },
+	# Archive
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
+		"extract",
+		"reveal"
+	] },
+	# JSON
+	{ mime = "application/{json,ndjson}", use = [
+		"edit",
+		"reveal"
+	] },
+	{ mime = "*/javascript", use = [
+		"edit",
+		"reveal"
+	] },
+	# Empty file
+	{ mime = "inode/empty", use = [
+		"edit",
+		"reveal"
+	] },
+	# Fallback
+	{ url = "*", use = [
+		"open",
+		"reveal"
+	] }
 ]
 
 [tasks]
@@ -90,24 +122,24 @@ suppress_preload = false
 
 [plugin]
 fetchers = [
-  # Mimetype
-  { id = "mime", url = "*/",         run = "mime.dir",    prio = "high" },
-  { id = "mime", url = "local://*",  run = "mime.local",  prio = "high" },
-  { id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
+	# Mimetype
+	{ id = "mime", url = "*/", run = "mime.dir", prio = "high" },
+	{ id = "mime", url = "local://*", run = "mime.local", prio = "high" },
+	{ id = "mime", url = "remote://*", run = "mime.remote", prio = "high" }
 ]
 spotters = [
-  { url = "*/", run = "folder" },
-  # Code
-  { mime = "text/*", run = "code" },
-  { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
-  # Image
-  { mime = "image/{avif,hei?,jxl}", run = "magick" },
-  { mime = "image/svg+xml", run = "svg" },
-  { mime = "image/*", run = "image" },
-  # Video
-  { mime = "video/*", run = "video" },
-  # Fallback
-  { url = "*", run = "file" },
+	{ url = "*/", run = "folder" },
+	# Code
+	{ mime = "text/*", run = "code" },
+	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
+	# Image
+	{ mime = "image/{avif,hei?,jxl}", run = "magick" },
+	{ mime = "image/svg+xml", run = "svg" },
+	{ mime = "image/*", run = "image" },
+	# Video
+	{ mime = "video/*", run = "video" },
+	# Fallback
+	{ url = "*", run = "file" }
 ]
 
 [[plugin.prepend_previewers]]

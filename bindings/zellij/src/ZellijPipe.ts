@@ -12,9 +12,7 @@ export interface PipeOptions {
 export const pipe = (payload: string, options?: PipeOptions) =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const args: Array<string> = [
-			'pipe'
-		];
+		const args: Array<string> = ['pipe'];
 
 		if (options?.name) args.push('-n', options.name);
 		if (options?.args) args.push('-a', options.args);

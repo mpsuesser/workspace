@@ -24,7 +24,6 @@ git clone https://github.com/BennyOe/onedark.yazi.git %AppData%\yazi\config\flav
 
 Add the these lines to your `theme.toml` configuration file to use it:
 
-
 ```toml
 [flavor]
 dark = "onedark"
