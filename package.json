@@ -14,7 +14,8 @@
 		"typecheck": "turbo typecheck"
 	},
 	"dependencies": {
-		"effect": "catalog:"
+		"effect": "catalog:",
+		"oxlint-effect": "link:oxlint-effect"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "catalog:",
