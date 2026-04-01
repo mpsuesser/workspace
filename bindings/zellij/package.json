@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
-    "typecheck": "tsc --noEmit",
-    "lint": "biome check ."
-  },
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .tsbuildinfo"
   },
   "dependencies": {
     "@effect/platform-bun": "catalog:",

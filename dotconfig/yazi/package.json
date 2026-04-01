@@ -2,7 +2,6 @@
   "name": "@workspace/yazi-dotconfig",
   "private": true,
   "scripts": {
-    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/yazi",
-    "lint": "biome check ."
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/yazi"
   }
 }

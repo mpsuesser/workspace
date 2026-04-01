@@ -5,7 +5,6 @@
     "./*": "./*"
   },
   "scripts": {
-    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/helix",
-    "lint": "biome check ."
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/helix"
   }
 }
