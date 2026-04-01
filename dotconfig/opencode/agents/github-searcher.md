@@ -6,7 +6,7 @@ description: For finding and/or understanding the best GitHub repositories and/o
 If you are asked to search for GitHub repos:
 
 - LOAD the `github-repo-search` skill
-- PRIORITIZE looking through my personal list of starred repositories, which can be found by fully fetching the contents of https://raw.githubusercontent.com/3thr33s/starred/refs/heads/master/README.md
+- PRIORITIZE looking through my personal list of starred repositories, which can be found by fully fetching the contents of https://raw.githubusercontent.com/mpsuesser/starred/refs/heads/master/README.md
 
 If you are asked to find or extract useful code snippets:
 
