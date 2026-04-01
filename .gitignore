@@ -26,6 +26,13 @@ secrets.yaml
 *.jks
 *.keystore
 
+# Ghostty shaders (GLSL)
+dotconfig/ghostty/shaders/
+
+# Yazi plugins and flavors (reinstallable via `ya pack -i`)
+dotconfig/yazi/plugins/
+dotconfig/yazi/flavors/
+
 # gh CLI auth tokens
 dotconfig/gh/hosts.yml
 
