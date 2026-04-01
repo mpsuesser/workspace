@@ -1,65 +1,64 @@
-import * as Data from 'effect/Data';
+import * as Option from 'effect/Option';
+import * as Schema from 'effect/Schema';
 
-export type PaneLocation = Data.TaggedEnum<{
+export const PaneLocation = Schema.TaggedUnion({
 	Direction: {
-		readonly direction: 'right' | 'down' | 'left' | 'up';
-	};
+		direction: Schema.Literals(['right', 'down', 'left', 'up'])
+	},
 	Floating: {
-		readonly width: string | undefined;
-		readonly height: string | undefined;
-		readonly x: string | undefined;
-		readonly y: string | undefined;
-		readonly pinned: boolean | undefined;
-	};
-	InPlace: {};
-}>;
+		width: Schema.OptionFromUndefinedOr(Schema.String),
+		height: Schema.OptionFromUndefinedOr(Schema.String),
+		x: Schema.OptionFromUndefinedOr(Schema.String),
+		y: Schema.OptionFromUndefinedOr(Schema.String),
+		pinned: Schema.OptionFromUndefinedOr(Schema.Boolean)
+	},
+	InPlace: {}
+});
 
-export const PaneLocation = Data.taggedEnum<PaneLocation>();
+export type PaneLocation = typeof PaneLocation.Type;
 
-export const toArgs = (location: PaneLocation): ReadonlyArray<string> =>
-	PaneLocation.$match(location, {
-		Direction: ({ direction }) => [
-			'-d',
-			direction
-		],
+export const toArgs: (location: PaneLocation) => ReadonlyArray<string> =
+	PaneLocation.match({
+		Direction: ({ direction }) => ['-d', direction],
 		Floating: ({ width, height, x, y, pinned }) => {
-			const args: Array<string> = [
-				'-f'
-			];
-			if (width) args.push('--width', width);
-			if (height) args.push('--height', height);
-			if (x) args.push('--x', x);
-			if (y) args.push('--y', y);
-			if (pinned) args.push('--pinned', 'true');
+			const args: Array<string> = ['-f'];
+			if (Option.isSome(width)) args.push('--width', width.value);
+			if (Option.isSome(height)) args.push('--height', height.value);
+			if (Option.isSome(x)) args.push('--x', x.value);
+			if (Option.isSome(y)) args.push('--y', y.value);
+			if (Option.isSome(pinned) && pinned.value)
+				args.push('--pinned', 'true');
 			return args;
 		},
-		InPlace: () => [
-			'-i'
-		]
+		InPlace: () => ['-i']
 	});
 
-export const right = PaneLocation.Direction({
+export const right = PaneLocation.cases.Direction.makeUnsafe({
 	direction: 'right'
 });
-export const down = PaneLocation.Direction({
+export const down = PaneLocation.cases.Direction.makeUnsafe({
 	direction: 'down'
 });
-export const left = PaneLocation.Direction({
+export const left = PaneLocation.cases.Direction.makeUnsafe({
 	direction: 'left'
 });
-export const up = PaneLocation.Direction({
+export const up = PaneLocation.cases.Direction.makeUnsafe({
 	direction: 'up'
 });
 export const floating = (
-	opts?: Partial<
-		Omit<Data.TaggedEnum.Value<PaneLocation, 'Floating'>, '_tag'>
-	>
+	opts?: Partial<{
+		readonly width: string;
+		readonly height: string;
+		readonly x: string;
+		readonly y: string;
+		readonly pinned: boolean;
+	}>
 ) =>
-	PaneLocation.Floating({
-		width: opts?.width ?? undefined,
-		height: opts?.height ?? undefined,
-		x: opts?.x ?? undefined,
-		y: opts?.y ?? undefined,
-		pinned: opts?.pinned ?? undefined
+	PaneLocation.cases.Floating.makeUnsafe({
+		width: Option.fromNullishOr(opts?.width),
+		height: Option.fromNullishOr(opts?.height),
+		x: Option.fromNullishOr(opts?.x),
+		y: Option.fromNullishOr(opts?.y),
+		pinned: Option.fromNullishOr(opts?.pinned)
 	});
-export const inPlace = PaneLocation.InPlace();
+export const inPlace = PaneLocation.cases.InPlace.makeUnsafe({});

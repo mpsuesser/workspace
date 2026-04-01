@@ -1,101 +1,87 @@
-import * as BunServices from '@effect/platform-bun/BunServices';
+import * as Arr from 'effect/Array';
 import * as Effect from 'effect/Effect';
+import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
+import * as P from 'effect/Predicate';
+import * as Random from 'effect/Random';
 import * as Schedule from 'effect/Schedule';
 import * as Schema from 'effect/Schema';
 import * as ServiceMap from 'effect/ServiceMap';
 import * as Stream from 'effect/Stream';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
-import type {
-	HammerspoonCliError,
-	HammerspoonIpcTimeout
-} from './HammerspoonError.ts';
+
+import type { HammerspoonCliError } from './HammerspoonError.ts';
 import {
 	HammerspoonCliError as HammerspoonCliErrorClass,
 	HammerspoonIpcTimeout as HammerspoonIpcTimeoutClass
 } from './HammerspoonError.ts';
 
-// --- Internal helpers (inlined from internal/hs.ts) ---
+// --- Internal helpers ---
 
-const runHs = (luaCode: string) =>
+const mapHsError =
+	(luaCode: string) => (error: { message: string; exitCode?: unknown }) =>
+		new HammerspoonCliErrorClass({
+			command: `hs -c '${luaCode.slice(0, 100)}...'`,
+			exitCode:
+				'exitCode' in error && P.isNumber(error.exitCode)
+					? error.exitCode
+					: 1,
+			stderr: error.message
+		});
+
+const runHs = Effect.fn('Hammerspoon.runHs')((luaCode: string) =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const command = ChildProcess.make('hs', [
-			'-n',
-			'-q',
-			'-c',
-			luaCode
-		]);
+		const command = ChildProcess.make('hs', ['-n', '-q', '-c', luaCode]);
 		return yield* spawner.string(command).pipe(
 			Effect.map((s) => s.trim()),
-			Effect.mapError(
-				(error) =>
-					new HammerspoonCliErrorClass({
-						command: `hs -c '${luaCode.slice(0, 100)}...'`,
-						exitCode:
-							'exitCode' in error &&
-							typeof error.exitCode === 'number'
-								? error.exitCode
-								: 1,
-						stderr: error.message
-					})
-			)
+			Effect.mapError(mapHsError(luaCode))
 		);
-	});
+	})
+);
 
-const runHsVoid = (luaCode: string) =>
+const runHsVoid = Effect.fn('Hammerspoon.runHsVoid')((luaCode: string) =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const command = ChildProcess.make('hs', [
-			'-n',
-			'-q',
-			'-c',
-			luaCode
-		]);
-		yield* spawner.exitCode(command).pipe(
-			Effect.mapError(
-				(error) =>
-					new HammerspoonCliErrorClass({
-						command: `hs -c '${luaCode.slice(0, 100)}...'`,
-						exitCode:
-							'exitCode' in error &&
-							typeof error.exitCode === 'number'
-								? error.exitCode
-								: 1,
-						stderr: error.message
-					})
-			)
-		);
-	});
+		const command = ChildProcess.make('hs', ['-n', '-q', '-c', luaCode]);
+		yield* spawner
+			.exitCode(command)
+			.pipe(Effect.mapError(mapHsError(luaCode)));
+	})
+);
+
+const decodeJsonString = Schema.decodeUnknownEffect(
+	Schema.UnknownFromJsonString
+);
 
 const runHsJson = <A, I>(luaCode: string, schema: Schema.Codec<A, I>) =>
 	Effect.gen(function* () {
 		const raw = yield* runHs(luaCode);
-		const json = yield* Effect.try({
-			try: () => JSON.parse(raw) as unknown,
-			catch: () =>
-				new HammerspoonCliErrorClass({
-					command: `hs -c '${luaCode.slice(0, 100)}...'`,
-					exitCode: 0,
-					stderr: `Invalid JSON: ${raw.slice(0, 200)}`
-				})
-		});
-		return yield* Schema.decodeEffect(schema)(json as I);
+		const json = yield* decodeJsonString(raw).pipe(
+			Effect.mapError(
+				() =>
+					new HammerspoonCliErrorClass({
+						command: `hs -c '${luaCode.slice(0, 100)}...'`,
+						exitCode: 0,
+						stderr: `Invalid JSON: ${raw.slice(0, 200)}`
+					})
+			)
+		);
+		return yield* Schema.decodeUnknownEffect(schema)(json);
 	});
 
-const isHammerspoonRunning = Effect.gen(function* () {
-	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-	const command = ChildProcess.make('pgrep', [
-		'-f',
-		'Hammerspoon'
-	]);
-	return yield* spawner.exitCode(command).pipe(
-		Effect.map((code) => code === 0),
-		Effect.catchTag('PlatformError', () => Effect.succeed(false))
-	);
-});
+const isHammerspoonRunning = Effect.fn('Hammerspoon.isRunningCheck')(() =>
+	Effect.gen(function* () {
+		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+		const command = ChildProcess.make('pgrep', ['-f', 'Hammerspoon']);
+		return yield* spawner.exitCode(command).pipe(
+			Effect.map((code) => code === 0),
+			Effect.catchTag('PlatformError', () => Effect.succeed(false))
+		);
+	})
+);
 
 const escapeLuaString = (s: string): string =>
 	s
@@ -110,73 +96,68 @@ const pollFileForResult = <A, I>(
 	timeoutMs: number = 60_000
 ) =>
 	Effect.gen(function* () {
-		const readFile = Effect.try({
-			try: () => {
-				const file = Bun.file(filePath);
-				return file.size > 0 ? file : null;
-			},
-			catch: () => null
-		}).pipe(
-			Effect.flatMap((file) =>
-				file
-					? Effect.tryPromise({
-							try: () => file.text(),
-							catch: () => null
-						}).pipe(
-							Effect.flatMap((text) =>
-								text ? Effect.succeed(text) : Effect.fail(null)
-							)
+		const fs = yield* FileSystem.FileSystem;
+
+		const timeoutError = new HammerspoonIpcTimeoutClass({
+			message: `Dialog did not return a result within ${timeoutMs}ms`,
+			timeoutMs
+		});
+
+		const readFile: Effect.Effect<
+			string,
+			HammerspoonCliError,
+			FileSystem.FileSystem
+		> = fs.readFileString(filePath).pipe(
+			Effect.flatMap((text) =>
+				text.length > 0
+					? Effect.succeed(text)
+					: Effect.fail(
+							new HammerspoonCliErrorClass({
+								command: `pollFile(${filePath})`,
+								exitCode: 0,
+								stderr: 'Empty result file'
+							})
 						)
-					: Effect.fail(null)
+			),
+			Effect.catchTag('PlatformError', () =>
+				Effect.fail(
+					new HammerspoonCliErrorClass({
+						command: `pollFile(${filePath})`,
+						exitCode: 0,
+						stderr: 'File not found or unreadable'
+					})
+				)
 			)
 		);
 
 		const raw = yield* readFile.pipe(
 			Effect.retry(Schedule.spaced('200 millis')),
 			Effect.timeout(`${timeoutMs} millis`),
-			Effect.catchTag('TimeoutError', () =>
-				Effect.fail(
-					new HammerspoonIpcTimeoutClass({
-						message: `Dialog did not return a result within ${timeoutMs}ms`,
-						timeoutMs
-					})
-				)
-			),
-			Effect.catch((err) =>
-				err instanceof HammerspoonIpcTimeoutClass
-					? Effect.fail(err)
-					: Effect.fail(
-							new HammerspoonIpcTimeoutClass({
-								message: `Dialog did not return a result within ${timeoutMs}ms`,
-								timeoutMs
-							})
-						)
+			Effect.catchTag('TimeoutError', () => Effect.fail(timeoutError)),
+			Effect.catchTag('HammerspoonCliError', () =>
+				Effect.fail(timeoutError)
 			)
 		);
 
-		const json = yield* Effect.try({
-			try: () => JSON.parse(raw) as unknown,
-			catch: () =>
-				new HammerspoonCliErrorClass({
-					command: `pollFile(${filePath})`,
-					exitCode: 0,
-					stderr: `Invalid JSON in result file: ${raw.slice(0, 200)}`
-				})
-		});
+		const json = yield* decodeJsonString(raw).pipe(
+			Effect.mapError(
+				() =>
+					new HammerspoonCliErrorClass({
+						command: `pollFile(${filePath})`,
+						exitCode: 0,
+						stderr: `Invalid JSON in result file: ${raw.slice(0, 200)}`
+					})
+			)
+		);
 
-		yield* Effect.try({
-			try: () => {
-				require('node:fs').unlinkSync(filePath);
-			},
-			catch: () => undefined
-		});
+		yield* fs.remove(filePath).pipe(Effect.ignore);
 
-		return yield* Schema.decodeEffect(schema)(json as I);
+		return yield* Schema.decodeUnknownEffect(schema)(json);
 	});
 
 // --- Schemas ---
 
-export const WindowInfo = Schema.Struct({
+export class WindowInfo extends Schema.Class<WindowInfo>('WindowInfo')({
 	id: Schema.Number,
 	title: Schema.String,
 	app: Schema.String,
@@ -186,43 +167,39 @@ export const WindowInfo = Schema.Struct({
 	h: Schema.Number,
 	screen: Schema.String,
 	screenId: Schema.Number
-});
-export type WindowInfo = typeof WindowInfo.Type;
+}) {}
 
-export const ScreenInfo = Schema.Struct({
+export class ScreenInfo extends Schema.Class<ScreenInfo>('ScreenInfo')({
 	id: Schema.Number,
 	name: Schema.String,
 	x: Schema.Number,
 	y: Schema.Number,
 	w: Schema.Number,
 	h: Schema.Number
-});
-export type ScreenInfo = typeof ScreenInfo.Type;
+}) {}
 
-export const AppInfo = Schema.Struct({
+export class AppInfo extends Schema.Class<AppInfo>('AppInfo')({
 	name: Schema.String,
 	bundleID: Schema.String,
 	pid: Schema.Number
-});
-export type AppInfo = typeof AppInfo.Type;
+}) {}
 
-export const DialogResult = Schema.Struct({
+export class DialogResult extends Schema.Class<DialogResult>('DialogResult')({
 	button: Schema.String
-});
-export type DialogResult = typeof DialogResult.Type;
+}) {}
 
-export const TextPromptResult = Schema.Struct({
+export class TextPromptResult extends Schema.Class<TextPromptResult>(
+	'TextPromptResult'
+)({
 	button: Schema.String,
 	text: Schema.String
-});
-export type TextPromptResult = typeof TextPromptResult.Type;
+}) {}
 
-export const AppContext = Schema.Struct({
+export class AppContext extends Schema.Class<AppContext>('AppContext')({
 	app: Schema.String,
 	bundleID: Schema.String,
 	timestamp: Schema.Number
-});
-export type AppContext = typeof AppContext.Type;
+}) {}
 
 // --- Service ---
 
@@ -231,6 +208,7 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 	{
 		make: Effect.gen(function* () {
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const fs = yield* FileSystem.FileSystem;
 
 			const provideSpawner = <A, E>(
 				effect: Effect.Effect<
@@ -245,7 +223,7 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 					spawner
 				);
 
-			const _isRunning = provideSpawner(isHammerspoonRunning);
+			const _isRunning = provideSpawner(isHammerspoonRunning());
 
 			const focusedWindow = provideSpawner(
 				runHs(
@@ -339,35 +317,34 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 					)
 				);
 
+			const makeTmpFile = (prefix: string) =>
+				Effect.map(
+					Random.nextIntBetween(0, 0x7fffffff),
+					(n) => `/tmp/${prefix}-${n.toString(36)}.json`
+				);
+
 			const _blockingDialog = (opts: {
 				readonly message: string;
 				readonly informativeText?: string;
 				readonly buttonOne?: string;
 				readonly buttonTwo?: string;
 				readonly timeoutMs?: number;
-			}) => {
-				const tmpFile = `/tmp/hs-dialog-${crypto.randomUUID()}.json`;
-				const e = escapeLuaString;
-				return provideSpawner(
-					runHsVoid(
-						`showBlockingDialog('${tmpFile}', '${e(opts.message)}', '${e(opts.informativeText ?? '')}', '${e(opts.buttonOne ?? 'OK')}', '${e(opts.buttonTwo ?? '')}')`
-					)
-				).pipe(
-					Effect.andThen(
-						pollFileForResult(
-							tmpFile,
-							Schema.String,
-							opts.timeoutMs
+			}) =>
+				Effect.gen(function* () {
+					const tmpFile = yield* makeTmpFile('hs-dialog');
+					const e = escapeLuaString;
+					yield* provideSpawner(
+						runHsVoid(
+							`showBlockingDialog('${tmpFile}', '${e(opts.message)}', '${e(opts.informativeText ?? '')}', '${e(opts.buttonOne ?? 'OK')}', '${e(opts.buttonTwo ?? '')}')`
 						)
-					),
-					Effect.map(
-						(button) =>
-							({
-								button
-							}) as DialogResult
-					)
-				);
-			};
+					);
+					const button = yield* pollFileForResult(
+						tmpFile,
+						Schema.String,
+						opts.timeoutMs
+					);
+					return new DialogResult({ button });
+				});
 
 			const _textPrompt = (opts: {
 				readonly message: string;
@@ -376,23 +353,21 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 				readonly buttonOne?: string;
 				readonly buttonTwo?: string;
 				readonly timeoutMs?: number;
-			}) => {
-				const tmpFile = `/tmp/hs-dialog-${crypto.randomUUID()}.json`;
-				const e = escapeLuaString;
-				return provideSpawner(
-					runHsVoid(
-						`showTextPromptDialog('${tmpFile}', '${e(opts.message)}', '${e(opts.informativeText ?? '')}', '${e(opts.defaultText ?? '')}', '${e(opts.buttonOne ?? 'OK')}', '${e(opts.buttonTwo ?? 'Cancel')}')`
-					)
-				).pipe(
-					Effect.andThen(
-						pollFileForResult(
-							tmpFile,
-							TextPromptResult,
-							opts.timeoutMs
+			}) =>
+				Effect.gen(function* () {
+					const tmpFile = yield* makeTmpFile('hs-dialog');
+					const e = escapeLuaString;
+					yield* provideSpawner(
+						runHsVoid(
+							`showTextPromptDialog('${tmpFile}', '${e(opts.message)}', '${e(opts.informativeText ?? '')}', '${e(opts.defaultText ?? '')}', '${e(opts.buttonOne ?? 'OK')}', '${e(opts.buttonTwo ?? 'Cancel')}')`
 						)
-					)
-				);
-			};
+					);
+					return yield* pollFileForResult(
+						tmpFile,
+						TextPromptResult,
+						opts.timeoutMs
+					);
+				});
 
 			// -- Dynamic hotkey registration --
 
@@ -426,41 +401,27 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 					`/tmp/hs-hotkey-${id}.trigger`,
 					Schema.String,
 					timeoutMs
-				).pipe(Effect.as(void 0 as undefined));
+				).pipe(Effect.asVoid);
 
 			// -- App context detection --
 
-			const _currentContext = Effect.try({
-				try: () => {
-					const file = Bun.file('/tmp/hs-context.json');
-					return file.size > 0 ? file : null;
-				},
-				catch: () => null
-			}).pipe(
-				Effect.flatMap((file) =>
-					file
-						? Effect.tryPromise({
-								try: () => file.text(),
-								catch: () => null
-							}).pipe(
-								Effect.flatMap((text) =>
-									text
-										? Schema.decodeEffect(
-												Schema.fromJsonString(
-													AppContext
-												)
-											)(text).pipe(
-												Effect.map(Option.some)
-											)
-										: Effect.succeed(
-												Option.none<AppContext>()
-											)
-								)
-							)
-						: Effect.succeed(Option.none<AppContext>())
-				),
-				Effect.catch(() => Effect.succeed(Option.none<AppContext>()))
-			);
+			const _currentContext = fs
+				.readFileString('/tmp/hs-context.json')
+				.pipe(
+					Effect.flatMap((text) =>
+						text.length > 0
+							? Schema.decodeEffect(
+									Schema.fromJsonString(AppContext)
+								)(text).pipe(Effect.map(Option.some))
+							: Effect.succeed(Option.none<AppContext>())
+					),
+					Effect.catchTag('PlatformError', () =>
+						Effect.succeed(Option.none<AppContext>())
+					),
+					Effect.catchTag('SchemaError', () =>
+						Effect.succeed(Option.none<AppContext>())
+					)
+				);
 
 			const watchContext = Stream.fromEffectRepeat(_currentContext).pipe(
 				Stream.schedule(Schedule.spaced('500 millis')),
@@ -483,29 +444,33 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 					layout.windows,
 					(saved) =>
 						_allWindows.pipe(
-							Effect.flatMap((current) => {
-								const match = current.find(
-									(w) =>
-										w.app === saved.app &&
-										w.title.startsWith(
-											saved.title.slice(0, 20)
-										)
-								);
-								return match
-									? _moveWindow(match.id, {
-											x: saved.x,
-											y: saved.y,
-											w: saved.w,
-											h: saved.h
-										})
-									: Effect.log(
-											`Window not found for restore: ${saved.app} - ${saved.title.slice(0, 40)}`
-										);
-							})
+							Effect.flatMap((current) =>
+								Option.match(
+									Arr.findFirst(
+										current,
+										(w) =>
+											w.app === saved.app &&
+											w.title.startsWith(
+												saved.title.slice(0, 20)
+											)
+									),
+									{
+										onNone: () =>
+											Effect.logInfo(
+												`Window not found for restore: ${saved.app} - ${saved.title.slice(0, 40)}`
+											),
+										onSome: (matched) =>
+											_moveWindow(matched.id, {
+												x: saved.x,
+												y: saved.y,
+												w: saved.w,
+												h: saved.h
+											})
+									}
+								)
+							)
 						),
-					{
-						discard: true
-					}
+					{ discard: true }
 				);
 
 			return {
@@ -561,7 +526,5 @@ export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
 		})
 	}
 ) {
-	static readonly layer = Layer.effect(this, this.make).pipe(
-		Layer.provide(BunServices.layer)
-	);
+	static readonly layer = Layer.effect(this, this.make);
 }

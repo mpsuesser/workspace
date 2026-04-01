@@ -1,14 +1,16 @@
-import * as BunServices from '@effect/platform-bun/BunServices';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
+import * as P from 'effect/Predicate';
+import * as R from 'effect/Record';
 import * as ServiceMap from 'effect/ServiceMap';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
+
 import {
-	type Action,
-	Action as ActionEnum,
+	Action,
+	type Action as ActionType,
 	actionToKeybindString,
 	type GotoSplitDirection,
 	type InspectorMode,
@@ -28,228 +30,253 @@ import {
 // --- Inlined from internal/applescript.ts ---
 
 const osascriptArgs = (...statements: string[]) =>
-	statements.flatMap((statement) => [
-		'-e',
-		statement
-	]);
+	statements.flatMap((statement) => ['-e', statement]);
 
-const runScriptVoid = (...statements: string[]) =>
+const runScriptVoid = Effect.fn('Ghostty.runScriptVoid')(
+	(...statements: string[]) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const command = ChildProcess.make(
+				'osascript',
+				osascriptArgs(...statements)
+			);
+			yield* spawner.exitCode(command);
+		})
+);
+
+const runScriptString = Effect.fn('Ghostty.runScriptString')(
+	(...statements: string[]) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const command = ChildProcess.make(
+				'osascript',
+				osascriptArgs(...statements)
+			);
+			return yield* spawner.string(command).pipe(
+				Effect.map((s) => Option.some(s.trim())),
+				Effect.catchTag('PlatformError', () =>
+					Effect.succeed(Option.none())
+				)
+			);
+		})
+);
+
+const _runScriptBoolean = Effect.fn('Ghostty.runScriptBoolean')(
+	(...statements: string[]) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const command = ChildProcess.make(
+				'osascript',
+				osascriptArgs(...statements)
+			);
+			return yield* spawner.string(command).pipe(
+				Effect.map((s) => s.trim().toLowerCase() === 'true'),
+				Effect.catchTag('PlatformError', () => Effect.succeed(false))
+			);
+		})
+);
+
+const isGhosttyRunning = Effect.fn('Ghostty.isGhosttyRunning')(() =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const command = ChildProcess.make(
-			'osascript',
-			osascriptArgs(...statements)
-		);
-		yield* spawner.exitCode(command);
-	});
-
-const runScriptString = (...statements: string[]) =>
-	Effect.gen(function* () {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const command = ChildProcess.make(
-			'osascript',
-			osascriptArgs(...statements)
-		);
-		return yield* spawner.string(command).pipe(
-			Effect.map((s) => Option.some(s.trim())),
-			Effect.catchTag('PlatformError', () =>
-				Effect.succeed(Option.none())
-			)
-		);
-	});
-
-const runScriptBoolean = (...statements: string[]) =>
-	Effect.gen(function* () {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const command = ChildProcess.make(
-			'osascript',
-			osascriptArgs(...statements)
-		);
-		return yield* spawner.string(command).pipe(
-			Effect.map((s) => s.trim().toLowerCase() === 'true'),
+		const command = ChildProcess.make('pgrep', ['-f', 'Ghostty']);
+		return yield* spawner.exitCode(command).pipe(
+			Effect.map((code) => code === 0),
 			Effect.catchTag('PlatformError', () => Effect.succeed(false))
 		);
-	});
+	})
+);
 
-const isGhosttyRunning = Effect.gen(function* () {
-	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-	const command = ChildProcess.make('pgrep', [
-		'-f',
-		'Ghostty'
-	]);
-	return yield* spawner.exitCode(command).pipe(
-		Effect.map((code) => code === 0),
-		Effect.catchTag('PlatformError', () => Effect.succeed(false))
-	);
-});
-
-const ensureRunning = Effect.gen(function* () {
-	const running = yield* isGhosttyRunning;
-	if (!running) {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		yield* spawner.exitCode(
-			ChildProcess.make('open', [
-				'-a',
-				'Ghostty'
-			])
-		);
-	}
-});
-
-const ensureFrontmost = Effect.gen(function* () {
-	yield* ensureRunning;
-	yield* runScriptVoid('tell application "Ghostty"', 'activate', 'end tell');
-});
-
-const getWindowCount = Effect.gen(function* () {
-	const result = yield* runScriptString(
-		'tell application "Ghostty"',
-		'return count of windows',
-		'end tell'
-	);
-	return Option.match(result, {
-		onNone: () => 0,
-		onSome: (s) => {
-			const n = Number.parseInt(s, 10);
-			return Number.isNaN(n) ? 0 : n;
-		}
-	});
-});
-
-const newWindow = Effect.gen(function* () {
-	yield* ensureRunning;
-	yield* runScriptVoid(
-		'tell application "Ghostty"',
-		'activate',
-		'tell application "System Events"',
-		'keystroke "n" using command down',
-		'end tell',
-		'end tell'
-	);
-});
-
-const newTab = Effect.gen(function* () {
-	yield* ensureFrontmost;
-	yield* runScriptVoid(
-		'tell application "System Events"',
-		'keystroke "t" using command down',
-		'end tell'
-	);
-});
-
-const splitHorizontal = Effect.gen(function* () {
-	yield* ensureFrontmost;
-	yield* runScriptVoid(
-		'tell application "System Events"',
-		'keystroke "d" using {command down, shift down}',
-		'end tell'
-	);
-});
-
-const splitVertical = Effect.gen(function* () {
-	yield* ensureFrontmost;
-	yield* runScriptVoid(
-		'tell application "System Events"',
-		'keystroke "d" using command down',
-		'end tell'
-	);
-});
-
-const closeCurrentPane = Effect.gen(function* () {
-	yield* ensureFrontmost;
-	yield* runScriptVoid(
-		'tell application "System Events"',
-		'keystroke "w" using command down',
-		'end tell'
-	);
-});
-
-const typeText = (text: string) =>
+const ensureRunning = Effect.fn('Ghostty.ensureRunning')(() =>
 	Effect.gen(function* () {
-		yield* ensureFrontmost;
+		const running = yield* isGhosttyRunning();
+		if (!running) {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			yield* spawner.exitCode(
+				ChildProcess.make('open', ['-a', 'Ghostty'])
+			);
+		}
+	})
+);
+
+const ensureFrontmost = Effect.fn('Ghostty.ensureFrontmost')(() =>
+	Effect.gen(function* () {
+		yield* ensureRunning();
+		yield* runScriptVoid(
+			'tell application "Ghostty"',
+			'activate',
+			'end tell'
+		);
+	})
+);
+
+const getWindowCount = Effect.fn('Ghostty.getWindowCount')(() =>
+	Effect.gen(function* () {
+		const result = yield* runScriptString(
+			'tell application "Ghostty"',
+			'return count of windows',
+			'end tell'
+		);
+		return Option.match(result, {
+			onNone: () => 0,
+			onSome: (s) => {
+				const n = Number.parseInt(s, 10);
+				return Number.isNaN(n) ? 0 : n;
+			}
+		});
+	})
+);
+
+const _newWindow = Effect.fn('Ghostty._newWindow')(() =>
+	Effect.gen(function* () {
+		yield* ensureRunning();
+		yield* runScriptVoid(
+			'tell application "Ghostty"',
+			'activate',
+			'tell application "System Events"',
+			'keystroke "n" using command down',
+			'end tell',
+			'end tell'
+		);
+	})
+);
+
+const _newTab = Effect.fn('Ghostty._newTab')(() =>
+	Effect.gen(function* () {
+		yield* ensureFrontmost();
+		yield* runScriptVoid(
+			'tell application "System Events"',
+			'keystroke "t" using command down',
+			'end tell'
+		);
+	})
+);
+
+const _splitHorizontal = Effect.fn('Ghostty._splitHorizontal')(() =>
+	Effect.gen(function* () {
+		yield* ensureFrontmost();
+		yield* runScriptVoid(
+			'tell application "System Events"',
+			'keystroke "d" using {command down, shift down}',
+			'end tell'
+		);
+	})
+);
+
+const _splitVertical = Effect.fn('Ghostty._splitVertical')(() =>
+	Effect.gen(function* () {
+		yield* ensureFrontmost();
+		yield* runScriptVoid(
+			'tell application "System Events"',
+			'keystroke "d" using command down',
+			'end tell'
+		);
+	})
+);
+
+const _closeCurrentPane = Effect.fn('Ghostty._closeCurrentPane')(() =>
+	Effect.gen(function* () {
+		yield* ensureFrontmost();
+		yield* runScriptVoid(
+			'tell application "System Events"',
+			'keystroke "w" using command down',
+			'end tell'
+		);
+	})
+);
+
+const typeText = Effect.fn('Ghostty.typeText')((text: string) =>
+	Effect.gen(function* () {
+		yield* ensureFrontmost();
 		const escaped = text.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 		yield* runScriptVoid(
 			'tell application "System Events"',
 			`keystroke "${escaped}"`,
 			'end tell'
 		);
-	});
+	})
+);
 
-const sendKeys = (keys: string, modifiers: string[] = []) =>
-	Effect.gen(function* () {
-		yield* ensureFrontmost;
-		const modStr =
-			modifiers.length > 0
-				? ` using {${modifiers.map((m) => `${m} down`).join(', ')}}`
-				: '';
-		yield* runScriptVoid(
-			'tell application "System Events"',
-			`keystroke "${keys}"${modStr}`,
-			'end tell'
-		);
-	});
+const sendKeys = Effect.fn('Ghostty.sendKeys')(
+	(keys: string, modifiers: string[] = []) =>
+		Effect.gen(function* () {
+			yield* ensureFrontmost();
+			const modStr =
+				modifiers.length > 0
+					? ` using {${modifiers.map((m) => `${m} down`).join(', ')}}`
+					: '';
+			yield* runScriptVoid(
+				'tell application "System Events"',
+				`keystroke "${keys}"${modStr}`,
+				'end tell'
+			);
+		})
+);
 
 // --- Inlined from internal/cli.ts ---
 
-const runGhosttyCommand = (
-	args: ReadonlyArray<string>
-): Effect.Effect<
-	string,
-	GhosttyCliError,
-	ChildProcessSpawner.ChildProcessSpawner
-> =>
-	Effect.gen(function* () {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const command = ChildProcess.make('ghostty', [
-			...args
-		]);
-		return yield* spawner.string(command).pipe(
-			Effect.map((s) => s.trim()),
-			Effect.mapError(
-				(error) =>
-					new GhosttyCliErrorClass({
-						command: `ghostty ${args.join(' ')}`,
-						exitCode:
-							'exitCode' in error &&
-							typeof error.exitCode === 'number'
-								? error.exitCode
-								: 1,
-						stderr: error.message
-					})
-			)
-		);
-	});
+const runGhosttyCommand = Effect.fn('Ghostty.runGhosttyCommand')(
+	(
+		args: ReadonlyArray<string>
+	): Effect.Effect<
+		string,
+		GhosttyCliError,
+		ChildProcessSpawner.ChildProcessSpawner
+	> =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const command = ChildProcess.make('ghostty', [...args]);
+			return yield* spawner.string(command).pipe(
+				Effect.map((s) => s.trim()),
+				Effect.mapError(
+					(error) =>
+						new GhosttyCliErrorClass({
+							command: `ghostty ${args.join(' ')}`,
+							exitCode:
+								'exitCode' in error &&
+								P.isNumber(error.exitCode)
+									? error.exitCode
+									: 1,
+							stderr: error.message
+						})
+				)
+			);
+		})
+);
 
-const isGhosttyInstalled: Effect.Effect<
-	boolean,
-	never,
-	ChildProcessSpawner.ChildProcessSpawner
-> = Effect.gen(function* () {
-	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-	const command = ChildProcess.make('which', [
-		'ghostty'
-	]);
-	return yield* spawner.exitCode(command).pipe(
-		Effect.map((code) => code === 0),
-		Effect.catch(() => Effect.succeed(false)) // intentional: recover from any error with default
-	);
-});
+const isGhosttyInstalled = Effect.fn('Ghostty.isGhosttyInstalled')(
+	(): Effect.Effect<
+		boolean,
+		never,
+		ChildProcessSpawner.ChildProcessSpawner
+	> =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const command = ChildProcess.make('which', ['ghostty']);
+			return yield* spawner.exitCode(command).pipe(
+				Effect.map((code) => code === 0),
+				// intentional: recover from any error with default
+				Effect.catchTag('PlatformError', () => Effect.succeed(false))
+			);
+		})
+);
 
-const getGhosttyVersion: Effect.Effect<
-	string,
-	GhosttyNotInstalled | GhosttyCliError,
-	ChildProcessSpawner.ChildProcessSpawner
-> = Effect.gen(function* () {
-	const installed = yield* isGhosttyInstalled;
-	if (!installed) {
-		return yield* new GhosttyNotInstalledClass({
-			message: 'Ghostty CLI is not installed or not in PATH'
-		});
-	}
-	return yield* runGhosttyCommand([
-		'+version'
-	]);
-});
+const getGhosttyVersion = Effect.fn('Ghostty.getGhosttyVersion')(
+	(): Effect.Effect<
+		string,
+		GhosttyNotInstalled | GhosttyCliError,
+		ChildProcessSpawner.ChildProcessSpawner
+	> =>
+		Effect.gen(function* () {
+			const installed = yield* isGhosttyInstalled();
+			if (!installed) {
+				return yield* new GhosttyNotInstalledClass({
+					message: 'Ghostty CLI is not installed or not in PATH'
+				});
+			}
+			return yield* runGhosttyCommand(['+version']);
+		})
+);
 
 const parseThemeList = (output: string): ReadonlyArray<string> =>
 	output
@@ -333,115 +360,74 @@ type KeystrokeMapping = {
 	>;
 };
 
-const defaultKeystrokeMappings: Partial<
-	Record<Action['_tag'], KeystrokeMapping>
-> = {
+const defaultKeystrokeMappings: Record<string, KeystrokeMapping> = {
 	CopyToClipboard: {
 		key: 'c',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	PasteFromClipboard: {
 		key: 'v',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	NewWindow: {
 		key: 'n',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	NewTab: {
 		key: 't',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	CloseSurface: {
 		key: 'w',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	CloseWindow: {
 		key: 'w',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	CloseTab: {
 		key: 'w',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	NextTab: {
 		key: ']',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	PreviousTab: {
 		key: '[',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	ToggleFullscreen: {
 		key: 'return',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ReloadConfig: {
 		key: ',',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	OpenConfig: {
 		key: ',',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	IncreaseFontSize: {
 		key: '+',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	DecreaseFontSize: {
 		key: '-',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ResetFontSize: {
 		key: '0',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ClearScreen: {
 		key: 'k',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	SelectAll: {
 		key: 'a',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ScrollPageUp: {
 		key: 'pageup',
@@ -453,197 +439,102 @@ const defaultKeystrokeMappings: Partial<
 	},
 	ScrollToTop: {
 		key: 'home',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ScrollToBottom: {
 		key: 'end',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ToggleSplitZoom: {
 		key: 'return',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	EqualizeSplits: {
 		key: '=',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	ToggleQuickTerminal: {
 		key: '`',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	ToggleCommandPalette: {
 		key: 'p',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	Undo: {
 		key: 'z',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	Redo: {
 		key: 'z',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	Quit: {
 		key: 'q',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	}
 };
 
 const splitDirectionMappings: Record<SplitDirection, KeystrokeMapping> = {
 	right: {
 		key: 'd',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	down: {
 		key: 'd',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	left: {
 		key: 'd',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	up: {
 		key: 'd',
-		modifiers: [
-			'command',
-			'shift'
-		]
+		modifiers: ['command', 'shift']
 	},
 	auto: {
 		key: 'd',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	}
 };
 
 const gotoSplitMappings: Record<GotoSplitDirection, KeystrokeMapping> = {
 	previous: {
 		key: '[',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	next: {
 		key: ']',
-		modifiers: [
-			'command'
-		]
+		modifiers: ['command']
 	},
 	left: {
 		key: 'left',
-		modifiers: [
-			'command',
-			'option'
-		]
+		modifiers: ['command', 'option']
 	},
 	right: {
 		key: 'right',
-		modifiers: [
-			'command',
-			'option'
-		]
+		modifiers: ['command', 'option']
 	},
 	up: {
 		key: 'up',
-		modifiers: [
-			'command',
-			'option'
-		]
+		modifiers: ['command', 'option']
 	},
 	down: {
 		key: 'down',
-		modifiers: [
-			'command',
-			'option'
-		]
+		modifiers: ['command', 'option']
 	}
 };
 
 const gotoTabMappings: Record<number, KeystrokeMapping> = {
-	1: {
-		key: '1',
-		modifiers: [
-			'command'
-		]
-	},
-	2: {
-		key: '2',
-		modifiers: [
-			'command'
-		]
-	},
-	3: {
-		key: '3',
-		modifiers: [
-			'command'
-		]
-	},
-	4: {
-		key: '4',
-		modifiers: [
-			'command'
-		]
-	},
-	5: {
-		key: '5',
-		modifiers: [
-			'command'
-		]
-	},
-	6: {
-		key: '6',
-		modifiers: [
-			'command'
-		]
-	},
-	7: {
-		key: '7',
-		modifiers: [
-			'command'
-		]
-	},
-	8: {
-		key: '8',
-		modifiers: [
-			'command'
-		]
-	},
-	9: {
-		key: '9',
-		modifiers: [
-			'command'
-		]
-	}
+	1: { key: '1', modifiers: ['command'] },
+	2: { key: '2', modifiers: ['command'] },
+	3: { key: '3', modifiers: ['command'] },
+	4: { key: '4', modifiers: ['command'] },
+	5: { key: '5', modifiers: ['command'] },
+	6: { key: '6', modifiers: ['command'] },
+	7: { key: '7', modifiers: ['command'] },
+	8: { key: '8', modifiers: ['command'] },
+	9: { key: '9', modifiers: ['command'] }
 };
 
 const specialKeyMap: Record<string, string> = {
@@ -693,6 +584,22 @@ const getKeyCode = (key: string): number => {
 	return keyCodes[key.toLowerCase()] ?? 0;
 };
 
+/** Look up a default keystroke mapping by action tag, failing if absent. */
+const requireDefaultKeystroke = (
+	tag: string,
+	action: ActionType
+): Effect.Effect<KeystrokeMapping, GhosttyActionFailed> =>
+	Option.match(R.get(defaultKeystrokeMappings, tag), {
+		onNone: () =>
+			Effect.fail(
+				new GhosttyActionFailed({
+					action: actionToKeybindString(action),
+					reason: `${tag} has no default macOS keybind`
+				})
+			),
+		onSome: Effect.succeed
+	});
+
 export class Ghostty extends ServiceMap.Service<Ghostty>()(
 	'@workspace/ghostty-binding/Ghostty',
 	{
@@ -712,50 +619,41 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 					spawner
 				);
 
-			const isInstalled = provideExecutor(isGhosttyInstalled);
-			const version = provideExecutor(getGhosttyVersion);
+			const isInstalled = provideExecutor(isGhosttyInstalled());
+			const version = provideExecutor(getGhosttyVersion());
 			const listThemes = provideExecutor(
-				runGhosttyCommand([
-					'+list-themes'
-				]).pipe(Effect.map(parseThemeList))
+				runGhosttyCommand(['+list-themes']).pipe(
+					Effect.map(parseThemeList)
+				)
 			);
 			const listFonts = provideExecutor(
-				runGhosttyCommand([
-					'+list-fonts'
-				]).pipe(Effect.map(parseFontList))
+				runGhosttyCommand(['+list-fonts']).pipe(
+					Effect.map(parseFontList)
+				)
 			);
 			const listKeybinds = provideExecutor(
-				runGhosttyCommand([
-					'+list-keybinds'
-				]).pipe(Effect.map(parseKeybindList))
+				runGhosttyCommand(['+list-keybinds']).pipe(
+					Effect.map(parseKeybindList)
+				)
 			);
 			const listDefaultKeybinds = provideExecutor(
-				runGhosttyCommand([
-					'+list-keybinds',
-					'--default'
-				]).pipe(Effect.map(parseKeybindList))
+				runGhosttyCommand(['+list-keybinds', '--default']).pipe(
+					Effect.map(parseKeybindList)
+				)
 			);
 			const listActions = provideExecutor(
-				runGhosttyCommand([
-					'+list-actions'
-				]).pipe(Effect.map(parseActionList))
+				runGhosttyCommand(['+list-actions']).pipe(
+					Effect.map(parseActionList)
+				)
 			);
 			const showConfig = provideExecutor(
-				runGhosttyCommand([
-					'+show-config'
-				])
+				runGhosttyCommand(['+show-config'])
 			);
 			const showDefaultConfig = provideExecutor(
-				runGhosttyCommand([
-					'+show-config',
-					'--default',
-					'--docs'
-				])
+				runGhosttyCommand(['+show-config', '--default', '--docs'])
 			);
 			const validateConfig = provideExecutor(
-				runGhosttyCommand([
-					'+validate-config'
-				]).pipe(
+				runGhosttyCommand(['+validate-config']).pipe(
 					Effect.map(() => true),
 					Effect.catchTag('GhosttyCliError', (e) =>
 						e.exitCode === 0
@@ -765,9 +663,9 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				)
 			);
 
-			const isRunning = provideExecutor(isGhosttyRunning);
-			const ensureRunning_ = provideExecutor(ensureRunning);
-			const ensureFrontmost_ = provideExecutor(ensureFrontmost);
+			const isRunning = provideExecutor(isGhosttyRunning());
+			const ensureRunning_ = provideExecutor(ensureRunning());
+			const ensureFrontmost_ = provideExecutor(ensureFrontmost());
 
 			const executeKeystroke = (mapping: KeystrokeMapping) =>
 				Effect.gen(function* () {
@@ -782,270 +680,226 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 					);
 				});
 
+			const failAction = (action: ActionType, reason: string) =>
+				Effect.fail(
+					new GhosttyActionFailed({
+						action: actionToKeybindString(action),
+						reason
+					})
+				);
+
 			const executeActionViaKeystroke = (
-				action: Action
+				action: ActionType
 			): Effect.Effect<void, GhosttyActionError> =>
-				ActionEnum.$match(action, {
+				Action.match(action, {
 					CopyToClipboard: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.CopyToClipboard!
+						requireDefaultKeystroke('CopyToClipboard', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					PasteFromClipboard: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.PasteFromClipboard!
-						),
+						requireDefaultKeystroke(
+							'PasteFromClipboard',
+							action
+						).pipe(Effect.flatMap(executeKeystroke)),
 					PasteFromSelection: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'paste_from_selection has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'paste_from_selection has no default macOS keybind'
 						),
 					CopyUrlToClipboard: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'copy_url_to_clipboard has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'copy_url_to_clipboard has no default macOS keybind'
 						),
 					CopyTitleToClipboard: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'copy_title_to_clipboard has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'copy_title_to_clipboard has no default macOS keybind'
 						),
 
 					IncreaseFontSize: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.IncreaseFontSize!
-						),
+						requireDefaultKeystroke(
+							'IncreaseFontSize',
+							action
+						).pipe(Effect.flatMap(executeKeystroke)),
 					DecreaseFontSize: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.DecreaseFontSize!
-						),
+						requireDefaultKeystroke(
+							'DecreaseFontSize',
+							action
+						).pipe(Effect.flatMap(executeKeystroke)),
 					ResetFontSize: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ResetFontSize!
+						requireDefaultKeystroke('ResetFontSize', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					SetFontSize: ({ size }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.SetFontSize({
-										size
-									})
-								),
-								reason: 'set_font_size requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.SetFontSize.makeUnsafe({ size }),
+							'set_font_size requires configuration, no default keybind'
 						),
 
 					ClearScreen: () =>
-						executeKeystroke(defaultKeystrokeMappings.ClearScreen!),
+						requireDefaultKeystroke('ClearScreen', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					SelectAll: () =>
-						executeKeystroke(defaultKeystrokeMappings.SelectAll!),
+						requireDefaultKeystroke('SelectAll', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					Reset: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'reset has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'reset has no default macOS keybind'
 						),
 
 					ScrollToTop: () =>
-						executeKeystroke(defaultKeystrokeMappings.ScrollToTop!),
+						requireDefaultKeystroke('ScrollToTop', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					ScrollToBottom: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ScrollToBottom!
+						requireDefaultKeystroke('ScrollToBottom', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					ScrollToSelection: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'scroll_to_selection has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'scroll_to_selection has no default macOS keybind'
 						),
 					ScrollPageUp: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ScrollPageUp!
+						requireDefaultKeystroke('ScrollPageUp', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					ScrollPageDown: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ScrollPageDown!
+						requireDefaultKeystroke('ScrollPageDown', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					ScrollPageFractional: ({ fraction }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.ScrollPageFractional({
-										fraction
-									})
-								),
-								reason: 'scroll_page_fractional requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.ScrollPageFractional.makeUnsafe({
+								fraction
+							}),
+							'scroll_page_fractional requires configuration, no default keybind'
 						),
 					ScrollPageLines: ({ lines }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.ScrollPageLines({
-										lines
-									})
-								),
-								reason: 'scroll_page_lines requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.ScrollPageLines.makeUnsafe({ lines }),
+							'scroll_page_lines requires configuration, no default keybind'
 						),
 
 					AdjustSelection: ({ direction }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.AdjustSelection({
-										direction
-									})
-								),
-								reason: 'adjust_selection requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.AdjustSelection.makeUnsafe({
+								direction
+							}),
+							'adjust_selection requires configuration, no default keybind'
 						),
 
 					JumpToPrompt: ({ delta }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.JumpToPrompt({
-										delta
-									})
-								),
-								reason: 'jump_to_prompt requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.JumpToPrompt.makeUnsafe({ delta }),
+							'jump_to_prompt requires configuration, no default keybind'
 						),
 
 					WriteScrollbackFile: ({ action: fileAction }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.WriteScrollbackFile({
-										action: fileAction
-									})
-								),
-								reason: 'write_scrollback_file requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.WriteScrollbackFile.makeUnsafe({
+								action: fileAction
+							}),
+							'write_scrollback_file requires configuration, no default keybind'
 						),
 					WriteScreenFile: ({ action: fileAction }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.WriteScreenFile({
-										action: fileAction
-									})
-								),
-								reason: 'write_screen_file requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.WriteScreenFile.makeUnsafe({
+								action: fileAction
+							}),
+							'write_screen_file requires configuration, no default keybind'
 						),
 					WriteSelectionFile: ({ action: fileAction }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.WriteSelectionFile({
-										action: fileAction
-									})
-								),
-								reason: 'write_selection_file requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.WriteSelectionFile.makeUnsafe({
+								action: fileAction
+							}),
+							'write_selection_file requires configuration, no default keybind'
 						),
 
 					NewWindow: () =>
-						executeKeystroke(defaultKeystrokeMappings.NewWindow!),
-					CloseWindow: () =>
-						executeKeystroke(defaultKeystrokeMappings.CloseWindow!),
-					ToggleFullscreen: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ToggleFullscreen!
+						requireDefaultKeystroke('NewWindow', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
+					CloseWindow: () =>
+						requireDefaultKeystroke('CloseWindow', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
+					ToggleFullscreen: () =>
+						requireDefaultKeystroke(
+							'ToggleFullscreen',
+							action
+						).pipe(Effect.flatMap(executeKeystroke)),
 					ToggleMaximize: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'toggle_maximize has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'toggle_maximize has no default macOS keybind'
 						),
 					ResetWindowSize: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'reset_window_size has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'reset_window_size has no default macOS keybind'
 						),
 					ToggleWindowFloatOnTop: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'toggle_window_float_on_top has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'toggle_window_float_on_top has no default macOS keybind'
 						),
 					ToggleWindowDecorations: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'toggle_window_decorations has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'toggle_window_decorations has no default macOS keybind'
 						),
 
 					NewTab: () =>
-						executeKeystroke(defaultKeystrokeMappings.NewTab!),
+						requireDefaultKeystroke('NewTab', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					CloseTab: () =>
-						executeKeystroke(defaultKeystrokeMappings.CloseTab!),
+						requireDefaultKeystroke('CloseTab', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					NextTab: () =>
-						executeKeystroke(defaultKeystrokeMappings.NextTab!),
+						requireDefaultKeystroke('NextTab', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					PreviousTab: () =>
-						executeKeystroke(defaultKeystrokeMappings.PreviousTab!),
+						requireDefaultKeystroke('PreviousTab', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					LastTab: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'last_tab has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'last_tab has no default macOS keybind'
 						),
 					GotoTab: ({ index }) => {
 						const mapping = gotoTabMappings[index];
 						if (mapping) {
 							return executeKeystroke(mapping);
 						}
-						return Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.GotoTab({
-										index
-									})
-								),
-								reason: `goto_tab:${index} has no default keybind (only 1-9 supported)`
-							})
+						return failAction(
+							Action.cases.GotoTab.makeUnsafe({ index }),
+							`goto_tab:${index} has no default keybind (only 1-9 supported)`
 						);
 					},
 					MoveTab: ({ offset }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.MoveTab({
-										offset
-									})
-								),
-								reason: 'move_tab requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.MoveTab.makeUnsafe({ offset }),
+							'move_tab requires configuration, no default keybind'
 						),
 					ToggleTabOverview: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'toggle_tab_overview has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'toggle_tab_overview has no default macOS keybind'
 						),
 					PromptSurfaceTitle: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'prompt_surface_title has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'prompt_surface_title has no default macOS keybind'
 						),
 
 					NewSplit: ({ direction }) =>
@@ -1053,68 +907,54 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 					GotoSplit: ({ direction }) =>
 						executeKeystroke(gotoSplitMappings[direction]),
 					ToggleSplitZoom: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ToggleSplitZoom!
+						requireDefaultKeystroke('ToggleSplitZoom', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					ResizeSplit: ({ direction, amount }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.ResizeSplit({
-										direction,
-										amount
-									})
-								),
-								reason: 'resize_split requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.ResizeSplit.makeUnsafe({
+								direction,
+								amount
+							}),
+							'resize_split requires configuration, no default keybind'
 						),
 					EqualizeSplits: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.EqualizeSplits!
+						requireDefaultKeystroke('EqualizeSplits', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					CloseSurface: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.CloseSurface!
+						requireDefaultKeystroke('CloseSurface', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 
 					ToggleQuickTerminal: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ToggleQuickTerminal!
-						),
+						requireDefaultKeystroke(
+							'ToggleQuickTerminal',
+							action
+						).pipe(Effect.flatMap(executeKeystroke)),
 
 					ToggleVisibility: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'toggle_visibility has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'toggle_visibility has no default macOS keybind'
 						),
 
 					ReloadConfig: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ReloadConfig!
+						requireDefaultKeystroke('ReloadConfig', action).pipe(
+							Effect.flatMap(executeKeystroke)
 						),
 					OpenConfig: () =>
-						executeKeystroke(defaultKeystrokeMappings.OpenConfig!),
+						requireDefaultKeystroke('OpenConfig', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 
 					Inspector: ({ mode }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.Inspector({
-										mode
-									})
-								),
-								reason: 'inspector requires configuration, no default keybind'
-							})
+						failAction(
+							Action.cases.Inspector.makeUnsafe({ mode }),
+							'inspector requires configuration, no default keybind'
 						),
 					ShowGtkInspector: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'show_gtk_inspector is Linux-only'
-							})
-						),
+						failAction(action, 'show_gtk_inspector is Linux-only'),
 
 					Text: ({ text }) =>
 						Effect.gen(function* () {
@@ -1131,64 +971,51 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 							);
 						}),
 					Csi: ({ sequence }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.Csi({
-										sequence
-									})
-								),
-								reason: 'csi sequences cannot be sent via AppleScript keystroke'
-							})
+						failAction(
+							Action.cases.Csi.makeUnsafe({ sequence }),
+							'csi sequences cannot be sent via AppleScript keystroke'
 						),
 					Esc: ({ sequence }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.Esc({
-										sequence
-									})
-								),
-								reason: 'esc sequences cannot be sent via AppleScript keystroke'
-							})
+						failAction(
+							Action.cases.Esc.makeUnsafe({ sequence }),
+							'esc sequences cannot be sent via AppleScript keystroke'
 						),
 					CursorKey: ({ mode }) =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(
-									ActionEnum.CursorKey({
-										mode
-									})
-								),
-								reason: 'cursor_key mode cannot be set via AppleScript'
-							})
+						failAction(
+							Action.cases.CursorKey.makeUnsafe({ mode }),
+							'cursor_key mode cannot be set via AppleScript'
 						),
 
 					ToggleSecureInput: () =>
-						Effect.fail(
-							new GhosttyActionFailed({
-								action: actionToKeybindString(action),
-								reason: 'toggle_secure_input has no default macOS keybind'
-							})
+						failAction(
+							action,
+							'toggle_secure_input has no default macOS keybind'
 						),
 
 					ToggleCommandPalette: () =>
-						executeKeystroke(
-							defaultKeystrokeMappings.ToggleCommandPalette!
-						),
+						requireDefaultKeystroke(
+							'ToggleCommandPalette',
+							action
+						).pipe(Effect.flatMap(executeKeystroke)),
 
 					Undo: () =>
-						executeKeystroke(defaultKeystrokeMappings.Undo!),
+						requireDefaultKeystroke('Undo', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					Redo: () =>
-						executeKeystroke(defaultKeystrokeMappings.Redo!),
+						requireDefaultKeystroke('Redo', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 
 					Quit: () =>
-						executeKeystroke(defaultKeystrokeMappings.Quit!),
+						requireDefaultKeystroke('Quit', action).pipe(
+							Effect.flatMap(executeKeystroke)
+						),
 					Ignore: () => Effect.void,
 					Unbind: () => Effect.void
 				});
 
-			const executeAction = (action: Action) =>
+			const executeAction = (action: ActionType) =>
 				executeActionViaKeystroke(action);
 
 			return {
@@ -1223,7 +1050,7 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 					() => ensureFrontmost_
 				),
 				getWindowCount: Effect.fn('Ghostty.getWindowCount')(() =>
-					provideExecutor(getWindowCount)
+					provideExecutor(getWindowCount())
 				),
 
 				executeAction: Effect.fn('Ghostty.executeAction')(
@@ -1231,77 +1058,85 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				),
 
 				copyToClipboard: Effect.fn('Ghostty.copyToClipboard')(() =>
-					executeAction(ActionEnum.CopyToClipboard())
+					executeAction(Action.cases.CopyToClipboard.makeUnsafe({}))
 				),
 				pasteFromClipboard: Effect.fn('Ghostty.pasteFromClipboard')(
-					() => executeAction(ActionEnum.PasteFromClipboard())
+					() =>
+						executeAction(
+							Action.cases.PasteFromClipboard.makeUnsafe({})
+						)
 				),
 				pasteFromSelection: Effect.fn('Ghostty.pasteFromSelection')(
-					() => executeAction(ActionEnum.PasteFromSelection())
+					() =>
+						executeAction(
+							Action.cases.PasteFromSelection.makeUnsafe({})
+						)
 				),
 				copyUrlToClipboard: Effect.fn('Ghostty.copyUrlToClipboard')(
-					() => executeAction(ActionEnum.CopyUrlToClipboard())
+					() =>
+						executeAction(
+							Action.cases.CopyUrlToClipboard.makeUnsafe({})
+						)
 				),
 				copyTitleToClipboard: Effect.fn('Ghostty.copyTitleToClipboard')(
-					() => executeAction(ActionEnum.CopyTitleToClipboard())
+					() =>
+						executeAction(
+							Action.cases.CopyTitleToClipboard.makeUnsafe({})
+						)
 				),
 
 				increaseFontSize: Effect.fn('Ghostty.increaseFontSize')(
-					(amount: number | undefined) =>
+					(amount: Option.Option<number>) =>
 						executeAction(
-							ActionEnum.IncreaseFontSize({
+							Action.cases.IncreaseFontSize.makeUnsafe({
 								amount
 							})
 						)
 				),
 				decreaseFontSize: Effect.fn('Ghostty.decreaseFontSize')(
-					(amount: number | undefined) =>
+					(amount: Option.Option<number>) =>
 						executeAction(
-							ActionEnum.DecreaseFontSize({
+							Action.cases.DecreaseFontSize.makeUnsafe({
 								amount
 							})
 						)
 				),
 				resetFontSize: Effect.fn('Ghostty.resetFontSize')(() =>
-					executeAction(ActionEnum.ResetFontSize())
+					executeAction(Action.cases.ResetFontSize.makeUnsafe({}))
 				),
 				setFontSize: Effect.fn('Ghostty.setFontSize')((size: number) =>
-					executeAction(
-						ActionEnum.SetFontSize({
-							size
-						})
-					)
+					executeAction(Action.cases.SetFontSize.makeUnsafe({ size }))
 				),
 
 				clearScreen: Effect.fn('Ghostty.clearScreen')(() =>
-					executeAction(ActionEnum.ClearScreen())
+					executeAction(Action.cases.ClearScreen.makeUnsafe({}))
 				),
 				selectAll: Effect.fn('Ghostty.selectAll')(() =>
-					executeAction(ActionEnum.SelectAll())
+					executeAction(Action.cases.SelectAll.makeUnsafe({}))
 				),
 				reset: Effect.fn('Ghostty.reset')(() =>
-					executeAction(ActionEnum.Reset())
+					executeAction(Action.cases.Reset.makeUnsafe({}))
 				),
 
 				scrollToTop: Effect.fn('Ghostty.scrollToTop')(() =>
-					executeAction(ActionEnum.ScrollToTop())
+					executeAction(Action.cases.ScrollToTop.makeUnsafe({}))
 				),
 				scrollToBottom: Effect.fn('Ghostty.scrollToBottom')(() =>
-					executeAction(ActionEnum.ScrollToBottom())
+					executeAction(Action.cases.ScrollToBottom.makeUnsafe({}))
 				),
 				scrollToSelection: Effect.fn('Ghostty.scrollToSelection')(() =>
-					executeAction(ActionEnum.ScrollToSelection())
+					executeAction(Action.cases.ScrollToSelection.makeUnsafe({}))
 				),
 				scrollPageUp: Effect.fn('Ghostty.scrollPageUp')(() =>
-					executeAction(ActionEnum.ScrollPageUp())
+					executeAction(Action.cases.ScrollPageUp.makeUnsafe({}))
 				),
 				scrollPageDown: Effect.fn('Ghostty.scrollPageDown')(() =>
-					executeAction(ActionEnum.ScrollPageDown())
+					executeAction(Action.cases.ScrollPageDown.makeUnsafe({}))
 				),
 				scrollPageFractional: Effect.fn('Ghostty.scrollPageFractional')(
 					(fraction: number) =>
 						executeAction(
-							ActionEnum.ScrollPageFractional({
+							Action.cases.ScrollPageFractional.makeUnsafe({
 								fraction
 							})
 						)
@@ -1309,25 +1144,21 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				scrollPageLines: Effect.fn('Ghostty.scrollPageLines')(
 					(lines: number) =>
 						executeAction(
-							ActionEnum.ScrollPageLines({
-								lines
-							})
+							Action.cases.ScrollPageLines.makeUnsafe({ lines })
 						)
 				),
 
 				jumpToPrompt: Effect.fn('Ghostty.jumpToPrompt')(
 					(delta: number) =>
 						executeAction(
-							ActionEnum.JumpToPrompt({
-								delta
-							})
+							Action.cases.JumpToPrompt.makeUnsafe({ delta })
 						)
 				),
 
 				writeScrollbackFile: Effect.fn('Ghostty.writeScrollbackFile')(
 					(action: WriteFileAction) =>
 						executeAction(
-							ActionEnum.WriteScrollbackFile({
+							Action.cases.WriteScrollbackFile.makeUnsafe({
 								action
 							})
 						)
@@ -1335,7 +1166,7 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				writeScreenFile: Effect.fn('Ghostty.writeScreenFile')(
 					(action: WriteFileAction) =>
 						executeAction(
-							ActionEnum.WriteScreenFile({
+							Action.cases.WriteScreenFile.makeUnsafe({
 								action
 							})
 						)
@@ -1343,169 +1174,152 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				writeSelectionFile: Effect.fn('Ghostty.writeSelectionFile')(
 					(action: WriteFileAction) =>
 						executeAction(
-							ActionEnum.WriteSelectionFile({
+							Action.cases.WriteSelectionFile.makeUnsafe({
 								action
 							})
 						)
 				),
 
 				newWindow: Effect.fn('Ghostty.newWindow')(() =>
-					executeAction(ActionEnum.NewWindow())
+					executeAction(Action.cases.NewWindow.makeUnsafe({}))
 				),
 				closeWindow: Effect.fn('Ghostty.closeWindow')(() =>
-					executeAction(ActionEnum.CloseWindow())
+					executeAction(Action.cases.CloseWindow.makeUnsafe({}))
 				),
 				toggleFullscreen: Effect.fn('Ghostty.toggleFullscreen')(() =>
-					executeAction(ActionEnum.ToggleFullscreen())
+					executeAction(Action.cases.ToggleFullscreen.makeUnsafe({}))
 				),
 				toggleMaximize: Effect.fn('Ghostty.toggleMaximize')(() =>
-					executeAction(ActionEnum.ToggleMaximize())
+					executeAction(Action.cases.ToggleMaximize.makeUnsafe({}))
 				),
 				resetWindowSize: Effect.fn('Ghostty.resetWindowSize')(() =>
-					executeAction(ActionEnum.ResetWindowSize())
+					executeAction(Action.cases.ResetWindowSize.makeUnsafe({}))
 				),
 				toggleWindowFloatOnTop: Effect.fn(
 					'Ghostty.toggleWindowFloatOnTop'
-				)(() => executeAction(ActionEnum.ToggleWindowFloatOnTop())),
+				)(() =>
+					executeAction(
+						Action.cases.ToggleWindowFloatOnTop.makeUnsafe({})
+					)
+				),
 				toggleWindowDecorations: Effect.fn(
 					'Ghostty.toggleWindowDecorations'
-				)(() => executeAction(ActionEnum.ToggleWindowDecorations())),
+				)(() =>
+					executeAction(
+						Action.cases.ToggleWindowDecorations.makeUnsafe({})
+					)
+				),
 
 				newTab: Effect.fn('Ghostty.newTab')(() =>
-					executeAction(ActionEnum.NewTab())
+					executeAction(Action.cases.NewTab.makeUnsafe({}))
 				),
 				closeTab: Effect.fn('Ghostty.closeTab')(
-					(mode: string | undefined) =>
+					(mode: Option.Option<string>) =>
 						executeAction(
-							ActionEnum.CloseTab({
-								mode
-							})
+							Action.cases.CloseTab.makeUnsafe({ mode })
 						)
 				),
 				nextTab: Effect.fn('Ghostty.nextTab')(() =>
-					executeAction(ActionEnum.NextTab())
+					executeAction(Action.cases.NextTab.makeUnsafe({}))
 				),
 				previousTab: Effect.fn('Ghostty.previousTab')(() =>
-					executeAction(ActionEnum.PreviousTab())
+					executeAction(Action.cases.PreviousTab.makeUnsafe({}))
 				),
 				lastTab: Effect.fn('Ghostty.lastTab')(() =>
-					executeAction(ActionEnum.LastTab())
+					executeAction(Action.cases.LastTab.makeUnsafe({}))
 				),
 				gotoTab: Effect.fn('Ghostty.gotoTab')((index: number) =>
-					executeAction(
-						ActionEnum.GotoTab({
-							index
-						})
-					)
+					executeAction(Action.cases.GotoTab.makeUnsafe({ index }))
 				),
 				moveTab: Effect.fn('Ghostty.moveTab')((offset: number) =>
-					executeAction(
-						ActionEnum.MoveTab({
-							offset
-						})
-					)
+					executeAction(Action.cases.MoveTab.makeUnsafe({ offset }))
 				),
 				toggleTabOverview: Effect.fn('Ghostty.toggleTabOverview')(() =>
-					executeAction(ActionEnum.ToggleTabOverview())
+					executeAction(Action.cases.ToggleTabOverview.makeUnsafe({}))
 				),
 
 				newSplit: Effect.fn('Ghostty.newSplit')(
 					(direction: SplitDirection) =>
 						executeAction(
-							ActionEnum.NewSplit({
-								direction
-							})
+							Action.cases.NewSplit.makeUnsafe({ direction })
 						)
 				),
 				gotoSplit: Effect.fn('Ghostty.gotoSplit')(
 					(direction: GotoSplitDirection) =>
 						executeAction(
-							ActionEnum.GotoSplit({
-								direction
-							})
+							Action.cases.GotoSplit.makeUnsafe({ direction })
 						)
 				),
 				toggleSplitZoom: Effect.fn('Ghostty.toggleSplitZoom')(() =>
-					executeAction(ActionEnum.ToggleSplitZoom())
+					executeAction(Action.cases.ToggleSplitZoom.makeUnsafe({}))
 				),
 				resizeSplit: Effect.fn('Ghostty.resizeSplit')(
 					(direction: ResizeDirection, amount: number) =>
 						executeAction(
-							ActionEnum.ResizeSplit({
+							Action.cases.ResizeSplit.makeUnsafe({
 								direction,
 								amount
 							})
 						)
 				),
 				equalizeSplits: Effect.fn('Ghostty.equalizeSplits')(() =>
-					executeAction(ActionEnum.EqualizeSplits())
+					executeAction(Action.cases.EqualizeSplits.makeUnsafe({}))
 				),
 				closeSurface: Effect.fn('Ghostty.closeSurface')(() =>
-					executeAction(ActionEnum.CloseSurface())
+					executeAction(Action.cases.CloseSurface.makeUnsafe({}))
 				),
 
 				splitHorizontal: Effect.fn('Ghostty.splitHorizontal')(() =>
 					executeAction(
-						ActionEnum.NewSplit({
+						Action.cases.NewSplit.makeUnsafe({
 							direction: 'down'
 						})
 					)
 				),
 				splitVertical: Effect.fn('Ghostty.splitVertical')(() =>
 					executeAction(
-						ActionEnum.NewSplit({
+						Action.cases.NewSplit.makeUnsafe({
 							direction: 'right'
 						})
 					)
 				),
 				closeCurrentPane: Effect.fn('Ghostty.closeCurrentPane')(() =>
-					executeAction(ActionEnum.CloseSurface())
+					executeAction(Action.cases.CloseSurface.makeUnsafe({}))
 				),
 
 				toggleQuickTerminal: Effect.fn('Ghostty.toggleQuickTerminal')(
-					() => executeAction(ActionEnum.ToggleQuickTerminal())
+					() =>
+						executeAction(
+							Action.cases.ToggleQuickTerminal.makeUnsafe({})
+						)
 				),
 
 				toggleVisibility: Effect.fn('Ghostty.toggleVisibility')(() =>
-					executeAction(ActionEnum.ToggleVisibility())
+					executeAction(Action.cases.ToggleVisibility.makeUnsafe({}))
 				),
 
 				reloadConfig: Effect.fn('Ghostty.reloadConfig')(() =>
-					executeAction(ActionEnum.ReloadConfig())
+					executeAction(Action.cases.ReloadConfig.makeUnsafe({}))
 				),
 				openConfig: Effect.fn('Ghostty.openConfig')(() =>
-					executeAction(ActionEnum.OpenConfig())
+					executeAction(Action.cases.OpenConfig.makeUnsafe({}))
 				),
 
 				inspector: Effect.fn('Ghostty.inspector')(
 					(mode: InspectorMode) =>
 						executeAction(
-							ActionEnum.Inspector({
-								mode
-							})
+							Action.cases.Inspector.makeUnsafe({ mode })
 						)
 				),
 
 				sendText: Effect.fn('Ghostty.sendText')((text: string) =>
-					executeAction(
-						ActionEnum.Text({
-							text
-						})
-					)
+					executeAction(Action.cases.Text.makeUnsafe({ text }))
 				),
 				sendCsi: Effect.fn('Ghostty.sendCsi')((sequence: string) =>
-					executeAction(
-						ActionEnum.Csi({
-							sequence
-						})
-					)
+					executeAction(Action.cases.Csi.makeUnsafe({ sequence }))
 				),
 				sendEsc: Effect.fn('Ghostty.sendEsc')((sequence: string) =>
-					executeAction(
-						ActionEnum.Esc({
-							sequence
-						})
-					)
+					executeAction(Action.cases.Esc.makeUnsafe({ sequence }))
 				),
 				typeText: Effect.fn('Ghostty.typeText')((text: string) =>
 					provideExecutor(typeText(text))
@@ -1516,22 +1330,25 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				),
 
 				toggleSecureInput: Effect.fn('Ghostty.toggleSecureInput')(() =>
-					executeAction(ActionEnum.ToggleSecureInput())
+					executeAction(Action.cases.ToggleSecureInput.makeUnsafe({}))
 				),
 
 				toggleCommandPalette: Effect.fn('Ghostty.toggleCommandPalette')(
-					() => executeAction(ActionEnum.ToggleCommandPalette())
+					() =>
+						executeAction(
+							Action.cases.ToggleCommandPalette.makeUnsafe({})
+						)
 				),
 
 				undo: Effect.fn('Ghostty.undo')(() =>
-					executeAction(ActionEnum.Undo())
+					executeAction(Action.cases.Undo.makeUnsafe({}))
 				),
 				redo: Effect.fn('Ghostty.redo')(() =>
-					executeAction(ActionEnum.Redo())
+					executeAction(Action.cases.Redo.makeUnsafe({}))
 				),
 
 				quit: Effect.fn('Ghostty.quit')(() =>
-					executeAction(ActionEnum.Quit())
+					executeAction(Action.cases.Quit.makeUnsafe({}))
 				),
 
 				runScript: Effect.fn('Ghostty.runScript')(
@@ -1542,7 +1359,5 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 		})
 	}
 ) {
-	static readonly layer = Layer.effect(this, this.make).pipe(
-		Layer.provide(BunServices.layer)
-	);
+	static readonly layer = Layer.effect(this, this.make);
 }

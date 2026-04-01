@@ -20,75 +20,78 @@ export const ImageProtocol = Schema.Literals([
 	'iterm2',
 	'sixel'
 ]);
+export type ImageProtocol = typeof ImageProtocol.Type;
 
 // ---------------------------------------------------------------------------
 // Defaults section
 // ---------------------------------------------------------------------------
 
 /** Default presentation settings. */
-export const Defaults = Schema.Struct({
+export class Defaults extends Schema.Class<Defaults>('Defaults')({
 	terminal_font_size: Schema.optional(Schema.Number),
 	theme: Schema.optional(Schema.String),
 	image_protocol: Schema.optional(ImageProtocol)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Typst / Mermaid / D2
 // ---------------------------------------------------------------------------
 
-export const Typst = Schema.Struct({
+export class Typst extends Schema.Class<Typst>('Typst')({
 	ppi: Schema.optional(Schema.Number)
-});
+}) {}
 
-export const Mermaid = Schema.Struct({
+export class Mermaid extends Schema.Class<Mermaid>('Mermaid')({
 	scale: Schema.optional(Schema.Number)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Options
 // ---------------------------------------------------------------------------
 
-export const Options = Schema.Struct({
+export class Options extends Schema.Class<Options>('Options')({
 	implicit_slide_ends: Schema.optional(Schema.Boolean),
 	command_prefix: Schema.optional(Schema.String),
 	incremental_lists: Schema.optional(Schema.Boolean),
 	strict_front_matter_parsing: Schema.optional(Schema.Boolean),
 	end_slide_shorthand: Schema.optional(Schema.Boolean)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Snippet execution
 // ---------------------------------------------------------------------------
 
-export const SnippetExec = Schema.Struct({
+export class SnippetExec extends Schema.Class<SnippetExec>('SnippetExec')({
 	enable: Schema.optional(Schema.Boolean)
-});
+}) {}
 
-export const SnippetRender = Schema.Struct({
-	threads: Schema.optional(Schema.Number)
-});
+export class SnippetRender extends Schema.Class<SnippetRender>('SnippetRender')(
+	{
+		threads: Schema.optional(Schema.Number)
+	}
+) {}
 
-export const Snippet = Schema.Struct({
+export class Snippet extends Schema.Class<Snippet>('Snippet')({
 	exec: Schema.optional(SnippetExec),
 	exec_replace: Schema.optional(SnippetExec),
 	render: Schema.optional(SnippetRender)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Speaker notes
 // ---------------------------------------------------------------------------
 
-export const SpeakerNotes = Schema.Struct({
+export class SpeakerNotes extends Schema.Class<SpeakerNotes>('SpeakerNotes')({
 	listen_address: Schema.optional(Schema.String),
 	publish_address: Schema.optional(Schema.String),
 	always_publish: Schema.optional(Schema.Boolean)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Key bindings
 // ---------------------------------------------------------------------------
 
-export const Bindings = Schema.Struct({
+export class Bindings extends Schema.Class<Bindings>('Bindings')({
 	next: Schema.optional(Schema.Array(Schema.String)),
 	next_fast: Schema.optional(Schema.Array(Schema.String)),
 	previous: Schema.optional(Schema.Array(Schema.String)),
@@ -104,7 +107,7 @@ export const Bindings = Schema.Struct({
 	exit: Schema.optional(Schema.Array(Schema.String)),
 	suspend: Schema.optional(Schema.Array(Schema.String)),
 	skip_pauses: Schema.optional(Schema.Array(Schema.String))
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Top-level config

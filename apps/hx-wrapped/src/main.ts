@@ -29,4 +29,4 @@ const program = Effect.gen(function* () {
 	return exitCode;
 }).pipe(Effect.scoped, Effect.provide(BunServices.layer));
 
-Effect.runPromise(program);
+void Effect.runPromise(program);

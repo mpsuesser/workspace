@@ -20,10 +20,8 @@ import * as Schema from 'effect/Schema';
 // ---------------------------------------------------------------------------
 
 /** Line number display mode. */
-export const LineNumber = Schema.Literals([
-	'absolute',
-	'relative'
-]);
+export const LineNumber = Schema.Literals(['absolute', 'relative']);
+export type LineNumber = typeof LineNumber.Type;
 
 /** Cursor shape options. */
 export const CursorShape = Schema.Literals([
@@ -32,13 +30,11 @@ export const CursorShape = Schema.Literals([
 	'underline',
 	'hidden'
 ]);
+export type CursorShape = typeof CursorShape.Type;
 
 /** Bufferline display mode. */
-export const Bufferline = Schema.Literals([
-	'always',
-	'never',
-	'multiple'
-]);
+export const Bufferline = Schema.Literals(['always', 'never', 'multiple']);
+export type Bufferline = typeof Bufferline.Type;
 
 /** Line ending format for new documents. */
 export const LineEnding = Schema.Literals([
@@ -49,14 +45,11 @@ export const LineEnding = Schema.Literals([
 	'cr',
 	'nel'
 ]);
+export type LineEnding = typeof LineEnding.Type;
 
 /** Popup border rendering. */
-export const PopupBorder = Schema.Literals([
-	'popup',
-	'menu',
-	'all',
-	'none'
-]);
+export const PopupBorder = Schema.Literals(['popup', 'menu', 'all', 'none']);
+export type PopupBorder = typeof PopupBorder.Type;
 
 /** Indentation heuristic. */
 export const IndentHeuristic = Schema.Literals([
@@ -64,6 +57,7 @@ export const IndentHeuristic = Schema.Literals([
 	'tree-sitter',
 	'hybrid'
 ]);
+export type IndentHeuristic = typeof IndentHeuristic.Type;
 
 /** Diagnostic severity levels. */
 export const DiagnosticSeverity = Schema.Literals([
@@ -72,6 +66,7 @@ export const DiagnosticSeverity = Schema.Literals([
 	'info',
 	'hint'
 ]);
+export type DiagnosticSeverity = typeof DiagnosticSeverity.Type;
 
 /** Diagnostic severity or disable. */
 export const DiagnosticSeverityOrDisable = Schema.Literals([
@@ -81,12 +76,12 @@ export const DiagnosticSeverityOrDisable = Schema.Literals([
 	'hint',
 	'disable'
 ]);
+export type DiagnosticSeverityOrDisable =
+	typeof DiagnosticSeverityOrDisable.Type;
 
 /** Whitespace render mode — either a simple string or per-character table. */
-export const WhitespaceRenderMode = Schema.Literals([
-	'all',
-	'none'
-]);
+export const WhitespaceRenderMode = Schema.Literals(['all', 'none']);
+export type WhitespaceRenderMode = typeof WhitespaceRenderMode.Type;
 
 /** Gutter types. */
 export const GutterType = Schema.Literals([
@@ -95,6 +90,7 @@ export const GutterType = Schema.Literals([
 	'line-numbers',
 	'spacer'
 ]);
+export type GutterType = typeof GutterType.Type;
 
 /** Built-in clipboard providers. */
 export const ClipboardProviderBuiltin = Schema.Literals([
@@ -109,6 +105,7 @@ export const ClipboardProviderBuiltin = Schema.Literals([
 	'termcode',
 	'none'
 ]);
+export type ClipboardProviderBuiltin = typeof ClipboardProviderBuiltin.Type;
 
 /** Statusline element names. */
 export const StatuslineElement = Schema.Literals([
@@ -135,6 +132,7 @@ export const StatuslineElement = Schema.Literals([
 	'version-control',
 	'register'
 ]);
+export type StatuslineElement = typeof StatuslineElement.Type;
 
 // ---------------------------------------------------------------------------
 // Keybinding value — recursive type
@@ -166,13 +164,16 @@ export const KeybindingValue: Schema.Schema<KeybindingValue> = Schema.Union([
 
 /** A keymap is a record of key names to keybinding values. */
 export const Keymap = Schema.Record(Schema.String, KeybindingValue);
+export type Keymap = typeof Keymap.Type;
 
 // ---------------------------------------------------------------------------
 // Editor sub-section schemas
 // ---------------------------------------------------------------------------
 
 /** `[editor.statusline]` — configures the bottom status bar. */
-export const EditorStatusline = Schema.Struct({
+export class EditorStatusline extends Schema.Class<EditorStatusline>(
+	'EditorStatusline'
+)({
 	left: Schema.optional(Schema.Array(StatuslineElement)),
 	center: Schema.optional(Schema.Array(StatuslineElement)),
 	right: Schema.optional(Schema.Array(StatuslineElement)),
@@ -186,10 +187,10 @@ export const EditorStatusline = Schema.Struct({
 	),
 	diagnostics: Schema.optional(Schema.Array(DiagnosticSeverity)),
 	'workspace-diagnostics': Schema.optional(Schema.Array(DiagnosticSeverity))
-});
+}) {}
 
 /** `[editor.lsp]` — language server protocol integration settings. */
-export const EditorLsp = Schema.Struct({
+export class EditorLsp extends Schema.Class<EditorLsp>('EditorLsp')({
 	enable: Schema.optional(Schema.Boolean),
 	'display-messages': Schema.optional(Schema.Boolean),
 	'display-progress-messages': Schema.optional(Schema.Boolean),
@@ -200,17 +201,21 @@ export const EditorLsp = Schema.Struct({
 	'display-signature-help-docs': Schema.optional(Schema.Boolean),
 	snippets: Schema.optional(Schema.Boolean),
 	'goto-reference-include-declaration': Schema.optional(Schema.Boolean)
-});
+}) {}
 
 /** `[editor.cursor-shape]` — cursor shape per mode. */
-export const EditorCursorShape = Schema.Struct({
+export class EditorCursorShape extends Schema.Class<EditorCursorShape>(
+	'EditorCursorShape'
+)({
 	normal: Schema.optional(CursorShape),
 	insert: Schema.optional(CursorShape),
 	select: Schema.optional(CursorShape)
-});
+}) {}
 
 /** `[editor.file-picker]` — file picker and global search settings. */
-export const EditorFilePicker = Schema.Struct({
+export class EditorFilePicker extends Schema.Class<EditorFilePicker>(
+	'EditorFilePicker'
+)({
 	hidden: Schema.optional(Schema.Boolean),
 	'follow-symlinks': Schema.optional(Schema.Boolean),
 	'deduplicate-links': Schema.optional(Schema.Boolean),
@@ -220,7 +225,7 @@ export const EditorFilePicker = Schema.Struct({
 	'git-global': Schema.optional(Schema.Boolean),
 	'git-exclude': Schema.optional(Schema.Boolean),
 	'max-depth': Schema.optional(Schema.Number)
-});
+}) {}
 
 /**
  * `[editor.auto-pairs]` — automatic bracket/quote insertion.
@@ -232,9 +237,12 @@ export const EditorAutoPairs = Schema.Union([
 	Schema.Boolean,
 	Schema.Record(Schema.String, Schema.String)
 ]);
+export type EditorAutoPairs = typeof EditorAutoPairs.Type;
 
 /** `[editor.auto-save]` — automatic saving behavior. */
-export const EditorAutoSave = Schema.Struct({
+export class EditorAutoSave extends Schema.Class<EditorAutoSave>(
+	'EditorAutoSave'
+)({
 	'focus-lost': Schema.optional(Schema.Boolean),
 	'after-delay': Schema.optional(
 		Schema.Struct({
@@ -242,101 +250,120 @@ export const EditorAutoSave = Schema.Struct({
 			timeout: Schema.optional(Schema.Number)
 		})
 	)
-});
+}) {}
 
 /** `[editor.search]` — search behavior. */
-export const EditorSearch = Schema.Struct({
+export class EditorSearch extends Schema.Class<EditorSearch>('EditorSearch')({
 	'smart-case': Schema.optional(Schema.Boolean),
 	'wrap-around': Schema.optional(Schema.Boolean)
-});
+}) {}
 
 /** `[editor.whitespace.render]` — per-character whitespace rendering. */
-export const WhitespaceRenderTable = Schema.Struct({
+export class WhitespaceRenderTable extends Schema.Class<WhitespaceRenderTable>(
+	'WhitespaceRenderTable'
+)({
 	space: Schema.optional(WhitespaceRenderMode),
 	nbsp: Schema.optional(WhitespaceRenderMode),
 	nnbsp: Schema.optional(WhitespaceRenderMode),
 	tab: Schema.optional(WhitespaceRenderMode),
 	newline: Schema.optional(WhitespaceRenderMode)
-});
+}) {}
 
 /** `[editor.whitespace.characters]` — literal whitespace characters. */
-export const WhitespaceCharacters = Schema.Struct({
+export class WhitespaceCharacters extends Schema.Class<WhitespaceCharacters>(
+	'WhitespaceCharacters'
+)({
 	space: Schema.optional(Schema.String),
 	nbsp: Schema.optional(Schema.String),
 	nnbsp: Schema.optional(Schema.String),
 	tab: Schema.optional(Schema.String),
 	newline: Schema.optional(Schema.String),
 	tabpad: Schema.optional(Schema.String)
-});
+}) {}
 
 /** `[editor.whitespace]` — whitespace rendering options. */
-export const EditorWhitespace = Schema.Struct({
+export class EditorWhitespace extends Schema.Class<EditorWhitespace>(
+	'EditorWhitespace'
+)({
 	render: Schema.optional(
-		Schema.Union([
-			WhitespaceRenderMode,
-			WhitespaceRenderTable
-		])
+		Schema.Union([WhitespaceRenderMode, WhitespaceRenderTable])
 	),
 	characters: Schema.optional(WhitespaceCharacters)
-});
+}) {}
 
 /** `[editor.indent-guides]` — vertical indent guide rendering. */
-export const EditorIndentGuides = Schema.Struct({
+export class EditorIndentGuides extends Schema.Class<EditorIndentGuides>(
+	'EditorIndentGuides'
+)({
 	render: Schema.optional(Schema.Boolean),
 	character: Schema.optional(Schema.String),
 	'skip-levels': Schema.optional(Schema.Number)
-});
+}) {}
 
 /** `[editor.gutters.line-numbers]` — line number gutter options. */
-export const GutterLineNumbers = Schema.Struct({
+export class GutterLineNumbers extends Schema.Class<GutterLineNumbers>(
+	'GutterLineNumbers'
+)({
 	'min-width': Schema.optional(Schema.Number)
-});
+}) {}
 
 /** `[editor.gutters]` — gutter configuration (detailed form). */
-export const EditorGutters = Schema.Struct({
-	layout: Schema.optional(Schema.Array(GutterType)),
-	'line-numbers': Schema.optional(GutterLineNumbers)
-});
+export class EditorGutters extends Schema.Class<EditorGutters>('EditorGutters')(
+	{
+		layout: Schema.optional(Schema.Array(GutterType)),
+		'line-numbers': Schema.optional(GutterLineNumbers)
+	}
+) {}
 
 /** `[editor.soft-wrap]` — soft line wrapping. */
-export const EditorSoftWrap = Schema.Struct({
+export class EditorSoftWrap extends Schema.Class<EditorSoftWrap>(
+	'EditorSoftWrap'
+)({
 	enable: Schema.optional(Schema.Boolean),
 	'max-wrap': Schema.optional(Schema.Number),
 	'max-indent-retain': Schema.optional(Schema.Number),
 	'wrap-indicator': Schema.optional(Schema.String),
 	'wrap-at-text-width': Schema.optional(Schema.Boolean)
-});
+}) {}
 
 /** `[editor.smart-tab]` — tab key behavior. */
-export const EditorSmartTab = Schema.Struct({
+export class EditorSmartTab extends Schema.Class<EditorSmartTab>(
+	'EditorSmartTab'
+)({
 	enable: Schema.optional(Schema.Boolean),
 	'supersede-menu': Schema.optional(Schema.Boolean)
-});
+}) {}
 
 /** `[editor.inline-diagnostics]` — inline diagnostic rendering. */
-export const EditorInlineDiagnostics = Schema.Struct({
+export class EditorInlineDiagnostics extends Schema.Class<EditorInlineDiagnostics>(
+	'EditorInlineDiagnostics'
+)({
 	'cursor-line': Schema.optional(DiagnosticSeverityOrDisable),
 	'other-lines': Schema.optional(DiagnosticSeverityOrDisable),
 	'prefix-len': Schema.optional(Schema.Number),
 	'max-wrap': Schema.optional(Schema.Number),
 	'max-diagnostics': Schema.optional(Schema.Number)
-});
+}) {}
 
 /** Custom clipboard provider command. */
-export const ClipboardCommand = Schema.Struct({
+export class ClipboardCommand extends Schema.Class<ClipboardCommand>(
+	'ClipboardCommand'
+)({
 	command: Schema.String,
 	args: Schema.optional(Schema.Array(Schema.String))
-});
+}) {}
 
 /** `[editor.clipboard-provider.custom]` — custom clipboard commands. */
-export const ClipboardProviderCustom = Schema.Struct({
+export class ClipboardProviderCustom extends Schema.Class<ClipboardProviderCustom>(
+	'ClipboardProviderCustom'
+)({
 	custom: Schema.Struct({
 		yank: ClipboardCommand,
 		paste: ClipboardCommand,
 		'primary-yank': Schema.optional(ClipboardCommand),
 		'primary-paste': Schema.optional(ClipboardCommand)
 	})
-});
+}) {}
 
 /**
  * Clipboard provider — either a built-in name string or a custom command table.
@@ -345,6 +372,7 @@ export const ClipboardProvider = Schema.Union([
 	ClipboardProviderBuiltin,
 	ClipboardProviderCustom
 ]);
+export type ClipboardProvider = typeof ClipboardProvider.Type;
 
 // ---------------------------------------------------------------------------
 // Editor section
@@ -356,7 +384,7 @@ export const ClipboardProvider = Schema.Union([
  * All fields are optional as helix config files are partial overlays.
  * Documented at: https://docs.helix-editor.com/editor.html
  */
-export const Editor = Schema.Struct({
+export class Editor extends Schema.Class<Editor>('Editor')({
 	scrolloff: Schema.optional(Schema.Number),
 	mouse: Schema.optional(Schema.Boolean),
 	'default-yank-register': Schema.optional(Schema.String),
@@ -368,10 +396,7 @@ export const Editor = Schema.Struct({
 	cursorcolumn: Schema.optional(Schema.Boolean),
 	'continue-comments': Schema.optional(Schema.Boolean),
 	gutters: Schema.optional(
-		Schema.Union([
-			Schema.Array(GutterType),
-			EditorGutters
-		])
+		Schema.Union([Schema.Array(GutterType), EditorGutters])
 	),
 	'auto-completion': Schema.optional(Schema.Boolean),
 	'path-completion': Schema.optional(Schema.Boolean),
@@ -414,7 +439,7 @@ export const Editor = Schema.Struct({
 	'soft-wrap': Schema.optional(EditorSoftWrap),
 	'smart-tab': Schema.optional(EditorSmartTab),
 	'inline-diagnostics': Schema.optional(EditorInlineDiagnostics)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Keys section
@@ -429,11 +454,11 @@ export const Editor = Schema.Struct({
  *
  * Documented at: https://docs.helix-editor.com/remapping.html
  */
-export const Keys = Schema.Struct({
+export class Keys extends Schema.Class<Keys>('Keys')({
 	normal: Schema.optional(Keymap),
 	insert: Schema.optional(Keymap),
 	select: Schema.optional(Keymap)
-});
+}) {}
 
 // ---------------------------------------------------------------------------
 // Top-level config

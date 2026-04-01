@@ -1,4 +1,3 @@
-import * as BunServices from '@effect/platform-bun/BunServices';
 import helixConfig from '@workspace/helix-dotconfig/config.toml';
 import themesByMode from '@workspace/helix-dotconfig/themes-by-mode.yaml';
 import * as Clock from 'effect/Clock';
@@ -22,25 +21,16 @@ export class Helix extends ServiceMap.Service<Helix>()(
 			const open = Effect.fn('Helix.open')((...args: Array<string>) =>
 				Effect.scoped(
 					Effect.gen(function* () {
-						const cmd = ChildProcess.make(
-							'hx',
-							[
-								...args
-							],
-							{
-								env: {
-									HX_MODETHEME_INSERT:
-										themesByMode.dark.INSERT,
-									HX_MODETHEME_NORMAL:
-										themesByMode.dark.NORMAL,
-									HX_MODETHEME_SELECT:
-										themesByMode.dark.SELECT
-								},
-								stdin: 'inherit',
-								stdout: 'inherit',
-								stderr: 'inherit'
-							}
-						);
+						const cmd = ChildProcess.make('hx', [...args], {
+							env: {
+								HX_MODETHEME_INSERT: themesByMode.dark.INSERT,
+								HX_MODETHEME_NORMAL: themesByMode.dark.NORMAL,
+								HX_MODETHEME_SELECT: themesByMode.dark.SELECT
+							},
+							stdin: 'inherit',
+							stdout: 'inherit',
+							stderr: 'inherit'
+						});
 						const process = yield* spawner.spawn(cmd);
 						yield* Effect.addFinalizer(() =>
 							process.kill().pipe(Effect.ignore)
@@ -62,13 +52,7 @@ export class Helix extends ServiceMap.Service<Helix>()(
 				const top = `┌${border}┐`;
 				const bottom = `└${border}┘`;
 				const middle = lines.map((l) => `│ ${l.padEnd(maxLen)} │`);
-				const content = [
-					top,
-					...middle,
-					bottom,
-					'',
-					''
-				].join('\n');
+				const content = [top, ...middle, bottom, '', ''].join('\n');
 				const cursorLine = lines.length + 4;
 				return {
 					content,
@@ -183,7 +167,5 @@ export class Helix extends ServiceMap.Service<Helix>()(
 		})
 	}
 ) {
-	static readonly layer = Layer.effect(this, this.make).pipe(
-		Layer.provide(BunServices.layer)
-	);
+	static readonly layer = Layer.effect(this, this.make);
 }

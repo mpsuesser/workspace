@@ -1,4 +1,3 @@
-import * as BunServices from '@effect/platform-bun/BunServices';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Schema from 'effect/Schema';
@@ -26,10 +25,7 @@ export class PresentermError extends Schema.TaggedErrorClass<PresentermError>()(
 // Export format
 // ---------------------------------------------------------------------------
 
-export const ExportFormat = Schema.Literals([
-	'pdf',
-	'html'
-]);
+export const ExportFormat = Schema.Literals(['pdf', 'html']);
 export type ExportFormat = typeof ExportFormat.Type;
 
 // ---------------------------------------------------------------------------
@@ -64,9 +60,7 @@ export class Presenterm extends ServiceMap.Service<Presenterm>()(
 					) =>
 						Effect.scoped(
 							Effect.gen(function* () {
-								const args: Array<string> = [
-									filePath
-								];
+								const args: Array<string> = [filePath];
 								if (options?.theme) {
 									args.push('--theme', options.theme);
 								}
@@ -109,9 +103,7 @@ export class Presenterm extends ServiceMap.Service<Presenterm>()(
 						}
 					): Effect.Effect<void, PresentermError> =>
 						Effect.gen(function* () {
-							const args: Array<string> = [
-								filePath
-							];
+							const args: Array<string> = [filePath];
 
 							if (format === 'pdf') {
 								args.push('--export-pdf');
@@ -163,7 +155,5 @@ export class Presenterm extends ServiceMap.Service<Presenterm>()(
 		})
 	}
 ) {
-	static readonly layer = Layer.effect(this, this.make).pipe(
-		Layer.provide(BunServices.layer)
-	);
+	static readonly layer = Layer.effect(this, this.make);
 }

@@ -1,5 +1,4 @@
-import * as BunServices from '@effect/platform-bun/BunServices';
-import * as Array from 'effect/Array';
+import * as Arr from 'effect/Array';
 import * as Config from 'effect/Config';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
@@ -17,11 +16,7 @@ import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawne
 export class TmuxError extends Schema.TaggedErrorClass<TmuxError>()(
 	'TmuxError',
 	{
-		reason: Schema.Literals([
-			'CommandFailed',
-			'ParseError',
-			'NotFound'
-		]),
+		reason: Schema.Literals(['CommandFailed', 'ParseError', 'NotFound']),
 		message: Schema.String
 	}
 ) {}
@@ -49,105 +44,75 @@ export class TmuxPane extends Schema.Class<TmuxPane>('TmuxPane')({
 const run = (args: ReadonlyArray<string>) =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		return yield* spawner
-			.string(
-				ChildProcess.make('tmux', [
-					...args
-				])
+		return yield* spawner.string(ChildProcess.make('tmux', [...args])).pipe(
+			Effect.mapError(
+				(e) =>
+					new TmuxError({
+						reason: 'CommandFailed',
+						message: String(e.message ?? e)
+					})
 			)
-			.pipe(
-				Effect.mapError(
-					(e) =>
-						new TmuxError({
-							reason: 'CommandFailed',
-							message: String(e.message ?? e)
-						})
-				)
-			);
+		);
 	});
 
 const runVoid = (args: ReadonlyArray<string>) =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		yield* spawner
-			.exitCode(
-				ChildProcess.make('tmux', [
-					...args
-				])
+		yield* spawner.exitCode(ChildProcess.make('tmux', [...args])).pipe(
+			Effect.mapError(
+				(e) =>
+					new TmuxError({
+						reason: 'CommandFailed',
+						message: String(e.message ?? e)
+					})
 			)
-			.pipe(
-				Effect.mapError(
-					(e) =>
-						new TmuxError({
-							reason: 'CommandFailed',
-							message: String(e.message ?? e)
-						})
-				)
-			);
+		);
 	});
 
 // ── Commands ──
 
-const listSessionNames = Effect.gen(function* () {
-	const out = yield* run([
-		'list-sessions',
-		'-F',
-		'#{session_name}'
-	]);
-	return out
-		.trim()
-		.split('\n')
-		.filter((s) => s.length > 0);
-});
+const listSessionNames = Effect.fn('Tmux.listSessionNames')(() =>
+	Effect.gen(function* () {
+		const out = yield* run(['list-sessions', '-F', '#{session_name}']);
+		return out
+			.trim()
+			.split('\n')
+			.filter((s) => s.length > 0);
+	})
+);
 
-const getAllSessions = Effect.gen(function* () {
-	const out = yield* run([
-		'list-sessions',
-		'-F',
-		'#{session_id}\t#{session_name}\t#{session_attached}\t#{session_windows}\t#{session_created}\t#{session_activity}'
-	]);
-	const lines = out
-		.trim()
-		.split('\n')
-		.filter((s) => s.length > 0);
-	return lines.map((line) => {
-		const parts = line.split('\t');
-		return new TmuxSession({
-			id: parts[0] ?? '',
-			name: parts[1] ?? '',
-			attached: parts[2] === '1',
-			windows: Number(parts[3] ?? 0),
-			created: Number(parts[4] ?? 0),
-			activity: Number(parts[5] ?? 0)
+const getAllSessions = Effect.fn('Tmux.getAllSessions')(() =>
+	Effect.gen(function* () {
+		const out = yield* run([
+			'list-sessions',
+			'-F',
+			'#{session_id}\t#{session_name}\t#{session_attached}\t#{session_windows}\t#{session_created}\t#{session_activity}'
+		]);
+		const lines = out
+			.trim()
+			.split('\n')
+			.filter((s) => s.length > 0);
+		return lines.map((line) => {
+			const parts = line.split('\t');
+			return new TmuxSession({
+				id: parts[0] ?? '',
+				name: parts[1] ?? '',
+				attached: parts[2] === '1',
+				windows: Number(parts[3] ?? 0),
+				created: Number(parts[4] ?? 0),
+				activity: Number(parts[5] ?? 0)
+			});
 		});
-	});
-});
+	})
+);
 
-const newSession = (name: string) =>
-	runVoid([
-		'new-session',
-		'-d',
-		'-s',
-		name
-	]);
+const newSession = (name: string) => runVoid(['new-session', '-d', '-s', name]);
 
-const killSession = (name: string) =>
-	runVoid([
-		'kill-session',
-		'-t',
-		name
-	]);
+const killSession = (name: string) => runVoid(['kill-session', '-t', name]);
 
-const attachSession = (name: string) =>
-	runVoid([
-		'attach-session',
-		'-t',
-		name
-	]);
+const attachSession = (name: string) => runVoid(['attach-session', '-t', name]);
 
-const detachClient = runVoid([
-	'detach-client'
-]);
+const detachClient = runVoid(['detach-client']);
 
 const listWindows = (session: string) =>
 	Effect.gen(function* () {
@@ -165,28 +130,15 @@ const listWindows = (session: string) =>
 	});
 
 const newWindow = (session: string, name?: string) => {
-	const args: string[] = [
-		'new-window',
-		'-t',
-		session
-	];
+	const args: string[] = ['new-window', '-t', session];
 	if (name) args.push('-n', name);
 	return runVoid(args);
 };
 
-const killWindow = (target: string) =>
-	runVoid([
-		'kill-window',
-		'-t',
-		target
-	]);
+const killWindow = (target: string) => runVoid(['kill-window', '-t', target]);
 
 const selectWindow = (target: string) =>
-	runVoid([
-		'select-window',
-		'-t',
-		target
-	]);
+	runVoid(['select-window', '-t', target]);
 
 const listPanes = (target: string) =>
 	Effect.gen(function* () {
@@ -215,139 +167,83 @@ const listPanes = (target: string) =>
 	});
 
 const splitWindowH = (target: string) =>
-	runVoid([
-		'split-window',
-		'-h',
-		'-t',
-		target
-	]);
+	runVoid(['split-window', '-h', '-t', target]);
 
 const splitWindowV = (target: string) =>
-	runVoid([
-		'split-window',
-		'-v',
-		'-t',
-		target
-	]);
+	runVoid(['split-window', '-v', '-t', target]);
 
-const selectPane = (target: string) =>
-	runVoid([
-		'select-pane',
-		'-t',
-		target
-	]);
+const selectPane = (target: string) => runVoid(['select-pane', '-t', target]);
 
-const killPane = (target: string) =>
-	runVoid([
-		'kill-pane',
-		'-t',
-		target
-	]);
+const killPane = (target: string) => runVoid(['kill-pane', '-t', target]);
 
 const switchClient = (target: string) =>
-	runVoid([
-		'switch-client',
-		'-t',
-		target
-	]);
+	runVoid(['switch-client', '-t', target]);
 
 const displayMessage = (format: string) =>
-	run([
-		'display-message',
-		'-p',
-		format
-	]);
+	run(['display-message', '-p', format]);
 
 const showOption = (target: string, option: string) =>
-	run([
-		'show-options',
-		'-t',
-		target,
-		'-v',
-		option
-	]);
+	run(['show-options', '-t', target, '-v', option]);
 
 const setOption = (target: string, option: string, value: string) =>
-	runVoid([
-		'set-option',
-		'-t',
-		target,
-		option,
-		value
-	]);
+	runVoid(['set-option', '-t', target, option, value]);
 
 const sendKeys = (target: string, keys: string) =>
-	runVoid([
-		'send-keys',
-		'-t',
-		target,
-		keys,
-		'Enter'
-	]);
+	runVoid(['send-keys', '-t', target, keys, 'Enter']);
 
 const capturePane = (target: string) =>
-	run([
-		'capture-pane',
-		'-p',
-		'-t',
-		target
-	]);
+	run(['capture-pane', '-p', '-t', target]);
 
 /** Determine which session a pane belongs to via TMUX_PANE env var */
 const TmuxPaneConfig = Config.option(Config.string('TMUX_PANE'));
 
-const getCurrentSessionName = Effect.gen(function* () {
-	const paneIdOption = yield* TmuxPaneConfig;
-	if (Option.isNone(paneIdOption)) {
-		return yield* new TmuxError({
-			reason: 'NotFound',
-			message: 'TMUX_PANE environment variable not set'
-		});
-	}
-	const paneId = paneIdOption.value;
-	const out = yield* run([
-		'display-message',
-		'-t',
-		paneId,
-		'-p',
-		'#{session_name}'
-	]);
-	return out.trim();
-});
+const getCurrentSessionName = Effect.fn('Tmux.getCurrentSessionName')(() =>
+	Effect.gen(function* () {
+		const paneIdOption = yield* TmuxPaneConfig;
+		if (Option.isNone(paneIdOption)) {
+			return yield* new TmuxError({
+				reason: 'NotFound',
+				message: 'TMUX_PANE environment variable not set'
+			});
+		}
+		const paneId = paneIdOption.value;
+		const out = yield* run([
+			'display-message',
+			'-t',
+			paneId,
+			'-p',
+			'#{session_name}'
+		]);
+		return out.trim();
+	})
+);
 
 const renameSession = (target: string, newName: string) =>
-	runVoid([
-		'rename-session',
-		'-t',
-		target,
-		newName
-	]);
+	runVoid(['rename-session', '-t', target, newName]);
 
 /** Determine which session a pane belongs to via TMUX_PANE env var (returns session ID) */
-const getCurrentSessionId = Effect.gen(function* () {
-	const paneIdOption = yield* TmuxPaneConfig;
-	if (Option.isNone(paneIdOption)) {
-		return yield* new TmuxError({
-			reason: 'NotFound',
-			message: 'TMUX_PANE environment variable not set'
-		});
-	}
-	const paneId = paneIdOption.value;
-	const out = yield* run([
-		'display-message',
-		'-t',
-		paneId,
-		'-p',
-		'#{session_id}'
-	]);
-	return out.trim();
-});
+const getCurrentSessionId = Effect.fn('Tmux.getCurrentSessionId')(() =>
+	Effect.gen(function* () {
+		const paneIdOption = yield* TmuxPaneConfig;
+		if (Option.isNone(paneIdOption)) {
+			return yield* new TmuxError({
+				reason: 'NotFound',
+				message: 'TMUX_PANE environment variable not set'
+			});
+		}
+		const paneId = paneIdOption.value;
+		const out = yield* run([
+			'display-message',
+			'-t',
+			paneId,
+			'-p',
+			'#{session_id}'
+		]);
+		return out.trim();
+	})
+);
 
-const sourceFile = (path: string) =>
-	runVoid([
-		'source-file',
-		path
-	]);
+const sourceFile = (path: string) => runVoid(['source-file', path]);
 
 // ── Service ──
 
@@ -381,8 +277,8 @@ export class Tmux extends ServiceMap.Service<Tmux>()(
 			const lastKey = yield* Ref.make('');
 
 			const pollSessions = Effect.gen(function* () {
-				const current = yield* provide(getAllSessions).pipe(
-					Effect.catch(() =>
+				const current = yield* provide(getAllSessions()).pipe(
+					Effect.catchTag('TmuxError', () =>
 						Effect.succeed([] as ReadonlyArray<TmuxSession>)
 					)
 				);
@@ -401,18 +297,18 @@ export class Tmux extends ServiceMap.Service<Tmux>()(
 
 			return {
 				// Sessions
-				getAllSessions: Effect.fn('Tmux.getAllSessions')(() =>
-					provide(getAllSessions)
+				getAllSessions: Effect.fn('Tmux.getAllSessions.svc')(() =>
+					provide(getAllSessions())
 				),
 				getActiveSession: Effect.fn('Tmux.getActiveSession')(() =>
-					Effect.map(provide(getAllSessions), (sessions) =>
-						Array.findFirst(sessions, (s) => s.attached)
+					Effect.map(provide(getAllSessions()), (sessions) =>
+						Arr.findFirst(sessions, (s) => s.attached)
 					)
 				),
 				onSessionChange: hub,
 
 				listSessions: Effect.fn('Tmux.listSessions')(() =>
-					provide(listSessionNames)
+					provide(listSessionNames())
 				),
 				newSession: Effect.fn('Tmux.newSession')((name: string) =>
 					provide(newSession(name))
@@ -474,11 +370,11 @@ export class Tmux extends ServiceMap.Service<Tmux>()(
 					provide(capturePane(target))
 				),
 
-				getCurrentSessionName: Effect.fn('Tmux.getCurrentSessionName')(
-					() => provide(getCurrentSessionName)
-				),
-				getCurrentSessionId: Effect.fn('Tmux.getCurrentSessionId')(() =>
-					provide(getCurrentSessionId)
+				getCurrentSessionName: Effect.fn(
+					'Tmux.getCurrentSessionName.svc'
+				)(() => provide(getCurrentSessionName())),
+				getCurrentSessionId: Effect.fn('Tmux.getCurrentSessionId.svc')(
+					() => provide(getCurrentSessionId())
 				),
 				renameSession: Effect.fn('Tmux.renameSession')(
 					(target: string, newName: string) =>
@@ -503,7 +399,5 @@ export class Tmux extends ServiceMap.Service<Tmux>()(
 		})
 	}
 ) {
-	static readonly layer = Layer.effect(this, this.make).pipe(
-		Layer.provide(BunServices.layer)
-	);
+	static readonly layer = Layer.effect(this, this.make);
 }

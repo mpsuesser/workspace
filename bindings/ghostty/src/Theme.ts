@@ -3,8 +3,8 @@ import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import * as Schema from 'effect/Schema';
 import * as ServiceMap from 'effect/ServiceMap';
+
 import { Ghostty } from './Ghostty.ts';
-import type { GhosttyCliError } from './GhosttyError.ts';
 
 export class Theme extends Schema.Class<Theme>('Theme')({
 	name: Schema.String,
@@ -12,17 +12,19 @@ export class Theme extends Schema.Class<Theme>('Theme')({
 	path: Schema.OptionFromUndefinedOr(Schema.String)
 }) {}
 
-export const ThemeConfig = Schema.Union([
+const ThemeConfigUnion = Schema.Union([
 	Schema.Struct({
-		type: Schema.Literal('simple'),
+		type: Schema.tag('simple'),
 		theme: Schema.String
 	}),
 	Schema.Struct({
-		type: Schema.Literal('adaptive'),
+		type: Schema.tag('adaptive'),
 		light: Schema.String,
 		dark: Schema.String
 	})
 ]);
+
+export const ThemeConfig = ThemeConfigUnion.pipe(Schema.toTaggedUnion('type'));
 export type ThemeConfig = typeof ThemeConfig.Type;
 
 const adaptivePattern =
@@ -50,14 +52,10 @@ const parseConfig = (config: string): Option.Option<ThemeConfig> => {
 	return Option.none();
 };
 
-const formatConfig = (config: ThemeConfig): string => {
-	switch (config.type) {
-		case 'simple':
-			return config.theme;
-		case 'adaptive':
-			return `dark:${config.dark},light:${config.light}`;
-	}
-};
+const formatConfig = ThemeConfig.match({
+	simple: (c) => c.theme,
+	adaptive: (c) => `dark:${c.dark},light:${c.light}`
+});
 
 export class GhosttyTheme extends ServiceMap.Service<GhosttyTheme>()(
 	'@workspace/ghostty-binding/GhosttyTheme',

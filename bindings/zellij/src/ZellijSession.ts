@@ -7,90 +7,84 @@ export interface NewSessionOptions {
 	readonly cwd?: string;
 }
 
-export const newSession = (sessionName: string, options?: NewSessionOptions) =>
-	Effect.gen(function* () {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const args: string[] = [
-			'-s',
-			sessionName
-		];
+export const newSession = Effect.fn('ZellijSession.newSession')(
+	(sessionName: string, options?: NewSessionOptions) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const args: string[] = ['-s', sessionName];
 
-		if (options?.layout) {
-			args.push('--new-session-with-layout', options.layout);
+			if (options?.layout) {
+				args.push('--new-session-with-layout', options.layout);
+			}
+			if (options?.cwd) {
+				args.push('--cwd', options.cwd);
+			}
+
+			const cmd = ChildProcess.make('zellij', args, {
+				stdin: 'inherit',
+				stdout: 'inherit',
+				stderr: 'inherit'
+			});
+			return yield* spawner.exitCode(cmd);
+		})
+);
+
+export const attach = Effect.fn('ZellijSession.attach')(
+	(
+		sessionName: string,
+		options?: {
+			readonly createIfMissing?: boolean;
 		}
-		if (options?.cwd) {
-			args.push('--cwd', options.cwd);
-		}
+	) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const args = options?.createIfMissing
+				? ['attach', '-c', sessionName]
+				: ['attach', sessionName];
 
-		const cmd = ChildProcess.make('zellij', args, {
-			stdin: 'inherit',
-			stdout: 'inherit',
-			stderr: 'inherit'
-		});
-		return yield* spawner.exitCode(cmd);
-	});
+			const cmd = ChildProcess.make('zellij', args, {
+				stdin: 'inherit',
+				stdout: 'inherit',
+				stderr: 'inherit'
+			});
+			return yield* spawner.exitCode(cmd);
+		})
+);
 
-export const attach = (
-	sessionName: string,
-	options?: {
-		readonly createIfMissing?: boolean;
-	}
-) =>
+export const killSession = Effect.fn('ZellijSession.killSession')(
+	(name: string) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const cmd = ChildProcess.make('zellij', ['kill-session', name]);
+			return yield* spawner.exitCode(cmd);
+		})
+);
+
+export const killAllSessions = Effect.fn('ZellijSession.killAllSessions')(() =>
 	Effect.gen(function* () {
 		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const args = options?.createIfMissing
-			? [
-					'attach',
-					'-c',
-					sessionName
-				]
-			: [
-					'attach',
-					sessionName
-				];
-
-		const cmd = ChildProcess.make('zellij', args, {
-			stdin: 'inherit',
-			stdout: 'inherit',
-			stderr: 'inherit'
-		});
+		const cmd = ChildProcess.make('zellij', ['kill-all-sessions', '-y']);
 		return yield* spawner.exitCode(cmd);
-	});
+	})
+);
 
-export const killSession = (name: string) =>
-	Effect.gen(function* () {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const cmd = ChildProcess.make('zellij', [
-			'kill-session',
-			name
-		]);
-		return yield* spawner.exitCode(cmd);
-	});
+export const deleteSession = Effect.fn('ZellijSession.deleteSession')(
+	(name: string) =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const cmd = ChildProcess.make('zellij', ['delete-session', name]);
+			return yield* spawner.exitCode(cmd);
+		})
+);
 
-export const killAllSessions = Effect.gen(function* () {
-	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-	const cmd = ChildProcess.make('zellij', [
-		'kill-all-sessions',
-		'-y'
-	]);
-	return yield* spawner.exitCode(cmd);
-});
-
-export const deleteSession = (name: string) =>
-	Effect.gen(function* () {
-		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-		const cmd = ChildProcess.make('zellij', [
-			'delete-session',
-			name
-		]);
-		return yield* spawner.exitCode(cmd);
-	});
-
-export const deleteAllSessions = Effect.gen(function* () {
-	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-	const cmd = ChildProcess.make('zellij', [
-		'delete-all-sessions',
-		'-y'
-	]);
-	return yield* spawner.exitCode(cmd);
-});
+export const deleteAllSessions = Effect.fn('ZellijSession.deleteAllSessions')(
+	() =>
+		Effect.gen(function* () {
+			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+			const cmd = ChildProcess.make('zellij', [
+				'delete-all-sessions',
+				'-y'
+			]);
+			return yield* spawner.exitCode(cmd);
+		})
+);

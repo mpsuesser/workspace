@@ -1,8 +1,9 @@
 export type { PlatformError } from 'effect/PlatformError';
 export {
 	Action,
-	type AdjustDirection,
+	type Action as ActionType,
 	actionToKeybindString,
+	type AdjustDirection,
 	type CursorKeyMode,
 	type GotoSplitDirection,
 	type InspectorMode,

@@ -1,4 +1,3 @@
-import * as BunServices from '@effect/platform-bun/BunServices';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
@@ -8,10 +7,7 @@ import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
 const osascriptArgs = (...statements: string[]) =>
-	statements.flatMap((statement) => [
-		'-e',
-		statement
-	]);
+	statements.flatMap((statement) => ['-e', statement]);
 
 const runScriptVoid = (...statements: string[]) =>
 	Effect.gen(function* () {
@@ -93,7 +89,5 @@ export class ITerm extends ServiceMap.Service<ITerm>()(
 		})
 	}
 ) {
-	static readonly layer = Layer.effect(this, this.make).pipe(
-		Layer.provide(BunServices.layer)
-	);
+	static readonly layer = Layer.effect(this, this.make);
 }

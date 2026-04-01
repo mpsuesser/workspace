@@ -1,17 +1,21 @@
-import * as Array from 'effect/Array';
+import * as Arr from 'effect/Array';
 import * as Config from 'effect/Config';
 import * as Effect from 'effect/Effect';
 import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import * as Path from 'effect/Path';
-import * as Record from 'effect/Record';
+import * as P from 'effect/Predicate';
+import * as R from 'effect/Record';
 import * as ServiceMap from 'effect/ServiceMap';
+
 import { Ghostty } from './Ghostty.ts';
 import { type GhosttyCliError, GhosttyConfigError } from './GhosttyError.ts';
 
 export const parseConfig = (content: string): Record<string, string> =>
-	content.split('\n').reduce(
+	Arr.reduce(
+		content.split('\n'),
+		{} as Record<string, string>,
 		(acc, line) => {
 			const trimmed = line.trim();
 			if (trimmed === '' || trimmed.startsWith('#')) {
@@ -24,15 +28,14 @@ export const parseConfig = (content: string): Record<string, string> =>
 			const key = trimmed.slice(0, eqIndex).trim();
 			const value = trimmed.slice(eqIndex + 1).trim();
 			if (key !== '') {
-				acc[key] = value;
+				return { ...acc, [key]: value };
 			}
 			return acc;
-		},
-		{} as Record<string, string>
+		}
 	);
 
 export const serializeConfig = (config: Record<string, string>): string =>
-	Object.entries(config)
+	R.toEntries(config)
 		.map(([key, value]) => `${key} = ${value}`)
 		.join('\n');
 
@@ -43,81 +46,87 @@ const updateConfigContent = (
 ): string => {
 	const lines = content.split('\n');
 	const keyPattern = new RegExp(`^\\s*${escapeRegex(key)}\\s*=`);
-	const existingIndex = lines.findIndex((line) => keyPattern.test(line));
+	const existingIndex = Arr.findFirstIndex(lines, (line) =>
+		keyPattern.test(line)
+	);
 
-	if (existingIndex !== -1) {
-		lines[existingIndex] = `${key} = ${value}`;
-		return lines.join('\n');
+	if (existingIndex !== undefined) {
+		const updated = [...lines];
+		updated[existingIndex] = `${key} = ${value}`;
+		return updated.join('\n');
 	}
 
-	const nonEmptyLines = lines.filter((line) => line.trim() !== '');
-	if (nonEmptyLines.length === 0) {
+	const hasNonEmpty = Arr.some(lines, (line) => line.trim() !== '');
+	if (!hasNonEmpty) {
 		return `${key} = ${value}`;
 	}
 
-	let lastNonEmptyIndex = lines.length - 1;
-	for (let i = lines.length - 1; i >= 0; i--) {
-		const line = lines[i];
-		if (line !== undefined && line.trim() !== '') {
-			lastNonEmptyIndex = i;
-			break;
-		}
-	}
+	const lastNonEmptyIndex = Arr.findLastIndex(
+		lines,
+		(line) => line.trim() !== ''
+	);
+	const insertAt =
+		lastNonEmptyIndex !== undefined ? lastNonEmptyIndex + 1 : lines.length;
 
-	const result = [
-		...lines
-	];
-	result.splice(lastNonEmptyIndex + 1, 0, `${key} = ${value}`);
+	const result = [...lines];
+	result.splice(insertAt, 0, `${key} = ${value}`);
 	return result.join('\n');
 };
 
 const removeConfigKey = (content: string, key: string): string => {
 	const lines = content.split('\n');
 	const keyPattern = new RegExp(`^\\s*${escapeRegex(key)}\\s*=`);
-	return lines.filter((line) => !keyPattern.test(line)).join('\n');
+	return Arr.filter(lines, (line) => !keyPattern.test(line)).join('\n');
 };
 
 const escapeRegex = (str: string): string =>
 	str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+const detectDarwin = (global: unknown): boolean =>
+	P.isObject(global) &&
+	P.hasProperty(global, 'process') &&
+	P.isObject(global.process) &&
+	P.hasProperty(global.process, 'platform') &&
+	global.process.platform === 'darwin';
+
 const HomeConfig = Config.string('HOME');
 const XdgConfigHomeConfig = Config.option(Config.string('XDG_CONFIG_HOME'));
 
-const getConfigPaths = (
-	pathService: Path.Path
-): Effect.Effect<ReadonlyArray<string>, GhosttyConfigError> =>
-	Effect.gen(function* () {
-		const home = yield* HomeConfig;
-		const xdgConfigHomeOption = yield* XdgConfigHomeConfig;
-		const xdgConfigHome = Option.getOrElse(xdgConfigHomeOption, () =>
-			pathService.join(home, '.config')
-		);
-		const xdgPath = pathService.join(xdgConfigHome, 'ghostty', 'config');
-		const macOsPath = pathService.join(
-			home,
-			'Library',
-			'Application Support',
-			'com.mitchellh.ghostty',
-			'config'
-		);
+const getConfigPaths = Effect.fn('GhosttyConfig.getConfigPaths')(
+	(
+		pathService: Path.Path
+	): Effect.Effect<ReadonlyArray<string>, GhosttyConfigError> =>
+		Effect.gen(function* () {
+			const home = yield* HomeConfig;
+			const xdgConfigHomeOption = yield* XdgConfigHomeConfig;
+			const xdgConfigHome = Option.getOrElse(xdgConfigHomeOption, () =>
+				pathService.join(home, '.config')
+			);
+			const xdgPath = pathService.join(
+				xdgConfigHome,
+				'ghostty',
+				'config'
+			);
+			const macOsPath = pathService.join(
+				home,
+				'Library',
+				'Application Support',
+				'com.mitchellh.ghostty',
+				'config'
+			);
 
-		return process.platform === 'darwin'
-			? [
-					xdgPath,
-					macOsPath
-				]
-			: [
-					xdgPath
-				];
-	}).pipe(
-		Effect.catchTag('ConfigError', (error) =>
-			Effect.fail(
-				new GhosttyConfigError({
-					message: `Environment variable not set: ${error.message}`
-				})
+			const isDarwin = yield* Effect.sync(() => detectDarwin(globalThis));
+			return isDarwin ? [xdgPath, macOsPath] : [xdgPath];
+		}).pipe(
+			Effect.catchTag('ConfigError', (error) =>
+				Effect.fail(
+					new GhosttyConfigError({
+						message: `Environment variable not set: ${error.message}`
+					})
+				)
 			)
 		)
-	);
+);
 
 const findExistingConfigPath = (
 	fs: FileSystem.FileSystem,
@@ -125,24 +134,12 @@ const findExistingConfigPath = (
 ): Effect.Effect<Option.Option<string>, GhosttyConfigError> =>
 	Effect.forEach(paths, (p) =>
 		fs.exists(p).pipe(
-			Effect.map(
-				(exists) =>
-					[
-						p,
-						exists
-					] as const
-			),
-			Effect.orElseSucceed(
-				() =>
-					[
-						p,
-						false
-					] as const
-			)
+			Effect.map((exists) => [p, exists] as const),
+			Effect.orElseSucceed(() => [p, false] as const)
 		)
 	).pipe(
 		Effect.map((results) =>
-			Array.findFirst(results, ([, exists]) => exists).pipe(
+			Arr.findFirst(results, ([, exists]) => exists).pipe(
 				Option.map(([p]) => p)
 			)
 		)
@@ -190,138 +187,152 @@ export class GhosttyConfig extends ServiceMap.Service<
 			const pathService = yield* Path.Path;
 			const ghostty = yield* Ghostty;
 
-			const getPath: Effect.Effect<string, GhosttyConfigError> =
-				Effect.gen(function* () {
-					const paths = yield* getConfigPaths(pathService);
-					const existing = yield* findExistingConfigPath(fs, paths);
-					return Option.getOrElse(existing, () =>
-						Array.headNonEmpty(paths as Array.NonEmptyArray<string>)
-					);
-				});
-
-			const readRaw: Effect.Effect<string, GhosttyConfigError> =
-				Effect.gen(function* () {
-					const configPath = yield* getPath;
-					const exists = yield* fs
-						.exists(configPath)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'check config')(e)
-							)
+			const getPath = Effect.fn('GhosttyConfig.getPath')(
+				(): Effect.Effect<string, GhosttyConfigError> =>
+					Effect.gen(function* () {
+						const paths = yield* getConfigPaths(pathService);
+						const existing = yield* findExistingConfigPath(
+							fs,
+							paths
 						);
-					if (!exists) {
-						return '';
-					}
-					return yield* fs
-						.readFileString(configPath)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'read config')(e)
-							)
-						);
-				});
+						return Option.getOrElse(existing, () => {
+							const head = Arr.head(paths);
+							return Option.getOrElse(head, () => '');
+						});
+					})
+			);
 
-			const read: Effect.Effect<
-				Record<string, string>,
-				GhosttyConfigError
-			> = readRaw.pipe(Effect.map(parseConfig));
+			const readRaw = Effect.fn('GhosttyConfig.readRaw')(
+				(): Effect.Effect<string, GhosttyConfigError> =>
+					Effect.gen(function* () {
+						const configPath = yield* getPath();
+						const exists = yield* fs
+							.exists(configPath)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'check config')
+								)
+							);
+						if (!exists) {
+							return '';
+						}
+						return yield* fs
+							.readFileString(configPath)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'read config')
+								)
+							);
+					})
+			);
 
-			const get = (
-				key: string
-			): Effect.Effect<Option.Option<string>, GhosttyConfigError> =>
-				read.pipe(Effect.map((config) => Record.get(config, key)));
+			const read = Effect.fn('GhosttyConfig.read')(
+				(): Effect.Effect<Record<string, string>, GhosttyConfigError> =>
+					readRaw().pipe(Effect.map(parseConfig))
+			);
 
-			const set = (
-				key: string,
-				value: string
-			): Effect.Effect<void, GhosttyConfigError> =>
-				Effect.gen(function* () {
-					const configPath = yield* getPath;
-					const dirPath = pathService.dirname(configPath);
+			const get = Effect.fn('GhosttyConfig.get')(
+				(
+					key: string
+				): Effect.Effect<Option.Option<string>, GhosttyConfigError> =>
+					read().pipe(Effect.map((config) => R.get(config, key)))
+			);
 
-					yield* fs
-						.makeDirectory(dirPath, {
-							recursive: true
-						})
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(
-									dirPath,
-									'create config directory'
-								)(e)
-							)
-						);
+			const set = Effect.fn('GhosttyConfig.set')(
+				(
+					key: string,
+					value: string
+				): Effect.Effect<void, GhosttyConfigError> =>
+					Effect.gen(function* () {
+						const configPath = yield* getPath();
+						const dirPath = pathService.dirname(configPath);
 
-					const exists = yield* fs
-						.exists(configPath)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'check config')(e)
-							)
-						);
-					const content = exists
-						? yield* fs
-								.readFileString(configPath)
-								.pipe(
-									Effect.mapError((e) =>
-										mapPlatformError(
-											configPath,
-											'read config'
-										)(e)
+						yield* fs
+							.makeDirectory(dirPath, { recursive: true })
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(
+										dirPath,
+										'create config directory'
 									)
 								)
-						: '';
+							);
 
-					const updated = updateConfigContent(content, key, value);
+						const exists = yield* fs
+							.exists(configPath)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'check config')
+								)
+							);
+						const content = exists
+							? yield* fs
+									.readFileString(configPath)
+									.pipe(
+										Effect.mapError(
+											mapPlatformError(
+												configPath,
+												'read config'
+											)
+										)
+									)
+							: '';
 
-					yield* fs
-						.writeFileString(configPath, updated)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'write config')(e)
-							)
-						);
-				});
-
-			const remove = (
-				key: string
-			): Effect.Effect<void, GhosttyConfigError> =>
-				Effect.gen(function* () {
-					const configPath = yield* getPath;
-					const exists = yield* fs
-						.exists(configPath)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'check config')(e)
-							)
-						);
-					if (!exists) {
-						return;
-					}
-
-					const content = yield* fs
-						.readFileString(configPath)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'read config')(e)
-							)
+						const updated = updateConfigContent(
+							content,
+							key,
+							value
 						);
 
-					const updated = removeConfigKey(content, key);
+						yield* fs
+							.writeFileString(configPath, updated)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'write config')
+								)
+							);
+					})
+			);
 
-					yield* fs
-						.writeFileString(configPath, updated)
-						.pipe(
-							Effect.mapError((e) =>
-								mapPlatformError(configPath, 'write config')(e)
-							)
-						);
-				});
+			const remove = Effect.fn('GhosttyConfig.remove')(
+				(key: string): Effect.Effect<void, GhosttyConfigError> =>
+					Effect.gen(function* () {
+						const configPath = yield* getPath();
+						const exists = yield* fs
+							.exists(configPath)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'check config')
+								)
+							);
+						if (!exists) {
+							return;
+						}
+
+						const content = yield* fs
+							.readFileString(configPath)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'read config')
+								)
+							);
+
+						const updated = removeConfigKey(content, key);
+
+						yield* fs
+							.writeFileString(configPath, updated)
+							.pipe(
+								Effect.mapError(
+									mapPlatformError(configPath, 'write config')
+								)
+							);
+					})
+			);
 
 			return GhosttyConfig.of({
-				getPath,
-				readRaw,
-				read,
+				getPath: getPath(),
+				readRaw: readRaw(),
+				read: read(),
 				get,
 				set,
 				remove,
