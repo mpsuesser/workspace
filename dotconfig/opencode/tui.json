@@ -2,13 +2,13 @@
   "$schema": "https://opencode.ai/tui.json",
   "keybinds": {
     "leader": "ctrl+x",
-    "agent_list": "ctrl+a",
-    "session_fork": "ctrl+f",
-    "session_list": "ctrl+o",
-    "messages_page_up": "ctrl+w",
-    "messages_page_down": "ctrl+s",
-    "model_list": "ctrl+l",
-    "editor_open": "ctrl+e"
+    "agent_list": "ctrl+a,alt+a",
+    "session_fork": "ctrl+f,alt+f",
+    "session_list": "ctrl+o,alt+o,alt+l",
+    "messages_page_up": "alt+w",
+    "messages_page_down": "alt+s",
+    "model_list": "ctrl+l,alt+m",
+    "editor_open": "ctrl+e,alt+e"
   },
   "scroll_acceleration": {
     "enabled": true

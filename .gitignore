@@ -55,5 +55,8 @@ dotconfig/opencode/node_modules/
 dotconfig/opencode/package-lock.json
 dotconfig/raycast/extensions/node_modules
 
+# Local reference clones
+.references/
+
 # Temporary
 tmp/
