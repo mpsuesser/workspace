@@ -20,10 +20,10 @@ keybind = cmd+q=close_surface
 keybind = cmd+n=unbind
 keybind = ctrl+m=unbind
 
-keybind = alt+w=resize_split:up,15
-keybind = alt+a=resize_split:left,15
-keybind = alt+s=resize_split:down,15
-keybind = alt+d=resize_split:right,15
+# keybind = alt+w=resize_split:up,15
+# keybind = alt+a=resize_split:left,15
+# keybind = alt+s=resize_split:down,15
+# keybind = alt+d=resize_split:right,15
 
 keybind = alt+e=equalize_splits
 keybind = cmd+e=toggle_split_zoom
