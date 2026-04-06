@@ -1,0 +1,4 @@
+matches:
+  - triggers: [;;4]
+    replace: |-
+      `.references/effect-v4`

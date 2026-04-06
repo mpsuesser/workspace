@@ -2,3 +2,7 @@ matches:
   - triggers: [;;arm]
     replace: |-
       Report back with a concise precise summarization of your findings followed by a bulleted numbered list of improvement proposals. I will then approve, reject, or request modifications to each of them.
+
+  - triggers: [;;rc]
+    replace: |-
+      Find the root cause. Do not patch a fix for the symptom.
