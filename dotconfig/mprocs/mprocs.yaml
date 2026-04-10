@@ -1,0 +1,31 @@
+keymap_procs:
+  <j>: null
+  <k>: null
+  <w>:
+    c: prev-proc
+  <s>:
+    c: next-proc
+  <d>:
+    c: toggle-focus
+
+keymap_term:
+  <a>:
+    c: toggle-focus
+
+keymap_copy:
+  <h>: null
+  <j>: null
+  <k>: null
+  <l>: null
+  <w>:
+    c: copy-mode-move
+    dir: Up
+  <a>:
+    c: copy-mode-move
+    dir: Left
+  <s>:
+    c: copy-mode-move
+    dir: Down
+  <d>:
+    c: copy-mode-move
+    dir: Right
