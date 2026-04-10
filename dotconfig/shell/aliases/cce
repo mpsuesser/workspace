@@ -1,0 +1,3 @@
+cce() {
+	claude --plugin-dir /Users/m/repos/claude-effect-enforcer "$@"
+}
