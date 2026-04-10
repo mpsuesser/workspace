@@ -15,7 +15,7 @@ quick-terminal-animation-duration = 0
 quick-terminal-autohide = true
 quick-terminal-space-behavior = move
 
-background-opacity = 0.85
+background-opacity = 1
 background-blur = 16
 background-blur-radius = 10
 
