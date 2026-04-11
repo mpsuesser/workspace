@@ -1,0 +1,13 @@
+firstchar_P() {
+  # Is the current buffer (command line) empty?
+  if [[ -z "$BUFFER" ]]; then
+    BUFFER="p"
+    zle accept-line
+  else
+    # Behave like a normal 'P'
+    LBUFFER+="P"
+  fi
+}
+
+zle -N firstchar_P
+bindkey "P" firstchar_P

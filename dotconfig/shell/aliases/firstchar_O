@@ -1,0 +1,13 @@
+firstchar_O() {
+  # Is the current buffer (command line) empty?
+  if [[ -z "$BUFFER" ]]; then
+    BUFFER="o"
+    zle accept-line
+  else
+    # Behave like a normal 'O'
+    LBUFFER+="O"
+  fi
+}
+
+zle -N firstchar_O
+bindkey "O" firstchar_O
