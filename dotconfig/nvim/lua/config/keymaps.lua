@@ -20,6 +20,23 @@ local function feed(keys, mode)
   vim.api.nvim_feedkeys(codes, mode or 'm', false)
 end
 
+local function focus_window(direction)
+  return function()
+    local mode = vim.api.nvim_get_mode().mode
+
+    if mode:sub(1, 1) == 't' then
+      feed('<C-\\><C-n><C-w>' .. direction, 'n')
+      return
+    end
+
+    if mode:sub(1, 1) == 'i' then
+      vim.cmd('stopinsert')
+    end
+
+    vim.cmd('wincmd ' .. direction)
+  end
+end
+
 -- ============================================================================
 -- NORMAL MODE - Movement (WASD)
 -- ============================================================================
@@ -293,6 +310,9 @@ map('i', '<D-S-;>', '<Home>', { desc = 'Go to line start' })
 -- ============================================================================
 -- Window navigation (using WASD pattern with Ctrl)
 -- ============================================================================
+
+map({ 'n', 'x', 'i', 't' }, '<M-a>', focus_window('h'), { desc = 'Focus left pane' })
+map({ 'n', 'x', 'i', 't' }, '<M-d>', focus_window('l'), { desc = 'Focus right pane' })
 
 map('n', '<C-w>w', '<C-w>k', { desc = 'Window up' })
 map('n', '<C-w>s', '<C-w>j', { desc = 'Window down' })

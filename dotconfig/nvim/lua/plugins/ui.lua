@@ -123,6 +123,7 @@ return {
         { '<leader>g', desc = 'Live grep' },
         { '<leader>b', desc = 'Buffers' },
         { '<leader>n', desc = 'File explorer' },
+        { '<leader>o', group = 'OpenCode' },
         { '<leader>h', desc = 'Hover info' },
         { '<leader>r', desc = 'Rename' },
         { '<leader>t', desc = 'Treesitter select' },
