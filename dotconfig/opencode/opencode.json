@@ -4,6 +4,15 @@
     "opencode-anthropic-auth@latest",
     "opencode-openai-codex-auth@latest",
     "@franlol/opencode-md-table-formatter@latest",
-    "opencode-sentry-monitor"
-  ]
+    "opencode-sentry-monitor",
+    "opencode-with-claude"
+  ],
+  "provider": {
+    "anthropic": {
+      "options": {
+        "baseURL": "http://127.0.0.1:3456",
+        "apiKey": "dummy"
+      }
+    }
+  }
 }
