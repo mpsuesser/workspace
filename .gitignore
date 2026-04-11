@@ -36,6 +36,10 @@ dotconfig/yazi/flavors/
 # gh CLI auth tokens
 dotconfig/gh/hosts.yml
 
+# pi agent auth and local session state
+dotconfig/pi/agent/auth.json
+dotconfig/pi/agent/sessions/
+
 # IDE
 .idea/
 .vscode/

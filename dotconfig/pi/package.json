@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/pi-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.pi"
+  }
+}
