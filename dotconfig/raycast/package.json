@@ -2,6 +2,7 @@
   "name": "@workspace/raycast-dotconfig",
   "private": true,
   "scripts": {
-    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/raycast"
+    "install:dotconfig": "mkdir -p \"$HOME/.config/raycast\" && echo 'Raycast config is managed locally; no repo symlink installed.'",
+    "snapshot:extensions": "node ./scripts/snapshot-extensions.mjs"
   }
 }

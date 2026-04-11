@@ -59,6 +59,10 @@ dotconfig/opencode/node_modules/
 dotconfig/opencode/package-lock.json
 dotconfig/raycast/extensions/node_modules
 
+# Raycast live state (managed locally, not tracked)
+dotconfig/raycast/extensions/
+dotconfig/raycast/ai/
+
 # Local reference clones
 .references/
 
