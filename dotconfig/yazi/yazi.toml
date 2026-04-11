@@ -144,7 +144,7 @@ spotters = [
 
 [[plugin.prepend_previewers]]
 url = "*.md"
-run = "piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal %s1"
+run = "rich-preview"
 
 [input]
 cursor_blink = false
