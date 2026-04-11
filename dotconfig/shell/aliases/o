@@ -1,0 +1,3 @@
+o() {
+	bun run /Users/m/repos/effect-claw/packages/octoshell/src/main.ts "$@"
+}
