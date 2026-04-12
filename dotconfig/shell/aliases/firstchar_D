@@ -1,7 +1,7 @@
 firstchar_D() {
   # Is the current buffer (command line) empty?
   if [[ -z "$BUFFER" ]]; then
-    BUFFER="yazinext"
+    BUFFER="o"
     zle accept-line
   else
     # Behave like a normal 'D'

@@ -1,0 +1,13 @@
+firstchar_S() {
+  # Is the current buffer (command line) empty?
+  if [[ -z "$BUFFER" ]]; then
+    BUFFER="s"
+    zle accept-line
+  else
+    # Behave like a normal 'S'
+    LBUFFER+="S"
+  fi
+}
+
+zle -N firstchar_S
+bindkey "S" firstchar_S

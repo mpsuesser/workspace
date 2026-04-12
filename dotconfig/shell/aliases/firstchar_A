@@ -1,13 +1,13 @@
-firstchar_P() {
+firstchar_A() {
   # Is the current buffer (command line) empty?
   if [[ -z "$BUFFER" ]]; then
     BUFFER="pi"
     zle accept-line
   else
-    # Behave like a normal 'P'
-    LBUFFER+="P"
+    # Behave like a normal 'A'
+    LBUFFER+="A"
   fi
 }
 
-zle -N firstchar_P
-bindkey "P" firstchar_P
+zle -N firstchar_A
+bindkey "A" firstchar_A
