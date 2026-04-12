@@ -22,8 +22,9 @@ require("bunny"):setup({
 		{ key = "e", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/multitude" },
 		{ key = "w", path = "~/repos/workspace" },
+		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
 
-		{ key = "o", path = "~/.config/opencode" },
+		{ key = "o", path = "~/repos/OpenTentacle" },
 		{ key = "s", path = "~/.config/opencode/skills" },
 		{ key = "y", path = "~/.config/yazi" },
 		{ key = "g", path = "~/.config/ghostty" },

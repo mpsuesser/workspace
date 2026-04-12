@@ -56,6 +56,19 @@ play = [
 
 [open]
 rules = [
+	# Markdown - explicit rules to prevent tiny/odd files from falling through to macOS `open`
+	{ url = "*.md", use = [
+		"edit",
+		"reveal"
+	] },
+	{ url = "*.mdx", use = [
+		"edit",
+		"reveal"
+	] },
+	{ url = "*.markdown", use = [
+		"edit",
+		"reveal"
+	] },
 	# TypeScript - explicit rule to prevent binary-detected files from falling through
 	{ url = "*.ts", use = [
 		"edit",

@@ -233,7 +233,7 @@ end, { desc = 'Diagnostics list' })
 
 map('x', 'w', 'gk', { desc = 'Extend up' })
 map('x', 's', 'gj', { desc = 'Extend down' })
-map('x', 'a', 'h', { desc = 'Extend left' })
+map('x', 'a', 'h', { desc = 'Extend left', nowait = true })
 map('x', 'd', 'l', { desc = 'Extend right' })
 
 map('x', 'W', '5gk', { desc = 'Extend up 5 lines' })

@@ -29,6 +29,18 @@ return {
     opts = {
       n_lines = 500,
       custom_textobjects = nil, -- Use defaults: b=brackets, q=quotes, etc.
+      mappings = {
+        -- Keep `a` free for Helix-style left movement in visual mode.
+        -- Builtin Vim `a` textobjects still work in operator-pending mode.
+        around = '',
+        around_next = '',
+        around_last = '',
+        inside = 'i',
+        inside_next = 'in',
+        inside_last = 'il',
+        goto_left = 'g[',
+        goto_right = 'g]',
+      },
     },
   },
 

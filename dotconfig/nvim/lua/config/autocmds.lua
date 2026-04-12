@@ -44,3 +44,14 @@ autocmd('BufReadPost', {
     end
   end,
 })
+
+-- Enforce Helix-style soft wrap even when filetype plugins try to enable hard wrapping
+autocmd('FileType', {
+  group = augroup('SoftWrapOnly', { clear = true }),
+  pattern = '*',
+  callback = function()
+    vim.opt_local.textwidth = 0
+    vim.opt_local.wrapmargin = 0
+    vim.opt_local.formatoptions:remove({ 't', 'c', 'a' })
+  end,
+})

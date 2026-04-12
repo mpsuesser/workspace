@@ -12,10 +12,11 @@ opt.mouse = ''
 opt.cursorline = true
 opt.guicursor = 'n-v-c:block,i-ci-ve:ver25' -- Block in normal/visual, bar in insert
 
--- Line wrapping (Helix: soft-wrap)
+-- Line wrapping (Helix-style soft wrap only; never insert hard line breaks automatically)
 opt.wrap = true
 opt.linebreak = true
-opt.textwidth = 80
+opt.textwidth = 0
+opt.wrapmargin = 0
 opt.breakindent = true
 opt.showbreak = '' -- No wrap indicator (Helix: wrap-indicator = "")
 
