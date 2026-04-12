@@ -18,18 +18,18 @@ togglepane:entry("min-preview")
 require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
+		{ key = "w", path = "~/repos/workspace" },
+		{ key = "p", path = "~/repos/workspace/dotconfig/pi/agent" },
+		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
+    { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
+		{ key = "g", path = "~/repos/workspace/dotconfig/ghostty" },
+		{ key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
+		{ key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
+
+		{ key = "o", path = "~/repos/OpenTentacle" },
 		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "e", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/multitude" },
-		{ key = "w", path = "~/repos/workspace" },
-		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
-
-		{ key = "o", path = "~/repos/OpenTentacle" },
-		{ key = "s", path = "~/.config/opencode/skills" },
-		{ key = "y", path = "~/.config/yazi" },
-		{ key = "g", path = "~/.config/ghostty" },
-		{ key = { "h", "e" }, path = "~/.config/helix" },
-		{ key = { "h", "a" }, path = "~/.hammerspoon" },
 
 		{ key = { ".", "c" }, path = "~/.config" },
 		{ key = { ".", "s" }, path = "~/.state" },
