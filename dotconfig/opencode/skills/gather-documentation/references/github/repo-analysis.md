@@ -110,7 +110,7 @@ Find relevant repositories:
 
 ```typescript
 // Find official repos
-mcp_github_search_repos({ 
+mcp_github_search_repos({
   query: "tauri",
   org: "tauri-apps"
 })
@@ -147,12 +147,12 @@ structure:
   core/tauri/: Rust core library
   tooling/cli/: CLI tool
   examples/: Working examples
-  
+
 key_findings:
   - Monorepo structure
   - Examples show different app types
   - Core is Rust, bindings are TS
-  
+
 examples_found:
   - api/: Demonstrates all JS APIs
   - sidecar/: External process usage
