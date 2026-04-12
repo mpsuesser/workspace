@@ -10,7 +10,7 @@ opt.mouse = ''
 
 -- Cursor
 opt.cursorline = true
-opt.guicursor = 'n-v-c:block,i-ci-ve:ver25' -- Block in normal/visual, bar in insert
+opt.guicursor = 'n-c:block,v-ve:ver25,i-ci:ver25' -- Block in normal, bar in visual/insert
 
 -- Line wrapping (Helix-style soft wrap only; never insert hard line breaks automatically)
 opt.wrap = true
@@ -30,6 +30,7 @@ opt.smartindent = true
 opt.signcolumn = 'yes'
 opt.number = false
 opt.relativenumber = false
+opt.fillchars:append({ eob = ' ' }) -- Hide end-of-buffer `~`
 
 -- Search
 opt.ignorecase = true

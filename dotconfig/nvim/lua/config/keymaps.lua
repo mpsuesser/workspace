@@ -118,6 +118,10 @@ map('n', 'X', 'dd', { desc = 'Delete line' })
 -- Replace with clipboard (Helix: E = replace_selections_with_clipboard)
 map('n', 'E', '"_xP', { desc = 'Replace char with clipboard' })
 
+-- Indent/dedent current line
+map('n', '<', '<<', { desc = 'Dedent line' })
+map('n', '>', '>>', { desc = 'Indent line' })
+
 -- ============================================================================
 -- NORMAL MODE - Navigation
 -- ============================================================================
@@ -247,6 +251,10 @@ map('x', 'r', 'V', { desc = 'Extend to line bounds' })
 -- ============================================================================
 -- VISUAL/SELECT MODE - Editing
 -- ============================================================================
+
+-- Indent/dedent selected lines
+map('x', '<', '<gv', { desc = 'Dedent selection' })
+map('x', '>', '>gv', { desc = 'Indent selection' })
 
 -- Delete no yank (Helix: x = delete_selection_noyank + normal_mode)
 map('x', 'x', '"_d', { desc = 'Delete selection (no yank)' })
