@@ -2,6 +2,14 @@
   "lastChangelogVersion": "0.66.1",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",
-  "defaultThinkingLevel": "xhigh",
-  "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.zshrc)\""
+  "defaultThinkingLevel": "high",
+  "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.zshrc)\"",
+  "theme": "ghostty-sync-04eb0ce1",
+  "treeFilterMode": "default",
+  "doubleEscapeAction": "none",
+  "editorPaddingX": 2,
+  "autocompleteMaxVisible": 20,
+  "packages": [
+    "npm:glimpseui"
+  ]
 }

@@ -28,8 +28,8 @@
   "tui.editor.undo": ["ctrl+-"],
 
   "tui.input.copy": ["ctrl+c"],
-  "tui.select.up": ["up", "w"],
-  "tui.select.down": ["down", "s"],
+  "tui.select.up": ["up"],
+  "tui.select.down": ["down"],
   "tui.select.pageUp": ["pageUp", "shift+w"],
   "tui.select.pageDown": ["pageDown", "shift+s"],
   "tui.select.confirm": ["enter"],
