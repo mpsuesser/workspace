@@ -56,6 +56,7 @@ opt.swapfile = false
 opt.undofile = true
 opt.updatetime = 250
 opt.timeoutlen = 400
+opt.report = 9999 -- Suppress "x more lines" / "x lines changed" messages for multiline edits
 
 -- Helix: completion-replace = true (replace on completion instead of insert)
 -- Handled by blink.cmp config
