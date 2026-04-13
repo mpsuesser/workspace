@@ -1,0 +1,13 @@
+firstchar_C() {
+  # Is the current buffer (command line) empty?
+  if [[ -z "$BUFFER" ]]; then
+    BUFFER="clear"
+    zle accept-line
+  else
+    # Behave like a normal 'C'
+    LBUFFER+="C"
+  fi
+}
+
+zle -N firstchar_C
+bindkey "C" firstchar_C
