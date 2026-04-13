@@ -1,26 +1,20 @@
 -- UI: colorscheme, statusline, which-key
 
 return {
-  -- Rose Pine colorscheme (Helix: theme = 'rose_pine')
+  -- Vendored Ghostty-driven colorscheme source for easy local editing.
+  -- Upstream: github.com/jaylate/ghostty-dynamic.nvim (see local-plugins/.../VENDORED_FROM.md).
   {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    dir = vim.fn.stdpath('config') .. '/local-plugins/ghostty-dynamic.nvim',
+    name = 'ghostty-dynamic.nvim',
     lazy = false,
     priority = 1000,
     opts = {
-      variant = 'main',
-      dark_variant = 'main',
-      dim_inactive_windows = false,
-      extend_background_behind_borders = true,
-      styles = {
-        bold = true,
-        italic = true,
-        transparency = false,
-      },
+      watch = true,
+      watch_interval = 1,
+      theme_check_interval = 5,
     },
     config = function(_, opts)
-      require('rose-pine').setup(opts)
-      vim.cmd('colorscheme rose-pine')
+      require('ghostty-dynamic').setup(opts)
     end,
   },
 
@@ -31,7 +25,7 @@ return {
     event = 'VeryLazy',
     opts = {
       options = {
-        theme = 'rose-pine',
+        theme = 'auto',
         component_separators = { left = '|', right = '|' },
         section_separators = { left = '', right = '' },
         globalstatus = true,
