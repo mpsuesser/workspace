@@ -11,6 +11,7 @@ opt.mouse = ''
 -- Cursor
 opt.cursorline = true
 opt.guicursor = 'n-c:block,v-ve:ver25,i-ci:ver25' -- Block in normal, bar in visual/insert
+opt.virtualedit = 'onemore' -- Allow cursor one past EOL (closer to Helix/text-editor behavior)
 
 -- Line wrapping (Helix-style soft wrap only; never insert hard line breaks automatically)
 opt.wrap = true

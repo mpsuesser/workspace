@@ -37,6 +37,25 @@ local function focus_window(direction)
   end
 end
 
+local function smart_insert()
+  -- Preserve true insert behavior on the last real character, but when the cursor
+  -- is already in the virtual one-past-EOL column, treat q like append.
+  local cur_col = vim.fn.col('.')
+  local eol_virtual_col = vim.fn.col('$')
+
+  if cur_col == eol_virtual_col then
+    feed('a', 'n')
+  else
+    feed('i', 'n')
+  end
+end
+
+local function go_line_end()
+  -- With virtualedit=onemore, $l lands on the virtual column just past EOL,
+  -- which feels closer to Helix / regular text-editor caret behavior.
+  vim.cmd('normal! $l')
+end
+
 -- ============================================================================
 -- NORMAL MODE - Movement (WASD)
 -- ============================================================================
@@ -49,14 +68,15 @@ map('n', 'd', 'l', { desc = 'Move right' })
 map('n', 'W', '5gk', { desc = 'Move up 5 lines' })
 map('n', 'S', '5gj', { desc = 'Move down 5 lines' })
 map('n', 'A', '0', { desc = 'Go to line start' })
-map('n', 'D', '$', { desc = 'Go to line end' })
+map('n', 'D', go_line_end, { desc = 'Go to line end (past EOL)' })
 
 -- ============================================================================
 -- NORMAL MODE - Editing
 -- ============================================================================
 
 -- Enter insert mode (Helix: q = insert_mode)
-map('n', 'q', 'i', { desc = 'Insert mode' })
+-- Smart at EOL so end-of-line edits never need a separate append key.
+map('n', 'q', smart_insert, { desc = 'Insert mode' })
 
 -- Open line below/above (same as vim)
 map('n', 'o', 'o', { desc = 'Open line below' })
@@ -147,8 +167,8 @@ end, { desc = 'Bold word (markdown)' })
 map('n', 'jw', 'gg', { desc = 'Jump to file start' })
 map('n', 'ja', '0', { desc = 'Jump to line start' })
 map('n', 'js', 'G', { desc = 'Jump to file end' })
-map('n', 'jd', '$', { desc = 'Jump to line end' })
-map('n', 'jl', '$', { desc = 'Jump to line end' })
+map('n', 'jd', go_line_end, { desc = 'Jump to line end (past EOL)' })
+map('n', 'jl', go_line_end, { desc = 'Jump to line end (past EOL)' })
 
 -- ============================================================================
 -- NORMAL MODE - Space leader
