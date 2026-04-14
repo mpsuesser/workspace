@@ -24,6 +24,10 @@ function homeRelative(path: string): string {
 	return path;
 }
 
+function sanitizeStatusText(text: string): string {
+	return text.replace(/[\r\n\t]/g, " ").replace(/ +/g, " ").trim();
+}
+
 const HIDDEN_BRANCHES = new Set(["main"]);
 const HIDDEN_PROVIDERS = new Set(["openai-codex", "anthropic"]);
 
@@ -126,7 +130,21 @@ export default function (pi: ExtensionAPI) {
 						ellipsis,
 					);
 
-					return [topLine, bottomLine];
+					const extensionStatuses = footerData.getExtensionStatuses();
+					if (extensionStatuses.size === 0) {
+						return [topLine, bottomLine];
+					}
+
+					const statusLine = truncateToWidth(
+						Array.from(extensionStatuses.entries())
+							.sort(([a], [b]) => a.localeCompare(b))
+							.map(([, text]) => sanitizeStatusText(text))
+							.join(" "),
+						width,
+						ellipsis,
+					);
+
+					return [statusLine, topLine, bottomLine];
 				},
 			};
 		});
