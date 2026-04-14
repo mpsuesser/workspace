@@ -39,10 +39,14 @@ dotconfig/gh/hosts.yml
 # pi agent auth and local session state
 dotconfig/pi/agent/auth.json
 dotconfig/pi/agent/sessions/
+dotconfig/pi/agent/fff/
+dotconfig/pi/agent/mcp-cache.json
+dotconfig/pi/agent/mcp-oauth/
 dotconfig/pi/mcp.json
 dotconfig/pi/web-search.json
 dotconfig/pi/companion.json
 dotconfig/pi/interview-sessions.json
+dotconfig/pi/exa-usage.json
 
 # IDE
 .idea/
