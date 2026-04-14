@@ -19,7 +19,7 @@ require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
 		{ key = "w", path = "~/repos/workspace" },
-		{ key = "p", path = "~/repos/workspace/dotconfig/pi/agent" },
+		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
 		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
 		{ key = "g", path = "~/repos/workspace/dotconfig/ghostty" },
