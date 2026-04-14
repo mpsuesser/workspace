@@ -1,7 +1,7 @@
 {
-  "name": "pi-tool-display",
+  "name": "pi-tui-overrides",
   "version": "0.3.1",
-  "description": "Compact tool call rendering, diff visualization, and output truncation extension for Pi coding agent. Hides, collapses, and truncates verbose tool output for cleaner TUI display.",
+  "description": "TUI overrides, tool rendering, and interactive UI patches for Pi coding agent. Keeps tool output compact while customizing core chat presentation.",
   "type": "module",
   "main": "./index.ts",
   "exports": {
@@ -11,7 +11,7 @@
     "index.ts",
     "src",
     "config/config.example.json",
-    "assets/pi-tool-display.png",
+    "assets/pi-tui-overrides.png",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
@@ -39,18 +39,20 @@
     "truncate",
     "compact",
     "diff",
-    "output-mode"
+    "output-mode",
+    "tui-overrides",
+    "ui-patches"
   ],
   "author": "MasuRii",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MasuRii/pi-tool-display.git"
+    "url": "git+https://github.com/MasuRii/pi-tui-overrides.git"
   },
   "bugs": {
-    "url": "https://github.com/MasuRii/pi-tool-display/issues"
+    "url": "https://github.com/MasuRii/pi-tui-overrides/issues"
   },
-  "homepage": "https://github.com/MasuRii/pi-tool-display#readme",
+  "homepage": "https://github.com/MasuRii/pi-tui-overrides#readme",
   "engines": {
     "node": ">=20"
   },

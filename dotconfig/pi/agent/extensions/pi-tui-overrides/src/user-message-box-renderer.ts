@@ -9,6 +9,7 @@ import {
   patchUserMessageRenderPrototype,
   type PatchableUserMessagePrototype,
 } from "./user-message-box-patch.js";
+import { USER_LABELS } from "./constants/USER_LABELS.js";
 import {
   extractUserMessageMarkdownState,
   type UserMessageMarkdownState,
@@ -38,11 +39,77 @@ interface CachedUserMessageMarkdownRenderer {
 }
 
 const MIN_BORDER_WIDTH = 8;
-const TITLE_TEXT = " user ";
 const CONTENT_HORIZONTAL_PADDING_COLUMNS = 1;
-const USER_MESSAGE_PATCH_VERSION = 5;
+const USER_MESSAGE_PATCH_VERSION = 7;
 const MAX_USER_MESSAGE_MARKDOWN_TEXT_LENGTH = 100_000;
 const MAX_USER_MESSAGE_MARKDOWN_LINE_COUNT = 2_000;
+const DEFAULT_USER_LABEL = "user";
+
+type UserLabelIndexPicker = (exclusiveMax: number) => number;
+
+function defaultPickUserLabelIndex(exclusiveMax: number): number {
+  if (exclusiveMax <= 1) {
+    return 0;
+  }
+
+  const cryptoApi = globalThis.crypto;
+  if (!cryptoApi?.getRandomValues) {
+    return 0;
+  }
+
+  const values = new Uint32Array(1);
+  cryptoApi.getRandomValues(values);
+  return values[0] % exclusiveMax;
+}
+
+function formatUserMessageTitle(label: string): string {
+  return ` ${label} `;
+}
+
+export function pickRandomUserLabel(
+  pickIndex: UserLabelIndexPicker = defaultPickUserLabelIndex,
+): string {
+  if (USER_LABELS.length === 0) {
+    return DEFAULT_USER_LABEL;
+  }
+
+  const index = pickIndex(USER_LABELS.length);
+  return USER_LABELS[index] ?? DEFAULT_USER_LABEL;
+}
+
+export function createUserMessageTitleLabelResolver(
+  pickIndex: UserLabelIndexPicker = defaultPickUserLabelIndex,
+): (instance: unknown) => string {
+  const userMessageTitleLabelCache = new WeakMap<object, string>();
+
+  return (instance: unknown): string => {
+    if (typeof instance !== "object" || instance === null) {
+      return pickRandomUserLabel(pickIndex);
+    }
+
+    const cached = userMessageTitleLabelCache.get(instance);
+    if (cached) {
+      return cached;
+    }
+
+    const label = pickRandomUserLabel(pickIndex);
+    userMessageTitleLabelCache.set(instance, label);
+    return label;
+  };
+}
+
+export const getUserMessageTitleLabel = createUserMessageTitleLabelResolver();
+
+export function getUserMessageContentWidth(totalWidth: number): number {
+  return Math.max(
+    1,
+    totalWidth - 2 - CONTENT_HORIZONTAL_PADDING_COLUMNS * 2,
+  );
+}
+
+function getUserMessageOriginalRenderWidth(totalWidth: number): number {
+  return Math.max(1, totalWidth - 2);
+}
 
 function colorBorder(theme: UserMessageTheme | undefined, text: string): string {
   if (!text || !theme) {
@@ -82,10 +149,11 @@ function colorUserBackground(
 
 function buildTopBorder(
   totalWidth: number,
+  titleLabel: string,
   theme: UserMessageTheme | undefined,
 ): string {
   const innerWidth = Math.max(0, totalWidth - 2);
-  const title = truncateToWidth(TITLE_TEXT, innerWidth, "");
+  const title = truncateToWidth(formatUserMessageTitle(titleLabel), innerWidth, "");
   const fill = "─".repeat(Math.max(0, innerWidth - visibleWidth(title)));
   const row = `${colorBorder(theme, "╭")}${colorTitle(theme, title)}${colorBorder(theme, `${fill}╮`)}`;
 
@@ -108,10 +176,7 @@ function wrapContentLine(
   theme: UserMessageTheme | undefined,
 ): string {
   const sidePadding = " ".repeat(CONTENT_HORIZONTAL_PADDING_COLUMNS);
-  const innerWidth = Math.max(
-    1,
-    totalWidth - 2 - CONTENT_HORIZONTAL_PADDING_COLUMNS * 2,
-  );
+  const innerWidth = getUserMessageContentWidth(totalWidth);
   const normalizedLine = normalizeUserMessageContentLine(line);
   const content = truncateToWidth(normalizedLine, innerWidth, "", true);
   const padding = " ".repeat(Math.max(0, innerWidth - visibleWidth(content)));
@@ -240,28 +305,29 @@ const renderCachedUserMessageMarkdownLines =
 
 function renderUserMessageBodyLines(
   instance: unknown,
-  innerWidth: number,
+  contentWidth: number,
+  originalRenderWidth: number,
   originalRender: (width: number) => string[],
 ): string[] {
   if (typeof instance !== "object" || instance === null) {
-    return originalRender.call(instance, innerWidth);
+    return originalRender.call(instance, originalRenderWidth);
   }
 
   const markdownState = extractUserMessageMarkdownState(
     instance as { children?: unknown[] },
   );
   if (!markdownState || shouldBypassUserMessageMarkdownRebuild(markdownState)) {
-    return originalRender.call(instance, innerWidth);
+    return originalRender.call(instance, originalRenderWidth);
   }
 
   try {
     return renderCachedUserMessageMarkdownLines(
       instance,
       markdownState,
-      innerWidth,
+      contentWidth,
     );
   } catch {
-    return originalRender.call(instance, innerWidth);
+    return originalRender.call(instance, originalRenderWidth);
   }
 }
 
@@ -280,8 +346,13 @@ export function patchNativeUserMessagePrototype(
           return originalRender.call(this, safeWidth);
         }
 
-        const innerWidth = Math.max(1, safeWidth - 2);
-        const lines = renderUserMessageBodyLines(this, innerWidth, originalRender);
+        const contentWidth = getUserMessageContentWidth(safeWidth);
+        const lines = renderUserMessageBodyLines(
+          this,
+          contentWidth,
+          getUserMessageOriginalRenderWidth(safeWidth),
+          originalRender,
+        );
         const contentLines = normalizeUserMessageContentLines(lines);
         const paddedContentLines = addUserMessageVerticalPadding(
           contentLines.length > 0 ? contentLines : [""],
@@ -289,7 +360,7 @@ export function patchNativeUserMessagePrototype(
         const theme = getTheme();
 
         return [
-          buildTopBorder(safeWidth, theme),
+          buildTopBorder(safeWidth, getUserMessageTitleLabel(this), theme),
           ...paddedContentLines.map((renderLine) =>
             wrapContentLine(renderLine, safeWidth, theme),
           ),

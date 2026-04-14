@@ -240,8 +240,8 @@ export class SplitPaneInspectorModal implements ZellijModalContentRenderer {
 
 	private buildHeaderRow(width: number): string {
 		const searchBox = this.buildSearchBox(width);
-		const leftText = this.theme.fg("accent", this.theme.bold("Pi Tool Display Settings"));
-		const leftWidth = visibleWidth("Pi Tool Display Settings");
+		const leftText = this.theme.fg("accent", this.theme.bold("Pi TUI Overrides Settings"));
+		const leftWidth = visibleWidth("Pi TUI Overrides Settings");
 		const searchWidth = visibleWidth(searchBox);
 		const gap = Math.max(1, width - leftWidth - searchWidth);
 		if (gap <= 1) {

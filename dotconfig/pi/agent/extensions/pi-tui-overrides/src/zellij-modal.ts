@@ -1,4 +1,4 @@
-// Vendored from ../zellij-modal/index.ts to keep pi-tool-display standalone.
+// Vendored from ../zellij-modal/index.ts to keep pi-tui-overrides standalone.
 // Keep this module in sync when upstream zellij-modal primitives change.
 import { getSettingsListTheme, type ExtensionAPI, type Theme } from "@mariozechner/pi-coding-agent";
 import {

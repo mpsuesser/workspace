@@ -10,8 +10,12 @@ import {
 } from "../src/user-message-box-markdown.ts";
 import {
   createUserMessageMarkdownLineRenderer,
+  createUserMessageTitleLabelResolver,
+  getUserMessageContentWidth,
+  pickRandomUserLabel,
   shouldBypassUserMessageMarkdownRebuild,
 } from "../src/user-message-box-renderer.ts";
+import { USER_LABELS } from "../src/constants/USER_LABELS.ts";
 import {
   patchUserMessageRenderPrototype,
   type PatchableUserMessagePrototype,
@@ -77,14 +81,14 @@ test("user message patch reapplies on reload when an older patch version is alre
     __piUserMessagePatchVersion: 1,
   };
 
-  patchUserMessageRenderPrototype(prototype, 5, (baseRender) => {
+  patchUserMessageRenderPrototype(prototype, 7, (baseRender) => {
     return function patched(width: number): string[] {
       return [`patched:${baseRender.call(this, width).join("|")}`];
     };
   });
 
   assert.deepEqual(prototype.render(14), ["patched:original:14"]);
-  assert.equal(prototype.__piUserMessagePatchVersion, 5);
+  assert.equal(prototype.__piUserMessagePatchVersion, 7);
   assert.equal(prototype.__piUserMessageNativePatched, true);
 });
 
@@ -170,6 +174,39 @@ test("user message markdown rebuild guard bypasses oversized payloads", () => {
     }),
     true,
   );
+});
+
+test("user message labels list includes the configured notch titles", () => {
+  assert.deepEqual(USER_LABELS, ["user", "bottleneck"]);
+});
+
+test("user message random label picker uses the provided index picker", () => {
+  assert.equal(pickRandomUserLabel(() => 0), "user");
+  assert.equal(pickRandomUserLabel(() => 1), "bottleneck");
+});
+
+test("user message title label resolver keeps the same random label per message", () => {
+  const picks = [1, 0, 1];
+  let pickIndexCalls = 0;
+  const resolveLabel = createUserMessageTitleLabelResolver(() => {
+    const next = picks[pickIndexCalls] ?? 0;
+    pickIndexCalls++;
+    return next;
+  });
+
+  const firstMessage = {};
+  const secondMessage = {};
+
+  assert.equal(resolveLabel(firstMessage), "bottleneck");
+  assert.equal(resolveLabel(firstMessage), "bottleneck");
+  assert.equal(resolveLabel(secondMessage), "user");
+  assert.equal(pickIndexCalls, 2);
+});
+
+test("user message renderer reserves content width for border and side padding", () => {
+  assert.equal(getUserMessageContentWidth(8), 4);
+  assert.equal(getUserMessageContentWidth(20), 16);
+  assert.equal(getUserMessageContentWidth(3), 1);
 });
 
 test("user message renderer adds one top and bottom padding row inside the box", () => {

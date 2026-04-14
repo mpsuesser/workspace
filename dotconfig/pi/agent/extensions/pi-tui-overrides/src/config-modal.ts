@@ -29,6 +29,8 @@ interface ModalOverlayOptions {
 const PREVIEW_LINE_VALUES = ["4", "8", "12", "20", "40"] as const;
 const BASH_PREVIEW_LINE_VALUES = ["0", "5", "10", "20", "40"] as const;
 const PRESET_COMMAND_HINT = TOOL_DISPLAY_PRESETS.join("|");
+const PRIMARY_COMMAND_NAME = "tui-overrides";
+const LEGACY_COMMAND_NAME = "tool-display";
 
 function toOnOff(value: boolean): string {
 	return value ? "on" : "off";
@@ -422,7 +424,11 @@ async function openSettingsModal(ctx: ExtensionCommandContext, controller: ToolD
 	);
 }
 
-function handleToolDisplayArgs(args: string, ctx: ExtensionCommandContext, controller: ToolDisplayConfigController): boolean {
+function handleToolDisplayArgs(
+	args: string,
+	ctx: ExtensionCommandContext,
+	controller: ToolDisplayConfigController,
+): boolean {
 	const raw = args.trim();
 	if (!raw) {
 		return false;
@@ -432,7 +438,7 @@ function handleToolDisplayArgs(args: string, ctx: ExtensionCommandContext, contr
 
 	if (normalized === "show") {
 		ctx.ui.notify(
-			`tool-display: ${summarizeConfig(controller.getConfig(), controller.getCapabilities())}`,
+			`tui-overrides: ${summarizeConfig(controller.getConfig(), controller.getCapabilities())}`,
 			"info",
 		);
 		return true;
@@ -440,7 +446,7 @@ function handleToolDisplayArgs(args: string, ctx: ExtensionCommandContext, contr
 
 	if (normalized === "reset") {
 		controller.setConfig(getToolDisplayPresetConfig("opencode"), ctx);
-		ctx.ui.notify("Tool display preset reset to opencode.", "info");
+		ctx.ui.notify("TUI overrides preset reset to opencode.", "info");
 		return true;
 	}
 
@@ -448,33 +454,42 @@ function handleToolDisplayArgs(args: string, ctx: ExtensionCommandContext, contr
 		const candidate = normalized.slice("preset ".length).trim();
 		const preset = parseToolDisplayPreset(candidate);
 		if (!preset) {
-			ctx.ui.notify(`Unknown preset. Use: /tool-display preset ${PRESET_COMMAND_HINT}`, "warning");
+			ctx.ui.notify(`Unknown preset. Use: /${PRIMARY_COMMAND_NAME} preset ${PRESET_COMMAND_HINT}`, "warning");
 			return true;
 		}
 
 		controller.setConfig(getToolDisplayPresetConfig(preset), ctx);
-		ctx.ui.notify(`Tool display preset set to ${preset}.`, "info");
+		ctx.ui.notify(`TUI overrides preset set to ${preset}.`, "info");
 		return true;
 	}
 
-	ctx.ui.notify(`Usage: /tool-display [show|reset|preset ${PRESET_COMMAND_HINT}]`, "warning");
+	ctx.ui.notify(`Usage: /${PRIMARY_COMMAND_NAME} [show|reset|preset ${PRESET_COMMAND_HINT}]`, "warning");
 	return true;
 }
 
-export function registerToolDisplayCommand(pi: ExtensionAPI, controller: ToolDisplayConfigController): void {
-	pi.registerCommand("tool-display", {
-		description: "Configure tool output rendering (OpenCode-style)",
+function registerDisplayCommand(
+	pi: ExtensionAPI,
+	name: string,
+	controller: ToolDisplayConfigController,
+): void {
+	pi.registerCommand(name, {
+		description: "Configure TUI overrides and tool output rendering",
 		handler: async (args, ctx) => {
 			if (handleToolDisplayArgs(args, ctx, controller)) {
 				return;
 			}
 
 			if (!ctx.hasUI) {
-				ctx.ui.notify("/tool-display requires interactive TUI mode.", "warning");
+				ctx.ui.notify(`/${name} requires interactive TUI mode.`, "warning");
 				return;
 			}
 
 			await openSettingsModal(ctx, controller);
 		},
 	});
+}
+
+export function registerToolDisplayCommand(pi: ExtensionAPI, controller: ToolDisplayConfigController): void {
+	registerDisplayCommand(pi, PRIMARY_COMMAND_NAME, controller);
+	registerDisplayCommand(pi, LEGACY_COMMAND_NAME, controller);
 }

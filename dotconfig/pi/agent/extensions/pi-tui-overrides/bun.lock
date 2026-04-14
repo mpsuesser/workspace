@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "pi-tool-display",
+      "name": "pi-tui-overrides",
       "peerDependencies": {
         "@mariozechner/pi-coding-agent": "^0.64.0",
         "@mariozechner/pi-tui": "^0.64.0",

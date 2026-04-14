@@ -32,7 +32,7 @@ function ownershipChanged(
   );
 }
 
-export default function toolDisplayExtension(pi: ExtensionAPI): void {
+export default function tuiOverridesExtension(pi: ExtensionAPI): void {
   const initial = loadToolDisplayConfig();
   let config: ToolDisplayConfig = initial.config;
   let pendingLoadError = initial.error;

@@ -457,7 +457,7 @@ function formatExpandedPreviewCapHint(
     return "";
   }
 
-  return `\n${theme.fg("warning", `(display capped at ${cap} lines by tool-display setting)`)}`;
+  return `\n${theme.fg("warning", `(display capped at ${cap} lines by tui-overrides setting)`)}`;
 }
 
 function formatRtkPreviewHint(

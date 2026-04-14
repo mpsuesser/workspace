@@ -15,8 +15,10 @@ import {
 	type ToolOverrideOwnership,
 } from "./types.js";
 
-const CONFIG_DIR = join(homedir(), ".pi", "agent", "extensions", "pi-tool-display");
+const CONFIG_DIR = join(homedir(), ".pi", "agent", "extensions", "pi-tui-overrides");
 const CONFIG_FILE = join(CONFIG_DIR, "config.json");
+const LEGACY_CONFIG_DIR = join(homedir(), ".pi", "agent", "extensions", "pi-tool-display");
+const LEGACY_CONFIG_FILE = join(LEGACY_CONFIG_DIR, "config.json");
 
 interface LegacyToolDisplayConfigSource extends Partial<ToolDisplayConfig> {
 	registerReadToolOverride?: unknown;
@@ -140,19 +142,25 @@ export function normalizeToolDisplayConfig(raw: unknown): ToolDisplayConfig {
 }
 
 export function loadToolDisplayConfig(): ConfigLoadResult {
-	if (!existsSync(CONFIG_FILE)) {
+	const configFile = existsSync(CONFIG_FILE)
+		? CONFIG_FILE
+		: existsSync(LEGACY_CONFIG_FILE)
+			? LEGACY_CONFIG_FILE
+			: undefined;
+
+	if (!configFile) {
 		return { config: cloneDefaultConfig() };
 	}
 
 	try {
-		const rawText = readFileSync(CONFIG_FILE, "utf-8");
+		const rawText = readFileSync(configFile, "utf-8");
 		const rawConfig = JSON.parse(rawText) as unknown;
 		return { config: normalizeToolDisplayConfig(rawConfig) };
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error);
 		return {
 			config: cloneDefaultConfig(),
-			error: `Failed to parse ${CONFIG_FILE}: ${message}`,
+			error: `Failed to parse ${configFile}: ${message}`,
 		};
 	}
 }

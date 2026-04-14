@@ -1,8 +1,8 @@
-# pi-tool-display
+# pi-tui-overrides
 
-OpenCode-style tool rendering for the [Pi coding agent](https://github.com/mariozechner/pi).
+TUI overrides, tool rendering, and interactive UI patches for the [Pi coding agent](https://github.com/mariozechner/pi).
 
-`pi-tool-display` keeps tool calls compact by default, adds richer diff rendering for file edits, and improves a few core chat UI details such as thinking labels and the native user prompt box.
+`pi-tui-overrides` keeps tool calls compact by default, adds richer diff rendering for file edits, and improves core chat UI details such as thinking labels and the native user prompt box.
 
 <img width="1360" height="752" alt="image" src="https://github.com/user-attachments/assets/777944a2-18b2-4642-b035-2c703a5abb1b" />
 
@@ -32,22 +32,22 @@ Place this folder in one of Pi's auto-discovery locations:
 
 ```text
 # Global (all projects)
-~/.pi/agent/extensions/pi-tool-display
+~/.pi/agent/extensions/pi-tui-overrides
 
 # Project-specific
-.pi/extensions/pi-tool-display
+.pi/extensions/pi-tui-overrides
 ```
 
 ### npm package
 
 ```bash
-pi install npm:pi-tool-display
+pi install npm:pi-tui-overrides
 ```
 
 ### Git repository
 
 ```bash
-pi install git:github.com/MasuRii/pi-tool-display
+pi install git:github.com/MasuRii/pi-tui-overrides
 ```
 
 ## Usage
@@ -57,8 +57,10 @@ pi install git:github.com/MasuRii/pi-tool-display
 Open the settings modal:
 
 ```text
-/tool-display
+/tui-overrides
 ```
+
+`/tool-display` remains available as a legacy alias.
 
 The modal exposes the day-to-day controls most people change regularly:
 
@@ -76,12 +78,14 @@ Advanced options remain in `config.json`.
 ### Direct commands
 
 ```text
-/tool-display show                    # Show the effective config summary
-/tool-display reset                   # Reset to the default opencode preset
-/tool-display preset opencode         # Apply opencode preset
-/tool-display preset balanced         # Apply balanced preset
-/tool-display preset verbose          # Apply verbose preset
+/tui-overrides show                  # Show the effective config summary
+/tui-overrides reset                 # Reset to the default opencode preset
+/tui-overrides preset opencode       # Apply opencode preset
+/tui-overrides preset balanced       # Apply balanced preset
+/tui-overrides preset verbose        # Apply verbose preset
 ```
+
+`/tool-display ...` still works as a backwards-compatible alias.
 
 ## Presets
 
@@ -108,7 +112,7 @@ Advanced options remain in `config.json`.
 Runtime configuration is stored at:
 
 ```text
-~/.pi/agent/extensions/pi-tool-display/config.json
+~/.pi/agent/extensions/pi-tui-overrides/config.json
 ```
 
 A starter template is included at `config/config.example.json`.
@@ -220,15 +224,15 @@ If another extension is already rendering one of the built-in tools:
 
 1. Set `registerToolOverrides.<tool>` to `false`
 2. Run `/reload`
-3. Use `/tool-display show` to confirm the effective ownership state
+3. Use `/tui-overrides show` to confirm the effective ownership state
 
 ### Config not loading
 
 If your settings are not being applied:
 
-1. Check that `~/.pi/agent/extensions/pi-tool-display/config.json` exists
+1. Check that `~/.pi/agent/extensions/pi-tui-overrides/config.json` exists
 2. Make sure the JSON is valid
-3. Run `/tool-display show` to inspect the effective config summary
+3. Run `/tui-overrides show` to inspect the effective config summary
 
 ### MCP or RTK settings missing
 
@@ -237,12 +241,12 @@ Those controls only appear when the corresponding capability is available in the
 ## Project structure
 
 ```text
-pi-tool-display/
+pi-tui-overrides/
 ├── index.ts                         # Extension entrypoint for Pi auto-discovery
 ├── src/
 │   ├── index.ts                     # Bootstrap and extension registration
 │   ├── capabilities.ts              # MCP/RTK capability detection
-│   ├── config-modal.ts              # /tool-display settings UI and command handling
+│   ├── config-modal.ts              # /tui-overrides settings UI and command handling
 │   ├── config-store.ts              # Config load/save and normalization
 │   ├── diff-renderer.ts             # Edit/write diff rendering engine
 │   ├── line-width-safety.ts         # Width clamping helpers for narrow panes
@@ -263,7 +267,7 @@ pi-tool-display/
 ├── tests/
 │   └── tool-ui-utils.test.ts        # Utility tests for user message and diff helpers
 └── assets/
-    └── pi-tool-display.png          # README screenshot
+    └── pi-tui-overrides.png        # README screenshot
 ```
 
 ## Development
