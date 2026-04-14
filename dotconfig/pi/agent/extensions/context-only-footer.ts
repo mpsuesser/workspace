@@ -30,6 +30,7 @@ function sanitizeStatusText(text: string): string {
 
 const HIDDEN_BRANCHES = new Set(["main"]);
 const HIDDEN_PROVIDERS = new Set(["openai-codex", "anthropic"]);
+const FOOTER_MARGIN_X = 1;
 
 function shouldShowBranch(branch: string | null | undefined): branch is string {
 	return !!branch && !HIDDEN_BRANCHES.has(branch);
@@ -62,6 +63,14 @@ function joinLeftRight(left: string, right: string, width: number, ellipsis: str
 	return truncatedLeft + " ".repeat(Math.max(1, width - visibleWidth(truncatedLeft) - rightWidth)) + right;
 }
 
+function applyHorizontalMargin(text: string, width: number, marginX: number): string {
+	if (width <= 0) return "";
+	const innerWidth = Math.max(0, width - marginX * 2);
+	if (innerWidth === 0) return " ".repeat(width);
+	const padded = truncateToWidth(text, innerWidth, "", true);
+	return " ".repeat(marginX) + padded + " ".repeat(marginX);
+}
+
 export default function (pi: ExtensionAPI) {
 	let currentModel: ModelInfo = null;
 
@@ -92,6 +101,7 @@ export default function (pi: ExtensionAPI) {
 				dispose: unsubscribe,
 				invalidate() {},
 				render(width: number): string[] {
+					const innerWidth = Math.max(1, width - FOOTER_MARGIN_X * 2);
 					let pwd = homeRelative(ctx.sessionManager.getCwd());
 					const branch = footerData.getGitBranch();
 					const sessionName = pi.getSessionName();
@@ -116,18 +126,26 @@ export default function (pi: ExtensionAPI) {
 						contextText = theme.fg("warning", contextDisplay);
 					}
 
-					const topLine = joinLeftRight(
-						theme.fg("dim", pwd),
-						contextText,
+					const topLine = applyHorizontalMargin(
+						joinLeftRight(
+							theme.fg("dim", pwd),
+							contextText,
+							innerWidth,
+							ellipsis,
+						),
 						width,
-						ellipsis,
+						FOOTER_MARGIN_X,
 					);
 
-					const bottomLine = joinLeftRight(
-						theme.fg("dim", modelText),
-						theme.fg("dim", thinkingText),
+					const bottomLine = applyHorizontalMargin(
+						joinLeftRight(
+							theme.fg("dim", modelText),
+							theme.fg("dim", thinkingText),
+							innerWidth,
+							ellipsis,
+						),
 						width,
-						ellipsis,
+						FOOTER_MARGIN_X,
 					);
 
 					const extensionStatuses = footerData.getExtensionStatuses();
@@ -135,13 +153,17 @@ export default function (pi: ExtensionAPI) {
 						return [topLine, bottomLine];
 					}
 
-					const statusLine = truncateToWidth(
-						Array.from(extensionStatuses.entries())
-							.sort(([a], [b]) => a.localeCompare(b))
-							.map(([, text]) => sanitizeStatusText(text))
-							.join(" "),
+					const statusLine = applyHorizontalMargin(
+						truncateToWidth(
+							Array.from(extensionStatuses.entries())
+								.sort(([a], [b]) => a.localeCompare(b))
+								.map(([, text]) => sanitizeStatusText(text))
+								.join(" "),
+							innerWidth,
+							ellipsis,
+						),
 						width,
-						ellipsis,
+						FOOTER_MARGIN_X,
 					);
 
 					return [statusLine, topLine, bottomLine];
