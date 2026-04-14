@@ -1,0 +1,4 @@
+matches:
+  - triggers: [;;watch]
+    replace: |-
+      Now watch the PR checks and once they've completed, if there are failures then plan fixes for the failures. If there are no failures, check the codex review comment, and if there are any bugs or real issues identified in the codex review comment, plan the fixes for those.
