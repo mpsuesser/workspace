@@ -1,0 +1,57 @@
+{
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "incremental": true,
+  "typescript": {
+    "lineWidth": 80,
+    "indentWidth": 4,
+    "useTabs": true,
+    "newLineKind": "lf",
+    "semiColons": "prefer",
+    "quoteStyle": "preferSingle",
+    "quoteProps": "asNeeded",
+    "trailingCommas": "onlyMultiLine",
+    "bracePosition": "nextLine",
+    "singleBodyPosition": "sameLine",
+    "nextControlFlowPosition": "nextLine",
+    "operatorPosition": "nextLine",
+    "useBraces": "maintain",
+    "preferSingleLine": false,
+    "commentLine.forceSpaceAfterSlashes": true,
+    "binaryExpression.linePerExpression": false,
+    "binaryExpression.spaceSurroundingBitwiseAndArithmeticOperator": true,
+    "arrowFunction.useParentheses": "force",
+    "module.sortImportDeclarations": "caseInsensitive",
+    "module.sortExportDeclarations": "caseInsensitive",
+    "exportDeclaration.sortNamedExports": "caseInsensitive",
+    "exportDeclaration.sortTypeOnlyExports": "last",
+    "importDeclaration.sortNamedImports": "caseInsensitive",
+    "importDeclaration.sortTypeOnlyImports": "last",
+    "objectExpression.preferHanging": false,
+    "arguments.preferHanging": "always"
+  },
+  "json": {
+    "indentWidth": 2,
+    "useTabs": false
+  },
+  // Global editor config: intentionally no markdown plugin or markdown includes.
+  "includes": [
+    "**/*.{ts,tsx,cts,mts,js,jsx,cjs,mjs,json,jsonc,yaml,yml,toml,kdl,py,pyi,html,css,scss}"
+  ],
+  "excludes": [
+    "**/node_modules",
+    "**/*-lock.json",
+    "**/*.md",
+    "**/*.mdx",
+    "lib/wordnet/data"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.95.15.wasm",
+    "https://plugins.dprint.dev/json-0.21.3.wasm",
+    "https://plugins.dprint.dev/toml-0.7.0.wasm",
+    "https://plugins.dprint.dev/kachick/kdl-0.3.3.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm",
+    "https://plugins.dprint.dev/ruff-0.7.9.wasm",
+    "https://plugins.dprint.dev/g-plane/malva-v0.15.2.wasm",
+    "https://plugins.dprint.dev/g-plane/markup_fmt-v0.27.0.wasm"
+  ]
+}
