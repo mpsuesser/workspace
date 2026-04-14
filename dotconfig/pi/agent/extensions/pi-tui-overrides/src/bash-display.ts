@@ -2,7 +2,7 @@ import { Text } from "@mariozechner/pi-tui";
 
 const BASH_SPINNER_FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"] as const;
 const BASH_SPINNER_INTERVAL_MS = 80;
-const BASH_SPINNER_STATE_KEY = "__piToolDisplayBashSpinner";
+const BASH_SPINNER_STATE_KEY = "__piTuiOverridesBashSpinner";
 
 interface BashCallArgs {
 	command?: string;

@@ -3,9 +3,9 @@ import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { isMcpToolCandidate } from "./tool-metadata.js";
-import type { ToolDisplayConfig } from "./types.js";
+import type { TuiOverridesConfig } from "./types.js";
 
-export interface ToolDisplayCapabilities {
+export interface TuiOverridesCapabilities {
 	hasMcpTooling: boolean;
 	hasRtkOptimizer: boolean;
 }
@@ -47,17 +47,17 @@ function hasRtkExtensionPath(cwd: string): boolean {
 	return false;
 }
 
-export function detectToolDisplayCapabilities(pi: ExtensionAPI, cwd: string): ToolDisplayCapabilities {
+export function detectTuiOverridesCapabilities(pi: ExtensionAPI, cwd: string): TuiOverridesCapabilities {
 	return {
 		hasMcpTooling: hasMcpTooling(pi),
 		hasRtkOptimizer: hasRtkCommand(pi) || hasRtkExtensionPath(cwd),
 	};
 }
 
-export function applyCapabilityConfigGuards(
-	config: ToolDisplayConfig,
-	capabilities: ToolDisplayCapabilities,
-): ToolDisplayConfig {
+export function applyTuiOverridesCapabilityGuards(
+	config: TuiOverridesConfig,
+	capabilities: TuiOverridesCapabilities,
+): TuiOverridesConfig {
 	return {
 		...config,
 		registerToolOverrides: { ...config.registerToolOverrides },

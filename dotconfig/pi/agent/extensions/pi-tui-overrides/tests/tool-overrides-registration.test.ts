@@ -10,8 +10,8 @@ import {
 	createWriteTool,
 	type ExtensionAPI,
 } from "@mariozechner/pi-coding-agent";
-import { registerToolDisplayOverrides } from "../src/tool-overrides.ts";
-import { DEFAULT_TOOL_DISPLAY_CONFIG } from "../src/types.ts";
+import { registerToolRenderingOverrides } from "../src/tool-overrides.ts";
+import { DEFAULT_TUI_OVERRIDES_CONFIG } from "../src/types.ts";
 
 interface RegisteredToolLike {
 	name: string;
@@ -38,10 +38,10 @@ function createExtensionApiStub(): {
 	return { api, registeredTools };
 }
 
-test("registerToolDisplayOverrides copies built-in prompt metadata onto overridden tools", () => {
+test("registerToolRenderingOverrides copies built-in prompt metadata onto overridden tools", () => {
 	const { api, registeredTools } = createExtensionApiStub();
 
-	registerToolDisplayOverrides(api, () => DEFAULT_TOOL_DISPLAY_CONFIG);
+	registerToolRenderingOverrides(api, () => DEFAULT_TUI_OVERRIDES_CONFIG);
 
 	assert.equal(registeredTools.length, 7);
 
@@ -72,10 +72,10 @@ test("registerToolDisplayOverrides copies built-in prompt metadata onto overridd
 	assert.equal(byName.get("bash")?.promptGuidelines, undefined);
 });
 
-test("registerToolDisplayOverrides clones built-in parameter schemas so Pi TUI keeps extension renderers active", () => {
+test("registerToolRenderingOverrides clones built-in parameter schemas so Pi TUI keeps extension renderers active", () => {
 	const { api, registeredTools } = createExtensionApiStub();
 
-	registerToolDisplayOverrides(api, () => DEFAULT_TOOL_DISPLAY_CONFIG);
+	registerToolRenderingOverrides(api, () => DEFAULT_TUI_OVERRIDES_CONFIG);
 
 	const byName = new Map(registeredTools.map((tool) => [tool.name, tool]));
 	const cwd = process.cwd();

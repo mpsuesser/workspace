@@ -46,7 +46,7 @@ import {
 } from "./tool-metadata.js";
 import type {
   BuiltInToolOverrideName,
-  ToolDisplayConfig,
+  TuiOverridesConfig,
 } from "./types.js";
 import {
   countWriteContentLines,
@@ -64,7 +64,7 @@ interface BuiltInTools {
   write: ReturnType<typeof createWriteTool>;
 }
 
-type ConfigGetter = () => ToolDisplayConfig;
+type ConfigGetter = () => TuiOverridesConfig;
 
 interface RenderTheme {
   fg(color: string, text: string): string;
@@ -93,7 +93,7 @@ interface WriteExecutionMeta {
 
 const builtInToolCache = new Map<string, BuiltInTools>();
 const RTK_COMPACTION_LABEL = "compacted by RTK";
-const WRITE_EXECUTION_META_STATE_KEY = "__piToolDisplayWriteExecutionMeta";
+const WRITE_EXECUTION_META_STATE_KEY = "__piTuiOverridesWriteExecutionMeta";
 
 function cloneToolParameters<T>(parameters: T, seen = new WeakMap<object, unknown>()): T {
   if (parameters === null || typeof parameters !== "object") {
@@ -407,7 +407,7 @@ function formatRtkTechniqueList(techniques: string[]): string {
 
 function formatRtkSummarySuffix(
   details: unknown,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
 ): string {
   if (!config.showRtkCompactionHints) {
@@ -438,7 +438,7 @@ function formatRtkSummarySuffix(
 
 function getExpandedPreviewLineLimit(
   lines: string[],
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
 ): number {
   const limit = Math.max(0, config.expandedPreviewMaxLines);
   if (limit === 0) {
@@ -449,7 +449,7 @@ function getExpandedPreviewLineLimit(
 
 function formatExpandedPreviewCapHint(
   lines: string[],
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
 ): string {
   const cap = Math.max(0, config.expandedPreviewMaxLines);
@@ -462,7 +462,7 @@ function formatExpandedPreviewCapHint(
 
 function formatRtkPreviewHint(
   details: unknown,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
 ): string {
   if (!config.showRtkCompactionHints) {
@@ -574,7 +574,7 @@ function formatBashTruncationHints(
 function getBashPreviewLineLimit(
   lines: string[],
   options: ToolRenderResultOptions,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
 ): number {
   if (options.expanded) {
     return getExpandedPreviewLineLimit(lines, config);
@@ -588,7 +588,7 @@ function getBashPreviewLineLimit(
 function renderBashLivePreview(
   rawOutput: string,
   options: ToolRenderResultOptions,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
   details: BashToolDetails | undefined,
 ): Text {
@@ -615,7 +615,7 @@ function renderBashLivePreview(
 function renderBashErrorResult(
   rawOutput: string,
   options: ToolRenderResultOptions,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
   details: BashToolDetails | undefined,
 ): Text {
@@ -652,7 +652,7 @@ function renderSearchResult(
     details?: unknown;
   },
   options: ToolRenderResultOptions,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
   unitLabel: string,
   details: GrepToolDetails | FindToolDetails | LsToolDetails | undefined,
@@ -771,7 +771,7 @@ function renderMcpResult(
     details?: unknown;
   },
   options: ToolRenderResultOptions,
-  config: ToolDisplayConfig,
+  config: TuiOverridesConfig,
   theme: RenderTheme,
 ): Text {
   if (options.isPartial) {
@@ -824,7 +824,7 @@ function renderMcpResult(
   return new Text(preview, 0, 0);
 }
 
-export function registerToolDisplayOverrides(
+export function registerToolRenderingOverrides(
   pi: ExtensionAPI,
   getConfig: ConfigGetter,
 ): void {

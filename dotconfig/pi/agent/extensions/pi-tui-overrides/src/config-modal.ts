@@ -1,22 +1,22 @@
 import type { ExtensionAPI, ExtensionCommandContext } from "@mariozechner/pi-coding-agent";
 import { ZellijModal } from "./zellij-modal.js";
-import type { ToolDisplayCapabilities } from "./capabilities.js";
-import { getToolDisplayConfigPath } from "./config-store.js";
+import type { TuiOverridesCapabilities } from "./capabilities.js";
+import { getTuiOverridesConfigPath } from "./config-store.js";
 import {
-	detectToolDisplayPreset,
-	getToolDisplayPresetConfig,
-	parseToolDisplayPreset,
-	TOOL_DISPLAY_PRESETS,
-	type ToolDisplayPreset,
+	detectTuiOverridesPreset,
+	getTuiOverridesPresetConfig,
+	parseTuiOverridesPreset,
+	TUI_OVERRIDES_PRESETS,
+	type TuiOverridesPreset,
 } from "./presets.js";
 import { shortenPath } from "./render-utils.js";
 import { SplitPaneInspectorModal, type InspectorSettingItem } from "./settings-inspector-modal.js";
-import { type ToolDisplayConfig } from "./types.js";
+import { type TuiOverridesConfig } from "./types.js";
 
-interface ToolDisplayConfigController {
-	getConfig(): ToolDisplayConfig;
-	setConfig(next: ToolDisplayConfig, ctx: ExtensionCommandContext): void;
-	getCapabilities(): ToolDisplayCapabilities;
+interface TuiOverridesConfigController {
+	getConfig(): TuiOverridesConfig;
+	setConfig(next: TuiOverridesConfig, ctx: ExtensionCommandContext): void;
+	getCapabilities(): TuiOverridesCapabilities;
 }
 
 interface ModalOverlayOptions {
@@ -28,7 +28,7 @@ interface ModalOverlayOptions {
 
 const PREVIEW_LINE_VALUES = ["4", "8", "12", "20", "40"] as const;
 const BASH_PREVIEW_LINE_VALUES = ["0", "5", "10", "20", "40"] as const;
-const PRESET_COMMAND_HINT = TOOL_DISPLAY_PRESETS.join("|");
+const PRESET_COMMAND_HINT = TUI_OVERRIDES_PRESETS.join("|");
 const PRIMARY_COMMAND_NAME = "tui-overrides";
 const LEGACY_COMMAND_NAME = "tool-display";
 
@@ -36,13 +36,13 @@ function toOnOff(value: boolean): string {
 	return value ? "on" : "off";
 }
 
-function toolOwnershipSummary(config: ToolDisplayConfig): string {
+function toolOwnershipSummary(config: TuiOverridesConfig): string {
 	const overrides = config.registerToolOverrides;
 	return `read:${toOnOff(overrides.read)},grep:${toOnOff(overrides.grep)},find:${toOnOff(overrides.find)},ls:${toOnOff(overrides.ls)},bash:${toOnOff(overrides.bash)},edit:${toOnOff(overrides.edit)},write:${toOnOff(overrides.write)}`;
 }
 
-function summarizeConfig(config: ToolDisplayConfig, capabilities: ToolDisplayCapabilities): string {
-	const preset = detectToolDisplayPreset(config);
+function summarizeConfig(config: TuiOverridesConfig, capabilities: TuiOverridesCapabilities): string {
+	const preset = detectTuiOverridesPreset(config);
 	const parts = [
 		`preset=${preset}`,
 		`owners={${toolOwnershipSummary(config)}}`,
@@ -79,8 +79,8 @@ function parseNumber(value: string, fallback: number): number {
 }
 
 function buildAdvancedNotes(
-	config: ToolDisplayConfig,
-	capabilities: ToolDisplayCapabilities,
+	config: TuiOverridesConfig,
+	capabilities: TuiOverridesCapabilities,
 	extra: readonly string[],
 ): string[] {
 	const notes = [
@@ -93,16 +93,16 @@ function buildAdvancedNotes(
 }
 
 function buildInspectorSettings(
-	config: ToolDisplayConfig,
-	capabilities: ToolDisplayCapabilities,
+	config: TuiOverridesConfig,
+	capabilities: TuiOverridesCapabilities,
 ): InspectorSettingItem[] {
-	const configPath = shortenPath(getToolDisplayConfigPath());
+	const configPath = shortenPath(getTuiOverridesConfigPath());
 	const items: InspectorSettingItem[] = [
 		{
 			id: "preset",
 			label: "Preset profile",
-			currentValue: detectToolDisplayPreset(config),
-			values: TOOL_DISPLAY_PRESETS,
+			currentValue: detectTuiOverridesPreset(config),
+			values: TUI_OVERRIDES_PRESETS,
 			inspectorTitle: "Preset Profile",
 			inspectorSummary: [
 				"Determines the overall verbosity and layout of the agent's tool output.",
@@ -118,7 +118,7 @@ function buildInspectorSettings(
 				"Presets reset multiple fields together, so manual JSON tuning is the right place for durable custom combinations.",
 			]),
 			inspectorPath: configPath,
-			searchTerms: ["verbosity", "profile", "layout", "custom", ...TOOL_DISPLAY_PRESETS],
+			searchTerms: ["verbosity", "profile", "layout", "custom", ...TUI_OVERRIDES_PRESETS],
 		},
 		{
 			id: "readOutputMode",
@@ -296,14 +296,14 @@ function buildInspectorSettings(
 	return items;
 }
 
-function applyPreset(preset: ToolDisplayPreset): ToolDisplayConfig {
-	return getToolDisplayPresetConfig(preset);
+function applyPreset(preset: TuiOverridesPreset): TuiOverridesConfig {
+	return getTuiOverridesPresetConfig(preset);
 }
 
-function applySetting(config: ToolDisplayConfig, id: string, value: string): ToolDisplayConfig {
+function applySetting(config: TuiOverridesConfig, id: string, value: string): TuiOverridesConfig {
 	switch (id) {
 		case "preset": {
-			const parsed = parseToolDisplayPreset(value);
+			const parsed = parseTuiOverridesPreset(value);
 			return parsed ? applyPreset(parsed) : config;
 		}
 		case "enableNativeUserMessageBox":
@@ -314,17 +314,17 @@ function applySetting(config: ToolDisplayConfig, id: string, value: string): Too
 		case "readOutputMode":
 			return {
 				...config,
-				readOutputMode: value as ToolDisplayConfig["readOutputMode"],
+				readOutputMode: value as TuiOverridesConfig["readOutputMode"],
 			};
 		case "searchOutputMode":
 			return {
 				...config,
-				searchOutputMode: value as ToolDisplayConfig["searchOutputMode"],
+				searchOutputMode: value as TuiOverridesConfig["searchOutputMode"],
 			};
 		case "mcpOutputMode":
 			return {
 				...config,
-				mcpOutputMode: value as ToolDisplayConfig["mcpOutputMode"],
+				mcpOutputMode: value as TuiOverridesConfig["mcpOutputMode"],
 			};
 		case "previewLines":
 			return {
@@ -334,7 +334,7 @@ function applySetting(config: ToolDisplayConfig, id: string, value: string): Too
 		case "bashOutputMode":
 			return {
 				...config,
-				bashOutputMode: value as ToolDisplayConfig["bashOutputMode"],
+				bashOutputMode: value as TuiOverridesConfig["bashOutputMode"],
 			};
 		case "bashCollapsedLines":
 			return {
@@ -344,7 +344,7 @@ function applySetting(config: ToolDisplayConfig, id: string, value: string): Too
 		case "diffViewMode":
 			return {
 				...config,
-				diffViewMode: value as ToolDisplayConfig["diffViewMode"],
+				diffViewMode: value as TuiOverridesConfig["diffViewMode"],
 			};
 		default:
 			return config;
@@ -378,7 +378,7 @@ function resolveResponsiveOverlayOptions(): ModalOverlayOptions {
 	};
 }
 
-async function openSettingsModal(ctx: ExtensionCommandContext, controller: ToolDisplayConfigController): Promise<void> {
+async function openSettingsModal(ctx: ExtensionCommandContext, controller: TuiOverridesConfigController): Promise<void> {
 	const overlayOptions = resolveResponsiveOverlayOptions();
 	const capabilities = controller.getCapabilities();
 
@@ -424,10 +424,10 @@ async function openSettingsModal(ctx: ExtensionCommandContext, controller: ToolD
 	);
 }
 
-function handleToolDisplayArgs(
+function handleTuiOverridesArgs(
 	args: string,
 	ctx: ExtensionCommandContext,
-	controller: ToolDisplayConfigController,
+	controller: TuiOverridesConfigController,
 ): boolean {
 	const raw = args.trim();
 	if (!raw) {
@@ -445,20 +445,20 @@ function handleToolDisplayArgs(
 	}
 
 	if (normalized === "reset") {
-		controller.setConfig(getToolDisplayPresetConfig("opencode"), ctx);
+		controller.setConfig(getTuiOverridesPresetConfig("opencode"), ctx);
 		ctx.ui.notify("TUI overrides preset reset to opencode.", "info");
 		return true;
 	}
 
 	if (normalized.startsWith("preset ")) {
 		const candidate = normalized.slice("preset ".length).trim();
-		const preset = parseToolDisplayPreset(candidate);
+		const preset = parseTuiOverridesPreset(candidate);
 		if (!preset) {
 			ctx.ui.notify(`Unknown preset. Use: /${PRIMARY_COMMAND_NAME} preset ${PRESET_COMMAND_HINT}`, "warning");
 			return true;
 		}
 
-		controller.setConfig(getToolDisplayPresetConfig(preset), ctx);
+		controller.setConfig(getTuiOverridesPresetConfig(preset), ctx);
 		ctx.ui.notify(`TUI overrides preset set to ${preset}.`, "info");
 		return true;
 	}
@@ -470,12 +470,12 @@ function handleToolDisplayArgs(
 function registerDisplayCommand(
 	pi: ExtensionAPI,
 	name: string,
-	controller: ToolDisplayConfigController,
+	controller: TuiOverridesConfigController,
 ): void {
 	pi.registerCommand(name, {
 		description: "Configure TUI overrides and tool output rendering",
 		handler: async (args, ctx) => {
-			if (handleToolDisplayArgs(args, ctx, controller)) {
+			if (handleTuiOverridesArgs(args, ctx, controller)) {
 				return;
 			}
 
@@ -489,7 +489,7 @@ function registerDisplayCommand(
 	});
 }
 
-export function registerToolDisplayCommand(pi: ExtensionAPI, controller: ToolDisplayConfigController): void {
+export function registerTuiOverridesCommand(pi: ExtensionAPI, controller: TuiOverridesConfigController): void {
 	registerDisplayCommand(pi, PRIMARY_COMMAND_NAME, controller);
 	registerDisplayCommand(pi, LEGACY_COMMAND_NAME, controller);
 }

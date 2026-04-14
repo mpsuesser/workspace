@@ -46,7 +46,7 @@ test("split diff derives sequential new-side line numbers for canonical numbered
 	const component = renderEditDiffResult(
 		{
 			diff: [
-				"  6|export default function toolDisplay() {",
+				"  6|export default function tuiOverrides() {",
 				"- 7|  const oldA = true;",
 				"- 8|  const oldB = true;",
 				"  9|  setup();",

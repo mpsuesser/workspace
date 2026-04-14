@@ -32,7 +32,7 @@ export interface ToolOverrideOwnership {
 	write: boolean;
 }
 
-export interface ToolDisplayConfig {
+export interface TuiOverridesConfig {
 	registerToolOverrides: ToolOverrideOwnership;
 	enableNativeUserMessageBox: boolean;
 	readOutputMode: ReadOutputMode;
@@ -50,7 +50,7 @@ export interface ToolDisplayConfig {
 	showRtkCompactionHints: boolean;
 }
 
-export const DEFAULT_TOOL_DISPLAY_CONFIG: ToolDisplayConfig = {
+export const DEFAULT_TUI_OVERRIDES_CONFIG: TuiOverridesConfig = {
 	registerToolOverrides: {
 		read: true,
 		grep: true,
@@ -77,7 +77,7 @@ export const DEFAULT_TOOL_DISPLAY_CONFIG: ToolDisplayConfig = {
 };
 
 export interface ConfigLoadResult {
-	config: ToolDisplayConfig;
+	config: TuiOverridesConfig;
 	error?: string;
 }
 

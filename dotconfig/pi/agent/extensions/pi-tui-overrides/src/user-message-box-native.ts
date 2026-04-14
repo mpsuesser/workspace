@@ -7,7 +7,7 @@ import {
   type PatchableUserMessagePrototype,
   type UserMessageTheme,
 } from "./user-message-box-renderer.js";
-import type { ToolDisplayConfig } from "./types.js";
+import type { TuiOverridesConfig } from "./types.js";
 
 function patchUserMessageRender(
   getTheme: () => UserMessageTheme | undefined,
@@ -22,7 +22,7 @@ function patchUserMessageRender(
 
 export default function registerNativeUserMessageBox(
   pi: ExtensionAPI,
-  getConfig: () => ToolDisplayConfig,
+  getConfig: () => TuiOverridesConfig,
 ): void {
   let activeTheme: UserMessageTheme | undefined;
 

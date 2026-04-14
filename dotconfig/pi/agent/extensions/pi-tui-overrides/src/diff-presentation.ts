@@ -1,6 +1,6 @@
 import { truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
 import { pluralize } from "./render-utils.js";
-import type { ToolDisplayConfig } from "./types.js";
+import type { TuiOverridesConfig } from "./types.js";
 
 export interface DiffSummaryStats {
 	added: number;
@@ -22,7 +22,7 @@ export function normalizeDiffRenderWidth(width: number): number {
 }
 
 export function resolveDiffPresentationMode(
-	config: Pick<ToolDisplayConfig, "diffViewMode" | "diffSplitMinWidth">,
+	config: Pick<TuiOverridesConfig, "diffViewMode" | "diffSplitMinWidth">,
 	width: number,
 	canRenderSplitLayout: boolean,
 ): DiffPresentationMode {

@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { registerToolDisplayOverrides } from "../src/tool-overrides.ts";
-import { DEFAULT_TOOL_DISPLAY_CONFIG, type ToolDisplayConfig } from "../src/types.ts";
+import { registerToolRenderingOverrides } from "../src/tool-overrides.ts";
+import { DEFAULT_TUI_OVERRIDES_CONFIG, type TuiOverridesConfig } from "../src/types.ts";
 
 interface RenderThemeLike {
 	fg(color: string, value: string): string;
@@ -36,12 +36,12 @@ interface ToolEventHandlers {
 	before_agent_start?: () => Promise<void> | void;
 }
 
-function buildConfig(overrides: Partial<ToolDisplayConfig>): ToolDisplayConfig {
+function buildConfig(overrides: Partial<TuiOverridesConfig>): TuiOverridesConfig {
 	return {
-		...DEFAULT_TOOL_DISPLAY_CONFIG,
+		...DEFAULT_TUI_OVERRIDES_CONFIG,
 		...overrides,
 		registerToolOverrides: {
-			...DEFAULT_TOOL_DISPLAY_CONFIG.registerToolOverrides,
+			...DEFAULT_TUI_OVERRIDES_CONFIG.registerToolOverrides,
 			...overrides.registerToolOverrides,
 		},
 	};
@@ -149,7 +149,7 @@ test("current local-style config keeps read/search/MCP output modes distinct", a
 		},
 	]);
 
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 	await eventHandlers.session_start?.();
 
 	const registeredNames = new Set(registeredTools.map((tool) => tool.name));
@@ -184,7 +184,7 @@ test("current local-style config keeps read/search/MCP output modes distinct", a
 	);
 });
 
-test("registerToolDisplayOverrides preserves MCP prompt metadata for proxy and direct wrappers", async () => {
+test("registerToolRenderingOverrides preserves MCP prompt metadata for proxy and direct wrappers", async () => {
 	const { api, registeredTools, eventHandlers } = createExtensionApiStub([
 		{
 			name: "mcp",
@@ -206,7 +206,7 @@ test("registerToolDisplayOverrides preserves MCP prompt metadata for proxy and d
 		},
 	]);
 
-	registerToolDisplayOverrides(api, () => DEFAULT_TOOL_DISPLAY_CONFIG);
+	registerToolRenderingOverrides(api, () => DEFAULT_TUI_OVERRIDES_CONFIG);
 	await eventHandlers.session_start?.();
 
 	const byName = new Map(registeredTools.map((tool) => [tool.name, tool]));
@@ -239,7 +239,7 @@ test("read-only ownership keeps summary line counts confined to read", () => {
 	});
 	const { api, registeredTools } = createExtensionApiStub();
 
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 
 	assert.deepEqual(
 		registeredTools.map((tool) => tool.name),
@@ -269,7 +269,7 @@ test("showTruncationHints=false suppresses backend truncation summaries across r
 		},
 	]);
 
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 	await eventHandlers.session_start?.();
 
 	assert.equal(
@@ -320,7 +320,7 @@ test("showRtkCompactionHints stays independent from showTruncationHints for summ
 		},
 	};
 
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 	await eventHandlers.session_start?.();
 
 	assert.match(
@@ -374,7 +374,7 @@ test("showRtkCompactionHints stays independent from showTruncationHints for prev
 		},
 	};
 
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 	await eventHandlers.session_start?.();
 
 	assert.match(
@@ -408,7 +408,7 @@ test("bash output modes stay distinct across opencode, summary, and preview", ()
 		bashCollapsedLines: 1,
 	});
 	const opencodeStub = createExtensionApiStub();
-	registerToolDisplayOverrides(opencodeStub.api, () => opencodeConfig);
+	registerToolRenderingOverrides(opencodeStub.api, () => opencodeConfig);
 	assert.equal(
 		renderToolResult(opencodeStub.registeredTools.find((tool) => tool.name === "bash"), output),
 		"alpha\n... (2 more lines • Ctrl+O to expand)",
@@ -419,7 +419,7 @@ test("bash output modes stay distinct across opencode, summary, and preview", ()
 		bashCollapsedLines: 1,
 	});
 	const summaryStub = createExtensionApiStub();
-	registerToolDisplayOverrides(summaryStub.api, () => summaryConfig);
+	registerToolRenderingOverrides(summaryStub.api, () => summaryConfig);
 	assert.equal(
 		renderToolResult(summaryStub.registeredTools.find((tool) => tool.name === "bash"), output),
 		"↳ 3 lines returned",
@@ -431,7 +431,7 @@ test("bash output modes stay distinct across opencode, summary, and preview", ()
 		bashCollapsedLines: 1,
 	});
 	const previewStub = createExtensionApiStub();
-	registerToolDisplayOverrides(previewStub.api, () => previewConfig);
+	registerToolRenderingOverrides(previewStub.api, () => previewConfig);
 	assert.equal(
 		renderToolResult(previewStub.registeredTools.find((tool) => tool.name === "bash"), output),
 		"alpha\nbeta\n... (1 more line • Ctrl+O to expand)",
@@ -443,7 +443,7 @@ test("bash call spinner appears only while execution is active", async () => {
 		bashOutputMode: "summary",
 	});
 	const { api, registeredTools } = createExtensionApiStub();
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 
 	const bashTool = registeredTools.find((tool) => tool.name === "bash");
 	const idle = renderToolCall(bashTool, { command: "npm test" });
@@ -488,7 +488,7 @@ test("bash render keeps the running result area empty until output exists", () =
 		bashOutputMode: "summary",
 	});
 	const { api, registeredTools } = createExtensionApiStub();
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 
 	const bashTool = registeredTools.find((tool) => tool.name === "bash");
 	assert.equal(
@@ -503,7 +503,7 @@ test("bash render shows live partial output once streaming begins", () => {
 		previewLines: 2,
 	});
 	const { api, registeredTools } = createExtensionApiStub();
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 
 	const bashTool = registeredTools.find((tool) => tool.name === "bash");
 	assert.equal(
@@ -522,7 +522,7 @@ test("bash live partial output respects opencode collapse settings", () => {
 		previewLines: 4,
 	});
 	const { api, registeredTools } = createExtensionApiStub();
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 
 	const bashTool = registeredTools.find((tool) => tool.name === "bash");
 	assert.equal(
@@ -540,7 +540,7 @@ test("bash errors render with an explicit failure header and preview", () => {
 		previewLines: 2,
 	});
 	const { api, registeredTools } = createExtensionApiStub();
-	registerToolDisplayOverrides(api, () => config);
+	registerToolRenderingOverrides(api, () => config);
 
 	const bashTool = registeredTools.find((tool) => tool.name === "bash");
 	assert.equal(

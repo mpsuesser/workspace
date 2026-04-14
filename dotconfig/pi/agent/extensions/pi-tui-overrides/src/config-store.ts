@@ -4,14 +4,14 @@ import { join } from "node:path";
 import {
 	BUILT_IN_TOOL_OVERRIDE_NAMES,
 	BASH_OUTPUT_MODES,
-	DEFAULT_TOOL_DISPLAY_CONFIG,
+	DEFAULT_TUI_OVERRIDES_CONFIG,
 	type ConfigLoadResult,
 	type ConfigSaveResult,
 	DIFF_VIEW_MODES,
 	MCP_OUTPUT_MODES,
 	READ_OUTPUT_MODES,
 	SEARCH_OUTPUT_MODES,
-	type ToolDisplayConfig,
+	type TuiOverridesConfig,
 	type ToolOverrideOwnership,
 } from "./types.js";
 
@@ -20,7 +20,7 @@ const CONFIG_FILE = join(CONFIG_DIR, "config.json");
 const LEGACY_CONFIG_DIR = join(homedir(), ".pi", "agent", "extensions", "pi-tool-display");
 const LEGACY_CONFIG_FILE = join(LEGACY_CONFIG_DIR, "config.json");
 
-interface LegacyToolDisplayConfigSource extends Partial<ToolDisplayConfig> {
+interface LegacyTuiOverridesConfigSource extends Partial<TuiOverridesConfig> {
 	registerReadToolOverride?: unknown;
 }
 
@@ -45,45 +45,45 @@ function toRecord(value: unknown): Record<string, unknown> {
 	return value as Record<string, unknown>;
 }
 
-function toReadOutputMode(value: unknown): ToolDisplayConfig["readOutputMode"] {
-	return READ_OUTPUT_MODES.includes(value as ToolDisplayConfig["readOutputMode"])
-		? (value as ToolDisplayConfig["readOutputMode"])
-		: DEFAULT_TOOL_DISPLAY_CONFIG.readOutputMode;
+function toReadOutputMode(value: unknown): TuiOverridesConfig["readOutputMode"] {
+	return READ_OUTPUT_MODES.includes(value as TuiOverridesConfig["readOutputMode"])
+		? (value as TuiOverridesConfig["readOutputMode"])
+		: DEFAULT_TUI_OVERRIDES_CONFIG.readOutputMode;
 }
 
-function toSearchOutputMode(value: unknown): ToolDisplayConfig["searchOutputMode"] {
-	return SEARCH_OUTPUT_MODES.includes(value as ToolDisplayConfig["searchOutputMode"])
-		? (value as ToolDisplayConfig["searchOutputMode"])
-		: DEFAULT_TOOL_DISPLAY_CONFIG.searchOutputMode;
+function toSearchOutputMode(value: unknown): TuiOverridesConfig["searchOutputMode"] {
+	return SEARCH_OUTPUT_MODES.includes(value as TuiOverridesConfig["searchOutputMode"])
+		? (value as TuiOverridesConfig["searchOutputMode"])
+		: DEFAULT_TUI_OVERRIDES_CONFIG.searchOutputMode;
 }
 
-function toMcpOutputMode(value: unknown): ToolDisplayConfig["mcpOutputMode"] {
-	return MCP_OUTPUT_MODES.includes(value as ToolDisplayConfig["mcpOutputMode"])
-		? (value as ToolDisplayConfig["mcpOutputMode"])
-		: DEFAULT_TOOL_DISPLAY_CONFIG.mcpOutputMode;
+function toMcpOutputMode(value: unknown): TuiOverridesConfig["mcpOutputMode"] {
+	return MCP_OUTPUT_MODES.includes(value as TuiOverridesConfig["mcpOutputMode"])
+		? (value as TuiOverridesConfig["mcpOutputMode"])
+		: DEFAULT_TUI_OVERRIDES_CONFIG.mcpOutputMode;
 }
 
-function toBashOutputMode(value: unknown): ToolDisplayConfig["bashOutputMode"] {
-	return BASH_OUTPUT_MODES.includes(value as ToolDisplayConfig["bashOutputMode"])
-		? (value as ToolDisplayConfig["bashOutputMode"])
-		: DEFAULT_TOOL_DISPLAY_CONFIG.bashOutputMode;
+function toBashOutputMode(value: unknown): TuiOverridesConfig["bashOutputMode"] {
+	return BASH_OUTPUT_MODES.includes(value as TuiOverridesConfig["bashOutputMode"])
+		? (value as TuiOverridesConfig["bashOutputMode"])
+		: DEFAULT_TUI_OVERRIDES_CONFIG.bashOutputMode;
 }
 
-function toDiffViewMode(value: unknown): ToolDisplayConfig["diffViewMode"] {
+function toDiffViewMode(value: unknown): TuiOverridesConfig["diffViewMode"] {
 	if (value === "stacked") {
 		// Backward compatibility with older config naming.
 		return "unified";
 	}
 
-	return DIFF_VIEW_MODES.includes(value as ToolDisplayConfig["diffViewMode"])
-		? (value as ToolDisplayConfig["diffViewMode"])
-		: DEFAULT_TOOL_DISPLAY_CONFIG.diffViewMode;
+	return DIFF_VIEW_MODES.includes(value as TuiOverridesConfig["diffViewMode"])
+		? (value as TuiOverridesConfig["diffViewMode"])
+		: DEFAULT_TUI_OVERRIDES_CONFIG.diffViewMode;
 }
 
-function cloneDefaultConfig(): ToolDisplayConfig {
+function cloneDefaultConfig(): TuiOverridesConfig {
 	return {
-		...DEFAULT_TOOL_DISPLAY_CONFIG,
-		registerToolOverrides: { ...DEFAULT_TOOL_DISPLAY_CONFIG.registerToolOverrides },
+		...DEFAULT_TUI_OVERRIDES_CONFIG,
+		registerToolOverrides: { ...DEFAULT_TUI_OVERRIDES_CONFIG.registerToolOverrides },
 	};
 }
 
@@ -92,7 +92,7 @@ function normalizeToolOverrideOwnership(
 	legacyRegisterReadToolOverride: unknown,
 ): ToolOverrideOwnership {
 	const source = toRecord(rawOverrides);
-	const defaults = DEFAULT_TOOL_DISPLAY_CONFIG.registerToolOverrides;
+	const defaults = DEFAULT_TUI_OVERRIDES_CONFIG.registerToolOverrides;
 	const legacyReadDefault = toBoolean(legacyRegisterReadToolOverride, defaults.read);
 
 	const overrides = { ...defaults };
@@ -104,9 +104,9 @@ function normalizeToolOverrideOwnership(
 	return overrides;
 }
 
-export function normalizeToolDisplayConfig(raw: unknown): ToolDisplayConfig {
+export function normalizeTuiOverridesConfig(raw: unknown): TuiOverridesConfig {
 	const source =
-		typeof raw === "object" && raw !== null ? (raw as LegacyToolDisplayConfigSource) : ({} as LegacyToolDisplayConfigSource);
+		typeof raw === "object" && raw !== null ? (raw as LegacyTuiOverridesConfigSource) : ({} as LegacyTuiOverridesConfigSource);
 
 	return {
 		registerToolOverrides: normalizeToolOverrideOwnership(
@@ -115,33 +115,33 @@ export function normalizeToolDisplayConfig(raw: unknown): ToolDisplayConfig {
 		),
 		enableNativeUserMessageBox: toBoolean(
 			source.enableNativeUserMessageBox,
-			DEFAULT_TOOL_DISPLAY_CONFIG.enableNativeUserMessageBox,
+			DEFAULT_TUI_OVERRIDES_CONFIG.enableNativeUserMessageBox,
 		),
 		readOutputMode: toReadOutputMode(source.readOutputMode),
 		searchOutputMode: toSearchOutputMode(source.searchOutputMode),
 		mcpOutputMode: toMcpOutputMode(source.mcpOutputMode),
-		previewLines: clampNumber(source.previewLines, 1, 80, DEFAULT_TOOL_DISPLAY_CONFIG.previewLines),
+		previewLines: clampNumber(source.previewLines, 1, 80, DEFAULT_TUI_OVERRIDES_CONFIG.previewLines),
 		expandedPreviewMaxLines: clampNumber(
 			source.expandedPreviewMaxLines,
 			0,
 			20_000,
-			DEFAULT_TOOL_DISPLAY_CONFIG.expandedPreviewMaxLines,
+			DEFAULT_TUI_OVERRIDES_CONFIG.expandedPreviewMaxLines,
 		),
 		bashOutputMode: toBashOutputMode(source.bashOutputMode),
-		bashCollapsedLines: clampNumber(source.bashCollapsedLines, 0, 80, DEFAULT_TOOL_DISPLAY_CONFIG.bashCollapsedLines),
+		bashCollapsedLines: clampNumber(source.bashCollapsedLines, 0, 80, DEFAULT_TUI_OVERRIDES_CONFIG.bashCollapsedLines),
 		diffViewMode: toDiffViewMode(source.diffViewMode),
-		diffSplitMinWidth: clampNumber(source.diffSplitMinWidth, 70, 240, DEFAULT_TOOL_DISPLAY_CONFIG.diffSplitMinWidth),
-		diffCollapsedLines: clampNumber(source.diffCollapsedLines, 4, 240, DEFAULT_TOOL_DISPLAY_CONFIG.diffCollapsedLines),
-		diffWordWrap: toBoolean(source.diffWordWrap, DEFAULT_TOOL_DISPLAY_CONFIG.diffWordWrap),
-		showTruncationHints: toBoolean(source.showTruncationHints, DEFAULT_TOOL_DISPLAY_CONFIG.showTruncationHints),
+		diffSplitMinWidth: clampNumber(source.diffSplitMinWidth, 70, 240, DEFAULT_TUI_OVERRIDES_CONFIG.diffSplitMinWidth),
+		diffCollapsedLines: clampNumber(source.diffCollapsedLines, 4, 240, DEFAULT_TUI_OVERRIDES_CONFIG.diffCollapsedLines),
+		diffWordWrap: toBoolean(source.diffWordWrap, DEFAULT_TUI_OVERRIDES_CONFIG.diffWordWrap),
+		showTruncationHints: toBoolean(source.showTruncationHints, DEFAULT_TUI_OVERRIDES_CONFIG.showTruncationHints),
 		showRtkCompactionHints: toBoolean(
 			source.showRtkCompactionHints,
-			DEFAULT_TOOL_DISPLAY_CONFIG.showRtkCompactionHints,
+			DEFAULT_TUI_OVERRIDES_CONFIG.showRtkCompactionHints,
 		),
 	};
 }
 
-export function loadToolDisplayConfig(): ConfigLoadResult {
+export function loadTuiOverridesConfig(): ConfigLoadResult {
 	const configFile = existsSync(CONFIG_FILE)
 		? CONFIG_FILE
 		: existsSync(LEGACY_CONFIG_FILE)
@@ -155,7 +155,7 @@ export function loadToolDisplayConfig(): ConfigLoadResult {
 	try {
 		const rawText = readFileSync(configFile, "utf-8");
 		const rawConfig = JSON.parse(rawText) as unknown;
-		return { config: normalizeToolDisplayConfig(rawConfig) };
+		return { config: normalizeTuiOverridesConfig(rawConfig) };
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error);
 		return {
@@ -165,8 +165,8 @@ export function loadToolDisplayConfig(): ConfigLoadResult {
 	}
 }
 
-export function saveToolDisplayConfig(config: ToolDisplayConfig): ConfigSaveResult {
-	const normalized = normalizeToolDisplayConfig(config);
+export function saveTuiOverridesConfig(config: TuiOverridesConfig): ConfigSaveResult {
+	const normalized = normalizeTuiOverridesConfig(config);
 	const tmpFile = `${CONFIG_FILE}.tmp`;
 
 	try {
@@ -190,6 +190,6 @@ export function saveToolDisplayConfig(config: ToolDisplayConfig): ConfigSaveResu
 	}
 }
 
-export function getToolDisplayConfigPath(): string {
+export function getTuiOverridesConfigPath(): string {
 	return CONFIG_FILE;
 }

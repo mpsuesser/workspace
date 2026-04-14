@@ -1,24 +1,24 @@
-import { DEFAULT_TOOL_DISPLAY_CONFIG, type ToolDisplayConfig } from "./types.js";
+import { DEFAULT_TUI_OVERRIDES_CONFIG, type TuiOverridesConfig } from "./types.js";
 
-export const TOOL_DISPLAY_PRESETS = ["opencode", "balanced", "verbose"] as const;
-export type ToolDisplayPreset = (typeof TOOL_DISPLAY_PRESETS)[number];
+export const TUI_OVERRIDES_PRESETS = ["opencode", "balanced", "verbose"] as const;
+export type TuiOverridesPreset = (typeof TUI_OVERRIDES_PRESETS)[number];
 
-const TOOL_DISPLAY_PRESET_CONFIGS: Record<ToolDisplayPreset, ToolDisplayConfig> = {
+const TUI_OVERRIDES_PRESET_CONFIGS: Record<TuiOverridesPreset, TuiOverridesConfig> = {
 	opencode: {
-		...DEFAULT_TOOL_DISPLAY_CONFIG,
-		registerToolOverrides: { ...DEFAULT_TOOL_DISPLAY_CONFIG.registerToolOverrides },
+		...DEFAULT_TUI_OVERRIDES_CONFIG,
+		registerToolOverrides: { ...DEFAULT_TUI_OVERRIDES_CONFIG.registerToolOverrides },
 	},
 	balanced: {
-		...DEFAULT_TOOL_DISPLAY_CONFIG,
-		registerToolOverrides: { ...DEFAULT_TOOL_DISPLAY_CONFIG.registerToolOverrides },
+		...DEFAULT_TUI_OVERRIDES_CONFIG,
+		registerToolOverrides: { ...DEFAULT_TUI_OVERRIDES_CONFIG.registerToolOverrides },
 		readOutputMode: "summary",
 		searchOutputMode: "count",
 		mcpOutputMode: "summary",
 		bashOutputMode: "summary",
 	},
 	verbose: {
-		...DEFAULT_TOOL_DISPLAY_CONFIG,
-		registerToolOverrides: { ...DEFAULT_TOOL_DISPLAY_CONFIG.registerToolOverrides },
+		...DEFAULT_TUI_OVERRIDES_CONFIG,
+		registerToolOverrides: { ...DEFAULT_TUI_OVERRIDES_CONFIG.registerToolOverrides },
 		readOutputMode: "preview",
 		searchOutputMode: "preview",
 		mcpOutputMode: "preview",
@@ -28,7 +28,7 @@ const TOOL_DISPLAY_PRESET_CONFIGS: Record<ToolDisplayPreset, ToolDisplayConfig> 
 	},
 };
 
-function toolOverrideOwnershipEqual(a: ToolDisplayConfig, b: ToolDisplayConfig): boolean {
+function toolOverrideOwnershipEqual(a: TuiOverridesConfig, b: TuiOverridesConfig): boolean {
 	return (
 		a.registerToolOverrides.read === b.registerToolOverrides.read &&
 		a.registerToolOverrides.grep === b.registerToolOverrides.grep &&
@@ -40,7 +40,7 @@ function toolOverrideOwnershipEqual(a: ToolDisplayConfig, b: ToolDisplayConfig):
 	);
 }
 
-function configsEqual(a: ToolDisplayConfig, b: ToolDisplayConfig): boolean {
+function configsEqual(a: TuiOverridesConfig, b: TuiOverridesConfig): boolean {
 	return (
 		toolOverrideOwnershipEqual(a, b) &&
 		a.enableNativeUserMessageBox === b.enableNativeUserMessageBox &&
@@ -60,27 +60,27 @@ function configsEqual(a: ToolDisplayConfig, b: ToolDisplayConfig): boolean {
 	);
 }
 
-export function getToolDisplayPresetConfig(preset: ToolDisplayPreset): ToolDisplayConfig {
-	const config = TOOL_DISPLAY_PRESET_CONFIGS[preset];
+export function getTuiOverridesPresetConfig(preset: TuiOverridesPreset): TuiOverridesConfig {
+	const config = TUI_OVERRIDES_PRESET_CONFIGS[preset];
 	return {
 		...config,
 		registerToolOverrides: { ...config.registerToolOverrides },
 	};
 }
 
-export function detectToolDisplayPreset(config: ToolDisplayConfig): ToolDisplayPreset | "custom" {
-	for (const preset of TOOL_DISPLAY_PRESETS) {
-		if (configsEqual(config, TOOL_DISPLAY_PRESET_CONFIGS[preset])) {
+export function detectTuiOverridesPreset(config: TuiOverridesConfig): TuiOverridesPreset | "custom" {
+	for (const preset of TUI_OVERRIDES_PRESETS) {
+		if (configsEqual(config, TUI_OVERRIDES_PRESET_CONFIGS[preset])) {
 			return preset;
 		}
 	}
 	return "custom";
 }
 
-export function parseToolDisplayPreset(raw: string): ToolDisplayPreset | undefined {
+export function parseTuiOverridesPreset(raw: string): TuiOverridesPreset | undefined {
 	const normalized = raw.trim().toLowerCase();
 	if (!normalized) {
 		return undefined;
 	}
-	return TOOL_DISPLAY_PRESETS.find((preset) => preset === normalized);
+	return TUI_OVERRIDES_PRESETS.find((preset) => preset === normalized);
 }

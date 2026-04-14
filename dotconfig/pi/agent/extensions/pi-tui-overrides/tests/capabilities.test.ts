@@ -2,10 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 import {
-	applyCapabilityConfigGuards,
-	detectToolDisplayCapabilities,
+	applyTuiOverridesCapabilityGuards,
+	detectTuiOverridesCapabilities,
 } from "../src/capabilities.ts";
-import { DEFAULT_TOOL_DISPLAY_CONFIG } from "../src/types.ts";
+import { DEFAULT_TUI_OVERRIDES_CONFIG } from "../src/types.ts";
 
 function createExtensionApiStub(allTools: unknown[]): ExtensionAPI {
 	return {
@@ -18,7 +18,7 @@ function createExtensionApiStub(allTools: unknown[]): ExtensionAPI {
 	} as unknown as ExtensionAPI;
 }
 
-test("detectToolDisplayCapabilities recognises MCP tools from v0.62.0 tool info without label or execute", () => {
+test("detectTuiOverridesCapabilities recognises MCP tools from v0.62.0 tool info without label or execute", () => {
 	const api = createExtensionApiStub([
 		{
 			name: "exa_web_search_exa",
@@ -34,17 +34,17 @@ test("detectToolDisplayCapabilities recognises MCP tools from v0.62.0 tool info 
 		},
 	]);
 
-	const capabilities = detectToolDisplayCapabilities(api, "C:/Users/Administrator/.pi");
+	const capabilities = detectTuiOverridesCapabilities(api, "C:/Users/Administrator/.pi");
 
 	assert.equal(capabilities.hasMcpTooling, true);
 });
 
-test("applyCapabilityConfigGuards hides MCP output when no MCP tooling is available", () => {
-	const guarded = applyCapabilityConfigGuards(DEFAULT_TOOL_DISPLAY_CONFIG, {
+test("applyTuiOverridesCapabilityGuards hides MCP output when no MCP tooling is available", () => {
+	const guarded = applyTuiOverridesCapabilityGuards(DEFAULT_TUI_OVERRIDES_CONFIG, {
 		hasMcpTooling: false,
 		hasRtkOptimizer: true,
 	});
 
 	assert.equal(guarded.mcpOutputMode, "hidden");
-	assert.equal(guarded.showRtkCompactionHints, DEFAULT_TOOL_DISPLAY_CONFIG.showRtkCompactionHints);
+	assert.equal(guarded.showRtkCompactionHints, DEFAULT_TUI_OVERRIDES_CONFIG.showRtkCompactionHints);
 });

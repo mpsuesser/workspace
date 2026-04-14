@@ -12,7 +12,7 @@ import {
 	type DiffPresentationMode,
 } from "./diff-presentation.js";
 import { pluralize, sanitizeAnsiForThemedOutput } from "./render-utils.js";
-import type { ToolDisplayConfig } from "./types.js";
+import type { TuiOverridesConfig } from "./types.js";
 
 interface DiffTheme {
 	fg(color: string, text: string): string;
@@ -1775,7 +1775,7 @@ function safeGetDiff(details: unknown): string {
 export function renderEditDiffResult(
 	details: unknown,
 	options: DiffRenderOptions,
-	config: ToolDisplayConfig,
+	config: TuiOverridesConfig,
 	theme: DiffTheme,
 	fallbackText: string,
 ): Component {
@@ -2154,7 +2154,7 @@ function renderWriteOverwriteGuardRows(
 export function renderWriteDiffResult(
 	content: string | undefined,
 	options: DiffRenderOptions,
-	config: ToolDisplayConfig,
+	config: TuiOverridesConfig,
 	theme: DiffTheme,
 	fallbackText: string,
 ): Component {

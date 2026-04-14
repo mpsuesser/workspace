@@ -3,27 +3,27 @@ import type {
   ExtensionCommandContext,
 } from "@mariozechner/pi-coding-agent";
 import {
-  loadToolDisplayConfig,
-  normalizeToolDisplayConfig,
-  saveToolDisplayConfig,
+  loadTuiOverridesConfig,
+  normalizeTuiOverridesConfig,
+  saveTuiOverridesConfig,
 } from "./config-store.js";
 import {
-  applyCapabilityConfigGuards,
-  detectToolDisplayCapabilities,
-  type ToolDisplayCapabilities,
+  applyTuiOverridesCapabilityGuards,
+  detectTuiOverridesCapabilities,
+  type TuiOverridesCapabilities,
 } from "./capabilities.js";
-import { registerToolDisplayCommand } from "./config-modal.js";
-import { registerToolDisplayOverrides } from "./tool-overrides.js";
+import { registerTuiOverridesCommand } from "./config-modal.js";
+import { registerToolRenderingOverrides } from "./tool-overrides.js";
 import { registerThinkingLabeling } from "./thinking-label.js";
 import registerNativeUserMessageBox from "./user-message-box-native.js";
 import {
   BUILT_IN_TOOL_OVERRIDE_NAMES,
-  type ToolDisplayConfig,
+  type TuiOverridesConfig,
 } from "./types.js";
 
 function ownershipChanged(
-  previous: ToolDisplayConfig,
-  next: ToolDisplayConfig,
+  previous: TuiOverridesConfig,
+  next: TuiOverridesConfig,
 ): boolean {
   return BUILT_IN_TOOL_OVERRIDE_NAMES.some(
     (toolName) =>
@@ -33,32 +33,32 @@ function ownershipChanged(
 }
 
 export default function tuiOverridesExtension(pi: ExtensionAPI): void {
-  const initial = loadToolDisplayConfig();
-  let config: ToolDisplayConfig = initial.config;
+  const initial = loadTuiOverridesConfig();
+  let config: TuiOverridesConfig = initial.config;
   let pendingLoadError = initial.error;
-  let capabilities: ToolDisplayCapabilities = {
+  let capabilities: TuiOverridesCapabilities = {
     hasMcpTooling: false,
     hasRtkOptimizer: false,
   };
 
   const refreshCapabilities = (): void => {
-    capabilities = detectToolDisplayCapabilities(pi, process.cwd());
+    capabilities = detectTuiOverridesCapabilities(pi, process.cwd());
   };
 
-  const getConfig = (): ToolDisplayConfig => config;
-  const getCapabilities = (): ToolDisplayCapabilities => capabilities;
-  const getEffectiveConfig = (): ToolDisplayConfig =>
-    applyCapabilityConfigGuards(config, capabilities);
+  const getConfig = (): TuiOverridesConfig => config;
+  const getCapabilities = (): TuiOverridesCapabilities => capabilities;
+  const getEffectiveConfig = (): TuiOverridesConfig =>
+    applyTuiOverridesCapabilityGuards(config, capabilities);
 
   const setConfig = (
-    next: ToolDisplayConfig,
+    next: TuiOverridesConfig,
     ctx: ExtensionCommandContext,
   ): void => {
-    const normalized = normalizeToolDisplayConfig(next);
+    const normalized = normalizeTuiOverridesConfig(next);
     const requiresReload = ownershipChanged(config, normalized);
     config = normalized;
 
-    const saved = saveToolDisplayConfig(normalized);
+    const saved = saveTuiOverridesConfig(normalized);
     if (!saved.success && saved.error) {
       ctx.ui.notify(saved.error, "error");
     }
@@ -71,9 +71,9 @@ export default function tuiOverridesExtension(pi: ExtensionAPI): void {
     }
   };
 
-  registerToolDisplayOverrides(pi, getEffectiveConfig);
+  registerToolRenderingOverrides(pi, getEffectiveConfig);
   registerNativeUserMessageBox(pi, getConfig);
-  registerToolDisplayCommand(pi, { getConfig, setConfig, getCapabilities });
+  registerTuiOverridesCommand(pi, { getConfig, setConfig, getCapabilities });
   registerThinkingLabeling(pi);
 
   pi.on("session_start", async (_event, ctx) => {
