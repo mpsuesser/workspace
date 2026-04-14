@@ -43,7 +43,7 @@
   "app.clipboard.pasteImage": ["ctrl+v"],
 
   "app.session.new": [],
-  "app.session.tree": [],
+  "app.session.tree": ["alt+w"],
   "app.session.fork": [],
   "app.session.resume": [],
   "app.session.togglePath": ["ctrl+p"],

@@ -8,10 +8,15 @@
   "treeFilterMode": "default",
   "doubleEscapeAction": "none",
   "editorPaddingX": 2,
-  "autocompleteMaxVisible": 20,
+  "autocompleteMaxVisible": 5,
+  "quietStartup": true,
   "packages": [
     "npm:glimpseui",
     "npm:pi-web-access",
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "~/repos/pi-pkms",
+    "~/repos/pi-effect-enforcer",
+    "~/repos/pi-tentacles",
+    "~/repos/pi-atoms"
   ]
 }
