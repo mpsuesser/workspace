@@ -16,6 +16,10 @@
     ".": "./index.ts",
     "./mode-toggle-helper": "./mode-toggle-helper.ts"
   },
+  "dependencies": {
+    "effect": "4.0.0-beta.46",
+    "effect-pi": "link:effect-pi"
+  },
   "peerDependencies": {
     "@mariozechner/pi-coding-agent": "*",
     "@mariozechner/pi-tui": "*"

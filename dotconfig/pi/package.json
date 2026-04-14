@@ -3,5 +3,9 @@
   "private": true,
   "scripts": {
     "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.pi"
+  },
+  "dependencies": {
+    "effect": "4.0.0-beta.46",
+    "effect-pi": "link:effect-pi"
   }
 }

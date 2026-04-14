@@ -1,4 +1,5 @@
-import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
+import { Effect, Option } from "effect";
+import type { ExtensionContext } from "@mariozechner/pi-coding-agent";
 import {
 	Input,
 	fuzzyFilter,
@@ -7,6 +8,13 @@ import {
 	truncateToWidth,
 	visibleWidth,
 } from "@mariozechner/pi-tui";
+import {
+	makeExtension,
+	makeShortcut,
+	PiApi,
+	PiContext,
+	Ui,
+} from "effect-pi";
 
 import {
 	MODE_REGISTER_EVENT,
@@ -236,44 +244,58 @@ async function showModeSelector(ctx: ExtensionContext): Promise<void> {
 	);
 }
 
-export default function modeTogglerExtension(pi: ExtensionAPI) {
-	modes.clear();
-	for (const mode of getRegisteredModes()) {
-		registerMode(mode);
-	}
+const openModeSelector = Effect.gen(function* () {
+	const ctx = yield* PiContext;
+	yield* Effect.promise(() => showModeSelector(ctx.raw));
+});
 
-	const offRegister = pi.events.on(MODE_REGISTER_EVENT, (value) => {
-		if (isModeRegistration(value)) {
-			registerMode(value);
-		}
-	});
-	const offUnregister = pi.events.on(MODE_UNREGISTER_EVENT, (value) => {
-		if (typeof value === "string") {
-			modes.delete(value);
-		}
-	});
+export default makeExtension({
+	id: "pi-mode-toggler",
+	onLoad: Effect.gen(function* () {
+		const pi = yield* PiApi;
 
-	pi.on("session_shutdown", async () => {
-		offRegister();
-		offUnregister();
-	});
-
-	pi.registerShortcut("alt+p", {
-		description: "Toggle modes",
-		handler: async (ctx) => {
-			await showModeSelector(ctx);
-		},
-	});
-
-	pi.registerShortcut("space", {
-		description: "Open mode toggler when editor is empty",
-		handler: async (ctx) => {
-			if (ctx.ui.getEditorText().length === 0) {
-				await showModeSelector(ctx);
-				return;
+		yield* Effect.sync(() => {
+			modes.clear();
+			for (const mode of getRegisteredModes()) {
+				registerMode(mode);
 			}
 
-			ctx.ui.pasteToEditor(" ");
-		},
-	});
-}
+			const offRegister = pi.raw.events.on(MODE_REGISTER_EVENT, (value) => {
+				if (isModeRegistration(value)) {
+					registerMode(value);
+				}
+			});
+			const offUnregister = pi.raw.events.on(MODE_UNREGISTER_EVENT, (value) => {
+				if (typeof value === "string") {
+					modes.delete(value);
+				}
+			});
+
+			pi.raw.on("session_shutdown", async () => {
+				offRegister();
+				offUnregister();
+			});
+		});
+	}),
+	shortcuts: [
+		makeShortcut({
+			key: "alt+p",
+			description: Option.some("Toggle modes"),
+			handler: openModeSelector,
+		}),
+		makeShortcut({
+			key: "space",
+			description: Option.some("Open mode toggler when editor is empty"),
+			handler: Effect.gen(function* () {
+				const ui = yield* Ui;
+				const editorText = yield* ui.getEditorText;
+				if (editorText.length === 0) {
+					yield* openModeSelector;
+					return;
+				}
+
+				yield* ui.pasteToEditor(" ");
+			}),
+		}),
+	],
+});
