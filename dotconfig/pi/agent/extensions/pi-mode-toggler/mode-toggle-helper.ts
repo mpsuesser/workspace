@@ -1,14 +1,26 @@
+import { execFileSync } from "node:child_process";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { dirname, join } from "node:path";
+
 import type {
 	BeforeAgentStartEvent,
 	ExtensionAPI,
 	ExtensionContext,
 } from "@mariozechner/pi-coding-agent";
 
+export type ModePersistenceScope = "none" | "session" | "project" | "branch" | "global";
+
+export interface ModePersistenceOptions {
+	scope: ModePersistenceScope;
+}
+
 export interface ModeRegistration {
 	id: string;
 	name: string;
 	color: string;
 	description?: string;
+	persistenceScope: ModePersistenceScope;
 	isEnabled: () => boolean;
 	setEnabled: (enabled: boolean, ctx: ExtensionContext) => void;
 }
@@ -21,6 +33,7 @@ export interface CreateModeToggleOptions {
 	description?: string;
 	enabledLabel?: string;
 	disabledLabel?: string;
+	persistence?: ModePersistenceOptions;
 	onChange?: (enabled: boolean, ctx: ExtensionContext) => void;
 }
 
@@ -30,6 +43,7 @@ export interface ModeToggle {
 	readonly color: string;
 	readonly description?: string;
 	readonly statusText: string;
+	readonly persistenceScope: ModePersistenceScope;
 	isEnabled(): boolean;
 	setEnabled(enabled: boolean, ctx: ExtensionContext): void;
 	toggle(ctx: ExtensionContext): void;
@@ -51,10 +65,23 @@ export interface ModeToggle {
 		| undefined;
 }
 
+interface PersistedModeState {
+	enabled: boolean;
+	modeId: string;
+	scope: ModePersistenceScope;
+	updatedAt: string;
+	cwd?: string;
+	sessionId?: string;
+	gitBranch?: string;
+}
+
 export const MODE_REGISTER_EVENT = "mode-toggler:register";
 export const MODE_UNREGISTER_EVENT = "mode-toggler:unregister";
 
 const registeredModes = new Map<string, ModeRegistration>();
+const DEFAULT_PERSISTENCE_SCOPE: ModePersistenceScope = "none";
+const PROJECT_STATE_ROOT = ".pi-mode-toggler";
+const GLOBAL_STATE_ROOT = join(homedir(), ".pi", "agent", "state", "pi-mode-toggler");
 
 export function getRegisteredModes(): ModeRegistration[] {
 	return Array.from(registeredModes.values()).sort((a, b) => a.name.localeCompare(b.name));
@@ -77,6 +104,107 @@ function colorToRgb(color: string): [number, number, number] | null {
 	];
 }
 
+function encodePathSegment(value: string): string {
+	return encodeURIComponent(value);
+}
+
+function getPersistenceScope(options: CreateModeToggleOptions): ModePersistenceScope {
+	return options.persistence?.scope ?? DEFAULT_PERSISTENCE_SCOPE;
+}
+
+function resolveGitBranch(cwd: string): string | undefined {
+	try {
+		const branch = execFileSync("git", ["branch", "--show-current"], {
+			cwd,
+			encoding: "utf8",
+			stdio: ["ignore", "pipe", "ignore"],
+		}).trim();
+		if (branch.length > 0) return branch;
+
+		const detachedHead = execFileSync("git", ["rev-parse", "--short", "HEAD"], {
+			cwd,
+			encoding: "utf8",
+			stdio: ["ignore", "pipe", "ignore"],
+		}).trim();
+		return detachedHead.length > 0 ? `detached-${detachedHead}` : undefined;
+	} catch {
+		return undefined;
+	}
+}
+
+function resolveStateFile(
+	modeId: string,
+	scope: ModePersistenceScope,
+	ctx: ExtensionContext,
+): string | undefined {
+	const projectStateRoot = join(ctx.sessionManager.getSessionDir(), PROJECT_STATE_ROOT);
+	const encodedModeId = `${encodePathSegment(modeId)}.json`;
+
+	switch (scope) {
+		case "none":
+			return undefined;
+		case "session":
+			return join(
+				projectStateRoot,
+				"session",
+				encodePathSegment(ctx.sessionManager.getSessionId()),
+				encodedModeId,
+			);
+		case "project":
+			return join(projectStateRoot, "project", encodedModeId);
+		case "branch": {
+			const gitBranch = resolveGitBranch(ctx.cwd);
+			return gitBranch
+				? join(projectStateRoot, "branch", encodePathSegment(gitBranch), encodedModeId)
+				: join(projectStateRoot, "project", encodedModeId);
+		}
+		case "global":
+			return join(GLOBAL_STATE_ROOT, encodedModeId);
+	}
+}
+
+function readPersistedState(
+	modeId: string,
+	scope: ModePersistenceScope,
+	ctx: ExtensionContext,
+): boolean | undefined {
+	const filePath = resolveStateFile(modeId, scope, ctx);
+	if (!filePath) return undefined;
+
+	try {
+		const parsed = JSON.parse(readFileSync(filePath, "utf8")) as Partial<PersistedModeState>;
+		return typeof parsed.enabled === "boolean" ? parsed.enabled : undefined;
+	} catch (error) {
+		const record = error as { code?: string };
+		if (record.code === "ENOENT") return undefined;
+		throw error;
+	}
+}
+
+function writePersistedState(
+	modeId: string,
+	scope: ModePersistenceScope,
+	enabled: boolean,
+	ctx: ExtensionContext,
+): void {
+	const filePath = resolveStateFile(modeId, scope, ctx);
+	if (!filePath) return;
+
+	const gitBranch = scope === "branch" ? resolveGitBranch(ctx.cwd) : undefined;
+	const payload: PersistedModeState = {
+		enabled,
+		modeId,
+		scope,
+		updatedAt: new Date().toISOString(),
+		cwd: ctx.cwd,
+		sessionId: ctx.sessionManager.getSessionId(),
+		...(gitBranch ? { gitBranch } : {}),
+	};
+
+	mkdirSync(dirname(filePath), { recursive: true });
+	writeFileSync(filePath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+}
+
 export function formatModeLabel(name: string, color: string): string {
 	const rgb = colorToRgb(color);
 	if (!rgb) return name;
@@ -93,6 +221,7 @@ export function createModeToggle(
 	const statusText = options.statusText ?? formatModeLabel(name, options.color);
 	const enabledLabel = options.enabledLabel ?? `${name} mode enabled`;
 	const disabledLabel = options.disabledLabel ?? `${name} mode disabled`;
+	const persistenceScope = getPersistenceScope(options);
 
 	let enabled = false;
 	let lastPromptEnabled: boolean | undefined;
@@ -106,6 +235,7 @@ export function createModeToggle(
 			id: options.id,
 			name,
 			color: options.color,
+			persistenceScope,
 			...(options.description
 				? { description: options.description }
 				: {}),
@@ -122,16 +252,37 @@ export function createModeToggle(
 		ctx.ui.setStatus(options.id, enabled ? statusText : undefined);
 	};
 
+	const restorePersistedState = (ctx: ExtensionContext): void => {
+		if (persistenceScope === "none") return;
+		const persistedEnabled = readPersistedState(options.id, persistenceScope, ctx);
+		if (typeof persistedEnabled === "boolean") {
+			enabled = persistedEnabled;
+		}
+	};
+
+	const persistState = (ctx: ExtensionContext): void => {
+		if (persistenceScope === "none") return;
+		writePersistedState(options.id, persistenceScope, enabled, ctx);
+	};
+
 	const mode: ModeToggle = {
 		id: options.id,
 		name,
 		color: options.color,
 		description: options.description,
 		statusText,
+		persistenceScope,
 		isEnabled: () => enabled,
 		setEnabled: (nextEnabled, ctx) => {
 			if (enabled === nextEnabled) return;
 			enabled = nextEnabled;
+
+			try {
+				persistState(ctx);
+			} catch {
+				ctx.ui.notify(`Failed to persist ${name} mode state`, "warning");
+			}
+
 			syncStatus(ctx);
 			ctx.ui.notify(getStatusMessage(), "info");
 			options.onChange?.(enabled, ctx);
@@ -143,6 +294,12 @@ export function createModeToggle(
 			syncStatus(ctx);
 		},
 		onSessionStart: (ctx) => {
+			try {
+				restorePersistedState(ctx);
+			} catch {
+				ctx.ui.notify(`Failed to restore ${name} mode state`, "warning");
+			}
+
 			emitRegistration();
 			syncStatus(ctx);
 			lastPromptEnabled = ctx.sessionManager

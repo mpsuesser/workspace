@@ -15,6 +15,9 @@ export default function readOnlyExtension(pi: ExtensionAPI) {
 		color: "#800000",
 		statusText: READ_ONLY_STATUS,
 		description: "Block the built-in write and edit tools",
+		persistence: {
+			scope: "session",
+		},
 	});
 
 	pi.on("session_start", async (_event, ctx) => {

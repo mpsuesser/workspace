@@ -19,6 +19,8 @@ export {
 	createModeToggle,
 	formatModeLabel,
 	type CreateModeToggleOptions,
+	type ModePersistenceOptions,
+	type ModePersistenceScope,
 	type ModeRegistration,
 	type ModeToggle,
 } from "./mode-toggle-helper.ts";
