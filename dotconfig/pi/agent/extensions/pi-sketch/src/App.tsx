@@ -1,11 +1,24 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getAssetUrlsByImport } from '@tldraw/assets/imports.vite'
-import { DefaultColorStyle, DefaultColorThemePalette, Editor, getSnapshot, TLUiComponents, Tldraw, useValue } from 'tldraw'
+import {
+  DefaultColorStyle,
+  DefaultColorThemePalette,
+  DefaultDashStyle,
+  Editor,
+  GeoShapeGeoStyle,
+  getSnapshot,
+  TLUiComponents,
+  Tldraw,
+  useValue,
+  type TLDefaultDashStyle,
+  type TLShape,
+} from 'tldraw'
 
 const assetUrls = getAssetUrlsByImport()
 const PERSISTENCE_KEY = 'pi-sketch-tldraw'
 
 type SketchColor = 'black' | 'grey' | 'blue' | 'green' | 'red'
+type SketchMode = 'draw' | 'square' | 'rectangle' | 'text' | 'erase' | 'select'
 
 const components: TLUiComponents = {
   ContextMenu: null,
@@ -29,19 +42,86 @@ const primaryButtonClass = `${buttonBaseClass} bg-[#2563eb] hover:bg-[#1d4ed8] d
 const swatchButtonClass =
   'relative h-8 w-8 appearance-none border border-black/20 rounded-none transition-transform hover:scale-105 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-default disabled:hover:scale-100'
 
+function setEditorMode(editor: Editor, mode: SketchMode) {
+  editor.updateInstanceState({ isToolLocked: true })
+
+  if (mode !== 'select') {
+    editor.selectNone()
+  }
+
+  switch (mode) {
+    case 'draw':
+      editor.setCurrentTool('draw')
+      return
+    case 'square':
+    case 'rectangle':
+      editor.setStyleForNextShapes(GeoShapeGeoStyle, 'rectangle')
+      editor.setCurrentTool('geo')
+      return
+    case 'text':
+      editor.setCurrentTool('text')
+      return
+    case 'erase':
+      editor.setCurrentTool('eraser')
+      return
+    case 'select':
+      editor.setCurrentTool('select')
+      return
+  }
+}
+
+function normalizeSquareShape(editor: Editor, shape: TLShape): TLShape {
+  if (shape.type !== 'geo' || shape.props.geo !== 'rectangle') {
+    return shape
+  }
+
+  const size = Math.max(shape.props.w, shape.props.h)
+  if (!Number.isFinite(size) || size <= 0) {
+    return shape
+  }
+
+  const minX = shape.x
+  const maxX = shape.x + shape.props.w
+  const minY = shape.y
+  const maxY = shape.y + shape.props.h
+  const origin = editor.inputs.getOriginPagePoint()
+
+  const originOnLeft = Math.abs(origin.x - minX) <= Math.abs(origin.x - maxX)
+  const originOnTop = Math.abs(origin.y - minY) <= Math.abs(origin.y - maxY)
+  const anchorX = originOnLeft ? minX : maxX
+  const anchorY = originOnTop ? minY : maxY
+
+  return {
+    ...shape,
+    x: originOnLeft ? anchorX : anchorX - size,
+    y: originOnTop ? anchorY : anchorY - size,
+    props: {
+      ...shape.props,
+      h: size,
+      w: size,
+    },
+  }
+}
+
 export default function App() {
   const [editor, setEditor] = useState<Editor | null>(null)
   const [activeColor, setActiveColor] = useState<SketchColor>('black')
+  const [activeMode, setActiveMode] = useState<SketchMode>('draw')
   const [submitting, setSubmitting] = useState(false)
   const [doneMessage, setDoneMessage] = useState<string | null>(null)
+  const activeModeRef = useRef<SketchMode>('draw')
+
+  useEffect(() => {
+    activeModeRef.current = activeMode
+  }, [activeMode])
 
   const applyColor = useCallback(
     (color: SketchColor) => {
       setActiveColor(color)
       if (!editor) return
-      setEditorColor(editor, color)
+      setEditorColor(editor, color, activeMode === 'select')
     },
-    [editor]
+    [activeMode, editor]
   )
 
   const shiftColor = useCallback(
@@ -54,6 +134,15 @@ export default function App() {
     [activeColor, applyColor]
   )
 
+  const applyMode = useCallback(
+    (mode: SketchMode) => {
+      setActiveMode(mode)
+      if (!editor) return
+      setEditorMode(editor, mode)
+    },
+    [editor]
+  )
+
   const clearCanvas = useCallback(() => {
     if (!editor) return
 
@@ -63,8 +152,8 @@ export default function App() {
 
     editor.selectNone()
     editor.deleteShapes(shapeIds)
-    editor.setCurrentTool('draw')
-  }, [editor])
+    applyMode('draw')
+  }, [applyMode, editor])
 
   const cancelSketch = useCallback(async () => {
     if (submitting) return
@@ -119,13 +208,41 @@ export default function App() {
     }
   }, [editor, submitting])
 
+  const toggleSelectedDash = useCallback(() => {
+    if (!editor || editor.getSelectedShapeIds().length === 0) return
+
+    const currentDash = editor.getSharedStyles().getAsKnownValue(DefaultDashStyle)
+    const nextDash: TLDefaultDashStyle = currentDash === 'dashed' ? 'solid' : 'dashed'
+
+    editor.setStyleForSelectedShapes(DefaultDashStyle, nextDash)
+  }, [editor])
+
   const handleMount = useCallback((editor: Editor) => {
     setEditor(editor)
     setActiveColor('black')
+    setActiveMode('draw')
+    activeModeRef.current = 'draw'
     editor.selectNone()
-    editor.setCurrentTool('draw')
     editor.setStyleForNextShapes(DefaultColorStyle, 'black')
+    setEditorMode(editor, 'draw')
   }, [])
+
+  useEffect(() => {
+    if (!editor) return
+
+    const disposeBeforeCreate = editor.sideEffects.registerBeforeCreateHandler('shape', (shape) => {
+      return activeModeRef.current === 'square' ? normalizeSquareShape(editor, shape) : shape
+    })
+
+    const disposeBeforeChange = editor.sideEffects.registerBeforeChangeHandler('shape', (_prevShape, nextShape) => {
+      return activeModeRef.current === 'square' ? normalizeSquareShape(editor, nextShape) : nextShape
+    })
+
+    return () => {
+      disposeBeforeCreate()
+      disposeBeforeChange()
+    }
+  }, [editor])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -136,27 +253,72 @@ export default function App() {
 
       if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
         event.preventDefault()
+        event.stopPropagation()
         void submitSketch()
         return
       }
 
-      if (event.metaKey || event.ctrlKey || event.altKey || !event.shiftKey) return
+      if (event.metaKey || event.ctrlKey || event.altKey) return
 
-      if (event.code === 'KeyA') {
-        event.preventDefault()
-        shiftColor(-1)
+      if (event.shiftKey) {
+        if (event.code === 'KeyA') {
+          event.preventDefault()
+          event.stopPropagation()
+          shiftColor(-1)
+        } else if (event.code === 'KeyD') {
+          event.preventDefault()
+          event.stopPropagation()
+          shiftColor(1)
+        }
         return
       }
 
-      if (event.code === 'KeyD') {
-        event.preventDefault()
-        shiftColor(1)
+      switch (event.code) {
+        case 'KeyD':
+          event.preventDefault()
+          event.stopPropagation()
+          applyMode('draw')
+          return
+        case 'KeyS':
+          event.preventDefault()
+          event.stopPropagation()
+          applyMode('square')
+          return
+        case 'KeyR':
+          event.preventDefault()
+          event.stopPropagation()
+          applyMode('rectangle')
+          return
+        case 'KeyT':
+          event.preventDefault()
+          event.stopPropagation()
+          applyMode('text')
+          return
+        case 'KeyE':
+          event.preventDefault()
+          event.stopPropagation()
+          applyMode('erase')
+          return
+        case 'KeyW':
+          event.preventDefault()
+          event.stopPropagation()
+          applyMode('select')
+          return
+        case 'Minus':
+          if (editor.getSelectedShapeIds().length === 0) {
+            return
+          }
+
+          event.preventDefault()
+          event.stopPropagation()
+          toggleSelectedDash()
+          return
       }
     }
 
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [shiftColor, submitSketch])
+    window.addEventListener('keydown', onKeyDown, true)
+    return () => window.removeEventListener('keydown', onKeyDown, true)
+  }, [applyMode, shiftColor, submitSketch, toggleSelectedDash])
 
   useEffect(() => {
     const onBeforeUnload = () => {
@@ -287,10 +449,10 @@ function DoneScreen({ message }: { message: string }) {
   )
 }
 
-function setEditorColor(editor: Editor, color: SketchColor) {
+function setEditorColor(editor: Editor, color: SketchColor, applyToSelectedShapes: boolean) {
   editor.setStyleForNextShapes(DefaultColorStyle, color)
 
-  if (editor.getSelectedShapeIds().length > 0) {
+  if (applyToSelectedShapes && editor.getSelectedShapeIds().length > 0) {
     editor.setStyleForSelectedShapes(DefaultColorStyle, color)
   }
 }

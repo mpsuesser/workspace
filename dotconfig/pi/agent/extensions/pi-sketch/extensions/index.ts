@@ -5,11 +5,10 @@
 
 import type { ExtensionAPI } from '@mariozechner/pi-coding-agent'
 import { truncateToWidth } from '@mariozechner/pi-tui'
-import { exec, execFile } from 'node:child_process'
+import { exec } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from 'node:http'
-import { createConnection } from 'node:net'
 import { dirname, extname, join, resolve } from 'node:path'
 import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
@@ -17,11 +16,8 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DIST_DIR = resolve(__dirname, '..', 'dist')
 const DIST_INDEX_PATH = resolve(DIST_DIR, 'index.html')
-
-const CADDY_ADMIN_URL = 'http://127.0.0.1:2019'
-const CADDY_SERVER_ID = 'pi-sketch'
-const SKETCH_DOMAIN = 'pi-sketch.localhost'
-const CADDY_HTTPS_PORTS = [443, 8443] as const
+const LOCALHOST = 'localhost'
+const SKETCH_PATH = '/pi-sketch'
 
 const MIME_TYPES: Record<string, string> = {
   '.css': 'text/css; charset=utf-8',
@@ -84,34 +80,9 @@ interface SketchSubmission {
 }
 
 interface SketchServer {
-  directUrl: string
-  port: number
+  url: string
   waitForResult: () => Promise<SketchSubmission | null>
   close: () => void
-}
-
-interface BrowserTarget {
-  note?: string
-  cleanup: () => Promise<void>
-  url: string
-}
-
-interface CaddyRoute {
-  match?: Array<{ host?: string[] } & Record<string, unknown>>
-  handle?: Array<
-    | {
-        handler: 'reverse_proxy'
-        upstreams?: Array<{ dial?: string } & Record<string, unknown>>
-      }
-    | Record<string, unknown>
-  >
-  terminal?: boolean
-  [key: string]: unknown
-}
-
-interface CaddySession {
-  startedBySketch: boolean
-  stopWhenIdle: boolean
 }
 
 function openBrowser(url: string): void {
@@ -137,9 +108,16 @@ function sendHtml(res: ServerResponse, html: string, status = 200) {
   res.end(html)
 }
 
+function toStaticPath(pathname: string) {
+  if (pathname === '/' || pathname === SKETCH_PATH || pathname === `${SKETCH_PATH}/` || pathname === '/sketch' || pathname === '/sketch/') {
+    return '/index.html'
+  }
+
+  return pathname
+}
+
 function serveStaticAsset(pathname: string, res: ServerResponse) {
-  const normalizedPath = pathname === '/' || pathname === '/sketch' ? '/index.html' : pathname
-  const relativePath = normalizedPath.replace(/^\/+/, '')
+  const relativePath = toStaticPath(pathname).replace(/^\/+/, '')
   const filePath = resolve(DIST_DIR, relativePath)
 
   if (!filePath.startsWith(DIST_DIR)) {
@@ -208,7 +186,7 @@ async function launchSketchServer(): Promise<SketchServer> {
       return
     }
 
-    const requestUrl = new URL(req.url ?? '/', 'http://127.0.0.1')
+    const requestUrl = new URL(req.url ?? '/', `http://${LOCALHOST}`)
     const pathname = decodeURIComponent(requestUrl.pathname)
 
     if (req.method === 'GET') {
@@ -258,7 +236,7 @@ async function launchSketchServer(): Promise<SketchServer> {
     }
 
     server.once('error', onError)
-    server.listen(0, '127.0.0.1', () => {
+    server.listen(0, LOCALHOST, () => {
       server.off('error', onError)
       resolveListen()
     })
@@ -273,513 +251,9 @@ async function launchSketchServer(): Promise<SketchServer> {
   timeout = setTimeout(() => finish(null, server), 10 * 60 * 1000)
 
   return {
-    directUrl: `http://127.0.0.1:${addr.port}/sketch`,
-    port: addr.port,
+    url: `http://${LOCALHOST}:${addr.port}${SKETCH_PATH}`,
     waitForResult: () => resultPromise,
     close: () => finish(null, server),
-  }
-}
-
-function execFileAsync(command: string, args: string[], timeoutMs?: number): Promise<{ stdout: string; stderr: string }> {
-  return new Promise((resolve, reject) => {
-    execFile(command, args, timeoutMs ? { timeout: timeoutMs } : undefined, (error, stdout, stderr) => {
-      if (error) {
-        reject(Object.assign(error, { stderr, stdout }))
-        return
-      }
-
-      resolve({ stderr, stdout })
-    })
-  })
-}
-
-async function fetchWithTimeout(url: string, init: RequestInit = {}, timeoutMs = 5000) {
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), timeoutMs)
-
-  try {
-    return await fetch(url, {
-      ...init,
-      signal: controller.signal,
-    })
-  } finally {
-    clearTimeout(timeout)
-  }
-}
-
-function withAdminHeaders(init: RequestInit = {}) {
-  const headers = new Headers(init.headers)
-  headers.set('origin', new URL(CADDY_ADMIN_URL).origin)
-  return { ...init, headers }
-}
-
-async function getJson<T = unknown>(url: string): Promise<T | undefined> {
-  const response = await fetchWithTimeout(url, withAdminHeaders())
-  if (!response.ok) return undefined
-  const text = await response.text()
-  return text ? (JSON.parse(text) as T) : undefined
-}
-
-async function requestJson(url: string, init: RequestInit = {}) {
-  const response = await fetchWithTimeout(url, withAdminHeaders(init))
-  const text = await response.text()
-
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} ${response.statusText} for ${url}\n${text}`)
-  }
-
-  return text ? JSON.parse(text) : undefined
-}
-
-function putJson(url: string, body: unknown) {
-  return requestJson(url, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  })
-}
-
-function postJson(url: string, body: unknown) {
-  return requestJson(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  })
-}
-
-function patchJson(url: string, body: unknown) {
-  return requestJson(url, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  })
-}
-
-async function deleteJson(url: string) {
-  const response = await fetchWithTimeout(url, withAdminHeaders({ method: 'DELETE' }))
-  if (response.ok) return
-  const text = await response.text()
-  throw new Error(`HTTP ${response.status} ${response.statusText} for ${url}\n${text}`)
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === 'object' && !Array.isArray(value)
-}
-
-function hasNonEmptyValue(value: unknown): boolean {
-  if (value === null || value === undefined) return false
-  if (Array.isArray(value)) return value.length > 0
-  if (isRecord(value)) return Object.keys(value).length > 0
-  return true
-}
-
-function isIdleHttpApp(value: unknown): boolean {
-  if (!isRecord(value)) return false
-
-  for (const [key, child] of Object.entries(value)) {
-    if (key === 'servers') {
-      if (!isRecord(child) || Object.keys(child).length > 0) return false
-      continue
-    }
-
-    if (hasNonEmptyValue(child)) return false
-  }
-
-  return true
-}
-
-function isIdleTlsApp(value: unknown): boolean {
-  if (!isRecord(value)) return false
-
-  for (const [key, child] of Object.entries(value)) {
-    if (key === 'automation') {
-      if (!isRecord(child)) return false
-
-      for (const [automationKey, automationValue] of Object.entries(child)) {
-        if (automationKey === 'policies') {
-          if (!Array.isArray(automationValue) || automationValue.length > 0) return false
-          continue
-        }
-
-        if (hasNonEmptyValue(automationValue)) return false
-      }
-
-      continue
-    }
-
-    if (hasNonEmptyValue(child)) return false
-  }
-
-  return true
-}
-
-function isIdleCaddyApps(value: unknown): boolean {
-  if (!isRecord(value)) return true
-
-  for (const [key, child] of Object.entries(value)) {
-    if (key === 'http') {
-      if (!isIdleHttpApp(child)) return false
-      continue
-    }
-
-    if (key === 'tls') {
-      if (!isIdleTlsApp(child)) return false
-      continue
-    }
-
-    if (hasNonEmptyValue(child)) return false
-  }
-
-  return true
-}
-
-function isSketchTlsPolicy(policy: unknown): boolean {
-  if (!isRecord(policy)) return false
-
-  const subjects = policy.subjects
-  const issuers = policy.issuers
-
-  return (
-    Array.isArray(subjects) &&
-    subjects.length === 1 &&
-    subjects[0] === SKETCH_DOMAIN &&
-    Array.isArray(issuers) &&
-    issuers.some((issuer) => isRecord(issuer) && issuer.module === 'internal')
-  )
-}
-
-async function waitForCaddyAdmin(timeoutMs = 2000) {
-  const deadline = Date.now() + timeoutMs
-
-  while (Date.now() < deadline) {
-    try {
-      const response = await fetchWithTimeout(`${CADDY_ADMIN_URL}/config/`, withAdminHeaders(), 400)
-      if (response.ok) return
-    } catch {
-      // Keep polling until timeout.
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, 100))
-  }
-
-  throw new Error('Timed out waiting for Caddy admin API')
-}
-
-async function getCaddyApps() {
-  return (await getJson<Record<string, unknown> | null>(`${CADDY_ADMIN_URL}/config/apps`)) ?? {}
-}
-
-async function ensureCaddyAdmin(): Promise<CaddySession> {
-  try {
-    await waitForCaddyAdmin(200)
-    return { startedBySketch: false, stopWhenIdle: false }
-  } catch {
-    // Caddy is not running yet.
-  }
-
-  try {
-    await execFileAsync('caddy', ['start'], 1500)
-  } catch (error) {
-    throw new Error(`Could not start Caddy: ${error instanceof Error ? error.message : String(error)}`)
-  }
-
-  await waitForCaddyAdmin()
-
-  try {
-    return {
-      startedBySketch: true,
-      stopWhenIdle: isIdleCaddyApps(await getCaddyApps()),
-    }
-  } catch {
-    return { startedBySketch: true, stopWhenIdle: false }
-  }
-}
-
-async function ensureConfigPath(path: string, payload: unknown) {
-  const response = await fetchWithTimeout(path, withAdminHeaders())
-  if (!response.ok) {
-    await putJson(path, payload)
-  }
-}
-
-async function ensureTlsPolicy(domain: string) {
-  await ensureConfigPath(`${CADDY_ADMIN_URL}/config/apps`, {})
-
-  const tlsPath = `${CADDY_ADMIN_URL}/config/apps/tls`
-  const tlsResponse = await fetchWithTimeout(tlsPath, withAdminHeaders())
-  if (!tlsResponse.ok) {
-    await putJson(tlsPath, { automation: { policies: [] } })
-  }
-
-  await ensureConfigPath(`${CADDY_ADMIN_URL}/config/apps/tls/automation`, { policies: [] })
-  await ensureConfigPath(`${CADDY_ADMIN_URL}/config/apps/tls/automation/policies`, [])
-
-  const policies = (await getJson<any[]>(`${CADDY_ADMIN_URL}/config/apps/tls/automation/policies`)) ?? []
-  const hasPolicy = policies.some(
-    (policy) =>
-      Array.isArray(policy?.subjects) &&
-      policy.subjects.includes(domain) &&
-      Array.isArray(policy?.issuers) &&
-      policy.issuers.some((issuer: any) => issuer?.module === 'internal')
-  )
-
-  if (!hasPolicy) {
-    await postJson(`${CADDY_ADMIN_URL}/config/apps/tls/automation/policies`, {
-      subjects: [domain],
-      issuers: [{ module: 'internal' }],
-    })
-  }
-}
-
-async function ensureCaddyServerExists(port: number) {
-  const listen = [`:${port}`]
-  const serverBase = `${CADDY_ADMIN_URL}/config/apps/http/servers/${encodeURIComponent(CADDY_SERVER_ID)}`
-  const routesPath = `${serverBase}/routes`
-
-  await ensureConfigPath(`${CADDY_ADMIN_URL}/config/apps`, {})
-  await ensureConfigPath(`${CADDY_ADMIN_URL}/config/apps/http`, { servers: {} })
-  await ensureConfigPath(`${CADDY_ADMIN_URL}/config/apps/http/servers`, {})
-
-  const currentRoutes = await getJson<CaddyRoute[] | null>(routesPath)
-  const normalizedRoutes = Array.isArray(currentRoutes) ? currentRoutes : []
-
-  const serverResponse = await fetchWithTimeout(serverBase, withAdminHeaders())
-  if (!serverResponse.ok) {
-    await putJson(serverBase, {
-      automatic_https: { disable_redirects: true },
-      listen,
-      routes: normalizedRoutes,
-    })
-  } else {
-    await patchJson(serverBase, {
-      automatic_https: { disable_redirects: true },
-      listen,
-      routes: normalizedRoutes,
-    })
-  }
-
-  await ensureTlsPolicy(SKETCH_DOMAIN)
-}
-
-async function getRoutes() {
-  return (await getJson<CaddyRoute[] | null>(`${CADDY_ADMIN_URL}/config/apps/http/servers/${encodeURIComponent(CADDY_SERVER_ID)}/routes`)) ?? []
-}
-
-function findRouteByHost(routes: CaddyRoute[] | undefined, host: string) {
-  if (!routes) return { index: -1, route: undefined as CaddyRoute | undefined }
-
-  for (let index = 0; index < routes.length; index += 1) {
-    const route = routes[index]
-    const matches = Array.isArray(route.match) ? route.match : []
-
-    for (const match of matches) {
-      if (Array.isArray(match.host) && match.host.includes(host)) {
-        return { index, route }
-      }
-    }
-  }
-
-  return { index: -1, route: undefined as CaddyRoute | undefined }
-}
-
-function extractUpstreamPort(route: CaddyRoute) {
-  const handlers = Array.isArray(route.handle) ? route.handle : []
-
-  for (const handler of handlers) {
-    if (handler.handler === 'reverse_proxy' && Array.isArray(handler.upstreams) && handler.upstreams.length > 0) {
-      const dial = handler.upstreams[0]?.dial?.trim()
-      const match = dial ? /:(\d+)$/.exec(dial) : null
-      if (match) return Number(match[1])
-    }
-  }
-
-  return undefined
-}
-
-async function addRoute(domain: string, port: number) {
-  await postJson(`${CADDY_ADMIN_URL}/config/apps/http/servers/${encodeURIComponent(CADDY_SERVER_ID)}/routes`, {
-    match: [{ host: [domain] }],
-    handle: [{ handler: 'reverse_proxy', upstreams: [{ dial: `127.0.0.1:${port}` }] }],
-    terminal: true,
-  })
-}
-
-async function replaceRouteAt(index: number, domain: string, port: number) {
-  await patchJson(`${CADDY_ADMIN_URL}/config/apps/http/servers/${encodeURIComponent(CADDY_SERVER_ID)}/routes/${index}`, {
-    match: [{ host: [domain] }],
-    handle: [{ handler: 'reverse_proxy', upstreams: [{ dial: `127.0.0.1:${port}` }] }],
-    terminal: true,
-  })
-}
-
-async function deleteRouteAt(index: number) {
-  await deleteJson(`${CADDY_ADMIN_URL}/config/apps/http/servers/${encodeURIComponent(CADDY_SERVER_ID)}/routes/${index}`)
-}
-
-async function deleteCaddyServerIfUnused() {
-  const routes = await getRoutes()
-  if (routes.length > 0) return
-
-  try {
-    await deleteJson(`${CADDY_ADMIN_URL}/config/apps/http/servers/${encodeURIComponent(CADDY_SERVER_ID)}`)
-  } catch {
-    // Ignore cleanup failures. This only removes our temporary listener.
-  }
-}
-
-async function deleteSketchTlsPolicyIfUnused() {
-  const routes = await getRoutes()
-  if (findRouteByHost(routes, SKETCH_DOMAIN).route) return
-
-  const policiesPath = `${CADDY_ADMIN_URL}/config/apps/tls/automation/policies`
-  const policies = (await getJson<unknown[] | null>(policiesPath)) ?? []
-  const index = policies.findIndex((policy) => isSketchTlsPolicy(policy))
-
-  if (index === -1) return
-
-  try {
-    await deleteJson(`${policiesPath}/${index}`)
-  } catch {
-    // Ignore cleanup failures. This only removes our temporary TLS policy.
-  }
-}
-
-async function stopCaddyIfIdle(caddySession: CaddySession) {
-  if (!caddySession.startedBySketch || !caddySession.stopWhenIdle) return
-
-  const apps = await getCaddyApps()
-  if (!isIdleCaddyApps(apps)) return
-
-  try {
-    await execFileAsync('caddy', ['stop'], 1500)
-  } catch {
-    // Ignore shutdown failures. Caddy staying alive is harmless.
-  }
-}
-
-function isAddressInUseError(error: unknown) {
-  return error instanceof Error && /address already in use|bind: address already in use/i.test(error.message)
-}
-
-function arraysEqual(a: string[], b: string[]) {
-  if (a.length !== b.length) return false
-  for (let index = 0; index < a.length; index += 1) {
-    if (a[index] !== b[index]) return false
-  }
-  return true
-}
-
-function isPortActive(port: number, host = '127.0.0.1', timeoutMs = 350): Promise<boolean> {
-  return new Promise((resolve) => {
-    const socket = createConnection({ host, port })
-    const finish = (value: boolean) => {
-      socket.removeAllListeners()
-      try {
-        socket.end()
-        socket.destroy()
-      } catch {
-        // Ignore cleanup errors.
-      }
-      resolve(value)
-    }
-
-    const timer = setTimeout(() => finish(false), timeoutMs)
-
-    socket.once('connect', () => {
-      clearTimeout(timer)
-      finish(true)
-    })
-
-    socket.once('error', () => {
-      clearTimeout(timer)
-      finish(false)
-    })
-  })
-}
-
-async function cleanupSketchDomain(upstreamPort: number, caddySession: CaddySession) {
-  try {
-    const routes = await getRoutes()
-    const { index, route } = findRouteByHost(routes, SKETCH_DOMAIN)
-
-    if (route && index !== -1 && extractUpstreamPort(route) === upstreamPort) {
-      await deleteRouteAt(index)
-    }
-
-    await deleteCaddyServerIfUnused()
-    await deleteSketchTlsPolicyIfUnused()
-    await stopCaddyIfIdle(caddySession)
-  } catch {
-    // Ignore cleanup failures. Falling back should stay silent.
-  }
-}
-
-function toHttpsUrl(port: number) {
-  return port === 443 ? `https://${SKETCH_DOMAIN}/sketch` : `https://${SKETCH_DOMAIN}:${port}/sketch`
-}
-
-async function resolveBrowserTarget(sketchServer: SketchServer): Promise<BrowserTarget> {
-  const directTarget: BrowserTarget = {
-    cleanup: async () => {},
-    note: 'Using a direct local URL because a stable local HTTPS hostname is unavailable.',
-    url: sketchServer.directUrl,
-  }
-
-  let caddySession: CaddySession
-
-  try {
-    caddySession = await ensureCaddyAdmin()
-  } catch {
-    return directTarget
-  }
-
-  for (const httpsPort of CADDY_HTTPS_PORTS) {
-    try {
-      await ensureCaddyServerExists(httpsPort)
-
-      const routes = await getRoutes()
-      const { index, route } = findRouteByHost(routes, SKETCH_DOMAIN)
-
-      if (!route) {
-        await addRoute(SKETCH_DOMAIN, sketchServer.port)
-      } else {
-        const existingPort = extractUpstreamPort(route)
-        const existingRouteIsActive = existingPort ? await isPortActive(existingPort) : false
-
-        if (existingRouteIsActive && existingPort !== sketchServer.port) {
-          return {
-            ...directTarget,
-            note: 'Using a direct local URL because the stable local HTTPS hostname is already in use by another local service.',
-          }
-        }
-
-        if (index === -1) {
-          await addRoute(SKETCH_DOMAIN, sketchServer.port)
-        } else if (existingPort !== sketchServer.port) {
-          await replaceRouteAt(index, SKETCH_DOMAIN, sketchServer.port)
-        }
-      }
-
-      return {
-        cleanup: () => cleanupSketchDomain(sketchServer.port, caddySession),
-        note:
-          httpsPort === 443
-            ? undefined
-            : 'Using an alternate local HTTPS port because the default HTTPS port is unavailable on this machine.',
-        url: toHttpsUrl(httpsPort),
-      }
-    } catch (error) {
-      if (isAddressInUseError(error)) {
-        continue
-      }
-
-      return directTarget
-    }
-  }
-
-  return {
-    ...directTarget,
-    note: 'Using a direct local URL because local HTTPS ports are already in use on this machine.',
   }
 }
 
@@ -823,7 +297,6 @@ export default function (pi: ExtensionAPI) {
         return
       }
 
-      let browserTarget: BrowserTarget | undefined
       let sketchServer: SketchServer | undefined
       let setupError: string | undefined
       let result: SketchSubmission | null = null
@@ -831,6 +304,7 @@ export default function (pi: ExtensionAPI) {
       try {
         result = await ctx.ui.custom<SketchSubmission | null>((tui, theme, _kb, done) => {
           let closed = false
+          let helper = ''
           let note = 'Starting local sketch server...'
           let status: 'preparing' | 'ready' | 'error' = 'preparing'
           let url = ''
@@ -848,24 +322,18 @@ export default function (pi: ExtensionAPI) {
               sketchServer = await launchSketchServer()
               if (closed) return
 
-              url = sketchServer.directUrl
-              note = 'Preparing browser URL...'
-              refresh()
-
-              browserTarget = await resolveBrowserTarget(sketchServer)
-              if (closed) return
-
-              status = 'ready'
-              url = browserTarget.url
-              note = browserTarget.note ?? 'Open the URL manually if the browser does not appear.'
+              url = sketchServer.url
+              note = 'Opening browser...'
               refresh()
 
               try {
-                openBrowser(browserTarget.url)
+                openBrowser(sketchServer.url)
               } catch {
-                note = 'Open the URL above manually if your browser did not open automatically.'
-                refresh()
+                helper = 'Open the URL above manually.'
               }
+
+              status = 'ready'
+              refresh()
 
               const submission = await sketchServer.waitForResult()
               finish(submission)
@@ -892,7 +360,7 @@ export default function (pi: ExtensionAPI) {
                     ? [
                         theme.fg('success', 'tldraw opened in your browser'),
                         theme.fg('muted', url),
-                        note ? theme.fg('dim', note) : '',
+                        helper ? theme.fg('dim', helper) : '',
                         '',
                         theme.fg('dim', 'Use Send to pi or Cmd/Ctrl+Enter in the browser.'),
                         theme.fg('dim', 'Press Escape here to cancel.'),
@@ -918,7 +386,6 @@ export default function (pi: ExtensionAPI) {
         })
       } finally {
         sketchServer?.close()
-        await browserTarget?.cleanup()
       }
 
       try {

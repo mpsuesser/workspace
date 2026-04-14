@@ -75,10 +75,7 @@ npm run typecheck
 
 - The browser UI is built with Vite + React + tldraw.
 - The pi extension serves the built `dist/` app from a temporary local HTTP server.
-- If [Caddy](https://caddyserver.com/) is available, the extension will try to open at `https://pi-sketch.localhost/sketch`.
-- If local port `443` is unavailable, it falls back to `https://pi-sketch.localhost:8443/sketch`.
-- If stable local HTTPS is unavailable, it falls back to a direct local URL.
-- To trust Caddy's local HTTPS certificates without browser warnings, run `sudo caddy trust` once.
+- `/sketch` opens a direct local URL like `http://localhost:61234/pi-sketch`.
 - If `dist/` is missing, `/sketch` will show a page telling you to build first.
 
 ## License
