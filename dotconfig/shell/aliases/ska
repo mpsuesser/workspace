@@ -1,9 +1,25 @@
 ska() {
-  bunx skills add "$@" &&
-    if [ -d ".agents/skills" ]; then
-      mkdir -p .opencode/skills
-      cp -a .agents/skills/. .opencode/skills/
-      rm -rf .agents
-      echo "Moved skills to .opencode/skills/"
-    fi
+  local canonical_dir="/Users/m/repos/workspace/dotconfig/pi/agent/skills"
+  local resolved_canonical_dir
+  local resolved_global_dir
+
+  mkdir -p "$canonical_dir" || return
+
+  resolved_canonical_dir="$(cd "$canonical_dir" && pwd -P)" || return
+  resolved_global_dir="$(cd "${HOME}/.pi/agent/skills" 2>/dev/null && pwd -P)" || {
+    echo "Expected ~/.pi/agent/skills to exist and point at ${resolved_canonical_dir}" >&2
+    echo "Run: (cd /Users/m/repos/workspace/dotconfig/pi && bun run install:dotconfig)" >&2
+    return 1
+  }
+
+  if [ "$resolved_global_dir" != "$resolved_canonical_dir" ]; then
+    echo "~/.pi/agent/skills resolves to ${resolved_global_dir}, expected ${resolved_canonical_dir}" >&2
+    echo "Run: (cd /Users/m/repos/workspace/dotconfig/pi && bun run install:dotconfig)" >&2
+    return 1
+  fi
+
+  (
+    cd "$HOME" || exit 1
+    bunx skills add "$@" -g -a pi --copy
+  )
 }
