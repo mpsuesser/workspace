@@ -16,7 +16,7 @@
   "tui.editor.deleteCharForward": [],
   "tui.editor.deleteWordBackward": ["alt+backspace"],
   "tui.editor.deleteWordForward": [],
-  "tui.editor.deleteToLineStart": ["alt+shift+backspace"],
+  "tui.editor.deleteToLineStart": ["ctrl+u", "alt+shift+backspace"],
   "tui.editor.deleteToLineEnd": [],
 
   "tui.input.newLine": ["shift+enter"],
@@ -43,7 +43,7 @@
   "app.clipboard.pasteImage": ["ctrl+v"],
 
   "app.session.new": [],
-  "app.session.tree": ["alt+w"],
+  "app.session.tree": ["alt+q"],
   "app.session.fork": [],
   "app.session.resume": [],
   "app.session.togglePath": ["ctrl+p"],

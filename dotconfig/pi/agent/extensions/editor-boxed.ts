@@ -55,12 +55,14 @@ class WrappedAutocompleteEditor extends CustomEditor {
 
 class BoxedEditor extends WrappedAutocompleteEditor {
 	private renderBarCursor(cell: string): string {
-		if (cell === " ") return this.borderColor("▏");
-		return `${this.borderColor("▏")}${cell}`;
+		if (cell === " " || cell.trim() === "") return this.borderColor("▏");
+		// Underline the character instead of inserting a bar — keeps width at 1 cell
+		return `\x1b[4m${cell}\x1b[24m`;
 	}
 
 	private normalizeCursor(line: string): string {
-		return line.replace(CURSOR_BLOCK_RE, (_match, cell: string) => this.renderBarCursor(cell));
+		// Re-emit CURSOR_MARKER so the TUI can position the hardware cursor
+		return line.replace(CURSOR_BLOCK_RE, (_match, cell: string) => CURSOR_MARKER + this.renderBarCursor(cell));
 	}
 
 	private wrapBodyLine(line: string, width: number): string {
