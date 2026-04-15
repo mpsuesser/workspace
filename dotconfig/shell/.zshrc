@@ -28,6 +28,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/_/.bin:$PATH"
 export PATH="$HOME/repos/multitude/.bin:$PATH"
+export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 # =============================================================================
 
