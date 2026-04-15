@@ -28,7 +28,7 @@ keybind = ctrl+m=unbind
 keybind = alt+e=equalize_splits
 keybind = cmd+e=toggle_split_zoom
 
-keybind = cmd+ctrl+w=scroll_page_up
-keybind = cmd+ctrl+s=scroll_page_down
+keybind = alt+w=scroll_page_fractional:-0.75
+keybind = alt+s=scroll_page_fractional:0.75
 
 keybind = cmd+shift+enter=unbind
