@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { MarkdownTheme } from "@mariozechner/pi-tui";
 import {
   countWriteContentLines,
   getWriteContentSizeBytes,
@@ -12,6 +13,7 @@ import {
   createUserMessageMarkdownLineRenderer,
   createUserMessageTitleLabelResolver,
   getUserMessageContentWidth,
+  patchNativeUserMessagePrototype,
   pickRandomUserLabel,
   shouldBypassUserMessageMarkdownRebuild,
 } from "../src/user-message-box-renderer.ts";
@@ -36,6 +38,25 @@ const codePointWidthOps = {
   truncate: (text: string, maxWidth: number): string =>
     [...text].slice(0, Math.max(0, maxWidth)).join(""),
 };
+
+const passthrough = (text: string): string => text;
+
+const mockMarkdownTheme = {
+  heading: passthrough,
+  link: passthrough,
+  linkUrl: passthrough,
+  code: passthrough,
+  codeBlock: passthrough,
+  codeBlockBorder: passthrough,
+  quote: passthrough,
+  quoteBorder: passthrough,
+  hr: passthrough,
+  listBullet: passthrough,
+  bold: passthrough,
+  italic: passthrough,
+  strikethrough: passthrough,
+  underline: passthrough,
+} satisfies MarkdownTheme;
 
 test("write call summary moves metrics onto the first line when the result header omits them", () => {
   assert.equal(
@@ -81,19 +102,19 @@ test("user message patch reapplies on reload when an older patch version is alre
     __piUserMessagePatchVersion: 1,
   };
 
-  patchUserMessageRenderPrototype(prototype, 7, (baseRender) => {
+  patchUserMessageRenderPrototype(prototype, 9, (baseRender) => {
     return function patched(width: number): string[] {
       return [`patched:${baseRender.call(this, width).join("|")}`];
     };
   });
 
   assert.deepEqual(prototype.render(14), ["patched:original:14"]);
-  assert.equal(prototype.__piUserMessagePatchVersion, 7);
+  assert.equal(prototype.__piUserMessagePatchVersion, 9);
   assert.equal(prototype.__piUserMessageNativePatched, true);
 });
 
 test("user message markdown extraction removes nested background styling", () => {
-  const theme = { heading: () => "" };
+  const theme = mockMarkdownTheme;
   const color = (text: string): string => text;
   const extracted = extractUserMessageMarkdownState({
     children: [
@@ -114,7 +135,7 @@ test("user message markdown extraction removes nested background styling", () =>
   assert.equal(extracted?.theme, theme);
   assert.equal(extracted?.defaultTextStyle?.color, color);
   assert.equal(extracted?.defaultTextStyle?.bold, true);
-  assert.equal("bgColor" in (extracted?.defaultTextStyle ?? {}), false);
+  assert.equal(extracted?.defaultTextStyle?.bgColor, undefined);
 });
 
 test("user message markdown renderer reuses cached markdown renders for identical state", () => {
@@ -131,7 +152,7 @@ test("user message markdown renderer reuses cached markdown renders for identica
   });
 
   const instance = {};
-  const theme = { heading: () => "" };
+  const theme = mockMarkdownTheme;
 
   assert.deepEqual(
     renderMarkdown(instance, { text: "cached", theme, defaultTextStyle: { bold: true } }, 24),
@@ -163,14 +184,14 @@ test("user message markdown rebuild guard bypasses oversized payloads", () => {
   assert.equal(
     shouldBypassUserMessageMarkdownRebuild({
       text: "short message",
-      theme: {},
+      theme: mockMarkdownTheme,
     }),
     false,
   );
   assert.equal(
     shouldBypassUserMessageMarkdownRebuild({
       text: `${"line\n".repeat(2000)}tail`,
-      theme: {},
+      theme: mockMarkdownTheme,
     }),
     true,
   );
@@ -207,6 +228,44 @@ test("user message renderer reserves content width for border and side padding",
   assert.equal(getUserMessageContentWidth(8), 4);
   assert.equal(getUserMessageContentWidth(20), 16);
   assert.equal(getUserMessageContentWidth(3), 1);
+});
+
+test("patched native user message renderer restores one blank line above the box", () => {
+  const prototype: PatchableUserMessagePrototype = {
+    render: (_width: number): string[] => ["", "Ping", ""],
+  };
+
+  patchNativeUserMessagePrototype(prototype, () => undefined, () => true);
+
+  const instance: PatchableUserMessagePrototype = Object.create(prototype);
+  const rendered = instance.render(20);
+
+  assert.equal(rendered[0], "");
+  assert.match(rendered[1] ?? "", /^╭/);
+  assert.match(rendered[3] ?? "", /Ping/);
+});
+
+test("patched native user message renderer keeps the border but drops the gray background fill", () => {
+  const prototype: PatchableUserMessagePrototype = {
+    render: (_width: number): string[] => ["", "Ping", ""],
+  };
+
+  patchNativeUserMessagePrototype(
+    prototype,
+    () => ({
+      fg: (_color: string, text: string): string => text,
+      getBgAnsi: () => "\u001b[48;5;24m",
+    }),
+    () => true,
+  );
+
+  const instance: PatchableUserMessagePrototype = Object.create(prototype);
+  const rendered = instance.render(20).join("\n");
+
+  assert.doesNotMatch(rendered, /\u001b\[48;5;24m/);
+  assert.doesNotMatch(rendered, /\u001b\[49m/);
+  assert.match(rendered, /╭/);
+  assert.match(rendered, /│ Ping/);
 });
 
 test("user message renderer adds one top and bottom padding row inside the box", () => {

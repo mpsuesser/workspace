@@ -2,8 +2,6 @@ import {
   Markdown,
   truncateToWidth,
   visibleWidth,
-  type DefaultTextStyle,
-  type MarkdownTheme,
 } from "@mariozechner/pi-tui";
 import {
   patchUserMessageRenderPrototype,
@@ -18,7 +16,6 @@ import {
 export type { PatchableUserMessagePrototype } from "./user-message-box-patch.js";
 import {
   addUserMessageVerticalPadding,
-  applyUserMessageBackground,
   normalizeUserMessageContentLine,
   normalizeUserMessageContentLines,
   type UserMessageBackgroundTheme,
@@ -31,8 +28,8 @@ export interface UserMessageTheme extends UserMessageBackgroundTheme {
 
 interface CachedUserMessageMarkdownRenderer {
   text: string;
-  theme: unknown;
-  defaultTextStyle?: Record<string, unknown>;
+  theme: UserMessageMarkdownState["theme"];
+  defaultTextStyle?: UserMessageMarkdownState["defaultTextStyle"];
   renderer: { render(width: number): string[] };
   renderedWidth: number;
   renderedLines: string[];
@@ -40,7 +37,8 @@ interface CachedUserMessageMarkdownRenderer {
 
 const MIN_BORDER_WIDTH = 8;
 const CONTENT_HORIZONTAL_PADDING_COLUMNS = 1;
-const USER_MESSAGE_PATCH_VERSION = 7;
+const USER_MESSAGE_PATCH_VERSION = 9;
+const USER_MESSAGE_OUTER_TOP_MARGIN_LINES = 1;
 const MAX_USER_MESSAGE_MARKDOWN_TEXT_LENGTH = 100_000;
 const MAX_USER_MESSAGE_MARKDOWN_LINE_COUNT = 2_000;
 const DEFAULT_USER_LABEL = "user";
@@ -140,13 +138,6 @@ function colorTitle(theme: UserMessageTheme | undefined, title: string): string 
   }
 }
 
-function colorUserBackground(
-  theme: UserMessageTheme | undefined,
-  text: string,
-): string {
-  return applyUserMessageBackground(theme, text);
-}
-
 function buildTopBorder(
   totalWidth: number,
   titleLabel: string,
@@ -155,9 +146,7 @@ function buildTopBorder(
   const innerWidth = Math.max(0, totalWidth - 2);
   const title = truncateToWidth(formatUserMessageTitle(titleLabel), innerWidth, "");
   const fill = "─".repeat(Math.max(0, innerWidth - visibleWidth(title)));
-  const row = `${colorBorder(theme, "╭")}${colorTitle(theme, title)}${colorBorder(theme, `${fill}╮`)}`;
-
-  return colorUserBackground(theme, row);
+  return `${colorBorder(theme, "╭")}${colorTitle(theme, title)}${colorBorder(theme, `${fill}╮`)}`;
 }
 
 function buildBottomBorder(
@@ -165,9 +154,7 @@ function buildBottomBorder(
   theme: UserMessageTheme | undefined,
 ): string {
   const innerWidth = Math.max(0, totalWidth - 2);
-  const row = `${colorBorder(theme, "╰")}${colorBorder(theme, `${"─".repeat(innerWidth)}╯`)}`;
-
-  return colorUserBackground(theme, row);
+  return `${colorBorder(theme, "╰")}${colorBorder(theme, `${"─".repeat(innerWidth)}╯`)}`;
 }
 
 function wrapContentLine(
@@ -180,9 +167,7 @@ function wrapContentLine(
   const normalizedLine = normalizeUserMessageContentLine(line);
   const content = truncateToWidth(normalizedLine, innerWidth, "", true);
   const padding = " ".repeat(Math.max(0, innerWidth - visibleWidth(content)));
-  const row = `${colorBorder(theme, "│")}${sidePadding}${content}${padding}${sidePadding}${colorBorder(theme, "│")}`;
-
-  return colorUserBackground(theme, row);
+  return `${colorBorder(theme, "│")}${sidePadding}${content}${padding}${sidePadding}${colorBorder(theme, "│")}`;
 }
 
 function createMarkdownRenderer(
@@ -192,8 +177,8 @@ function createMarkdownRenderer(
     markdownState.text,
     0,
     0,
-    markdownState.theme as MarkdownTheme,
-    markdownState.defaultTextStyle as DefaultTextStyle | undefined,
+    markdownState.theme,
+    markdownState.defaultTextStyle,
   );
 }
 
@@ -214,8 +199,8 @@ function countUserMessageLines(text: string, maxLines: number): number {
 }
 
 function hasSameDefaultTextStyle(
-  left: Record<string, unknown> | undefined,
-  right: Record<string, unknown> | undefined,
+  left: UserMessageMarkdownState["defaultTextStyle"],
+  right: UserMessageMarkdownState["defaultTextStyle"],
 ): boolean {
   if (left === right) {
     return true;
@@ -303,19 +288,21 @@ export function createUserMessageMarkdownLineRenderer(
 const renderCachedUserMessageMarkdownLines =
   createUserMessageMarkdownLineRenderer();
 
+function isUserMessageLike(instance: unknown): instance is { children?: unknown } {
+  return typeof instance === "object" && instance !== null;
+}
+
 function renderUserMessageBodyLines(
   instance: unknown,
   contentWidth: number,
   originalRenderWidth: number,
   originalRender: (width: number) => string[],
 ): string[] {
-  if (typeof instance !== "object" || instance === null) {
+  if (!isUserMessageLike(instance)) {
     return originalRender.call(instance, originalRenderWidth);
   }
 
-  const markdownState = extractUserMessageMarkdownState(
-    instance as { children?: unknown[] },
-  );
+  const markdownState = extractUserMessageMarkdownState(instance);
   if (!markdownState || shouldBypassUserMessageMarkdownRebuild(markdownState)) {
     return originalRender.call(instance, originalRenderWidth);
   }
@@ -358,8 +345,13 @@ export function patchNativeUserMessagePrototype(
           contentLines.length > 0 ? contentLines : [""],
         );
         const theme = getTheme();
+        const outerTopMargin = Array.from(
+          { length: USER_MESSAGE_OUTER_TOP_MARGIN_LINES },
+          () => "",
+        );
 
         return [
+          ...outerTopMargin,
           buildTopBorder(safeWidth, getUserMessageTitleLabel(this), theme),
           ...paddedContentLines.map((renderLine) =>
             wrapContentLine(renderLine, safeWidth, theme),
