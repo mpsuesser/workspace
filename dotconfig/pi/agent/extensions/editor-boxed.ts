@@ -54,15 +54,22 @@ class WrappedAutocompleteEditor extends CustomEditor {
 }
 
 class BoxedEditor extends WrappedAutocompleteEditor {
-	private renderBarCursor(cell: string): string {
-		if (cell === " " || cell.trim() === "") return this.borderColor("▏");
-		// Underline the character instead of inserting a bar — keeps width at 1 cell
-		return `\x1b[4m${cell}\x1b[24m`;
+	constructor(
+		tui: ConstructorParameters<typeof CustomEditor>[0],
+		editorTheme: ConstructorParameters<typeof CustomEditor>[1],
+		keybindings: ConstructorParameters<typeof CustomEditor>[2],
+		wrapAutocomplete?: WrapAutocomplete,
+	) {
+		super(tui, editorTheme, keybindings, wrapAutocomplete);
+		// Enable the hardware cursor so Ghostty (or any terminal) renders
+		// its native bar/beam instead of the TUI's fake reverse-video block.
+		this.tui.setShowHardwareCursor(true);
 	}
 
 	private normalizeCursor(line: string): string {
-		// Re-emit CURSOR_MARKER so the TUI can position the hardware cursor
-		return line.replace(CURSOR_BLOCK_RE, (_match, cell: string) => CURSOR_MARKER + this.renderBarCursor(cell));
+		// Strip the fake block cursor (reverse video) and re-emit CURSOR_MARKER
+		// so the TUI positions the hardware cursor at the right spot
+		return line.replace(CURSOR_BLOCK_RE, (_match, cell: string) => CURSOR_MARKER + cell);
 	}
 
 	private wrapBodyLine(line: string, width: number): string {
