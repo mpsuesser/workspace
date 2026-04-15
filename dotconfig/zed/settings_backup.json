@@ -59,10 +59,6 @@
   "helix_mode": true,
   "buffer_font_family": ".ZedMono",
   "context_servers": {
-    "littlebird-dev": {
-      "enabled": true,
-      "url": "https://mcp-dev.littlebird.ai/mcp"
-    },
     "mcp-server-linear": {
       "enabled": true,
       "settings": {
@@ -83,10 +79,8 @@
     }
   },
   "agent": {
-    "tool_permissions": {
-      "default": "allow"
-    },
     "default_profile": "write",
+    "always_allow_tool_actions": true,
     "profiles": {
       "TODO": {
         "name": "TODO",
