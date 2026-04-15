@@ -9,7 +9,9 @@ It currently enhances:
 
 - **`read`**: syntax-highlighted text previews with line numbers, plus inline image rendering when the terminal supports it
 - **`bash`**: colored exit summary (`exit 0`/`exit 1`) with a preview body of command output
-- **`ls` / `find` / `grep`**: optional Nerd Font file icons with tree/grouped layouts and clearer match rendering
+- **`ls`**: optional Nerd Font file icons with a tree-style directory layout
+
+> For compact `find` / `grep` / `edit` / `write` rendering, pair it with `pi-tui-overrides`.
 
 > Companion to [@heyhuynhgiabuu/pi-diff](https://github.com/buddingnewinsights/pi-diff) for `write`/`edit` diff rendering.
 
@@ -32,8 +34,8 @@ pi -e ./src/index.ts
 ![Bash and read rendering](media/bash-and-read.png)
 *`bash` exit summary + output preview, and syntax-highlighted `read` text output.*
 
-![Icons and grep rendering](media/icons-and-grep.png)
-*`ls`/`find`/`grep` with optional Nerd Font icons and grouped/tree-oriented rendering.*
+![Icons and ls rendering](media/icons-and-grep.png)
+*`ls` with optional Nerd Font icons and tree-oriented rendering.*
 
 ![Inline image rendering](media/inline-image.png)
 *`read` rendering an image inline in supported terminals.*

@@ -8,8 +8,6 @@
  *   • read  — syntax-highlighted file content with line numbers
  *   • bash  — colored exit status, stderr highlighting
  *   • ls    — tree-view directory listing with file-type icons
- *   • find  — grouped results with file-type icons
- *   • grep  — syntax-highlighted match context with line numbers
  *
  * Architecture:
  *   1. Wrap SDK factory tools (createReadTool, createBashTool, etc.)
@@ -24,13 +22,12 @@
  */
 
 import * as childProcess from "node:child_process";
-import { existsSync, mkdirSync, statSync } from "node:fs";
-import { basename, dirname, extname, join, relative } from "node:path";
+import { existsSync, statSync } from "node:fs";
+import { basename, dirname, extname, relative } from "node:path";
 
 import { codeToANSI } from "@shikijs/cli";
 import type { BundledLanguage, BundledTheme } from "shiki";
 
-import { CursorStore, fffFormatGrepText } from "./fff-helpers.js";
 
 // ---------------------------------------------------------------------------
 // Config
@@ -767,48 +764,6 @@ async function renderGrepResults(text: string, pattern: string): Promise<string>
 }
 
 // ---------------------------------------------------------------------------
-// FFF integration (optional) — Fast File Finder with frecency & SIMD search
-//
-// If @ff-labs/fff-node is installed, find/grep use FFF for speed + frecency.
-// If not, falls back to wrapping SDK tools (current behavior).
-// ---------------------------------------------------------------------------
-
-const _cursorStore = new CursorStore();
-let _fffModule: any = null;
-let _fffFinder: any = null;
-let _fffPartialIndex = false;
-let _fffDbDir: string | null = null;
-const FFF_SCAN_TIMEOUT = 15_000;
-
-async function fffEnsureFinder(cwd: string): Promise<any> {
-	if (_fffFinder && !_fffFinder.isDestroyed) return _fffFinder;
-	if (!_fffModule || !_fffDbDir) return null;
-
-	const result = _fffModule.FileFinder.create({
-		basePath: cwd,
-		frecencyDbPath: join(_fffDbDir, "frecency.mdb"),
-		historyDbPath: join(_fffDbDir, "history.mdb"),
-		aiMode: true,
-	});
-
-	if (!result.ok) throw new Error(`FFF init failed: ${result.error}`);
-
-	_fffFinder = result.value;
-	const scan = await _fffFinder.waitForScan(FFF_SCAN_TIMEOUT);
-	_fffPartialIndex = scan.ok && !scan.value;
-
-	return _fffFinder;
-}
-
-function fffDestroy(): void {
-	if (_fffFinder && !_fffFinder.isDestroyed) {
-		_fffFinder.destroy();
-		_fffFinder = null;
-	}
-	_fffPartialIndex = false;
-}
-
-// ---------------------------------------------------------------------------
 // Extension entry point
 // ---------------------------------------------------------------------------
 
@@ -819,15 +774,12 @@ function fffDestroy(): void {
 export interface PiPrettyDeps {
 	sdk: any;
 	TextComponent: any;
-	fffModule?: any;
 }
 
 export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 	let createReadTool: any;
 	let createBashTool: any;
 	let createLsTool: any;
-	let createFindTool: any;
-	let createGrepTool: any;
 	let TextComponent: any;
 
 	let sdk: any;
@@ -838,21 +790,13 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 		createReadTool = sdk.createReadToolDefinition ?? sdk.createReadTool;
 		createBashTool = sdk.createBashToolDefinition ?? sdk.createBashTool;
 		createLsTool = sdk.createLsToolDefinition ?? sdk.createLsTool;
-		createFindTool = sdk.createFindToolDefinition ?? sdk.createFindTool;
-		createGrepTool = sdk.createGrepToolDefinition ?? sdk.createGrepTool;
 		TextComponent = deps.TextComponent;
-		_fffModule = deps.fffModule ?? null;
-		_fffFinder = null;
-		_fffPartialIndex = false;
-		_fffDbDir = null;
 	} else {
 		try {
 			sdk = require("@mariozechner/pi-coding-agent");
 			createReadTool = sdk.createReadToolDefinition ?? sdk.createReadTool;
 			createBashTool = sdk.createBashToolDefinition ?? sdk.createBashTool;
 			createLsTool = sdk.createLsToolDefinition ?? sdk.createLsTool;
-			createFindTool = sdk.createFindToolDefinition ?? sdk.createFindTool;
-			createGrepTool = sdk.createGrepToolDefinition ?? sdk.createGrepTool;
 			TextComponent = require("@mariozechner/pi-tui").Text;
 		} catch {
 			return;
@@ -863,63 +807,6 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 	const cwd = process.cwd();
 	const home = process.env.HOME ?? "";
 	const sp = (p: string) => shortPath(cwd, home, p);
-
-	// ===================================================================
-	// FFF initialization (optional — graceful fallback to SDK)
-	// ===================================================================
-
-	const getAgentDir = (sdk as any).getAgentDir;
-	if (!deps) {
-		// Only try require() in production — tests inject fffModule via deps
-		try {
-			_fffModule = require("@ff-labs/fff-node");
-			if (getAgentDir) {
-				_fffDbDir = join(getAgentDir(), "fff");
-				try {
-					mkdirSync(_fffDbDir, { recursive: true });
-				} catch {}
-			}
-		} catch {
-			/* FFF not installed — SDK tools will be used */
-		}
-	} else if (_fffModule && getAgentDir) {
-		_fffDbDir = join(getAgentDir(), "fff");
-		try {
-			mkdirSync(_fffDbDir, { recursive: true });
-		} catch {}
-	}
-
-	pi.on("session_start", async (_event: any, ctx: any) => {
-		// Try dynamic import if sync require failed (ESM-only package)
-		if (!_fffModule) {
-			try {
-				// @ts-ignore — optional dependency, may not be installed
-				_fffModule = await import("@ff-labs/fff-node");
-			} catch {}
-		}
-		if (!_fffModule) return;
-
-		if (!_fffDbDir) {
-			const agentDir = getAgentDir?.() ?? join(home, ".pi/agent");
-			_fffDbDir = join(agentDir, "fff");
-			try {
-				mkdirSync(_fffDbDir, { recursive: true });
-			} catch {}
-		}
-
-		try {
-			await fffEnsureFinder(ctx.cwd);
-			if (_fffPartialIndex) {
-				ctx.ui?.notify?.("FFF: scan timed out — using partial index. Run /fff-rescan when ready.", "warning");
-			}
-		} catch (e: any) {
-			ctx.ui?.notify?.(`FFF init failed: ${e.message}`, "error");
-		}
-	});
-
-	pi.on("session_shutdown", async () => {
-		fffDestroy();
-	});
 
 	// ===================================================================
 	// read — syntax-highlighted file content
@@ -1103,7 +990,7 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 			},
 
 			renderCall(args: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
+				resolveBaseBackground(theme);
 				const cmd = args?.command ?? "";
 				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
 				const timeout = args?.timeout ? ` ${theme.fg("muted", `(${args.timeout}s timeout)`)}` : "";
@@ -1114,7 +1001,7 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 			},
 
 			renderResult(result: any, _opt: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
+				resolveBaseBackground(theme);
 				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
 
 				if (ctx.isError) {
@@ -1129,7 +1016,7 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 
 				const d = result.details;
 				if (d?._type === "bashResult") {
-					const { summary, body } = renderBashOutput(d.text, d.exitCode);
+					const { summary } = renderBashOutput(d.text, d.exitCode);
 					const lines = d.text.split("\n");
 					const lineCount = lines.length;
 					const lineInfo = lineCount > 1 ? `  ${FG_DIM}(${lineCount} lines)${RST}` : "";
@@ -1195,7 +1082,7 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 			},
 
 			renderCall(args: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
+				resolveBaseBackground(theme);
 				const fp = args?.path ?? ".";
 				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
 				text.setText(`${theme.fg("toolTitle", theme.bold("ls"))} ${theme.fg("accent", sp(fp))}`);
@@ -1203,7 +1090,7 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 			},
 
 			renderResult(result: any, _opt: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
+				resolveBaseBackground(theme);
 				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
 
 				if (ctx.isError) {
@@ -1231,471 +1118,4 @@ export default function piPrettyExtension(pi: any, deps?: PiPrettyDeps): void {
 		});
 	}
 
-	// ===================================================================
-	// find — grouped file list with icons
-	// ===================================================================
-
-	if (createFindTool) {
-		const origFind = createFindTool(cwd);
-
-		pi.registerTool({
-			...origFind,
-			name: "find",
-
-			async execute(tid: string, params: any, sig: any, upd: any, ctx: any) {
-				// Try FFF first (frecency-ranked, SIMD-accelerated)
-				if (_fffFinder && !_fffFinder.isDestroyed) {
-					try {
-						const effectiveLimit = Math.max(1, params.limit ?? 200);
-						let query = params.pattern ?? "";
-						if (params.path) query = `${params.path} ${query}`;
-
-						const searchResult = _fffFinder.fileSearch(query, { pageSize: effectiveLimit });
-						if (searchResult.ok) {
-							const items = searchResult.value.items.slice(0, effectiveLimit);
-							let textContent = items.map((i: any) => i.relativePath).join("\n");
-							const matchCount = items.length;
-
-							const notices: string[] = [];
-							if (_fffPartialIndex) notices.push("Warning: partial file index");
-							if (items.length >= effectiveLimit) notices.push(`${effectiveLimit} limit reached`);
-							if (searchResult.value.totalMatched > items.length) {
-								notices.push(`${searchResult.value.totalMatched} total matches`);
-							}
-							if (notices.length) textContent += `\n\n[${notices.join(". ")}]`;
-
-							return {
-								content: [{ type: "text", text: textContent }],
-								details: {
-									_type: "findResult",
-									text: textContent,
-									pattern: params.pattern ?? "",
-									matchCount,
-								},
-							};
-						}
-					} catch {
-						/* fall through to SDK */
-					}
-				}
-
-				// SDK fallback
-				const result = await origFind.execute(tid, params, sig, upd, ctx);
-
-				const textContent = result.content
-					?.filter((c: any) => c.type === "text")
-					.map((c: any) => c.text || "")
-					.join("\n");
-
-				const matchCount = textContent ? textContent.trim().split("\n").filter(Boolean).length : 0;
-
-				(result as any).details = {
-					_type: "findResult",
-					text: textContent ?? "",
-					pattern: params.pattern ?? "",
-					matchCount,
-				};
-
-				return result;
-			},
-
-			renderCall(args: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
-				const pattern = args?.pattern ?? "";
-				const path = args?.path ? ` ${theme.fg("muted", `in ${sp(args.path)}`)}` : "";
-				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
-				text.setText(`${theme.fg("toolTitle", theme.bold("find"))} ${theme.fg("accent", pattern)}${path}`);
-				return text;
-			},
-
-			renderResult(result: any, _opt: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
-				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
-
-				if (ctx.isError) {
-					const e =
-						result.content
-							?.filter((c: any) => c.type === "text")
-							.map((c: any) => c.text || "")
-							.join("\n") ?? "Error";
-					text.setText(`\n${theme.fg("error", e)}`);
-					return text;
-				}
-
-				const d = result.details;
-				if (d?._type === "findResult" && d.text) {
-					const rendered = renderFindResults(d.text);
-					const info = `${FG_DIM}${d.matchCount} files${RST}`;
-					text.setText(`  ${info}\n${rendered}`);
-					return text;
-				}
-
-				const fallback = result.content?.[0]?.text ?? "found";
-				text.setText(`  ${theme.fg("dim", String(fallback).slice(0, 120))}`);
-				return text;
-			},
-		});
-	}
-
-	// ===================================================================
-	// grep — highlighted matches with line numbers
-	// ===================================================================
-
-	if (createGrepTool) {
-		const origGrep = createGrepTool(cwd);
-
-		pi.registerTool({
-			...origGrep,
-			name: "grep",
-
-			async execute(tid: string, params: any, sig: any, upd: any, ctx: any) {
-				// Try FFF first (SIMD-accelerated, frecency-ranked)
-				if (_fffFinder && !_fffFinder.isDestroyed) {
-					try {
-						const effectiveLimit = Math.max(1, params.limit ?? 100);
-						let query = params.pattern ?? "";
-						if (params.glob) query = `${params.glob} ${query}`;
-						else if (params.path) query = `${params.path} ${query}`;
-
-						const mode = params.literal ? "plain" : "regex";
-
-						const grepResult = _fffFinder.grep(query, {
-							mode,
-							smartCase: !params.ignoreCase,
-							maxMatchesPerFile: Math.min(effectiveLimit, 50),
-							cursor: null,
-							beforeContext: params.context ?? 0,
-							afterContext: params.context ?? 0,
-						});
-
-						if (grepResult.ok) {
-							const result = grepResult.value;
-							let textContent = fffFormatGrepText(result.items, effectiveLimit);
-							const matchCount = Math.min(result.items.length, effectiveLimit);
-
-							const notices: string[] = [];
-							if (_fffPartialIndex) notices.push("Warning: partial file index");
-							if (result.items.length >= effectiveLimit) notices.push(`${effectiveLimit} limit reached`);
-							if ((result as any).regexFallbackError) {
-								notices.push(`Regex failed: ${(result as any).regexFallbackError}, used literal match`);
-							}
-							if (result.nextCursor) {
-								const cursorId = _cursorStore.store(result.nextCursor);
-								notices.push(`More results available. Use cursor="${cursorId}" to continue`);
-							}
-							if (notices.length) textContent += `\n\n[${notices.join(". ")}]`;
-
-							return {
-								content: [{ type: "text", text: textContent }],
-								details: {
-									_type: "grepResult",
-									text: textContent,
-									pattern: params.pattern ?? "",
-									matchCount,
-								},
-							};
-						}
-					} catch {
-						/* fall through to SDK */
-					}
-				}
-
-				// SDK fallback
-				const result = await origGrep.execute(tid, params, sig, upd, ctx);
-
-				const textContent = result.content
-					?.filter((c: any) => c.type === "text")
-					.map((c: any) => c.text || "")
-					.join("\n");
-
-				const matchCount = textContent
-					? textContent
-							.trim()
-							.split("\n")
-							.filter((l: string) => l.match(/^.+?[:\-]\d+[:\-]/)).length
-					: 0;
-
-				(result as any).details = {
-					_type: "grepResult",
-					text: textContent ?? "",
-					pattern: params.pattern ?? "",
-					matchCount,
-				};
-
-				return result;
-			},
-
-			renderCall(args: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
-				const pattern = args?.pattern ?? "";
-				const path = args?.path ? ` ${theme.fg("muted", `in ${sp(args.path)}`)}` : "";
-				const glob = args?.glob ? ` ${theme.fg("muted", `(${args.glob})`)}` : "";
-				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
-				text.setText(`${theme.fg("toolTitle", theme.bold("grep"))} ${theme.fg("accent", pattern)}${path}${glob}`);
-				return text;
-			},
-
-			renderResult(result: any, _opt: any, theme: any, ctx: any) {
-			resolveBaseBackground(theme);
-				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
-
-				if (ctx.isError) {
-					const e =
-						result.content
-							?.filter((c: any) => c.type === "text")
-							.map((c: any) => c.text || "")
-							.join("\n") ?? "Error";
-					text.setText(`\n${theme.fg("error", e)}`);
-					return text;
-				}
-
-				const d = result.details;
-				if (d?._type === "grepResult" && d.text) {
-					const key = `grep:${d.pattern}:${d.matchCount}:${termW()}`;
-					if (ctx.state._gk !== key) {
-						ctx.state._gk = key;
-						const info = `${FG_DIM}${d.matchCount} matches${RST}`;
-						ctx.state._gt = `  ${info}`;
-
-						renderGrepResults(d.text, d.pattern)
-							.then((rendered: string) => {
-								if (ctx.state._gk !== key) return;
-								ctx.state._gt = `  ${info}\n${rendered}`;
-								ctx.invalidate();
-							})
-							.catch(() => {});
-					}
-					text.setText(ctx.state._gt ?? `  ${FG_DIM}${d.matchCount} matches${RST}`);
-					return text;
-				}
-
-				const fallback = result.content?.[0]?.text ?? "searched";
-				text.setText(`  ${theme.fg("dim", String(fallback).slice(0, 120))}`);
-				return text;
-			},
-		});
-	}
-
-	// ===================================================================
-	// multi_grep — FFF-only OR-logic multi-pattern search
-	// ===================================================================
-
-	if (_fffModule) {
-		pi.registerTool({
-			name: "multi_grep",
-			label: "multi_grep (fff)",
-			description: [
-				"Search file contents for lines matching ANY of multiple patterns (OR logic).",
-				"Uses SIMD-accelerated Aho-Corasick multi-pattern matching. Faster than regex alternation.",
-				"Patterns are literal text — never escape special characters.",
-				"Use the constraints parameter for file filtering ('*.rs', 'src/', '!test/').",
-			].join(" "),
-			promptSnippet:
-				"Multi-pattern OR search across file contents (FFF: SIMD-accelerated, frecency-ranked)",
-			promptGuidelines: [
-				"Use multi_grep when you need to find multiple identifiers at once (OR logic).",
-				"Include all naming conventions: snake_case, PascalCase, camelCase variants.",
-				"Patterns are literal text. Never escape special characters.",
-				"Use the constraints parameter for file type/path filtering, not inside patterns.",
-			],
-
-			parameters: {
-				type: "object",
-				properties: {
-					patterns: {
-						type: "array",
-						items: { type: "string" },
-						description: "Patterns to search for (OR logic — matches lines containing ANY pattern).",
-					},
-					constraints: {
-						type: "string",
-						description: "File constraints, e.g. '*.{ts,tsx} !test/' to filter files.",
-					},
-					context: {
-						type: "number",
-						description: "Number of context lines before and after each match (default: 0)",
-					},
-					limit: {
-						type: "number",
-						description: "Maximum number of matches to return (default: 100)",
-					},
-				},
-				required: ["patterns"],
-			},
-
-			async execute(_tid: string, params: any, sig: any, _upd: any, _ctx: any) {
-				if (sig?.aborted) return { content: [{ type: "text", text: "Aborted" }], details: {} };
-
-				if (!params.patterns || params.patterns.length === 0) {
-					return {
-						content: [{ type: "text", text: "Error: patterns array must have at least 1 element" }],
-						details: { error: "empty patterns" },
-					};
-				}
-
-				if (!_fffFinder || _fffFinder.isDestroyed) {
-					return {
-						content: [{ type: "text", text: "FFF not initialized. Wait for session start or run /fff-rescan." }],
-						details: {},
-					};
-				}
-
-				try {
-					const effectiveLimit = Math.max(1, params.limit ?? 100);
-
-					const grepResult = _fffFinder.multiGrep({
-						patterns: params.patterns,
-						constraints: params.constraints,
-						maxMatchesPerFile: Math.min(effectiveLimit, 50),
-						smartCase: true,
-						cursor: null,
-						beforeContext: params.context ?? 0,
-						afterContext: params.context ?? 0,
-					});
-
-					if (!grepResult.ok) {
-						return {
-							content: [{ type: "text", text: `multi_grep error: ${grepResult.error}` }],
-							details: { error: grepResult.error },
-						};
-					}
-
-					const result = grepResult.value;
-					let textContent = fffFormatGrepText(result.items, effectiveLimit);
-					const matchCount = Math.min(result.items.length, effectiveLimit);
-
-					const notices: string[] = [];
-					if (_fffPartialIndex) notices.push("Warning: partial file index");
-					if (result.items.length >= effectiveLimit) notices.push(`${effectiveLimit} limit reached`);
-					if (result.nextCursor) {
-						const cursorId = _cursorStore.store(result.nextCursor);
-						notices.push(`More results: cursor="${cursorId}"`);
-					}
-					if (notices.length) textContent += `\n\n[${notices.join(". ")}]`;
-
-					return {
-						content: [{ type: "text", text: textContent }],
-						details: {
-							_type: "grepResult",
-							text: textContent,
-							pattern: params.patterns.join(" | "),
-							matchCount,
-						},
-					};
-				} catch (e: any) {
-					return {
-						content: [{ type: "text", text: `multi_grep error: ${e.message}` }],
-						details: { error: e.message },
-					};
-				}
-			},
-
-			renderCall(args: any, theme: any, ctx: any) {
-				resolveBaseBackground(theme);
-				const patterns = args?.patterns ?? [];
-				const constraints = args?.constraints;
-				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
-				let content =
-					theme.fg("toolTitle", theme.bold("multi_grep")) +
-					" " +
-					theme.fg("accent", patterns.map((p: string) => `"${p}"`).join(", "));
-				if (constraints) content += theme.fg("muted", ` (${constraints})`);
-				text.setText(content);
-				return text;
-			},
-
-			renderResult(result: any, _opt: any, theme: any, ctx: any) {
-				resolveBaseBackground(theme);
-				const text = ctx.lastComponent ?? new TextComponent("", 0, 0);
-
-				if (ctx.isError) {
-					const e = result.content?.[0]?.text ?? "Error";
-					text.setText(`\n${theme.fg("error", e)}`);
-					return text;
-				}
-
-				const d = result.details;
-				if (d?._type === "grepResult" && d.text) {
-					const key = `mgrep:${d.pattern}:${d.matchCount}:${termW()}`;
-					if (ctx.state._mgk !== key) {
-						ctx.state._mgk = key;
-						const info = `${FG_DIM}${d.matchCount} matches${RST}`;
-						ctx.state._mgt = `  ${info}`;
-
-						renderGrepResults(d.text, d.pattern)
-							.then((rendered: string) => {
-								if (ctx.state._mgk !== key) return;
-								ctx.state._mgt = `  ${info}\n${rendered}`;
-								ctx.invalidate();
-							})
-							.catch(() => {});
-					}
-					text.setText(ctx.state._mgt ?? `  ${FG_DIM}${d.matchCount} matches${RST}`);
-					return text;
-				}
-
-				const fallback = result.content?.[0]?.text ?? "searched";
-				text.setText(`  ${theme.fg("dim", String(fallback).slice(0, 120))}`);
-				return text;
-			},
-		});
-	}
-
-	// ===================================================================
-	// FFF commands
-	// ===================================================================
-
-	if (_fffModule) {
-		pi.registerCommand("fff-health", {
-			description: "Show FFF file finder health and indexer status",
-			handler: async (_args: any, ctx: any) => {
-				if (!_fffFinder || _fffFinder.isDestroyed) {
-					ctx.ui?.notify?.("FFF not initialized", "warning");
-					return;
-				}
-
-				const health = _fffFinder.healthCheck();
-				if (!health.ok) {
-					ctx.ui?.notify?.(`Health check failed: ${health.error}`, "error");
-					return;
-				}
-
-				const h = health.value;
-				const lines = [
-					`FFF v${h.version}`,
-					`Git: ${h.git.repositoryFound ? `yes (${h.git.workdir ?? "unknown"})` : "no"}`,
-					`Picker: ${h.filePicker.initialized ? `${h.filePicker.indexedFiles ?? 0} files` : "not initialized"}`,
-					`Frecency: ${h.frecency.initialized ? "active" : "disabled"}`,
-					`Query tracker: ${h.queryTracker.initialized ? "active" : "disabled"}`,
-					`Partial index: ${_fffPartialIndex ? "yes (scan timed out)" : "no"}`,
-				];
-
-				const progress = _fffFinder.getScanProgress();
-				if (progress.ok) {
-					lines.push(`Scanning: ${progress.value.isScanning ? "yes" : "no"} (${progress.value.scannedFilesCount} files)`);
-				}
-
-				ctx.ui?.notify?.(lines.join("\n"), "info");
-			},
-		});
-
-		pi.registerCommand("fff-rescan", {
-			description: "Trigger FFF to rescan files",
-			handler: async (_args: any, ctx: any) => {
-				if (!_fffFinder || _fffFinder.isDestroyed) {
-					ctx.ui?.notify?.("FFF not initialized", "warning");
-					return;
-				}
-
-				const result = _fffFinder.scanFiles();
-				if (!result.ok) {
-					ctx.ui?.notify?.(`Rescan failed: ${result.error}`, "error");
-					return;
-				}
-
-				_fffPartialIndex = false;
-				ctx.ui?.notify?.("FFF rescan triggered", "info");
-			},
-		});
-	}
 }
