@@ -4,6 +4,18 @@ config-file = "./shader"
 
 shell-integration = "zsh"
 
+# Zellij-friendly shell integration:
+# - no-cursor: zellij manages cursor per pane; avoid fighting it
+# - no-title:  zellij manages pane titles
+# - sudo:      preserve terminfo across sudo (harmless, useful)
+# - ssh-env:   translate TERM=xterm-ghostty on remote hosts
+# - ssh-terminfo: auto-install ghostty's terminfo on remote hosts
+shell-integration-features = no-cursor, no-title, sudo, ssh-env, ssh-terminfo
+
+# Force Option to behave as Alt so zellij Alt+w/s/e bindings fire reliably,
+# rather than depending on keyboard-layout-specific ghostty defaults.
+macos-option-as-alt = true
+
 # theme = prisma-dark
 theme = Snazzy
 
@@ -11,6 +23,14 @@ theme = Snazzy
 # Without this, macOS ghostty uses NSColor.separatorColor, which is close but
 # dynamic and won't stay in lockstep with the zellij theme.
 split-divider-color = #3a3a3a
+
+# Mouse-drag text selection inside zellij panes is rendered by ghostty, not
+# zellij (zellij has no theme key for pane selection — see issue #3452). The
+# default (inverted fg/bg) is too subtle against our Snazzy background, so
+# we set these explicitly to the dracula selection color #44475a for a
+# consistent, clearly visible highlight across zellij + ghostty.
+selection-background = #44475a
+selection-foreground = #f8f8f2
 
 # font-family = Maple Mono
 font-family = Maple Mono NF
