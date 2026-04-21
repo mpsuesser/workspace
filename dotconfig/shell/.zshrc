@@ -32,6 +32,14 @@ export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 # =============================================================================
 
+# Load zsh's completion system before any tool init that registers completions
+# via `compdef` (zoxide, tv, …). Without this, tv's init script emits
+# `(eval):230: command not found: compdef` on every new shell.
+autoload -Uz compinit
+compinit
+
+# =============================================================================
+
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 eval "$(starship init zsh)"
