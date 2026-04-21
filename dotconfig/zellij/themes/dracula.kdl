@@ -72,8 +72,26 @@ themes {
             emphasis_2 80 250 123
             emphasis_3 255 121 198
         }
+        // Frame line colors.
+        //
+        // frame_unselected = non-focused pane borders. Charcoal #3a3a3a to
+        //   match ghostty's split-divider-color (pinned in ghostty/config).
+        // frame_selected   = focused pane border in normal mode. Dracula
+        //   muted blue #6272a4 (the official dracula "comment" accent) for
+        //   a subtle focus hint without shouting.
+        // frame_highlight  = focused pane border when in a non-normal mode
+        //   (pane/tab/scroll/etc). Dracula orange #ffb86c — loud on purpose
+        //   so you notice when your keybinds mean something different.
+        frame_unselected {
+            base 58 58 58
+            background 0
+            emphasis_0 255 184 108
+            emphasis_1 139 233 253
+            emphasis_2 255 121 198
+            emphasis_3 0
+        }
         frame_selected {
-            base 80 250 123
+            base 98 114 164
             background 0
             emphasis_0 255 184 108
             emphasis_1 139 233 253

@@ -1,42 +1,53 @@
 default_shell "zsh"
 theme "dracula"
 
+// Frameless by default. Individual layouts/panes can override with
+// `borderless false` in their layout file if they want a frame.
+pane_frames false
+
 keybinds clear-defaults=true {
     shared {
+        // ── Pane focus ──────────────────────────────── (ghostty: cmd+w/a/s/d)
+        bind "Super w" { MoveFocus "Up"; }
+        bind "Super a" { MoveFocus "Left"; }
+        bind "Super s" { MoveFocus "Down"; }
+        bind "Super d" { MoveFocus "Right"; }
+
+        // ── New pane ────────────────────────────────── (ghostty: cmd+shift+s/d)
+        // zellij NewPane only supports Down/Right, so cmd+shift+w and cmd+shift+a
+        // have no direct equivalent and are intentionally left unbound.
+        bind "Super Shift s" { NewPane "Down"; }
+        bind "Super Shift d" { NewPane "Right"; }
+
+        // Extra pane aliases (pre-existing; redundant with Super Shift s/d)
         bind "Super x" { NewPane "Right"; }
         bind "Super Shift x" { NewPane "Down"; }
 
+        // ── Close focused pane ──────────────────────── (ghostty: cmd+q)
         bind "Super q" { CloseFocus; }
-        bind "Super Shift q" { CloseTab; }
 
-        bind "Super t" {
-            NewTab {
-                cwd "/Users/m"
-                name "unnamed"
-                layout "/Users/m/.config/zellij/layouts/default.kdl"
-            }
-            SwitchToMode "locked";
-        }
+        // ── Zoom / scrollback ───────────────────────── (ghostty: cmd+e, cmd+shift+e)
+        bind "Super e" { ToggleFocusFullscreen; }
+        bind "Super Shift e" { EditScrollback; }
 
-        bind "Super Shift a" { GoToPreviousTab; }
-        bind "Super Shift d" { GoToNextTab; }
-        bind "Super Shift w" { Run "echo" "TODO" "search-tabs"; }
-        bind "Super Shift s" { Run "echo" "TODO" "rename-tab"; }
+        // ── Equalize splits ─────────────────────────── (ghostty: alt+e)
+        // No direct zellij equivalent; NextSwapLayout is the closest cousin
+        // (cycles through tiled layouts, effectively rebalancing).
+        bind "Alt e" { NextSwapLayout; }
 
-        bind "Super w" { MoveFocus "Up"; }
-        bind "Super a" { MoveFocus "Left"; }
-        bind "Super d" { MoveFocus "Right"; }
+        // ── Half-page scroll ────────────────────────── (ghostty: alt+w/s)
+        bind "Alt w" { HalfPageScrollUp; }
+        bind "Alt s" { HalfPageScrollDown; }
 
+        // ── Resize (on Super arrows) ──────────────────
         bind "Super Left" { Resize "Left"; }
         bind "Super Right" { Resize "Right"; }
         bind "Super Up" { Resize "Up"; }
         bind "Super Down" { Resize "Down"; }
 
-        bind "Super e" { ToggleFocusFullscreen; }
-        bind "Super Shift e" { EditScrollback; }
-
-        bind "Super Ctrl w" { HalfPageScrollUp; }
-        bind "Super Ctrl s" { HalfPageScrollDown; }
+        // ── Floating panes / launcher / misc ──────────
+        bind "Super Enter" { ToggleFloatingPanes; }
+        bind "Ctrl Enter" { Run "echo" "TODO" "screenshot-and-open-floating-ai-pane"; }
 
         bind "Super /" {
             Run "tv" "pj" {
@@ -54,29 +65,6 @@ keybinds clear-defaults=true {
         bind "Super o" { Run "echo" "hi"; }
         bind "Super p" { Run "echo" "TODO" "open-pane-renamer-in-floating-pane"; }
         bind "Super k" { Run "echo" "TODO"; }
-
-        // Opencode tabs
-        bind "Super n" {
-            NewTab {
-                cwd "/Users/m/repos/multitude"
-                layout "/Users/m/.config/zellij/layouts/opencode-session.kdl"
-            }
-        }
-        bind "Super s" {
-            Run "ocsession-switcher" {
-                floating true
-                close_on_exit true
-            }
-        }
-
-        // Enter
-        bind "Super Enter" { ToggleFloatingPanes; }
-        bind "Ctrl Enter" { Run "echo" "TODO" "screenshot-and-open-floating-ai-pane"; }
-
-        bind "Alt w" { Resize "Up"; }
-        bind "Alt a" { Resize "Left"; }
-        bind "Alt s" { Resize "Down"; }
-        bind "Alt d" { Resize "Right"; }
     }
 
     shared_except "locked" {

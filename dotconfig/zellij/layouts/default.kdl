@@ -1,13 +1,9 @@
 layout {
-	cwd "/Users/m/repos/multitude"
-
-	pane size=1 borderless=true {
-		plugin location="tab-bar"
-	}
+	cwd "/Users/m/repos"
 
 	pane {
 		focus true
 	}
 }
 
-pane_frames true
+pane_frames false
