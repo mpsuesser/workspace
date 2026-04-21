@@ -21,6 +21,7 @@
  * @since 0.1.0
  */
 
+import { Match } from 'effect';
 import * as Schema from 'effect/Schema';
 
 import * as PaneId from './schemas/PaneId.ts';
@@ -180,7 +181,32 @@ export class ZellijError extends Schema.TaggedErrorClass<ZellijError>()(
 	'ZellijError',
 	{ reason: Reason },
 	{ description: 'Failure from a zellij-binding service.' }
-) {}
+) {
+	/**
+	 * Human-readable message formatted from the wrapped reason. Referenced
+	 * by Effect's default Cause/Exit pretty-printer — without this the
+	 * default log output is just `ZellijError:` with no context.
+	 */
+	override get message(): string {
+		return formatReason(this.reason);
+	}
+}
+
+const formatReason: (reason: Reason) => string = Match.typeTags<Reason>()({
+	SpawnError: (r) =>
+		`spawn failed for \`zellij ${r.argv.join(' ')}\`: ${String(r.cause)}`,
+	CommandFailed: (r) =>
+		`\`zellij ${r.argv.join(' ')}\` exited ${r.exitCode}${
+			r.stderr.length === 0 ? '' : `: ${r.stderr.trim()}`
+		}`,
+	DecodeFailure: (r) =>
+		`failed to decode output of \`zellij ${r.argv.join(' ')}\`: ${r.issue}`,
+	NotInSession: () =>
+		'not inside a zellij session ($ZELLIJ_SESSION_NAME unset)',
+	SessionNotFound: (r) => `session not found: ${r.session}`,
+	PaneNotFound: (r) => `pane not found: ${r.paneId.kind}_${r.paneId.id}`,
+	TabNotFound: (r) => `tab not found: ${r.tabId}`
+});
 
 // ───────────────────────────────────────────────────────────────────────────
 // Smart constructors

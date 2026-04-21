@@ -74,10 +74,26 @@ export class PaneInfo extends Schema.Class<PaneInfo>('PaneInfo')(
 		cursor_coordinates_in_pane: Schema.OptionFromNullOr(CursorCoordinates),
 
 		// Command / plugin identity
+		// `terminal_command` / `plugin_url` are always emitted; they
+		// switch to `null` for the "other" variant. `pane_command` /
+		// `pane_cwd` are omitted entirely on plugin panes — decoded as
+		// `None` via `OptionFromOptionalKey`.
 		terminal_command: Schema.OptionFromNullOr(Schema.String),
 		plugin_url: Schema.OptionFromNullOr(Schema.String),
-		pane_command: Schema.OptionFromNullishOr(Schema.String),
-		pane_cwd: Schema.OptionFromNullishOr(Schema.String),
+		pane_command: Schema.OptionFromOptionalKey(Schema.String),
+		pane_cwd: Schema.OptionFromOptionalKey(Schema.String),
+
+		// Colors — zellij emits these as null when the pane inherits the
+		// terminal defaults, otherwise as a color descriptor object whose
+		// exact shape we don't currently model. Keep as Unknown so future
+		// introspection callers can drill in without us blocking decodes.
+		default_fg: Schema.OptionFromNullOr(Schema.Unknown),
+		default_bg: Schema.OptionFromNullOr(Schema.Unknown),
+
+		// Pane-group membership. Usually an empty record `{}`; when a pane
+		// belongs to a group, zellij populates it with group metadata whose
+		// shape is not yet stable across zellij versions.
+		index_in_pane_group: Schema.Record(Schema.String, Schema.Unknown),
 
 		// Tab linkage
 		tab_id: Schema.Int,
