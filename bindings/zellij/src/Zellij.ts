@@ -333,12 +333,12 @@ const listClients = Effect.fn('Zellij.listClients')(() =>
 		const lines = output.trim().split('\n').slice(1);
 		return lines.map((line) => {
 			const parts = line.trim().split(/\s+/);
-			const cmd = parts.slice(2).join(' ');
+			const running = parts.slice(2).join(' ');
 			return new ZellijClient({
 				clientId: parseInt(parts[0] ?? '0', 10),
 				paneId: parts[1] ?? '',
-				runningCommand: cmd.length > 0
-					? Option.some(cmd)
+				runningCommand: running.length > 0
+					? Option.some(running)
 					: Option.none()
 			});
 		});

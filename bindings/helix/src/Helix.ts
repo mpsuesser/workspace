@@ -11,6 +11,44 @@ import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 import * as TOML from 'smol-toml';
 
+const makePromptFence = (
+	prompt: string
+): {
+	content: string;
+	cursorLine: number;
+} => {
+	const lines = prompt.split('\n');
+	const maxLen = Math.max(...lines.map((l) => l.length), 30);
+	const border = '─'.repeat(maxLen + 2);
+	const top = `┌${border}┐`;
+	const bottom = `└${border}┘`;
+	const middle = lines.map((l) => `│ ${l.padEnd(maxLen)} │`);
+	const content = [top, ...middle, bottom, '', ''].join('\n');
+	const cursorLine = lines.length + 4;
+	return {
+		content,
+		cursorLine
+	};
+};
+
+const stripPromptFence = (content: string): string => {
+	const lines = content.split('\n');
+	let i = 0;
+	while (i < lines.length) {
+		const line = lines[i];
+		if (line === undefined) break;
+		const firstChar = line[0];
+		if (firstChar !== '┌' && firstChar !== '│' && firstChar !== '└') break;
+		i++;
+	}
+	while (i < lines.length) {
+		const line = lines[i];
+		if (line === undefined || line.trim() !== '') break;
+		i++;
+	}
+	return lines.slice(i).join('\n').trim();
+};
+
 export class Helix extends Context.Service<Helix>()(
 	'@workspace/helix-binding/Helix',
 	{
@@ -39,49 +77,6 @@ export class Helix extends Context.Service<Helix>()(
 					})
 				)
 			);
-
-			const makePromptFence = (
-				prompt: string
-			): {
-				content: string;
-				cursorLine: number;
-			} => {
-				const lines = prompt.split('\n');
-				const maxLen = Math.max(...lines.map((l) => l.length), 30);
-				const border = '─'.repeat(maxLen + 2);
-				const top = `┌${border}┐`;
-				const bottom = `└${border}┘`;
-				const middle = lines.map((l) => `│ ${l.padEnd(maxLen)} │`);
-				const content = [top, ...middle, bottom, '', ''].join('\n');
-				const cursorLine = lines.length + 4;
-				return {
-					content,
-					cursorLine
-				};
-			};
-
-			const stripPromptFence = (content: string): string => {
-				const lines = content.split('\n');
-				let i = 0;
-				while (i < lines.length) {
-					const line = lines[i];
-					if (line === undefined) break;
-					const firstChar = line[0];
-					if (
-						firstChar !== '┌' &&
-						firstChar !== '│' &&
-						firstChar !== '└'
-					)
-						break;
-					i++;
-				}
-				while (i < lines.length) {
-					const line = lines[i];
-					if (line === undefined || line.trim() !== '') break;
-					i++;
-				}
-				return lines.slice(i).join('\n').trim();
-			};
 
 			const captureNewTextEntry = Effect.fn('Helix.captureNewTextEntry')(
 				(options?: {
