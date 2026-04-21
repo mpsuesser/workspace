@@ -153,6 +153,21 @@ export interface Interface {
 	) => Stream.Stream<string, ZellijError.ZellijError>;
 
 	/**
+	 * Run `zellij <args>` with inherited stdio — the caller's terminal
+	 * becomes the child process's terminal. Used by `attach`, `watch`,
+	 * and any long-running interactive handoff.
+	 *
+	 * Blocks until the zellij process exits; returns the exit code raw
+	 * (non-zero exits do NOT raise, since "user detached" and "user killed
+	 * the session" both exit non-zero in ways the caller may want to
+	 * distinguish).
+	 */
+	readonly interactive: (
+		argv: ReadonlyArray<string>,
+		options?: Options
+	) => Effect.Effect<number, ZellijError.ZellijError>;
+
+	/**
 	 * Return a new {@link Interface} that injects `--session <name>` on every
 	 * call. Useful for code paths that operate on one specific session.
 	 */
@@ -360,6 +375,28 @@ export const layer = Layer.effect(
 			);
 		};
 
+		// `interactive` hands control of stdin/stdout/stderr to zellij so the
+		// caller's terminal becomes the session's terminal. Uses
+		// `spawner.exitCode` rather than `spawn` because we don't need to
+		// capture output — it's going straight to the TTY.
+		const interactive = Effect.fn('ZellijCli.interactive')(
+			(argv: ReadonlyArray<string>, options?: Options) =>
+				Effect.gen(function* () {
+					const fullArgs = prefixArgs(argv, options);
+					const cmd = ChildProcess.make(BIN, fullArgs, {
+						stdin: 'inherit',
+						stdout: 'inherit',
+						stderr: 'inherit'
+					});
+					const code = yield* spawner.exitCode(cmd).pipe(
+						Effect.mapError((cause) =>
+							ZellijError.spawnError(fullArgs, cause)
+						)
+					);
+					return Number(code);
+				})
+		);
+
 		const makeInterface = (defaults: Options | undefined): Interface => {
 			// Spread-merge is valid for both Options and StreamOptions because
 			// every field in both is optional — TS resolves the result type
@@ -379,6 +416,8 @@ export const layer = Layer.effect(
 					json(argv, schema, { ...defaults, ...options }),
 				stream: (argv, options) =>
 					stream(argv, { ...defaults, ...options }),
+				interactive: (argv, options) =>
+					interactive(argv, { ...defaults, ...options }),
 				withSession: (session) =>
 					makeInterface({ ...defaults, session })
 			};
