@@ -1,0 +1,86 @@
+# Television (tv) config
+# Docs: https://alexpasmantier.github.io/television/
+# Channel spec: https://github.com/alexpasmantier/television/blob/main/docs/reference/03-channel-spec.md
+# Custom channels live in ./cable/*.toml
+
+tick_rate = 50
+default_channel = "files"
+history_size = 200
+global_history = false
+
+[ui]
+ui_scale = 100
+orientation = "landscape"
+theme = "dracula" # match zellij theme
+
+[ui.input_bar]
+position = "top"
+prompt = ">"
+border_type = "rounded"
+
+[ui.status_bar]
+separator_open = ""
+separator_close = ""
+hidden = false
+
+[ui.results_panel]
+border_type = "rounded"
+
+[ui.preview_panel]
+size = 50
+scrollbar = true
+border_type = "rounded"
+hidden = false
+
+[ui.help_panel]
+show_categories = true
+hidden = true
+
+[ui.remote_control]
+show_channel_descriptions = true
+sort_alphabetically = true
+
+# Shell integration — type <cmd> then <Ctrl-T> to fuzzy-pick an arg
+# Additional global keybinds (merged with tv's defaults).
+# Note: the status-bar shows a single "canonical" key per action, picked via
+# non-deterministic HashMap iteration when multiple keys bind the same action.
+# To force our bindings to win the display, we `no_op` the defaults we're replacing.
+[keybindings]
+# wasd-style navigation / panels
+shift-w = "select_prev_entry"
+shift-s = "select_next_entry"
+shift-a = "toggle_action_picker"
+shift-d = "toggle_remote_control"
+
+# `?` (= shift+/) opens help
+"?" = "toggle_help"
+
+# Unbind the defaults so our shift-bindings are the canonical display.
+ctrl-x = "no_op" # was toggle_action_picker (now shift-a)
+ctrl-t = "no_op" # was toggle_remote_control (now shift-d)
+ctrl-h = "no_op" # was toggle_help (now ?)
+
+[shell_integration]
+fallback_channel = "files"
+
+[shell_integration.channel_triggers]
+"alias" = ["alias", "unalias"]
+"env" = ["export", "unset"]
+"dirs" = ["cd", "ls", "rmdir", "z"]
+"files" = [
+  "cat", "less", "head", "tail", "vim", "nvim", "hx", "nano", "bat",
+  "cp", "mv", "rm", "touch", "chmod", "chown", "ln",
+  "tar", "zip", "unzip", "gzip", "gunzip", "xz",
+]
+"git-diff" = ["git add", "git restore"]
+"git-branch" = [
+  "git checkout", "git switch", "git branch",
+  "git merge", "git rebase", "git pull", "git push",
+]
+"git-log" = ["git log", "git show"]
+"git-repos" = ["nvim", "hx", "code", "git clone"]
+"docker-images" = ["docker run"]
+
+[shell_integration.keybindings]
+smart_autocomplete = "ctrl-t"
+command_history = "ctrl-r"

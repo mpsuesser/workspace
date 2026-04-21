@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/television-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/television"
+  }
+}

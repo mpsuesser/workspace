@@ -1,0 +1,11 @@
+# Override of the built-in channel of the same filename.
+# tv compiles ~10 default channels into its binary; there is no first-class
+# way to disable them, so we override with a stub. All disabled channels share
+# metadata.name = "~" so they collapse into a single placeholder entry
+# in the channel map (tv dedups by metadata.name, not filename).
+[metadata]
+name = "~"
+description = "stub that replaces a built-in channel we don't want"
+
+[source]
+command = "true"
