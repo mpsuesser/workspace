@@ -1,0 +1,56 @@
+# Switch between zellij sessions.
+#
+# Launched from a floating zellij pane via `Super o` (see zellij/config.kdl).
+# Docs consulted:
+#   https://zellij.dev/documentation/controlling-zellij-through-cli.html
+#   https://zellij.dev/documentation/cli-recipes.html
+#   https://zellij.dev/documentation/programmatic-control.html
+#
+# Source output (from `zellij list-sessions -n`) looks like:
+#   verdant-muskrat [Created 3h 45m 11s ago] (current)
+# The session name is `{split: :0}`; everything after is human-readable metadata
+# kept in the display string so it's fuzzy-searchable (type "current" to find
+# the active session, type a time marker to find recent ones, etc.).
+
+[metadata]
+name = "zellij-sessions"
+description = "List, switch to, or kill zellij sessions"
+requirements = ["zellij"]
+
+[source]
+command = "zellij list-sessions -n"
+output = "{split: :0}"
+
+[preview]
+# Multi-line bash script; we query the session by name via `zellij --session`.
+# Exited / resurrectable sessions have no live state, so list-tabs / list-panes
+# will fail; we fall back gracefully. Output mirrors what the built-in
+# session-manager shows: tabs, panes (with titles & commands), connected clients.
+command = '''bash -c 'name={split: :0}; echo "Session: $name"; echo; echo "── Tabs ──"; zellij --session "$name" action list-tabs 2>/dev/null || echo "(unavailable — session may be exited)"; echo; echo "── Panes ──"; zellij --session "$name" action list-panes 2>/dev/null || echo "(unavailable)"; echo; echo "── Clients ──"; zellij --session "$name" action list-clients 2>/dev/null || echo "(unavailable)"' '''
+
+[ui]
+layout = "landscape"
+
+[ui.preview_panel]
+size = 55
+header = "{split: :0}"
+border_type = "rounded"
+
+[keybindings]
+enter = "actions:switch"
+# Kill the selected session and reload the list in place.
+ctrl-d = ["actions:kill", "reload_source"]
+
+[actions.switch]
+description = "Switch to the selected session"
+# `switch-session` targets the session the command was invoked against. Since
+# tv is running in a floating pane inside the *caller* session, this tells the
+# caller to switch its attached client to the selected one. The tv pane dies
+# along with the session switch (its parent session's client detaches).
+command = "zellij action switch-session '{split: :0}'"
+mode = "execute"
+
+[actions.kill]
+description = "Kill the selected session"
+command = "zellij kill-session '{split: :0}'"
+mode = "fork"
