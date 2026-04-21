@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "0.67.2",
+  "lastChangelogVersion": "0.68.0",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-6",
+  "defaultModel": "claude-opus-4-7",
   "defaultThinkingLevel": "xhigh",
   "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.zshrc)\"",
   "theme": "ghostty-sync-770f91a0",
@@ -17,6 +17,8 @@
     "~/repos/pi-pkms",
     "~/repos/pi-effect-enforcer",
     "~/repos/pi-tentacles",
-    "~/repos/pi-atoms"
+    "~/repos/pi-atoms",
+    "npm:pi-subagents",
+    "npm:pi-tool-view"
   ]
 }

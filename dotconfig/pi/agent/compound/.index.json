@@ -1,0 +1,42 @@
+{
+  "docs": {
+    "how-to-communicate-with-me": {
+      "approved": [],
+      "rejected": [
+        {
+          "id": "cmp_1f4a1c6a7e",
+          "session": "/Users/m/.pi/agent/sessions/--Users-m-repos-pi-effect-enforcer--/2026-04-16T06-29-02-997Z_019d94fa-9395-70d3-a22d-db77895c8ff5.jsonl",
+          "content_hash": "fnv:a7a441d89fb80000",
+          "reason": "too rigid, would be getting asked questions way too often. treats the LLM like an idiot",
+          "at": "2026-04-21T07:28:08.527Z"
+        }
+      ],
+      "skipped": [],
+      "last_run_at": "2026-04-21T07:28:40.858Z"
+    },
+    "what-i-care-about": {
+      "approved": [
+        {
+          "id": "cmp_388fddb4d0",
+          "session": "/Users/m/.pi/agent/sessions/--Users-m-repos-workspace-dotconfig--/2026-04-14T03-31-01-704Z_a383afe4-a5a2-401e-b5a1-04bf4a589acd.jsonl",
+          "content_hash": "fnv:db98665268040000",
+          "added_at": "2026-04-21T07:28:40.858Z"
+        }
+      ],
+      "rejected": [],
+      "skipped": [],
+      "last_run_at": "2026-04-21T07:28:40.858Z"
+    },
+    "how-to-assume-with-me": {
+      "approved": [],
+      "rejected": [],
+      "skipped": [],
+      "last_run_at": "2026-04-21T07:28:40.858Z"
+    }
+  },
+  "sessions_seen": {
+    "/Users/m/.pi/agent/sessions/--Users-m-repos-pi-effect-enforcer--/2026-04-16T06-29-02-997Z_019d94fa-9395-70d3-a22d-db77895c8ff5.jsonl": "2026-04-21T07:26:58.188Z",
+    "/Users/m/.pi/agent/sessions/--Users-m-repos--/2026-04-14T07-09-25-883Z_5651bbea-c20d-4aa1-b35d-2f48a0ea1a23.jsonl": "2026-04-21T07:26:58.188Z",
+    "/Users/m/.pi/agent/sessions/--Users-m-repos-workspace-dotconfig--/2026-04-14T03-31-01-704Z_a383afe4-a5a2-401e-b5a1-04bf4a589acd.jsonl": "2026-04-21T07:26:58.188Z"
+  }
+}

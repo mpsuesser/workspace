@@ -6,3 +6,7 @@ matches:
   - triggers: [;;rc]
     replace: |-
       Find the root cause. Do not patch a fix for the symptom.
+
+  - triggers: [;;sd]
+    replace: |-
+      Present your work as a single HTML slide deck.
