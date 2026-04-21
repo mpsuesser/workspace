@@ -18,7 +18,10 @@ togglepane:entry("min-preview")
 require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
+		{ key = "n", path = "~/repos/nonaspace" },
 		{ key = "w", path = "~/repos/workspace" },
+		{ key = "a", path = "~/repos/workspace/dotconfig/shell/aliases" },
+		{ key = "z", path = "~/repos/workspace/dotconfig/zellij" },
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
 		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
@@ -28,7 +31,7 @@ require("bunny"):setup({
 
 		{ key = "o", path = "~/repos/OpenTentacle" },
 		{ key = "c", path = "~/repos/curationspace" },
-		{ key = "e", path = "~/repos/curationspace" },
+		{ key = "e", path = "~/repos/pi-effect-enforcer" },
 		{ key = "m", path = "~/repos/multitude" },
 
 		{ key = { ".", "c" }, path = "~/.config" },
