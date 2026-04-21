@@ -195,8 +195,7 @@ export class ZellijError extends Schema.TaggedErrorClass<ZellijError>()(
 export const spawnError = (
 	argv: ReadonlyArray<string>,
 	cause: unknown
-): ZellijError =>
-	new ZellijError({ reason: new SpawnError({ argv, cause }) });
+): ZellijError => new ZellijError({ reason: new SpawnError({ argv, cause }) });
 
 /**
  * Wrap a `CommandFailed` reason.
@@ -227,8 +226,7 @@ export const decodeFailure = (params: {
 	readonly argv: ReadonlyArray<string>;
 	readonly output: string;
 	readonly issue: string;
-}): ZellijError =>
-	new ZellijError({ reason: new DecodeFailure(params) });
+}): ZellijError => new ZellijError({ reason: new DecodeFailure(params) });
 
 /**
  * Wrap a `NotInSession` reason.
@@ -245,8 +243,9 @@ export const notInSession = (): ZellijError =>
  * @category Constructors
  * @since 0.1.0
  */
-export const sessionNotFound = (session: SessionName.SessionName): ZellijError =>
-	new ZellijError({ reason: new SessionNotFound({ session }) });
+export const sessionNotFound = (
+	session: SessionName.SessionName
+): ZellijError => new ZellijError({ reason: new SessionNotFound({ session }) });
 
 /**
  * Wrap a `PaneNotFound` reason.

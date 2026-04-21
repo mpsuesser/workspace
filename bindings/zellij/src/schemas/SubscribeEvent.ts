@@ -77,13 +77,13 @@ export class PaneClosed extends Schema.Class<PaneClosed>('PaneClosed')(
  * @category Schemas
  * @since 0.1.0
  */
-export const SubscribeEvent = Schema.Union([PaneUpdate, PaneClosed]).pipe(
-	Schema.toTaggedUnion('event')
-).annotate({
-	identifier: 'SubscribeEvent',
-	title: 'SubscribeEvent',
-	description: 'NDJSON event from `zellij subscribe --format json`.'
-});
+export const SubscribeEvent = Schema.Union([PaneUpdate, PaneClosed])
+	.annotate({
+		identifier: 'SubscribeEvent',
+		title: 'SubscribeEvent',
+		description: 'NDJSON event from `zellij subscribe --format json`.'
+	})
+	.pipe(Schema.toTaggedUnion('event'));
 
 /**
  * @category Types
@@ -105,15 +105,15 @@ export const isSubscribeEvent = Schema.is(SubscribeEvent);
  * @category Guards
  * @since 0.1.0
  */
-export const isPaneUpdate: (self: SubscribeEvent) => self is PaneUpdate =
-	Schema.is(PaneUpdate);
+export const isPaneUpdate: (self: SubscribeEvent) => self is PaneUpdate = Schema
+	.is(PaneUpdate);
 
 /**
  * @category Guards
  * @since 0.1.0
  */
-export const isPaneClosed: (self: SubscribeEvent) => self is PaneClosed =
-	Schema.is(PaneClosed);
+export const isPaneClosed: (self: SubscribeEvent) => self is PaneClosed = Schema
+	.is(PaneClosed);
 
 /**
  * @category Pattern Matching

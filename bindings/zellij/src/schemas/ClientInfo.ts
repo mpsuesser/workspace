@@ -21,6 +21,7 @@
 import * as Arr from 'effect/Array';
 import { pipe } from 'effect/Function';
 import * as Option from 'effect/Option';
+import * as Result from 'effect/Result';
 import * as Schema from 'effect/Schema';
 import * as Str from 'effect/String';
 
@@ -67,10 +68,9 @@ const parseLine = (line: string): Option.Option<ClientInfo> => {
 		new ClientInfo({
 			clientId: ClientIdSchema.make(clientIdNum),
 			paneId: paneId.value,
-			runningCommand:
-				trimmedRest.length === 0
-					? Option.none()
-					: Option.some(trimmedRest)
+			runningCommand: trimmedRest.length === 0
+				? Option.none()
+				: Option.some(trimmedRest)
 		})
 	);
 };
@@ -89,5 +89,9 @@ export const parseOutput = (output: string): ReadonlyArray<ClientInfo> =>
 		Str.split('\n')(output),
 		Arr.map(Str.trim),
 		Arr.filter((line) => line.length > 0 && !line.startsWith('CLIENT_ID')),
-		Arr.filterMap(parseLine)
+		// `Arr.filterMap` takes a `Result`-returning fn in v4; bridge from
+		// our `Option`-returning parser with `Result.fromOption`. The
+		// failure type is irrelevant — `filterMap` only keeps successes —
+		// so we hand it `null`, which `Result.fromOption` infers freely.
+		Arr.filterMap((line) => Result.fromOption(parseLine(line), () => null))
 	);

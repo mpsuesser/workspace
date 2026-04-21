@@ -15,7 +15,6 @@
  * @since 0.1.0
  */
 
-import { Match } from 'effect';
 import * as Config from 'effect/Config';
 import * as Effect from 'effect/Effect';
 import * as Option from 'effect/Option';
@@ -53,13 +52,14 @@ export class Plugin extends Schema.Class<Plugin>('Plugin')({
  * @category Schemas
  * @since 0.1.0
  */
-export const PaneId = Schema.Union([Terminal, Plugin]).pipe(
-	Schema.toTaggedUnion('kind')
-).annotate({
-	identifier: 'PaneId',
-	title: 'PaneId',
-	description: 'Pane identifier discriminated by `kind` (terminal | plugin).'
-});
+export const PaneId = Schema.Union([Terminal, Plugin])
+	.annotate({
+		identifier: 'PaneId',
+		title: 'PaneId',
+		description:
+			'Pane identifier discriminated by `kind` (terminal | plugin).'
+	})
+	.pipe(Schema.toTaggedUnion('kind'));
 
 /**
  * @category Types
@@ -111,7 +111,9 @@ export const isPaneId = Schema.is(PaneId);
  * @category Guards
  * @since 0.1.0
  */
-export const isTerminal: (self: PaneId) => self is Terminal = Schema.is(Terminal);
+export const isTerminal: (self: PaneId) => self is Terminal = Schema.is(
+	Terminal
+);
 
 /**
  * Refines to the `Plugin` variant.
@@ -154,12 +156,10 @@ const BARE_ID_PATTERN = /^\d+$/u;
  * @category Encoding
  * @since 0.1.0
  */
-export const toCliArg = (self: PaneId): string =>
-	Match.value(self).pipe(
-		Match.tag('terminal', (t) => `terminal_${t.id}`),
-		Match.tag('plugin', (p) => `plugin_${p.id}`),
-		Match.exhaustive
-	);
+export const toCliArg = PaneId.match({
+	terminal: (t) => `terminal_${t.id}`,
+	plugin: (p) => `plugin_${p.id}`
+});
 
 /**
  * Parse a zellij pane-id string.
@@ -179,9 +179,9 @@ export const fromCliArg = (raw: string): Option.Option<PaneId> => {
 	if (BARE_ID_PATTERN.test(raw)) {
 		return Option.some(terminal(Number.parseInt(raw, 10)));
 	}
-	const match = PANE_ID_PATTERN.exec(raw);
-	if (match === null) return Option.none();
-	const [, kind, id] = match;
+	const parts = PANE_ID_PATTERN.exec(raw);
+	if (parts === null) return Option.none();
+	const [, kind, id] = parts;
 	if (kind === undefined || id === undefined) return Option.none();
 	const n = Number.parseInt(id, 10);
 	return Option.some(kind === 'plugin' ? plugin(n) : terminal(n));

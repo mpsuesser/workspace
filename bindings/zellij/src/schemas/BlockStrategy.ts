@@ -65,8 +65,8 @@ export const untilExit: BlockStrategy = BlockStrategy.cases.UntilExit.make({});
  * @category Constructors
  * @since 0.1.0
  */
-export const untilExitSuccess: BlockStrategy =
-	BlockStrategy.cases.UntilExitSuccess.make({});
+export const untilExitSuccess: BlockStrategy = BlockStrategy.cases
+	.UntilExitSuccess.make({});
 
 /**
  * Block until the command exits with non-zero status (maps to `--block-until-exit-failure`).
@@ -74,8 +74,8 @@ export const untilExitSuccess: BlockStrategy =
  * @category Constructors
  * @since 0.1.0
  */
-export const untilExitFailure: BlockStrategy =
-	BlockStrategy.cases.UntilExitFailure.make({});
+export const untilExitFailure: BlockStrategy = BlockStrategy.cases
+	.UntilExitFailure.make({});
 
 /**
  * Encode a `BlockStrategy` as the corresponding zellij CLI flag (as a
