@@ -7,7 +7,7 @@ import * as P from 'effect/Predicate';
 import * as Random from 'effect/Random';
 import * as Schedule from 'effect/Schedule';
 import * as Schema from 'effect/Schema';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as Stream from 'effect/Stream';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
@@ -203,7 +203,7 @@ export class AppContext extends Schema.Class<AppContext>('AppContext')({
 
 // --- Service ---
 
-export class Hammerspoon extends ServiceMap.Service<Hammerspoon>()(
+export class Hammerspoon extends Context.Service<Hammerspoon>()(
 	'@workspace/hammerspoon-binding/Hammerspoon',
 	{
 		make: Effect.gen(function* () {

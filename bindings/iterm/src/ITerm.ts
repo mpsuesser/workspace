@@ -2,7 +2,7 @@ import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -57,7 +57,7 @@ const setTabTitle = (title: string) =>
 		);
 	});
 
-export class ITerm extends ServiceMap.Service<ITerm>()(
+export class ITerm extends Context.Service<ITerm>()(
 	'@workspace/iterm-binding/ITerm',
 	{
 		make: Effect.gen(function* () {

@@ -1,7 +1,7 @@
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Schema from 'effect/Schema';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -32,7 +32,7 @@ export type ExportFormat = typeof ExportFormat.Type;
 // Service
 // ---------------------------------------------------------------------------
 
-export class Presenterm extends ServiceMap.Service<Presenterm>()(
+export class Presenterm extends Context.Service<Presenterm>()(
 	'@workspace/presenterm-binding/Presenterm',
 	{
 		make: Effect.gen(function* () {

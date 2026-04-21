@@ -2,7 +2,7 @@ import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import * as Schema from 'effect/Schema';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 
 import { Ghostty } from './Ghostty.ts';
 
@@ -57,7 +57,7 @@ const formatConfig = ThemeConfig.match({
 	adaptive: (c) => `dark:${c.dark},light:${c.light}`
 });
 
-export class GhosttyTheme extends ServiceMap.Service<GhosttyTheme>()(
+export class GhosttyTheme extends Context.Service<GhosttyTheme>()(
 	'@workspace/ghostty-binding/GhosttyTheme',
 	{
 		make: Effect.gen(function* () {

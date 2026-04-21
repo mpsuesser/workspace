@@ -4,7 +4,7 @@ import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
 import * as P from 'effect/Predicate';
 import * as R from 'effect/Record';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -600,7 +600,7 @@ const requireDefaultKeystroke = (
 		onSome: Effect.succeed
 	});
 
-export class Ghostty extends ServiceMap.Service<Ghostty>()(
+export class Ghostty extends Context.Service<Ghostty>()(
 	'@workspace/ghostty-binding/Ghostty',
 	{
 		make: Effect.gen(function* () {
@@ -733,7 +733,7 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 						),
 					SetFontSize: ({ size }) =>
 						failAction(
-							Action.cases.SetFontSize.makeUnsafe({ size }),
+							Action.cases.SetFontSize.make({ size }),
 							'set_font_size requires configuration, no default keybind'
 						),
 
@@ -774,20 +774,20 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 						),
 					ScrollPageFractional: ({ fraction }) =>
 						failAction(
-							Action.cases.ScrollPageFractional.makeUnsafe({
+							Action.cases.ScrollPageFractional.make({
 								fraction
 							}),
 							'scroll_page_fractional requires configuration, no default keybind'
 						),
 					ScrollPageLines: ({ lines }) =>
 						failAction(
-							Action.cases.ScrollPageLines.makeUnsafe({ lines }),
+							Action.cases.ScrollPageLines.make({ lines }),
 							'scroll_page_lines requires configuration, no default keybind'
 						),
 
 					AdjustSelection: ({ direction }) =>
 						failAction(
-							Action.cases.AdjustSelection.makeUnsafe({
+							Action.cases.AdjustSelection.make({
 								direction
 							}),
 							'adjust_selection requires configuration, no default keybind'
@@ -795,27 +795,27 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 
 					JumpToPrompt: ({ delta }) =>
 						failAction(
-							Action.cases.JumpToPrompt.makeUnsafe({ delta }),
+							Action.cases.JumpToPrompt.make({ delta }),
 							'jump_to_prompt requires configuration, no default keybind'
 						),
 
 					WriteScrollbackFile: ({ action: fileAction }) =>
 						failAction(
-							Action.cases.WriteScrollbackFile.makeUnsafe({
+							Action.cases.WriteScrollbackFile.make({
 								action: fileAction
 							}),
 							'write_scrollback_file requires configuration, no default keybind'
 						),
 					WriteScreenFile: ({ action: fileAction }) =>
 						failAction(
-							Action.cases.WriteScreenFile.makeUnsafe({
+							Action.cases.WriteScreenFile.make({
 								action: fileAction
 							}),
 							'write_screen_file requires configuration, no default keybind'
 						),
 					WriteSelectionFile: ({ action: fileAction }) =>
 						failAction(
-							Action.cases.WriteSelectionFile.makeUnsafe({
+							Action.cases.WriteSelectionFile.make({
 								action: fileAction
 							}),
 							'write_selection_file requires configuration, no default keybind'
@@ -882,13 +882,13 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 							return executeKeystroke(mapping);
 						}
 						return failAction(
-							Action.cases.GotoTab.makeUnsafe({ index }),
+							Action.cases.GotoTab.make({ index }),
 							`goto_tab:${index} has no default keybind (only 1-9 supported)`
 						);
 					},
 					MoveTab: ({ offset }) =>
 						failAction(
-							Action.cases.MoveTab.makeUnsafe({ offset }),
+							Action.cases.MoveTab.make({ offset }),
 							'move_tab requires configuration, no default keybind'
 						),
 					ToggleTabOverview: () =>
@@ -912,7 +912,7 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 						),
 					ResizeSplit: ({ direction, amount }) =>
 						failAction(
-							Action.cases.ResizeSplit.makeUnsafe({
+							Action.cases.ResizeSplit.make({
 								direction,
 								amount
 							}),
@@ -950,7 +950,7 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 
 					Inspector: ({ mode }) =>
 						failAction(
-							Action.cases.Inspector.makeUnsafe({ mode }),
+							Action.cases.Inspector.make({ mode }),
 							'inspector requires configuration, no default keybind'
 						),
 					ShowGtkInspector: () =>
@@ -972,17 +972,17 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 						}),
 					Csi: ({ sequence }) =>
 						failAction(
-							Action.cases.Csi.makeUnsafe({ sequence }),
+							Action.cases.Csi.make({ sequence }),
 							'csi sequences cannot be sent via AppleScript keystroke'
 						),
 					Esc: ({ sequence }) =>
 						failAction(
-							Action.cases.Esc.makeUnsafe({ sequence }),
+							Action.cases.Esc.make({ sequence }),
 							'esc sequences cannot be sent via AppleScript keystroke'
 						),
 					CursorKey: ({ mode }) =>
 						failAction(
-							Action.cases.CursorKey.makeUnsafe({ mode }),
+							Action.cases.CursorKey.make({ mode }),
 							'cursor_key mode cannot be set via AppleScript'
 						),
 
@@ -1058,37 +1058,37 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				),
 
 				copyToClipboard: Effect.fn('Ghostty.copyToClipboard')(() =>
-					executeAction(Action.cases.CopyToClipboard.makeUnsafe({}))
+					executeAction(Action.cases.CopyToClipboard.make({}))
 				),
 				pasteFromClipboard: Effect.fn('Ghostty.pasteFromClipboard')(
 					() =>
 						executeAction(
-							Action.cases.PasteFromClipboard.makeUnsafe({})
+							Action.cases.PasteFromClipboard.make({})
 						)
 				),
 				pasteFromSelection: Effect.fn('Ghostty.pasteFromSelection')(
 					() =>
 						executeAction(
-							Action.cases.PasteFromSelection.makeUnsafe({})
+							Action.cases.PasteFromSelection.make({})
 						)
 				),
 				copyUrlToClipboard: Effect.fn('Ghostty.copyUrlToClipboard')(
 					() =>
 						executeAction(
-							Action.cases.CopyUrlToClipboard.makeUnsafe({})
+							Action.cases.CopyUrlToClipboard.make({})
 						)
 				),
 				copyTitleToClipboard: Effect.fn('Ghostty.copyTitleToClipboard')(
 					() =>
 						executeAction(
-							Action.cases.CopyTitleToClipboard.makeUnsafe({})
+							Action.cases.CopyTitleToClipboard.make({})
 						)
 				),
 
 				increaseFontSize: Effect.fn('Ghostty.increaseFontSize')(
 					(amount: Option.Option<number>) =>
 						executeAction(
-							Action.cases.IncreaseFontSize.makeUnsafe({
+							Action.cases.IncreaseFontSize.make({
 								amount
 							})
 						)
@@ -1096,47 +1096,47 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				decreaseFontSize: Effect.fn('Ghostty.decreaseFontSize')(
 					(amount: Option.Option<number>) =>
 						executeAction(
-							Action.cases.DecreaseFontSize.makeUnsafe({
+							Action.cases.DecreaseFontSize.make({
 								amount
 							})
 						)
 				),
 				resetFontSize: Effect.fn('Ghostty.resetFontSize')(() =>
-					executeAction(Action.cases.ResetFontSize.makeUnsafe({}))
+					executeAction(Action.cases.ResetFontSize.make({}))
 				),
 				setFontSize: Effect.fn('Ghostty.setFontSize')((size: number) =>
-					executeAction(Action.cases.SetFontSize.makeUnsafe({ size }))
+					executeAction(Action.cases.SetFontSize.make({ size }))
 				),
 
 				clearScreen: Effect.fn('Ghostty.clearScreen')(() =>
-					executeAction(Action.cases.ClearScreen.makeUnsafe({}))
+					executeAction(Action.cases.ClearScreen.make({}))
 				),
 				selectAll: Effect.fn('Ghostty.selectAll')(() =>
-					executeAction(Action.cases.SelectAll.makeUnsafe({}))
+					executeAction(Action.cases.SelectAll.make({}))
 				),
 				reset: Effect.fn('Ghostty.reset')(() =>
-					executeAction(Action.cases.Reset.makeUnsafe({}))
+					executeAction(Action.cases.Reset.make({}))
 				),
 
 				scrollToTop: Effect.fn('Ghostty.scrollToTop')(() =>
-					executeAction(Action.cases.ScrollToTop.makeUnsafe({}))
+					executeAction(Action.cases.ScrollToTop.make({}))
 				),
 				scrollToBottom: Effect.fn('Ghostty.scrollToBottom')(() =>
-					executeAction(Action.cases.ScrollToBottom.makeUnsafe({}))
+					executeAction(Action.cases.ScrollToBottom.make({}))
 				),
 				scrollToSelection: Effect.fn('Ghostty.scrollToSelection')(() =>
-					executeAction(Action.cases.ScrollToSelection.makeUnsafe({}))
+					executeAction(Action.cases.ScrollToSelection.make({}))
 				),
 				scrollPageUp: Effect.fn('Ghostty.scrollPageUp')(() =>
-					executeAction(Action.cases.ScrollPageUp.makeUnsafe({}))
+					executeAction(Action.cases.ScrollPageUp.make({}))
 				),
 				scrollPageDown: Effect.fn('Ghostty.scrollPageDown')(() =>
-					executeAction(Action.cases.ScrollPageDown.makeUnsafe({}))
+					executeAction(Action.cases.ScrollPageDown.make({}))
 				),
 				scrollPageFractional: Effect.fn('Ghostty.scrollPageFractional')(
 					(fraction: number) =>
 						executeAction(
-							Action.cases.ScrollPageFractional.makeUnsafe({
+							Action.cases.ScrollPageFractional.make({
 								fraction
 							})
 						)
@@ -1144,21 +1144,21 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				scrollPageLines: Effect.fn('Ghostty.scrollPageLines')(
 					(lines: number) =>
 						executeAction(
-							Action.cases.ScrollPageLines.makeUnsafe({ lines })
+							Action.cases.ScrollPageLines.make({ lines })
 						)
 				),
 
 				jumpToPrompt: Effect.fn('Ghostty.jumpToPrompt')(
 					(delta: number) =>
 						executeAction(
-							Action.cases.JumpToPrompt.makeUnsafe({ delta })
+							Action.cases.JumpToPrompt.make({ delta })
 						)
 				),
 
 				writeScrollbackFile: Effect.fn('Ghostty.writeScrollbackFile')(
 					(action: WriteFileAction) =>
 						executeAction(
-							Action.cases.WriteScrollbackFile.makeUnsafe({
+							Action.cases.WriteScrollbackFile.make({
 								action
 							})
 						)
@@ -1166,7 +1166,7 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				writeScreenFile: Effect.fn('Ghostty.writeScreenFile')(
 					(action: WriteFileAction) =>
 						executeAction(
-							Action.cases.WriteScreenFile.makeUnsafe({
+							Action.cases.WriteScreenFile.make({
 								action
 							})
 						)
@@ -1174,152 +1174,152 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				writeSelectionFile: Effect.fn('Ghostty.writeSelectionFile')(
 					(action: WriteFileAction) =>
 						executeAction(
-							Action.cases.WriteSelectionFile.makeUnsafe({
+							Action.cases.WriteSelectionFile.make({
 								action
 							})
 						)
 				),
 
 				newWindow: Effect.fn('Ghostty.newWindow')(() =>
-					executeAction(Action.cases.NewWindow.makeUnsafe({}))
+					executeAction(Action.cases.NewWindow.make({}))
 				),
 				closeWindow: Effect.fn('Ghostty.closeWindow')(() =>
-					executeAction(Action.cases.CloseWindow.makeUnsafe({}))
+					executeAction(Action.cases.CloseWindow.make({}))
 				),
 				toggleFullscreen: Effect.fn('Ghostty.toggleFullscreen')(() =>
-					executeAction(Action.cases.ToggleFullscreen.makeUnsafe({}))
+					executeAction(Action.cases.ToggleFullscreen.make({}))
 				),
 				toggleMaximize: Effect.fn('Ghostty.toggleMaximize')(() =>
-					executeAction(Action.cases.ToggleMaximize.makeUnsafe({}))
+					executeAction(Action.cases.ToggleMaximize.make({}))
 				),
 				resetWindowSize: Effect.fn('Ghostty.resetWindowSize')(() =>
-					executeAction(Action.cases.ResetWindowSize.makeUnsafe({}))
+					executeAction(Action.cases.ResetWindowSize.make({}))
 				),
 				toggleWindowFloatOnTop: Effect.fn(
 					'Ghostty.toggleWindowFloatOnTop'
 				)(() =>
 					executeAction(
-						Action.cases.ToggleWindowFloatOnTop.makeUnsafe({})
+						Action.cases.ToggleWindowFloatOnTop.make({})
 					)
 				),
 				toggleWindowDecorations: Effect.fn(
 					'Ghostty.toggleWindowDecorations'
 				)(() =>
 					executeAction(
-						Action.cases.ToggleWindowDecorations.makeUnsafe({})
+						Action.cases.ToggleWindowDecorations.make({})
 					)
 				),
 
 				newTab: Effect.fn('Ghostty.newTab')(() =>
-					executeAction(Action.cases.NewTab.makeUnsafe({}))
+					executeAction(Action.cases.NewTab.make({}))
 				),
 				closeTab: Effect.fn('Ghostty.closeTab')(
 					(mode: Option.Option<string>) =>
 						executeAction(
-							Action.cases.CloseTab.makeUnsafe({ mode })
+							Action.cases.CloseTab.make({ mode })
 						)
 				),
 				nextTab: Effect.fn('Ghostty.nextTab')(() =>
-					executeAction(Action.cases.NextTab.makeUnsafe({}))
+					executeAction(Action.cases.NextTab.make({}))
 				),
 				previousTab: Effect.fn('Ghostty.previousTab')(() =>
-					executeAction(Action.cases.PreviousTab.makeUnsafe({}))
+					executeAction(Action.cases.PreviousTab.make({}))
 				),
 				lastTab: Effect.fn('Ghostty.lastTab')(() =>
-					executeAction(Action.cases.LastTab.makeUnsafe({}))
+					executeAction(Action.cases.LastTab.make({}))
 				),
 				gotoTab: Effect.fn('Ghostty.gotoTab')((index: number) =>
-					executeAction(Action.cases.GotoTab.makeUnsafe({ index }))
+					executeAction(Action.cases.GotoTab.make({ index }))
 				),
 				moveTab: Effect.fn('Ghostty.moveTab')((offset: number) =>
-					executeAction(Action.cases.MoveTab.makeUnsafe({ offset }))
+					executeAction(Action.cases.MoveTab.make({ offset }))
 				),
 				toggleTabOverview: Effect.fn('Ghostty.toggleTabOverview')(() =>
-					executeAction(Action.cases.ToggleTabOverview.makeUnsafe({}))
+					executeAction(Action.cases.ToggleTabOverview.make({}))
 				),
 
 				newSplit: Effect.fn('Ghostty.newSplit')(
 					(direction: SplitDirection) =>
 						executeAction(
-							Action.cases.NewSplit.makeUnsafe({ direction })
+							Action.cases.NewSplit.make({ direction })
 						)
 				),
 				gotoSplit: Effect.fn('Ghostty.gotoSplit')(
 					(direction: GotoSplitDirection) =>
 						executeAction(
-							Action.cases.GotoSplit.makeUnsafe({ direction })
+							Action.cases.GotoSplit.make({ direction })
 						)
 				),
 				toggleSplitZoom: Effect.fn('Ghostty.toggleSplitZoom')(() =>
-					executeAction(Action.cases.ToggleSplitZoom.makeUnsafe({}))
+					executeAction(Action.cases.ToggleSplitZoom.make({}))
 				),
 				resizeSplit: Effect.fn('Ghostty.resizeSplit')(
 					(direction: ResizeDirection, amount: number) =>
 						executeAction(
-							Action.cases.ResizeSplit.makeUnsafe({
+							Action.cases.ResizeSplit.make({
 								direction,
 								amount
 							})
 						)
 				),
 				equalizeSplits: Effect.fn('Ghostty.equalizeSplits')(() =>
-					executeAction(Action.cases.EqualizeSplits.makeUnsafe({}))
+					executeAction(Action.cases.EqualizeSplits.make({}))
 				),
 				closeSurface: Effect.fn('Ghostty.closeSurface')(() =>
-					executeAction(Action.cases.CloseSurface.makeUnsafe({}))
+					executeAction(Action.cases.CloseSurface.make({}))
 				),
 
 				splitHorizontal: Effect.fn('Ghostty.splitHorizontal')(() =>
 					executeAction(
-						Action.cases.NewSplit.makeUnsafe({
+						Action.cases.NewSplit.make({
 							direction: 'down'
 						})
 					)
 				),
 				splitVertical: Effect.fn('Ghostty.splitVertical')(() =>
 					executeAction(
-						Action.cases.NewSplit.makeUnsafe({
+						Action.cases.NewSplit.make({
 							direction: 'right'
 						})
 					)
 				),
 				closeCurrentPane: Effect.fn('Ghostty.closeCurrentPane')(() =>
-					executeAction(Action.cases.CloseSurface.makeUnsafe({}))
+					executeAction(Action.cases.CloseSurface.make({}))
 				),
 
 				toggleQuickTerminal: Effect.fn('Ghostty.toggleQuickTerminal')(
 					() =>
 						executeAction(
-							Action.cases.ToggleQuickTerminal.makeUnsafe({})
+							Action.cases.ToggleQuickTerminal.make({})
 						)
 				),
 
 				toggleVisibility: Effect.fn('Ghostty.toggleVisibility')(() =>
-					executeAction(Action.cases.ToggleVisibility.makeUnsafe({}))
+					executeAction(Action.cases.ToggleVisibility.make({}))
 				),
 
 				reloadConfig: Effect.fn('Ghostty.reloadConfig')(() =>
-					executeAction(Action.cases.ReloadConfig.makeUnsafe({}))
+					executeAction(Action.cases.ReloadConfig.make({}))
 				),
 				openConfig: Effect.fn('Ghostty.openConfig')(() =>
-					executeAction(Action.cases.OpenConfig.makeUnsafe({}))
+					executeAction(Action.cases.OpenConfig.make({}))
 				),
 
 				inspector: Effect.fn('Ghostty.inspector')(
 					(mode: InspectorMode) =>
 						executeAction(
-							Action.cases.Inspector.makeUnsafe({ mode })
+							Action.cases.Inspector.make({ mode })
 						)
 				),
 
 				sendText: Effect.fn('Ghostty.sendText')((text: string) =>
-					executeAction(Action.cases.Text.makeUnsafe({ text }))
+					executeAction(Action.cases.Text.make({ text }))
 				),
 				sendCsi: Effect.fn('Ghostty.sendCsi')((sequence: string) =>
-					executeAction(Action.cases.Csi.makeUnsafe({ sequence }))
+					executeAction(Action.cases.Csi.make({ sequence }))
 				),
 				sendEsc: Effect.fn('Ghostty.sendEsc')((sequence: string) =>
-					executeAction(Action.cases.Esc.makeUnsafe({ sequence }))
+					executeAction(Action.cases.Esc.make({ sequence }))
 				),
 				typeText: Effect.fn('Ghostty.typeText')((text: string) =>
 					provideExecutor(typeText(text))
@@ -1330,25 +1330,25 @@ export class Ghostty extends ServiceMap.Service<Ghostty>()(
 				),
 
 				toggleSecureInput: Effect.fn('Ghostty.toggleSecureInput')(() =>
-					executeAction(Action.cases.ToggleSecureInput.makeUnsafe({}))
+					executeAction(Action.cases.ToggleSecureInput.make({}))
 				),
 
 				toggleCommandPalette: Effect.fn('Ghostty.toggleCommandPalette')(
 					() =>
 						executeAction(
-							Action.cases.ToggleCommandPalette.makeUnsafe({})
+							Action.cases.ToggleCommandPalette.make({})
 						)
 				),
 
 				undo: Effect.fn('Ghostty.undo')(() =>
-					executeAction(Action.cases.Undo.makeUnsafe({}))
+					executeAction(Action.cases.Undo.make({}))
 				),
 				redo: Effect.fn('Ghostty.redo')(() =>
-					executeAction(Action.cases.Redo.makeUnsafe({}))
+					executeAction(Action.cases.Redo.make({}))
 				),
 
 				quit: Effect.fn('Ghostty.quit')(() =>
-					executeAction(Action.cases.Quit.makeUnsafe({}))
+					executeAction(Action.cases.Quit.make({}))
 				),
 
 				runScript: Effect.fn('Ghostty.runScript')(

@@ -6,12 +6,12 @@ import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
 import type { PlatformError } from 'effect/PlatformError';
 import * as Random from 'effect/Random';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 import * as TOML from 'smol-toml';
 
-export class Helix extends ServiceMap.Service<Helix>()(
+export class Helix extends Context.Service<Helix>()(
 	'@workspace/helix-binding/Helix',
 	{
 		make: Effect.gen(function* () {

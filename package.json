@@ -10,9 +10,9 @@
       "runtime"
     ],
     "catalog": {
-      "effect": "^4.0.0-beta.20",
-      "@effect/platform-bun": "^4.0.0-beta.20",
-      "@effect/vitest": "^4.0.0-beta.20",
+      "effect": "^4.0.0-beta.52",
+      "@effect/platform-bun": "^4.0.0-beta.52",
+      "@effect/vitest": "^4.0.0-beta.52",
       "typescript": "^5.9.3",
       "@effect/language-service": "^0.73.0",
       "@types/bun": "^1.3.8",
@@ -25,14 +25,16 @@
     "build": "vp build",
     "check": "vp check",
     "dev": "vp dev",
+    "gen:zellij-layouts": "bun run scripts/generate-zellij-layout-kdl-files.ts",
     "install:dotconfig": "vp run install:dotconfig",
     "lint": "vp check",
     "prepare": "effect-language-service patch",
     "test": "vp test"
   },
   "dependencies": {
-    "effect": "catalog:",
-    "oxlint-effect": "link:oxlint-effect"
+    "@effect/platform-bun": "catalog:",
+    "@workspace/zellij-binding": "workspace:*",
+    "effect": "catalog:"
   },
   "devDependencies": {
     "@effect/language-service": "catalog:",

@@ -7,7 +7,7 @@ import * as PubSub from 'effect/PubSub';
 import * as Ref from 'effect/Ref';
 import * as Schedule from 'effect/Schedule';
 import * as Schema from 'effect/Schema';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -254,7 +254,7 @@ const sessionSnapshotKey = (sessions: ReadonlyArray<TmuxSession>): string =>
 		)
 		.join(',');
 
-export class Tmux extends ServiceMap.Service<Tmux>()(
+export class Tmux extends Context.Service<Tmux>()(
 	'@workspace/tmux-binding/Tmux',
 	{
 		make: Effect.gen(function* () {

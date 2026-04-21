@@ -3,7 +3,7 @@ import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
 import * as Schema from 'effect/Schema';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -349,7 +349,7 @@ const listClients = Effect.fn('Zellij.listClients')(() =>
 // Service
 // ---------------------------------------------------------------------------
 
-export class Zellij extends ServiceMap.Service<Zellij>()(
+export class Zellij extends Context.Service<Zellij>()(
 	'@workspace/zellij-binding/Zellij',
 	{
 		make: Effect.gen(function* () {

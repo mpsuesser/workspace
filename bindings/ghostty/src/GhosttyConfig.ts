@@ -7,7 +7,7 @@ import * as Option from 'effect/Option';
 import * as Path from 'effect/Path';
 import * as P from 'effect/Predicate';
 import * as R from 'effect/Record';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 
 import { Ghostty } from './Ghostty.ts';
 import { type GhosttyCliError, GhosttyConfigError } from './GhosttyError.ts';
@@ -50,9 +50,9 @@ const updateConfigContent = (
 		keyPattern.test(line)
 	);
 
-	if (existingIndex !== undefined) {
+	if (Option.isSome(existingIndex)) {
 		const updated = [...lines];
-		updated[existingIndex] = `${key} = ${value}`;
+		updated[existingIndex.value] = `${key} = ${value}`;
 		return updated.join('\n');
 	}
 
@@ -65,8 +65,10 @@ const updateConfigContent = (
 		lines,
 		(line) => line.trim() !== ''
 	);
-	const insertAt =
-		lastNonEmptyIndex !== undefined ? lastNonEmptyIndex + 1 : lines.length;
+	const insertAt = Option.match(lastNonEmptyIndex, {
+		onNone: () => lines.length,
+		onSome: (i) => i + 1
+	});
 
 	const result = [...lines];
 	result.splice(insertAt, 0, `${key} = ${value}`);
@@ -153,7 +155,7 @@ const mapPlatformError =
 			path: configPath
 		});
 
-export class GhosttyConfig extends ServiceMap.Service<
+export class GhosttyConfig extends Context.Service<
 	GhosttyConfig,
 	{
 		readonly getPath: Effect.Effect<string, GhosttyConfigError>;

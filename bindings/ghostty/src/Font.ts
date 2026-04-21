@@ -2,7 +2,7 @@ import * as Arr from 'effect/Array';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Schema from 'effect/Schema';
-import * as ServiceMap from 'effect/ServiceMap';
+import * as Context from 'effect/Context';
 import * as Str from 'effect/String';
 
 import { type FontInfo, Ghostty } from './Ghostty.ts';
@@ -17,7 +17,7 @@ export class FontConfig extends Schema.Class<FontConfig>('FontConfig')({
 	size: Schema.OptionFromUndefinedOr(Schema.Number)
 }) {}
 
-export class GhosttyFont extends ServiceMap.Service<GhosttyFont>()(
+export class GhosttyFont extends Context.Service<GhosttyFont>()(
 	'@workspace/ghostty-binding/GhosttyFont',
 	{
 		make: Effect.gen(function* () {
