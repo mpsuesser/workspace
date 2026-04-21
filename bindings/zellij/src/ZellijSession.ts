@@ -27,7 +27,7 @@
  * @since 0.1.0
  */
 
-import { Effect, Layer, Stream } from 'effect';
+import { Effect, Layer, pipe, Stream } from 'effect';
 import * as Arr from 'effect/Array';
 import * as Config from 'effect/Config';
 import * as Context from 'effect/Context';
@@ -36,8 +36,10 @@ import * as Str from 'effect/String';
 
 import * as ClientInfo from './schemas/ClientInfo.ts';
 import * as PaneId from './schemas/PaneId.ts';
+import * as PaneInfo from './schemas/PaneInfo.ts';
 import * as SessionName from './schemas/SessionName.ts';
 import * as SubscribeEvent from './schemas/SubscribeEvent.ts';
+import * as TabInfo from './schemas/TabInfo.ts';
 import * as ZellijAction from './ZellijAction.ts';
 import * as ZellijCli from './ZellijCli.ts';
 import * as ZellijError from './ZellijError.ts';
@@ -131,18 +133,6 @@ export interface Interface {
 	// ─── Queries ────────────────────────────────────────────────────────────
 
 	/**
-	 * List all zellij sessions (active and resurrectable) as their names.
-	 *
-	 * Uses `zellij list-sessions -s` so parsing is a simple line-per-name
-	 * read; decoration like "(current)" or "(EXITED)" from the default
-	 * output is not surfaced here.
-	 */
-	readonly list: () => Effect.Effect<
-		ReadonlyArray<SessionName.SessionName>,
-		ZellijError.ZellijError
-	>;
-
-	/**
 	 * Read `$ZELLIJ_SESSION_NAME`. Returns `None` when not running inside
 	 * a zellij-managed shell.
 	 *
@@ -172,11 +162,46 @@ export interface Interface {
 	>;
 
 	/**
-	 * List the clients attached to the target session (or the caller's
-	 * default session). Parses the `list-clients` text table into typed
-	 * records.
+	 * Enumerate every tab in the target session as typed
+	 * {@link TabInfo} rows. Always requests `--json` internally; raw
+	 * text output is not exposed.
 	 */
-	readonly listClients: (
+	readonly getTabs: (
+		options?: SessionOptions
+	) => Effect.Effect<
+		ReadonlyArray<TabInfo.TabInfo>,
+		ZellijError.ZellijError
+	>;
+
+	/**
+	 * Enumerate every pane in the target session as typed
+	 * {@link PaneInfo} rows. Always requests `--json` internally; raw
+	 * text output is not exposed.
+	 */
+	readonly getPanes: (
+		options?: SessionOptions
+	) => Effect.Effect<
+		ReadonlyArray<PaneInfo.PaneInfo>,
+		ZellijError.ZellijError
+	>;
+
+	/**
+	 * Return just the tab names, in tab-bar order. Maps to
+	 * `zellij action query-tab-names`; the output is newline-separated
+	 * text which this method splits and trims.
+	 */
+	readonly getTabNames: (
+		options?: SessionOptions
+	) => Effect.Effect<
+		ReadonlyArray<string>,
+		ZellijError.ZellijError
+	>;
+
+	/**
+	 * Enumerate the clients attached to the target session. Parses the
+	 * `list-clients` text table into typed records.
+	 */
+	readonly getClients: (
 		options?: SessionOptions
 	) => Effect.Effect<
 		ReadonlyArray<ClientInfo.ClientInfo>,
@@ -184,10 +209,11 @@ export interface Interface {
 	>;
 
 	/**
-	 * Return the current session's layout as KDL text (the `layout { … }`
-	 * block one would put in a layout file).
+	 * Return the session's layout as KDL text (the `layout { … }`
+	 * block one would put in a layout file). Maps to
+	 * `zellij action dump-layout`.
 	 */
-	readonly dumpLayout: (
+	readonly getLayout: (
 		options?: SessionOptions
 	) => Effect.Effect<string, ZellijError.ZellijError>;
 
@@ -235,16 +261,6 @@ export interface Interface {
 	) => Effect.Effect<void, ZellijError.ZellijError>;
 
 	/**
-	 * Kill every running session on this machine. Maps to
-	 * `zellij kill-all-sessions -y` (the `-y` suppresses the confirm
-	 * prompt).
-	 */
-	readonly killAll: () => Effect.Effect<
-		void,
-		ZellijError.ZellijError
-	>;
-
-	/**
 	 * Remove an exited / resurrectable session from the cache.
 	 *
 	 * Maps to `zellij delete-session <name>`.
@@ -252,15 +268,6 @@ export interface Interface {
 	readonly delete: (
 		name: SessionName.SessionName
 	) => Effect.Effect<void, ZellijError.ZellijError>;
-
-	/**
-	 * Remove every cached exited session. Maps to
-	 * `zellij delete-all-sessions -y`.
-	 */
-	readonly deleteAll: () => Effect.Effect<
-		void,
-		ZellijError.ZellijError
-	>;
 
 	// ─── Mutations via action subcommands ──────────────────────────────────
 
@@ -365,25 +372,6 @@ export const layer = Layer.effect(
 
 		// ── Queries ──────────────────────────────────────────────────────
 
-		const list = Effect.fn('ZellijSession.list')(() =>
-			Effect.gen(function* () {
-				const lines = yield* cli.lines(['list-sessions', '-s']);
-				return yield* Effect.forEach(
-					lines,
-					(line) =>
-						SessionName.decodeUnknown(Str.trim(line)).pipe(
-							Effect.mapError((issue) =>
-								ZellijError.decodeFailure({
-									argv: ['list-sessions', '-s'],
-									output: line,
-									issue: String(issue)
-								})
-							)
-						)
-				);
-			})
-		);
-
 		const current = Effect.fn('ZellijSession.current')(() =>
 			Effect.gen(function* () {
 				// `Config.option(cfg)` produces a `Config<Option<A>>` where
@@ -433,14 +421,65 @@ export const layer = Layer.effect(
 			current().pipe(Effect.map(Option.isSome))
 		);
 
-		const listClients = Effect.fn('ZellijSession.listClients')(
+		const getTabs = Effect.fn('ZellijSession.getTabs')(
+			(options?: SessionOptions) =>
+				runAction(
+					ZellijAction.listTabs({ ...options, json: true })
+				).pipe(
+					Effect.flatMap((stdout) =>
+						TabInfo.decodeJsonArray(stdout).pipe(
+							Effect.mapError((issue) =>
+								ZellijError.decodeFailure({
+									argv: ['action', 'list-tabs', '--json'],
+									output: stdout,
+									issue: String(issue)
+								})
+							)
+						)
+					)
+				)
+		);
+
+		const getPanes = Effect.fn('ZellijSession.getPanes')(
+			(options?: SessionOptions) =>
+				runAction(
+					ZellijAction.listPanes({ ...options, json: true })
+				).pipe(
+					Effect.flatMap((stdout) =>
+						PaneInfo.decodeJson(stdout).pipe(
+							Effect.mapError((issue) =>
+								ZellijError.decodeFailure({
+									argv: ['action', 'list-panes', '--json'],
+									output: stdout,
+									issue: String(issue)
+								})
+							)
+						)
+					)
+				)
+		);
+
+		const getTabNames = Effect.fn('ZellijSession.getTabNames')(
+			(options?: SessionOptions) =>
+				runAction(ZellijAction.queryTabNames(options)).pipe(
+					Effect.map((stdout) =>
+						pipe(
+							Str.split('\n')(stdout),
+							Arr.map(Str.trim),
+							Arr.filter(Str.isNonEmpty)
+						)
+					)
+				)
+		);
+
+		const getClients = Effect.fn('ZellijSession.getClients')(
 			(options?: SessionOptions) =>
 				runAction(ZellijAction.listClients(options)).pipe(
 					Effect.map(ClientInfo.parseOutput)
 				)
 		);
 
-		const dumpLayout = Effect.fn('ZellijSession.dumpLayout')(
+		const getLayout = Effect.fn('ZellijSession.getLayout')(
 			(options?: SessionOptions) =>
 				runAction(ZellijAction.dumpLayout(options))
 		);
@@ -486,17 +525,9 @@ export const layer = Layer.effect(
 				cli.exec(['kill-session', name]).pipe(Effect.asVoid)
 		);
 
-		const killAll = Effect.fn('ZellijSession.killAll')(() =>
-			cli.exec(['kill-all-sessions', '-y']).pipe(Effect.asVoid)
-		);
-
 		const delete_ = Effect.fn('ZellijSession.delete')(
 			(name: SessionName.SessionName) =>
 				cli.exec(['delete-session', name]).pipe(Effect.asVoid)
-		);
-
-		const deleteAll = Effect.fn('ZellijSession.deleteAll')(() =>
-			cli.exec(['delete-all-sessions', '-y']).pipe(Effect.asVoid)
 		);
 
 		// ── Action-delegated mutations ────────────────────────────────────
@@ -580,19 +611,19 @@ export const layer = Layer.effect(
 		};
 
 		return Service.of({
-			list,
 			current,
 			currentOrFail,
 			isInSession,
-			listClients,
-			dumpLayout,
+			getTabs,
+			getPanes,
+			getTabNames,
+			getClients,
+			getLayout,
 			createBackground,
 			attach,
 			watch,
 			kill,
-			killAll,
 			delete: delete_,
-			deleteAll,
 			detach,
 			rename,
 			save,
