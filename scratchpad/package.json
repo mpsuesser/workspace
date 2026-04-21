@@ -1,0 +1,10 @@
+{
+  "name": "@workspace/scratchpad",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@effect/platform-bun": "catalog:effect",
+    "effect": "catalog:effect"
+  }
+}
