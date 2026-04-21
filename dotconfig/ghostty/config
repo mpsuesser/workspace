@@ -1,12 +1,32 @@
 config-file = "./keys"
+config-file = "./keys-using-zellij"
 config-file = "./shader"
 
 shell-integration = "zsh"
 
 # theme = prisma-dark
-# font-family = Annotation Mono
 theme = Snazzy
-font-family = Maple Mono
+
+# Pin split divider to match zellij frame color (see zellij/themes/dracula.kdl).
+# Without this, macOS ghostty uses NSColor.separatorColor, which is close but
+# dynamic and won't stay in lockstep with the zellij theme.
+split-divider-color = #3a3a3a
+
+# font-family = Maple Mono
+font-family = Maple Mono NF
+# font-family = Annotation Mono
+# font-family = JetBrainsMono Nerd Font Mono
+# font-family = JetBrainsMonoNL Nerd Font Mono
+# font-family = Monaspace Neon
+# font-family = Monaspace Argon
+# font-family = Monaspace Xenon
+# font-family = Monaspace Krypton
+# font-family = Monaspace Radon
+# font-family = IosevkaTerm Nerd Font Mono
+# font-family = CommitMono Nerd Font Mono
+# font-family = GeistMono Nerd Font Mono
+# font-family = Hack Nerd Font Mono
+# font-family = Menlo
 
 quick-terminal-position = center
 quick-terminal-size = 33%,85%

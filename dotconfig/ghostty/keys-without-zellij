@@ -1,0 +1,20 @@
+keybind = cmd+w=goto_split:up
+keybind = cmd+s=goto_split:down
+keybind = cmd+a=goto_split:left
+keybind = cmd+d=goto_split:right
+
+keybind = cmd+shift+w=new_split:up
+keybind = cmd+shift+a=new_split:left
+keybind = cmd+shift+s=new_split:down
+keybind = cmd+shift+d=new_split:right
+
+keybind = cmd+q=close_surface
+
+keybind = cmd+n=unbind
+keybind = ctrl+m=unbind
+
+keybind = alt+e=equalize_splits
+keybind = cmd+e=toggle_split_zoom
+
+keybind = alt+w=scroll_page_fractional:-0.50
+keybind = alt+s=scroll_page_fractional:0.50

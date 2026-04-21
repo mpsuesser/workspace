@@ -1,0 +1,20 @@
+keybind = cmd+w=unbind
+keybind = cmd+s=unbind
+keybind = cmd+a=unbind
+keybind = cmd+d=unbind
+
+keybind = cmd+shift+w=unbind
+keybind = cmd+shift+a=unbind
+keybind = cmd+shift+s=unbind
+keybind = cmd+shift+d=unbind
+
+keybind = cmd+q=unbind
+
+keybind = cmd+n=unbind
+keybind = ctrl+m=unbind
+
+keybind = alt+e=unbind
+keybind = cmd+e=unbind
+
+keybind = alt+w=unbind
+keybind = alt+s=unbind
