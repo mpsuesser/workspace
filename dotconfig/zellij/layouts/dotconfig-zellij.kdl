@@ -1,0 +1,7 @@
+layout {
+	cwd "/Users/m/repos/workspace/dotconfig/zellij"
+	pane split_direction="vertical" {
+		pane focus=true size="60%"
+		pane command="pi" name="pi" size="40%"
+	}
+}

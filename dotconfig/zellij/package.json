@@ -1,7 +1,12 @@
 {
-  "name": "@workspace/zellij-dotconfig",
-  "private": true,
-  "scripts": {
-    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/zellij"
-  }
+	"name": "@workspace/zellij-dotconfig",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"install:dotconfig": "ln -sfn \"$(pwd)\" ~/.config/zellij"
+	},
+	"dependencies": {
+		"@workspace/zellij-binding": "workspace:*",
+		"effect": "catalog:"
+	}
 }
