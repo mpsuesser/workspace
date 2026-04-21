@@ -1,0 +1,3 @@
+cnp() {
+	pi -p "/commit-and-push"
+}

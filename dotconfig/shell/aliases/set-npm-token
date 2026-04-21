@@ -1,0 +1,3 @@
+set-npm-token() {
+	pbpaste | tr -d '\r\n' | gh secret set NPM_TOKEN
+}
