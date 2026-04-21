@@ -23,11 +23,11 @@
  * @since 0.1.0
  */
 
-import { Effect, Layer, pipe } from 'effect';
+import { Effect, Layer } from 'effect';
 import * as Arr from 'effect/Array';
 import * as Context from 'effect/Context';
-import * as Str from 'effect/String';
 
+import * as PaneInfo from './schemas/PaneInfo.ts';
 import * as SessionName from './schemas/SessionName.ts';
 import * as TabId from './schemas/TabId.ts';
 import * as TabInfo from './schemas/TabInfo.ts';
@@ -112,33 +112,28 @@ export interface Interface {
 	// ─── Queries ────────────────────────────────────────────────────────────
 
 	/**
-	 * List every tab in the target session as typed {@link TabInfo} rows.
-	 * Always requests `--json` internally; raw text output is not exposed.
+	 * Return typed info for the currently focused tab. Maps to
+	 * `zellij action current-tab-info --json`; zellij has no equivalent
+	 * CLI for inspecting a non-focused tab — callers wanting info about
+	 * an arbitrary tab should use {@link ZellijSession.Interface.getTabs}
+	 * and filter.
 	 */
-	readonly list: (
-		options?: TabOptionsBase
-	) => Effect.Effect<
-		ReadonlyArray<TabInfo.TabInfo>,
-		ZellijError.ZellijError
-	>;
-
-	/**
-	 * Return typed info for the currently focused tab.
-	 */
-	readonly currentInfo: (
+	readonly info: (
 		options?: TabOptionsBase
 	) => Effect.Effect<TabInfo.TabInfo, ZellijError.ZellijError>;
 
 	/**
-	 * Return just the names of every tab, in tab-bar order.
+	 * Return the panes belonging to this tab.
 	 *
-	 * Maps to `zellij action query-tab-names`; the output is
-	 * newline-separated text which this method splits and trims.
+	 * When `tabId` is set, fetches every session pane via
+	 * `list-panes --json` and filters by `tab_id`. When `tabId` is
+	 * omitted, uses the CLI's built-in `list-panes --tab` flag which
+	 * restricts output to the focused tab.
 	 */
-	readonly names: (
-		options?: TabOptionsBase
+	readonly getPanes: (
+		options?: TabIdOptions
 	) => Effect.Effect<
-		ReadonlyArray<string>,
+		ReadonlyArray<PaneInfo.PaneInfo>,
 		ZellijError.ZellijError
 	>;
 
@@ -156,8 +151,8 @@ export interface Interface {
 	// ─── Lifecycle ─────────────────────────────────────────────────────────
 
 	/**
-	 * Create a new tab. `zellij`'s `new-tab` subcommand does not print the
-	 * new tab's id, so this returns `void`; call {@link currentInfo}
+	 * Create a new tab. `zellij`'s `new-tab` subcommand does not print
+	 * the new tab's id, so this returns `void`; call {@link info}
 	 * afterwards to read it back.
 	 */
 	readonly new: (
@@ -350,26 +345,7 @@ export const layer = Layer.effect(
 
 		// ── Queries ───────────────────────────────────────────────────────
 
-		const list = Effect.fn('ZellijTab.list')(
-			(options?: TabOptionsBase) =>
-				runAction(
-					ZellijAction.listTabs({ ...options, json: true })
-				).pipe(
-					Effect.flatMap((stdout) =>
-						TabInfo.decodeJsonArray(stdout).pipe(
-							Effect.mapError((issue) =>
-								ZellijError.decodeFailure({
-									argv: ['action', 'list-tabs', '--json'],
-									output: stdout,
-									issue: String(issue)
-								})
-							)
-						)
-					)
-				)
-		);
-
-		const currentInfo = Effect.fn('ZellijTab.currentInfo')(
+		const info = Effect.fn('ZellijTab.info')(
 			(options?: TabOptionsBase) =>
 				runAction(
 					ZellijAction.currentTabInfo({
@@ -395,20 +371,43 @@ export const layer = Layer.effect(
 				)
 		);
 
-		const names = Effect.fn('ZellijTab.names')(
-			(options?: TabOptionsBase) =>
-				runAction(ZellijAction.queryTabNames(options)).pipe(
-					Effect.map((stdout) =>
-						// `query-tab-names` prints one name per line; some
-						// zellij builds also append a trailing newline, so
-						// trim each entry and drop blanks.
-						pipe(
-							Str.split('\n')(stdout),
-							Arr.map(Str.trim),
-							Arr.filter(Str.isNonEmpty)
+		const getPanes = Effect.fn('ZellijTab.getPanes')(
+			(options?: TabIdOptions) =>
+				Effect.gen(function* () {
+					// Two code paths: when `tabId` is set we fetch every
+					// pane in the session and filter client-side (zellij's
+					// CLI has no `--tab-id` on list-panes); when it's
+					// omitted we use the built-in `--tab` flag which
+					// restricts output to the focused tab in one CLI call.
+					const argv = options?.tabId === undefined
+						? ['action', 'list-panes', '--tab', '--json']
+						: ['action', 'list-panes', '--json'];
+
+					const stdout = yield* runAction(
+						ZellijAction.listPanes({
+							...options,
+							tab: options?.tabId === undefined,
+							json: true
+						})
+					);
+
+					const all = yield* PaneInfo.decodeJson(stdout).pipe(
+						Effect.mapError((issue) =>
+							ZellijError.decodeFailure({
+								argv,
+								output: stdout,
+								issue: String(issue)
+							})
 						)
-					)
-				)
+					);
+
+					return options?.tabId === undefined
+						? all
+						: Arr.filter(
+							all,
+							(p) => p.tab_id === options.tabId
+						);
+				})
 		);
 
 		const areFloatingVisible = Effect.fn('ZellijTab.areFloatingVisible')(
@@ -536,9 +535,8 @@ export const layer = Layer.effect(
 		);
 
 		return Service.of({
-			list,
-			currentInfo,
-			names,
+			info,
+			getPanes,
 			areFloatingVisible,
 			new: new_,
 			close,
