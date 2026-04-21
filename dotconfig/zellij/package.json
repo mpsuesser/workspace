@@ -7,6 +7,6 @@
 	},
 	"dependencies": {
 		"@workspace/zellij-binding": "workspace:*",
-		"effect": "catalog:"
+		"effect": "catalog:effect"
 	}
 }

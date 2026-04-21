@@ -4,11 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun build --compile --bytecode --minify src/main.ts --outfile $HOME/.local/bin/hx-wrapped",
-    "clean": "rm -rf .tsbuildinfo"
+    "build": "bun build --compile --bytecode --minify src/main.ts --outfile $HOME/.local/bin/hx-wrapped"
   },
   "dependencies": {
-    "@effect/platform-bun": "catalog:",
-    "effect": "catalog:"
+    "@effect/platform-bun": "catalog:effect",
+    "effect": "catalog:effect"
   }
 }

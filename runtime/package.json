@@ -4,19 +4,20 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./runtime.ts",
-    "./*": "./*.ts",
+    ".": {
+      "import": "./runtime.ts"
+    },
+    "./*": {
+      "import": "./*.ts"
+    },
     "./internal/*": null
   },
-  "scripts": {
-    "clean": "rm -rf .tsbuildinfo"
-  },
   "dependencies": {
-    "@effect/platform-bun": "catalog:",
+    "@effect/platform-bun": "catalog:effect",
     "@workspace/hammerspoon-binding": "workspace:*",
     "@workspace/helix-binding": "workspace:*",
     "@workspace/iterm-binding": "workspace:*",
     "@workspace/tmux-binding": "workspace:*",
-    "effect": "catalog:"
+    "effect": "catalog:effect"
   }
 }

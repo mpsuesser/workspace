@@ -4,16 +4,17 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./*": "./src/*.ts"
-  },
-  "scripts": {
-    "clean": "rm -rf .tsbuildinfo"
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./*": {
+      "import": "./src/*.ts"
+    }
   },
   "dependencies": {
-    "@effect/platform-bun": "catalog:",
+    "@effect/platform-bun": "catalog:effect",
     "@workspace/helix-dotconfig": "workspace:*",
-    "effect": "catalog:",
+    "effect": "catalog:effect",
     "smol-toml": "catalog:"
   }
 }

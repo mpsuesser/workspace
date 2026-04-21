@@ -5,7 +5,7 @@
     "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.pi"
   },
   "dependencies": {
-    "effect": "catalog:",
+    "effect": "catalog:effect",
     "effect-pi": "link:effect-pi"
   }
 }
