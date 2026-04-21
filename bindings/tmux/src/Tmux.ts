@@ -1,5 +1,6 @@
 import * as Arr from 'effect/Array';
 import * as Config from 'effect/Config';
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
@@ -7,7 +8,6 @@ import * as PubSub from 'effect/PubSub';
 import * as Ref from 'effect/Ref';
 import * as Schedule from 'effect/Schedule';
 import * as Schema from 'effect/Schema';
-import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -266,20 +266,20 @@ export class Tmux extends Context.Service<Tmux>()(
 					E,
 					ChildProcessSpawner.ChildProcessSpawner
 				>
-			) =>
-				Effect.provideService(
-					effect,
-					ChildProcessSpawner.ChildProcessSpawner,
-					spawner
-				);
+			) => Effect.provideService(
+				effect,
+				ChildProcessSpawner.ChildProcessSpawner,
+				spawner
+			);
 
 			const hub = yield* PubSub.unbounded<ReadonlyArray<TmuxSession>>();
 			const lastKey = yield* Ref.make('');
 
 			const pollSessions = Effect.gen(function* () {
 				const current = yield* provide(getAllSessions()).pipe(
-					Effect.catchTag('TmuxError', () =>
-						Effect.succeed([] as ReadonlyArray<TmuxSession>)
+					Effect.catchTag(
+						'TmuxError',
+						() => Effect.succeed([] as ReadonlyArray<TmuxSession>)
 					)
 				);
 				const key = sessionSnapshotKey(current);
@@ -301,8 +301,9 @@ export class Tmux extends Context.Service<Tmux>()(
 					provide(getAllSessions())
 				),
 				getActiveSession: Effect.fn('Tmux.getActiveSession')(() =>
-					Effect.map(provide(getAllSessions()), (sessions) =>
-						Arr.findFirst(sessions, (s) => s.attached)
+					Effect.map(
+						provide(getAllSessions()),
+						(sessions) => Arr.findFirst(sessions, (s) => s.attached)
 					)
 				),
 				onSessionChange: hub,

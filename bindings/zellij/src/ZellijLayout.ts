@@ -373,8 +373,7 @@ export const split = (
 	direction: SplitDirection,
 	children: ReadonlyArray<Pane>,
 	input: CommonPaneInput = {}
-): SplitPane =>
-	new SplitPane({ direction, children, ...liftCommon(input) });
+): SplitPane => new SplitPane({ direction, children, ...liftCommon(input) });
 
 /**
  * Horizontal split shortcut — children arranged left-to-right.
@@ -546,14 +545,17 @@ const formatKdlNode = (node: KdlNode, depth: number): string => {
 		Arr.map(node.args, formatKdlValue),
 		Arr.map(node.props, ([k, v]) => `${k}=${formatKdlValue(v)}`)
 	);
-	const prefix = `${pad}${node.name}${head.length === 0 ? '' : ' ' + head.join(' ')}`;
+	const prefix = `${pad}${node.name}${
+		head.length === 0 ? '' : ' ' + head.join(' ')
+	}`;
 
 	if (node.children.length === 0) {
 		return prefix;
 	}
 
-	const body = Arr.map(node.children, (child) =>
-		formatKdlNode(child, depth + 1)
+	const body = Arr.map(
+		node.children,
+		(child) => formatKdlNode(child, depth + 1)
 	).join('\n');
 
 	return `${prefix} {\n${body}\n${pad}}`;
@@ -584,7 +586,13 @@ const optionalProp = <A extends KdlValue>(
 const commonPropsOf = (
 	p: Pick<
 		ShellPane,
-		'name' | 'cwd' | 'focus' | 'size' | 'borderless' | 'defaultFg' | 'defaultBg'
+		| 'name'
+		| 'cwd'
+		| 'focus'
+		| 'size'
+		| 'borderless'
+		| 'defaultFg'
+		| 'defaultBg'
 	>
 ): ReadonlyArray<readonly [string, KdlValue]> =>
 	Arr.flatten([
@@ -683,10 +691,10 @@ const floatingPanesBlock = (
 	fs.length === 0
 		? Option.none()
 		: Option.some(
-				kdlNode('floating_panes', {
-					children: Arr.map(fs, floatingPaneToKdl)
-				})
-			);
+			kdlNode('floating_panes', {
+				children: Arr.map(fs, floatingPaneToKdl)
+			})
+		);
 
 const tabToKdl = (t: Tab): KdlNode =>
 	kdlNode('tab', {

@@ -3,16 +3,16 @@ import * as Schema from 'effect/Schema';
 
 export const PaneLocation = Schema.TaggedUnion({
 	Direction: {
-		direction: Schema.Literals(['right', 'down', 'left', 'up']),
+		direction: Schema.Literals(['right', 'down', 'left', 'up'])
 	},
 	Floating: {
 		width: Schema.OptionFromUndefinedOr(Schema.String),
 		height: Schema.OptionFromUndefinedOr(Schema.String),
 		x: Schema.OptionFromUndefinedOr(Schema.String),
 		y: Schema.OptionFromUndefinedOr(Schema.String),
-		pinned: Schema.OptionFromUndefinedOr(Schema.Boolean),
+		pinned: Schema.OptionFromUndefinedOr(Schema.Boolean)
 	},
-	InPlace: {},
+	InPlace: {}
 });
 
 export type PaneLocation = typeof PaneLocation.Type;
@@ -20,8 +20,7 @@ export type PaneLocation = typeof PaneLocation.Type;
 export const toArgs: (location: PaneLocation) => ReadonlyArray<string> =
 	PaneLocation.match({
 		Direction: ({ direction }) => ['-d', direction],
-		Floating: ({ width, height, x, y, pinned }) =>
-		{
+		Floating: ({ width, height, x, y, pinned }) => {
 			const args: Array<string> = ['-f'];
 			if (Option.isSome(width)) args.push('--width', width.value);
 			if (Option.isSome(height)) args.push('--height', height.value);
@@ -31,20 +30,20 @@ export const toArgs: (location: PaneLocation) => ReadonlyArray<string> =
 				args.push('--pinned', 'true');
 			return args;
 		},
-		InPlace: () => ['-i'],
+		InPlace: () => ['-i']
 	});
 
 export const right = PaneLocation.cases.Direction.make({
-	direction: 'right',
+	direction: 'right'
 });
 export const down = PaneLocation.cases.Direction.make({
-	direction: 'down',
+	direction: 'down'
 });
 export const left = PaneLocation.cases.Direction.make({
-	direction: 'left',
+	direction: 'left'
 });
 export const up = PaneLocation.cases.Direction.make({
-	direction: 'up',
+	direction: 'up'
 });
 export const floating = (
 	opts?: Partial<{
@@ -53,12 +52,12 @@ export const floating = (
 		readonly x: string;
 		readonly y: string;
 		readonly pinned: boolean;
-	}>,
+	}>
 ) => PaneLocation.cases.Floating.make({
 	width: Option.fromNullishOr(opts?.width),
 	height: Option.fromNullishOr(opts?.height),
 	x: Option.fromNullishOr(opts?.x),
 	y: Option.fromNullishOr(opts?.y),
-	pinned: Option.fromNullishOr(opts?.pinned),
+	pinned: Option.fromNullishOr(opts?.pinned)
 });
 export const inPlace = PaneLocation.cases.InPlace.make({});

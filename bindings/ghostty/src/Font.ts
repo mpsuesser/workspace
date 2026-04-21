@@ -1,11 +1,11 @@
 import * as Arr from 'effect/Array';
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Schema from 'effect/Schema';
-import * as Context from 'effect/Context';
 import * as Str from 'effect/String';
 
-import { type FontInfo, Ghostty } from './Ghostty.ts';
+import { Ghostty, type FontInfo } from './Ghostty.ts';
 
 export type { FontInfo } from './Ghostty.ts';
 
@@ -41,8 +41,9 @@ export class GhosttyFont extends Context.Service<GhosttyFont>()(
 				) {
 					const fonts = yield* ghostty.listFonts();
 					const lowerFamily = family.toLowerCase();
-					return Arr.filter(fonts, (f) =>
-						f.family.toLowerCase().includes(lowerFamily)
+					return Arr.filter(
+						fonts,
+						(f) => f.family.toLowerCase().includes(lowerFamily)
 					);
 				}),
 				hasFamily: Effect.fn('GhosttyFont.hasFamily')(function* (

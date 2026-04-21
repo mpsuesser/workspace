@@ -150,8 +150,8 @@ export type KeybindingValue =
 	| string
 	| ReadonlyArray<string>
 	| {
-			readonly [key: string]: KeybindingValue;
-	  };
+		readonly [key: string]: KeybindingValue;
+	};
 
 export const KeybindingValue: Schema.Schema<KeybindingValue> = Schema.Union([
 	Schema.String,
@@ -335,15 +335,17 @@ export class EditorSmartTab extends Schema.Class<EditorSmartTab>(
 }) {}
 
 /** `[editor.inline-diagnostics]` — inline diagnostic rendering. */
-export class EditorInlineDiagnostics extends Schema.Class<EditorInlineDiagnostics>(
-	'EditorInlineDiagnostics'
-)({
-	'cursor-line': Schema.optional(DiagnosticSeverityOrDisable),
-	'other-lines': Schema.optional(DiagnosticSeverityOrDisable),
-	'prefix-len': Schema.optional(Schema.Number),
-	'max-wrap': Schema.optional(Schema.Number),
-	'max-diagnostics': Schema.optional(Schema.Number)
-}) {}
+export class EditorInlineDiagnostics
+	extends Schema.Class<EditorInlineDiagnostics>(
+		'EditorInlineDiagnostics'
+	)({
+		'cursor-line': Schema.optional(DiagnosticSeverityOrDisable),
+		'other-lines': Schema.optional(DiagnosticSeverityOrDisable),
+		'prefix-len': Schema.optional(Schema.Number),
+		'max-wrap': Schema.optional(Schema.Number),
+		'max-diagnostics': Schema.optional(Schema.Number)
+	})
+{}
 
 /** Custom clipboard provider command. */
 export class ClipboardCommand extends Schema.Class<ClipboardCommand>(
@@ -354,16 +356,18 @@ export class ClipboardCommand extends Schema.Class<ClipboardCommand>(
 }) {}
 
 /** `[editor.clipboard-provider.custom]` — custom clipboard commands. */
-export class ClipboardProviderCustom extends Schema.Class<ClipboardProviderCustom>(
-	'ClipboardProviderCustom'
-)({
-	custom: Schema.Struct({
-		yank: ClipboardCommand,
-		paste: ClipboardCommand,
-		'primary-yank': Schema.optional(ClipboardCommand),
-		'primary-paste': Schema.optional(ClipboardCommand)
+export class ClipboardProviderCustom
+	extends Schema.Class<ClipboardProviderCustom>(
+		'ClipboardProviderCustom'
+	)({
+		custom: Schema.Struct({
+			yank: ClipboardCommand,
+			paste: ClipboardCommand,
+			'primary-yank': Schema.optional(ClipboardCommand),
+			'primary-paste': Schema.optional(ClipboardCommand)
+		})
 	})
-}) {}
+{}
 
 /**
  * Clipboard provider — either a built-in name string or a custom command table.

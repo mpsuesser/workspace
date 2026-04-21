@@ -1,8 +1,8 @@
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
-import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -28,8 +28,9 @@ const runScriptString = (...statements: string[]) =>
 		);
 		return yield* spawner.string(command).pipe(
 			Effect.map((s) => Option.some(s.trim())),
-			Effect.catchTag('PlatformError', () =>
-				Effect.succeed(Option.none())
+			Effect.catchTag(
+				'PlatformError',
+				() => Effect.succeed(Option.none())
 			)
 		);
 	});
@@ -69,12 +70,11 @@ export class ITerm extends Context.Service<ITerm>()(
 					E,
 					ChildProcessSpawner.ChildProcessSpawner
 				>
-			) =>
-				Effect.provideService(
-					effect,
-					ChildProcessSpawner.ChildProcessSpawner,
-					spawner
-				);
+			) => Effect.provideService(
+				effect,
+				ChildProcessSpawner.ChildProcessSpawner,
+				spawner
+			);
 
 			return {
 				getTabTitle: Effect.fn('ITerm.getTabTitle')(

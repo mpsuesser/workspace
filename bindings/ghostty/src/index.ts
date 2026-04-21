@@ -1,8 +1,8 @@
 export type { PlatformError } from 'effect/PlatformError';
 export {
 	Action,
-	type Action as ActionType,
 	actionToKeybindString,
+	type Action as ActionType,
 	type AdjustDirection,
 	type CursorKeyMode,
 	type GotoSplitDirection,
@@ -12,7 +12,7 @@ export {
 	type WriteFileAction
 } from './Action.ts';
 export { FontConfig, GhosttyFont } from './Font.ts';
-export { type FontInfo, Ghostty, type Keybind } from './Ghostty.ts';
+export { Ghostty, type FontInfo, type Keybind } from './Ghostty.ts';
 export {
 	GhosttyConfig,
 	parseConfig,
@@ -23,8 +23,8 @@ export {
 	GhosttyActionFailed,
 	GhosttyCliError,
 	GhosttyConfigError,
-	type GhosttyError,
 	GhosttyNotInstalled,
-	GhosttyNotRunning
+	GhosttyNotRunning,
+	type GhosttyError
 } from './GhosttyError.ts';
 export { GhosttyTheme, Theme, ThemeConfig } from './Theme.ts';

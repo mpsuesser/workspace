@@ -1,4 +1,5 @@
 import * as Arr from 'effect/Array';
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
@@ -7,7 +8,6 @@ import * as P from 'effect/Predicate';
 import * as Random from 'effect/Random';
 import * as Schedule from 'effect/Schedule';
 import * as Schema from 'effect/Schema';
-import * as Context from 'effect/Context';
 import * as Stream from 'effect/Stream';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
@@ -24,10 +24,9 @@ const mapHsError =
 	(luaCode: string) => (error: { message: string; exitCode?: unknown }) =>
 		new HammerspoonCliErrorClass({
 			command: `hs -c '${luaCode.slice(0, 100)}...'`,
-			exitCode:
-				'exitCode' in error && P.isNumber(error.exitCode)
-					? error.exitCode
-					: 1,
+			exitCode: 'exitCode' in error && P.isNumber(error.exitCode)
+				? error.exitCode
+				: 1,
 			stderr: error.message
 		});
 
@@ -94,66 +93,62 @@ const pollFileForResult = <A, I>(
 	filePath: string,
 	schema: Schema.Codec<A, I>,
 	timeoutMs: number = 60_000
-) =>
-	Effect.gen(function* () {
-		const fs = yield* FileSystem.FileSystem;
+) => Effect.gen(function* () {
+	const fs = yield* FileSystem.FileSystem;
 
-		const timeoutError = new HammerspoonIpcTimeoutClass({
-			message: `Dialog did not return a result within ${timeoutMs}ms`,
-			timeoutMs
-		});
+	const timeoutError = new HammerspoonIpcTimeoutClass({
+		message: `Dialog did not return a result within ${timeoutMs}ms`,
+		timeoutMs
+	});
 
-		const readFile: Effect.Effect<
-			string,
-			HammerspoonCliError,
-			FileSystem.FileSystem
-		> = fs.readFileString(filePath).pipe(
-			Effect.flatMap((text) =>
-				text.length > 0
-					? Effect.succeed(text)
-					: Effect.fail(
-							new HammerspoonCliErrorClass({
-								command: `pollFile(${filePath})`,
-								exitCode: 0,
-								stderr: 'Empty result file'
-							})
-						)
-			),
-			Effect.catchTag('PlatformError', () =>
-				Effect.fail(
+	const readFile: Effect.Effect<
+		string,
+		HammerspoonCliError,
+		FileSystem.FileSystem
+	> = fs.readFileString(filePath).pipe(
+		Effect.flatMap((text) =>
+			text.length > 0
+				? Effect.succeed(text)
+				: Effect.fail(
 					new HammerspoonCliErrorClass({
 						command: `pollFile(${filePath})`,
 						exitCode: 0,
-						stderr: 'File not found or unreadable'
+						stderr: 'Empty result file'
 					})
 				)
-			)
-		);
+		),
+		Effect.catchTag('PlatformError', () =>
+			Effect.fail(
+				new HammerspoonCliErrorClass({
+					command: `pollFile(${filePath})`,
+					exitCode: 0,
+					stderr: 'File not found or unreadable'
+				})
+			))
+	);
 
-		const raw = yield* readFile.pipe(
-			Effect.retry(Schedule.spaced('200 millis')),
-			Effect.timeout(`${timeoutMs} millis`),
-			Effect.catchTag('TimeoutError', () => Effect.fail(timeoutError)),
-			Effect.catchTag('HammerspoonCliError', () =>
-				Effect.fail(timeoutError)
-			)
-		);
+	const raw = yield* readFile.pipe(
+		Effect.retry(Schedule.spaced('200 millis')),
+		Effect.timeout(`${timeoutMs} millis`),
+		Effect.catchTag('TimeoutError', () => Effect.fail(timeoutError)),
+		Effect.catchTag('HammerspoonCliError', () => Effect.fail(timeoutError))
+	);
 
-		const json = yield* decodeJsonString(raw).pipe(
-			Effect.mapError(
-				() =>
-					new HammerspoonCliErrorClass({
-						command: `pollFile(${filePath})`,
-						exitCode: 0,
-						stderr: `Invalid JSON in result file: ${raw.slice(0, 200)}`
-					})
-			)
-		);
+	const json = yield* decodeJsonString(raw).pipe(
+		Effect.mapError(
+			() =>
+				new HammerspoonCliErrorClass({
+					command: `pollFile(${filePath})`,
+					exitCode: 0,
+					stderr: `Invalid JSON in result file: ${raw.slice(0, 200)}`
+				})
+		)
+	);
 
-		yield* fs.remove(filePath).pipe(Effect.ignore);
+	yield* fs.remove(filePath).pipe(Effect.ignore);
 
-		return yield* Schema.decodeUnknownEffect(schema)(json);
-	});
+	return yield* Schema.decodeUnknownEffect(schema)(json);
+});
 
 // --- Schemas ---
 
@@ -216,12 +211,11 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 					E,
 					ChildProcessSpawner.ChildProcessSpawner
 				>
-			) =>
-				Effect.provideService(
-					effect,
-					ChildProcessSpawner.ChildProcessSpawner,
-					spawner
-				);
+			) => Effect.provideService(
+				effect,
+				ChildProcessSpawner.ChildProcessSpawner,
+				spawner
+			);
 
 			const _isRunning = provideSpawner(isHammerspoonRunning());
 
@@ -233,8 +227,8 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 						raw === ''
 							? Effect.succeed(Option.none<WindowInfo>())
 							: Schema.decodeEffect(
-									Schema.fromJsonString(WindowInfo)
-								)(raw).pipe(Effect.map(Option.some))
+								Schema.fromJsonString(WindowInfo)
+							)(raw).pipe(Effect.map(Option.some))
 					)
 				)
 			);
@@ -261,8 +255,8 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 						raw === ''
 							? Effect.succeed(Option.none<AppInfo>())
 							: Schema.decodeEffect(
-									Schema.fromJsonString(AppInfo)
-								)(raw).pipe(Effect.map(Option.some))
+								Schema.fromJsonString(AppInfo)
+							)(raw).pipe(Effect.map(Option.some))
 					)
 				)
 			);
@@ -279,7 +273,9 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 			): Effect.Effect<void, HammerspoonCliError> =>
 				provideSpawner(
 					runHsVoid(
-						`hs.application.launchOrFocus('${escapeLuaString(name)}')`
+						`hs.application.launchOrFocus('${
+							escapeLuaString(name)
+						}')`
 					)
 				);
 
@@ -289,7 +285,9 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 			): Effect.Effect<void, HammerspoonCliError> =>
 				provideSpawner(
 					runHsVoid(
-						`showNotification('${escapeLuaString(title)}', '${escapeLuaString(body ?? '')}')`
+						`showNotification('${escapeLuaString(title)}', '${
+							escapeLuaString(body ?? '')
+						}')`
 					)
 				);
 
@@ -335,7 +333,11 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 					const e = escapeLuaString;
 					yield* provideSpawner(
 						runHsVoid(
-							`showBlockingDialog('${tmpFile}', '${e(opts.message)}', '${e(opts.informativeText ?? '')}', '${e(opts.buttonOne ?? 'OK')}', '${e(opts.buttonTwo ?? '')}')`
+							`showBlockingDialog('${tmpFile}', '${
+								e(opts.message)
+							}', '${e(opts.informativeText ?? '')}', '${
+								e(opts.buttonOne ?? 'OK')
+							}', '${e(opts.buttonTwo ?? '')}')`
 						)
 					);
 					const button = yield* pollFileForResult(
@@ -359,7 +361,13 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 					const e = escapeLuaString;
 					yield* provideSpawner(
 						runHsVoid(
-							`showTextPromptDialog('${tmpFile}', '${e(opts.message)}', '${e(opts.informativeText ?? '')}', '${e(opts.defaultText ?? '')}', '${e(opts.buttonOne ?? 'OK')}', '${e(opts.buttonTwo ?? 'Cancel')}')`
+							`showTextPromptDialog('${tmpFile}', '${
+								e(opts.message)
+							}', '${e(opts.informativeText ?? '')}', '${
+								e(opts.defaultText ?? '')
+							}', '${e(opts.buttonOne ?? 'OK')}', '${
+								e(opts.buttonTwo ?? 'Cancel')
+							}')`
 						)
 					);
 					return yield* pollFileForResult(
@@ -376,10 +384,14 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 				mods: ReadonlyArray<string>,
 				key: string
 			) => {
-				const modsLua = `{${mods.map((m) => `'${escapeLuaString(m)}'`).join(',')}}`;
+				const modsLua = `{${
+					mods.map((m) => `'${escapeLuaString(m)}'`).join(',')
+				}}`;
 				return provideSpawner(
 					runHsVoid(
-						`registerHotkey('${escapeLuaString(id)}', ${modsLua}, '${escapeLuaString(key)}')`
+						`registerHotkey('${
+							escapeLuaString(id)
+						}', ${modsLua}, '${escapeLuaString(key)}')`
 					)
 				);
 			};
@@ -411,15 +423,17 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 					Effect.flatMap((text) =>
 						text.length > 0
 							? Schema.decodeEffect(
-									Schema.fromJsonString(AppContext)
-								)(text).pipe(Effect.map(Option.some))
+								Schema.fromJsonString(AppContext)
+							)(text).pipe(Effect.map(Option.some))
 							: Effect.succeed(Option.none<AppContext>())
 					),
-					Effect.catchTag('PlatformError', () =>
-						Effect.succeed(Option.none<AppContext>())
+					Effect.catchTag(
+						'PlatformError',
+						() => Effect.succeed(Option.none<AppContext>())
 					),
-					Effect.catchTag('SchemaError', () =>
-						Effect.succeed(Option.none<AppContext>())
+					Effect.catchTag(
+						'SchemaError',
+						() => Effect.succeed(Option.none<AppContext>())
 					)
 				);
 
@@ -457,7 +471,9 @@ export class Hammerspoon extends Context.Service<Hammerspoon>()(
 									{
 										onNone: () =>
 											Effect.logInfo(
-												`Window not found for restore: ${saved.app} - ${saved.title.slice(0, 40)}`
+												`Window not found for restore: ${saved.app} - ${
+													saved.title.slice(0, 40)
+												}`
 											),
 										onSome: (matched) =>
 											_moveWindow(matched.id, {

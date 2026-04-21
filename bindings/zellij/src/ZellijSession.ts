@@ -35,20 +35,19 @@ export const attach = Effect.fn('ZellijSession.attach')(
 		options?: {
 			readonly createIfMissing?: boolean;
 		}
-	) =>
-		Effect.gen(function* () {
-			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-			const args = options?.createIfMissing
-				? ['attach', '-c', sessionName]
-				: ['attach', sessionName];
+	) => Effect.gen(function* () {
+		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+		const args = options?.createIfMissing
+			? ['attach', '-c', sessionName]
+			: ['attach', sessionName];
 
-			const cmd = ChildProcess.make('zellij', args, {
-				stdin: 'inherit',
-				stdout: 'inherit',
-				stderr: 'inherit'
-			});
-			return yield* spawner.exitCode(cmd);
-		})
+		const cmd = ChildProcess.make('zellij', args, {
+			stdin: 'inherit',
+			stdout: 'inherit',
+			stderr: 'inherit'
+		});
+		return yield* spawner.exitCode(cmd);
+	})
 );
 
 export const killSession = Effect.fn('ZellijSession.killSession')(

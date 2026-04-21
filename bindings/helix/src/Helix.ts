@@ -1,12 +1,12 @@
 import helixConfig from '@workspace/helix-dotconfig/config.toml';
 import themesByMode from '@workspace/helix-dotconfig/themes-by-mode.yaml';
 import * as Clock from 'effect/Clock';
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
 import type { PlatformError } from 'effect/PlatformError';
 import * as Random from 'effect/Random';
-import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 import * as TOML from 'smol-toml';
@@ -97,12 +97,16 @@ export class Helix extends Context.Service<Helix>()(
 							);
 
 							const tempFile = yield* fs.makeTempFileScoped({
-								prefix: `helix-capture-${timestamp}-${randomSuffix.toString(36)}`
+								prefix: `helix-capture-${timestamp}-${
+									randomSuffix.toString(36)
+								}`
 							});
 
 							const tempConfigPath = yield* fs.makeTempFileScoped(
 								{
-									prefix: `helix-config-${timestamp}-${randomSuffix.toString(36)}`,
+									prefix: `helix-config-${timestamp}-${
+										randomSuffix.toString(36)
+									}`,
 									suffix: '.toml'
 								}
 							);

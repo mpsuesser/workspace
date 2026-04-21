@@ -1,9 +1,9 @@
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
 import * as Schema from 'effect/Schema';
-import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -112,24 +112,23 @@ const run = Effect.fn('Zellij.run')(
 			readonly closeOnExit?: boolean;
 			readonly startSuspended?: boolean;
 		}
-	) =>
-		Effect.gen(function* () {
-			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-			const args: string[] = ['run'];
+	) => Effect.gen(function* () {
+		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+		const args: string[] = ['run'];
 
-			if (options?.location) {
-				args.push(...PaneLocation.toArgs(options.location));
-			}
-			if (options?.cwd) args.push('--cwd', options.cwd);
-			if (options?.name) args.push('-n', options.name);
-			if (options?.closeOnExit) args.push('-c');
-			if (options?.startSuspended) args.push('-s');
+		if (options?.location) {
+			args.push(...PaneLocation.toArgs(options.location));
+		}
+		if (options?.cwd) args.push('--cwd', options.cwd);
+		if (options?.name) args.push('-n', options.name);
+		if (options?.closeOnExit) args.push('-c');
+		if (options?.startSuspended) args.push('-s');
 
-			args.push('--', ...command);
+		args.push('--', ...command);
 
-			const cmd = ChildProcess.make('zellij', args);
-			return yield* spawner.exitCode(cmd);
-		})
+		const cmd = ChildProcess.make('zellij', args);
+		return yield* spawner.exitCode(cmd);
+	})
 );
 
 const newPane = Effect.fn('Zellij.newPane')(
@@ -338,8 +337,9 @@ const listClients = Effect.fn('Zellij.listClients')(() =>
 			return new ZellijClient({
 				clientId: parseInt(parts[0] ?? '0', 10),
 				paneId: parts[1] ?? '',
-				runningCommand:
-					cmd.length > 0 ? Option.some(cmd) : Option.none()
+				runningCommand: cmd.length > 0
+					? Option.some(cmd)
+					: Option.none()
 			});
 		});
 	})
@@ -361,12 +361,11 @@ export class Zellij extends Context.Service<Zellij>()(
 					E,
 					ChildProcessSpawner.ChildProcessSpawner
 				>
-			) =>
-				Effect.provideService(
-					effect,
-					ChildProcessSpawner.ChildProcessSpawner,
-					spawner
-				);
+			) => Effect.provideService(
+				effect,
+				ChildProcessSpawner.ChildProcessSpawner,
+				spawner
+			);
 
 			return {
 				newSession: Effect.fn('Zellij.newSession')(

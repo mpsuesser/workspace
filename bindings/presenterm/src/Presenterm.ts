@@ -1,7 +1,7 @@
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Schema from 'effect/Schema';
-import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
@@ -57,37 +57,36 @@ export class Presenterm extends Context.Service<Presenterm>()(
 							readonly theme?: string;
 							readonly publishSpeakerNotes?: boolean;
 						}
-					) =>
-						Effect.scoped(
-							Effect.gen(function* () {
-								const args: Array<string> = [filePath];
-								if (options?.theme) {
-									args.push('--theme', options.theme);
-								}
-								if (options?.publishSpeakerNotes) {
-									args.push('--publish-speaker-notes');
-								}
+					) => Effect.scoped(
+						Effect.gen(function* () {
+							const args: Array<string> = [filePath];
+							if (options?.theme) {
+								args.push('--theme', options.theme);
+							}
+							if (options?.publishSpeakerNotes) {
+								args.push('--publish-speaker-notes');
+							}
 
-								const cmd = ChildProcess.make(
-									'presenterm',
-									args,
-									{
-										stdin: 'inherit',
-										stdout: 'inherit',
-										stderr: 'inherit'
-									}
-								);
-								const process = yield* spawner
-									.spawn(cmd)
-									.pipe(Effect.mapError(mapError));
-								yield* Effect.addFinalizer(() =>
-									process.kill().pipe(Effect.ignore)
-								);
-								return yield* process.exitCode.pipe(
-									Effect.mapError(mapError)
-								);
-							})
-						)
+							const cmd = ChildProcess.make(
+								'presenterm',
+								args,
+								{
+									stdin: 'inherit',
+									stdout: 'inherit',
+									stderr: 'inherit'
+								}
+							);
+							const process = yield* spawner
+								.spawn(cmd)
+								.pipe(Effect.mapError(mapError));
+							yield* Effect.addFinalizer(() =>
+								process.kill().pipe(Effect.ignore)
+							);
+							return yield* process.exitCode.pipe(
+								Effect.mapError(mapError)
+							);
+						})
+					)
 				),
 
 				/**
@@ -126,7 +125,8 @@ export class Presenterm extends Context.Service<Presenterm>()(
 							if (code !== 0) {
 								return yield* new PresentermError({
 									reason: 'ExportFailed',
-									message: `presenterm export exited with code ${code}`
+									message:
+										`presenterm export exited with code ${code}`
 								});
 							}
 						})

@@ -48,8 +48,8 @@ interface RunOptions {
 	closeOnExit?: boolean;
 	startSuspended?: boolean;
 }
-run: (command: ReadonlyArray<string>, options?: RunOptions) =>
-	Effect<number, PlatformError>;
+run: ((command: ReadonlyArray<string>, options?: RunOptions) =>
+	Effect<number, PlatformError>);
 ```
 
 ### 4. Implement ZellijSession
@@ -85,7 +85,8 @@ interface PipeOptions {
 	pluginConfiguration?: string;
 	args?: string;
 }
-pipe: (payload: string, options?: PipeOptions) => Effect<string, PlatformError>;
+pipe: ((payload: string, options?: PipeOptions) =>
+	Effect<string, PlatformError>);
 ```
 
 ## Implementation Order

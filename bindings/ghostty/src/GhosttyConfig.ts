@@ -1,5 +1,6 @@
 import * as Arr from 'effect/Array';
 import * as Config from 'effect/Config';
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
@@ -7,10 +8,9 @@ import * as Option from 'effect/Option';
 import * as Path from 'effect/Path';
 import * as P from 'effect/Predicate';
 import * as R from 'effect/Record';
-import * as Context from 'effect/Context';
 
 import { Ghostty } from './Ghostty.ts';
-import { type GhosttyCliError, GhosttyConfigError } from './GhosttyError.ts';
+import { GhosttyConfigError, type GhosttyCliError } from './GhosttyError.ts';
 
 export const parseConfig = (content: string): Record<string, string> =>
 	Arr.reduce(
@@ -46,8 +46,9 @@ const updateConfigContent = (
 ): string => {
 	const lines = content.split('\n');
 	const keyPattern = new RegExp(`^\\s*${escapeRegex(key)}\\s*=`);
-	const existingIndex = Arr.findFirstIndex(lines, (line) =>
-		keyPattern.test(line)
+	const existingIndex = Arr.findFirstIndex(
+		lines,
+		(line) => keyPattern.test(line)
 	);
 
 	if (Option.isSome(existingIndex)) {
@@ -101,8 +102,9 @@ const getConfigPaths = Effect.fn('GhosttyConfig.getConfigPaths')(
 		Effect.gen(function* () {
 			const home = yield* HomeConfig;
 			const xdgConfigHomeOption = yield* XdgConfigHomeConfig;
-			const xdgConfigHome = Option.getOrElse(xdgConfigHomeOption, () =>
-				pathService.join(home, '.config')
+			const xdgConfigHome = Option.getOrElse(
+				xdgConfigHomeOption,
+				() => pathService.join(home, '.config')
 			);
 			const xdgPath = pathService.join(
 				xdgConfigHome,
@@ -123,10 +125,10 @@ const getConfigPaths = Effect.fn('GhosttyConfig.getConfigPaths')(
 			Effect.catchTag('ConfigError', (error) =>
 				Effect.fail(
 					new GhosttyConfigError({
-						message: `Environment variable not set: ${error.message}`
+						message:
+							`Environment variable not set: ${error.message}`
 					})
-				)
-			)
+				))
 		)
 );
 
@@ -138,14 +140,13 @@ const findExistingConfigPath = (
 		fs.exists(p).pipe(
 			Effect.map((exists) => [p, exists] as const),
 			Effect.orElseSucceed(() => [p, false] as const)
-		)
-	).pipe(
-		Effect.map((results) =>
-			Arr.findFirst(results, ([, exists]) => exists).pipe(
-				Option.map(([p]) => p)
+		)).pipe(
+			Effect.map((results) =>
+				Arr.findFirst(results, ([, exists]) => exists).pipe(
+					Option.map(([p]) => p)
+				)
 			)
-		)
-	);
+		);
 
 const mapPlatformError =
 	(configPath: string, operation: string) =>
@@ -269,15 +270,15 @@ export class GhosttyConfig extends Context.Service<
 							);
 						const content = exists
 							? yield* fs
-									.readFileString(configPath)
-									.pipe(
-										Effect.mapError(
-											mapPlatformError(
-												configPath,
-												'read config'
-											)
+								.readFileString(configPath)
+								.pipe(
+									Effect.mapError(
+										mapPlatformError(
+											configPath,
+											'read config'
 										)
 									)
+								)
 							: '';
 
 						const updated = updateConfigContent(

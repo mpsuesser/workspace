@@ -1,17 +1,17 @@
+import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import type { PlatformError } from 'effect/PlatformError';
 import * as P from 'effect/Predicate';
 import * as R from 'effect/Record';
-import * as Context from 'effect/Context';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 
 import {
 	Action,
-	type Action as ActionType,
 	actionToKeybindString,
+	type Action as ActionType,
 	type GotoSplitDirection,
 	type InspectorMode,
 	type ResizeDirection,
@@ -20,11 +20,11 @@ import {
 } from './Action.ts';
 import {
 	GhosttyActionFailed,
-	type GhosttyCliError,
 	GhosttyCliError as GhosttyCliErrorClass,
-	type GhosttyNotInstalled,
 	GhosttyNotInstalled as GhosttyNotInstalledClass,
-	GhosttyNotRunning
+	GhosttyNotRunning,
+	type GhosttyCliError,
+	type GhosttyNotInstalled
 } from './GhosttyError.ts';
 
 // --- Inlined from internal/applescript.ts ---
@@ -55,8 +55,7 @@ const runScriptString = Effect.fn('Ghostty.runScriptString')(
 			return yield* spawner.string(command).pipe(
 				Effect.map((s) => Option.some(s.trim())),
 				Effect.catchTag('PlatformError', () =>
-					Effect.succeed(Option.none())
-				)
+					Effect.succeed(Option.none()))
 			);
 		})
 );
@@ -201,10 +200,9 @@ const sendKeys = Effect.fn('Ghostty.sendKeys')(
 	(keys: string, modifiers: string[] = []) =>
 		Effect.gen(function* () {
 			yield* ensureFrontmost();
-			const modStr =
-				modifiers.length > 0
-					? ` using {${modifiers.map((m) => `${m} down`).join(', ')}}`
-					: '';
+			const modStr = modifiers.length > 0
+				? ` using {${modifiers.map((m) => `${m} down`).join(', ')}}`
+				: '';
 			yield* runScriptVoid(
 				'tell application "System Events"',
 				`keystroke "${keys}"${modStr}`,
@@ -222,26 +220,24 @@ const runGhosttyCommand = Effect.fn('Ghostty.runGhosttyCommand')(
 		string,
 		GhosttyCliError,
 		ChildProcessSpawner.ChildProcessSpawner
-	> =>
-		Effect.gen(function* () {
-			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-			const command = ChildProcess.make('ghostty', [...args]);
-			return yield* spawner.string(command).pipe(
-				Effect.map((s) => s.trim()),
-				Effect.mapError(
-					(error) =>
-						new GhosttyCliErrorClass({
-							command: `ghostty ${args.join(' ')}`,
-							exitCode:
-								'exitCode' in error &&
+	> => Effect.gen(function* () {
+		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+		const command = ChildProcess.make('ghostty', [...args]);
+		return yield* spawner.string(command).pipe(
+			Effect.map((s) => s.trim()),
+			Effect.mapError(
+				(error) =>
+					new GhosttyCliErrorClass({
+						command: `ghostty ${args.join(' ')}`,
+						exitCode: 'exitCode' in error &&
 								P.isNumber(error.exitCode)
-									? error.exitCode
-									: 1,
-							stderr: error.message
-						})
-				)
-			);
-		})
+							? error.exitCode
+							: 1,
+						stderr: error.message
+					})
+			)
+		);
+	})
 );
 
 const isGhosttyInstalled = Effect.fn('Ghostty.isGhosttyInstalled')(
@@ -249,16 +245,15 @@ const isGhosttyInstalled = Effect.fn('Ghostty.isGhosttyInstalled')(
 		boolean,
 		never,
 		ChildProcessSpawner.ChildProcessSpawner
-	> =>
-		Effect.gen(function* () {
-			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-			const command = ChildProcess.make('which', ['ghostty']);
-			return yield* spawner.exitCode(command).pipe(
-				Effect.map((code) => code === 0),
-				// intentional: recover from any error with default
-				Effect.catchTag('PlatformError', () => Effect.succeed(false))
-			);
-		})
+	> => Effect.gen(function* () {
+		const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+		const command = ChildProcess.make('which', ['ghostty']);
+		return yield* spawner.exitCode(command).pipe(
+			Effect.map((code) => code === 0),
+			// intentional: recover from any error with default
+			Effect.catchTag('PlatformError', () => Effect.succeed(false))
+		);
+	})
 );
 
 const getGhosttyVersion = Effect.fn('Ghostty.getGhosttyVersion')(
@@ -266,16 +261,15 @@ const getGhosttyVersion = Effect.fn('Ghostty.getGhosttyVersion')(
 		string,
 		GhosttyNotInstalled | GhosttyCliError,
 		ChildProcessSpawner.ChildProcessSpawner
-	> =>
-		Effect.gen(function* () {
-			const installed = yield* isGhosttyInstalled();
-			if (!installed) {
-				return yield* new GhosttyNotInstalledClass({
-					message: 'Ghostty CLI is not installed or not in PATH'
-				});
-			}
-			return yield* runGhosttyCommand(['+version']);
-		})
+	> => Effect.gen(function* () {
+		const installed = yield* isGhosttyInstalled();
+		if (!installed) {
+			return yield* new GhosttyNotInstalledClass({
+				message: 'Ghostty CLI is not installed or not in PATH'
+			});
+		}
+		return yield* runGhosttyCommand(['+version']);
+	})
 );
 
 const parseThemeList = (output: string): ReadonlyArray<string> =>
@@ -555,10 +549,9 @@ const specialKeyMap: Record<string, string> = {
 
 const buildKeystrokeStatement = (mapping: KeystrokeMapping): string => {
 	const specialKey = specialKeyMap[mapping.key.toLowerCase()];
-	const modStr =
-		mapping.modifiers.length > 0
-			? ` using {${mapping.modifiers.map((m) => `${m} down`).join(', ')}}`
-			: '';
+	const modStr = mapping.modifiers.length > 0
+		? ` using {${mapping.modifiers.map((m) => `${m} down`).join(', ')}}`
+		: '';
 
 	if (specialKey) {
 		return `key code (${getKeyCode(mapping.key)})${modStr}`;
@@ -612,12 +605,11 @@ export class Ghostty extends Context.Service<Ghostty>()(
 					E,
 					ChildProcessSpawner.ChildProcessSpawner
 				>
-			) =>
-				Effect.provideService(
-					effect,
-					ChildProcessSpawner.ChildProcessSpawner,
-					spawner
-				);
+			) => Effect.provideService(
+				effect,
+				ChildProcessSpawner.ChildProcessSpawner,
+				spawner
+			);
 
 			const isInstalled = provideExecutor(isGhosttyInstalled());
 			const version = provideExecutor(getGhosttyVersion());
@@ -658,8 +650,7 @@ export class Ghostty extends Context.Service<Ghostty>()(
 					Effect.catchTag('GhosttyCliError', (e) =>
 						e.exitCode === 0
 							? Effect.succeed(true)
-							: Effect.succeed(false)
-					)
+							: Effect.succeed(false))
 				)
 			);
 
