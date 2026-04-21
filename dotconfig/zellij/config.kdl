@@ -1,9 +1,20 @@
 default_shell "zsh"
 theme "dracula"
 
-// Frameless by default. Individual layouts/panes can override with
-// `borderless false` in their layout file if they want a frame.
-pane_frames false
+// Framed by default. Individual layouts/panes can override with
+// `borderless true` in their layout file if they want no frame.
+pane_frames true
+
+// Suppress mouse-hover help text (resize hints etc.) from appearing
+// inside the frame border.
+mouse_hover_effects false
+
+// Let ghostty handle all mouse interaction (selection, scroll, click).
+// Trade-off: lose zellij's click-to-focus and mouse-based pane resize,
+// gain: text selection uses ghostty's `selection-background` color,
+// which is visible. Zellij has no theme key for pane selection color
+// (issue #3452), so this is the only way to get a usable highlight.
+mouse_mode false
 
 keybinds clear-defaults=true {
     shared {
