@@ -14,6 +14,7 @@
  * @since 0.1.0
  */
 
+export * as ZellijAction from './ZellijAction.ts';
 export * as ZellijCli from './ZellijCli.ts';
 export * as ZellijError from './ZellijError.ts';
 export * as ZellijLayout from './ZellijLayout.ts';
