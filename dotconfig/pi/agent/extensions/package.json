@@ -1,0 +1,13 @@
+{
+  "name": "pi-agent-extensions",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@elianiva/pi-ckers": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*",
+    "@sinclair/typebox": "*"
+  }
+}
