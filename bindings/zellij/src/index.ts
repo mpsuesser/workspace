@@ -19,6 +19,7 @@ export * as ZellijAction from './ZellijAction.ts';
 export * as ZellijCli from './ZellijCli.ts';
 export * as ZellijError from './ZellijError.ts';
 export * as ZellijLayout from './ZellijLayout.ts';
+export * as ZellijPane from './ZellijPane.ts';
 export * as ZellijSession from './ZellijSession.ts';
 export * as ZellijTab from './ZellijTab.ts';
 
