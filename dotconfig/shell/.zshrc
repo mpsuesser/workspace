@@ -69,6 +69,14 @@ fi
 
 # =============================================================================
 
+# Television (tv) shell integration: Ctrl-T smart autocomplete, Ctrl-R history
+# (must come after ghostty integration so its bindkeys win)
+if command -v tv >/dev/null 2>&1; then
+  eval "$(tv init zsh)"
+fi
+
+# =============================================================================
+
 rl() { source ~/.zshrc; }
 
 # =============================================================================
