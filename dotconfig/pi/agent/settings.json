@@ -18,7 +18,6 @@
     "~/repos/pi-effect-enforcer",
     "~/repos/pi-tentacles",
     "~/repos/pi-atoms",
-    "npm:pi-subagents",
-    "npm:pi-tool-view"
+    "npm:pi-subagents"
   ]
 }
