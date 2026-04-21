@@ -77,6 +77,45 @@ fi
 
 # =============================================================================
 
+# Option/Alt word-editing + word-motion bindings.
+#
+# In zsh's default `viins` keymap (we're in vi mode because $EDITOR=nvim),
+# most Option-prefixed sequences are undefined. When zsh can't match an
+# ESC-prefixed sequence it strips the leading ESC and processes it as
+# `vi-cmd-mode`, leaving the trailing bytes to run in `vicmd` -- silently
+# swapping modes and doing weird things instead of editing/moving.
+#
+# Ghostty hides this because `macos-option-as-alt` defaults to false, so
+# Option is swallowed upstream. Zellij forwards Option as Alt, which exposes
+# the problem. These bindings fix it universally, covering all the encodings
+# different terminals emit for the same logical key.
+
+# -- word delete --
+bindkey '^[^?' backward-kill-word       # Option+Backspace
+bindkey '^[^H' backward-kill-word       # alt encoding of same
+bindkey '^[[3;3~' kill-word             # Option+fn+Delete (forward word)
+bindkey '^[d'     kill-word             # emacs-style Alt+d
+
+# -- word motion (Option/Alt + arrows) --
+bindkey '^[b'      backward-word        # emacs-style Alt+b
+bindkey '^[f'      forward-word         # emacs-style Alt+f
+bindkey '^[[1;3D'  backward-word        # CSI-u Alt+Left
+bindkey '^[[1;3C'  forward-word         # CSI-u Alt+Right
+bindkey '^[^[[D'   backward-word        # double-ESC Alt+Left
+bindkey '^[^[[C'   forward-word         # double-ESC Alt+Right
+bindkey '^[^[OD'   backward-word        # double-ESC SS3 Alt+Left
+bindkey '^[^[OC'   forward-word         # double-ESC SS3 Alt+Right
+
+# -- word motion (Ctrl + arrows, commonly emitted by some terminals) --
+bindkey '^[[1;5D'  backward-word        # CSI-u Ctrl+Left
+bindkey '^[[1;5C'  forward-word         # CSI-u Ctrl+Right
+
+# Snappier ESC response in vi mode -- also shortens the window during which
+# a stray ESC-prefixed sequence could be mis-parsed as bare ESC.
+KEYTIMEOUT=1
+
+# =============================================================================
+
 rl() { source ~/.zshrc; }
 
 # =============================================================================
