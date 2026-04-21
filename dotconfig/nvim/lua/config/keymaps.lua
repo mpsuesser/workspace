@@ -62,8 +62,27 @@ end
 
 map('n', 'w', 'gk', { desc = 'Move up (visual line)' })
 map('n', 's', 'gj', { desc = 'Move down (visual line)' })
-map('n', 'a', 'h', { desc = 'Move left' })
-map('n', 'd', 'l', { desc = 'Move right' })
+local function move_left_wrap()
+  if vim.fn.col('.') <= 1 and vim.fn.line('.') > 1 then
+    -- Wrap to end of previous line (virtual EOL with onemore)
+    vim.cmd('normal! k$l')
+  else
+    vim.cmd('normal! h')
+  end
+end
+local function move_right_wrap()
+  -- With virtualedit=onemore, col('.') can reach col('$'); at that point
+  -- `l` is a no-op, so wrap to the start of the next line instead.
+  if vim.fn.col('.') >= vim.fn.col('$') and vim.fn.line('.') < vim.fn.line('$') then
+    vim.cmd('normal! j0')
+  else
+    vim.cmd('normal! l')
+  end
+end
+map('n', 'a', move_left_wrap, { desc = 'Move left (wraps to prev line end)' })
+map('n', 'd', move_right_wrap, { desc = 'Move right (wraps to next line start)' })
+map('n', '<Left>', move_left_wrap, { desc = 'Move left (wraps to prev line end)' })
+map('n', '<Right>', move_right_wrap, { desc = 'Move right (wraps to next line start)' })
 
 map('n', 'W', '5gk', { desc = 'Move up 5 lines' })
 map('n', 'S', '5gj', { desc = 'Move down 5 lines' })
@@ -89,6 +108,15 @@ map('n', 'e', '"_s', { desc = 'Change char (no yank)' })
 -- Yank (Helix: c = yank)
 map('n', 'c', 'yl', { desc = 'Yank char' })
 
+-- Toggle line comment (Helix: space.c = toggle_comments)
+-- Uses the built-in `gcc` (line) / `gc` (motion, visual) from Neovim 0.10+.
+-- Requires `commentstring` to be set for the buffer — see autocmds.lua for
+-- path-based fallbacks (e.g. ghostty/config, fish config, git config).
+map('n', '<leader>c', 'gcc', { desc = 'Toggle line comment', remap = true })
+map('n', ';c', 'gcc', { desc = 'Toggle line comment', remap = true })
+map('x', '<leader>c', 'gc', { desc = 'Toggle comment', remap = true })
+map('x', ';c', 'gc', { desc = 'Toggle comment', remap = true })
+
 -- Select inner brackets (Helix: x = @mim = match inner match)
 -- Uses mini.ai's 'b' textobject for balanced brackets ()[]{}
 map('n', 'x', function()
@@ -102,6 +130,7 @@ end, { desc = 'Select inner brackets' })
 -- Workaround because q enters insert mode, so u provides a way to type "qu"
 map('n', 'u', function()
   vim.api.nvim_put({ 'qu' }, 'c', true, true)
+  feed('a', 'n') -- re-enter insert mode after the inserted "qu"
 end, { desc = 'Insert "qu"' })
 
 -- Undo/Redo (Helix: k = undo, K = redo)
@@ -134,6 +163,22 @@ map('n', 'R', 'yy', { desc = 'Yank line' })
 
 -- Delete line with yank (Helix: X = extend_to_line_bounds + delete_selection)
 map('n', 'X', 'dd', { desc = 'Delete line' })
+
+-- Paste (smart: if buffer is a single empty line, replace it instead of pasting after)
+map('n', 'p', function()
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  if #lines == 1 and lines[1] == '' then
+    -- Empty buffer: paste before so content starts at line 1, then remove trailing blank
+    vim.cmd('normal! P')
+    -- If linewise paste added a trailing empty line, remove it
+    local new_lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    if #new_lines > 1 and new_lines[#new_lines] == '' then
+      vim.api.nvim_buf_set_lines(0, -2, -1, false, {})
+    end
+  else
+    vim.cmd('normal! p')
+  end
+end, { desc = 'Paste (smart empty buffer)' })
 
 -- Replace with clipboard (Helix: E = replace_selections_with_clipboard)
 map('n', 'E', '"_xP', { desc = 'Replace char with clipboard' })
@@ -209,11 +254,10 @@ end, { desc = 'Change around brackets (no yank)' })
 map('n', '<leader>a', 'ggVG', { desc = 'Select all' })
 map('n', '<leader><space>', 'ggVG', { desc = 'Select all' })
 
--- Surround inner textobject (Helix: space.s = select_textobject_inner + surround_add)
--- Triggers mini.surround add + inner textobject prefix
+-- Toggle top status line
 map('n', '<leader>s', function()
-  feed('gzai', 'm')
-end, { desc = 'Surround inner textobject' })
+  require('config.topbar').toggle()
+end, { desc = 'Toggle top status line' })
 
 -- Select full line in visual (Helix: space.f = extend_to_line_bounds + select_mode)
 map('n', '<leader>f', 'V', { desc = 'Select line (visual)' })
@@ -334,6 +378,10 @@ end, { desc = 'Exit insert mode' })
 -- These require terminal support for Cmd key passthrough
 map('i', '<D-;>', '<End>', { desc = 'Go to line end' })
 map('i', '<D-S-;>', '<Home>', { desc = 'Go to line start' })
+
+-- Delete previous word (macOS: Option+Backspace).
+-- Without this, Option+Backspace is read as <Esc><BS>, which exits insert mode.
+map('i', '<M-BS>', '<C-w>', { desc = 'Delete previous word' })
 
 -- ============================================================================
 -- Window navigation (using WASD pattern with Ctrl)

@@ -49,6 +49,32 @@ return {
     'echasnovski/mini.pairs',
     version = false,
     event = 'InsertEnter',
+    init = function()
+      -- Disable auto-pairs in markdown buffers.
+      -- Registered in `init` (not `config`) so the FileType autocmd is in
+      -- place before mini.pairs lazy-loads on InsertEnter — otherwise the
+      -- FileType event for an already-open .md buffer fires before this
+      -- runs and the buffer-local flag never gets set.
+      local group = vim.api.nvim_create_augroup('MiniPairsDisableMarkdown', { clear = true })
+      vim.api.nvim_create_autocmd('FileType', {
+        group = group,
+        pattern = { 'markdown', 'markdown.mdx', 'mdx', 'pandoc', 'rmd' },
+        callback = function(args)
+          vim.b[args.buf].minipairs_disable = true
+        end,
+      })
+      -- Apply to buffers already loaded at startup (e.g. when nvim is
+      -- launched directly on a .md file).
+      for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        local ft = vim.bo[buf].filetype
+        if ft == 'markdown' or ft == 'markdown.mdx' or ft == 'mdx' or ft == 'pandoc' or ft == 'rmd' then
+          vim.b[buf].minipairs_disable = true
+        end
+      end
+    end,
+    config = function(_, opts)
+      require('mini.pairs').setup(opts)
+    end,
     opts = {
       -- Helix auto-pairs: () {} []
       -- mini.pairs handles these by default, plus '' "" ``

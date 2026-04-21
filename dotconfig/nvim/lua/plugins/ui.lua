@@ -18,7 +18,7 @@ return {
     end,
   },
 
-  -- Lualine statusline (Helix statusline: spinner|diagnostics | file-name | position|mode)
+  -- Keep lualine inert; the top bar is managed natively in config/topbar.lua.
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -30,63 +30,15 @@ return {
         section_separators = { left = '', right = '' },
         globalstatus = true,
       },
-      sections = {
-        -- Left: diagnostics (Helix: left = ["spinner", "diagnostics"])
-        lualine_a = {},
-        lualine_b = {
-          {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
-            sections = { 'error', 'warn' },
-            symbols = { error = 'E:', warn = 'W:' },
-          },
-        },
-        -- Center: filename (Helix: center = ["file-name"])
-        lualine_c = {
-          {
-            'filename',
-            path = 1, -- Relative path
-            symbols = { modified = '+', readonly = '-' },
-          },
-        },
-        -- Right: position, mode (Helix: right = ["position", "mode"])
-        lualine_x = {
-          {
-            'location',
-            fmt = function(str) return str:gsub('%s+', '') end,
-          },
-        },
-        lualine_y = {},
-        lualine_z = {
-          {
-            'mode',
-            fmt = function(str)
-              -- Helix mode indicators: _ (normal), + (insert), & (select)
-              local mode_map = {
-                NORMAL = '_',
-                INSERT = '+',
-                VISUAL = '&',
-                ['V-LINE'] = '&',
-                ['V-BLOCK'] = '&',
-                SELECT = '&',
-                COMMAND = ':',
-                REPLACE = 'R',
-                TERMINAL = 'T',
-              }
-              return mode_map[str] or str:sub(1, 1)
-            end,
-          },
-        },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {},
-      },
+      sections = {},
+      inactive_sections = {},
+      winbar = {},
+      inactive_winbar = {},
     },
+    config = function(_, opts)
+      require('lualine').setup(opts)
+      require('config.topbar').setup({ visible = false })
+    end,
   },
 
   -- Which-key: shows available keybindings
@@ -106,7 +58,7 @@ return {
         { '<leader>w', desc = 'Select inner word' },
         { '<leader>W', desc = 'Select inner WORD' },
         { '<leader>a', desc = 'Select all' },
-        { '<leader>s', desc = 'Surround' },
+        { '<leader>s', desc = 'Toggle top status line' },
         { '<leader>i', desc = 'Select inner' },
         { '<leader>e', desc = 'Change around brackets' },
         { '<leader>d', desc = 'Select word at line end' },

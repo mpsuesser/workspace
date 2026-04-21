@@ -45,14 +45,15 @@ opt.pumheight = 10
 
 -- UI
 opt.termguicolors = true
-opt.showmode = false -- Statusline shows mode
-opt.laststatus = 3 -- Global statusline
+opt.showmode = false -- Keep the UI quiet; the top bar is intentionally minimal
+opt.laststatus = 0 -- Keep the bottom statusline hidden; lualine renders in winbar when toggled
 opt.splitbelow = true
 opt.splitright = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
 -- Files
+opt.autoread = true -- Pick up external file changes (e.g. AI edits on disk)
 opt.swapfile = false
 opt.undofile = true
 opt.updatetime = 250

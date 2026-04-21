@@ -45,6 +45,36 @@ autocmd('BufReadPost', {
   end,
 })
 
+-- Re-check files for external changes when nvim regains focus or cursor idles
+autocmd({ 'FocusGained', 'CursorHold' }, {
+  group = augroup('AutoReadExternal', { clear = true }),
+  command = 'silent! checktime',
+})
+
+-- Detect and configure extension-less config files that use `#` for comments.
+-- Without a filetype, `commentstring` is empty and `gcc` / <leader>c no-ops.
+-- Match path patterns first (more reliable than sniffing content), then set
+-- filetype = conf so syntax/comment tooling lights up.
+vim.filetype.add({
+  pattern = {
+    ['.*/ghostty/config'] = 'ghostty',
+    ['.*/%.config/ghostty/config'] = 'ghostty',
+    ['.*/ghostty/keys'] = 'ghostty',
+    ['.*/ghostty/shader'] = 'ghostty',
+    ['.*/ghostty/themes/.*'] = 'ghostty',
+  },
+})
+
+-- `ghostty` is not a known filetype in stock Neovim, so register its comment
+-- string and treat it as a hash-commented config file.
+autocmd('FileType', {
+  group = augroup('HashCommentConfigs', { clear = true }),
+  pattern = { 'ghostty', 'conf', 'config', 'fstab', 'gitconfig', 'gitignore', 'tmux' },
+  callback = function()
+    vim.bo.commentstring = '# %s'
+  end,
+})
+
 -- Enforce Helix-style soft wrap even when filetype plugins try to enable hard wrapping
 autocmd('FileType', {
   group = augroup('SoftWrapOnly', { clear = true }),
