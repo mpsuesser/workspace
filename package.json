@@ -2,51 +2,59 @@
   "$schema": "https://www.schemastore.org/package.json",
   "name": "workspace",
   "private": true,
+  "type": "module",
   "workspaces": {
     "packages": [
       "apps/*",
       "bindings/*",
       "dotconfig/*",
-      "runtime"
+      "runtime",
+      "scratchpad"
     ],
     "catalog": {
-      "effect": "^4.0.0-beta.52",
-      "@effect/platform-bun": "^4.0.0-beta.52",
-      "@effect/vitest": "^4.0.0-beta.52",
-      "typescript": "^5.9.3",
-      "@effect/language-service": "^0.73.0",
-      "@types/bun": "^1.3.8",
-      "smol-toml": "^1.6.0",
-      "vitest": "^4.0.18"
+      "smol-toml": "^1.6.0"
+    },
+    "catalogs": {
+      "effect": {
+        "effect": "^4.0.0-beta.52",
+        "@effect/platform-bun": "^4.0.0-beta.52",
+        "@effect/language-service": "^0.85.1"
+      },
+      "dev": {
+        "@types/bun": "^1.3.12",
+        "typescript": "^6.0.2",
+        "oxlint": "^1.60.0",
+        "dprint": "^0.50.2"
+      }
     }
   },
-  "type": "module",
   "scripts": {
-    "build": "vp build",
-    "check": "vp check",
-    "dev": "vp dev",
+    "build": "bun run --filter='*' build",
+    "check": "dprint check && oxlint && bun run typecheck",
+    "format": "dprint fmt",
     "gen:zellij-layouts": "bun run scripts/generate-zellij-layout-kdl-files.ts",
-    "install:dotconfig": "vp run install:dotconfig",
-    "lint": "vp check",
-    "prepare": "effect-language-service patch",
-    "test": "vp test"
+    "install:dotconfig": "bun run --filter='*' install:dotconfig",
+    "lint": "oxlint",
+    "prepare": "effect-tsgo patch",
+    "test": "bun test apps bindings runtime scratchpad",
+    "typecheck": "tsgo -b"
   },
   "dependencies": {
-    "@effect/platform-bun": "catalog:",
+    "@effect/platform-bun": "catalog:effect",
     "@workspace/zellij-binding": "workspace:*",
-    "effect": "catalog:"
+    "effect": "catalog:effect"
   },
   "devDependencies": {
-    "@effect/language-service": "catalog:",
-    "@effect/vitest": "catalog:",
-    "@types/bun": "catalog:",
-    "typescript": "catalog:",
-    "vite-plus": "^0.1.14",
-    "vitest": "catalog:"
+    "@effect/language-service": "catalog:effect",
+    "@effect/tsgo": "^0.4.0",
+    "@types/bun": "catalog:dev",
+    "@typescript/native-preview": "^7.0.0-dev.20260415.1",
+    "dprint": "catalog:dev",
+    "oxlint": "catalog:dev",
+    "typescript": "catalog:dev"
   },
   "overrides": {
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.1.14",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.14"
+    "effect": "4.0.0-beta.52"
   },
-  "packageManager": "bun@1.3.11"
+  "packageManager": "bun@1.3.12"
 }

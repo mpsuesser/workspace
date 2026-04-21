@@ -1,0 +1,52 @@
+{
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "incremental": true,
+  "indentWidth": 4,
+  "lineWidth": 80,
+  "useTabs": true,
+  "newLineKind": "lf",
+  "typescript": {
+    "semiColons": "prefer",
+    "quoteStyle": "preferSingle",
+    "quoteProps": "preserve",
+    "trailingCommas": "never",
+    "operatorPosition": "maintain",
+    "useBraces": "maintain",
+    "arrowFunction.useParentheses": "force",
+    "functionExpression.spaceAfterFunctionKeyword": true,
+    "module.sortImportDeclarations": "caseInsensitive",
+    "module.sortExportDeclarations": "caseInsensitive",
+    "importDeclaration.sortNamedImports": "caseInsensitive",
+    "importDeclaration.sortTypeOnlyImports": "last",
+    "exportDeclaration.sortNamedExports": "caseInsensitive",
+    "exportDeclaration.sortTypeOnlyExports": "last"
+  },
+  "json": {
+    "indentWidth": 2,
+    "useTabs": false
+  },
+  "markdown": {
+    "lineWidth": 80
+  },
+  "includes": [
+    "**/*.{ts,tsx,js,jsx,cjs,mjs,cts,mts,json,jsonc,md,yaml,yml,toml}"
+  ],
+  "excludes": [
+    "**/node_modules",
+    "**/dist",
+    "**/build",
+    "**/*.tsbuildinfo",
+    "**/*-lock.json",
+    "bun.lock",
+    ".references/",
+    ".opencode/",
+    "dotconfig/"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.95.15.wasm",
+    "https://plugins.dprint.dev/json-0.21.3.wasm",
+    "https://plugins.dprint.dev/markdown-0.20.0.wasm",
+    "https://plugins.dprint.dev/toml-0.7.0.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm"
+  ]
+}
