@@ -1,8 +1,17 @@
 {
   "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
   "include": [],
-  "exclude": ["node_modules", ".reporefs", ".archive"]
+  "exclude": ["node_modules", ".references"],
+  "references": [
+    { "path": "apps/hx-wrapped" },
+    { "path": "bindings/ghostty" },
+    { "path": "bindings/hammerspoon" },
+    { "path": "bindings/helix" },
+    { "path": "bindings/iterm" },
+    { "path": "bindings/presenterm" },
+    { "path": "bindings/tmux" },
+    { "path": "bindings/zellij" },
+    { "path": "runtime" },
+    { "path": "scratchpad" }
+  ]
 }

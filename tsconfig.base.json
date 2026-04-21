@@ -3,6 +3,7 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "allowJs": true,
+    "composite": true,
     "exactOptionalPropertyTypes": true,
     "incremental": true,
     "jsx": "react-jsx",
