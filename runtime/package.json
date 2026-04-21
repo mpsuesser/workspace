@@ -13,13 +13,10 @@
   },
   "dependencies": {
     "@effect/platform-bun": "catalog:",
-    "@workspace/ghostty-binding": "workspace:*",
     "@workspace/hammerspoon-binding": "workspace:*",
     "@workspace/helix-binding": "workspace:*",
     "@workspace/iterm-binding": "workspace:*",
-    "@workspace/presenterm-binding": "workspace:*",
     "@workspace/tmux-binding": "workspace:*",
-    "@workspace/zellij-binding": "workspace:*",
     "effect": "catalog:"
   }
 }
