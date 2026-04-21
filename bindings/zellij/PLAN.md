@@ -1,114 +1,72 @@
-# effect-zellij Improvement Plan
+Only `ZellijLayout` is consumed externally. The rest can be rewritten freely.
 
-## Overview
+Here's the design I'll implement. Stating it explicitly before coding so you can course-correct:
 
-Comprehensive upgrade of effect-zellij to cover the full Zellij CLI API with proper Effect patterns.
+## Design
 
-## Tasks
+### File layout
 
-### 1. Fix Command Splitting Bug (Critical)
-
-**File**: `src/internal/commands.ts`
-**Issue**: `command.split(" ")` breaks on commands with spaces/quotes
-**Fix**: Accept `ReadonlyArray<string>` for command args, join properly or pass through
-
-### 2. Model PaneLocation as ADT
-
-**File**: `src/internal/PaneLocation.ts` (new)
-**Current**: `"right" | "down" | "inplace" | "floating"` with hardcoded dimensions
-**Target**:
-
-```typescript
-const PaneLocation = Data.TaggedEnum<{
-	Direction: { direction: 'right' | 'down' | 'left' | 'up' };
-	Floating: {
-		width?: string;
-		height?: string;
-		x?: string;
-		y?: string;
-		pinned?: boolean;
-	};
-	InPlace: {};
-}>();
+```
+src/
+  schemas/
+    PaneLocation.ts         (exists, reused)
+    PaneSize.ts             (new — shared w/ layout)
+    Direction.ts            (new — right|left|up|down)
+    ResizeDirection.ts      (new — plus +/- grow/shrink)
+    Mode.ts                 (new — locked|pane|tab|resize|...)
+    BlockStrategy.ts        (new — blocking|untilExit|untilExitSuccess|...)
+    PaneId.ts               (new — tagged union TerminalPaneId | PluginPaneId)
+    TabId.ts                (new — branded number)
+    ClientId.ts             (new — branded number)
+    SessionName.ts          (new — branded non-empty string)
+    PaneInfo.ts             (new — Schema.Class, decoded from list-panes --json)
+    TabInfo.ts              (new — Schema.Class, decoded from list-tabs --json)
+    ClientInfo.ts           (new — Schema.Class, decoded from list-clients)
+    SubscribeEvent.ts       (new — PaneUpdate | PaneClosed NDJSON events)
+  ZellijError.ts            (new — reason-union TaggedErrorClass)
+  ZellijCli.ts              (new — INTERNAL service: run/lines/string/stream/json + withSession)
+  ZellijAction.ts           (namespace — thin 1:1 mapping of every `zellij action` verb)
+  ZellijPane.ts             (namespace — domain-oriented pane API, decoded outputs)
+  ZellijTab.ts              (namespace — domain-oriented tab API)
+  ZellijSession.ts          (namespace — session lifecycle + subscribe)
+  Zellij.ts                 (namespace — top-level CLI: run/edit/pipe/plugin/subscribe/setup/watch/version + re-exports)
+  ZellijLayout.ts           (unchanged)
+  ZellijPipe.ts             (merge into Zellij.ts as `pipe` function)
+  index.ts                  (re-export everything)
 ```
 
-- Update all commands to use new ADT
-- Add helper to convert ADT to CLI args
+### Key architectural decisions
 
-### 3. Add Full `zellij run` Options
+1. **Namespace-module pattern** per `effect-service-implementation` skill — each service exports `Interface` / `Service` / `layer` / `defaultLayer`. Classes stay empty.
 
-**File**: `src/internal/commands.ts`
-**New signature**:
+2. **ZellijCli** is an internal service that owns `ChildProcessSpawner` + session/error policy. Every higher-level service depends on it in its `Layer.effect` closure, so **no service leaks `PlatformError`** to callers.
 
-```typescript
-interface RunOptions {
-	location?: PaneLocation;
-	cwd?: string;
-	name?: string;
-	closeOnExit?: boolean;
-	startSuspended?: boolean;
-}
-run: ((command: ReadonlyArray<string>, options?: RunOptions) =>
-	Effect<number, PlatformError>);
-```
+3. **ZellijError** is one `Schema.TaggedErrorClass` with a `reason` union — supports `Effect.catchReasons` / `Effect.unwrapReason` for targeted recovery:
+   - `NotInSession` — `$ZELLIJ_SESSION_NAME` is unset
+   - `SessionNotFound(name)` — zellij reports no such session
+   - `PaneNotFound(paneId)` / `TabNotFound(tabId)`
+   - `CommandFailed({ args, exitCode, stderr })` — non-zero exit
+   - `DecodeFailure({ output, issue })` — JSON parsing failed
+   - `SpawnError(cause)` — wraps `PlatformError` from `ChildProcess`
 
-### 4. Implement ZellijSession
+4. **Session targeting**: Every high-level service accepts an optional `session?: SessionName` option. Internally, methods call `cli.withSession(name).run(...)` which prepends `--session <name>`. This mirrors the CLI's own `--session` global flag.
 
-**File**: `src/ZellijSession.ts`
-**Actions**:
+5. **PaneId as tagged union**: `Terminal(id: number)` | `Plugin(id: number)` via `Schema.Union` + `Schema.toTaggedUnion("_tag")`. `toString` encodes as `terminal_N`/`plugin_N`; `fromString` decodes. Decoded list-panes items emit the correctly tagged variant via `is_plugin` check.
 
-- `attach(sessionName: string, options?: { createIfMissing?: boolean })`
-- `killSession(name: string)`
-- `killAllSessions`
-- `deleteSession(name: string)` - for resurrectable sessions
-- `deleteAllSessions`
+6. **Streaming subscribe**: `ZellijSession.subscribe(paneIds, options)` returns `Stream<SubscribeEvent, ZellijError>`. Implementation: `spawner.streamLines(...)` piped through NDJSON decode + schema validation.
 
-### 5. Add Query Actions
+7. **`action` commands** (the `zellij action <verb>` surface — 70+ verbs): every single one exposed in **ZellijAction** as a thin typed wrapper. **ZellijPane / ZellijTab / ZellijSession** delegate to ZellijAction for execution, then add decoding + ergonomic defaults on top. No duplicate implementations — the higher-level methods call `Action.newPane(...)` under the hood, not re-spawn CLIs.
 
-**File**: `src/internal/commands.ts` + expose via `Zellij.ts`
-**New commands**:
+8. **Blocking strategies**: model as a tagged enum so `Pane.new({ block: BlockStrategy.untilSuccess() })` is type-safe.
 
-- `queryTabNames: Effect<ReadonlyArray<string>, PlatformError>`
-- `dumpLayout: Effect<string, PlatformError>` (returns KDL)
-- `listClients: Effect<ReadonlyArray<Client>, PlatformError>`
-- `dumpScreen(path: string): Effect<void, PlatformError>`
+9. **JSON decoding**: `zellij action list-panes --json`, `list-tabs --json`, `current-tab-info --json` all decoded via `Schema.decodeUnknownEffect(Schema.fromJsonString(PaneInfoArray))`.
 
-### 6. Add Pipe Support
+### Turn plan
 
-**File**: `src/ZellijPipe.ts` (new)
-**API**:
+You said one namespace at a time. My proposed pacing:
 
-```typescript
-interface PipeOptions {
-	name?: string;
-	plugin?: string;
-	pluginConfiguration?: string;
-	args?: string;
-}
-pipe: ((payload: string, options?: PipeOptions) =>
-	Effect<string, PlatformError>);
-```
+- **This turn**: Foundation only — `schemas/*`, `ZellijError.ts`, `ZellijCli.ts`. This is the shared substrate all six namespaces will import; getting it right up-front matters more than any individual namespace.
+- **Next turn**: `ZellijAction.ts` (~70 thin wrappers — exercises the foundation).
+- **Then**: `ZellijSession`, `ZellijTab`, `ZellijPane`, `Zellij` — one per turn.
 
-## Implementation Order
-
-1. **Task 1** - Bug fix (unblocks everything)
-2. **Task 2** - ADT (foundation for proper typing)
-3. **Task 3** - Run options (uses new ADT)
-4. **Task 4** - Session management (independent)
-5. **Task 5** - Query actions (independent)
-6. **Task 6** - Pipe support (independent)
-
-## Files to Create/Modify
-
-- `src/internal/PaneLocation.ts` - NEW: ADT definition
-- `src/internal/commands.ts` - MODIFY: fix bug, add new commands
-- `src/Zellij.ts` - MODIFY: expose new capabilities
-- `src/ZellijSession.ts` - MODIFY: implement session management
-- `src/ZellijPipe.ts` - MODIFY: implement pipe support
-- `src/index.ts` - MODIFY: export new modules
-
-## Testing Notes
-
-- All commands require being inside a zellij session to test
-- Use `ZELLIJ_SESSION_NAME` env var to detect session
-- Consider adding dry-run mode for testing command construction
+If that ordering is cool, reply "go" or correct me and I'll proceed with the foundation. If you'd rather I batch foundation + first namespace together, say "batch" and I'll squeeze both into this turn.
