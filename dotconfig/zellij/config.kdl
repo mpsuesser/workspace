@@ -62,9 +62,32 @@ keybinds clear-defaults=true {
         }
 
         bind "Super r" { Detach; }
-        bind "Super o" { Run "echo" "hi"; }
         bind "Super p" { Run "echo" "TODO" "open-pane-renamer-in-floating-pane"; }
         bind "Super k" { Run "echo" "TODO"; }
+
+        // ── Sessions ─────────────────────────────────────────
+        // Custom tv-powered session switcher (drop-in replacement for the
+        // built-in session-manager plugin). Channel defined at:
+        //   dotconfig/television/cable/zellij-sessions.toml
+        bind "Super o" {
+            Run "tv" "zellij-sessions" {
+                cwd "/Users/m"
+                floating true
+                x "20%"
+                y "10%"
+                width "60%"
+                height "80%"
+                close_on_exit true
+            }
+        }
+        // Create/switch to a "new" session with the default layout.
+        // First press creates it, subsequent presses switch back to it.
+        bind "Super n" {
+            SwitchSession {
+                name "new"
+                layout "default"
+            }
+        }
     }
 
     shared_except "locked" {
