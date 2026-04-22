@@ -150,6 +150,9 @@
     "dotconfig/starship": {
       "name": "@workspace/starship-dotconfig",
     },
+    "dotconfig/television": {
+      "name": "@workspace/television-dotconfig",
+    },
     "dotconfig/tmux": {
       "name": "@workspace/tmux-dotconfig",
     },
@@ -174,10 +177,13 @@
       "version": "0.0.0",
       "dependencies": {
         "@effect/platform-bun": "catalog:effect",
+        "@workspace/ghostty-binding": "workspace:*",
         "@workspace/hammerspoon-binding": "workspace:*",
         "@workspace/helix-binding": "workspace:*",
         "@workspace/iterm-binding": "workspace:*",
+        "@workspace/presenterm-binding": "workspace:*",
         "@workspace/tmux-binding": "workspace:*",
+        "@workspace/zellij-binding": "workspace:*",
         "effect": "catalog:effect",
       },
     },
@@ -409,6 +415,8 @@
     "@workspace/skhd-dotconfig": ["@workspace/skhd-dotconfig@workspace:dotconfig/skhd"],
 
     "@workspace/starship-dotconfig": ["@workspace/starship-dotconfig@workspace:dotconfig/starship"],
+
+    "@workspace/television-dotconfig": ["@workspace/television-dotconfig@workspace:dotconfig/television"],
 
     "@workspace/tmux-binding": ["@workspace/tmux-binding@workspace:bindings/tmux"],
 
