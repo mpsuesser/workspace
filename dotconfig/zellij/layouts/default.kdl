@@ -1,7 +1,19 @@
 layout {
 	cwd "/Users/m/repos"
 
-	pane {
-		focus true
+	pane split_direction="vertical" {
+		// Left: 20-col vertical sessions sidebar
+		// (@workspace/zellij-vertical-sessions-bar). Borderless so the full
+		// 20 cols are usable content. Replaces the previous wasm plugin
+		// (Rust crate at /Users/m/repos/zellij-vertical-sessions-bar) with a
+		// Bun + OpenTUI program that drives the same UI through the
+		// @workspace/zellij-binding service surface.
+		pane size=20 borderless=true command="bun" {
+			args "run" "/Users/m/repos/workspace/apps/zellij-vertical-sessions-bar/src/main.ts"
+		}
+		// Right: the actual workspace pane that takes focus on startup.
+		pane {
+			focus true
+		}
 	}
 }
