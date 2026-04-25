@@ -72,7 +72,26 @@ keybinds clear-defaults=true {
             }
         }
 
-        bind "Super r" { Detach; }
+        // ── Rename current session ────────────────────
+        // Stable zellij has no RenameSession keybind mode (PR #3886 unmerged),
+        // but `zellij action rename-session <name>` works as a CLI action.
+        // So: spawn a small floating pane that prompts for a name and runs it.
+        // Empty input or Ctrl-C cancels (no-op); Enter commits and closes.
+        bind "Super r" {
+            // The pane `name` below is a static fallback shown briefly on spawn.
+            // The script then calls `rename-pane` to interpolate the current
+            // session name into the title (KDL can't expand env vars itself).
+            // Empty stdin (just Enter) = cancel; any text = new session name.
+            Run "sh" "-c" "zellij action rename-pane \"Rename Session (currently: $ZELLIJ_SESSION_NAME)\"; IFS= read -r name && [ -n \"$name\" ] && zellij action rename-session \"$name\"" {
+                name "Rename Session"
+                floating true
+                close_on_exit true
+                x "30%"
+                y "45%"
+                width "40%"
+                height "3"
+            }
+        }
         bind "Super p" { Run "echo" "TODO" "open-pane-renamer-in-floating-pane"; }
         bind "Super k" { Run "echo" "TODO"; }
 
@@ -108,6 +127,7 @@ keybinds clear-defaults=true {
     locked {
         bind "Super F8" { SwitchToMode "normal"; }
     }
+
 }
 
 ui {
