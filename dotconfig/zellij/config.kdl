@@ -110,12 +110,23 @@ keybinds clear-defaults=true {
                 close_on_exit true
             }
         }
-        // Create/switch to a "new" session with the default layout.
-        // First press creates it, subsequent presses switch back to it.
+        // Create a new session with a user-provided name, prompted in a
+        // floating pane (mirrors the Super r rename pattern).
+        //
+        // `zellij action switch-session` shares the same internal handler as
+        // the `SwitchSession` keybind action (see zellij-server/src/route.rs,
+        // `Action::SwitchSession`): if the named session doesn't exist, it's
+        // created with the given layout; if it does, we switch to it.
+        // Empty stdin (just Enter) or Ctrl-C cancels (no-op).
         bind "Super n" {
-            SwitchSession {
-                name "new"
-                layout "default"
+            Run "sh" "-c" "IFS= read -r name && [ -n \"$name\" ] && zellij action switch-session \"$name\" --layout default" {
+                name "New Session Name"
+                floating true
+                close_on_exit true
+                x "30%"
+                y "45%"
+                width "40%"
+                height "3"
             }
         }
     }
