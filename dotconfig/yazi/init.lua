@@ -26,12 +26,14 @@ require("bunny"):setup({
 		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
 		{ key = "g", path = "~/repos/workspace/dotconfig/ghostty" },
-		{ key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
-		{ key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
+		{ key = "h", path = "~/repos/pi-effect-enforcer" },
+		{ key = "l", path = "~/repos/littlebird" },
+		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
+		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
 		{ key = "o", path = "~/repos/OpenTentacle" },
 		{ key = "c", path = "~/repos/curationspace" },
-		{ key = "e", path = "~/repos/pi-effect-enforcer" },
+		{ key = "e", path = "~/repos/ea" },
 		{ key = "m", path = "~/repos/multitude" },
 
 		{ key = { ".", "c" }, path = "~/.config" },
