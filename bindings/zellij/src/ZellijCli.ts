@@ -202,6 +202,33 @@ const prefixArgs = (
 		: ['--session', options.session, ...argv];
 
 /**
+ * zellij's CLI exits 0 even when a `--session <name>` target does not
+ * exist: it writes `Session '<name>' not found.` to stderr, dumps the
+ * active session list to stdout (ignoring `--json`), and returns success.
+ * (See `zellij/src/commands.rs::send_action_to_session` — the source
+ * branches into `process::exit(1)` but the actual built binary returns 0
+ * in practice.) Without this detection downstream decoders fail with
+ * `DecodeFailure` instead of the semantically correct `SessionNotFound`.
+ *
+ * Detect by matching stderr against the well-known prefix and return the
+ * targeted session name when it matches. Only consulted when the call
+ * specified `options.session` so unrelated stderr can never trigger it.
+ */
+const SESSION_NOT_FOUND_PATTERN = /^Session '([^']+)' not found\./u;
+
+const detectMissingSession = (
+	options: Options | undefined,
+	stderr: string
+): Option.Option<SessionName.SessionName> => {
+	if (options?.session === undefined) return Option.none();
+	const match = SESSION_NOT_FOUND_PATTERN.exec(Str.trimStart(stderr));
+	if (match === null) return Option.none();
+	return match[1] === options.session
+		? Option.some(options.session)
+		: Option.none();
+};
+
+/**
  * Concatenate a `Stream<Uint8Array>` into a single UTF-8 string. Used to
  * drain `handle.stdout` and `handle.stderr` concurrently with `exitCode`.
  * Generic over the upstream error/requirement channel so this stays
@@ -270,6 +297,13 @@ export const layer = Layer.effect(
 						exitCode,
 						stderr
 					});
+				}
+
+				// Even on exit 0 the targeted session may not exist; see
+				// `detectMissingSession` for why we have to inspect stderr.
+				const missing = detectMissingSession(options, stderr);
+				if (Option.isSome(missing)) {
+					return yield* ZellijError.sessionNotFound(missing.value);
 				}
 
 				return { stdout, stderr, exitCode };
