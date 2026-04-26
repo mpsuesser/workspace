@@ -61,10 +61,17 @@ export interface Interface {
 	 * sessions in the resurrection cache. Use {@link listSessions} when
 	 * just the names are needed.
 	 *
-	 * Note: `isCurrent` is parsed from zellij's live output, so it
-	 * survives a `rename-session` call — unlike the snapshot
-	 * `$ZELLIJ_SESSION_NAME` env var read by
-	 * `ZellijSession.Service.current`.
+	 * Note: `isCurrent` is **not** rename-safe. zellij decides which row
+	 * gets `(current)` by comparing each session name to the calling
+	 * process's `$ZELLIJ_SESSION_NAME` env var (see
+	 * `zellij-utils/src/sessions.rs::print_sessions`). That env var is
+	 * captured at process launch and never updates, so after a
+	 * `rename-session` the marker is missing for every row when this
+	 * binding is invoked from a long-running process. Consumers that
+	 * need rename-safe active-session detection must derive it
+	 * themselves — e.g. by anchoring on the stable `$ZELLIJ_PANE_ID`
+	 * (`ZellijPane.Service.currentId`) and matching against
+	 * `ZellijSession.Service.getPanes` for each candidate session.
 	 */
 	readonly listSessionsDetailed: () => Effect.Effect<
 		ReadonlyArray<SessionStatus.SessionStatus>,

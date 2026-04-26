@@ -31,12 +31,15 @@ import { Effect, Layer, pipe, Stream } from 'effect';
 import * as Arr from 'effect/Array';
 import * as Config from 'effect/Config';
 import * as Context from 'effect/Context';
+import * as FileSystem from 'effect/FileSystem';
 import * as Option from 'effect/Option';
+import * as Path from 'effect/Path';
 import * as Str from 'effect/String';
 
 import * as ClientInfo from './schemas/ClientInfo.ts';
 import * as PaneId from './schemas/PaneId.ts';
 import * as PaneInfo from './schemas/PaneInfo.ts';
+import * as SessionFingerprint from './schemas/SessionFingerprint.ts';
 import * as SessionName from './schemas/SessionName.ts';
 import * as SubscribeEvent from './schemas/SubscribeEvent.ts';
 import * as TabInfo from './schemas/TabInfo.ts';
@@ -138,8 +141,49 @@ export interface Interface {
 	 *
 	 * Uses `Config.string` (+ `Config.option`) so tests can override via
 	 * `ConfigProvider` rather than mutating real environment variables.
+	 *
+	 * NOTE: this env var is **not rename-safe** — it is captured at
+	 * process launch and never updates, so a long-running process will
+	 * see a stale value after `rename-session`. For rename-safe identity
+	 * use {@link fingerprintCurrent} + {@link findByFingerprint}.
 	 */
 	readonly current: () => Effect.Effect<
+		Option.Option<SessionName.SessionName>,
+		ZellijError.ZellijError
+	>;
+
+	/**
+	 * Capture a {@link SessionFingerprint.SessionFingerprint} for the
+	 * current process's session by stat'ing the IPC socket file at
+	 * `<socketDir>/$ZELLIJ_SESSION_NAME`. The captured `(dev, ino)`
+	 * survives `rename-session` (zellij implements rename via
+	 * `rename(2)`, which preserves the inode), so callers can hold this
+	 * token across rename and re-resolve the live name via
+	 * {@link findByFingerprint}.
+	 *
+	 * Returns `None` when not running in a zellij session, or when
+	 * `$ZELLIJ_SESSION_NAME` no longer corresponds to an existing socket
+	 * (i.e. a rename happened *before* the first capture). For long-lived
+	 * consumers, capture this once at startup before any rename can
+	 * happen.
+	 */
+	readonly fingerprintCurrent: () => Effect.Effect<
+		Option.Option<SessionFingerprint.SessionFingerprint>,
+		ZellijError.ZellijError
+	>;
+
+	/**
+	 * Resolve a {@link SessionFingerprint.SessionFingerprint} back to the
+	 * session's *current* name by scanning the socket directory for a
+	 * file with matching `(dev, ino)`.
+	 *
+	 * Returns `None` if no live session has the given fingerprint (for
+	 * instance, the session was killed, or the fingerprint was captured
+	 * on a different machine / boot).
+	 */
+	readonly findByFingerprint: (
+		fingerprint: SessionFingerprint.SessionFingerprint
+	) => Effect.Effect<
 		Option.Option<SessionName.SessionName>,
 		ZellijError.ZellijError
 	>;
@@ -357,6 +401,8 @@ export const layer = Layer.effect(
 	Service,
 	Effect.gen(function* () {
 		const cli = yield* ZellijCli.Service;
+		const fs = yield* FileSystem.FileSystem;
+		const path = yield* Path.Path;
 
 		// `runAction` satisfies an effect's captured `ZellijCli.Service`
 		// requirement with the already-acquired `cli` instance, so every
@@ -371,6 +417,169 @@ export const layer = Layer.effect(
 			Effect.provideService(eff, ZellijCli.Service, cli);
 
 		// ── Queries ──────────────────────────────────────────────────────
+
+		// ─── Socket-fingerprint identity (rename-safe) ─────────────────────
+		//
+		// `socketDirCandidates` mirrors zellij-utils-0.44.1/src/consts.rs::
+		// ZELLIJ_SOCK_DIR resolution order: `$ZELLIJ_SOCKET_DIR`, then
+		// `$XDG_RUNTIME_DIR/zellij`, then `$TMPDIR/zellij-<uid>`, then
+		// `/tmp/zellij-<uid>` — each suffixed with the contract version.
+		//
+		// `findSocketDir` returns the first candidate that exists; `None`
+		// when no zellij socket dir is present (i.e. zellij is not running).
+		const CONTRACT_DIR = 'contract_version_1';
+
+		// `process.getuid` is undefined on Windows; zellij is Unix-only in
+		// practice and the only candidate that uses uid is the
+		// `/tmp/zellij-<uid>` fallback, so a 0 default is harmless on the
+		// rare Windows pass-through.
+		const readUid = Effect.sync(() => process.getuid?.() ?? 0);
+
+		const socketDirCandidates = Effect.fn(
+			'ZellijSession.socketDirCandidates'
+		)(function* () {
+			const envSocketDir = yield* Config.option(
+				Config.string('ZELLIJ_SOCKET_DIR')
+			).asEffect().pipe(Effect.orDie);
+			const xdgRuntime = yield* Config.option(
+				Config.string('XDG_RUNTIME_DIR')
+			).asEffect().pipe(Effect.orDie);
+			const tmpdir = yield* Config.option(
+				Config.string('TMPDIR')
+			).asEffect().pipe(Effect.orDie);
+			const uid = yield* readUid;
+
+			const withContract = (dir: string) => path.join(dir, CONTRACT_DIR);
+			const named = (dir: string) => path.join(dir, `zellij-${uid}`);
+
+			// `Arr.getSomes` collects the inner `string` of every `Some`;
+			// `Arr.map(withContract)` then appends the contract-version dir
+			// segment. We avoid `Arr.filterMap` because v4's signature wants
+			// a `Result`-returning function rather than an `Option`-returning
+			// one (see Effect MIGRATION.md — `Result` replaced `Option` in
+			// many collection helpers).
+			return pipe(
+				[
+					envSocketDir,
+					Option.map(xdgRuntime, (d) => path.join(d, 'zellij')),
+					Option.map(tmpdir, named),
+					Option.some(named('/tmp'))
+				],
+				Arr.getSomes,
+				Arr.map(withContract)
+			);
+		});
+
+		const findSocketDir = Effect.fn('ZellijSession.findSocketDir')(
+			function* () {
+				const candidates = yield* socketDirCandidates();
+				return yield* Effect.findFirst(candidates, (dir) =>
+					fs
+						.exists(dir)
+						.pipe(Effect.orElseSucceed(() => false)));
+			}
+		);
+
+		// Stat the socket file for `name` in `dir`, returning a fingerprint
+		// when (a) the file exists, (b) the stat call succeeds, and (c) the
+		// platform reports an inode (Bun/Node always do on Unix). Anything
+		// else collapses to `None` — a missing file means the session is
+		// gone, not an error condition.
+		const statFingerprint = (dir: string, name: string) =>
+			fs.stat(path.join(dir, name)).pipe(
+				Effect.map((info) =>
+					Option.map(
+						info.ino,
+						(ino) =>
+							new SessionFingerprint.SessionFingerprint({
+								dev: info.dev,
+								ino
+							})
+					)
+				),
+				Effect.orElseSucceed(() =>
+					Option.none<SessionFingerprint.SessionFingerprint>()
+				)
+			);
+
+		const fingerprintCurrent = Effect.fn(
+			'ZellijSession.fingerprintCurrent'
+		)(() =>
+			Effect.gen(function* () {
+				const nameOpt = yield* current();
+				const dirOpt = yield* findSocketDir();
+				// Combine both Options into a single tuple-shaped Option;
+				// missing either => the fingerprint is not derivable.
+				const both = Option.flatMap(nameOpt, (name) =>
+					Option.map(dirOpt, (dir) => ({ name, dir })));
+				return yield* Option.match(both, {
+					onNone: () =>
+						Effect.succeed(
+							Option.none<SessionFingerprint.SessionFingerprint>()
+						),
+					onSome: ({ name, dir }) =>
+						statFingerprint(dir, name)
+				});
+			})
+		);
+
+		const findByFingerprint = Effect.fn(
+			'ZellijSession.findByFingerprint'
+		)((fingerprint: SessionFingerprint.SessionFingerprint) =>
+			Effect.gen(function* () {
+				const dirOpt = yield* findSocketDir();
+				return yield* Option.match(dirOpt, {
+					onNone: () =>
+						Effect.succeed(
+							Option.none<SessionName.SessionName>()
+						),
+					onSome: (dir) =>
+						Effect.gen(function* () {
+							const entries = yield* fs.readDirectory(dir).pipe(
+								Effect.orElseSucceed(
+									(): ReadonlyArray<string> => []
+								)
+							);
+							// First filename whose stat matches the
+							// fingerprint. Sequential `findFirst`
+							// short-circuits, so the typical cost is one stat
+							// call (cached name first works most of the time;
+							// callers can stat the cached path themselves to
+							// skip the directory scan in the fast path).
+							const matching = yield* Effect.findFirst(
+								entries,
+								(entry) =>
+									statFingerprint(dir, entry).pipe(
+										Effect.map(
+											Option.match({
+												onNone: () => false,
+												onSome: (fp) =>
+													fp.dev === fingerprint.dev
+													&& fp.ino ===
+														fingerprint.ino
+											})
+										)
+									)
+							);
+							return yield* Option.match(matching, {
+								onNone: () =>
+									Effect.succeed(
+										Option.none<SessionName.SessionName>()
+									),
+								onSome: (entry) =>
+									SessionName.decodeUnknown(entry).pipe(
+										Effect.map(Option.some),
+										Effect.orElseSucceed(() =>
+											Option.none<
+												SessionName.SessionName
+											>()
+										)
+									)
+							});
+						})
+				});
+			})
+		);
 
 		const current = Effect.fn('ZellijSession.current')(() =>
 			Effect.gen(function* () {
@@ -614,6 +823,8 @@ export const layer = Layer.effect(
 			current,
 			currentOrFail,
 			isInSession,
+			fingerprintCurrent,
+			findByFingerprint,
 			getTabs,
 			getPanes,
 			getTabNames,

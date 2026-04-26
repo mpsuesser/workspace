@@ -46,7 +46,7 @@ All four domain namespaces are `Context.Service`s; capture them with `yield* Ser
 | `killAllSessions()`      | `zellij kill-all-sessions -y`                                           |
 | `deleteAllSessions()`    | `zellij delete-all-sessions -y`                                         |
 
-`SessionStatus` is the long-form row: `{ name, createdAgo: Duration, isCurrent, isExited }`. The `isCurrent` flag is parsed from zellij's live `(current)` annotation, so it survives a `rename-session` call — prefer it over `ZellijSession.Service.current` (which reads the snapshot `$ZELLIJ_SESSION_NAME` env var) when you need rename-safe identification of the active session.
+`SessionStatus` is the long-form row: `{ name, createdAgo: Duration, isCurrent, isExited }`. **`isCurrent` is NOT rename-safe**: zellij determines `(current)` by comparing each session name to the calling process's `$ZELLIJ_SESSION_NAME`, which is captured at process launch and never updates. After `rename-session`, every row gets `isCurrent: false` for any long-running consumer. For rename-safe detection of the active session, use `ZellijSession.Service.fingerprintCurrent()` at startup and `findByFingerprint(fp)` thereafter — these track the per-session IPC socket inode, which `rename-session` preserves.
 
 ### `ZellijSession` — subject: a session
 

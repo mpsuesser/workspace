@@ -62,6 +62,7 @@ export type { PaneInfo } from './schemas/PaneInfo.ts';
 export type { PaneLocation } from './schemas/PaneLocation.ts';
 export type { PaneSize } from './schemas/PaneSize.ts';
 export type { ResizeDirection } from './schemas/ResizeDirection.ts';
+export type { SessionFingerprint } from './schemas/SessionFingerprint.ts';
 export type { SessionName } from './schemas/SessionName.ts';
 export type { SessionStatus } from './schemas/SessionStatus.ts';
 export type { SubscribeEvent } from './schemas/SubscribeEvent.ts';
