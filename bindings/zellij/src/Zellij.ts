@@ -24,6 +24,7 @@ import * as Context from 'effect/Context';
 import * as Str from 'effect/String';
 
 import * as SessionName from './schemas/SessionName.ts';
+import * as SessionStatus from './schemas/SessionStatus.ts';
 import * as ZellijCli from './ZellijCli.ts';
 import * as ZellijError from './ZellijError.ts';
 
@@ -46,6 +47,27 @@ export interface Interface {
 	 */
 	readonly listSessions: () => Effect.Effect<
 		ReadonlyArray<SessionName.SessionName>,
+		ZellijError.ZellijError
+	>;
+
+	/**
+	 * Enumerate every session on the machine as decoded
+	 * {@link SessionStatus.SessionStatus} rows. Maps to
+	 * `zellij list-sessions --no-formatting`, which emits one
+	 * `<name> [Created <duration> ago] [(marker)]` line per session.
+	 *
+	 * Each row carries the parsed creation duration, the
+	 * `(current)`-derived `isCurrent` flag, and an `isExited` flag for
+	 * sessions in the resurrection cache. Use {@link listSessions} when
+	 * just the names are needed.
+	 *
+	 * Note: `isCurrent` is parsed from zellij's live output, so it
+	 * survives a `rename-session` call — unlike the snapshot
+	 * `$ZELLIJ_SESSION_NAME` env var read by
+	 * `ZellijSession.Service.current`.
+	 */
+	readonly listSessionsDetailed: () => Effect.Effect<
+		ReadonlyArray<SessionStatus.SessionStatus>,
 		ZellijError.ZellijError
 	>;
 
@@ -116,6 +138,14 @@ export const layer = Layer.effect(
 			})
 		);
 
+		const listSessionsDetailed = Effect.fn(
+			'Zellij.listSessionsDetailed'
+		)(() =>
+			cli.string(['list-sessions', '--no-formatting']).pipe(
+				Effect.map(SessionStatus.parseOutput)
+			)
+		);
+
 		const killAllSessions = Effect.fn('Zellij.killAllSessions')(() =>
 			cli.exec(['kill-all-sessions', '-y']).pipe(Effect.asVoid)
 		);
@@ -126,6 +156,7 @@ export const layer = Layer.effect(
 
 		return Service.of({
 			listSessions,
+			listSessionsDetailed,
 			killAllSessions,
 			deleteAllSessions
 		});

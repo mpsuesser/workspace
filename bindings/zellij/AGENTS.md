@@ -39,11 +39,14 @@ All four domain namespaces are `Context.Service`s; capture them with `yield* Ser
 
 ### `Zellij` — machine-wide
 
-| Method                | Maps to                                                  |
-| --------------------- | -------------------------------------------------------- |
-| `listSessions()`      | `zellij list-sessions -s` → `ReadonlyArray<SessionName>` |
-| `killAllSessions()`   | `zellij kill-all-sessions -y`                            |
-| `deleteAllSessions()` | `zellij delete-all-sessions -y`                          |
+| Method                   | Maps to                                                                 |
+| ------------------------ | ----------------------------------------------------------------------- |
+| `listSessions()`         | `zellij list-sessions -s` → `ReadonlyArray<SessionName>`                |
+| `listSessionsDetailed()` | `zellij list-sessions --no-formatting` → `ReadonlyArray<SessionStatus>` |
+| `killAllSessions()`      | `zellij kill-all-sessions -y`                                           |
+| `deleteAllSessions()`    | `zellij delete-all-sessions -y`                                         |
+
+`SessionStatus` is the long-form row: `{ name, createdAgo: Duration, isCurrent, isExited }`. The `isCurrent` flag is parsed from zellij's live `(current)` annotation, so it survives a `rename-session` call — prefer it over `ZellijSession.Service.current` (which reads the snapshot `$ZELLIJ_SESSION_NAME` env var) when you need rename-safe identification of the active session.
 
 ### `ZellijSession` — subject: a session
 
@@ -126,6 +129,7 @@ All exported from `@workspace/zellij-binding/schemas/<Name>`:
 - `PaneId` — tagged union of `terminal_N` | `plugin_N`. Helpers: `fromEnv` (from `$ZELLIJ_PANE_ID`), `fromCliArg` (parses stdout), `toCliArg`, `terminal`/`plugin` constructors.
 - `TabId` — branded `number`. `TabId.make(n)` at call sites.
 - `SessionName` — branded non-empty `string`. `SessionName.make('name')`.
+- `SessionStatus` — `Schema.Class` decoded from `zellij list-sessions --no-formatting`. Carries `name`, `createdAgo: Duration`, `isCurrent`, `isExited`. `parseOutput(stdout)` for the full fan-out.
 - `ClientId` — branded `number`.
 - `PaneInfo` / `TabInfo` / `ClientInfo` — `Schema.Class` decoded from `zellij action list-*`. Include `decodeJson*` / `parseOutput`.
 - `SubscribeEvent` — `Schema.toTaggedUnion('event')` over `PaneUpdate` | `PaneClosed`. Discriminator field is **`event`, not `_tag`**. Use `SubscribeEvent.isPaneUpdate` / `isPaneClosed` guards.
