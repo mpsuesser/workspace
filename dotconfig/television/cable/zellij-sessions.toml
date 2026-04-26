@@ -14,7 +14,7 @@
 
 [metadata]
 name = "zellij-sessions"
-description = "List, switch to, or kill zellij sessions"
+description = "List, switch to, kill, or delete zellij sessions"
 requirements = ["zellij"]
 
 [source]
@@ -38,8 +38,13 @@ border_type = "rounded"
 
 [keybindings]
 enter = "actions:switch"
-# Kill the selected session and reload the list in place.
+# kill: terminate a running session but keep it on disk as resurrectable
+# (it'll show as EXITED in `zellij list-sessions`).
 ctrl-d = ["actions:kill", "reload_source"]
+# delete: purge from disk entirely. `--force` also kills it first if it's
+# still running, so this works on both live and exited sessions — handy when
+# iterating on config and accumulating stale sessions.
+ctrl-x = ["actions:delete", "reload_source"]
 
 [actions.switch]
 description = "Switch to the selected session"
@@ -51,6 +56,11 @@ command = "zellij action switch-session '{split: :0}'"
 mode = "execute"
 
 [actions.kill]
-description = "Kill the selected session"
+description = "Kill the selected session (keep resurrectable)"
 command = "zellij kill-session '{split: :0}'"
+mode = "fork"
+
+[actions.delete]
+description = "Delete the selected session (purge from disk, force-kill if running)"
+command = "zellij delete-session --force '{split: :0}'"
 mode = "fork"
