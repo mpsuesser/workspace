@@ -2,7 +2,7 @@
  * zellij-vertical-sessions-bar — single-file OpenTUI sidebar that lists every
  * running zellij session in a 20-col vertical bar, with the currently-attached
  * session highlighted with a dracula-orange `▌` marker on each of its three
- * lines (name / description placeholder / pane count).
+ * lines (name / `{description}` / `{state}` placeholders).
  *
  * Replaces the Rust + wasm zellij plugin previously at
  * `/Users/m/repos/zellij-vertical-sessions-bar` with a Bun + OpenTUI program.
@@ -11,9 +11,22 @@
  *
  * Effect data flow: `WorkspaceRuntime.runFork(main)` runs a single
  * `Effect.repeat`-driven poll every 1.5s. Each tick yields the
- * {@link Zellij.Service} and {@link ZellijSession.Service} bindings directly
- * (no intermediate service / repository layer), then synchronously rebuilds
- * the OpenTUI tree.
+ * {@link Zellij.Service} binding directly (no intermediate service /
+ * repository layer), then synchronously rebuilds the OpenTUI tree.
+ *
+ * Active-session detection comes from {@link Zellij.listSessionsDetailed}'s
+ * `isCurrent` flag rather than `$ZELLIJ_SESSION_NAME` so the highlight
+ * survives `rename-session` (the env var is a process-launch snapshot and
+ * does not update on rename).
+ *
+ * Keybindings (active when this pane is focused in zellij):
+ *
+ * - `s` — switch to the session below the active one in the sidebar.
+ * - `w` — switch to the session above the active one in the sidebar.
+ *
+ * Both wrap at the edges. Navigation reads the most recent fetched
+ * snapshot, so it is well-defined even if the next poll has not yet
+ * landed.
  *
  * @since 0.1.0
  */
@@ -27,15 +40,16 @@ import {
 	t,
 	TextRenderable,
 	type CliRenderer,
+	type KeyEvent,
 	type Renderable
 } from '@opentui/core';
 import { WorkspaceRuntime } from '@workspace/runtime';
 import {
 	Zellij,
 	ZellijSession,
-	type SessionName
+	type SessionStatus
 } from '@workspace/zellij-binding';
-import { Duration, Effect, Order, Ref, Schedule } from 'effect';
+import { Duration, Effect, Order, pipe, Ref, Schedule } from 'effect';
 import * as Arr from 'effect/Array';
 import * as Bool from 'effect/Boolean';
 import * as Cause from 'effect/Cause';
@@ -50,7 +64,7 @@ const ERROR = '#ff5555';
 const MARKER = '▌';
 
 // Refresh cadence — fast enough to feel live for session create/kill
-// without flooding the CLI with `list-panes` calls.
+// without flooding the CLI with `list-sessions` calls.
 //
 // TODO: replace polling with an event-driven trigger. The Zellij CLI
 // only exposes `subscribe` for per-pane viewport updates, not for
@@ -60,101 +74,123 @@ const MARKER = '▌';
 // Until then, polling stays.
 const REFRESH_INTERVAL = Duration.millis(1500);
 
-// ─── Domain row + ordering ───────────────────────────────────────────────
+// ─── Sort strategy ───────────────────────────────────────────────────────
+//
+// Today there's exactly one strategy: "by creation time, oldest first".
+// It's modelled as a swappable `SortStrategy` (a pure
+// `rows -> rows` function) so future strategies — custom user order,
+// starred-on-top, active-on-top, etc. — can drop in without touching
+// the renderer. The active strategy is selected via `activeStrategy`.
 
-interface SessionRow {
-	readonly name: SessionName;
-	readonly paneCount: number;
-	readonly isActive: boolean;
-}
+type SortStrategy = (
+	rows: ReadonlyArray<SessionStatus>
+) => ReadonlyArray<SessionStatus>;
 
-// Active session first, then alphabetical by name. SessionName is a
-// branded NonEmptyString, so it is assignable to `string` structurally —
-// no cast needed when feeding it into `Order.String`.
-const rowOrder = Order.combine(
-	Order.mapInput(Order.Boolean, (r: SessionRow) => !r.isActive),
-	Order.mapInput(Order.String, (r: SessionRow) => r.name)
-);
+// `createdAgo` is the time elapsed since session creation, captured at
+// fetch time. Older sessions have larger `createdAgo` values, so to put
+// the first-created session on top we sort by `createdAgo` *descending*
+// — i.e. flip the natural Duration ordering.
+const byCreationTime: SortStrategy = (rows) =>
+	Arr.sort(
+		rows,
+		Order.flip(
+			Order.mapInput(Duration.Order, (r: SessionStatus) => r.createdAgo)
+		)
+	);
 
-// ─── Fetch — yields the zellij bindings directly with no extra service ───
+const activeStrategy: SortStrategy = byCreationTime;
+
+// ─── Fetch — yields the Zellij binding directly with no extra service ───
 
 const fetchRows = Effect.fn('SessionsBar.fetchRows')(function* () {
 	const zellij = yield* Zellij.Service;
+	const rows = yield* zellij.listSessionsDetailed();
+	return activeStrategy(rows);
+});
+
+// ─── Navigation ──────────────────────────────────────────────────────────
+//
+// `navigate(direction)` reads the latest sorted snapshot from
+// `rowsRef`, finds the active session, and asks zellij to switch to its
+// neighbour. Wraps at the edges. A no-op when the snapshot is empty,
+// has only one session, or has no `(current)` row (e.g. running outside
+// any session).
+
+type NavigationDirection = 'up' | 'down';
+
+const targetForNavigation = (
+	rows: ReadonlyArray<SessionStatus>,
+	direction: NavigationDirection
+): Option.Option<SessionStatus> => {
+	if (rows.length <= 1) return Option.none();
+	const delta = direction === 'down' ? 1 : -1;
+	return pipe(
+		Arr.findFirstIndex(rows, (r) => r.isCurrent),
+		Option.flatMap((idx) =>
+			Arr.get(rows, (idx + delta + rows.length) % rows.length)
+		)
+	);
+};
+
+const makeNavigate = (
+	rowsRef: Ref.Ref<ReadonlyArray<SessionStatus>>
+) => Effect.fn('SessionsBar.navigate')(function* (
+	direction: NavigationDirection
+) {
 	const session = yield* ZellijSession.Service;
-
-	const names = yield* zellij.listSessions();
-	const currentOpt = yield* session.current();
-	const current = Option.getOrUndefined(currentOpt);
-
-	// Fan out per-session pane counts. Bounded concurrency keeps a fork
-	// cap on the underlying `zellij action list-panes --json` spawns.
-	const rows = yield* Effect.forEach(
-		names,
-		(name) =>
-			session.getPanes({ session: name }).pipe(
-				Effect.map(
-					(panes): SessionRow => ({
-						name,
-						// Mirror the original Rust plugin: count user-facing
-						// terminal panes, ignoring plugins (status-bar, this
-						// sidebar) and non-selectable scaffolding.
-						paneCount: panes.filter(
-							(p) => p.is_selectable && !p.is_plugin
-						).length,
-						isActive: name === current
+	const rows = yield* Ref.get(rowsRef);
+	const target = targetForNavigation(rows, direction);
+	yield* Option.match(target, {
+		onNone: () => Effect.void,
+		onSome: (row) =>
+			session.switch(row.name).pipe(
+				Effect.tap(() =>
+					Effect.logDebug('switched session', {
+						direction,
+						target: row.name
 					})
 				),
-				// A session can disappear between listSessions and getPanes.
-				// Surface it as a 0-pane row instead of failing the refresh.
-				Effect.catchCause(() =>
-					Effect.succeed<SessionRow>({
-						name,
-						paneCount: 0,
-						isActive: name === current
-					})
+				// Switch failures (e.g. session vanished between the
+				// snapshot and the call) are logged and swallowed so the
+				// keypress handler stays best-effort.
+				Effect.catchCause((cause) =>
+					Effect.logWarning('session switch failed', { cause })
 				)
-			),
-		{ concurrency: 4 }
-	);
-
-	return Arr.sort(rows, rowOrder);
+			)
+	});
 });
 
 // ─── Rendering helpers ───────────────────────────────────────────────────
 
 const buildBlock = (
 	renderer: CliRenderer,
-	row: SessionRow
+	row: SessionStatus
 ): BoxRenderable => {
 	const block = new BoxRenderable(renderer, {
 		flexDirection: 'column',
 		width: '100%'
 	});
 
-	const label = row.paneCount === 1 ? 'pane' : 'panes';
-	const count = String(row.paneCount);
-
-	// Active blocks get a bold orange `▌` on every line plus a bold name and
-	// bold orange count number; inactive blocks use a 2-space gutter and
-	// plain foreground for the headline elements.
-	const lines = Bool.match(row.isActive, {
+	// Active blocks get a bold orange `▌` on every line plus a bold name;
+	// inactive blocks use a 2-space gutter and plain foreground for the
+	// headline element. Lines 2 and 3 are placeholders awaiting future
+	// per-session signals (description / state).
+	const lines = Bool.match(row.isCurrent, {
 		onTrue: () => ({
 			name: t`${fg(ACCENT)(MARKER)} ${bold(fg(FG)(row.name))}`,
 			desc: t`${fg(ACCENT)(MARKER)} ${dim(fg(MUTED)('{description}'))}`,
-			count: t`${fg(ACCENT)(MARKER)} ${bold(fg(ACCENT)(count))} ${
-				dim(fg(MUTED)(label))
-			}`
+			state: t`${fg(ACCENT)(MARKER)} ${dim(fg(MUTED)('{state}'))}`
 		}),
 		onFalse: () => ({
 			name: t`  ${fg(FG)(row.name)}`,
 			desc: t`  ${dim(fg(MUTED)('{description}'))}`,
-			count: t`  ${fg(FG)(count)} ${dim(fg(MUTED)(label))}`
+			state: t`  ${dim(fg(MUTED)('{state}'))}`
 		})
 	});
 
 	block.add(new TextRenderable(renderer, { content: lines.name }));
 	block.add(new TextRenderable(renderer, { content: lines.desc }));
-	block.add(new TextRenderable(renderer, { content: lines.count }));
+	block.add(new TextRenderable(renderer, { content: lines.state }));
 	return block;
 };
 
@@ -214,6 +250,25 @@ const main = Effect.gen(function* () {
 	]);
 	Arr.forEach(yield* Ref.get(childrenRef), (c) => list.add(c));
 
+	// Latest sorted rows, populated by `refresh`. The keypress handler
+	// reads this for navigation.
+	const rowsRef = yield* Ref.make<ReadonlyArray<SessionStatus>>([]);
+	const navigate = makeNavigate(rowsRef);
+
+	// Bind `s` / `w` to navigate the sidebar list. Effects are dispatched
+	// on the workspace runtime so the synchronous Node event handler can
+	// stay free of `runPromise`/await ceremony, and so failures funnel
+	// through the same fiber supervision as the polling loop.
+	yield* Effect.sync(() => {
+		renderer.keyInput.on('keypress', (key: KeyEvent) => {
+			if (key.name === 's') {
+				WorkspaceRuntime.runFork(navigate('down'));
+			} else if (key.name === 'w') {
+				WorkspaceRuntime.runFork(navigate('up'));
+			}
+		});
+	});
+
 	// `Renderable.remove(id)` keys by the child's string id (NOT the
 	// instance) — passing the renderable object is a silent no-op which
 	// otherwise causes children to accumulate across refreshes and yoga
@@ -228,11 +283,14 @@ const main = Effect.gen(function* () {
 	);
 
 	const refresh = fetchRows().pipe(
+		Effect.tap((rows) => Ref.set(rowsRef, rows)),
 		Effect.flatMap((rows) =>
 			replaceChildren(rows.map((r) => buildBlock(renderer, r)))
 		),
 		// Render the failure inside the bar itself rather than crashing
-		// the renderer or corrupting the pane with stderr writes.
+		// the renderer or corrupting the pane with stderr writes. The
+		// previous `rowsRef` snapshot is intentionally left in place so
+		// keyboard navigation keeps working through transient errors.
 		Effect.catchCause((cause) =>
 			replaceChildren([buildErrorLine(renderer, cause)])
 		)
