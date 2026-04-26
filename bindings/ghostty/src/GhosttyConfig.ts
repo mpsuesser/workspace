@@ -6,7 +6,6 @@ import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
 import * as Option from 'effect/Option';
 import * as Path from 'effect/Path';
-import * as P from 'effect/Predicate';
 import * as R from 'effect/Record';
 
 import { Ghostty } from './Ghostty.ts';
@@ -85,12 +84,7 @@ const removeConfigKey = (content: string, key: string): string => {
 const escapeRegex = (str: string): string =>
 	str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const detectDarwin = (global: unknown): boolean =>
-	P.isObject(global) &&
-	P.hasProperty(global, 'process') &&
-	P.isObject(global.process) &&
-	P.hasProperty(global.process, 'platform') &&
-	global.process.platform === 'darwin';
+const detectDarwin = (): boolean => process.platform === 'darwin';
 
 const HomeConfig = Config.string('HOME');
 const XdgConfigHomeConfig = Config.option(Config.string('XDG_CONFIG_HOME'));
@@ -119,7 +113,7 @@ const getConfigPaths = Effect.fn('GhosttyConfig.getConfigPaths')(
 				'config'
 			);
 
-			const isDarwin = yield* Effect.sync(() => detectDarwin(globalThis));
+			const isDarwin = yield* Effect.sync(detectDarwin);
 			return isDarwin ? [xdgPath, macOsPath] : [xdgPath];
 		}).pipe(
 			Effect.catchTag('ConfigError', (error) =>
