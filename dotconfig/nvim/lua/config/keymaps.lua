@@ -309,6 +309,9 @@ map('x', 'S', '5gj', { desc = 'Extend down 5 lines' })
 map('x', 'A', 'b', { desc = 'Extend to prev word start' })
 map('x', 'D', 'e', { desc = 'Extend to next word end' })
 
+-- Extend to line end (Helix: g.l = goto_line_end, extends in select mode)
+map('x', 'gl', '$', { desc = 'Extend to line end' })
+
 -- Extend to full line (Helix: r = extend_to_line_bounds)
 map('x', 'r', 'V', { desc = 'Extend to line bounds' })
 
