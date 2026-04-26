@@ -14,10 +14,21 @@
  * {@link Zellij.Service} binding directly (no intermediate service /
  * repository layer), then synchronously rebuilds the OpenTUI tree.
  *
- * Active-session detection comes from {@link Zellij.listSessionsDetailed}'s
- * `isCurrent` flag rather than `$ZELLIJ_SESSION_NAME` so the highlight
- * survives `rename-session` (the env var is a process-launch snapshot and
- * does not update on rename).
+ * Active-session detection is rename-safe via socket-inode fingerprinting.
+ * zellij's own `(current)` marker compares each session name to the
+ * calling process's `$ZELLIJ_SESSION_NAME` env var, which is captured
+ * once at launch and never updates — so it is wrong for every row after
+ * a `rename-session`. `$ZELLIJ_PANE_ID` is no help either: pane numbering
+ * is session-local, so id `terminal_1` exists in every session.
+ *
+ * The stable-across-rename anchor is the per-session IPC socket inode.
+ * `RenameSession` is implemented in zellij as `std::fs::rename(2)`, which
+ * preserves the inode. So at startup we capture the `(dev, ino)` of
+ * `<socketDir>/$ZELLIJ_SESSION_NAME` via
+ * {@link ZellijSession.Service.fingerprintCurrent}; on every refresh we
+ * call {@link ZellijSession.Service.findByFingerprint} to recover the
+ * session's current name. The fetched `isCurrent` flag from
+ * `list-sessions` is ignored; we override it from the resolved name.
  *
  * Keybindings (active when this pane is focused in zellij):
  *
@@ -47,6 +58,8 @@ import { WorkspaceRuntime } from '@workspace/runtime';
 import {
 	Zellij,
 	ZellijSession,
+	type SessionFingerprint,
+	type SessionName,
 	type SessionStatus
 } from '@workspace/zellij-binding';
 import { Duration, Effect, Order, pipe, Ref, Schedule } from 'effect';
@@ -108,6 +121,36 @@ const fetchRows = Effect.fn('SessionsBar.fetchRows')(function* () {
 	return activeStrategy(rows);
 });
 
+// ─── Active-session detection (rename-safe via socket inode) ────────────
+//
+// `makeFindActiveSession` returns a tick-time effect that resolves the
+// active session's *current* name by looking up the captured
+// `SessionFingerprint` (`(dev, ino)` of the per-session IPC socket file)
+// in zellij's socket directory. The fingerprint is stable across
+// `rename-session` because zellij implements rename via `rename(2)`,
+// which preserves the inode.
+//
+// When the fingerprint is `None` (running outside zellij, or socket
+// missing at startup) detection collapses to `None` and the bar simply
+// shows no active marker.
+
+const makeFindActiveSession = (
+	fingerprintOpt: Option.Option<SessionFingerprint>
+) => Effect.fn('SessionsBar.findActiveSession')(function* () {
+	if (Option.isNone(fingerprintOpt)) return Option.none<SessionName>();
+	const session = yield* ZellijSession.Service;
+	return yield* session.findByFingerprint(fingerprintOpt.value);
+});
+
+const isActive = (
+	current: Option.Option<SessionName>,
+	row: SessionStatus
+): boolean =>
+	Option.match(current, {
+		onNone: () => false,
+		onSome: (name) => name === row.name
+	});
+
 // ─── Navigation ──────────────────────────────────────────────────────────
 //
 // `navigate(direction)` reads the latest sorted snapshot from
@@ -120,12 +163,16 @@ type NavigationDirection = 'up' | 'down';
 
 const targetForNavigation = (
 	rows: ReadonlyArray<SessionStatus>,
-	direction: NavigationDirection
+	direction: NavigationDirection,
+	currentName: Option.Option<SessionName>
 ): Option.Option<SessionStatus> => {
 	if (rows.length <= 1) return Option.none();
 	const delta = direction === 'down' ? 1 : -1;
 	return pipe(
-		Arr.findFirstIndex(rows, (r) => r.isCurrent),
+		currentName,
+		Option.flatMap((name) =>
+			Arr.findFirstIndex(rows, (r) => r.name === name)
+		),
 		Option.flatMap((idx) =>
 			Arr.get(rows, (idx + delta + rows.length) % rows.length)
 		)
@@ -133,13 +180,15 @@ const targetForNavigation = (
 };
 
 const makeNavigate = (
-	rowsRef: Ref.Ref<ReadonlyArray<SessionStatus>>
+	rowsRef: Ref.Ref<ReadonlyArray<SessionStatus>>,
+	currentNameRef: Ref.Ref<Option.Option<SessionName>>
 ) => Effect.fn('SessionsBar.navigate')(function* (
 	direction: NavigationDirection
 ) {
 	const session = yield* ZellijSession.Service;
 	const rows = yield* Ref.get(rowsRef);
-	const target = targetForNavigation(rows, direction);
+	const currentName = yield* Ref.get(currentNameRef);
+	const target = targetForNavigation(rows, direction, currentName);
 	yield* Option.match(target, {
 		onNone: () => Effect.void,
 		onSome: (row) =>
@@ -164,7 +213,8 @@ const makeNavigate = (
 
 const buildBlock = (
 	renderer: CliRenderer,
-	row: SessionStatus
+	row: SessionStatus,
+	isCurrent: boolean
 ): BoxRenderable => {
 	const block = new BoxRenderable(renderer, {
 		flexDirection: 'column',
@@ -174,8 +224,9 @@ const buildBlock = (
 	// Active blocks get a bold orange `▌` on every line plus a bold name;
 	// inactive blocks use a 2-space gutter and plain foreground for the
 	// headline element. Lines 2 and 3 are placeholders awaiting future
-	// per-session signals (description / state).
-	const lines = Bool.match(row.isCurrent, {
+	// per-session signals (description / state). `isCurrent` is supplied
+	// by the caller (rename-safe override) rather than read from `row`.
+	const lines = Bool.match(isCurrent, {
 		onTrue: () => ({
 			name: t`${fg(ACCENT)(MARKER)} ${bold(fg(FG)(row.name))}`,
 			desc: t`${fg(ACCENT)(MARKER)} ${dim(fg(MUTED)('{description}'))}`,
@@ -213,7 +264,7 @@ const main = Effect.gen(function* () {
 	const renderer = yield* Effect.tryPromise({
 		try: () =>
 			createCliRenderer({
-				targetFPS: 30,
+				targetFps: 30,
 				exitOnCtrlC: true,
 				// OpenTUI already installs SIGINT/SIGTERM/SIGHUP handlers and
 				// an exitOnCtrlC keypress handler — all of which funnel through
@@ -253,7 +304,27 @@ const main = Effect.gen(function* () {
 	// Latest sorted rows, populated by `refresh`. The keypress handler
 	// reads this for navigation.
 	const rowsRef = yield* Ref.make<ReadonlyArray<SessionStatus>>([]);
-	const navigate = makeNavigate(rowsRef);
+
+	// ─── Rename-safe active-session tracking ──────────────────────────
+	//
+	// Capture our session's socket fingerprint exactly once, at startup,
+	// when env vars are still consistent with zellij's view of the world.
+	// This `(dev, ino)` survives any subsequent `rename-session` because
+	// zellij renames the socket via `rename(2)`. Each refresh tick then
+	// resolves the fingerprint back to the session's current name.
+	//
+	// `currentNameRef` is updated after each resolve so the keypress
+	// handler (which fires synchronously, off the polling fiber) reads a
+	// recent value without spawning its own resolution.
+	const sess = yield* ZellijSession.Service;
+	const fingerprint = yield* sess.fingerprintCurrent();
+	yield* Effect.logDebug('captured session fingerprint', { fingerprint });
+	const currentNameRef = yield* Ref.make<Option.Option<SessionName>>(
+		Option.none()
+	);
+
+	const findCurrent = makeFindActiveSession(fingerprint);
+	const navigate = makeNavigate(rowsRef, currentNameRef);
 
 	// Bind `s` / `w` to navigate the sidebar list. Effects are dispatched
 	// on the workspace runtime so the synchronous Node event handler can
@@ -282,15 +353,20 @@ const main = Effect.gen(function* () {
 		}
 	);
 
-	const refresh = fetchRows().pipe(
-		Effect.tap((rows) => Ref.set(rowsRef, rows)),
-		Effect.flatMap((rows) =>
-			replaceChildren(rows.map((r) => buildBlock(renderer, r)))
-		),
+	const refresh = Effect.gen(function* () {
+		const rows = yield* fetchRows();
+		yield* Ref.set(rowsRef, rows);
+		const current = yield* findCurrent();
+		yield* Ref.set(currentNameRef, current);
+		yield* replaceChildren(
+			rows.map((r) => buildBlock(renderer, r, isActive(current, r)))
+		);
+	}).pipe(
 		// Render the failure inside the bar itself rather than crashing
 		// the renderer or corrupting the pane with stderr writes. The
-		// previous `rowsRef` snapshot is intentionally left in place so
-		// keyboard navigation keeps working through transient errors.
+		// previous `rowsRef` / `currentNameRef` snapshot is intentionally
+		// left in place so keyboard navigation keeps working through
+		// transient errors.
 		Effect.catchCause((cause) =>
 			replaceChildren([buildErrorLine(renderer, cause)])
 		)
