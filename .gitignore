@@ -42,6 +42,7 @@ dotconfig/pi/agent/sessions/
 dotconfig/pi/agent/fff/
 dotconfig/pi/agent/mcp-cache.json
 dotconfig/pi/agent/mcp-oauth/
+dotconfig/pi/cache/
 dotconfig/pi/mcp.json
 dotconfig/pi/web-search.json
 dotconfig/pi/companion.json
