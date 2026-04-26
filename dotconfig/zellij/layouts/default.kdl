@@ -8,8 +8,13 @@ layout {
 		// (Rust crate at /Users/m/repos/zellij-vertical-sessions-bar) with a
 		// Bun + OpenTUI program that drives the same UI through the
 		// @workspace/zellij-binding service surface.
+		//
+		// `--watch` is a hard restart on file change — the sidebar carries
+		// per-process state (OpenTUI renderer, key listeners, polling fiber
+		// on the WorkspaceRuntime) that `--hot` would leak across reloads,
+		// so a clean process restart is the right model here.
 		pane size=20 borderless=true command="bun" {
-			args "run" "/Users/m/repos/workspace/apps/zellij-vertical-sessions-bar/src/main.ts"
+			args "run" "--watch" "/Users/m/repos/workspace/apps/zellij-vertical-sessions-bar/src/main.ts"
 		}
 		// Right: the actual workspace pane that takes focus on startup.
 		pane {
