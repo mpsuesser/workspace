@@ -15,13 +15,13 @@
   ],
   "type": "module",
   "files": [
-    "extensions/",
+    "index.ts",
     "README.md",
     "LICENSE"
   ],
   "pi": {
     "extensions": [
-      "./extensions/index.ts"
+      "./index.ts"
     ]
   },
   "dependencies": {

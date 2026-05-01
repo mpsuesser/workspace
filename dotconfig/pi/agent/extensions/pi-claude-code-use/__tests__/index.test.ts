@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import piClaudeCodeUse, { _test } from '../extensions/index.js';
+import piClaudeCodeUse, { _test } from '../index.ts';
 
 // ============================================================================
 // Test helpers
