@@ -5,8 +5,8 @@
     "agent_list": "ctrl+a",
     "session_fork": "ctrl+f,alt+f",
     "session_list": "ctrl+o,alt+o,alt+l",
-    "messages_page_up": "alt+w",
-    "messages_page_down": "alt+s",
+    "messages_page_up": "ctrl+w",
+    "messages_page_down": "ctrl+s",
     "model_list": "ctrl+l,alt+m",
     "editor_open": "ctrl+e,alt+e"
   },
