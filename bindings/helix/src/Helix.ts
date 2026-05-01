@@ -1,15 +1,42 @@
-import helixConfig from '@workspace/helix-dotconfig/config.toml';
-import themesByMode from '@workspace/helix-dotconfig/themes-by-mode.yaml';
 import * as Clock from 'effect/Clock';
 import * as Context from 'effect/Context';
 import * as Effect from 'effect/Effect';
 import * as FileSystem from 'effect/FileSystem';
 import * as Layer from 'effect/Layer';
+import * as Path from 'effect/Path';
 import type { PlatformError } from 'effect/PlatformError';
+import * as P from 'effect/Predicate';
 import * as Random from 'effect/Random';
+import * as Schema from 'effect/Schema';
 import * as ChildProcess from 'effect/unstable/process/ChildProcess';
 import * as ChildProcessSpawner from 'effect/unstable/process/ChildProcessSpawner';
 import * as TOML from 'smol-toml';
+
+// Path specifiers — resolved to absolute filesystem paths once at
+// service-make time via the Path / FileSystem services. We deliberately
+// avoid `import foo from '@workspace/helix-dotconfig/foo.toml'` and
+// `... .yaml`: both rely on Bun-only loader extensions, and any Node
+// consumer of this binding (e.g. the pi extension host) blows up on
+// import as soon as the chain reaches us. Plain string specifiers +
+// runtime read are loader-agnostic.
+const HELIX_CONFIG_SPECIFIER = '@workspace/helix-dotconfig/config.toml';
+const THEMES_BY_MODE_SPECIFIER =
+	'@workspace/helix-dotconfig/themes-by-mode.json';
+
+class ThemeSet extends Schema.Class<ThemeSet>('ThemeSet')({
+	NORMAL: Schema.String,
+	INSERT: Schema.String,
+	SELECT: Schema.String
+}) {}
+
+class ThemesByMode extends Schema.Class<ThemesByMode>('ThemesByMode')({
+	dark: ThemeSet,
+	light: ThemeSet
+}) {}
+
+const decodeThemesByModeJson = Schema.decodeUnknownEffect(
+	Schema.fromJsonString(ThemesByMode)
+);
 
 const makePromptFence = (
 	prompt: string
@@ -54,7 +81,31 @@ export class Helix extends Context.Service<Helix>()(
 	{
 		make: Effect.gen(function* () {
 			const fs = yield* FileSystem.FileSystem;
+			const path = yield* Path.Path;
 			const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+
+			// Resolve once at make-time. `import.meta.resolve(...)` is a
+			// pure string operation supported in both Node and Bun for
+			// ESM modules — it does not load the file, so a `.toml` /
+			// `.json` target is fine here.
+			const helixConfigPath = yield* path.fromFileUrl(
+				new URL(import.meta.resolve(HELIX_CONFIG_SPECIFIER))
+			);
+			const themesByModePath = yield* path.fromFileUrl(
+				new URL(import.meta.resolve(THEMES_BY_MODE_SPECIFIER))
+			);
+
+			const helixConfigToml = yield* fs.readFileString(helixConfigPath);
+			// `TOML.parse` returns a `TomlTable` (typed as `{ [key: string]:
+			// TomlValue }`), so the parsed value is already a record at the
+			// type level — no cast needed. We narrow with `P.isObject` only at
+			// the path we mutate; everything else is spread through verbatim.
+			const helixConfig = TOML.parse(helixConfigToml);
+
+			const themesByModeJson = yield* fs.readFileString(themesByModePath);
+			const themesByMode = yield* decodeThemesByModeJson(
+				themesByModeJson
+			);
 
 			const open = Effect.fn('Helix.open')((...args: Array<string>) =>
 				Effect.scoped(
@@ -106,12 +157,23 @@ export class Helix extends Context.Service<Helix>()(
 								}
 							);
 
+							const editor: Record<string, unknown> = P.isObject(
+									helixConfig.editor
+								)
+								? helixConfig.editor
+								: {};
+							const statusline: Record<string, unknown> =
+								P.isObject(
+										editor.statusline
+									)
+									? editor.statusline
+									: {};
 							const modifiedConfig = {
 								...helixConfig,
 								editor: {
-									...helixConfig.editor,
+									...editor,
 									statusline: {
-										...helixConfig.editor.statusline,
+										...statusline,
 										center: []
 									}
 								}
