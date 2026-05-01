@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "0.71.0",
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-7",
+  "lastChangelogVersion": "0.71.1",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "xhigh",
   "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.zshrc)\"",
   "theme": "ghostty-sync-770f91a0",
