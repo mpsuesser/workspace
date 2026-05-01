@@ -62,7 +62,15 @@ import {
 	type SessionName,
 	type SessionStatus
 } from '@workspace/zellij-binding';
-import { Duration, Effect, Order, pipe, Ref, Schedule } from 'effect';
+import {
+	Duration,
+	Effect,
+	FiberHandle,
+	Order,
+	pipe,
+	Ref,
+	Schedule
+} from 'effect';
 import * as Arr from 'effect/Array';
 import * as Bool from 'effect/Boolean';
 import * as Cause from 'effect/Cause';
@@ -86,6 +94,25 @@ const MARKER = '▌';
 // pane `subscribe` streams + manual triggers from our own keybinds.
 // Until then, polling stays.
 const REFRESH_INTERVAL = Duration.millis(1500);
+
+// Hard ceiling on a single `zellij action switch-session` call. The CLI
+// has been observed to hang past zellij's own server-side 1s
+// SwitchSession timeout (the server gives up but the client keeps
+// blocking on its IPC `recv()`). Without a client-side timeout, every
+// hung invocation pins two unix sockets on the per-process fd table —
+// burn through the macOS default `nofile=256` and the next IPC
+// `accept()` panics with EMFILE. 2s is generous for a healthy switch
+// (which completes in tens of ms locally) and short enough that even a
+// pathological loop never accumulates more than ~1 outstanding child.
+const SWITCH_TIMEOUT = Duration.seconds(2);
+
+// Coalescing window for `s` / `w` keypresses. The dispatcher
+// accumulates direction deltas during the window and fires a single
+// switch at the end, so a fast `ssss` mash navigates four rows down
+// in one CLI invocation rather than queuing four serial switches.
+// Held keys with auto-repeat continue to scroll because the timer is
+// re-armed only when the previous window has flushed.
+const KEYPRESS_FLUSH_MS = 80;
 
 // ─── Sort strategy ───────────────────────────────────────────────────────
 //
@@ -153,61 +180,41 @@ const isActive = (
 
 // ─── Navigation ──────────────────────────────────────────────────────────
 //
-// `navigate(direction)` reads the latest sorted snapshot from
-// `rowsRef`, finds the active session, and asks zellij to switch to its
-// neighbour. Wraps at the edges. A no-op when the snapshot is empty,
-// has only one session, or has no `(current)` row (e.g. running outside
-// any session).
+// Navigation walks the latest sorted snapshot in `rowsRef`, finds the
+// active session, and asks zellij to switch to a row `delta` positions
+// away (positive = down, negative = up). Wraps at the edges. A no-op
+// when the snapshot is empty, has only one session, or has no
+// `(current)` row (e.g. running outside any session).
+//
+// Deltas larger than ±1 happen when the keypress dispatcher coalesces
+// a burst of presses inside `KEYPRESS_FLUSH_MS` — `ssss` becomes a
+// single `targetForDelta(rows, +4, current)` call instead of four
+// serial switches.
 
 type NavigationDirection = 'up' | 'down';
 
-const targetForNavigation = (
+const directionDelta = (direction: NavigationDirection): number =>
+	direction === 'down' ? 1 : -1;
+
+const targetForDelta = (
 	rows: ReadonlyArray<SessionStatus>,
-	direction: NavigationDirection,
+	delta: number,
 	currentName: Option.Option<SessionName>
 ): Option.Option<SessionStatus> => {
-	if (rows.length <= 1) return Option.none();
-	const delta = direction === 'down' ? 1 : -1;
+	if (rows.length <= 1 || delta === 0) return Option.none();
+	const n = rows.length;
 	return pipe(
 		currentName,
 		Option.flatMap((name) =>
 			Arr.findFirstIndex(rows, (r) => r.name === name)
 		),
 		Option.flatMap((idx) =>
-			Arr.get(rows, (idx + delta + rows.length) % rows.length)
+			// JS `%` keeps the sign of the dividend, so `-1 % 5 === -1`.
+			// `((x % n) + n) % n` normalises to `[0, n)` for any sign.
+			Arr.get(rows, (((idx + delta) % n) + n) % n)
 		)
 	);
 };
-
-const makeNavigate = (
-	rowsRef: Ref.Ref<ReadonlyArray<SessionStatus>>,
-	currentNameRef: Ref.Ref<Option.Option<SessionName>>
-) => Effect.fn('SessionsBar.navigate')(function* (
-	direction: NavigationDirection
-) {
-	const session = yield* ZellijSession.Service;
-	const rows = yield* Ref.get(rowsRef);
-	const currentName = yield* Ref.get(currentNameRef);
-	const target = targetForNavigation(rows, direction, currentName);
-	yield* Option.match(target, {
-		onNone: () => Effect.void,
-		onSome: (row) =>
-			session.switch(row.name).pipe(
-				Effect.tap(() =>
-					Effect.logDebug('switched session', {
-						direction,
-						target: row.name
-					})
-				),
-				// Switch failures (e.g. session vanished between the
-				// snapshot and the call) are logged and swallowed so the
-				// keypress handler stays best-effort.
-				Effect.catchCause((cause) =>
-					Effect.logWarning('session switch failed', { cause })
-				)
-			)
-	});
-});
 
 // ─── Rendering helpers ───────────────────────────────────────────────────
 
@@ -324,19 +331,79 @@ const main = Effect.gen(function* () {
 	);
 
 	const findCurrent = makeFindActiveSession(fingerprint);
-	const navigate = makeNavigate(rowsRef, currentNameRef);
 
-	// Bind `s` / `w` to navigate the sidebar list. Effects are dispatched
-	// on the workspace runtime so the synchronous Node event handler can
-	// stay free of `runPromise`/await ceremony, and so failures funnel
-	// through the same fiber supervision as the polling loop.
+	// `navigateBy(delta)` resolves the target row from the current
+	// snapshot and switches to it. The CLI call is bounded by
+	// `SWITCH_TIMEOUT` so a hung `zellij action switch-session`
+	// (the server-side 1s timeout fires but the client keeps blocking)
+	// can never pin its IPC sockets indefinitely — on timeout the inner
+	// scope closes, which kills the spawned `zellij` child.
+	const navigateBy = (delta: number) =>
+		Effect.gen(function* () {
+			const rows = yield* Ref.get(rowsRef);
+			const currentName = yield* Ref.get(currentNameRef);
+			const target = targetForDelta(rows, delta, currentName);
+			if (Option.isNone(target)) return;
+			yield* sess.switch(target.value.name).pipe(
+				Effect.timeout(SWITCH_TIMEOUT),
+				Effect.tap(() =>
+					Effect.logDebug('switched session', {
+						delta,
+						target: target.value.name
+					})
+				),
+				// Swallow failures (timeout, session vanished, interrupt
+				// from a newer keypress preempting this one) so the
+				// keypress handler stays best-effort. Pure-interrupt
+				// causes are silent — they're the expected outcome of
+				// the FiberHandle interrupting an in-flight switch when
+				// a fresh keypress arrives mid-flight, and logging them
+				// would just spam during normal mashing.
+				Effect.catchCause((cause) =>
+					Cause.hasInterruptsOnly(cause)
+						? Effect.void
+						: Effect.logWarning('session switch failed', { cause })
+				)
+			);
+		});
+
+	// Single-slot fiber for the in-flight switch. `FiberHandle.run`
+	// (under the hood of `runOnHandle`) interrupts the previous fiber
+	// when a new one is started — so a fresh keypress preempts any
+	// switch that's still mid-CLI-call, and the spawn scope tears down
+	// the child `zellij` process as part of that interruption. This is
+	// the structural fix for the leak that exhausted the per-process fd
+	// table on macOS (default `nofile=256`).
+	const switchHandle = yield* FiberHandle.make<void, never>();
+	const runOnHandle = yield* FiberHandle.runtime(switchHandle)<never>();
+
+	// Bind `s` / `w` to navigate the sidebar list. Presses inside
+	// `KEYPRESS_FLUSH_MS` are coalesced into a single switch with the
+	// accumulated delta — mashing `ssss` ends up four rows below where
+	// you started in one CLI call, instead of queueing four. Held keys
+	// scroll naturally because each window flushes after its delay.
+	let pendingDelta = 0;
+	let flushTimer: ReturnType<typeof setTimeout> | undefined;
+
+	const flush = () => {
+		flushTimer = undefined;
+		const delta = pendingDelta;
+		pendingDelta = 0;
+		if (delta === 0) return;
+		runOnHandle(navigateBy(delta));
+	};
+
+	const onDirection = (direction: NavigationDirection) => {
+		pendingDelta += directionDelta(direction);
+		if (flushTimer === undefined) {
+			flushTimer = setTimeout(flush, KEYPRESS_FLUSH_MS);
+		}
+	};
+
 	yield* Effect.sync(() => {
 		renderer.keyInput.on('keypress', (key: KeyEvent) => {
-			if (key.name === 's') {
-				WorkspaceRuntime.runFork(navigate('down'));
-			} else if (key.name === 'w') {
-				WorkspaceRuntime.runFork(navigate('up'));
-			}
+			if (key.name === 's') onDirection('down');
+			else if (key.name === 'w') onDirection('up');
 		});
 	});
 
@@ -375,4 +442,8 @@ const main = Effect.gen(function* () {
 	yield* refresh.pipe(Effect.repeat(Schedule.spaced(REFRESH_INTERVAL)));
 });
 
-WorkspaceRuntime.runFork(main);
+// `Effect.scoped` provides the Scope required by `FiberHandle.make`
+// inside `main`. Since the Effect.repeat loop never returns, the scope
+// effectively lives for the lifetime of the program (and is closed by
+// `WorkspaceRuntime.dispose()` in the OpenTUI `onDestroy` hook).
+WorkspaceRuntime.runFork(main.pipe(Effect.scoped));
