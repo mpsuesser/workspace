@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@opentui/core": "^0.1.103",
+    "pi-zellij-sessions-bar-integration": "workspace:*",
     "@workspace/runtime": "workspace:*",
     "@workspace/zellij-binding": "workspace:*",
     "effect": "catalog:effect"

@@ -75,6 +75,12 @@ import * as Arr from 'effect/Array';
 import * as Bool from 'effect/Boolean';
 import * as Cause from 'effect/Cause';
 import * as Option from 'effect/Option';
+import * as Schema from 'effect/Schema';
+import {
+	aggregateRunStateForSession,
+	readResolvedAgentSessionStateRecords,
+	type PiAgentRunState
+} from 'pi-zellij-sessions-bar-integration/state';
 
 // ─── Style constants (dracula palette; tweak these to re-skin) ───────────
 
@@ -82,7 +88,20 @@ const FG = '#f8f8f2';
 const ACCENT = '#ffb86c';
 const MUTED = '#6272a4';
 const ERROR = '#ff5555';
+const WORKING = '#50fa7b';
+const DONE = '#f1fa8c';
 const MARKER = '▌';
+
+class RendererCreateError
+	extends Schema.TaggedErrorClass<RendererCreateError>()(
+		'RendererCreateError',
+		{
+			message: Schema.String,
+			cause: Schema.Defect
+		},
+		{ description: 'Failed to create the OpenTUI CLI renderer.' }
+	)
+{}
 
 // Refresh cadence — fast enough to feel live for session create/kill
 // without flooding the CLI with `list-sessions` calls.
@@ -178,6 +197,12 @@ const isActive = (
 		onSome: (name) => name === row.name
 	});
 
+const stateContent = (state: PiAgentRunState) => {
+	if (state === 'working') return fg(WORKING)('working');
+	if (state === 'done') return fg(DONE)('done');
+	return dim(fg(MUTED)('idle'));
+};
+
 // ─── Navigation ──────────────────────────────────────────────────────────
 //
 // Navigation walks the latest sorted snapshot in `rowsRef`, finds the
@@ -221,7 +246,8 @@ const targetForDelta = (
 const buildBlock = (
 	renderer: CliRenderer,
 	row: SessionStatus,
-	isCurrent: boolean
+	isCurrent: boolean,
+	agentState: PiAgentRunState
 ): BoxRenderable => {
 	const block = new BoxRenderable(renderer, {
 		flexDirection: 'column',
@@ -230,19 +256,22 @@ const buildBlock = (
 
 	// Active blocks get a bold orange `▌` on every line plus a bold name;
 	// inactive blocks use a 2-space gutter and plain foreground for the
-	// headline element. Lines 2 and 3 are placeholders awaiting future
-	// per-session signals (description / state). `isCurrent` is supplied
-	// by the caller (rename-safe override) rather than read from `row`.
+	// headline element. Line 2 remains a placeholder for future
+	// per-session descriptions. Line 3 is the aggregate pi agent state
+	// for every pi pane in this zellij session (`working > done > idle`).
+	// `isCurrent` is supplied by the caller (rename-safe override) rather
+	// than read from `row`.
+	const renderedState = stateContent(agentState);
 	const lines = Bool.match(isCurrent, {
 		onTrue: () => ({
 			name: t`${fg(ACCENT)(MARKER)} ${bold(fg(FG)(row.name))}`,
 			desc: t`${fg(ACCENT)(MARKER)} ${dim(fg(MUTED)('{description}'))}`,
-			state: t`${fg(ACCENT)(MARKER)} ${dim(fg(MUTED)('{state}'))}`
+			state: t`${fg(ACCENT)(MARKER)} ${renderedState}`
 		}),
 		onFalse: () => ({
 			name: t`  ${fg(FG)(row.name)}`,
 			desc: t`  ${dim(fg(MUTED)('{description}'))}`,
-			state: t`  ${dim(fg(MUTED)('{state}'))}`
+			state: t`  ${renderedState}`
 		})
 	});
 
@@ -286,7 +315,11 @@ const main = Effect.gen(function* () {
 					);
 				}
 			}),
-		catch: (cause) => cause
+		catch: (cause) =>
+			new RendererCreateError({
+				message: 'Failed to create OpenTUI CLI renderer',
+				cause
+			})
 	}).pipe(Effect.orDie);
 
 	const list = new BoxRenderable(renderer, {
@@ -382,28 +415,54 @@ const main = Effect.gen(function* () {
 	// accumulated delta — mashing `ssss` ends up four rows below where
 	// you started in one CLI call, instead of queueing four. Held keys
 	// scroll naturally because each window flushes after its delay.
-	let pendingDelta = 0;
-	let flushTimer: ReturnType<typeof setTimeout> | undefined;
+	const navigationBufferRef = yield* Ref.make({
+		delta: 0,
+		flushScheduled: false
+	});
+	const flushHandle = yield* FiberHandle.make<void, never>();
+	const runFlush = yield* FiberHandle.runtime(flushHandle)<never>();
 
-	const flush = () => {
-		flushTimer = undefined;
-		const delta = pendingDelta;
-		pendingDelta = 0;
-		if (delta === 0) return;
-		runOnHandle(navigateBy(delta));
-	};
+	const flushBufferedNavigation = Effect.sleep(
+		Duration.millis(KEYPRESS_FLUSH_MS)
+	).pipe(
+		Effect.andThen(
+			Effect.gen(function* () {
+				const delta = yield* Ref.modify(
+					navigationBufferRef,
+					(state) => [
+						state.delta,
+						{ delta: 0, flushScheduled: false }
+					]
+				);
+				if (delta === 0) return;
+				runOnHandle(navigateBy(delta));
+			})
+		)
+	);
 
-	const onDirection = (direction: NavigationDirection) => {
-		pendingDelta += directionDelta(direction);
-		if (flushTimer === undefined) {
-			flushTimer = setTimeout(flush, KEYPRESS_FLUSH_MS);
-		}
-	};
+	const onDirection = (direction: NavigationDirection) =>
+		Effect.gen(function* () {
+			const shouldSchedule = yield* Ref.modify(
+				navigationBufferRef,
+				(state) => [
+					!state.flushScheduled,
+					{
+						delta: state.delta + directionDelta(direction),
+						flushScheduled: true
+					}
+				]
+			);
+			if (shouldSchedule) {
+				yield* Effect.sync(() => runFlush(flushBufferedNavigation));
+			}
+		});
+
+	const runInMainContext = Effect.runForkWith(yield* Effect.context<never>());
 
 	yield* Effect.sync(() => {
 		renderer.keyInput.on('keypress', (key: KeyEvent) => {
-			if (key.name === 's') onDirection('down');
-			else if (key.name === 'w') onDirection('up');
+			if (key.name === 's') runInMainContext(onDirection('down'));
+			else if (key.name === 'w') runInMainContext(onDirection('up'));
 		});
 	});
 
@@ -423,10 +482,18 @@ const main = Effect.gen(function* () {
 	const refresh = Effect.gen(function* () {
 		const rows = yield* fetchRows();
 		yield* Ref.set(rowsRef, rows);
+		const piRecords = yield* readResolvedAgentSessionStateRecords();
 		const current = yield* findCurrent();
 		yield* Ref.set(currentNameRef, current);
 		yield* replaceChildren(
-			rows.map((r) => buildBlock(renderer, r, isActive(current, r)))
+			rows.map((r) =>
+				buildBlock(
+					renderer,
+					r,
+					isActive(current, r),
+					aggregateRunStateForSession(r.name, piRecords)
+				)
+			)
 		);
 	}).pipe(
 		// Render the failure inside the bar itself rather than crashing

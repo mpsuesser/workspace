@@ -8,6 +8,7 @@
       "apps/*",
       "bindings/*",
       "dotconfig/*",
+      "dotconfig/pi/agent/extensions/pi-zellij-sessions-bar-integration",
       "runtime",
       "scratchpad"
     ],
@@ -36,7 +37,7 @@
     "install:dotconfig": "bun run --filter='*' install:dotconfig",
     "lint": "oxlint",
     "prepare": "effect-tsgo patch",
-    "test": "bun test apps bindings runtime scratchpad",
+    "test": "bun test",
     "typecheck": "tsgo -b"
   },
   "dependencies": {

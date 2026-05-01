@@ -35,6 +35,7 @@
         "@workspace/runtime": "workspace:*",
         "@workspace/zellij-binding": "workspace:*",
         "effect": "catalog:effect",
+        "pi-zellij-sessions-bar-integration": "workspace:*",
       },
     },
     "bindings/ghostty": {
@@ -140,6 +141,15 @@
       "dependencies": {
         "effect": "catalog:effect",
         "effect-pi": "link:effect-pi",
+      },
+    },
+    "dotconfig/pi/agent/extensions/pi-zellij-sessions-bar-integration": {
+      "name": "pi-zellij-sessions-bar-integration",
+      "version": "0.0.0",
+      "dependencies": {
+        "@workspace/runtime": "workspace:*",
+        "@workspace/zellij-binding": "workspace:*",
+        "effect": "catalog:effect",
       },
     },
     "dotconfig/presenterm": {
@@ -615,6 +625,8 @@
     "path-key": ["path-key@3.1.1", "", {}, "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="],
 
     "peek-readable": ["peek-readable@4.1.0", "", {}, "sha512-ZI3LnwUv5nOGbQzD9c2iDG6toheuXSZP5esSHBjopsXH4dg19soufvpUGA3uohi5anFtGb2lhAVdHzH6R/Evvg=="],
+
+    "pi-zellij-sessions-bar-integration": ["pi-zellij-sessions-bar-integration@workspace:dotconfig/pi/agent/extensions/pi-zellij-sessions-bar-integration"],
 
     "picomatch": ["picomatch@4.0.4", "", {}, "sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A=="],
 

@@ -4,6 +4,7 @@
   "exclude": ["node_modules", ".references"],
   "references": [
     { "path": "apps/hx-wrapped" },
+    { "path": "apps/zellij-vertical-sessions-bar" },
     { "path": "bindings/ghostty" },
     { "path": "bindings/hammerspoon" },
     { "path": "bindings/helix" },
@@ -12,6 +13,9 @@
     { "path": "bindings/tmux" },
     { "path": "bindings/zellij" },
     { "path": "runtime" },
+    {
+      "path": "dotconfig/pi/agent/extensions/pi-zellij-sessions-bar-integration"
+    },
     { "path": "scratchpad" }
   ]
 }
