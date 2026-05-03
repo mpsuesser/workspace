@@ -11,8 +11,10 @@ return {
     opts = {
       keymap = {
         preset = 'default',
-        -- Default uses <C-space> to show, <C-y> to accept, <C-e> to cancel,
-        -- <C-n>/<C-p> or <Tab>/<S-Tab> to navigate
+        -- Keep blink's defaults, but make the visible completion menu behave
+        -- like most editors: Enter or Tab accepts the selected item.
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
