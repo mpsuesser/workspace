@@ -1,0 +1,27 @@
+# oxc/no-const-enum
+
+## What it does
+
+Disallow TypeScript `const enum`
+
+### Why is this bad?
+
+Const enums are enums that should be inlined at use sites.
+Const enums are not supported by bundlers and are incompatible with the isolatedModules mode.
+Their use can lead to import nonexistent values (because const enums are erased).
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```ts
+const enum Color {
+  Red,
+  Green,
+  Blue,
+}
+```
+
+## Version
+
+This rule was added in v0.4.2.

@@ -1,0 +1,34 @@
+# eslint/no-array-constructor
+
+## What it does
+
+Disallows creating arrays with the `Array` constructor.
+
+### Why is this bad?
+
+Use of the `Array` constructor to construct a new array is generally
+discouraged in favor of array literal notation because of the
+single-argument pitfall and because the `Array` global may be redefined.
+The exception is when the `Array` constructor is used to intentionally
+create sparse arrays of a specified size by giving the constructor a
+single numeric argument.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```javascript
+let arr = new Array();
+```
+
+Examples of **correct** code for this rule:
+
+```javascript
+let arr = [];
+let arr2 = Array.from(iterable);
+let arr3 = new Array(9);
+```
+
+## Version
+
+This rule was added in v0.0.3.
