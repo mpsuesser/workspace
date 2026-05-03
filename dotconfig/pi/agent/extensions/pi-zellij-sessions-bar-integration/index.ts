@@ -15,6 +15,7 @@ import * as PaneId from '@workspace/zellij-binding/schemas/PaneId';
 import { ZellijPane, ZellijSession } from '@workspace/zellij-binding';
 import { Effect, Ref } from 'effect';
 import * as Cause from 'effect/Cause';
+import * as Exit from 'effect/Exit';
 import * as ManagedRuntime from 'effect/ManagedRuntime';
 import * as Option from 'effect/Option';
 import * as Schedule from 'effect/Schedule';
@@ -80,6 +81,26 @@ const isPrintableInput = (data: string): boolean => {
 export default async function (pi: PiExtensionApi): Promise<void> {
 	const runtime = ManagedRuntime.make(WorkspaceRuntimeLayer);
 	const refs = await runtime.runPromise(makeRuntimeRefs());
+	let isShuttingDown = false;
+
+	const runPromiseIgnoringInterrupts = async <A, E>(
+		effect: Effect.Effect<
+			A,
+			E,
+			ManagedRuntime.ManagedRuntime.Services<typeof runtime>
+		>
+	): Promise<Option.Option<A>> => {
+		const exit = await runtime.runPromiseExit(effect);
+		if (Exit.isSuccess(exit)) return Option.some(exit.value);
+		if (Cause.hasInterruptsOnly(exit.cause)) return Option.none();
+		throw Cause.squash(exit.cause);
+	};
+
+	const disposeRuntimeIgnoringInterrupts = async (): Promise<void> => {
+		const exit = await Effect.runPromiseExit(runtime.disposeEffect);
+		if (Exit.isSuccess(exit) || Cause.hasInterruptsOnly(exit.cause)) return;
+		throw Cause.squash(exit.cause);
+	};
 
 	const publishStateEffect = (state: PiAgentRunState) =>
 		Effect.gen(function* () {
@@ -95,38 +116,42 @@ export default async function (pi: PiExtensionApi): Promise<void> {
 		});
 
 	const publishState = (state: PiAgentRunState) =>
-		runtime.runPromise(publishStateEffect(state));
+		isShuttingDown
+			? Promise.resolve(Option.none<void>())
+			: runPromiseIgnoringInterrupts(publishStateEffect(state));
 
 	pi.on('session_start', async (_event, ctx) => {
-		const identity = await runtime.runPromise(
-			Effect.gen(function* () {
-				const session = yield* ZellijSession.Service;
-				const pane = yield* ZellijPane.Service;
-				const fingerprint = yield* session.fingerprintCurrent();
-				const paneId = yield* pane.currentId();
-				const pid = yield* Effect.sync(() => process.pid);
+		const identity = Option.flatten(
+			await runPromiseIgnoringInterrupts(
+				Effect.gen(function* () {
+					const session = yield* ZellijSession.Service;
+					const pane = yield* ZellijPane.Service;
+					const fingerprint = yield* session.fingerprintCurrent();
+					const paneId = yield* pane.currentId();
+					const pid = yield* Effect.sync(() => process.pid);
 
-				const identity = Option.flatMap(
-					fingerprint,
-					(sessionFingerprint) =>
-						Option.map(
-							paneId,
-							(paneId) =>
-								new PiAgentSessionIdentity({
-									sessionFingerprint,
-									paneKey: PaneId.toCliArg(paneId),
-									pid
-								})
-						)
-				);
-				yield* Ref.set(refs.identity, identity);
-				return identity;
-			}).pipe(
-				Effect.catchTag('ZellijError', (error) =>
-					Effect.logDebug(
-						'pi-zellij-sessions-bar-integration: disabled outside zellij',
-						{ error }
-					).pipe(Effect.as(Option.none<PiAgentSessionIdentity>()))
+					const identity = Option.flatMap(
+						fingerprint,
+						(sessionFingerprint) =>
+							Option.map(
+								paneId,
+								(paneId) =>
+									new PiAgentSessionIdentity({
+										sessionFingerprint,
+										paneKey: PaneId.toCliArg(paneId),
+										pid
+									})
+							)
+					);
+					yield* Ref.set(refs.identity, identity);
+					return identity;
+				}).pipe(
+					Effect.catchTag('ZellijError', (error) =>
+						Effect.logDebug(
+							'pi-zellij-sessions-bar-integration: disabled outside zellij',
+							{ error }
+						).pipe(Effect.as(Option.none<PiAgentSessionIdentity>()))
+					)
 				)
 			)
 		);
@@ -156,11 +181,20 @@ export default async function (pi: PiExtensionApi): Promise<void> {
 					if (currentState === 'done' && isPrintableInput(data)) {
 						yield* publishStateEffect('idle');
 					}
-				})
+				}).pipe(
+					Effect.catchCause((cause) =>
+						Cause.hasInterruptsOnly(cause)
+							? Effect.void
+							: logStateWriteFailure(
+									'terminal input state reset',
+									cause
+								)
+					)
+				)
 			);
 			return undefined;
 		});
-		await runtime.runPromise(
+		await runPromiseIgnoringInterrupts(
 			Ref.set(refs.offTerminalInput, Option.some(offTerminalInput))
 		);
 	});
@@ -174,7 +208,8 @@ export default async function (pi: PiExtensionApi): Promise<void> {
 	});
 
 	pi.on('session_shutdown', async () => {
-		await runtime.runPromise(
+		isShuttingDown = true;
+		await runPromiseIgnoringInterrupts(
 			Effect.gen(function* () {
 				const offTerminalInput = yield* Ref.get(refs.offTerminalInput);
 				yield* Option.match(offTerminalInput, {
@@ -196,6 +231,6 @@ export default async function (pi: PiExtensionApi): Promise<void> {
 				yield* Ref.set(refs.currentState, 'idle');
 			})
 		);
-		await runtime.dispose();
+		await disposeRuntimeIgnoringInterrupts();
 	});
 }
