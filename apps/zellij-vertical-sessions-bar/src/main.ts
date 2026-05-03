@@ -89,7 +89,7 @@ const ACCENT = '#ffb86c';
 const MUTED = '#6272a4';
 const ERROR = '#ff5555';
 const WORKING = '#50fa7b';
-const DONE = '#f1fa8c';
+const DONE = '#ffd700';
 const MARKER = '▌';
 
 class RendererCreateError
