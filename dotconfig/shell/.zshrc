@@ -151,6 +151,5 @@ wt() {
     echo "$result"
   fi
 }
-# >>> littlebird wt
 
 eval "$(direnv hook zsh)"
