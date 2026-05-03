@@ -31,7 +31,7 @@ require("bunny"):setup({
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
-		{ key = "o", path = "~/repos/OpenTentacle" },
+		{ key = "o", path = "~/repos/octopus" },
 		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "e", path = "~/repos/ea" },
 		{ key = "m", path = "~/repos/multitude" },
