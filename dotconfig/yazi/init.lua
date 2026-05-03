@@ -18,6 +18,7 @@ togglepane:entry("min-preview")
 require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
+		{ key = "i", path = "~/repos/ideas" },
 		{ key = "n", path = "~/repos/nonaspace" },
 		{ key = "w", path = "~/repos/workspace" },
 		{ key = "a", path = "~/repos/workspace/dotconfig/shell/aliases" },
@@ -32,14 +33,15 @@ require("bunny"):setup({
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
 		{ key = "o", path = "~/repos/octopus" },
+		{ key = "e", path = "~/repos/octopus" },
 		{ key = "c", path = "~/repos/curationspace" },
-		{ key = "e", path = "~/repos/ea" },
 		{ key = "m", path = "~/repos/multitude" },
 
 		{ key = { ".", "c" }, path = "~/.config" },
 		{ key = { ".", "s" }, path = "~/.state" },
 		{ key = { ".", "b" }, path = "~/.bin" },
 
+		{ key = "d", path = "~/Desktop" },
 		{ key = "D", path = "~/Downloads" },
 	},
 
