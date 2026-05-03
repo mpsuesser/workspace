@@ -41,7 +41,7 @@ export default makeExtension({
 
 				return {
 					block: true,
-					reason: "Read-only mode is active. Press Option+P and toggle read-only off.",
+					reason: "Read-only mode is active. Press Tab and toggle read-only off.",
 				};
 			}),
 		),

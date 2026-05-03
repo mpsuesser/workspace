@@ -21,7 +21,7 @@
 
   "tui.input.newLine": ["shift+enter"],
   "tui.input.submit": ["enter"],
-  "tui.input.tab": ["tab"],
+  "tui.input.tab": [],
 
   "tui.editor.yank": ["ctrl+y"],
   "tui.editor.yankPop": ["alt+y"],

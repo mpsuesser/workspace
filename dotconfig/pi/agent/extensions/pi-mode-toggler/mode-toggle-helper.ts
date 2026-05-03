@@ -3,13 +3,37 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
 
-import type {
-	BeforeAgentStartEvent,
-	ExtensionAPI,
-	ExtensionContext,
-} from "@mariozechner/pi-coding-agent";
-
 export type ModePersistenceScope = "none" | "session" | "project" | "branch" | "global";
+
+export interface ModePiApi {
+	readonly events: {
+		emit(eventName: string, value: unknown): void;
+	};
+}
+
+export interface ModeSessionEntry {
+	readonly type: string;
+	readonly message?: {
+		readonly role?: string;
+	};
+}
+
+export interface ModeContext {
+	readonly cwd: string;
+	readonly sessionManager: {
+		getSessionDir(): string;
+		getSessionId(): string;
+		getBranch(): ReadonlyArray<ModeSessionEntry>;
+	};
+	readonly ui: {
+		setStatus(key: string, value: string | undefined): void;
+		notify(message: string, type?: "info" | "warning" | "error"): void;
+	};
+}
+
+export interface ModeBeforeAgentStartEvent {
+	readonly systemPrompt: string;
+}
 
 export interface ModePersistenceOptions {
 	scope: ModePersistenceScope;
@@ -22,7 +46,7 @@ export interface ModeRegistration {
 	description?: string;
 	persistenceScope: ModePersistenceScope;
 	isEnabled: () => boolean;
-	setEnabled: (enabled: boolean, ctx: ExtensionContext) => void;
+	setEnabled: (enabled: boolean, ctx: ModeContext) => void;
 }
 
 export interface CreateModeToggleOptions {
@@ -34,7 +58,7 @@ export interface CreateModeToggleOptions {
 	enabledLabel?: string;
 	disabledLabel?: string;
 	persistence?: ModePersistenceOptions;
-	onChange?: (enabled: boolean, ctx: ExtensionContext) => void;
+	onChange?: (enabled: boolean, ctx: ModeContext) => void;
 }
 
 export interface ModeToggle {
@@ -45,13 +69,13 @@ export interface ModeToggle {
 	readonly statusText: string;
 	readonly persistenceScope: ModePersistenceScope;
 	isEnabled(): boolean;
-	setEnabled(enabled: boolean, ctx: ExtensionContext): void;
-	toggle(ctx: ExtensionContext): void;
-	syncStatus(ctx: ExtensionContext): void;
-	onSessionStart(ctx: ExtensionContext): void;
-	onSessionShutdown(ctx: ExtensionContext): void;
+	setEnabled(enabled: boolean, ctx: ModeContext): void;
+	toggle(ctx: ModeContext): void;
+	syncStatus(ctx: ModeContext): void;
+	onSessionStart(ctx: ModeContext): void;
+	onSessionShutdown(ctx: ModeContext): void;
 	beforeAgentStart(
-		event: Pick<BeforeAgentStartEvent, "systemPrompt">,
+		event: ModeBeforeAgentStartEvent,
 		systemPrompt?: string,
 	):
 		| {
@@ -135,7 +159,7 @@ function resolveGitBranch(cwd: string): string | undefined {
 function resolveStateFile(
 	modeId: string,
 	scope: ModePersistenceScope,
-	ctx: ExtensionContext,
+	ctx: ModeContext,
 ): string | undefined {
 	const projectStateRoot = join(ctx.sessionManager.getSessionDir(), PROJECT_STATE_ROOT);
 	const encodedModeId = `${encodePathSegment(modeId)}.json`;
@@ -166,7 +190,7 @@ function resolveStateFile(
 function readPersistedState(
 	modeId: string,
 	scope: ModePersistenceScope,
-	ctx: ExtensionContext,
+	ctx: ModeContext,
 ): boolean | undefined {
 	const filePath = resolveStateFile(modeId, scope, ctx);
 	if (!filePath) return undefined;
@@ -185,7 +209,7 @@ function writePersistedState(
 	modeId: string,
 	scope: ModePersistenceScope,
 	enabled: boolean,
-	ctx: ExtensionContext,
+	ctx: ModeContext,
 ): void {
 	const filePath = resolveStateFile(modeId, scope, ctx);
 	if (!filePath) return;
@@ -214,7 +238,7 @@ export function formatModeLabel(name: string, color: string): string {
 }
 
 export function createModeToggle(
-	pi: ExtensionAPI,
+	pi: ModePiApi,
 	options: CreateModeToggleOptions,
 ): ModeToggle {
 	const name = options.name ?? options.id;
@@ -248,11 +272,11 @@ export function createModeToggle(
 		pi.events.emit(MODE_REGISTER_EVENT, registration);
 	};
 
-	const syncStatus = (ctx: ExtensionContext): void => {
+	const syncStatus = (ctx: ModeContext): void => {
 		ctx.ui.setStatus(options.id, enabled ? statusText : undefined);
 	};
 
-	const restorePersistedState = (ctx: ExtensionContext): void => {
+	const restorePersistedState = (ctx: ModeContext): void => {
 		if (persistenceScope === "none") return;
 		const persistedEnabled = readPersistedState(options.id, persistenceScope, ctx);
 		if (typeof persistedEnabled === "boolean") {
@@ -260,7 +284,7 @@ export function createModeToggle(
 		}
 	};
 
-	const persistState = (ctx: ExtensionContext): void => {
+	const persistState = (ctx: ModeContext): void => {
 		if (persistenceScope === "none") return;
 		writePersistedState(options.id, persistenceScope, enabled, ctx);
 	};
@@ -304,7 +328,7 @@ export function createModeToggle(
 			syncStatus(ctx);
 			lastPromptEnabled = ctx.sessionManager
 				.getBranch()
-				.some((entry) => entry.type === "message" && entry.message.role === "user")
+				.some((entry) => entry.type === "message" && entry.message?.role === "user")
 					? enabled
 					: undefined;
 		},

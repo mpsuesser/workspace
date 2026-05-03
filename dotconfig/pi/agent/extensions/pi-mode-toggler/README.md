@@ -3,7 +3,7 @@
 Mode toggler package for pi.
 
 Provides:
-- an overlay mode toggler on `alt+p`
+- an overlay mode toggler on `tab`
 - an empty-editor spacebar shortcut to open the toggler
 - shared mode registration helpers for other extensions
 

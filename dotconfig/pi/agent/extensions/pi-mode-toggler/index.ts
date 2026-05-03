@@ -1,5 +1,4 @@
 import { Effect, Option } from "effect";
-import type { ExtensionContext } from "@mariozechner/pi-coding-agent";
 import {
 	Input,
 	fuzzyFilter,
@@ -20,6 +19,7 @@ import {
 	MODE_REGISTER_EVENT,
 	MODE_UNREGISTER_EVENT,
 	getRegisteredModes,
+	type ModeContext,
 	type ModeRegistration,
 } from "./mode-toggle-helper.ts";
 
@@ -27,8 +27,11 @@ export {
 	createModeToggle,
 	formatModeLabel,
 	type CreateModeToggleOptions,
+	type ModeBeforeAgentStartEvent,
+	type ModeContext,
 	type ModePersistenceOptions,
 	type ModePersistenceScope,
+	type ModePiApi,
 	type ModeRegistration,
 	type ModeToggle,
 } from "./mode-toggle-helper.ts";
@@ -47,6 +50,45 @@ const BORDER = {
 	horizontal: "═",
 	vertical: "║",
 } as const;
+
+interface ModeSelectorTui {
+	requestRender(): void;
+}
+
+interface ModeSelectorTheme {
+	fg(color: string, text: string): string;
+	bold(text: string): string;
+}
+
+interface ModeSelectorComponent {
+	focused: boolean;
+	render(width: number): string[];
+	invalidate(): void;
+	handleInput(data: string): void;
+}
+
+type ModeSelectorSize = number | `${number}%`;
+
+interface ModeSelectorContext extends ModeContext {
+	readonly ui: ModeContext["ui"] & {
+		custom<T>(
+			factory: (
+				tui: ModeSelectorTui,
+				theme: ModeSelectorTheme,
+				keybindings: unknown,
+				done: (result: T) => void,
+			) => ModeSelectorComponent,
+			options: {
+				overlay?: boolean;
+				overlayOptions?: {
+					width?: ModeSelectorSize;
+					minWidth?: number;
+					maxHeight?: ModeSelectorSize;
+				};
+			},
+		): Promise<T>;
+	};
+}
 
 function registerMode(mode: ModeRegistration): void {
 	modes.set(mode.id, mode);
@@ -114,14 +156,14 @@ function renderModeLine(
 	return selected ? `${SELECTED_ROW_BG}${padded}${RESET_BG}` : padded;
 }
 
-async function showModeSelector(ctx: ExtensionContext): Promise<void> {
+async function showModeSelector(ctx: ModeSelectorContext): Promise<void> {
 	const availableModes = getModes();
 	if (availableModes.length === 0) {
 		ctx.ui.notify("No modes registered", "warning");
 		return;
 	}
 
-	await ctx.ui.custom(
+	await ctx.ui.custom<void>(
 		(tui, theme, _keybindings, done) => {
 			const searchInput = new Input();
 			const kb = getKeybindings();
@@ -279,7 +321,7 @@ export default makeExtension({
 	}),
 	shortcuts: [
 		makeShortcut({
-			key: "alt+p",
+			key: "tab",
 			description: Option.some("Toggle modes"),
 			handler: openModeSelector,
 		}),
