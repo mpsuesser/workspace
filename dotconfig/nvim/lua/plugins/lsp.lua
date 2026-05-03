@@ -17,8 +17,10 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
-      -- Servers are installed on-demand via :Mason
-      automatic_installation = false,
+      -- Keep TypeScript/JavaScript support available out of the box.
+      ensure_installed = { 'vtsls' },
+      -- Servers are configured/enabled below so blink capabilities are applied.
+      automatic_enable = false,
     },
   },
 
@@ -71,9 +73,6 @@ return {
         end,
       })
 
-      -- Setup servers that are installed
-      -- Users should install servers via :Mason and add them here
-      local lspconfig = require('lspconfig')
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
       -- Try to enhance capabilities with blink.cmp if available
@@ -82,25 +81,35 @@ return {
         capabilities = blink.get_lsp_capabilities(capabilities)
       end
 
-      -- Auto-setup any mason-installed servers
-      -- mason-lspconfig populates a list; we iterate and configure each
-      local installed = require('mason-lspconfig').get_installed_servers()
-      for _, server_name in ipairs(installed) do
-        lspconfig[server_name].setup({
+      local servers = {
+        vtsls = {
+          settings = {
+            vtsls = {
+              autoUseWorkspaceTsdk = true,
+            },
+          },
+        },
+      }
+
+      local function setup_server(server_name, server_opts)
+        vim.lsp.config(server_name, vim.tbl_deep_extend('force', {
           capabilities = capabilities,
-        })
+        }, server_opts or {}))
+        vim.lsp.enable(server_name)
       end
 
-      -- Add server-specific overrides here:
-      -- lspconfig.lua_ls.setup({
-      --   capabilities = capabilities,
-      --   settings = {
-      --     Lua = {
-      --       workspace = { checkThirdParty = false },
-      --       telemetry = { enable = false },
-      --     },
-      --   },
-      -- })
+      -- Always configure vtsls; mason-lspconfig ensures it is installed.
+      setup_server('vtsls', servers.vtsls)
+
+      -- Auto-setup any other mason-installed servers.
+      local installed = require('mason-lspconfig').get_installed_servers()
+      for _, server_name in ipairs(installed) do
+        if not servers[server_name] then
+          setup_server(server_name)
+        end
+      end
+
+      -- Add server-specific overrides here by extending `servers` above.
     end,
   },
 }
