@@ -11,9 +11,8 @@ return {
     opts = {
       keymap = {
         preset = 'default',
-        -- Keep blink's defaults, but make the visible completion menu behave
-        -- like most editors: Enter or Tab accepts the selected item.
-        ['<CR>'] = { 'accept', 'fallback' },
+        -- Keep blink's defaults, but make Tab accept the selected completion.
+        -- Enter is intentionally unmapped so it keeps normal newline behavior.
         ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
       },
       sources = {
