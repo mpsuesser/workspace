@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+set -u
+
+usage() {
+	printf 'usage: %s <session-name>\n' "${0##*/}" >&2
+}
+
+trim_leading_space() {
+	local value=$1
+	printf '%s' "${value#"${value%%[![:space:]]*}"}"
+}
+
+session_name=${1-}
+if [ -z "$session_name" ]; then
+	usage
+	exit 2
+fi
+
+case "$session_name" in
+	.|..|*/*)
+		printf 'refusing unsafe zellij session name: %s\n' "$session_name" >&2
+		exit 2
+		;;
+esac
+
+find_server_pids() {
+	ps -axo pid=,command= | while IFS= read -r line; do
+		line=$(trim_leading_space "$line")
+		pid=${line%%[[:space:]]*}
+		command=${line#"$pid"}
+		command=$(trim_leading_space "$command")
+
+		case "$command" in
+			*'/zellij --server '* | 'zellij --server '*)
+				socket_path=${command##* --server }
+				if [ "${socket_path##*/}" = "$session_name" ]; then
+					printf '%s\n' "$pid"
+				fi
+				;;
+		esac
+	done
+}
+
+wait_for_pids_to_exit() {
+	local deadline_seconds=${1:-3}
+	local pids
+	local waited=0
+
+	while [ "$waited" -lt "$deadline_seconds" ]; do
+		pids=$(find_server_pids | tr '\n' ' ')
+		[ -z "$pids" ] && return 0
+		sleep 1
+		waited=$((waited + 1))
+	done
+
+	return 1
+}
+
+remove_resurrection_cache() {
+	local cache_root="$HOME/Library/Caches/org.Zellij-Contributors.Zellij"
+	[ -d "$cache_root" ] || return 0
+	find "$cache_root" -path "*/session_info/$session_name" -type d -prune -exec rm -rf {} +
+}
+
+# Normal path: asks zellij to kill live sessions and delete resurrectable cache.
+zellij delete-session --force "$session_name" >/dev/null 2>&1 || true
+
+# Broken/orphan path: sometimes a zellij server keeps running after its socket
+# disappears. `delete-session --force` can no longer reach it, and the server
+# rewrites the resurrection cache every few seconds. Kill the matching server
+# process by its `--server .../<session-name>` argv, then delete the cache again.
+server_pids=$(find_server_pids | tr '\n' ' ')
+if [ -n "$server_pids" ]; then
+	# shellcheck disable=SC2086 # intentional word splitting of numeric PIDs
+	kill -TERM $server_pids 2>/dev/null || true
+	if ! wait_for_pids_to_exit 3; then
+		server_pids=$(find_server_pids | tr '\n' ' ')
+		if [ -n "$server_pids" ]; then
+			# shellcheck disable=SC2086 # intentional word splitting of numeric PIDs
+			kill -KILL $server_pids 2>/dev/null || true
+			wait_for_pids_to_exit 2 || true
+		fi
+	fi
+fi
+
+zellij delete-session --force "$session_name" >/dev/null 2>&1 || true
+remove_resurrection_cache
+
+if find_server_pids | grep -q .; then
+	printf 'failed: zellij server for %s is still running\n' "$session_name" >&2
+	exit 1
+fi
+
+if zellij list-sessions -n 2>/dev/null | awk '{ print $1 }' | grep -Fxq "$session_name"; then
+	printf 'failed: zellij session %s is still listed\n' "$session_name" >&2
+	exit 1
+fi
+
+printf 'deleted zellij session: %s\n' "$session_name"

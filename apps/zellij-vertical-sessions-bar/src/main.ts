@@ -164,7 +164,7 @@ const activeStrategy: SortStrategy = byCreationTime;
 const fetchRows = Effect.fn('SessionsBar.fetchRows')(function* () {
 	const zellij = yield* Zellij.Service;
 	const rows = yield* zellij.listSessionsDetailed();
-	return activeStrategy(rows);
+	return activeStrategy(Arr.filter(rows, (row) => !row.isExited));
 });
 
 // ─── Active-session detection (rename-safe via socket inode) ────────────

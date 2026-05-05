@@ -41,9 +41,10 @@ enter = "actions:switch"
 # kill: terminate a running session but keep it on disk as resurrectable
 # (it'll show as EXITED in `zellij list-sessions`).
 ctrl-d = ["actions:kill", "reload_source"]
-# delete: purge from disk entirely. `--force` also kills it first if it's
-# still running, so this works on both live and exited sessions — handy when
-# iterating on config and accumulating stale sessions.
+# delete: purge from disk entirely. The action uses a hard-delete wrapper
+# because a zellij server can occasionally survive after its IPC socket is
+# gone; plain `zellij delete-session --force` then removes the cache once, but
+# the orphaned server recreates it on the next resurrection save.
 ctrl-x = ["actions:delete", "reload_source"]
 
 [actions.switch]
@@ -61,6 +62,6 @@ command = "zellij kill-session '{split: :0}'"
 mode = "fork"
 
 [actions.delete]
-description = "Delete the selected session (purge from disk, force-kill if running)"
-command = "zellij delete-session --force '{split: :0}'"
+description = "Delete the selected session (purge from disk, force-kill if running/orphaned)"
+command = "/Users/m/repos/workspace/dotconfig/television/scripts/delete-zellij-session-hard '{split: :0}'"
 mode = "fork"
