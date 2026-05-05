@@ -423,8 +423,9 @@ class SideChatOverlay implements Focusable
 
 export default function(pi: ExtensionAPI)
 {
-	// Periodic cleanup
-	setInterval(() =>
+	// Periodic cleanup. Do not let this timer keep `pi -p` alive after print mode
+	// has finished.
+	const cleanupInterval = setInterval(() =>
 	{
 		const now = Date.now();
 		for (const [id, chat] of activeChats)
@@ -435,6 +436,17 @@ export default function(pi: ExtensionAPI)
 			}
 		}
 	}, 60000);
+	cleanupInterval.unref?.();
+
+	pi.on('session_shutdown', async () =>
+	{
+		clearInterval(cleanupInterval);
+		for (const chat of activeChats.values())
+		{
+			closeChat(chat);
+		}
+		activeChats.clear();
+	});
 
 	async function openSideChatOverlay(
 		chat: SideChat,

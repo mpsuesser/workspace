@@ -28,6 +28,8 @@ import { parseSearchResumePath, quoteCommandArg } from "./resume";
 export default function sessionSearch(pi: ExtensionAPI): void {
 	let indexReady = false;
 	let indexing = false;
+	let disposed = false;
+	let indexTimer: ReturnType<typeof setTimeout> | undefined;
 
 	// Pending context injection — set when user picks "New + Context",
 	// consumed when the new session starts via session_switch.
@@ -35,27 +37,43 @@ export default function sessionSearch(pi: ExtensionAPI): void {
 		null;
 
 	async function ensureIndex(ctx?: ExtensionContext) {
-		if (indexing) return;
+		if (disposed || indexing) return;
 		indexing = true;
+
+		const ui = ctx?.hasUI ? ctx.ui : undefined;
+		const setStatus = (message: string | undefined) => {
+			if (!disposed) ui?.setStatus("session-search", message);
+		};
 
 		try {
 			await updateIndex((msg) => {
-				ctx?.ui?.setStatus("session-search", `🔍 ${msg}`);
+				setStatus(`🔍 ${msg}`);
 			});
 			indexReady = true;
 		} catch {
 			// will retry on next search
 		} finally {
-			ctx?.ui?.setStatus("session-search", undefined);
+			setStatus(undefined);
 			indexing = false;
 		}
 	}
 
 	pi.on("session_start", async (_event, ctx) => {
-		setTimeout(() => ensureIndex(ctx), 100);
+		disposed = false;
+		if (!ctx.hasUI) return;
+		if (indexTimer) clearTimeout(indexTimer);
+		indexTimer = setTimeout(() => {
+			indexTimer = undefined;
+			void ensureIndex(ctx);
+		}, 100);
 	});
 
 	pi.on("session_shutdown", async () => {
+		disposed = true;
+		if (indexTimer) {
+			clearTimeout(indexTimer);
+			indexTimer = undefined;
+		}
 		closeDb();
 	});
 
