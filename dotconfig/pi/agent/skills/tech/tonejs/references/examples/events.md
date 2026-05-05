@@ -2,7 +2,7 @@
 
 Category: Sequencing / Timing
 
-Tone's Event classes ([Tone.ToneEvent](../classes/ToneEvent.md), [Tone.Loop](../classes/Loop.md), [Tone.Part](../classes/Part.md) and [Tone.Sequence](../classes/Sequence.md)) simplify scheduling events along the Transport. Each class abstracts away calls to [Transport.schedule](../classes/Transport.schedule) or [scheduleRepeat](../classes/Transport.scheduleRepeat) and lets you create precise, rhythmic events which are startable, stoppable and loopable. (note that ToneEvent was called [Event](../classes/Event.md) before Tone.js 14.x)
+Tone's Event classes ([Tone.ToneEvent](../classes/ToneEvent.md), [Tone.Loop](../classes/Loop.md), [Tone.Part](../classes/Part.md) and [Tone.Sequence](../classes/Sequence.md)) simplify scheduling events along the Transport. Each class abstracts away calls to [Transport.schedule](../variables/Transport.md) or [scheduleRepeat](../variables/Transport.md) and lets you create precise, rhythmic events which are startable, stoppable and loopable. (note that ToneEvent was called [Event](../classes/ToneEvent.md) before Tone.js 14.x)
 
 ## Code
 
