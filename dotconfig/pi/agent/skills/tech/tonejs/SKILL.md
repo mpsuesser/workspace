@@ -13,7 +13,8 @@ When working with Tone.js, read the relevant local reference first. The files in
 
 - Browser audio must start from a user gesture. Call `await Tone.start()` in a click/key handler before playing sound.
 - Dispose nodes you create (`synth.dispose()`, `effect.dispose()`, etc.) when UI components unmount or sounds are no longer needed.
-- Schedule with Tone's audio clock (`Tone.now()`, `Tone.Transport`, `triggerAttackRelease(..., time)`) instead of `setTimeout` for musical timing.
+- Schedule with Tone's audio clock (`Tone.now()`, `Tone.getTransport()` / `Tone.Transport`, `triggerAttackRelease(..., time)`) instead of `setTimeout` for musical timing.
+- In new code, prefer `Tone.getTransport()` over the deprecated global `Tone.Transport`; many official examples still use `Tone.Transport`.
 - In TypeScript modules, prefer `import * as Tone from "tone"`; examples from the Tone.js repo often use a global `Tone` object in browser HTML.
 
 ## Minimal example
@@ -40,6 +41,7 @@ async function play() {
 - [Install/import and hello world](references/readme.md)
 - [Start audio after a user gesture](references/functions/start.md)
 - [Current AudioContext time](references/functions/now.md)
+- [Transport getter](references/functions/getTransport.md)
 - [Wait for samples/buffers to load](references/functions/loaded.md)
 - [Synth](references/classes/Synth.md)
 - [PolySynth](references/classes/PolySynth.md)
@@ -71,5 +73,5 @@ async function play() {
 - Simple note or synth sound: read [Synth](references/classes/Synth.md) and [start](references/functions/start.md).
 - Chords/polyphony: read [PolySynth](references/classes/PolySynth.md).
 - Sample playback: read [Sampler](references/classes/Sampler.md), [Player](references/classes/Player.md), and [loaded](references/functions/loaded.md).
-- Rhythms/sequencing: read [Transport](references/variables/Transport.md), [Sequence](references/classes/Sequence.md), [Part](references/classes/Part.md), and [Loop](references/classes/Loop.md).
+- Rhythms/sequencing: read [getTransport](references/functions/getTransport.md), [Transport](references/variables/Transport.md), [Sequence](references/classes/Sequence.md), [Part](references/classes/Part.md), and [Loop](references/classes/Loop.md).
 - Effects chain: read the effect class, then connect with `.connect()`, `.chain()`, or `.toDestination()`.
