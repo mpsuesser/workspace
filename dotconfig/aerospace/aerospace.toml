@@ -108,19 +108,28 @@ alt-semicolon = 'reload-config'
 alt-quote = 'flatten-workspace-tree'
 # alt-shift-s = 'exec-and-forget screencapture -i -c'
 
-f8 = 'mode leader'
+alt-a = 'focus-monitor 1'
+alt-s = 'focus-monitor 2'
+alt-d = 'focus-monitor 3'
 
-[mode.leader.binding]
-a = ['focus-monitor 1', 'mode main']
-s = ['focus-monitor 2', 'mode main']
-d = ['focus-monitor 3', 'mode main']
+alt-m = 'workspace monitoring'
+alt-e = 'workspace editor'
+alt-b = 'workspace browser'
+alt-shift-m = 'workspace main'
 
-m = ['workspace monitoring', 'mode main']
-e = ['workspace editor', 'mode main']
-b = ['workspace browser', 'mode main']
-shift-m = ['workspace main', 'mode main']
-
-f8 = 'mode main'
+# f8 = 'mode leader'
+#
+# [mode.leader.binding]
+# a = ['focus-monitor 1', 'mode main']
+# s = ['focus-monitor 2', 'mode main']
+# d = ['focus-monitor 3', 'mode main']
+#
+# m = ['workspace monitoring', 'mode main']
+# e = ['workspace editor', 'mode main']
+# b = ['workspace browser', 'mode main']
+# shift-m = ['workspace main', 'mode main']
+#
+# f8 = 'mode main'
 
 [workspace-to-monitor-force-assignment]
 editor = 3
