@@ -17,20 +17,35 @@ default-root-container-layout = 'tiles' # tiles | accordion
 #               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
 
-# Mouse follows focus when focused monitor changes
-# Drop it from your config, if you don't like this behavior
-# Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
-persistent-workspaces = ["main", "display", "chrome"]
+persistent-workspaces = ["main", "monitoring", "browser", "editor"]
 
-# A callback that runs every time binding mode changes
 on-mode-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = ['layout floating', 'move-node-to-workspace main']
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = ['move-node-to-workspace editor']
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['move-node-to-workspace browser']
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace main']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['layout floating', 'move-node-to-workspace main']
 
 [key-mapping]
 preset = 'qwerty'
@@ -51,7 +66,6 @@ outer.bottom = 8
 outer.top = 8
 outer.right = 8
 
-
 # All possible keys:
 # - Letters.        a, b, c, ..., z
 # - Numbers.        0, 1, 2, ..., 9
@@ -67,47 +81,52 @@ outer.right = 8
 # All possible modifiers: cmd, alt, ctrl, shift
 
 [mode.main.binding]
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+ctrl-cmd-a = 'move left'
+ctrl-cmd-s = 'move down'
+ctrl-cmd-w = 'move up'
+ctrl-cmd-d = 'move right'
 
-alt-a = 'focus left'
-alt-s = 'focus down'
-alt-w = 'focus up'
-alt-d = 'focus right'
+ctrl-cmd-shift-a = 'join-with left'
+ctrl-cmd-shift-s = 'join-with down'
+ctrl-cmd-shift-w = 'join-with up'
+ctrl-cmd-shift-d = 'join-with right'
 
-# cmd-a = 'focus left'
-# cmd-s = 'focus down'
-# cmd-w = 'focus up'
-# cmd-d = 'focus right'
+ctrl-minus = 'resize smart -50'
+ctrl-equal = 'resize smart +50'
 
-alt-cmd-a = 'move left'
-alt-cmd-s = 'move down'
-alt-cmd-w = 'move up'
-alt-cmd-d = 'move right'
+ctrl-cmd-m = 'move-node-to-workspace monitoring'
+ctrl-cmd-e = 'move-node-to-workspace editor'
+ctrl-cmd-b = 'move-node-to-workspace browser'
+ctrl-cmd-shift-m = 'move-node-to-workspace main'
 
-alt-cmd-shift-a = 'join-with left'
-alt-cmd-shift-s = 'join-with down'
-alt-cmd-shift-w = 'join-with up'
-alt-cmd-shift-d = 'join-with right'
+ctrl-space = 'fullscreen'
 
-alt-minus = 'resize smart -50'
-alt-equal = 'resize smart +50'
-
-alt-1 = 'workspace 1'
-alt-m = 'workspace main'
-alt-o = 'workspace display'
-alt-c = 'workspace chrome'
-
-alt-cmd-m = 'move-node-to-workspace main'
-alt-cmd-o = 'move-node-to-workspace display'
-alt-cmd-c = 'move-node-to-workspace chrome'
-
-alt-tab = 'workspace-back-and-forth'
-alt-shift-cmd-o = 'move-workspace-to-monitor --wrap-around next'
+ctrl-l = 'layout tiles accordion'
 
 # alt-semicolon = 'mode service'
 alt-semicolon = 'reload-config'
 alt-quote = 'flatten-workspace-tree'
+# alt-shift-s = 'exec-and-forget screencapture -i -c'
+
+f8 = 'mode leader'
+
+[mode.leader.binding]
+a = ['focus-monitor 1', 'mode main']
+s = ['focus-monitor 2', 'mode main']
+d = ['focus-monitor 3', 'mode main']
+
+m = ['workspace monitoring', 'mode main']
+e = ['workspace editor', 'mode main']
+b = ['workspace browser', 'mode main']
+shift-m = ['workspace main', 'mode main']
+
+f8 = 'mode main'
+
+[workspace-to-monitor-force-assignment]
+editor = 3
+monitoring = 1
+browser = 1
+main = 2
 
 # [mode.service.binding]
 #     r = ['reload-config', 'mode main']
