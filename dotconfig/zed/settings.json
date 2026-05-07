@@ -1,90 +1,92 @@
 {
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "use_regex_search": true,
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "dock": "left",
+  },
   "icon_theme": "Symbols Icon Theme",
   "tab_bar": {
     "show_nav_history_buttons": true,
     "show_tab_bar_buttons": true,
-    "show": true
+    "show": true,
   },
   "title_bar": {
-    "show_branch_name": false
+    "show_branch_name": false,
   },
   "terminal": {
     "working_directory": {
       "always": {
-        "directory": "/Users/m/_"
-      }
+        "directory": "/Users/m/_",
+      },
     },
     "dock": "right",
     "default_height": 249.0,
     "shell": {
-      "program": "zsh"
-    }
+      "program": "zsh",
+    },
   },
   "git": {
     "inline_blame": {
-      "enabled": false
-    }
+      "enabled": false,
+    },
   },
   "collaboration_panel": {
-    "button": false
+    "dock": "left",
+    "button": false,
   },
   "cursor_blink": false,
   "close_on_file_delete": true,
   "centered_layout": {
     "left_padding": 0.25,
-    "right_padding": 0.25
+    "right_padding": 0.25,
   },
   "hover_popover_delay": 100,
   "minimap": {
-    "show": "never"
+    "show": "never",
   },
   "languages": {
     "TypeScript": {
-      "soft_wrap": "preferred_line_length"
-    }
+      "soft_wrap": "prefer_line",
+    },
   },
   "project_panel": {
+    "indent_size": 20.0,
+    "hide_root": true,
+    "hide_gitignore": true,
+    "default_width": 320.0,
+    "hide_hidden": false,
+    "bold_folder_labels": true,
+    "dock": "right",
     "sort_mode": "directories_first",
     "indent_guides": {
-      "show": "always"
+      "show": "never",
     },
     "auto_fold_dirs": false,
     "folder_icons": false,
     "file_icons": true,
-    "entry_spacing": "comfortable"
+    "entry_spacing": "comfortable",
   },
   "edit_predictions": {
-    "mode": "eager"
+    "provider": "ollama",
+    "ollama": {
+      "model": "gemma4:26b"
+    },
+    "mode": "eager",
   },
-  "helix_mode": true,
   "buffer_font_family": ".ZedMono",
-  "context_servers": {
-    "littlebird-dev": {
-      "enabled": true,
-      "url": "https://mcp-dev.littlebird.ai/mcp"
-    },
-    "mcp-server-linear": {
-      "enabled": true,
-      "settings": {
-        "linear_api_key": "lin_api_OssDIMKgoSNu6E4TYSTsd1EeWiTtP2nqubF8ZQlv"
-      }
-    },
-    "mcp-server-firecrawl": {
-      "enabled": false,
-      "settings": {
-        "firecrawl_api_key": "fc-dd61c7cdf8fa452da5eaa0c8f86f01dd"
-      }
-    },
-    "mcp-server-context7": {
-      "enabled": true,
-      "settings": {
-        "context7_api_key": "ctx7sk-be2ba6dd-5a9a-40d5-9452-07d98eb8c0a0"
-      }
-    }
-  },
+  "context_servers": {},
   "agent": {
+    "button": true,
+    "dock": "right",
     "tool_permissions": {
-      "default": "allow"
+      "default": "allow",
     },
     "default_profile": "write",
     "profiles": {
@@ -92,20 +94,20 @@
         "name": "TODO",
         "tools": {},
         "enable_all_context_servers": false,
-        "context_servers": {}
-      }
+        "context_servers": {},
+      },
     },
     "default_model": {
       "provider": "openai",
-      "model": "gpt-5.2"
+      "model": "gpt-5.5",
     },
-    "model_parameters": []
+    "model_parameters": [],
   },
-  "ui_font_size": 13.0,
-  "buffer_font_size": 10.0,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 12.0,
   "theme": {
     "mode": "dark",
-    "light": "Lightingale",
-    "dark": "Modern Vesper"
-  }
+    "light": "Ayu Light",
+    "dark": "Modern Vesper",
+  },
 }
