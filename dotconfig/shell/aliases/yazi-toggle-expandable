@@ -1,0 +1,182 @@
+yazi-toggle-expandable() {
+	local bun_bin
+	if [ -x "$HOME/.bun/bin/bun" ]; then
+		bun_bin="$HOME/.bun/bin/bun"
+	else
+		bun_bin="bun"
+	fi
+
+	"$bun_bin" --silent - "$@" <<'TS'
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const configHome =
+	process.env.YAZI_CONFIG_HOME ||
+	path.join(process.env.XDG_CONFIG_HOME || path.join(os.homedir(), ".config"), "yazi");
+const configPath = path.join(configHome, "yazi.toml");
+
+function normalizeTarget(raw: string): string | undefined {
+	let value = raw;
+	if (value.startsWith("file://")) {
+		value = fileURLToPath(value);
+	} else if (value.includes("://")) {
+		console.log(`Skipped remote URL: ${value}`);
+		return undefined;
+	}
+	if (value === "~" || value.startsWith("~/")) {
+		value = path.join(os.homedir(), value.slice(2));
+	}
+	const normalized = path.resolve(value);
+	try {
+		if (!fs.statSync(normalized).isDirectory()) {
+			console.log(`Skipped non-directory: ${normalized}`);
+			return undefined;
+		}
+	} catch {
+		console.log(`Skipped missing path: ${normalized}`);
+		return undefined;
+	}
+	return normalized;
+}
+
+function escapeRegExp(value: string): string {
+	return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function findSection(text: string, name: string): { start: number; end: number } | undefined {
+	const header = new RegExp(`^\\s*\\[${escapeRegExp(name)}\\]\\s*(?:#.*)?$`, "m");
+	const match = header.exec(text);
+	if (!match || match.index === undefined) return undefined;
+	const start = match.index + match[0].length;
+	const rest = text.slice(start);
+	const next = /^\s*\[/m.exec(rest);
+	return { start, end: next && next.index !== undefined ? start + next.index : text.length };
+}
+
+function findArrayAssignment(section: string, key: string): { start: number; end: number; body: string } | undefined {
+	const keyMatch = new RegExp(`^[ \\t]*${key}[ \\t]*=`, "m").exec(section);
+	if (!keyMatch || keyMatch.index === undefined) return undefined;
+
+	const open = section.indexOf("[", keyMatch.index + keyMatch[0].length);
+	if (open === -1) throw new Error(`${key} must be an array`);
+
+	let quote: '"' | "'" | undefined;
+	let escaped = false;
+	for (let i = open + 1; i < section.length; i++) {
+		const ch = section[i];
+		if (quote) {
+			if (quote === '"' && ch === "\\" && !escaped) {
+				escaped = true;
+				continue;
+			}
+			if (ch === quote && !escaped) quote = undefined;
+			escaped = false;
+			continue;
+		}
+		if (ch === '"' || ch === "'") {
+			quote = ch;
+			continue;
+		}
+		if (ch === "#") {
+			const newline = section.indexOf("\n", i);
+			if (newline === -1) break;
+			i = newline;
+			continue;
+		}
+		if (ch === "]") {
+			let end = i + 1;
+			while (end < section.length && section[end] !== "\n") end++;
+			return { start: keyMatch.index, end, body: section.slice(open + 1, i) };
+		}
+	}
+	throw new Error(`${key} array is missing a closing ]`);
+}
+
+function parseTomlStrings(body: string): string[] {
+	const values: string[] = [];
+	for (let i = 0; i < body.length; i++) {
+		const ch = body[i];
+		if (ch === "#") {
+			const newline = body.indexOf("\n", i);
+			if (newline === -1) break;
+			i = newline;
+			continue;
+		}
+		if (ch === "'") {
+			const end = body.indexOf("'", i + 1);
+			if (end === -1) throw new Error("Unterminated literal string in expandable_dirs");
+			values.push(body.slice(i + 1, end));
+			i = end;
+			continue;
+		}
+		if (ch === '"') {
+			let end = i + 1;
+			let escaped = false;
+			for (; end < body.length; end++) {
+				const c = body[end];
+				if (c === "\\" && !escaped) {
+					escaped = true;
+					continue;
+				}
+				if (c === '"' && !escaped) break;
+				escaped = false;
+			}
+			if (end >= body.length) throw new Error("Unterminated string in expandable_dirs");
+			values.push(JSON.parse(body.slice(i, end + 1)));
+			i = end;
+		}
+	}
+	return values;
+}
+
+const targets = Array.from(new Set(process.argv.slice(2).map(normalizeTarget).filter(Boolean) as string[]));
+if (targets.length === 0) {
+	console.log("No local directories to toggle.");
+	process.exit(0);
+}
+
+let text = fs.existsSync(configPath) ? fs.readFileSync(configPath, "utf8") : "[mgr]\n";
+let section = findSection(text, "mgr");
+if (!section) {
+	text = text.replace(/\s*$/, "\n\n[mgr]\n");
+	section = findSection(text, "mgr")!;
+}
+
+let mgr = text.slice(section.start, section.end);
+const assignment = findArrayAssignment(mgr, "expandable_dirs");
+const entries = assignment ? parseTomlStrings(assignment.body) : [];
+const uniqueEntries = entries.filter((entry, index) => entries.indexOf(entry) === index);
+
+const added: string[] = [];
+const removed: string[] = [];
+for (const target of targets) {
+	const index = uniqueEntries.indexOf(target);
+	if (index === -1) {
+		uniqueEntries.push(target);
+		added.push(target);
+	} else {
+		uniqueEntries.splice(index, 1);
+		removed.push(target);
+	}
+}
+
+const rendered = uniqueEntries.length === 0
+	? "expandable_dirs = []"
+	: "expandable_dirs = [\n" + uniqueEntries.map((entry) => `  ${JSON.stringify(entry)},`).join("\n") + "\n]";
+
+if (assignment) {
+	mgr = mgr.slice(0, assignment.start) + rendered + mgr.slice(assignment.end);
+} else {
+	mgr = "\n" + rendered + "\n" + mgr;
+}
+
+fs.mkdirSync(path.dirname(configPath), { recursive: true });
+fs.writeFileSync(configPath, text.slice(0, section.start) + mgr + text.slice(section.end));
+
+for (const entry of added) console.log(`Added:   ${entry}`);
+for (const entry of removed) console.log(`Removed: ${entry}`);
+console.log("Restart Yazi for expandable_dirs changes to apply.");
+TS
+}

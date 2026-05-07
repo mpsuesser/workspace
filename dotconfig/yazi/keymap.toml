@@ -141,6 +141,9 @@ prepend_keymap = [
 		"r"
 	], run = "sort random --reverse=no", desc = "Sort randomly" },
 
+	# === Expandable folders ===
+	{ on = [ "u", "e" ], run = "shell --block -- bash -lc 'source \"$HOME/.config/aliases/yazi-toggle-expandable\"; yazi-toggle-expandable \"$@\"' yazi-toggle-expandable %S", desc = "Toggle expandable folder" },
+
 	# === Bookmarks (bunny.yazi) ===
 	{ on = "e", run = "plugin bunny", desc = "Open bunny bookmark menu" },
 	{ on = "E", run = "plugin bunny --args=fuzzy", desc = "Fuzzy search bookmarks" }
