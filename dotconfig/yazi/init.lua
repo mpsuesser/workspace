@@ -22,7 +22,8 @@ require("bunny"):setup({
 		{ key = "n", path = "~/repos/nonaspace" },
 		{ key = "w", path = "~/repos/workspace" },
 		{ key = "a", path = "~/repos/workspace/dotconfig/shell/aliases" },
-		{ key = "z", path = "~/repos/workspace/dotconfig/zellij" },
+		{ key = "A", path = "~/repos/workspace/dotconfig/aerospace" },
+		{ key = "z", path = "~/repos/workspace/dotconfig/zed" },
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
 		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
@@ -32,8 +33,8 @@ require("bunny"):setup({
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
-		{ key = "o", path = "~/repos/octopus" },
-		{ key = "e", path = "~/repos/octopus" },
+		{ key = "o", path = "~/repos/omnirepo" },
+		{ key = "e", path = "~/repos/omnirepo" },
 		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/multitude" },
 
