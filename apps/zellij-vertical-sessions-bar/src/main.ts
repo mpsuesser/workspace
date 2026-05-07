@@ -1,8 +1,8 @@
 /**
  * zellij-vertical-sessions-bar — single-file OpenTUI sidebar that lists every
  * running zellij session in a 20-col vertical bar, with the currently-attached
- * session highlighted with a dracula-orange `▌` marker on each of its three
- * lines (name / `{description}` / `{state}` placeholders).
+ * session highlighted with a dracula-orange `▌` marker on each rendered
+ * line (name / aggregate agent state).
  *
  * Replaces the Rust + wasm zellij plugin previously at
  * `/Users/m/repos/zellij-vertical-sessions-bar` with a Bun + OpenTUI program.
@@ -251,32 +251,30 @@ const buildBlock = (
 ): BoxRenderable => {
 	const block = new BoxRenderable(renderer, {
 		flexDirection: 'column',
+		paddingTop: 1,
+		paddingBottom: 1,
 		width: '100%'
 	});
 
 	// Active blocks get a bold orange `▌` on every line plus a bold name;
 	// inactive blocks use a 2-space gutter and plain foreground for the
-	// headline element. Line 2 remains a placeholder for future
-	// per-session descriptions. Line 3 is the aggregate pi agent state
-	// for every pi pane in this zellij session (`working > done > idle`).
-	// `isCurrent` is supplied by the caller (rename-safe override) rather
-	// than read from `row`.
+	// headline element. Line 2 is the aggregate pi agent state for every
+	// pi pane in this zellij session (`working > done > idle`). `isCurrent`
+	// is supplied by the caller (rename-safe override) rather than read
+	// from `row`.
 	const renderedState = stateContent(agentState);
 	const lines = Bool.match(isCurrent, {
 		onTrue: () => ({
 			name: t`${fg(ACCENT)(MARKER)} ${bold(fg(FG)(row.name))}`,
-			desc: t`${fg(ACCENT)(MARKER)} ${dim(fg(MUTED)('{description}'))}`,
 			state: t`${fg(ACCENT)(MARKER)} ${renderedState}`
 		}),
 		onFalse: () => ({
 			name: t`  ${fg(FG)(row.name)}`,
-			desc: t`  ${dim(fg(MUTED)('{description}'))}`,
 			state: t`  ${renderedState}`
 		})
 	});
 
 	block.add(new TextRenderable(renderer, { content: lines.name }));
-	block.add(new TextRenderable(renderer, { content: lines.desc }));
 	block.add(new TextRenderable(renderer, { content: lines.state }));
 	return block;
 };
