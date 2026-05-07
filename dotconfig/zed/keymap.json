@@ -274,12 +274,6 @@
   },
   {
     "context": "ProjectPanel",
-    "bindings": {
-      "r": "project_panel::Rename"
-    }
-  },
-  {
-    "context": "ProjectPanel",
     "unbind": {
       "f2": "project_panel::Rename"
     }
@@ -767,6 +761,18 @@
   {
     "unbind": {
       "cmd-o": "workspace::Open"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "r": "project_panel::Rename"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "unbind": {
+      "shift-r": "project_panel::Rename"
     }
   }
 ]
