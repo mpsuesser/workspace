@@ -25,7 +25,7 @@ require("bunny"):setup({
 		{ key = "A", path = "~/repos/workspace/dotconfig/aerospace" },
 		{ key = "z", path = "~/repos/workspace/dotconfig/zed" },
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
-		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
+		{ key = "s", path = "~/repos/workspace/dotconfig/agents/skills" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
 		{ key = "g", path = "~/repos/workspace/dotconfig/ghostty" },
 		{ key = "h", path = "~/repos/pi-effect-enforcer" },
