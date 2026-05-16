@@ -27,6 +27,11 @@ persistent-workspaces = ["main", "monitoring", "browser", "editor"]
 on-mode-changed = []
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# Make all windows float by default
+[[on-window-detected]]
+check-further-callbacks = true
+run = 'layout floating'
+
 [[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = ['layout floating', 'move-node-to-workspace main']
@@ -41,11 +46,11 @@ run = ['move-node-to-workspace browser']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace main']
+run = ['move-node-to-workspace monitoring']
 
 [[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = ['layout floating', 'move-node-to-workspace main']
+if.app-id = 'com.googlecode.iterm2'
+run = ['move-node-to-workspace main']
 
 [key-mapping]
 preset = 'qwerty'
@@ -108,9 +113,11 @@ alt-semicolon = 'reload-config'
 alt-quote = 'flatten-workspace-tree'
 # alt-shift-s = 'exec-and-forget screencapture -i -c'
 
-alt-a = 'focus-monitor 1'
-alt-s = 'focus-monitor 2'
-alt-d = 'focus-monitor 3'
+# COMMENTED WHILE IN LAPTOP MODE!
+# ...
+# f8 = 'exec-and-forget if aerospace list-monitors --focused no | grep -q "^2 "; then aerospace focus-monitor 2; else aerospace focus-monitor $(aerospace list-monitors --focused no | head -c 1); fi'
+# cmd-f8 = 'focus-monitor 3'
+# ...
 
 alt-m = 'workspace monitoring'
 alt-e = 'workspace editor'
