@@ -1,7 +1,0 @@
-{
-  "name": "@workspace/agents-dotconfig",
-  "private": true,
-  "scripts": {
-    "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.agents"
-  }
-}
