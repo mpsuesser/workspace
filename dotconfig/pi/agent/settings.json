@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.74.0",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-7",
   "defaultThinkingLevel": "xhigh",
   "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.zshrc)\"",
   "theme": "ghostty-sync-770f91a0",
@@ -12,13 +12,29 @@
   "quietStartup": true,
   "packages": [
     "npm:glimpseui",
-    "~/repos/pi-web",
+    {
+      "source": "~/repos/pi-web",
+      "skills": [
+        "-skills/librarian/SKILL.md"
+      ]
+    },
     "npm:pi-mcp-adapter",
-    "~/repos/pi-pkms",
-    "~/repos/pi-effect-enforcer",
-    "~/repos/pi-tentacles",
-    "~/repos/pi-atoms",
-    "npm:pi-subagents",
-    "npm:pi-markdown-preview"
+    "~/repos/pi-effect-harness",
+    "npm:pi-markdown-preview",
+    {
+      "source": "npm:pi-agent-browser-native",
+      "extensions": [
+        "-extensions/agent-browser/index.ts"
+      ]
+    },
+    "npm:pi-session-search",
+    "npm:@josephyoung/pi-file-reference",
+    "npm:pi-system-prompt"
+  ],
+  "skills": [
+    "-skills/engineering/documentation-driven-development/SKILL.md",
+    "-skills/meta/librarian/SKILL.md",
+    "-skills/tech/mintlify/SKILL.md",
+    "-skills/tech/mintlify-api/SKILL.md"
   ]
 }
