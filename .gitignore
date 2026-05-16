@@ -48,6 +48,7 @@ dotconfig/pi/web-search.json
 dotconfig/pi/companion.json
 dotconfig/pi/interview-sessions.json
 dotconfig/pi/exa-usage.json
+dotconfig/pi/session-search/
 
 # IDE
 .idea/
