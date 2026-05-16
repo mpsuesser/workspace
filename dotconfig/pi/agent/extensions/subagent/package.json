@@ -1,0 +1,33 @@
+{
+	"name": "@mpsuesser/pi-subagent",
+	"version": "0.1.0",
+	"description": "Pi extension that mimics OpenCode's task subagent: spawn isolated pi subagents from .pi/agents/*.md",
+	"keywords": [
+		"pi",
+		"pi-extension",
+		"pi-package",
+		"pi-coding-agent",
+		"subagent",
+		"agent",
+		"opencode",
+		"task"
+	],
+	"license": "MIT",
+	"type": "module",
+	"files": [
+		"index.ts",
+		"src",
+		"README.md"
+	],
+	"pi": {
+		"extensions": [
+			"./index.ts"
+		]
+	},
+	"peerDependencies": {
+		"@mariozechner/pi-coding-agent": "*",
+		"@mariozechner/pi-tui": "*",
+		"@sinclair/typebox": "*"
+	},
+	"dependencies": {}
+}
