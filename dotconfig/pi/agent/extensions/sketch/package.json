@@ -1,0 +1,64 @@
+{
+  "name": "@ogulcancelik/pi-sketch",
+  "version": "0.1.2",
+  "description": "Quick sketch pad for pi - now powered by tldraw",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "paint",
+    "sketch",
+    "drawing",
+    "visual",
+    "tldraw"
+  ],
+  "author": "Can Celik",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogulcancelik/pi-extensions.git",
+    "directory": "packages/pi-sketch"
+  },
+  "homepage": "https://github.com/ogulcancelik/pi-extensions/tree/main/packages/pi-sketch#readme",
+  "bugs": {
+    "url": "https://github.com/ogulcancelik/pi-extensions/issues"
+  },
+  "files": [
+    "dist",
+    "extensions",
+    "src",
+    "index.html",
+    "tsconfig.json",
+    "vite.config.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "prepare": "vite build"
+  },
+  "dependencies": {
+    "@tldraw/assets": "^4.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tldraw": "^4.5.4"
+  },
+  "devDependencies": {
+    "@mariozechner/pi-coding-agent": "^0.67.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^24.6.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ]
+  }
+}

@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@elianiva/pi-ckers": "^1.1.0"
+    "@elianiva/pi-ckers": "^1.1.0",
+    "puppeteer-core": "^24.22.3"
   },
   "peerDependencies": {
     "@mariozechner/pi-coding-agent": "*",

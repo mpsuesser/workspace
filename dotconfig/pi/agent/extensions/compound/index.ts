@@ -1,1 +1,0 @@
-/Users/m/repos/pi-compound/src/index.ts

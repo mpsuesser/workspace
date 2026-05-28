@@ -1,0 +1,199 @@
+# pi-session-search
+
+Index, summarize, and search past [pi](https://github.com/badlogic/pi-mono) coding sessions. Works out of the box with zero configuration — FTS5 keyword search is always on, with optional semantic embeddings for hybrid search.
+
+## Features
+
+- **Zero-config search** — FTS5 keyword search works immediately, no API keys or embedder needed
+- **Hybrid search** — When an embedder is configured, combines cosine similarity + BM25 via Reciprocal Rank Fusion for best-of-both-worlds retrieval
+- **Browse & filter** — List sessions by project, date range, archive status (`session_list`)
+- **Read conversations** — View the full conversation from any past session (`session_read`)
+- **Auto-indexing** — Parses JSONL session files on startup, tracks changes incrementally
+- **Session primer** — Injects a short list of recent project sessions as a hidden custom message at session start (before any user message — won't override your first question)
+- **Archive support** — Indexes both `~/.pi/agent/sessions/` and `~/.pi/agent/sessions-archive/`
+- **Multiple embedders** — OpenAI, Mistral, AWS Bedrock, local Ollama, or any OpenAI-compatible API
+
+## Install
+
+**Recommended:** Install [pi-total-recall](https://github.com/samfoy/pi-total-recall) to get the complete context stack — persistent memory, session history search, and local knowledge search in one package:
+
+```bash
+pi install pi-total-recall
+```
+
+Or install pi-session-search standalone:
+
+```bash
+pi install pi-session-search
+```
+
+Or add to `~/.pi/agent/settings.json`:
+
+```json
+{
+  "packages": ["npm:pi-session-search"]
+}
+```
+
+Requires **Node 24+** — `node:sqlite` must include FTS5, which Node 22's bundled SQLite does not. On Node 22 you'll get `Error: no such table: sessions` at startup because the FTS5 virtual table never gets created.
+
+## Setup
+
+**No setup required for keyword search.** FTS5-backed search works immediately after install.
+
+To enable hybrid search (keyword + semantic), run `/session-embeddings-setup` in pi to configure an embedding provider:
+
+- **OpenAI** — Uses `text-embedding-3-small` (needs `OPENAI_API_KEY`)
+- **Mistral** — Uses `mistral-embed` (needs `MISTRAL_API_KEY`)
+- **Bedrock** — Uses Titan Embeddings v2 (needs AWS credentials)
+- **Ollama** — Uses `nomic-embed-text` (needs local Ollama running)
+- **OpenAI-compatible** — Any provider with a `/v1/embeddings` endpoint (Together, Fireworks, vLLM, LiteLLM, etc.)
+
+Config is stored at `~/.pi/session-search/config.json`. The `embedder` field is optional — omit it for FTS5-only mode.
+
+### Sync configuration
+
+By default, the session index re-syncs automatically every 5 minutes after startup.
+Fine-tune or disable this behaviour via the `sync` field:
+
+```json
+{
+  "sync": {
+    "interval": 900000,
+    "initialDelay": 2000,
+    "disableForChild": true
+  }
+}
+```
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `interval` | number | `300000` (5 min) | Milliseconds between periodic re-syncs. Set to `-1` to disable periodic sync entirely (initial startup sync still runs). Any other non-positive value falls back to 5 min with a warning. |
+| `initialDelay` | number | `0` (immediate) | Milliseconds to wait before the first startup sync. Set to `-1` to skip the initial sync entirely. Set to a positive value to defer startup sync (e.g., `2000` to let pi finish booting first). |
+| `disableForChild` | boolean | `false` | When `true`, automatically disables both initial and periodic sync if the pi process is detected as a subagent child (`PI_SUBAGENT_DEPTH > 0`) or running non-interactively (`!process.stdin.isTTY`). Useful for CI/CD pipelines and nested agent workflows. |
+
+**Common configurations:**
+
+- **Disable all sync**: `{ "sync": { "interval": -1, "initialDelay": -1 } }`
+- **Slower sync cadence**: `{ "sync": { "interval": 900000 } }` (every 15 min)
+- **Defer startup sync**: `{ "sync": { "initialDelay": 3000 } }` (wait 3 seconds)
+- **Auto-disable in children**: `{ "sync": { "disableForChild": true } }`
+
+### OpenAI-compatible providers
+
+Many embedding providers expose an OpenAI-compatible `/v1/embeddings` endpoint. Use `"type": "openai-compatible"` with a `baseUrl`:
+
+```json
+{
+  "embedder": {
+    "type": "openai-compatible",
+    "baseUrl": "https://api.together.xyz",
+    "apiKey": "your-key",
+    "model": "togethercomputer/m2-bert-80M-8k-retrieval",
+    "dimensions": 768
+  }
+}
+```
+
+This works with Together, Fireworks, vLLM, LiteLLM, Anyscale, and any other provider that implements the OpenAI embeddings format.
+
+## Usage
+
+### Search
+```
+session_search(query="how did we debug the Lambda timeout")
+session_search(query="CI pipeline configuration", limit=5)
+```
+
+### Browse sessions
+```
+session_list(project="Rosie", after="2026-03-01")
+session_list(archived=true, limit=20)
+```
+
+### Read a session
+```
+session_read(session="<file-path-or-uuid>")
+session_read(session="<id>", offset=50, limit=50)
+```
+
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/session-embeddings-setup` | Configure embedding provider for hybrid search |
+| `/session-sync` | Force an immediate incremental re-sync |
+| `/session-reindex` | Force full re-index of all sessions |
+
+## How It Works
+
+### FTS5-only mode (default)
+
+1. On startup, discovers all `.jsonl` session files
+2. Parses each session to extract: user messages, tool calls, files modified, compaction summaries
+3. Indexes content into an FTS5 virtual table with Porter stemming
+4. Queries use BM25 ranking with implicit AND across search terms
+
+### Hybrid mode (with embedder configured)
+
+1. Everything above, plus generates an embedding vector for each session
+2. At query time, runs both cosine similarity and FTS5 BM25
+3. Fuses the two ranked lists via **Reciprocal Rank Fusion** (k=60)
+4. Sessions that both signals agree on rank highest; single-signal matches still surface
+
+RRF is parameter-free and robust — it discards raw scores (which are incomparable across rankers) and uses only rank positions. Agreement between signals becomes the strongest relevance indicator.
+
+### Why hybrid?
+
+FTS misses semantic matches ("dagger injection" won't find sessions about "dependency injection refactoring" if the exact words aren't there). Cosine misses precise tokens (CR numbers, error codes, file paths all hash to nearby embedding regions). The two failure modes are disjoint — combining them recovers what each misses alone.
+
+Tested against a 2,159-session corpus: hybrid surfaces **75% more relevant documents** than FTS alone, with the top results dominated by sessions both signals independently found.
+
+### Indexing
+
+- Index stored at `~/.pi/session-search/index/`
+- Incremental sync on startup + configurable periodic re-sync (default 5 min)
+- Two separate SQLite DBs: `sessions-fts.db` (pure-FTS mode) and `hybrid-fts.db` (side-car for embedder mode)
+- Switching modes doesn't corrupt state
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `OPENAI_API_KEY` | Required for OpenAI embedder |
+| `MISTRAL_API_KEY` | Required for Mistral embedder |
+
+## Project-local storage
+
+By default, config lives at `~/.pi/session-search/config.json` and the index at `~/.pi/session-search/index/`. To relocate both per-project, add one of the following to `{project}/.pi/settings.json`:
+
+```jsonc
+{
+  "pi-session-search": {
+    "localPath": ".pi/session-search"   // config.json + index/ under this path
+  }
+}
+```
+
+Or via the [`pi-total-recall`](https://github.com/samfoy/pi-total-recall) cascade:
+
+```jsonc
+{
+  "pi-total-recall": {
+    "localPath": ".pi/total-recall"
+    // pi-session-search → {project}/.pi/total-recall/session-search/
+  }
+}
+```
+
+**Resolution order:**
+
+1. `pi-session-search.localPath` in `{cwd}/.pi/settings.json`
+2. `pi-total-recall.localPath` cascade → `{localPath}/session-search/`
+3. Global default: `~/.pi/session-search/`
+
+> **Note:** Only the config and index are relocated. The session *source* directories (`~/.pi/agent/sessions` and `~/.pi/agent/sessions-archive`) are pi's own files and stay global — that's where the session data actually lives. Use the `project` filter on `session_search` and `session_list` if you want to scope results to one project.
+
+## License
+
+MIT

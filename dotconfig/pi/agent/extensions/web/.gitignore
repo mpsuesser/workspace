@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+.tsbuildinfo
+*.tsbuildinfo
+coverage/
+.opencode/
+.vscode/
+.env
+.env.*
+!.env.example

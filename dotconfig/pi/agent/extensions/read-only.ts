@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { makeExtension, onBeforeAgentStart, onSessionShutdown, onSessionStart, onToolCall, PiApi, PiContext } from "effect-pi";
 
-import { createModeToggle, formatModeLabel, type ModeToggle } from "./pi-mode-toggler/index.ts";
+import { createModeToggle, formatModeLabel, type ModeToggle } from "./mode-toggler/index.ts";
 
 const READ_ONLY_STATUS = formatModeLabel("read-only", "#800000");
 const READ_ONLY_PROMPT = [

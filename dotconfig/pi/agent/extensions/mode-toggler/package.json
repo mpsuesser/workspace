@@ -1,0 +1,32 @@
+{
+  "name": "pi-mode-toggler",
+  "version": "0.1.0",
+  "description": "Mode toggler for pi",
+  "keywords": [
+    "pi-package",
+    "pi-extension"
+  ],
+  "type": "module",
+  "files": [
+    "index.ts",
+    "mode-toggle-helper.ts",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./index.ts",
+    "./mode-toggle-helper": "./mode-toggle-helper.ts"
+  },
+  "dependencies": {
+    "effect": "catalog:",
+    "effect-pi": "link:effect-pi"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
