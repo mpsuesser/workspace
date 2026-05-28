@@ -11,6 +11,8 @@ import { join } from "node:path";
 const EXTENSION_ID = "pi-voice";
 const DEFAULT_VOICE_ID = "aEO01A4wXwd1O8GPgGlF";
 const DEFAULT_ELEVEN_MODEL = "eleven_multilingual_v2";
+const DEFAULT_ACK_ELEVEN_MODEL = DEFAULT_ELEVEN_MODEL;
+const DEFAULT_FINAL_ELEVEN_MODEL = "eleven_v3";
 const DEFAULT_OUTPUT_FORMAT = "mp3_44100_128";
 const DEFAULT_SUMMARY_MODEL = "openai-codex/gpt-5.4-nano";
 const DEFAULT_ACK_MODEL = "openai-codex/gpt-5.4-nano";
@@ -21,6 +23,19 @@ const MAX_ACK_SOURCE_CHARS = 180;
 type AckStyle = "template" | "llm";
 type VoiceKind = "ack" | "final" | "test";
 type PlayerName = "auto" | "mpv" | "afplay" | "ffplay";
+type TextNormalization = "auto" | "on" | "off";
+type SpeechMarkupMode = "none" | "v2" | "v3";
+
+interface SpeechProfile {
+	elevenModel: string;
+	stability?: number;
+	similarityBoost?: number;
+	style?: number;
+	speed?: number;
+	useSpeakerBoost?: boolean;
+	optimizeStreamingLatency?: number;
+	applyTextNormalization?: TextNormalization;
+}
 
 interface RuntimeSettings {
 	enabled: boolean;
@@ -30,19 +45,15 @@ interface RuntimeSettings {
 	dryRun: boolean;
 	debug: boolean;
 	voiceId: string;
-	elevenModel: string;
 	outputFormat: string;
+	ackProfile: SpeechProfile;
+	finalProfile: SpeechProfile;
 	summaryModel: string;
 	ackModel: string;
 	player: PlayerName;
 	maxFinalSentences: number;
 	maxSpeechChars: number;
 	ackMaxLatencyMs: number;
-	stability?: number;
-	similarityBoost?: number;
-	speed?: number;
-	useSpeakerBoost: boolean;
-	optimizeStreamingLatency?: number;
 }
 
 interface SpeechJob {
@@ -50,6 +61,7 @@ interface SpeechJob {
 	text: string;
 	ctx?: ExtensionContext;
 	createdAt: number;
+	profile?: SpeechProfile;
 	shouldSpeak?: () => boolean;
 }
 
@@ -71,6 +83,14 @@ function parseBool(value: string | undefined, fallback: boolean): boolean {
 	return fallback;
 }
 
+function parseOptionalBool(value: string | undefined): boolean | undefined {
+	if (value === undefined) return undefined;
+	const normalized = value.trim().toLowerCase();
+	if (["1", "true", "yes", "on"].includes(normalized)) return true;
+	if (["0", "false", "no", "off"].includes(normalized)) return false;
+	return undefined;
+}
+
 function parseNumber(value: string | undefined, fallback: number): number {
 	if (value === undefined) return fallback;
 	const parsed = Number(value);
@@ -83,6 +103,12 @@ function parseOptionalNumber(value: string | undefined): number | undefined {
 	return Number.isFinite(parsed) ? parsed : undefined;
 }
 
+function parseTextNormalization(value: string | undefined): TextNormalization | undefined {
+	const normalized = value?.trim().toLowerCase();
+	if (normalized === "auto" || normalized === "on" || normalized === "off") return normalized;
+	return undefined;
+}
+
 function parseAckStyle(value: string | undefined): AckStyle {
 	return value?.toLowerCase() === "llm" ? "llm" : "template";
 }
@@ -91,6 +117,38 @@ function parsePlayer(value: string | undefined): PlayerName {
 	const normalized = value?.toLowerCase();
 	if (normalized === "mpv" || normalized === "afplay" || normalized === "ffplay") return normalized;
 	return "auto";
+}
+
+function isV3Model(modelId: string): boolean {
+	return modelId.trim().toLowerCase() === "eleven_v3";
+}
+
+function loadSpeechProfile(
+	kind: "ACK" | "FINAL",
+	defaultModel: string,
+	defaults: Partial<Omit<SpeechProfile, "elevenModel">> = {},
+): SpeechProfile {
+	const kindPrefix = `PI_VOICE_${kind}_ELEVEN_`;
+	const baseModel = env("PI_VOICE_ELEVEN_MODEL");
+	const elevenModel = env(`${kindPrefix}MODEL`) ?? baseModel ?? defaultModel;
+	const baseUseSpeakerBoost = parseOptionalBool(env("PI_VOICE_USE_SPEAKER_BOOST"));
+	const kindUseSpeakerBoost = parseOptionalBool(env(`${kindPrefix}USE_SPEAKER_BOOST`));
+	const defaultSpeakerBoost = defaults.useSpeakerBoost ?? (isV3Model(elevenModel) ? undefined : true);
+
+	return {
+		elevenModel,
+		stability: parseOptionalNumber(env(`${kindPrefix}STABILITY`)) ?? parseOptionalNumber(env("PI_VOICE_STABILITY")) ?? defaults.stability,
+		similarityBoost: parseOptionalNumber(env(`${kindPrefix}SIMILARITY_BOOST`)) ?? parseOptionalNumber(env("PI_VOICE_SIMILARITY_BOOST")) ?? defaults.similarityBoost,
+		style: parseOptionalNumber(env(`${kindPrefix}STYLE`)) ?? parseOptionalNumber(env("PI_VOICE_STYLE")) ?? defaults.style,
+		speed: parseOptionalNumber(env(`${kindPrefix}SPEED`)) ?? parseOptionalNumber(env("PI_VOICE_SPEED")) ?? defaults.speed,
+		useSpeakerBoost: kindUseSpeakerBoost ?? baseUseSpeakerBoost ?? defaultSpeakerBoost,
+		optimizeStreamingLatency: parseOptionalNumber(env(`${kindPrefix}OPTIMIZE_STREAMING_LATENCY`))
+			?? parseOptionalNumber(env("PI_VOICE_OPTIMIZE_STREAMING_LATENCY"))
+			?? defaults.optimizeStreamingLatency,
+		applyTextNormalization: parseTextNormalization(env(`${kindPrefix}APPLY_TEXT_NORMALIZATION`))
+			?? parseTextNormalization(env("PI_VOICE_APPLY_TEXT_NORMALIZATION"))
+			?? defaults.applyTextNormalization,
+	};
 }
 
 function loadSettings(): RuntimeSettings {
@@ -102,19 +160,18 @@ function loadSettings(): RuntimeSettings {
 		dryRun: parseBool(env("PI_VOICE_DRY_RUN"), false),
 		debug: parseBool(env("PI_VOICE_DEBUG"), false),
 		voiceId: env("PI_VOICE_ID") ?? DEFAULT_VOICE_ID,
-		elevenModel: env("PI_VOICE_ELEVEN_MODEL") ?? DEFAULT_ELEVEN_MODEL,
 		outputFormat: env("PI_VOICE_OUTPUT_FORMAT") ?? DEFAULT_OUTPUT_FORMAT,
+		ackProfile: loadSpeechProfile("ACK", DEFAULT_ACK_ELEVEN_MODEL),
+		finalProfile: loadSpeechProfile("FINAL", DEFAULT_FINAL_ELEVEN_MODEL, {
+			stability: 0.35,
+			similarityBoost: 0.75,
+		}),
 		summaryModel: env("PI_VOICE_SUMMARY_MODEL") ?? DEFAULT_SUMMARY_MODEL,
 		ackModel: env("PI_VOICE_ACK_MODEL") ?? DEFAULT_ACK_MODEL,
 		player: parsePlayer(env("PI_VOICE_PLAYER")),
 		maxFinalSentences: Math.max(1, Math.min(8, Math.round(parseNumber(env("PI_VOICE_MAX_FINAL_SENTENCES"), 3)))),
 		maxSpeechChars: Math.max(160, Math.round(parseNumber(env("PI_VOICE_MAX_CHARS"), 520))),
 		ackMaxLatencyMs: Math.max(1000, Math.round(parseNumber(env("PI_VOICE_ACK_MAX_LATENCY_MS"), 6000))),
-		stability: parseOptionalNumber(env("PI_VOICE_STABILITY")),
-		similarityBoost: parseOptionalNumber(env("PI_VOICE_SIMILARITY_BOOST")),
-		speed: parseOptionalNumber(env("PI_VOICE_SPEED")),
-		useSpeakerBoost: parseBool(env("PI_VOICE_USE_SPEAKER_BOOST"), true),
-		optimizeStreamingLatency: parseOptionalNumber(env("PI_VOICE_OPTIMIZE_STREAMING_LATENCY")),
 	};
 }
 
@@ -226,8 +283,71 @@ function buildRecentConversation(branch: unknown[]): string {
 	return truncateMiddle(lines.join("\n\n"), MAX_RECENT_CONTEXT_CHARS);
 }
 
-function stripMarkdownForSpeech(text: string): string {
-	return text
+const V3_AUDIO_TAGS = new Set([
+	"thoughtful",
+	"curious",
+	"warmly",
+	"calmly",
+	"softly",
+	"lightly amused",
+	"amused",
+	"mischievously",
+	"excited",
+	"sarcastic",
+	"sighs",
+	"exhales",
+	"whispers",
+]);
+
+function speechMarkupMode(profile: SpeechProfile | undefined): SpeechMarkupMode {
+	if (!profile) return "none";
+	return isV3Model(profile.elevenModel) ? "v3" : "v2";
+}
+
+function normalizeBreakTag(secondsText: string): string | undefined {
+	const seconds = Number(secondsText);
+	if (!Number.isFinite(seconds) || seconds <= 0 || seconds > 3) return undefined;
+	const rounded = Math.round(seconds * 100) / 100;
+	return `<break time="${rounded.toFixed(rounded % 1 === 0 ? 0 : 2).replace(/0$/, "")}s" />`;
+}
+
+function normalizeV3AudioTag(rawTag: string): string | undefined {
+	const tag = rawTag.trim().toLowerCase().replace(/\s+/g, " ");
+	if (!tag || tag.length > 32) return undefined;
+	if (!/^[a-z][a-z\s-]*$/.test(tag)) return undefined;
+	return V3_AUDIO_TAGS.has(tag) ? `[${tag}]` : undefined;
+}
+
+function protectPerformanceMarkup(text: string, markup: SpeechMarkupMode): { text: string; restore: (value: string) => string } {
+	const preserved: string[] = [];
+	const save = (value: string) => {
+		const token = `PIVOICEMARKUP${preserved.length}TOKEN`;
+		preserved.push(value);
+		return ` ${token} `;
+	};
+
+	let protectedText = text;
+	if (markup === "v2") {
+		protectedText = protectedText.replace(/<break\s+time=["']([0-9]+(?:\.[0-9]+)?)s["']\s*\/>/gi, (match, secondsText: string) => {
+			const normalized = normalizeBreakTag(secondsText);
+			return normalized ? save(normalized) : match;
+		});
+	} else if (markup === "v3") {
+		protectedText = protectedText.replace(/\[([^\]\n]{1,40})\]/g, (match, rawTag: string) => {
+			const normalized = normalizeV3AudioTag(rawTag);
+			return normalized ? save(normalized) : match;
+		});
+	}
+
+	return {
+		text: protectedText,
+		restore: (value: string) => preserved.reduce((current, tag, index) => current.split(`PIVOICEMARKUP${index}TOKEN`).join(tag), value),
+	};
+}
+
+function stripMarkdownForSpeech(text: string, markup: SpeechMarkupMode = "none"): string {
+	const protectedMarkup = protectPerformanceMarkup(text, markup);
+	const cleaned = protectedMarkup.text
 		.replace(/```[\s\S]*?```/g, " ")
 		.replace(/`([^`]+)`/g, "$1")
 		.replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
@@ -239,18 +359,39 @@ function stripMarkdownForSpeech(text: string): string {
 		.replace(/[{}[\]|<>]/g, " ")
 		.replace(/\s+/g, " ")
 		.trim();
+	return protectedMarkup.restore(cleaned).replace(/\s+/g, " ").trim();
+}
+
+function protectSentenceControlTags(text: string): { text: string; restore: (value: string) => string } {
+	const preserved: string[] = [];
+	const protectedText = text.replace(/<break\s+time="[^"]+"\s*\/>/g, (tag) => {
+		const token = `PIVOICESENTENCE${preserved.length}TOKEN`;
+		preserved.push(tag);
+		return token;
+	});
+
+	return {
+		text: protectedText,
+		restore: (value: string) => preserved.reduce((current, tag, index) => current.split(`PIVOICESENTENCE${index}TOKEN`).join(tag), value),
+	};
 }
 
 function enforceSentenceLimit(text: string, maxSentences: number): string {
-	const normalized = text.trim();
+	const protectedTags = protectSentenceControlTags(text);
+	const normalized = protectedTags.text.trim();
 	if (!normalized) return "";
 	const matches = normalized.match(/[^.!?]+[.!?]+(?:\s|$)|[^.!?]+$/g);
-	if (!matches) return normalized;
-	return matches.slice(0, maxSentences).join(" ").replace(/\s+/g, " ").trim();
+	if (!matches) return protectedTags.restore(normalized);
+	return protectedTags.restore(matches.slice(0, maxSentences).join(" ")).replace(/\s+/g, " ").trim();
 }
 
-function sanitizeForSpeech(text: string, settings: RuntimeSettings, maxSentences = settings.maxFinalSentences): string {
-	const cleaned = stripMarkdownForSpeech(text)
+function sanitizeForSpeech(
+	text: string,
+	settings: RuntimeSettings,
+	profile?: SpeechProfile,
+	maxSentences = settings.maxFinalSentences,
+): string {
+	const cleaned = stripMarkdownForSpeech(text, speechMarkupMode(profile))
 		.replace(/\bPi\b/g, "Pi")
 		.replace(/&/g, " and ")
 		.replace(/\s+([,.!?;:])/g, "$1")
@@ -327,11 +468,30 @@ function buildAckPrompt(userPrompt: string, recentConversation: string, hasImage
 	].join("\n");
 }
 
+function buildPerformanceRules(profile: SpeechProfile): string[] {
+	if (isV3Model(profile.elevenModel)) {
+		return [
+			"Performance controls for Eleven v3:",
+			"- You may include zero, one, or two subtle audio tags from this exact set: [thoughtful], [curious], [warmly], [calmly], [lightly amused], [sighs], [exhales].",
+			"- Place an audio tag before the sentence or clause it should color; do not stack tags.",
+			"- Use tags to make the delivery warmer and more human, not theatrical.",
+			"- Use ellipses sparingly for a reflective pause. Do not overdo hesitation.",
+		];
+	}
+
+	return [
+		"Performance controls:",
+		"- You may include at most one <break time=\"0.35s\" /> at a major transition if it improves pacing.",
+		"- Use commas, periods, and sentence shape to create natural emphasis.",
+	];
+}
+
 function buildFinalPrompt(options: {
 	recentConversation: string;
 	latestUserPrompt?: string;
 	assistantResponse: string;
 	maxSentences: number;
+	profile: SpeechProfile;
 }): string {
 	return [
 		"You are writing text that will be read aloud by a text-to-speech voice.",
@@ -343,13 +503,15 @@ function buildFinalPrompt(options: {
 		"- A little wit or sparkle is welcome, but keep it grounded in what actually happened.",
 		"- Avoid corporate summary voice, robotic phrasing, and generic cheerleading.",
 		"",
+		...buildPerformanceRules(options.profile),
+		"",
 		"Content rules:",
 		`- Write one to ${options.maxSentences} sentences, usually forty to seventy words total.`,
 		"- Lead with the practical outcome, then mention what the user needs to answer or do next if anything.",
 		"- If no user action is needed, say that naturally and briefly.",
 		"- Avoid technical detail unless it is necessary for the user's next decision.",
 		"- Do not mention model names, provider names, package versions, long paths, commands, or internal implementation details unless the user explicitly needs that exact detail.",
-		"- No markdown, bullets, headings, code blocks, JSON, backticks, emojis, or file diffs.",
+		"- No markdown, bullets, headings, code blocks, JSON, backticks, emojis, or file diffs. Only the performance controls above are allowed.",
 		"- Do not say 'the assistant said', 'Pi said', or 'in this conversation'.",
 		"- Use natural punctuation for pauses.",
 		"",
@@ -520,12 +682,40 @@ async function audioToBuffer(audio: unknown): Promise<Buffer> {
 	throw new Error("Unsupported ElevenLabs audio response type");
 }
 
-async function synthesizeToFile(
+function buildVoiceSettings(profile: SpeechProfile): Record<string, unknown> {
+	const voiceSettings: Record<string, unknown> = {};
+	if (profile.useSpeakerBoost !== undefined) voiceSettings.useSpeakerBoost = profile.useSpeakerBoost;
+	if (profile.stability !== undefined) voiceSettings.stability = profile.stability;
+	if (profile.similarityBoost !== undefined) voiceSettings.similarityBoost = profile.similarityBoost;
+	if (profile.style !== undefined) voiceSettings.style = profile.style;
+	if (profile.speed !== undefined) voiceSettings.speed = profile.speed;
+	return voiceSettings;
+}
+
+function buildTextToSpeechRequest(text: string, settings: RuntimeSettings, profile: SpeechProfile): Record<string, unknown> {
+	const voiceSettings = buildVoiceSettings(profile);
+	const request: Record<string, unknown> = {
+		text,
+		modelId: profile.elevenModel,
+		outputFormat: settings.outputFormat,
+	};
+	if (Object.keys(voiceSettings).length > 0) request.voiceSettings = voiceSettings;
+	if (profile.optimizeStreamingLatency !== undefined) {
+		request.optimizeStreamingLatency = profile.optimizeStreamingLatency;
+	}
+	if (profile.applyTextNormalization !== undefined) {
+		request.applyTextNormalization = profile.applyTextNormalization;
+	}
+	return request;
+}
+
+async function streamTextToSpeechAudio(
 	text: string,
 	settings: RuntimeSettings,
+	profile: SpeechProfile,
 	ctx: ExtensionContext | undefined,
 	signal?: AbortSignal,
-): Promise<{ file: string; dir: string }> {
+): Promise<unknown> {
 	if (signal?.aborted) throw new Error("Speech synthesis cancelled");
 
 	const apiKey = await resolveElevenLabsApiKey(ctx);
@@ -534,25 +724,22 @@ async function synthesizeToFile(
 	}
 
 	const client = getElevenClient(apiKey);
-	const voiceSettings: Record<string, unknown> = {
-		useSpeakerBoost: settings.useSpeakerBoost,
-	};
-	if (settings.stability !== undefined) voiceSettings.stability = settings.stability;
-	if (settings.similarityBoost !== undefined) voiceSettings.similarityBoost = settings.similarityBoost;
-	if (settings.speed !== undefined) voiceSettings.speed = settings.speed;
-
-	const request: Record<string, unknown> = {
-		text,
-		modelId: settings.elevenModel,
-		outputFormat: settings.outputFormat,
-	};
-	if (Object.keys(voiceSettings).length > 0) request.voiceSettings = voiceSettings;
-	if (settings.optimizeStreamingLatency !== undefined) {
-		request.optimizeStreamingLatency = settings.optimizeStreamingLatency;
-	}
-
-	const audio = await client.textToSpeech.stream(settings.voiceId, request as any, { signal } as any);
+	const audio = await client.textToSpeech.stream(settings.voiceId, buildTextToSpeechRequest(text, settings, profile) as any, {
+		abortSignal: signal,
+		signal,
+	} as any);
 	if (signal?.aborted) throw new Error("Speech synthesis cancelled");
+	return audio;
+}
+
+async function synthesizeToFile(
+	text: string,
+	settings: RuntimeSettings,
+	profile: SpeechProfile,
+	ctx: ExtensionContext | undefined,
+	signal?: AbortSignal,
+): Promise<{ file: string; dir: string }> {
+	const audio = await streamTextToSpeechAudio(text, settings, profile, ctx, signal);
 
 	const buffer = await audioToBuffer(audio);
 	if (signal?.aborted) throw new Error("Speech synthesis cancelled");
@@ -584,6 +771,161 @@ function resolvePlayer(settings: RuntimeSettings): ResolvedPlayer | undefined {
 	}
 
 	return undefined;
+}
+
+function profileForKind(settings: RuntimeSettings, kind: VoiceKind): SpeechProfile {
+	return kind === "ack" ? settings.ackProfile : settings.finalProfile;
+}
+
+function abortError(): Error {
+	return new Error("Speech playback cancelled");
+}
+
+function normalizeAudioChunk(chunk: Uint8Array | Buffer | string | ArrayBuffer): Buffer {
+	if (typeof chunk === "string") return Buffer.from(chunk);
+	if (Buffer.isBuffer(chunk)) return chunk;
+	if (chunk instanceof ArrayBuffer) return Buffer.from(chunk);
+	return Buffer.from(chunk);
+}
+
+async function waitForWritableDrain(writable: NodeJS.WritableStream, signal?: AbortSignal): Promise<void> {
+	if (signal?.aborted) throw abortError();
+	await new Promise<void>((resolve, reject) => {
+		const cleanup = () => {
+			(writable as any).off?.("drain", onDrain);
+			(writable as any).off?.("error", onError);
+			signal?.removeEventListener("abort", onAbort);
+		};
+		const onDrain = () => {
+			cleanup();
+			resolve();
+		};
+		const onError = (error: unknown) => {
+			cleanup();
+			reject(error);
+		};
+		const onAbort = () => {
+			cleanup();
+			reject(abortError());
+		};
+
+		(writable as any).once?.("drain", onDrain);
+		(writable as any).once?.("error", onError);
+		signal?.addEventListener("abort", onAbort, { once: true });
+	});
+}
+
+async function writeAudioChunk(writable: NodeJS.WritableStream, chunk: Uint8Array | Buffer | string | ArrayBuffer, signal?: AbortSignal): Promise<void> {
+	if (signal?.aborted) throw abortError();
+	const ok = writable.write(normalizeAudioChunk(chunk));
+	if (!ok) await waitForWritableDrain(writable, signal);
+}
+
+async function pipeAudioToWritable(audio: unknown, writable: NodeJS.WritableStream, signal?: AbortSignal): Promise<void> {
+	if (signal?.aborted) throw abortError();
+
+	if (Buffer.isBuffer(audio) || audio instanceof Uint8Array || audio instanceof ArrayBuffer || typeof audio === "string") {
+		await writeAudioChunk(writable, audio, signal);
+		return;
+	}
+
+	if (audio && typeof audio === "object" && "body" in audio) {
+		const body = (audio as { body?: unknown }).body;
+		if (body) {
+			await pipeAudioToWritable(body, writable, signal);
+			return;
+		}
+	}
+
+	if (audio && typeof audio === "object" && Symbol.asyncIterator in audio) {
+		for await (const chunk of audio as AsyncIterable<Uint8Array | Buffer | string | ArrayBuffer>) {
+			if (signal?.aborted) throw abortError();
+			await writeAudioChunk(writable, chunk, signal);
+		}
+		return;
+	}
+
+	if (audio && typeof audio === "object" && typeof (audio as { getReader?: unknown }).getReader === "function") {
+		const reader = (audio as ReadableStream<Uint8Array>).getReader();
+		try {
+			while (true) {
+				if (signal?.aborted) throw abortError();
+				const { done, value } = await reader.read();
+				if (done) break;
+				if (value) await writeAudioChunk(writable, value, signal);
+			}
+		} finally {
+			reader.releaseLock();
+		}
+		return;
+	}
+
+	if (audio && typeof audio === "object" && typeof (audio as { arrayBuffer?: unknown }).arrayBuffer === "function") {
+		const arrayBuffer = await (audio as { arrayBuffer(): Promise<ArrayBuffer> }).arrayBuffer();
+		await writeAudioChunk(writable, arrayBuffer, signal);
+		return;
+	}
+
+	throw new Error("Unsupported ElevenLabs audio response type");
+}
+
+function killProcess(child: ChildProcess): void {
+	child.kill("SIGTERM");
+	setTimeout(() => {
+		if (!child.killed) child.kill("SIGKILL");
+	}, 500).unref?.();
+}
+
+function waitForProcess(child: ChildProcess, signal?: AbortSignal): Promise<void> {
+	return new Promise((resolve, reject) => {
+		const onAbort = () => killProcess(child);
+		signal?.addEventListener("abort", onAbort, { once: true });
+
+		child.on("error", (error) => {
+			signal?.removeEventListener("abort", onAbort);
+			reject(error);
+		});
+
+		child.on("close", () => {
+			signal?.removeEventListener("abort", onAbort);
+			resolve();
+		});
+	});
+}
+
+async function streamSpeechToMpv(
+	text: string,
+	settings: RuntimeSettings,
+	profile: SpeechProfile,
+	ctx: ExtensionContext | undefined,
+	signal?: AbortSignal,
+	onProcess?: (child: ChildProcess) => void,
+): Promise<void> {
+	if (signal?.aborted) return;
+	const child = spawn("mpv", ["--no-terminal", "--really-quiet", "--cache=no", "-"], { stdio: ["pipe", "ignore", "ignore"] });
+	child.stdin?.on("error", () => {
+		// Avoid an unhandled EPIPE if playback is cancelled while audio is still being piped.
+	});
+	onProcess?.(child);
+	const done = waitForProcess(child, signal);
+
+	try {
+		const audio = await streamTextToSpeechAudio(text, settings, profile, ctx, signal);
+		if (signal?.aborted) {
+			await done.catch(() => undefined);
+			return;
+		}
+		if (!child.stdin) throw new Error("mpv stdin unavailable");
+		await pipeAudioToWritable(audio, child.stdin, signal);
+		child.stdin.end();
+		await done;
+	} catch (error) {
+		child.stdin?.destroy();
+		killProcess(child);
+		await done.catch(() => undefined);
+		if (signal?.aborted) return;
+		throw error;
+	}
 }
 
 function playFile(file: string, player: ResolvedPlayer, signal?: AbortSignal, onProcess?: (child: ChildProcess) => void): Promise<void> {
@@ -662,7 +1004,8 @@ class SpeechQueue {
 		if (!this.settings.enabled) return;
 		if (job.shouldSpeak && !job.shouldSpeak()) return;
 
-		const text = sanitizeForSpeech(job.text, this.settings, job.kind === "ack" ? 1 : this.settings.maxFinalSentences);
+		const profile = job.profile ?? profileForKind(this.settings, job.kind);
+		const text = sanitizeForSpeech(job.text, this.settings, profile, job.kind === "ack" ? 1 : this.settings.maxFinalSentences);
 		if (!text) return;
 
 		if (this.settings.dryRun) {
@@ -682,13 +1025,19 @@ class SpeechQueue {
 
 		let dir: string | undefined;
 		try {
-			debug(this.settings, `speaking ${job.kind}: ${text}`);
-			const synthesized = await synthesizeToFile(text, this.settings, job.ctx, abort.signal);
-			dir = synthesized.dir;
-			if (abort.signal.aborted || (job.shouldSpeak && !job.shouldSpeak())) return;
-			await playFile(synthesized.file, player, abort.signal, (child) => {
-				this.currentProcess = child;
-			});
+			debug(this.settings, `speaking ${job.kind} with ${profile.elevenModel}: ${text}`);
+			if (player.name === "mpv") {
+				await streamSpeechToMpv(text, this.settings, profile, job.ctx, abort.signal, (child) => {
+					this.currentProcess = child;
+				});
+			} else {
+				const synthesized = await synthesizeToFile(text, this.settings, profile, job.ctx, abort.signal);
+				dir = synthesized.dir;
+				if (abort.signal.aborted || (job.shouldSpeak && !job.shouldSpeak())) return;
+				await playFile(synthesized.file, player, abort.signal, (child) => {
+					this.currentProcess = child;
+				});
+			}
 		} catch (error) {
 			if (!abort.signal.aborted) {
 				debug(this.settings, `speech ${job.kind} failed`, error);
@@ -705,16 +1054,29 @@ class SpeechQueue {
 	}
 }
 
+function formatProfile(profile: SpeechProfile): string {
+	const settings: string[] = [];
+	if (profile.stability !== undefined) settings.push(`stability ${profile.stability}`);
+	if (profile.similarityBoost !== undefined) settings.push(`similarity ${profile.similarityBoost}`);
+	if (profile.style !== undefined) settings.push(`style ${profile.style}`);
+	if (profile.speed !== undefined) settings.push(`speed ${profile.speed}`);
+	if (profile.useSpeakerBoost !== undefined) settings.push(`speaker boost ${profile.useSpeakerBoost ? "on" : "off"}`);
+	if (profile.applyTextNormalization !== undefined) settings.push(`normalization ${profile.applyTextNormalization}`);
+	return settings.length > 0 ? `${profile.elevenModel} (${settings.join(", ")})` : profile.elevenModel;
+}
+
 async function formatStatus(settings: RuntimeSettings, ctx: ExtensionContext | undefined): Promise<string> {
 	const hasAuthFileKey = Boolean(await ctx?.modelRegistry.getApiKeyForProvider("elevenlabs"));
 	const hasEnvKey = Boolean(env("ELEVENLABS_API_KEY") ?? env("PI_VOICE_ELEVENLABS_API_KEY"));
 	const keySource = hasAuthFileKey ? "Pi auth.json" : hasEnvKey ? "environment" : "missing";
-	const player = resolvePlayer(settings)?.name ?? "not found";
+	const resolvedPlayer = resolvePlayer(settings);
+	const player = resolvedPlayer ? `${resolvedPlayer.name}${resolvedPlayer.name === "mpv" ? " (streaming)" : ""}` : "not found";
 	return [
 		`Voice: ${settings.enabled ? "on" : "off"}`,
 		`ElevenLabs API key: ${keySource}`,
 		`Voice ID: ${settings.voiceId}`,
-		`ElevenLabs model: ${settings.elevenModel}`,
+		`Ack model: ${formatProfile(settings.ackProfile)}`,
+		`Final model: ${formatProfile(settings.finalProfile)}`,
 		`Output format: ${settings.outputFormat}`,
 		`Player: ${player}`,
 		`Acknowledgements: ${settings.ackEnabled ? settings.ackStyle : "off"}`,
@@ -730,6 +1092,69 @@ function parseOnOff(value: string | undefined): boolean | undefined {
 	if (["on", "true", "yes", "1"].includes(normalized)) return true;
 	if (["off", "false", "no", "0"].includes(normalized)) return false;
 	return undefined;
+}
+
+const DEFAULT_AUDITION_TEXT =
+	"Here’s the practical bit: I found a few ways to make this sound more human. The biggest wins are a more expressive model, slightly looser stability, and text that gives the voice natural places to lean in.";
+
+function auditionPresets(settings: RuntimeSettings): Array<{ label: string; profile: SpeechProfile }> {
+	const base = settings.finalProfile;
+	return [
+		{
+			label: "v2 balanced",
+			profile: {
+				...base,
+				elevenModel: "eleven_multilingual_v2",
+				stability: 0.5,
+				similarityBoost: 0.75,
+				style: 0,
+				speed: 1,
+				useSpeakerBoost: true,
+			},
+		},
+		{
+			label: "v2 expressive",
+			profile: {
+				...base,
+				elevenModel: "eleven_multilingual_v2",
+				stability: 0.35,
+				similarityBoost: 0.78,
+				style: 0.25,
+				speed: 0.96,
+				useSpeakerBoost: true,
+			},
+		},
+		{
+			label: "v3 natural",
+			profile: {
+				...base,
+				elevenModel: "eleven_v3",
+				stability: 0.5,
+				similarityBoost: 0.75,
+				style: undefined,
+				useSpeakerBoost: undefined,
+			},
+		},
+		{
+			label: "v3 creative",
+			profile: {
+				...base,
+				elevenModel: "eleven_v3",
+				stability: 0.35,
+				similarityBoost: 0.75,
+				style: undefined,
+				useSpeakerBoost: undefined,
+			},
+		},
+	];
+}
+
+function auditionSpeech(label: string, profile: SpeechProfile, sample: string): string {
+	const intro = `Preset: ${label}.`;
+	if (isV3Model(profile.elevenModel)) {
+		return `${intro} [warmly] ${sample}`;
+	}
+	return `${intro} ${sample.replace(/:\s+/, ': <break time="0.35s" />')}`;
 }
 
 export default function (pi: ExtensionAPI) {
@@ -758,12 +1183,19 @@ export default function (pi: ExtensionAPI) {
 		return true;
 	};
 
-	const enqueueSpeech = (kind: VoiceKind, text: string, ctx: ExtensionContext | undefined, version?: number) => {
+	const enqueueSpeech = (
+		kind: VoiceKind,
+		text: string,
+		ctx: ExtensionContext | undefined,
+		version?: number,
+		profile?: SpeechProfile,
+	) => {
 		speechQueue.enqueue({
 			kind,
 			text,
 			ctx,
 			createdAt: Date.now(),
+			profile,
 			shouldSpeak: version === undefined ? undefined : () => version === activityVersion,
 		});
 	};
@@ -813,6 +1245,7 @@ export default function (pi: ExtensionAPI) {
 				latestUserPrompt,
 				assistantResponse: responseText,
 				maxSentences: settings.maxFinalSentences,
+				profile: settings.finalProfile,
 			});
 
 			const generated = await completeSideText(
@@ -824,7 +1257,9 @@ export default function (pi: ExtensionAPI) {
 			);
 
 			if (controller.signal.aborted || version !== activityVersion) return;
-			const text = generated ? sanitizeForSpeech(generated, settings) : deterministicFinalSummary(responseText, settings);
+			const text = generated
+				? sanitizeForSpeech(generated, settings, settings.finalProfile)
+				: deterministicFinalSummary(responseText, settings);
 			speechQueue.clearPending("ack");
 			enqueueSpeech("final", text, ctx, version);
 		} catch (error) {
@@ -871,6 +1306,20 @@ export default function (pi: ExtensionAPI) {
 			if (command === "test") {
 				const text = parts.slice(1).join(" ") || "Pi voice is working. I’ll speak short, useful updates when work finishes.";
 				enqueueSpeech("test", text, ctx);
+				return;
+			}
+
+			if (command === "audition") {
+				activityVersion++;
+				cancelSideWork();
+				speechQueue.stop();
+
+				const sample = parts.slice(1).join(" ") || DEFAULT_AUDITION_TEXT;
+				const presets = auditionPresets(settings);
+				for (const preset of presets) {
+					enqueueSpeech("test", auditionSpeech(preset.label, preset.profile, sample), ctx, undefined, preset.profile);
+				}
+				notify(ctx, `Queued ${presets.length} voice audition samples.`, "info");
 				return;
 			}
 
@@ -924,7 +1373,7 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 
-			notify(ctx, "Usage: /voice status|on|off|stop|test|ack|final|voice|dry-run", "warning");
+			notify(ctx, "Usage: /voice status|on|off|stop|test|audition|ack|final|voice|dry-run", "warning");
 		},
 	});
 
