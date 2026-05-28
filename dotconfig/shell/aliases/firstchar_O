@@ -1,7 +1,7 @@
 firstchar_O() {
   # Is the current buffer (command line) empty?
   if [[ -z "$BUFFER" ]]; then
-    BUFFER="o"
+    BUFFER="oc"
     zle accept-line
   else
     # Behave like a normal 'O'
