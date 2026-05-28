@@ -1,5 +1,5 @@
 config-file = "./keys"
-config-file = "./keys-using-zellij"
+config-file = "./keys-without-zellij"
 config-file = "./shader"
 
 shell-integration = "zsh"
@@ -60,8 +60,10 @@ background-blur = 16
 background-blur-radius = 10
 
 maximize = true
-fullscreen = non-native
-window-decoration = none
+fullscreen = false
+window-decoration = auto
+title = " "
+macos-titlebar-style = transparent
 
 window-padding-x = 8
 window-padding-y = 8
@@ -71,7 +73,8 @@ confirm-close-surface = false
 
 cursor-style = bar
 
-title = "Ghostty"
+# blueprint, chalkboard, microchip, glass, holographic, paper, retro, xray
+macos-icon = holographic
 
 # Launch into tmux — sessions persist across Ghostty restarts
 # command = /bin/zsh -l -c 'exec tmux'
