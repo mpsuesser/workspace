@@ -48,7 +48,12 @@ export ELEVENLABS_API_KEY="..."
 Optional:
 
 ```sh
-export PI_VOICE_ID="aEO01A4wXwd1O8GPgGlF"
+export PI_VOICE_ID="Charlotte" # or "Arabella" / any ElevenLabs voice ID
+# Equivalent: export PI_VOICE_NAME="Charlotte"
+
+# Built-in favorite voices:
+# - Charlotte: 6fZce9LFNG3iEITDfqZZ (default)
+# - Arabella: aEO01A4wXwd1O8GPgGlF
 
 # Default TTS setup: quick acknowledgements stay on v2; final summaries use the v3 creative preset.
 export PI_VOICE_ACK_ELEVEN_MODEL="eleven_multilingual_v2"
@@ -76,10 +81,13 @@ Playback prefers `mpv`, which streams ElevenLabs audio directly from stdin so sp
 - `/voice off`
 - `/voice stop`
 - `/voice test [text]`
+- `/voice voices` — lists favorite voice names and IDs
 - `/voice audition [text]` — plays v2 balanced, v2 expressive, v3 natural, and v3 creative presets for comparison
 - `/voice ack on|off|template|llm`
 - `/voice final on|off`
-- `/voice voice <elevenlabs-voice-id>`
+- `/voice voice <name-or-elevenlabs-voice-id>`
+- `/voice use <name-or-elevenlabs-voice-id>`
+- `/voice Charlotte` / `/voice Arabella` — quick switch to a favorite
 
 ## Notes
 

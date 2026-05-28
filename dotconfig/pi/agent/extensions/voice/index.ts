@@ -9,7 +9,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const EXTENSION_ID = "pi-voice";
-const DEFAULT_VOICE_ID = "aEO01A4wXwd1O8GPgGlF";
+const FAVORITE_VOICES = [
+	{ name: "Charlotte", id: "6fZce9LFNG3iEITDfqZZ" },
+	{ name: "Arabella", id: "aEO01A4wXwd1O8GPgGlF" },
+] as const;
+const DEFAULT_VOICE_ID = FAVORITE_VOICES[0].id;
 const DEFAULT_ELEVEN_MODEL = "eleven_multilingual_v2";
 const DEFAULT_ACK_ELEVEN_MODEL = DEFAULT_ELEVEN_MODEL;
 const DEFAULT_FINAL_ELEVEN_MODEL = "eleven_v3";
@@ -119,6 +123,32 @@ function parsePlayer(value: string | undefined): PlayerName {
 	return "auto";
 }
 
+type FavoriteVoice = (typeof FAVORITE_VOICES)[number];
+
+function normalizeVoiceSelector(value: string): string {
+	return value.trim().toLowerCase().replace(/[\s_-]+/g, "");
+}
+
+function findFavoriteVoice(selector: string | undefined): FavoriteVoice | undefined {
+	if (!selector) return undefined;
+	const normalized = normalizeVoiceSelector(selector);
+	return FAVORITE_VOICES.find((voice) => normalizeVoiceSelector(voice.name) === normalized || voice.id.toLowerCase() === normalized);
+}
+
+function resolveVoiceId(selector: string | undefined): string {
+	if (!selector) return DEFAULT_VOICE_ID;
+	return findFavoriteVoice(selector)?.id ?? selector.trim();
+}
+
+function formatVoice(settings: RuntimeSettings): string {
+	const favorite = findFavoriteVoice(settings.voiceId);
+	return favorite ? `${favorite.name} (${favorite.id})` : settings.voiceId;
+}
+
+function formatFavoriteVoices(currentVoiceId: string): string {
+	return FAVORITE_VOICES.map((voice) => `${voice.id === currentVoiceId ? "*" : "-"} ${voice.name}: ${voice.id}`).join("\n");
+}
+
 function isV3Model(modelId: string): boolean {
 	return modelId.trim().toLowerCase() === "eleven_v3";
 }
@@ -159,7 +189,7 @@ function loadSettings(): RuntimeSettings {
 		ackStyle: parseAckStyle(env("PI_VOICE_ACK_STYLE")),
 		dryRun: parseBool(env("PI_VOICE_DRY_RUN"), false),
 		debug: parseBool(env("PI_VOICE_DEBUG"), false),
-		voiceId: env("PI_VOICE_ID") ?? DEFAULT_VOICE_ID,
+		voiceId: resolveVoiceId(env("PI_VOICE_ID") ?? env("PI_VOICE_NAME")),
 		outputFormat: env("PI_VOICE_OUTPUT_FORMAT") ?? DEFAULT_OUTPUT_FORMAT,
 		ackProfile: loadSpeechProfile("ACK", DEFAULT_ACK_ELEVEN_MODEL),
 		finalProfile: loadSpeechProfile("FINAL", DEFAULT_FINAL_ELEVEN_MODEL, {
@@ -1074,7 +1104,7 @@ async function formatStatus(settings: RuntimeSettings, ctx: ExtensionContext | u
 	return [
 		`Voice: ${settings.enabled ? "on" : "off"}`,
 		`ElevenLabs API key: ${keySource}`,
-		`Voice ID: ${settings.voiceId}`,
+		`Current voice: ${formatVoice(settings)}`,
 		`Ack model: ${formatProfile(settings.ackProfile)}`,
 		`Final model: ${formatProfile(settings.finalProfile)}`,
 		`Output format: ${settings.outputFormat}`,
@@ -1309,6 +1339,11 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 
+			if (command === "voices") {
+				notify(ctx, `Favorite voices:\n${formatFavoriteVoices(settings.voiceId)}\n\nSwitch with /voice voice Charlotte or /voice voice Arabella.`, "info");
+				return;
+			}
+
 			if (command === "audition") {
 				activityVersion++;
 				cancelSideWork();
@@ -1351,14 +1386,21 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 
-			if (command === "voice") {
-				const voiceId = parts[1];
-				if (!voiceId) {
-					notify(ctx, "Usage: /voice voice <elevenlabs-voice-id>", "warning");
+			if (command === "voice" || command === "use") {
+				const selector = parts.slice(1).join(" ");
+				if (!selector) {
+					notify(ctx, `Current voice: ${formatVoice(settings)}\n\nFavorite voices:\n${formatFavoriteVoices(settings.voiceId)}\n\nUsage: /voice voice <name-or-elevenlabs-voice-id>`, "warning");
 					return;
 				}
-				settings.voiceId = voiceId;
-				notify(ctx, `Pi voice ID set to ${voiceId}.`, "info");
+				settings.voiceId = resolveVoiceId(selector);
+				notify(ctx, `Pi voice set to ${formatVoice(settings)}.`, "info");
+				return;
+			}
+
+			const favoriteVoice = findFavoriteVoice(command);
+			if (favoriteVoice && parts.length === 1) {
+				settings.voiceId = favoriteVoice.id;
+				notify(ctx, `Pi voice set to ${formatVoice(settings)}.`, "info");
 				return;
 			}
 
@@ -1373,7 +1415,7 @@ export default function (pi: ExtensionAPI) {
 				return;
 			}
 
-			notify(ctx, "Usage: /voice status|on|off|stop|test|audition|ack|final|voice|dry-run", "warning");
+			notify(ctx, "Usage: /voice status|on|off|stop|test|voices|audition|ack|final|voice|use|dry-run", "warning");
 		},
 	});
 
