@@ -1,0 +1,281 @@
+# Part 2: Add a Worker
+
+In [Part 1](./part-1.md) you deployed an R2 Bucket. Now you'll create a Cloudflare Worker that reads and writes objects in that bucket over HTTP.
+
+## Create the Worker file
+
+Create `src/worker.ts`. A Worker is a special kind of Resource — it has both an infrastructure definition and a runtime implementation expressed as an Effect.
+
+```ts
+import * as Cloudflare from "alchemy/Cloudflare";
+import * as Effect from "effect/Effect";
+import * as HttpServerResponse from "effect/unstable/http/HttpServerResponse";
+
+export default Cloudflare.Worker(
+  "Worker",
+  {
+    main: import.meta.path,
+  },
+  Effect.gen(function* () {
+    return {
+      fetch: Effect.gen(function* () {
+        return HttpServerResponse.text("Hello, world!");
+      }),
+    };
+  }),
+);
+```
+
+## Bind the Bucket to the Worker
+
+Now let's bind the R2 Bucket from Part 1 to our new Worker. The problem is that the Bucket is declared inside the Stack's generator in `alchemy.run.ts` — we can't import it from there.
+
+A common pattern in Alchemy is to give each resource its own file. Create `src/bucket.ts`:
+
+```ts
+import * as Cloudflare from "alchemy/Cloudflare";
+
+export const Bucket = Cloudflare.R2Bucket("Bucket");
+```
+
+Update `alchemy.run.ts` to import it instead of declaring it inline:
+
+```ts
+import * as Alchemy from "alchemy";
+import * as Cloudflare from "alchemy/Cloudflare";
+import * as Effect from "effect/Effect";
+import { Bucket } from "./src/bucket.ts";
+
+export default Alchemy.Stack(
+  "MyApp",
+  {
+    providers: Cloudflare.providers(),
+    state: Cloudflare.state(),
+  },
+  Effect.gen(function* () {
+    const bucket = yield* Bucket;
+    return {
+      bucketName: bucket.bucketName,
+    };
+  }),
+);
+```
+
+Now the Worker can import `Bucket` and bind it in the Init phase:
+
+```ts
+import * as Cloudflare from "alchemy/Cloudflare";
+import * as Effect from "effect/Effect";
+import * as HttpServerResponse from "effect/unstable/http/HttpServerResponse";
+import { Bucket } from "./bucket.ts";
+
+export default Cloudflare.Worker(
+  "Worker",
+  {
+    main: import.meta.path,
+  },
+  Effect.gen(function* () {
+    // Error ts(2345) — Type 'R2BucketBinding' is not assignable to type 'WorkerServices | PlatformServices'.
+    const bucket = yield* Cloudflare.R2Bucket.bind(Bucket);
+    return {
+      fetch: Effect.gen(function* () {
+        return HttpServerResponse.text("Hello, world!");
+      }),
+    };
+  }),
+);
+```
+
+## Provide the binding layer
+
+The previous step showed a type error — `R2Bucket.bind` requires the `R2BucketBinding` service. Fix it by piping the outer Effect through `R2BucketBindingLive`:
+
+```ts
+import * as Cloudflare from "alchemy/Cloudflare";
+import * as Effect from "effect/Effect";
+import * as HttpServerResponse from "effect/unstable/http/HttpServerResponse";
+import { Bucket } from "./bucket.ts";
+
+export default Cloudflare.Worker(
+  "Worker",
+  { main: import.meta.path },
+  Effect.gen(function* () {
+    const bucket = yield* Cloudflare.R2Bucket.bind(Bucket);
+    return {
+      fetch: Effect.gen(function* () {
+        return HttpServerResponse.text("Hello, world!");
+      }),
+    };
+  }).pipe(Effect.provide(Cloudflare.R2BucketBindingLive)),
+);
+```
+
+`R2BucketBindingLive` tells the Worker runtime how to look up the underlying R2 binding from the Cloudflare environment. Without it, `bind` wouldn't know where to find the bucket at runtime.
+
+## Add the PUT handler
+
+Let's replace the placeholder response with a PUT route that stores objects in the bucket. Add `HttpServerRequest` to access the incoming request:
+
+```ts
+import * as Cloudflare from "alchemy/Cloudflare";
+import * as Effect from "effect/Effect";
+import { HttpServerRequest } from "effect/unstable/http/HttpServerRequest";
+import * as HttpServerResponse from "effect/unstable/http/HttpServerResponse";
+import { Bucket } from "./bucket.ts";
+
+export default Cloudflare.Worker(
+  "Worker",
+  { main: import.meta.path },
+  Effect.gen(function* () {
+    const bucket = yield* Cloudflare.R2Bucket.bind(Bucket);
+    return {
+      fetch: Effect.gen(function* () {
+        const request = yield* HttpServerRequest;
+        const key = request.url.split("/").pop()!;
+        if (request.method === "PUT") {
+          yield* bucket.put(key, request.stream, {
+            contentLength: Number(request.headers["content-length"] ?? 0),
+          });
+          return HttpServerResponse.empty({ status: 201 });
+        }
+        return HttpServerResponse.text("Hello, world!");
+      }),
+    };
+  }).pipe(Effect.provide(Cloudflare.R2BucketBindingLive)),
+);
+```
+
+TypeScript flags a type error. The `bucket.put` call can fail with `R2Error`, but a Worker's `fetch` handler only allows `HttpServerError` or `HttpBodyError`. Effect tracks this in the type system — you can't forget to handle it.
+
+Pipe the fetch Effect through `Effect.catchTag` to convert `R2Error` into a 500 response:
+
+```ts
+return {
+  fetch: Effect.gen(function* () {
+    const request = yield* HttpServerRequest;
+    const key = request.url.split("/").pop()!;
+    if (request.method === "PUT") {
+      yield* bucket.put(key, request.stream, {
+        contentLength: Number(request.headers["content-length"] ?? 0),
+      });
+      return HttpServerResponse.empty({ status: 201 });
+    }
+    return HttpServerResponse.text("Hello, world!");
+  }).pipe(
+    Effect.catchTag("R2Error", (error) =>
+      Effect.succeed(
+        HttpServerResponse.text(error.message, { status: 500 }),
+      ),
+    ),
+  ),
+};
+```
+
+`Effect.catchTag` matches errors by their `_tag` field. If an R2 operation fails at runtime, the Worker returns a 500 instead of crashing — and the type error disappears because `R2Error` is now fully handled.
+
+## Add the GET handler
+
+Complete the fetch handler by reading objects from the bucket when the request isn't a PUT:
+
+```ts
+fetch: Effect.gen(function* () {
+  const request = yield* HttpServerRequest;
+  const key = request.url.split("/").pop()!;
+  if (request.method === "PUT") {
+    yield* bucket.put(key, request.stream, {
+      contentLength: Number(request.headers["content-length"] ?? 0),
+    });
+    return HttpServerResponse.empty({ status: 201 });
+  }
+  const object = yield* bucket.get(key);
+  if (object === null) {
+    return HttpServerResponse.text("Not found", { status: 404 });
+  }
+  const text = yield* object.text();
+  return HttpServerResponse.text(text);
+}).pipe(
+  Effect.catchTag("R2Error", (error) =>
+    Effect.succeed(
+      HttpServerResponse.text(error.message, { status: 500 }),
+    ),
+  ),
+),
+```
+
+The Worker now handles two routes:
+
+- **`PUT /:key`** — stores the request body in the bucket
+- **`GET /:key`** — retrieves the object, returning 404 if missing
+
+Because `bucket.get` also returns `R2Error`, the `catchTag` you added in the previous step already covers it — no additional error handling needed.
+
+## Wire the Worker into the Stack
+
+Add the Worker to `alchemy.run.ts` and expose its URL as a stack output:
+
+```ts
+import * as Alchemy from "alchemy";
+import * as Cloudflare from "alchemy/Cloudflare";
+import * as Effect from "effect/Effect";
+import { Bucket } from "./src/bucket.ts";
+import Worker from "./src/worker.ts";
+
+export default Alchemy.Stack(
+  "MyApp",
+  {
+    providers: Cloudflare.providers(),
+    state: Cloudflare.state(),
+  },
+  Effect.gen(function* () {
+    const bucket = yield* Bucket;
+    const worker = yield* Worker;
+    return {
+      bucketName: bucket.bucketName,
+      url: worker.url,
+    };
+  }),
+);
+```
+
+Deploy again. Alchemy detects the new Worker and the unchanged Bucket:
+
+```
+Plan: 1 to create
+
++ Worker (Cloudflare.Worker) (1 bindings)
+  + Bucket
+• Bucket (Cloudflare.R2Bucket)
+
+Proceed?
+◉ Yes ○ No
+• Bucket (Cloudflare.R2Bucket) no change
+✓ Worker (Cloudflare.Worker) created
+  • Uploading worker (14.20 KB) ...
+  • Enabling workers.dev subdomain...
+{
+  bucketName: "myapp-bucket-a1b2c3d4e5",
+  url: "https://myapp-worker-dev-you-abc123.workers.dev",
+}
+```
+
+Use `curl` to write and read an object:
+
+```sh
+# Store an object
+curl -X PUT https://myapp-worker-dev-you-abc123.workers.dev/hello.txt \
+  -d 'Hello, world!'
+
+# Retrieve it
+curl https://myapp-worker-dev-you-abc123.workers.dev/hello.txt
+# → Hello, world!
+```
+
+## Recap
+
+You now have:
+
+- A Cloudflare Worker with GET and PUT routes
+- An R2 Bucket bound to the Worker
+- Stack outputs showing both the bucket name and worker URL
+
+In [Part 3](./part-3.md), you'll learn about stages and state stores so multiple developers (and CI) can deploy isolated environments.

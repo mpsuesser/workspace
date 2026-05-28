@@ -1,0 +1,180 @@
+# Provider
+
+A **Provider** implements the lifecycle operations for a resource type. When you `yield*` a resource inside a Stack, alchemy looks up the provider for that resource's type and calls the appropriate lifecycle method. This is what gives meaning to a [Resource](./resource.md) declaration — the engine plans, the provider acts.
+
+## Wiring providers into a Stack
+
+Providers are registered as Effect Layers. `Cloudflare.providers()` and `AWS.providers()` return Layers bundling every built-in provider for that cloud:
+
+```ts
+Alchemy.Stack(
+  "MyApp",
+  { providers: Cloudflare.providers() },
+  Effect.gen(function* () {
+    yield* Cloudflare.R2Bucket("Bucket");
+  }),
+);
+```
+
+The type system enforces this — using a Cloudflare resource without `Cloudflare.providers()` raises a compile-time error.
+
+To mix clouds, merge the layers:
+
+```ts
+import * as Layer from "effect/Layer";
+
+Alchemy.Stack(
+  "MyApp",
+  {
+    providers: Layer.mergeAll(Cloudflare.providers(), AWS.providers()),
+  },
+  Effect.gen(function* () {
+    yield* Cloudflare.R2Bucket("Bucket");
+    yield* AWS.SQS.Queue("Jobs");
+  }),
+);
+```
+
+## Lifecycle operations
+
+A provider is an object implementing some subset of these operations. `reconcile` and `delete` are required; the rest are optional.
+
+### `reconcile`
+
+Required. Called for every "make it so" intent — first-time provisioning, routine updates, and adoption takeovers. Returns the **output attributes** that downstream resources can reference.
+
+A reconciler is a single observe → ensure → sync → return flow:
+
+```ts
+reconcile: Effect.fnUntraced(function* ({ news, output }) {
+  const stripe = yield* StripeClient;
+  // Observe — fetch live state if we have a cached id.
+  let product = output?.productId
+    ? yield* Effect.tryPromise(() =>
+        stripe.products.retrieve(output.productId),
+      ).pipe(Effect.catchAll(() => Effect.succeed(undefined)))
+    : undefined;
+  // Ensure — create if missing.
+  if (!product) {
+    product = yield* Effect.tryPromise(() =>
+      stripe.products.create({ name: news.name }),
+    );
+  }
+  // Sync — patch any field that drifted from desired.
+  if (product.name !== news.name) {
+    product = yield* Effect.tryPromise(() =>
+      stripe.products.update(product!.id, { name: news.name }),
+    );
+  }
+  return { productId: product.id, name: product.name };
+}),
+```
+
+The provider receives `output: Attributes | undefined` and `olds: Props | undefined`:
+
+| `output` | `olds` | Meaning |
+|---|---|---|
+| `undefined` | `undefined` | Greenfield — no prior resource |
+| defined | defined | Routine update |
+| defined | `undefined` | Adoption — engine adopted via `read` |
+
+The reconciler must work for all three combinations. Do not branch the body on `output === undefined` — that just renames the old `create`/`update` split. Trust observed cloud state, not `olds`.
+
+`reconcile` must be **idempotent**: alchemy may retry it after a state persistence failure. Deterministic physical names plus the observe step ensure a retry finds the existing resource and re-syncs any drifted fields.
+
+### `delete`
+
+Required. Called when a resource is removed from code, replaced, or when running `alchemy destroy`. Must also be **idempotent** — treat "already deleted" as success.
+
+```ts
+delete: ({ output }) =>
+  Effect.promise(() => stripe.products.del(output.productId));
+```
+
+### `diff`
+
+Optional. Called during planning to decide what kind of change is needed when properties differ. Returns a tagged `Diff` describing the action:
+
+```ts
+diff: Effect.fnUntraced(function* ({ news, olds }) {
+  if (news.region !== olds.region) {
+    return { action: "replace" } as const;
+  }
+  if (news.name !== olds.name) {
+    return { action: "update" } as const;
+  }
+  return { action: "noop" } as const;
+}),
+```
+
+The shape is one of:
+
+- **`{ action: "noop" }`** — properties differ trivially; don't call `update`.
+- **`{ action: "update", stables?: [...] }`** — apply an in-place update. `stables` lists props guaranteed not to change during this update.
+- **`{ action: "replace", deleteFirst?: boolean }`** — destroy and recreate. Set `deleteFirst: true` for resources that can't coexist with their replacement (e.g. unique-name constraints).
+- **`void` / `undefined`** — fall back to the default behavior (treat the change as an `update`).
+
+A provider can also declare top-level `stables` for attributes that are immutable across all updates (e.g. ARNs, resource IDs).
+
+For comparing nested objects, use the `deepEqual` and `anyPropsAreDifferent` helpers from `alchemy/Diff`. If any input might still be unresolved when `diff` runs (an unresolved `Output`), guard with `isResolved` first and return `undefined` to let the default path handle it.
+
+### `read`
+
+Optional. The engine consults `read` whenever a resource has no prior state — both for **state recovery** (state lost between create and persist) and for **adoption** (a fresh state store deploying against existing cloud infrastructure).
+
+```ts
+read: Effect.fnUntraced(function* ({ id, olds, output }) {
+  const stripe = yield* StripeClient;
+  if (!output?.productId) return undefined;
+  const product = yield* Effect.tryPromise(() =>
+    stripe.products.retrieve(output.productId),
+  ).pipe(Effect.catchAll(() => Effect.succeed(undefined)));
+  if (!product) return undefined;
+  return { productId: product.id, name: product.name };
+}),
+```
+
+`read` returns one of three values:
+
+- **`undefined`** — the resource doesn't exist. The engine will drive a normal `create`.
+- **plain attributes** — the resource exists and we own it. The engine silently adopts: it persists the attributes as the initial `created` state and lets ordinary `diff` decide whether the next deploy is a noop or update.
+- **`Unowned(attributes)`** — the resource exists but we don't own it. By default the engine fails with `OwnedBySomeoneElse`. Re-running with `--adopt` (or scoping the effect with `adopt(true)`) unlocks a takeover.
+
+`Unowned` is a brand from `alchemy/AdoptPolicy` — there's no wrapper to unwrap, just a hidden symbol on the attributes object:
+
+```ts
+import { Unowned } from "alchemy/AdoptPolicy";
+
+read: Effect.fnUntraced(function* ({ id, olds }) {
+  const live = yield* lookup(olds.name);
+  if (!live) return undefined;
+  const attrs = { productId: live.id, name: live.name };
+  return ownsResource(id, live.tags) ? attrs : Unowned(attrs);
+}),
+```
+
+**Inputs.** `read` may be called for an existence/adoption probe with `output: undefined` (no prior state). Resources whose live lookup requires a previously-persisted ID should return `undefined` in that case.
+
+**Ownership detection.** Resources with no notion of ownership should always return plain attributes — the engine treats them as owned and silent adoption is the default. Resources with tag-based or naming-based ownership should brand foreign-owned attributes with `Unowned`.
+
+> Lifecycle methods don't gate on ownership. Once `read` clears a resource for write, `reconcile` can assume it's safe to proceed. Don't repeat the ownership check inside `reconcile`.
+
+### `reserve`, `tail`, `logs`
+
+- **`reserve`** — Reserves a physical name (or stub resource) before `create` runs. Enables [circular bindings](../guides/circular-bindings.md).
+- **`tail`** / **`logs`** — Power `alchemy tail` (live log streaming) and `alchemy logs` (historical fetch). Each returns a `Stream` or `Effect` of `LogLine` values respectively.
+
+## Plan and apply
+
+Alchemy combines every provider's lifecycle operations into a single **plan**, then **applies** it.
+
+- **Plan** — for each declared resource, alchemy compares the desired props against persisted state and uses `diff` to decide whether it's a `create`, `update`, `replace`, or `noop`. Anything in state but no longer declared is marked for `delete`.
+- **Apply** — alchemy walks the plan in dependency order and calls the matching lifecycle operation on each provider, surfacing the results as `Output`s for downstream resources.
+
+See [Resource Lifecycle](./resource-lifecycle.md) for how a resource moves through these phases over time.
+
+## Custom providers
+
+To add support for a new cloud or third-party API, declare a [Resource type](./resource.md) and implement its provider as an Effect `Layer`. Because providers are just Layers, you can merge them with `Cloudflare.providers()` or `AWS.providers()` — one stack, mixed clouds, no codegen.
+
+See [Writing a Custom Resource Provider](../guides/custom-provider.md) for a step-by-step walkthrough that builds a Stripe `Product` provider end-to-end.
