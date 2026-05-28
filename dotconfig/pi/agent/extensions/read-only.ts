@@ -18,6 +18,7 @@ export default makeExtension({
 		const pi = yield* PiApi;
 		mode = createModeToggle(pi.raw, {
 			id: "read-only",
+			key: "r",
 			color: "#800000",
 			statusText: READ_ONLY_STATUS,
 			description: "Block the built-in write and edit tools",
@@ -41,7 +42,7 @@ export default makeExtension({
 
 				return {
 					block: true,
-					reason: "Read-only mode is active. Press Tab and toggle read-only off.",
+					reason: "Read-only mode is active. Press Tab, then R to toggle read-only off.",
 				};
 			}),
 		),

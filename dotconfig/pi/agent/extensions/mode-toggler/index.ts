@@ -1,10 +1,8 @@
 import { Effect, Option } from "effect";
 import {
-	Input,
-	fuzzyFilter,
-	getKeybindings,
 	matchesKey,
 	truncateToWidth,
+	type KeyId,
 	visibleWidth,
 } from "@mariozechner/pi-tui";
 import {
@@ -37,11 +35,11 @@ export {
 } from "./mode-toggle-helper.ts";
 
 const modes = new Map<string, ModeRegistration>();
-const MAX_VISIBLE_MODES = 8;
-const SELECTED_ROW_BG = "\x1b[48;2;46;46;46m";
-const RESET_BG = "\x1b[49m";
 const MODE_ON_DOT = "\x1b[1;38;2;80;220;120m●\x1b[39m";
 const MODE_OFF_DOT = "\x1b[38;2;120;120;120m●\x1b[39m";
+const KEY_COLOR = "\x1b[1;38;2;180;180;180m";
+const DIM_COLOR = "\x1b[38;2;120;120;120m";
+const ANSI_RESET_FG = "\x1b[39m";
 const BORDER = {
 	topLeft: "╔",
 	topRight: "╗",
@@ -61,7 +59,7 @@ interface ModeSelectorTheme {
 }
 
 interface ModeSelectorComponent {
-	focused: boolean;
+	focused?: boolean;
 	render(width: number): string[];
 	invalidate(): void;
 	handleInput(data: string): void;
@@ -105,6 +103,8 @@ function isModeRegistration(value: unknown): value is ModeRegistration {
 	return (
 		typeof record.id === "string" &&
 		typeof record.name === "string" &&
+		typeof record.key === "string" &&
+		record.key.trim().length > 0 &&
 		typeof record.color === "string" &&
 		typeof record.isEnabled === "function" &&
 		typeof record.setEnabled === "function"
@@ -144,16 +144,55 @@ function colorizeHexForeground(text: string, color: string): string {
 	return `\x1b[1;38;2;${String(r)};${String(g)};${String(b)}m${text}\x1b[39m`;
 }
 
+function colorizeKey(text: string): string {
+	return `${KEY_COLOR}${text}${ANSI_RESET_FG}`;
+}
+
+function colorizeDim(text: string): string {
+	return `${DIM_COLOR}${text}${ANSI_RESET_FG}`;
+}
+
+function formatModeKey(key: string): string {
+	const trimmed = key.trim();
+	if (trimmed.length === 1) return trimmed.toUpperCase();
+
+	return trimmed
+		.split("+")
+		.map((part) => {
+			if (part.length === 0) return part;
+			if (part.length === 1) return part.toUpperCase();
+			return `${part[0]?.toUpperCase() ?? ""}${part.slice(1)}`;
+		})
+		.join("+");
+}
+
+function matchesModeKey(data: string, key: string): boolean {
+	const trimmed = key.trim();
+	if (trimmed.length === 0) return false;
+
+	if (matchesKey(data, trimmed as KeyId)) return true;
+
+	if (trimmed.length === 1) {
+		const lowerKey = trimmed.toLowerCase();
+		return matchesKey(data, `shift+${lowerKey}` as KeyId) ||
+			(data.length === 1 && data.toLowerCase() === lowerKey);
+	}
+
+	return false;
+}
+
 function renderModeLine(
 	mode: ModeRegistration,
-	selected: boolean,
 	innerWidth: number,
+	keyWidth: number,
 ): string {
+	const keyText = formatModeKey(mode.key).padEnd(keyWidth, " ");
+	const key = colorizeKey(keyText);
 	const dot = mode.isEnabled() ? MODE_ON_DOT : MODE_OFF_DOT;
 	const label = colorizeHexForeground(mode.name, mode.color);
-	const content = truncateToWidth(` ${dot}   ${label}`, innerWidth, "");
-	const padded = `${content}${" ".repeat(Math.max(0, innerWidth - visibleWidth(content)))}`;
-	return selected ? `${SELECTED_ROW_BG}${padded}${RESET_BG}` : padded;
+	const description = mode.description ? colorizeDim(` — ${mode.description}`) : "";
+	const content = truncateToWidth(` ${key}   ${dot}   ${label}${description}`, innerWidth, "");
+	return `${content}${" ".repeat(Math.max(0, innerWidth - visibleWidth(content)))}`;
 }
 
 async function showModeSelector(ctx: ModeSelectorContext): Promise<void> {
@@ -165,110 +204,44 @@ async function showModeSelector(ctx: ModeSelectorContext): Promise<void> {
 
 	await ctx.ui.custom<void>(
 		(tui, theme, _keybindings, done) => {
-			const searchInput = new Input();
-			const kb = getKeybindings();
-			let focused = false;
-			let filteredModes = availableModes;
-			let selectedIndex = 0;
 			const borderColor = (text: string) => theme.fg("accent", text);
+			const keyWidth = Math.max(
+				1,
+				...availableModes.map((mode) => visibleWidth(formatModeKey(mode.key))),
+			);
 
-			const applyFilter = (): void => {
-				const query = searchInput.getValue().trim();
-				filteredModes = query.length === 0
-					? availableModes
-					: fuzzyFilter(availableModes, query, (mode) => mode.name);
-				selectedIndex = Math.max(0, Math.min(selectedIndex, filteredModes.length - 1));
-			};
-
-			const toggleSelectedMode = (): void => {
-				const mode = filteredModes[selectedIndex];
-				if (!mode) return;
+			const toggleMode = (mode: ModeRegistration): void => {
 				mode.setEnabled(!mode.isEnabled(), ctx);
+				done(undefined);
 			};
 
 			return {
-				get focused(): boolean {
-					return focused;
-				},
-				set focused(value: boolean) {
-					focused = value;
-					searchInput.focused = value;
-				},
 				render(width: number): string[] {
 					const innerWidth = Math.max(1, width - 4);
-					const startIndex = Math.max(
-						0,
-						Math.min(selectedIndex - Math.floor(MAX_VISIBLE_MODES / 2), filteredModes.length - MAX_VISIBLE_MODES),
-					);
-					const visibleModes = filteredModes.slice(startIndex, startIndex + MAX_VISIBLE_MODES);
-
 					const lines = [topBorder(width, borderColor)];
+
 					lines.push(frameLine(theme.fg("accent", theme.bold("Mode Toggler")), width, borderColor));
-					lines.push(frameLine("", width, borderColor));
-					for (const renderedLine of searchInput.render(innerWidth + 2)) {
-						const line = renderedLine.startsWith("> ")
-							? renderedLine.slice(2)
-							: renderedLine;
-						lines.push(frameLine(line, width, borderColor));
-					}
+					lines.push(frameLine(theme.fg("dim", "Press a mode key to toggle • Tab/Esc closes"), width, borderColor));
 					lines.push(frameLine("", width, borderColor));
 
-					if (visibleModes.length === 0) {
-						lines.push(frameLine(theme.fg("dim", "No matching modes"), width, borderColor));
-					} else {
-						for (const [offset, mode] of visibleModes.entries()) {
-							lines.push(
-								frameLine(
-									renderModeLine(mode, startIndex + offset === selectedIndex, innerWidth),
-									width,
-									borderColor,
-								),
-							);
-						}
+					for (const mode of availableModes) {
+						lines.push(frameLine(renderModeLine(mode, innerWidth, keyWidth), width, borderColor));
 					}
 
 					lines.push(bottomBorder(width, borderColor));
 					return lines;
 				},
-				invalidate(): void {
-					searchInput.invalidate();
-				},
+				invalidate(): void {},
 				handleInput(data: string): void {
-					if (kb.matches(data, "tui.input.newLine") || matchesKey(data, "shift+enter")) {
+					if (matchesKey(data, "tab") || matchesKey(data, "escape") || matchesKey(data, "ctrl+c")) {
 						done(undefined);
 						return;
-					} else if (matchesKey(data, "space") || data === " ") {
-						if (searchInput.getValue().length === 0) {
-							done(undefined);
-							return;
-						}
+					}
 
-						searchInput.setValue("");
-						applyFilter();
-					} else if (kb.matches(data, "tui.select.up") || matchesKey(data, "shift+w") || data === "W") {
-						if (filteredModes.length > 0) {
-							selectedIndex = selectedIndex === 0 ? filteredModes.length - 1 : selectedIndex - 1;
-						}
-					} else if (kb.matches(data, "tui.select.down") || matchesKey(data, "shift+s") || data === "S") {
-						if (filteredModes.length > 0) {
-							selectedIndex = selectedIndex === filteredModes.length - 1 ? 0 : selectedIndex + 1;
-						}
-					} else if (kb.matches(data, "tui.select.pageUp")) {
-						if (filteredModes.length > 0) {
-							selectedIndex = Math.max(0, selectedIndex - MAX_VISIBLE_MODES);
-						}
-					} else if (kb.matches(data, "tui.select.pageDown")) {
-						if (filteredModes.length > 0) {
-							selectedIndex = Math.min(filteredModes.length - 1, selectedIndex + MAX_VISIBLE_MODES);
-						}
-					} else if (kb.matches(data, "tui.select.confirm")) {
-						toggleSelectedMode();
-					} else if (kb.matches(data, "tui.select.cancel")) {
-						done(undefined);
+					const mode = availableModes.find((candidate) => matchesModeKey(data, candidate.key));
+					if (mode) {
+						toggleMode(mode);
 						return;
-					} else {
-						searchInput.handleInput(data);
-						applyFilter();
 					}
 
 					tui.requestRender();

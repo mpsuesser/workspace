@@ -20,7 +20,8 @@
         "-extensions/agent-browser/index.ts"
       ]
     },
-    "npm:pi-subagents"
+    "npm:pi-subagents",
+    "git:github.com/BlockedPath/pi-xai-oauth"
   ],
   "skills": [
     "-skills/engineering/documentation-driven-development/SKILL.md",

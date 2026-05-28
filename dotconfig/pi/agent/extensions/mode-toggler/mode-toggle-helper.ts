@@ -42,6 +42,7 @@ export interface ModePersistenceOptions {
 export interface ModeRegistration {
 	id: string;
 	name: string;
+	key: string;
 	color: string;
 	description?: string;
 	persistenceScope: ModePersistenceScope;
@@ -52,6 +53,7 @@ export interface ModeRegistration {
 export interface CreateModeToggleOptions {
 	id: string;
 	name?: string;
+	key: string;
 	color: string;
 	statusText?: string;
 	description?: string;
@@ -64,6 +66,7 @@ export interface CreateModeToggleOptions {
 export interface ModeToggle {
 	readonly id: string;
 	readonly name: string;
+	readonly key: string;
 	readonly color: string;
 	readonly description?: string;
 	readonly statusText: string;
@@ -258,6 +261,7 @@ export function createModeToggle(
 		const registration: ModeRegistration = {
 			id: options.id,
 			name,
+			key: options.key,
 			color: options.color,
 			persistenceScope,
 			...(options.description
@@ -292,6 +296,7 @@ export function createModeToggle(
 	const mode: ModeToggle = {
 		id: options.id,
 		name,
+		key: options.key,
 		color: options.color,
 		description: options.description,
 		statusText,
