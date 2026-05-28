@@ -1,0 +1,302 @@
+#!/bin/bash
+#
+# session-view - Diagnostic view of agent session logs
+#
+# Detects format from path and dispatches to the appropriate processor.
+# Supports Pi, Codex, Claude, and RepoPrompt AgentSession formats.
+#
+# Usage:
+#   session-view /path/to/session.jsonl
+#   session-view /path/to/AgentSession-ABC123.json
+#   session-view --latest [pi|codex|claude|rp]
+#   cat session.jsonl | session-view - [pi|codex|claude]
+#
+# Options:
+#   --include-tool-results   Include tool result/output blocks (default: omitted)
+#
+# Examples:
+#   session-view ~/.pi/agent/sessions/foo/bar.jsonl
+#   session-view ~/.codex/sessions/2025/11/04/session.jsonl
+#   session-view ~/.claude/projects/-Users-ww-foo/session.jsonl
+#   session-view ~/Library/Application\ Support/RepoPrompt/Workspaces/.../AgentSessions/AgentSession-ABC123.json
+#   session-view --latest pi
+#   session-view --latest rp
+#   qmd get sessions/file.jsonl --full | session-view - pi
+#   qmd get sessions/file.jsonl --full | session-view --include-tool-results - pi
+
+set -e
+
+# Resolve symlinks to get the actual script directory
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+PI_PROCESSOR="$SCRIPT_DIR/pi-session-extract-with-tools.py"
+CODEX_PROCESSOR="$SCRIPT_DIR/codex-session-extract-with-tools.py"
+CLAUDE_PROCESSOR="$SCRIPT_DIR/claude-session-extract-with-tools.py"
+RP_PROCESSOR="$SCRIPT_DIR/repoprompt-agent-session-extract.py"
+
+usage() {
+    cat <<EOF
+Usage: session-view [OPTIONS] <file> [format]
+
+Diagnostic view of agent session logs (Pi, Codex, Claude Code, RepoPrompt AgentSession).
+
+Arguments:
+  <file>      Path to .jsonl session file, or '-' for stdin
+  [format]    Force format: pi, codex, claude, or rp (auto-detected from path)
+
+Options:
+  --latest [format]          Process most recent session (default: pi)
+  --include-tool-results     Include tool result/output blocks (default: omitted)
+  --max-lines N              Max lines per tool output when included (default: 8)
+  --max-chars N              Max chars per tool output when included (default: 500)
+  --help                     Show this help
+
+Examples:
+  session-view ~/.pi/agent/sessions/project/session.jsonl
+  session-view ~/Library/Application\ Support/RepoPrompt/Workspaces/.../AgentSessions/AgentSession-ABC123.json
+  session-view --latest codex
+  session-view --latest rp
+  qmd get sessions/file.jsonl --full | session-view - pi
+EOF
+    exit 0
+}
+
+detect_format() {
+    local path="$1"
+
+    case "$path" in
+        AgentSession-*.json|./AgentSession-*.json|../AgentSession-*.json|*/Library/Application\ Support/RepoPrompt/*/AgentSessions/AgentSession-*.json|*/RepoPrompt/*/AgentSessions/AgentSession-*.json|*/AgentSessions/AgentSession-*.json)
+            echo "rp"
+            ;;
+        */.pi/*|*/pi-session*|*pi/*)
+            echo "pi"
+            ;;
+        */.codex/*|*/codex-session*|*codex/*)
+            echo "codex"
+            ;;
+        */.claude/*|*/claude-session*|*claude/*)
+            echo "claude"
+            ;;
+        *)
+            # Default to pi for unknown paths
+            echo "pi"
+            ;;
+    esac
+}
+
+run_processor() {
+    local format="$1"
+    shift
+
+    case "$format" in
+        pi)
+            python3 "$PI_PROCESSOR" "$@"
+            ;;
+        codex)
+            python3 "$CODEX_PROCESSOR" "$@"
+            ;;
+        claude)
+            python3 "$CLAUDE_PROCESSOR" "$@"
+            ;;
+        rp)
+            python3 "$RP_PROCESSOR" "$@"
+            ;;
+        *)
+            echo "Unknown format: $format" >&2
+            echo "Supported formats: pi, codex, claude, rp" >&2
+            exit 1
+            ;;
+    esac
+}
+
+# Parse arguments
+latest=false
+latest_format="pi"
+extra_args=()
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --help|-h)
+            usage
+            ;;
+        --latest)
+            latest=true
+            if [[ $# -ge 2 && "$2" != --* ]]; then
+                latest_format="$2"
+                shift 2
+            else
+                shift
+            fi
+            ;;
+        --include-tool-results|--with-tool-results)
+            extra_args+=("--include-tool-results")
+            shift
+            ;;
+        --max-lines)
+            if [[ $# -lt 2 ]]; then
+                echo "--max-lines requires a value" >&2
+                exit 1
+            fi
+            extra_args+=("--max-lines" "$2")
+            shift 2
+            ;;
+        --max-chars)
+            if [[ $# -lt 2 ]]; then
+                echo "--max-chars requires a value" >&2
+                exit 1
+            fi
+            extra_args+=("--max-chars" "$2")
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        -)
+            # stdin file indicator; treat as positional arg
+            break
+            ;;
+        -* )
+            echo "Unknown option: $1" >&2
+            exit 1
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if $latest; then
+    run_processor "$latest_format" "${extra_args[@]}" --latest
+    exit $?
+fi
+
+if [[ $# -eq 0 ]]; then
+    usage
+fi
+
+file="$1"
+format="${2:-}"
+
+# Handle stdin
+if [[ "$file" == "-" ]]; then
+    if [[ -z "$format" ]]; then
+        echo "Format required when reading from stdin: session-view - [pi|codex|claude]" >&2
+        exit 1
+    fi
+    run_processor "$format" "${extra_args[@]}" -
+    exit $?
+fi
+
+# Auto-detect format from path if not specified
+if [[ -z "$format" ]]; then
+    format=$(detect_format "$file")
+fi
+
+# Resolve qmd:// paths to filesystem paths
+resolve_qmd_path() {
+    local qmd_path="$1"
+
+    # Strip qmd:// or qmd://sessions/ prefix
+    local rel_path="${qmd_path#qmd://}"
+    rel_path="${rel_path#sessions/}"
+
+    # Map collection prefixes to filesystem roots
+    case "$rel_path" in
+        codex/*)
+            # qmd://sessions/codex/2025/10/30/file.jsonl → ~/.codex/sessions/2025/10/30/file.jsonl
+            local sub_path="${rel_path#codex/}"
+            echo "$HOME/.codex/sessions/$sub_path"
+            ;;
+        pi/*)
+            # qmd://sessions/pi/users-ww-foo/<session>.jsonl → ~/.pi/agent/sessions/--Users-ww-foo--/<session>.jsonl
+            # Note: on disk we often store Pi sessions as: 2026-03-10T22-06-46-590Z_<uuid>.jsonl
+            # while qmd paths often look like:           2026-03-10t22-06-46-590z-<uuid>.jsonl
+            local sub_path="${rel_path#pi/}"
+
+            local dir_part=$(dirname "$sub_path")
+            local file_part=$(basename "$sub_path")
+
+            # Convert users-ww-foo to --Users-ww-foo--
+            dir_part=$(echo "$dir_part" | sed 's/^/--/; s/$/--/')
+
+            # Try to find directory with case-insensitive match
+            local dir_path="$HOME/.pi/agent/sessions/$dir_part"
+            local found=$(find "$HOME/.pi/agent/sessions" -maxdepth 1 -iname "$dir_part" -type d 2>/dev/null | head -1)
+            if [[ -n "$found" ]]; then
+                dir_path="$found"
+            fi
+
+            local candidate="$dir_path/$file_part"
+            if [[ -f "$candidate" ]]; then
+                echo "$candidate"
+                return
+            fi
+
+            # Try to map qmd-style <timestamp>-<uuid>.jsonl → on-disk <timestamp>_<uuid>.jsonl
+            local uuid=$(echo "$file_part" | grep -oE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' | head -1)
+            if [[ -n "$uuid" ]]; then
+                local ts_part="${file_part%-${uuid}.jsonl}"
+                ts_part=$(echo "$ts_part" | sed 's/t/T/; s/z$/Z/')
+                local alt_file_part="${ts_part}_${uuid}.jsonl"
+                local alt_candidate="$dir_path/$alt_file_part"
+                if [[ -f "$alt_candidate" ]]; then
+                    echo "$alt_candidate"
+                    return
+                fi
+
+                # Last resort: match by uuid in the directory
+                local by_uuid=$(find "$dir_path" -maxdepth 1 -iname "*${uuid}*.jsonl" -type f 2>/dev/null | head -1)
+                if [[ -n "$by_uuid" ]]; then
+                    echo "$by_uuid"
+                    return
+                fi
+            fi
+
+            echo "$candidate"
+            ;;
+        claude/*)
+            # qmd://sessions/claude/-Users-ww-foo/file.jsonl → ~/.claude/projects/-Users-ww-foo/file.jsonl
+            local sub_path="${rel_path#claude/}"
+            echo "$HOME/.claude/projects/$sub_path"
+            ;;
+        *)
+            # Unknown prefix, try as-is under sessions
+            echo "$HOME/.pi/agent/sessions/$rel_path"
+            ;;
+    esac
+}
+
+# Resolve qmd:// paths
+if [[ "$file" == qmd://* ]]; then
+    resolved=$(resolve_qmd_path "$file")
+
+    # Handle case sensitivity: find actual file with case-insensitive match
+    if [[ ! -f "$resolved" ]]; then
+        dir_part=$(dirname "$resolved")
+        file_part=$(basename "$resolved")
+        # Try case-insensitive find
+        actual=$(find "$dir_part" -maxdepth 1 -iname "$file_part" -type f 2>/dev/null | head -1)
+        if [[ -n "$actual" ]]; then
+            resolved="$actual"
+        fi
+    fi
+
+    if [[ ! -f "$resolved" ]]; then
+        echo "Could not resolve qmd path to filesystem: $file" >&2
+        echo "Tried: $resolved" >&2
+        exit 1
+    fi
+
+    file="$resolved"
+    # Re-detect format from resolved path
+    format=$(detect_format "$file")
+fi
+
+run_processor "$format" "${extra_args[@]}" "$file"

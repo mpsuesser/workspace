@@ -1,0 +1,40 @@
+# eslint/no-loop-func
+
+## What it does
+
+Disallows function declarations and expressions inside loop statements
+when they reference variables declared in the outer scope that may change
+across iterations.
+
+### Why is this bad?
+
+Writing functions within loops tends to result in errors due to the way
+closures work in JavaScript. Functions capture variables by reference,
+not by value. When using `var`, which is function-scoped, all iterations
+share the same variable binding, leading to unexpected behavior.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```js
+for (var i = 0; i < 10; i++) {
+  funcs[i] = function () {
+    return i;
+  };
+}
+```
+
+Examples of **correct** code for this rule:
+
+```js
+for (let i = 0; i < 10; i++) {
+  funcs[i] = function () {
+    return i;
+  };
+}
+```
+
+## Version
+
+This rule was added in v1.33.0.

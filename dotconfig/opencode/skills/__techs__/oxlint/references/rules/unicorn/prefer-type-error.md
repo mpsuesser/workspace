@@ -1,0 +1,31 @@
+# unicorn/prefer-type-error
+
+## What it does
+
+Enforce throwing a `TypeError` instead of a generic `Error` after a type checking if-statement.
+
+### Why is this bad?
+
+Throwing a `TypeError` instead of a generic `Error` after a type checking if-statement is more specific and helps to catch bugs.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```javascript
+if (Array.isArray(foo)) {
+  throw new Error("Expected foo to be an array");
+}
+```
+
+Examples of **correct** code for this rule:
+
+```javascript
+if (Array.isArray(foo)) {
+  throw new TypeError("Expected foo to be an array");
+}
+```
+
+## Version
+
+This rule was added in v0.0.16.

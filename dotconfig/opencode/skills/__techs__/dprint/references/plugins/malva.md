@@ -1,0 +1,32 @@
+# Malva Plugin
+
+Adapter plugin that formats CSS, SCSS, Sass (indented syntax), and Less files via [Malva](https://github.com/g-plane/malva).
+
+## Install and Setup
+
+In your project's directory with a dprint.json file, run:
+
+```shellsession
+dprint add g-plane/malva
+```
+
+This will update your config file to have an entry for the plugin. Then optionally specify a `"malva"` property to add configuration:
+
+```json
+{
+  "malva": {
+    // malva config goes here
+  },
+  "plugins": [
+    "https://plugins.dprint.dev/g-plane/malva-v0.15.3.wasm"
+  ]
+}
+```
+
+## Configuration
+
+See [Configuration](malva/config.md) or read [full documentation site](https://malva.netlify.app/) with code examples.
+
+## Playground
+
+See [Playground](https://dprint.dev/playground#plugin/malva)

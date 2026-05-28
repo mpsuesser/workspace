@@ -1,0 +1,41 @@
+# unicorn/require-module-attributes
+
+## What it does
+
+This rule enforces non-empty attribute list in `import`/`export` statements and `import()` expressions.
+
+### Why is this bad?
+
+Import attributes are meant to provide metadata about how a module should be loaded
+(e.g., `with { type: "json" }`). An empty attribute object provides no information
+and should be removed.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```js
+import foo from "foo" with {};
+
+export { foo } from "foo" with {};
+
+const foo = await import("foo", {});
+
+const foo = await import("foo", { with: {} });
+```
+
+Examples of **correct** code for this rule:
+
+```js
+import foo from "foo";
+
+export { foo } from "foo";
+
+const foo = await import("foo");
+
+const foo = await import("foo");
+```
+
+## Version
+
+This rule was added in v1.35.0.

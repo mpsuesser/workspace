@@ -1,0 +1,70 @@
+# vitest/consistent-test-it
+
+## What it does
+
+Jest allows you to choose how you want to define your tests, using the `it` or
+the `test` keywords, with multiple permutations for each:
+
+- **it:** `it`, `xit`, `fit`, `it.only`, `it.skip`.
+- **test:** `test`, `xtest`, `test.only`, `test.skip`.
+
+### Why is this bad?
+
+It's a good practice to be consistent in your test suite, so that all tests are written in the same way.
+
+### Examples
+
+```javascript
+/* jest/consistent-test-it: ["error", {"fn": "test"}] */
+test("foo"); // valid
+test.only("foo"); // valid
+
+it("foo"); // invalid
+it.only("foo"); // invalid
+```
+
+```javascript
+/* jest/consistent-test-it: ["error", {"fn": "it"}] */
+it("foo"); // valid
+it.only("foo"); // valid
+test("foo"); // invalid
+test.only("foo"); // invalid
+```
+
+```javascript
+/* jest/consistent-test-it: ["error", {"fn": "it", "withinDescribe": "test"}] */
+it("foo"); // valid
+describe("foo", function () {
+  test("bar"); // valid
+});
+
+test("foo"); // invalid
+describe("foo", function () {
+  it("bar"); // invalid
+});
+```
+
+## Configuration
+
+This rule accepts a configuration object with the following properties:
+
+### fn
+
+type: `"it" | "test"`
+
+default: `"test"`
+
+Decides whether to use `test` or `it`.
+
+### withinDescribe
+
+type: `"it" | "test"`
+
+default: `"it"`
+
+Decides whether to use `test` or `it` within a `describe` scope.
+If only `fn` is provided, this will default to the value of `fn`.
+
+## Version
+
+This rule was added in v0.5.3.

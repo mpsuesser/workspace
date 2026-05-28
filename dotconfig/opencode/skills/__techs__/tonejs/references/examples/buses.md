@@ -1,0 +1,82 @@
+# Buses
+
+Category: Effects
+
+Buses make it easy to share effects across many instruments. `send` audio to a named bus from an instrument and then `receive` that channel on your effect. The gain values are all in decibels.\
+\
+Docs on [send](../classes/Channel.md#send) and [receive](../classes/Channel.md#receive).
+
+## Code
+
+```js
+// the source
+const player = new Tone.Player({
+	url: "https://tonejs.github.io/audio/berklee/femalevoice_oo_A4.mp3",
+	loop: true,
+});
+
+// make some effects
+const chorus = new Tone.Chorus({
+	wet: 1,
+})
+	.toDestination()
+	.start();
+const chorusChannel = new Tone.Channel({ volume: -60 }).connect(
+	chorus
+);
+chorusChannel.receive("chorus");
+
+const cheby = new Tone.Chebyshev(50).toDestination();
+const chebyChannel = new Tone.Channel({ volume: -60 }).connect(
+	cheby
+);
+chebyChannel.receive("cheby");
+
+const reverb = new Tone.Reverb(3).toDestination();
+const reverbChannel = new Tone.Channel({ volume: -60 }).connect(
+	reverb
+);
+reverbChannel.receive("reverb");
+
+// send the player to all of the channels
+const playerChannel = new Tone.Channel().toDestination();
+playerChannel.send("chorus");
+playerChannel.send("cheby");
+playerChannel.send("reverb");
+player.connect(playerChannel);
+
+drawer()
+	.add({
+		tone: chorus,
+	})
+	.add({
+		tone: reverb,
+	})
+	.add({
+		tone: cheby,
+	});
+document
+	.querySelector("tone-play-toggle")
+	.addEventListener("start", () => player.start());
+document
+	.querySelector("tone-play-toggle")
+	.addEventListener("stop", () => player.stop());
+// bind the interface
+document
+	.querySelector('[label="Chorus Send"]')
+	.addEventListener("input", (e) => {
+		chorusChannel.volume.value = parseFloat(e.target.value);
+	});
+document
+	.querySelector('[label="Chebyshev Send"]')
+	.addEventListener("input", (e) => {
+		chebyChannel.volume.value = parseFloat(e.target.value);
+	});
+document
+	.querySelector('[label="Reverb Send"]')
+	.addEventListener("input", (e) => {
+		reverbChannel.volume.value = parseFloat(e.target.value);
+	});
+```
+
+Source: [buses.html](https://github.com/Tonejs/Tone.js/blob/main/examples/buses.html)

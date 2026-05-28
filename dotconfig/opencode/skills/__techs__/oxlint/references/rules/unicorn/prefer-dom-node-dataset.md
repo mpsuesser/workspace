@@ -1,0 +1,27 @@
+# unicorn/prefer-dom-node-dataset
+
+## What it does
+
+Use [`.dataset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) on DOM elements over `getAttribute(…)`, `.setAttribute(…)`, `.removeAttribute(…)` and `.hasAttribute(…)`.
+
+### Why is this bad?
+
+The `dataset` property is a map of strings that contains all the `data-*` attributes from the element. It is a convenient way to access all of them at once.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```javascript
+element.setAttribute("data-unicorn", "🦄");
+```
+
+Examples of **correct** code for this rule:
+
+```javascript
+element.dataset.unicorn = "🦄";
+```
+
+## Version
+
+This rule was added in v0.0.18.
