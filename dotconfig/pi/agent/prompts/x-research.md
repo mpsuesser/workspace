@@ -8,4 +8,4 @@ Otherwise, use the `subagent` tool to run the `x-researcher` agent with fresh co
 
 `$ARGUMENTS`
 
-Ask the subagent to prioritize credible domain experts, direct X citations, recent practitioner signal, tradeoffs, disagreements, adoption constraints, and confidence/gaps. After it returns, synthesize the result for me concisely and call out any weak citation quality or uncertain claims.
+After it returns, synthesize the result concisely for me. Preserve useful nuance, and call out weak citation quality or uncertainty when relevant.

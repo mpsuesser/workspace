@@ -38,6 +38,7 @@ dotconfig/gh/hosts.yml
 
 # pi agent auth and local session state
 dotconfig/pi/agent/auth.json
+dotconfig/pi/agent/run-history.jsonl
 dotconfig/pi/agent/sessions/
 dotconfig/pi/agent/state/
 dotconfig/pi/agent/fff/

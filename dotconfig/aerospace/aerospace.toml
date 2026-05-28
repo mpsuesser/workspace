@@ -123,10 +123,10 @@ alt-quote = 'flatten-workspace-tree'
 # If iTerm2 is focused, focus ooo; otherwise focus iTerm2.
 # f8 = '''exec-and-forget focused=$(aerospace list-windows --focused --format "%{app-bundle-id}"); if [ "$focused" = "com.googlecode.iterm2" ]; then target="com.google.Chrome.app.idemibpphagihbobmgmaojhjfidlfpdl"; else target="com.googlecode.iterm2"; fi; window_id=$(aerospace list-windows --monitor all --app-bundle-id "$target" --format "%{window-id}" | head -1); [ -n "$window_id" ] && aerospace focus --window-id "$window_id"'''
 
-alt-m = 'workspace monitoring'
-alt-e = 'workspace editor'
-alt-b = 'workspace browser'
-alt-shift-m = 'workspace main'
+# alt-m = 'workspace monitoring'
+# alt-e = 'workspace editor'
+# alt-b = 'workspace browser'
+# alt-shift-m = 'workspace main'
 
 # f8 = 'mode leader'
 #
