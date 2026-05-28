@@ -1,0 +1,26 @@
+{
+  "name": "pi-voice",
+  "version": "0.1.0",
+  "description": "Voice output for Pi using ElevenLabs",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "voice",
+    "tts",
+    "elevenlabs"
+  ],
+  "files": [
+    "index.ts",
+    "README.md",
+    "package.json"
+  ],
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.41.0"
+  },
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
