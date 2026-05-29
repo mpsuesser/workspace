@@ -8,7 +8,11 @@ import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
+import { createModeToggle, formatModeLabel, type ModeContext, type ModeToggle } from "../mode-toggler/mode-toggle-helper.ts";
+
 const EXTENSION_ID = "pi-voice";
+const VOICE_OFF_MODE_ID = "pi-voice-off";
+const VOICE_OFF_STATUS = formatModeLabel("voice off", "#9a9a9a");
 const FAVORITE_VOICES = [
 	{ name: "Charlotte", id: "6fZce9LFNG3iEITDfqZZ" },
 	{ name: "Arabella", id: "aEO01A4wXwd1O8GPgGlF" },
@@ -1192,6 +1196,13 @@ export default function (pi: ExtensionAPI) {
 	const speechQueue = new SpeechQueue(settings);
 	let activityVersion = 0;
 	const sideControllers = new Set<AbortController>();
+	let voiceOffMode: ModeToggle | undefined;
+
+	const asModeContext = (ctx: ExtensionContext): ModeContext => ctx;
+
+	const clearVoiceActivityStatus = (ctx: Pick<ModeContext, "ui"> | undefined) => {
+		ctx?.ui.setStatus(EXTENSION_ID, undefined);
+	};
 
 	const cancelSideWork = () => {
 		for (const controller of sideControllers) {
@@ -1206,6 +1217,51 @@ export default function (pi: ExtensionAPI) {
 		controller.signal.addEventListener("abort", () => sideControllers.delete(controller), { once: true });
 		return controller;
 	};
+
+	const applyVoiceEnabled = (enabled: boolean, ctx?: Pick<ModeContext, "ui">) => {
+		settings.enabled = enabled;
+		if (enabled) return;
+
+		activityVersion++;
+		cancelSideWork();
+		speechQueue.stop();
+		clearVoiceActivityStatus(ctx);
+	};
+
+	const setVoiceEnabled = (enabled: boolean, ctx: ExtensionContext, notifyIfUnchanged = false) => {
+		const targetVoiceOff = !enabled;
+
+		if (voiceOffMode) {
+			const changed = voiceOffMode.isEnabled() !== targetVoiceOff;
+			voiceOffMode.setEnabled(targetVoiceOff, asModeContext(ctx));
+			if (!changed) {
+				applyVoiceEnabled(enabled, ctx);
+				if (notifyIfUnchanged) notify(ctx, `Pi voice ${enabled ? "enabled" : "disabled"}.`, "info");
+			}
+			return;
+		}
+
+		applyVoiceEnabled(enabled, ctx);
+		if (notifyIfUnchanged) notify(ctx, `Pi voice ${enabled ? "enabled" : "disabled"}.`, "info");
+	};
+
+	voiceOffMode = createModeToggle(pi, {
+		id: VOICE_OFF_MODE_ID,
+		name: "voice off",
+		key: "v",
+		color: "#9a9a9a",
+		statusText: VOICE_OFF_STATUS,
+		description: "Turn off Pi voice output",
+		defaultEnabled: !settings.enabled,
+		enabledLabel: "Pi voice disabled.",
+		disabledLabel: "Pi voice enabled.",
+		persistence: {
+			scope: "session",
+		},
+		onChange: (voiceOff, ctx) => {
+			applyVoiceEnabled(!voiceOff, ctx);
+		},
+	});
 
 	const shouldUseVoice = (ctx?: ExtensionContext) => {
 		if (!settings.enabled) return false;
@@ -1303,6 +1359,11 @@ export default function (pi: ExtensionAPI) {
 		}
 	};
 
+	pi.on("session_start", (_event, ctx) => {
+		voiceOffMode?.onSessionStart(asModeContext(ctx));
+		if (voiceOffMode) applyVoiceEnabled(!voiceOffMode.isEnabled(), ctx);
+	});
+
 	pi.registerCommand("voice", {
 		description: "Control Pi voice output",
 		handler: async (args, ctx) => {
@@ -1315,12 +1376,7 @@ export default function (pi: ExtensionAPI) {
 			}
 
 			if (command === "on" || command === "off") {
-				settings.enabled = command === "on";
-				notify(ctx, `Pi voice ${settings.enabled ? "enabled" : "disabled"}.`, "info");
-				if (!settings.enabled) {
-					cancelSideWork();
-					speechQueue.stop();
-				}
+				setVoiceEnabled(command === "on", ctx, true);
 				return;
 			}
 
@@ -1440,7 +1496,8 @@ export default function (pi: ExtensionAPI) {
 		void speakFinal(event.messages as unknown[], ctx, version);
 	});
 
-	pi.on("session_shutdown", () => {
+	pi.on("session_shutdown", (_event, ctx) => {
+		voiceOffMode?.onSessionShutdown(asModeContext(ctx));
 		cancelSideWork();
 		speechQueue.dispose();
 	});

@@ -57,6 +57,7 @@ export interface CreateModeToggleOptions {
 	color: string;
 	statusText?: string;
 	description?: string;
+	defaultEnabled?: boolean;
 	enabledLabel?: string;
 	disabledLabel?: string;
 	persistence?: ModePersistenceOptions;
@@ -250,7 +251,7 @@ export function createModeToggle(
 	const disabledLabel = options.disabledLabel ?? `${name} mode disabled`;
 	const persistenceScope = getPersistenceScope(options);
 
-	let enabled = false;
+	let enabled = options.defaultEnabled ?? false;
 	let lastPromptEnabled: boolean | undefined;
 
 	const getStatusMessage = (): string => {
