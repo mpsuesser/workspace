@@ -661,7 +661,7 @@ Self-review is weaker than fresh-eyes review. After Phase 5 passes, spin up suba
 
 Run up to **three rounds**. Each round:
 
-1. Spawn a review subagent using the `Agent` tool with `subagent_type: general-purpose`.
+1. Spawn a review subagent using Pi's `subagent` tool with a `reviewer` agent and `context: "fresh"`. Before the first subagent execution, call `subagent({ action: "list" })`. Do not use legacy `Agent` / `subagent_type` syntax.
 2. Read the subagent's response.
 3. If response is `PASS`, exit the loop and proceed to Phase 7.
 4. If response contains `BLOCKERS` or `QUALITY` items, fix each, then loop.

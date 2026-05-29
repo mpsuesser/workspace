@@ -93,7 +93,7 @@ Walk every category in [`../generate-program/checklist.md`](../generate-program/
 
 For non-trivial audits, parallelize. Spawn subagents in a single message so they run concurrently. Each owns one dimension and reads the canonical reference plus the relevant audited files in parallel.
 
-Use `Agent` with `subagent_type: general-purpose`. Suggested fan-out:
+Use Pi's `subagent` tool with `reviewer` agents, `context: "fresh"`, and read-only task prompts. Before executing subagents, call `subagent({ action: "list" })` and use the listed executable agents; do not use legacy `Agent` / `subagent_type` syntax. Suggested fan-out:
 
 - **Subagent A (Structural correctness)**. Model schema completeness, Message union coverage, `M.tagsExhaustive` exhaustiveness, every `Succeeded*` paired with `Failed*`, every Command identity defined as a PascalCase constant via `Command.define`, every route variant rendered, no dead state variants. Native web components bound via `CustomElement.define`, not via `OnMount` + Subscription + tag-name registry. Flag any custom element wired through `OnMount` when its surface is just typed properties + observed attributes + dispatched `CustomEvent`s.
 - **Subagent B (Effect-TS idioms)**. `pipe` only for multi-step (no single-op pipes), `Option.match` over `Option.map(...).pipe(Option.getOrElse(...))`, `Array.match` for empty/non-empty branching, `Array.isEmptyArray` over `.length === 0`, `evo` over spread, callable constructors over `as Type`, `Array.fromOption` for "zero or one Command", `Equal.equals` in predicates, no `Effect.ignore` on infallible Effects.

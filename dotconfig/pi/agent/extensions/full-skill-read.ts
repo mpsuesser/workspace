@@ -16,6 +16,7 @@ const DEFAULT_MAX_SKILL_READ_BYTES = 999_999;
 const MAX_BYTES_ENV = "PI_FULL_SKILL_READ_MAX_BYTES";
 
 type MaybeSkill = {
+	name?: unknown;
 	filePath?: unknown;
 };
 
@@ -41,6 +42,12 @@ type RequestedRange = {
 type SkillRead = {
 	absolutePath: string;
 	canonicalPath: string;
+	requestedPath?: string;
+};
+
+type SkillPromptEntry = {
+	name?: string;
+	location: string;
 };
 
 type SkillReadPlan = {
@@ -90,6 +97,23 @@ function isSkillRootFile(filePath: string): boolean {
 	return basename(filePath).toLowerCase() === "skill.md";
 }
 
+function normalizeSkillName(name: string): string {
+	return name.trim().toLowerCase();
+}
+
+function skillNameFromFilePath(filePath: string): string | undefined {
+	const resolved = resolve(filePath);
+	if (isSkillRootFile(resolved)) {
+		const name = basename(resolve(resolved, "..")).trim();
+		return name || undefined;
+	}
+
+	const filename = basename(resolved);
+	if (!filename.toLowerCase().endsWith(".md")) return undefined;
+	const name = filename.slice(0, -".md".length).trim();
+	return name || undefined;
+}
+
 function decodeXmlText(input: string): string {
 	return input
 		.replaceAll("&lt;", "<")
@@ -99,16 +123,41 @@ function decodeXmlText(input: string): string {
 		.replaceAll("&amp;", "&");
 }
 
-function extractSkillLocationsFromPrompt(prompt: string): string[] {
-	const locations: string[] = [];
-	const regex = /<location>([\s\S]*?)<\/location>/g;
+function getXmlAttribute(attributes: string, name: string): string | undefined {
+	const regex = new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`);
+	const match = attributes.match(regex);
+	const value = match?.[1] ?? match?.[2];
+	return value?.trim() || undefined;
+}
 
-	for (const match of prompt.matchAll(regex)) {
-		const location = match[1]?.trim();
-		if (location) locations.push(decodeXmlText(location));
+function extractSkillEntriesFromPrompt(prompt: string): SkillPromptEntry[] {
+	const entries: SkillPromptEntry[] = [];
+	const blockRegex = /<skill>([\s\S]*?)<\/skill>/g;
+
+	for (const match of prompt.matchAll(blockRegex)) {
+		const block = match[1] ?? "";
+		const name = block.match(/<name>([\s\S]*?)<\/name>/)?.[1]?.trim();
+		const location = block.match(/<location>([\s\S]*?)<\/location>/)?.[1]?.trim();
+		if (!location) continue;
+		entries.push({
+			name: name ? decodeXmlText(name) : undefined,
+			location: decodeXmlText(location),
+		});
 	}
 
-	return locations;
+	const attributeRegex = /<skill\b([^>]*)>/g;
+	for (const match of prompt.matchAll(attributeRegex)) {
+		const attributes = match[1] ?? "";
+		const location = getXmlAttribute(attributes, "location");
+		if (!location) continue;
+		const name = getXmlAttribute(attributes, "name");
+		entries.push({
+			name: name ? decodeXmlText(name) : undefined,
+			location: decodeXmlText(location),
+		});
+	}
+
+	return entries;
 }
 
 function getReadPath(input: { path?: unknown }): string | undefined {
@@ -148,57 +197,108 @@ function mergeDetails(details: unknown, fullSkillRead: Record<string, unknown>):
 export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 	const skillPathKeys = new Set<string>();
 	const canonicalSkillPathKeys = new Set<string>();
+	const skillReadsByName = new Map<string, SkillRead>();
 	const readCalls = new Map<string, SkillReadPlan>();
 	const notifiedToolCalls = new Set<string>();
 	let knownSkillPathsLoaded = false;
 
-	async function rememberSkillPath(filePath: string, cwd: string): Promise<void> {
-		const absolutePath = resolveToolPath(filePath, cwd);
-		skillPathKeys.add(pathKey(absolutePath));
-		canonicalSkillPathKeys.add(pathKey(await canonicalize(absolutePath)));
+	function rememberSkillName(name: string | undefined, skillRead: SkillRead): void {
+		if (!name) return;
+		const key = normalizeSkillName(name);
+		if (!key || skillReadsByName.has(key)) return;
+		skillReadsByName.set(key, skillRead);
 	}
 
-	async function rememberSkillPaths(filePaths: Iterable<string>, cwd: string): Promise<void> {
-		for (const filePath of filePaths) {
-			await rememberSkillPath(filePath, cwd);
+	async function rememberSkillPath(filePath: string, cwd: string, skillName?: string): Promise<void> {
+		const absolutePath = resolveToolPath(filePath, cwd);
+		const canonicalPath = await canonicalize(absolutePath);
+		const skillRead = { absolutePath, canonicalPath };
+
+		skillPathKeys.add(pathKey(absolutePath));
+		canonicalSkillPathKeys.add(pathKey(canonicalPath));
+		rememberSkillName(skillName, skillRead);
+		rememberSkillName(skillNameFromFilePath(absolutePath), skillRead);
+	}
+
+	async function rememberSkillEntries(entries: Iterable<{ filePath: string; name?: string }>, cwd: string): Promise<void> {
+		for (const entry of entries) {
+			await rememberSkillPath(entry.filePath, cwd, entry.name);
 		}
+	}
+
+	function skillNameFromCommandName(commandName: string): string | undefined {
+		return commandName.startsWith("skill:") ? commandName.slice("skill:".length) : undefined;
 	}
 
 	async function refreshKnownSkillPaths(ctx: { cwd: string; getSystemPrompt?: () => string }): Promise<void> {
-		const commandSkillPaths = pi
+		const commandSkillEntries = pi
 			.getCommands()
 			.filter((command) => command.source === "skill")
-			.map((command) => command.sourceInfo.path);
+			.map((command) => ({
+				filePath: command.sourceInfo.path,
+				name: skillNameFromCommandName(command.name),
+			}));
 
-		await rememberSkillPaths(commandSkillPaths, ctx.cwd);
+		await rememberSkillEntries(commandSkillEntries, ctx.cwd);
 
 		const systemPrompt = ctx.getSystemPrompt?.();
 		if (systemPrompt) {
-			await rememberSkillPaths(extractSkillLocationsFromPrompt(systemPrompt), ctx.cwd);
+			await rememberSkillEntries(
+				extractSkillEntriesFromPrompt(systemPrompt).map((entry) => ({
+					filePath: entry.location,
+					name: entry.name,
+				})),
+				ctx.cwd,
+			);
 		}
 
 		knownSkillPathsLoaded = true;
+	}
+
+	async function pathExists(filePath: string): Promise<boolean> {
+		try {
+			await stat(filePath);
+			return true;
+		} catch {
+			return false;
+		}
+	}
+
+	function resolveKnownSkillAlias(absolutePath: string): SkillRead | undefined {
+		const requestedName = skillNameFromFilePath(absolutePath);
+		if (!requestedName) return undefined;
+
+		const skillRead = skillReadsByName.get(normalizeSkillName(requestedName));
+		if (!skillRead) return undefined;
+
+		return {
+			...skillRead,
+			requestedPath: absolutePath,
+		};
 	}
 
 	async function matchSkillRead(rawPath: string, cwd: string): Promise<SkillRead | undefined> {
 		const absolutePath = resolveToolPath(rawPath, cwd);
 		const canonicalPath = await canonicalize(absolutePath);
 
-		if (
-			skillPathKeys.has(pathKey(absolutePath)) ||
-			canonicalSkillPathKeys.has(pathKey(canonicalPath)) ||
-			isSkillRootFile(absolutePath)
-		) {
+		if (skillPathKeys.has(pathKey(absolutePath)) || canonicalSkillPathKeys.has(pathKey(canonicalPath))) {
 			return { absolutePath, canonicalPath };
 		}
 
-		return undefined;
+		if (!isSkillRootFile(absolutePath)) return undefined;
+
+		if (await pathExists(canonicalPath)) {
+			return { absolutePath, canonicalPath };
+		}
+
+		return resolveKnownSkillAlias(absolutePath);
 	}
 
 	async function expandSkillReadArgs(toolCallId: string, input: ReadArgs, cwd: string): Promise<SkillReadPlan | undefined> {
 		const rawPath = getReadPath(input);
 		if (!rawPath) return undefined;
 
+		const requestedAbsolutePath = resolveToolPath(rawPath, cwd);
 		const skillRead = await matchSkillRead(rawPath, cwd);
 		if (!skillRead) return undefined;
 
@@ -209,7 +309,12 @@ export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 
 		// A skill root file is self-contained by contract. If the model asks for a
 		// slice, silently turn it into a normal whole-file read before the tool runs
-		// and before the TUI renders the read call.
+		// and before the TUI renders the read call. If the model guessed a legacy
+		// ~/.pi/agent/skills/<name>/SKILL.md path for a package skill, redirect the
+		// read to the canonical loaded skill file before execution.
+		if (pathKey(requestedAbsolutePath) !== pathKey(skillRead.absolutePath)) {
+			input.path = skillRead.absolutePath;
+		}
 		delete input.offset;
 		delete input.limit;
 
@@ -218,14 +323,23 @@ export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 
 	pi.on("before_agent_start", async (event, ctx) => {
 		const maybeEvent = event as MaybeBeforeAgentStartEvent;
-		const optionSkillPaths = maybeEvent.systemPromptOptions?.skills
-			?.map((skill) => skill.filePath)
-			.filter((filePath): filePath is string => typeof filePath === "string") ?? [];
+		const optionSkillEntries = maybeEvent.systemPromptOptions?.skills
+			?.map((skill) => ({
+				filePath: skill.filePath,
+				name: typeof skill.name === "string" ? skill.name : undefined,
+			}))
+			.filter((skill): skill is { filePath: string; name?: string } => typeof skill.filePath === "string") ?? [];
 
-		await rememberSkillPaths(optionSkillPaths, ctx.cwd);
+		await rememberSkillEntries(optionSkillEntries, ctx.cwd);
 
 		if (typeof maybeEvent.systemPrompt === "string") {
-			await rememberSkillPaths(extractSkillLocationsFromPrompt(maybeEvent.systemPrompt), ctx.cwd);
+			await rememberSkillEntries(
+				extractSkillEntriesFromPrompt(maybeEvent.systemPrompt).map((entry) => ({
+					filePath: entry.location,
+					name: entry.name,
+				})),
+				ctx.cwd,
+			);
 		}
 
 		await refreshKnownSkillPaths(ctx);
@@ -267,10 +381,13 @@ export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 		const plan = await expandSkillReadArgs(event.toolCallId, event.input, ctx.cwd);
 		if (!plan) return undefined;
 
-		if (plan.requestedRange && ctx.hasUI && !notifiedToolCalls.has(event.toolCallId)) {
+		if ((plan.requestedRange || plan.skillRead.requestedPath) && ctx.hasUI && !notifiedToolCalls.has(event.toolCallId)) {
 			notifiedToolCalls.add(event.toolCallId);
+			const displayPath = plan.skillRead.requestedPath ?? plan.skillRead.absolutePath;
+			const range = plan.requestedRange ? `:${plan.requestedRange.label}` : "";
+			const redirect = plan.skillRead.requestedPath ? `; redirected to ${plan.skillRead.absolutePath}` : "";
 			ctx.ui.notify(
-				`${EXTENSION_ID}: expanded partial skill read ${formatSkillName(plan.skillRead.absolutePath)}:${plan.requestedRange.label} to the full skill file`,
+				`${EXTENSION_ID}: expanded skill read ${formatSkillName(displayPath)}${range} to the full skill file${redirect}`,
 				"info",
 			);
 		}
@@ -295,6 +412,7 @@ export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 
 		const { skillRead, requestedRange } = plan;
 		const maxBytes = parseMaxBytes();
+		const requestedPath = skillRead.requestedPath;
 
 		try {
 			const fileStat = await stat(skillRead.canonicalPath);
@@ -312,6 +430,7 @@ export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 					details: mergeDetails(event.details, {
 						extension: EXTENSION_ID,
 						path: skillRead.absolutePath,
+						requestedPath,
 						bytes: fileStat.size,
 						maxBytes,
 						requestedRange,
@@ -327,6 +446,7 @@ export default function fullSkillReadExtension(pi: ExtensionAPI): void {
 				details: mergeDetails(event.details, {
 					extension: EXTENSION_ID,
 					path: skillRead.absolutePath,
+					requestedPath,
 					bytes: Buffer.byteLength(content, "utf8"),
 					maxBytes,
 					requestedRange,
