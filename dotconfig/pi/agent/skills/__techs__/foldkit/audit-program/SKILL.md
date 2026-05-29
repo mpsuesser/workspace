@@ -4,7 +4,9 @@ description: Audit an existing Foldkit program against the architecture, convent
 argument-hint: '[optional: path or focus area like a11y/effects/naming/decomposition/forms/routing/subscriptions/submodels/types/testing]'
 ---
 
-Audit an existing Foldkit program against the same bar `generate-program` targets: this code should be **indistinguishable in quality from hand-written code in `packages/typing-game/client/src/` or `packages/website/src/`**. Not "works." Not "structurally valid." Typing-game quality.
+Audit an existing Foldkit program against the same bar `generate-program` targets: this code should be **indistinguishable in quality from hand-written code in `~/.cache/foldkit/packages/typing-game/client/src/` or `~/.cache/foldkit/packages/website/src/`**. Not "works." Not "structurally valid." Typing-game quality.
+
+> **Recommended setup:** the audit is dramatically higher fidelity when the shared Foldkit checkout exists at `~/.cache/foldkit/`. Without it, you grade against the snapshots in `generate-program/architecture.md` and `conventions.md`. With it, you grade against the live exemplars (`~/.cache/foldkit/examples/`, `~/.cache/foldkit/packages/typing-game/`, `~/.cache/foldkit/packages/website/`), which is what those snapshots are summarizing in the first place. If the cache is missing, recommend creating it with `mkdir -p ~/.cache && git clone https://github.com/foldkit/foldkit.git ~/.cache/foldkit` before the audit begins.
 
 ## Operating principle: report first, change nothing without consent
 
@@ -40,7 +42,7 @@ Skip this confirmation only when the scope is unambiguous (single file, single f
 
 Read these in order. Every audit, no shortcuts. They're the spec the audit grades against.
 
-1. [Architecture guide](../generate-program/architecture.md): TEA invariants, Submodel and OutMessage pattern, Flags, Subscriptions, Mount / Command / ManagedResource selection
+1. [Architecture guide](../generate-program/architecture.md): TEA invariants, Submodel and OutMessage pattern, Flags, Subscriptions, Mount / Command / ManagedResource / CustomElement selection
 2. [Conventions guide](../generate-program/conventions.md): naming, Effect-TS idioms, Schema patterns, view conventions
 3. [Verification checklist](../generate-program/checklist.md): the canonical mechanical-check + quality-bar reference
 
@@ -59,15 +61,15 @@ Before deep review, build a model of the audited code:
    - **Tier 5**: nested domain, CRUD
    - **Tier 6**: Submodels, OutMessage, multi-step flows
    - **Tier 7**: real-time, WebSocket, ManagedResources
-3. **Foldkit modules used**. Grep imports for `Calendar`, `File`, `fieldValidation`, `Ui.*`, `Subscription`, `Command`, `Task`, `HttpClient`, etc. Tells you which checklist sections apply.
+3. **Foldkit modules used**. Grep imports for `Calendar`, `File`, `FieldValidation`, `Ui.*`, `Subscription`, `Command`, `Mount`, `ManagedResource`, `CustomElement`, `Dom`, `HttpClient`, etc. Tells you which checklist sections apply.
 4. **Tier-matching exemplar**. Pick at least one to read alongside the audited code:
-   - Tier 1-2 → `${CLAUDE_SKILL_DIR}/../../examples/counter/src/main.ts`, `${CLAUDE_SKILL_DIR}/../../examples/stopwatch/src/main.ts`
-   - Tier 3 → `${CLAUDE_SKILL_DIR}/../../examples/weather/src/main.ts`, `${CLAUDE_SKILL_DIR}/../../examples/form/src/main.ts`
-   - Tier 4 → `${CLAUDE_SKILL_DIR}/../../examples/routing/src/main.ts`
-   - Tier 5 → `${CLAUDE_SKILL_DIR}/../../examples/kanban/src/`
-   - Tier 6 → `${CLAUDE_SKILL_DIR}/../../examples/auth/src/`, `${CLAUDE_SKILL_DIR}/../../examples/job-application/src/`
-   - Tier 7 → `${CLAUDE_SKILL_DIR}/../../packages/typing-game/client/src/page/room/`
-5. **Foldkit UI integration**. If any `Ui.*` is imported, also read `${CLAUDE_SKILL_DIR}/../../examples/ui-showcase/src/main.ts` for the wiring pattern.
+   - Tier 1-2 → `~/.cache/foldkit/examples/counter/src/main.ts`, `~/.cache/foldkit/examples/stopwatch/src/main.ts`
+   - Tier 3 → `~/.cache/foldkit/examples/weather/src/main.ts`, `~/.cache/foldkit/examples/form/src/main.ts`
+   - Tier 4 → `~/.cache/foldkit/examples/routing/src/main.ts`
+   - Tier 5 → `~/.cache/foldkit/examples/kanban/src/`
+   - Tier 6 → `~/.cache/foldkit/examples/auth/src/`, `~/.cache/foldkit/examples/job-application/src/`
+   - Tier 7 → `~/.cache/foldkit/packages/typing-game/client/src/page/room/`
+5. **Foldkit UI integration**. If any `Ui.*` is imported, also read `~/.cache/foldkit/examples/ui-showcase/src/main.ts` for the wiring pattern.
 
 The exemplar is the comparison target. When you find a pattern that smells off, ask: **does the exemplar do this differently?** If yes, flag it.
 
@@ -93,7 +95,7 @@ For non-trivial audits, parallelize. Spawn subagents in a single message so they
 
 Use `Agent` with `subagent_type: general-purpose`. Suggested fan-out:
 
-- **Subagent A (Structural correctness)**. Model schema completeness, Message union coverage, `M.tagsExhaustive` exhaustiveness, every `Succeeded*` paired with `Failed*`, every Command identity defined as a PascalCase constant via `Command.define`, every route variant rendered, no dead state variants.
+- **Subagent A (Structural correctness)**. Model schema completeness, Message union coverage, `M.tagsExhaustive` exhaustiveness, every `Succeeded*` paired with `Failed*`, every Command identity defined as a PascalCase constant via `Command.define`, every route variant rendered, no dead state variants. Native web components bound via `CustomElement.define`, not via `OnMount` + Subscription + tag-name registry. Flag any custom element wired through `OnMount` when its surface is just typed properties + observed attributes + dispatched `CustomEvent`s.
 - **Subagent B (Effect-TS idioms)**. `pipe` only for multi-step (no single-op pipes), `Option.match` over `Option.map(...).pipe(Option.getOrElse(...))`, `Array.match` for empty/non-empty branching, `Array.isEmptyArray` over `.length === 0`, `evo` over spread, callable constructors over `as Type`, `Array.fromOption` for "zero or one Command", `Equal.equals` in predicates, no `Effect.ignore` on infallible Effects.
 - **Subagent C (Naming and decomposition)**. `maybe*` reserved for `Option<T>`, `nullable*` for `T | undefined`, `is*` for booleans, no abbreviations, `Updated*` not `Changed*`, `Completed*` mirrors Command name verb-first, named helpers use specific verbs not generic ones, handlers over ~15 lines extracted, view branches over ~30 lines extracted, no function exceeds ~40 lines.
 - **Subagent D (Foldkit UI and accessibility)**. Hand-rolled `input` / `textarea` / `button` / `dialog` flagged unless NOTE-justified, label/input pairing via `For(id)` + `Id(id)`, dynamic errors announce via `Role('alert')` or `AriaLive('polite')`, icon-only buttons have `AriaLabel`, external links carry `Rel('noopener noreferrer')`, exactly one `h1` per route, semantic landmarks (`main`, `nav`, `header`, `footer`) over `div` soup, focus visibility preserved (no `outline-none` without `focus-visible:` replacement).
@@ -237,17 +239,17 @@ End with a summary diff: which findings were resolved, which were declined, whic
 
 When `$ARGUMENTS` narrows to a focus area, Phase 5 reduces to the relevant subagents and blind spots. The report still uses the BLOCKERS / QUALITY / NICE-TO-HAVE / VERDICT structure, just scoped.
 
-| Focus           | Subagents                                                                                                                           | Blind spots     |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `a11y`          | D                                                                                                                                   | #12, #13, #15   |
-| `effects`       | B                                                                                                                                   | #5, #6, #8, #17 |
-| `naming`        | C                                                                                                                                   | #7, #9, #20     |
-| `decomposition` | C                                                                                                                                   | #5, #6          |
-| `forms`         | D + form-specific (Ui.Input adoption, fieldValidation usage, label/input pairing)                                                   | #12, #13        |
-| `routing`       | A + routing-specific (bidirectional parser usage, keyed branches on `route._tag`, `urlToString` in `Internal` case)                 | #11             |
-| `subscriptions` | A + subscription-specific (`Subscription.makeSubscriptions` shape, `S.Null` for always-active, message mapping inside `Stream.map`) | none            |
-| `testing`       | E                                                                                                                                   | #14             |
-| `submodels`     | A + submodel-specific (Got\* wrapping, three-tuple update returns with OutMessage, parent ↔ child Message isolation)                | #19             |
-| `types`         | (inline) type-shape and aliasing                                                                                                    | #17, #18        |
+| Focus           | Subagents                                                                                                                    | Blind spots     |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `a11y`          | D                                                                                                                            | #12, #13, #15   |
+| `effects`       | B                                                                                                                            | #5, #6, #8, #17 |
+| `naming`        | C                                                                                                                            | #7, #9, #20     |
+| `decomposition` | C                                                                                                                            | #5, #6          |
+| `forms`         | D + form-specific (Ui.Input adoption, fieldValidation usage, label/input pairing)                                            | #12, #13        |
+| `routing`       | A + routing-specific (bidirectional parser usage, keyed branches on `route._tag`, `urlToString` in `Internal` case)          | #11             |
+| `subscriptions` | A + subscription-specific (`Subscription.make` shape, `S.Struct({})` for always-active, message mapping inside `Stream.map`) | none            |
+| `testing`       | E                                                                                                                            | #14             |
+| `submodels`     | A + submodel-specific (Got\* wrapping, three-tuple update returns with OutMessage, parent ↔ child Message isolation)         | #19             |
+| `types`         | (inline) type-shape and aliasing                                                                                             | #17, #18        |
 
 For focused audits, skip Phase 4's full grep block and run only the greps relevant to the focus (e.g. for `a11y`, run `label without For`, `outline-none without focus-visible`, `_blank without Rel`).
