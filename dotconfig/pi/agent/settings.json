@@ -21,7 +21,8 @@
       ]
     },
     "npm:pi-subagents",
-    "git:github.com/BlockedPath/pi-xai-oauth"
+    "git:github.com/BlockedPath/pi-xai-oauth",
+    "npm:@ff-labs/pi-fff"
   ],
   "skills": [
     "-skills/engineering/documentation-driven-development/SKILL.md",
