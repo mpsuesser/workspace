@@ -33,7 +33,7 @@ require("bunny"):setup({
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
-		{ key = "e", path = "~/repos/omnirepo" },
+		{ key = "e", path = "~/repos/workspace/dotconfig/pi/agent/extensions" },
 		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/mydb" },
 
