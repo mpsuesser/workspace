@@ -8,6 +8,7 @@
   "treeFilterMode": "no-tools",
   "doubleEscapeAction": "none",
   "editorPaddingX": 2,
+  "showHardwareCursor": true,
   "autocompleteMaxVisible": 5,
   "quietStartup": true,
   "packages": [

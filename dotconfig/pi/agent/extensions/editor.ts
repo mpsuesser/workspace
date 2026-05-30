@@ -48,6 +48,13 @@ class BoxedEditor extends CustomEditor {
     options?: ConstructorParameters<typeof CustomEditor>[3],
   ) {
     super(tui, editorTheme, keybindings, options);
+    // Belt-and-braces enable. The real source of truth is
+    // settings.showHardwareCursor in ~/.pi/agent/settings.json — pi's
+    // handleReloadCommand resets the TUI cursor flag from that setting AFTER
+    // session.reload() resolves (which is where this constructor runs via
+    // session_start), so any value set here would otherwise be clobbered on
+    // /reload. The settings.json toggle is what actually keeps the cursor on
+    // across reloads; this call just covers fresh installs that haven't set it.
     this.tui.setShowHardwareCursor(true);
   }
 
