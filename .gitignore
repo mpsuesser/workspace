@@ -43,7 +43,10 @@ dotconfig/pi/agent/sessions/
 dotconfig/pi/agent/state/
 dotconfig/pi/agent/fff/
 dotconfig/pi/agent/mcp-cache.json
+dotconfig/pi/agent/mcp-npx-cache.json
 dotconfig/pi/agent/mcp-oauth/
+dotconfig/pi/agent/intercom/
+dotconfig/pi/agent/pi-effect-harness/
 dotconfig/pi/cache/
 dotconfig/pi/mcp.json
 dotconfig/pi/web-search.json
