@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.78.0",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-8",
+  "defaultModel": "claude-opus-4-7",
   "defaultThinkingLevel": "xhigh",
   "shellCommandPrefix": "shopt -s expand_aliases\neval \"$(grep '^alias ' ~/.zshrc)\"",
   "theme": "ghostty-sync-770f91a0",
