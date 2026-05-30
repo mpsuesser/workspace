@@ -58,9 +58,11 @@ composition fills the frame. First drafts are rarely the deliverable.
 
 - **takumi** (default, PNG only, no browser, fast) — the workhorse. Real
   Tailwind + Google fonts, gorgeous output for layouts, cards, gradients,
-  grain, and **hand-drawn SVG charts**.
-- **chrome** (`--engine chrome`) — required for **JPG/WebP/PDF/SVG** and for
-  **gradient text**. Full CSS fidelity; slower; uses system Chrome.
+  grain, **hand-drawn SVG charts**, and **roughjs sketchy charts/shapes**.
+  Resolves bare imports via esm.sh (lucide-react, roughjs).
+- **chrome** (`--engine chrome`) — required for **JPG/WebP/PDF/SVG**, for
+  **gradient text**, and for **raw `<style>` CSS** (e.g. the 98.css retro-OS
+  look). Full CSS fidelity; slower; uses system Chrome.
 
 ### Verified gotchas in poster-ai 0.5.0 — do not relearn these the hard way
 
@@ -77,9 +79,18 @@ composition fills the frame. First drafts are rarely the deliverable.
    honors a root `h-[Npx]`.) If you ever call `poster` raw, you must pass
    `--width` yourself.
 4. **chrome auto-measures the canvas only when the poster has no bare imports.**
-   So for chrome targets (PDF/SVG/JPG/WebP, or gradient text), prefer
-   **inline SVG icons over `lucide-react`**. `lucide-react` is fine on takumi
-   (auto-resolves via esm.sh). Other bare imports beyond lucide are unsupported.
+   `lucide-react` and `roughjs` are pre-installed in the workspace, so **both**
+   engines can use them — but on **chrome** a poster that imports either needs an
+   explicit `h-[Npx]` on the root (chrome's auto-measure is unreliable with
+   imports). On takumi they auto-resolve via esm.sh and width-only is fine. For
+   chrome targets, either add `h-[Npx]` or prefer inline SVG icons. Other bare
+   imports beyond these two are unsupported — and packages that use `import.meta`
+   (e.g. `@thi.ng/*`) crash takumi outright ("Cannot use 'import.meta'").
+5. **Remote `<img>` loads on both engines** — logos, avatars, map tiles, and
+   textures by URL all work (no import). Brand marks: svgl
+   (`https://svgl.app/library/<name>.svg`). See `reference.md` → *Embedding
+   images & brand logos* for the caveats (some SVG assets mis-render — view
+   every one).
 
 ## The canvas contract
 
@@ -113,12 +124,15 @@ The root `<div>` declares the canvas. Break these and the render is wrong:
 
 `reference.md` (sibling file) is the design library: the layout grammar (kicker
 + title headers, eyebrow labels, reveal words, cards, KPI stats, hero metrics,
-activity rings, heatmaps, footers), color systems and gradient recipes,
-**inline-SVG chart recipes** (since recharts is out), composition skeletons for
-each poster type, content-voice guidance, and a pitfalls table. Load it whenever
-the poster is more than a one-liner. Match a request to one of its composition
-skeletons, then make it specific and real.
+activity rings, heatmaps, footers), color systems and gradient recipes (incl.
+named palettes), **inline-SVG and roughjs chart recipes** (since recharts is
+out), **aesthetic genres** (retro-OS / 98.css, neobrutalism), **embedding
+images & brand logos**, composition skeletons for each poster type,
+content-voice guidance, and a pitfalls table. Load it whenever the poster is
+more than a one-liner. Match a request to one of its composition skeletons,
+then make it specific and real.
 
 If `poster-ai` isn't installed: `bun install -g poster-ai` (or `npm i -g
 poster-ai`). The first `render.sh` run also provisions a small workspace
-(`~/.poster-workspace`) so takumi can resolve Tailwind.
+(`~/.poster-workspace`) with `tailwindcss`, `lucide-react`, and `roughjs` so
+both engines can resolve them.

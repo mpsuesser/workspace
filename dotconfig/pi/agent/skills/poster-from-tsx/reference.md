@@ -251,6 +251,40 @@ const R = 70, C = 2 * Math.PI * R; let acc = 0;
 </svg>
 ```
 
+### Hand-drawn / sketchy charts (roughjs) — the chart.xkcd look
+
+For an organic, hand-sketched feel (think `chart.xkcd`), use **roughjs** — it's
+pre-installed in the workspace, so it imports on **both** engines (on chrome,
+give the root a fixed `h-[Npx]`; bare imports need it there). Use the *pure
+generator* (`rough.generator()`, no DOM) and serialize each drawable to React
+`<path>`s with `toPaths()`:
+
+```tsx
+import rough from "roughjs";
+
+const gen = rough.generator();
+const P = (d) => gen.toPaths(d).map((p, i) => (   // drawable -> React <path>s
+  <path key={i} d={p.d} stroke={p.stroke} strokeWidth={p.strokeWidth}
+        fill={p.fill} fillRule={p.fillRule} />
+));
+
+const bars = [42, 58, 50, 71, 88].map((v, i) =>
+  gen.rectangle(40 + i * 110, 280 - v * 2.6, 80, v * 2.6,
+    { roughness: 1.8, stroke: "#7c3aed", strokeWidth: 2.5,
+      fill: "#a78bfa", fillStyle: "hachure", hachureGap: 6 }));
+
+<svg width={600} height={300}>{bars.map((b, i) => <g key={i}>{P(b)}</g>)}</svg>
+```
+
+Generator methods: `rectangle`, `line`, `linearPath(points)`, `circle`,
+`ellipse`, `polygon`, `arc`, `curve(points)`, `path(svgPathString)`. Key
+options: `roughness` (1–3), `bowing`, `fillStyle` (`hachure` / `solid` /
+`zigzag` / `cross-hatch` / `dots`), `hachureGap`, `hachureAngle`, `fillWeight`.
+Overlay a `linearPath` trend line + sketchy `circle` dots on the bar tops, set a
+casual font (`'Comic Sans MS'`, or Inter on a warm-paper base), and you have the
+whole xkcd look. Lifted from `timqian/chart.xkcd` (roughjs is its engine; the
+lib needs the DOM, the generator doesn't).
+
 ---
 
 ## Color systems
@@ -271,6 +305,15 @@ Pick ONE accent family and commit. Mixing 3+ accents = muddy.
 | amber/rose | `#fbbf24` `#f97316` `#fb7185` `#e11d48` | warm, retail, alerts |
 | emerald | `#10b981` `#34d399` `#39d353` | growth, health, positive |
 | fuchsia/violet | `#ec4899` `#f472b6` `#a855f7` `#6d28d9` | consumer, energy, wrapped |
+
+**Named palettes (loved, drop-in).** Lift a whole scheme when a request wants a
+specific mood. From starred theme repos: **Vesper** (`raunofreiberg/vesper`) —
+bg `#101010`, fg `#FFFFFF`, peach `#FFC799`, mint `#99FFE4`; **Aura**
+(`daltonmenezes/aura-theme`) — bg `#15141B`, purple `#A277FF`, green `#61FFCA`,
+pink `#F694FF`, orange `#FFCA85`. Classics worth memorizing: **Catppuccin
+Mocha** `#1E1E2E` / mauve `#CBA6F7`, **Nord** `#2E3440` / `#88C0D0`, **Gruvbox**
+`#282828` / `#FABD2F`, **Dracula** `#282A36` / `#BD93F9`, **Rosé Pine** `#191724`
+/ `#EBBCBA`, **Tokyo Night** `#1A1B26` / `#7AA2F7`.
 
 **Gradient recipes:**
 
@@ -301,6 +344,98 @@ Pick ONE accent family and commit. Mixing 3+ accents = muddy.
 - **Icon/ring glow:** `filter: drop-shadow(0 0 8px ${color}99)`
 - **Glass card** (over colorful gradients): `rounded-3xl border border-white/20 bg-white/[0.08] backdrop-blur-2xl p-10` (chrome renders blur best)
 - **Barcode strip** (editorial): a row of thin `<div>`s of widths 1–2px.
+
+---
+
+## Aesthetic genres lifted from CSS libraries
+
+Two drop-in looks that push well past the default dark-glass deck.
+
+### Retro-OS window — 98.css (chrome engine)
+
+A pixel-faithful Windows-98 chrome — title bars, inset/outset bevels, status
+bars, sunken panels, tables. Inject the CSS once via a `<style>` tag, then use
+the class names. The bevels are pure `box-shadow`, so **render on chrome**
+(takumi ignores raw `<style>`). Distilled essentials (full widget set:
+`jdan/98.css`, or fetch `https://unpkg.com/98.css` and inline it whole):
+
+```tsx
+const css98 = `
+.window{background:silver;box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;padding:3px;font-family:Arial;font-size:13px;color:#222}
+.title-bar{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,navy,#1084d0);padding:3px 2px 3px 3px}
+.title-bar-text{color:#fff;font-weight:700;margin-right:24px}
+.title-bar-controls{display:flex}.title-bar-controls button{min-width:16px;min-height:14px;margin-left:2px}
+.window-body{margin:8px}
+button{min-height:23px;min-width:75px;padding:0 12px;background:silver;border:none;box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf}
+.status-bar{display:flex;gap:1px;margin:0 1px}.status-bar-field{flex-grow:1;padding:2px 3px;box-shadow:inset -1px -1px #dfdfdf,inset 1px 1px grey}
+.sunken{background:#fff;box-shadow:inset -1px -1px #fff,inset 1px 1px grey,inset -2px -2px #dfdfdf,inset 2px 2px #0a0a0a;padding:8px}
+table{border-collapse:collapse;background:#fff;width:100%;font-size:13px}
+th{background:silver;padding:0 6px;height:18px;text-align:left;font-weight:400;box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf}
+td{padding:0 6px;height:20px}tr.highlighted{background:navy;color:#fff}
+`;
+
+<div className="w-[820px] p-14" style={{ background: "#008080" }}>
+  <style dangerouslySetInnerHTML={{ __html: css98 }} />
+  <div className="window" style={{ width: 700 }}>
+    <div className="title-bar">
+      <div className="title-bar-text">Disk Cleanup — C:\</div>
+      <div className="title-bar-controls"><button/><button/><button/></div>
+    </div>
+    <div className="window-body">…copy, a `.sunken` table, buttons…</div>
+    <div className="status-bar"><p className="status-bar-field">3 categories</p></div>
+  </div>
+</div>
+```
+
+Teal `#008080` desktop, `silver` chrome, navy title bars. Great for retro
+dashboards, fake OS dialogs / error boxes, task-manager stats, 90s installers.
+The distilled set omits the control-button glyphs (empty bevels) — inline the
+full file if you need them. Credit: `jdan/98.css`.
+
+### Neobrutalism (both engines)
+
+Loud, flat, hard-edged — thick black borders + a hard *offset* shadow (no blur),
+saturated fills, heavy sans. Distinct from the 90s-industrial `brutalist`
+example. The whole look is one recipe:
+
+```tsx
+className="border-[3px] border-black"
+style={{ boxShadow: "8px 8px 0 0 #000" }}   // hard, un-blurred, offset
+```
+
+Base in a flat saturated color (`#fde047` yellow, `#a3e635` lime, `#60a5fa`
+blue, `#f472b6` pink); fills are flat blocks; type is `font-black`, often
+uppercase. Recolor the shadow for accent CTAs (`8px 8px 0 0 #f472b6`). Lifted
+from `ekmas/neobrutalism-components`.
+
+---
+
+## Embedding images & brand logos
+
+Remote `<img>` loads on **both** engines — drop in logos, avatars, map tiles, or
+textures by URL, no import needed:
+
+```tsx
+<img src="https://github.com/github.png?size=160" width={120} height={120}
+     style={{ borderRadius: 16 }} />
+```
+
+**Brand logos via svgl** (`pheralb/svgl`): `https://svgl.app/library/<name>.svg`
+— `openai`, `cloudflare`, `supabase`, `vercel`, `stripe`, hundreds more. Sit a
+mark on a white chip so dark logos read on a dark base:
+
+```tsx
+<div className="flex h-16 w-16 items-center justify-center rounded-xl bg-white p-2">
+  <img src="https://svgl.app/library/openai.svg" width={44} height={44} />
+</div>
+```
+
+Caveats — **view every logo**: inline brand-SVG *source* mis-renders on takumi
+(offset viewBoxes / `fill-rule:evenodd` collapse to a solid block), so use a
+remote `<img>` instead; and a few individual assets render wrong on *both*
+engines (e.g. the current `stripe.svg`) — swap the variant (`<name>-dark.svg` /
+`<name>-light.svg` / `<name>-wordmark.svg`) if one looks off. Powers "trusted
+by", partnership, pricing, and changelog posters.
 
 ---
 
@@ -359,6 +494,10 @@ Reach for one based on the ask, then specialize it.
 | Absolute shapes in wrong place | root has no definite height | add `relative` + `min-h-[Npx]` |
 | "Muddy" feel | 3+ accent families | pick one family |
 | "Generic webpage" feel | no kicker/footer rhythm | add small-caps eyebrows + muted footer |
+| Brand SVG is a solid block | inline brand-SVG source on takumi (offset viewBox / evenodd) | embed as remote `<img>`; if still wrong, swap the svgl variant |
+| Raw `<style>` CSS ignored (e.g. 98.css) | takumi doesn't apply raw `<style>` | render on chrome |
+| roughjs chart blank / letterboxed | chrome + bare import with no fixed height | add `h-[Npx]` to the root |
+| Build crash "Cannot use 'import.meta'" | package uses `import.meta` (e.g. `@thi.ng/*`) | use a dep without it, or inline the math |
 
 ### Budgeting a fixed-aspect canvas
 

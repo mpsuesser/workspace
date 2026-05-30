@@ -56,13 +56,15 @@ case "$OUT" in
 esac
 mkdir -p "$(dirname "$OUT_ABS")"
 
-# One-time workspace so takumi can resolve tailwindcss; lucide-react lets the
-# chrome engine bundle icon imports (takumi resolves them via esm.sh anyway).
-if [[ ! -d "$WS/node_modules/tailwindcss" ]]; then
+# One-time workspace so takumi can resolve tailwindcss; lucide-react + roughjs
+# let the chrome engine bundle those imports (takumi resolves them via esm.sh
+# anyway). roughjs powers hand-drawn / sketchy charts (the chart.xkcd look) on
+# both engines. The guard also re-runs if an existing workspace predates roughjs.
+if [[ ! -d "$WS/node_modules/tailwindcss" || ! -d "$WS/node_modules/roughjs" ]]; then
   echo "render.sh: setting up $WS (one-time)…" >&2
   mkdir -p "$WS"
-  ( cd "$WS" && bun add tailwindcss lucide-react >/dev/null 2>&1 ) \
-    || die "failed to set up workspace ($WS). Run: cd $WS && bun add tailwindcss lucide-react"
+  ( cd "$WS" && bun add tailwindcss lucide-react roughjs >/dev/null 2>&1 ) \
+    || die "failed to set up workspace ($WS). Run: cd $WS && bun add tailwindcss lucide-react roughjs"
 fi
 
 # Read the TSX.
