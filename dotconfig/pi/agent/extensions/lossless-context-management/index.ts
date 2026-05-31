@@ -173,7 +173,7 @@ export default function (pi: ExtensionAPI) {
       }
       initializeSession(ctx);
     } catch (e: any) {
-      console.error("[LCM] Failed to initialize:", e.message);
+      // No console.error: it bypasses pi's TUI renderer and corrupts the spinner.
       ctx.ui.notify(`LCM init failed: ${e.message}`, "warning");
       resetState();
     }
@@ -185,7 +185,7 @@ export default function (pi: ExtensionAPI) {
     try {
       initializeSession(ctx);
     } catch (e: any) {
-      console.error("[LCM] Re-init failed on session switch:", e.message);
+      ctx.ui.notify(`LCM re-init failed on session switch: ${e.message}`, "warning");
       resetState();
     }
   });
@@ -195,7 +195,7 @@ export default function (pi: ExtensionAPI) {
     try {
       initializeSession(ctx);
     } catch (e: any) {
-      console.error("[LCM] Re-init failed on session fork:", e.message);
+      ctx.ui.notify(`LCM re-init failed on session fork: ${e.message}`, "warning");
       resetState();
     }
   });
@@ -221,6 +221,13 @@ export default function (pi: ExtensionAPI) {
 
   pi.on("session_before_compact", async (event: any, ctx: any) => {
     if (!store || !conversationId) return;
+
+    // Yield to other extensions that own this compaction (e.g. pi-compactors
+    // sends `__compact_vcc__` / `__compact_meat__` sentinels via customInstructions).
+    // Convention: any customInstructions starting with `__` is a private sentinel
+    // for another handler. We let them win and don't run LCM compaction in parallel.
+    const ci: unknown = (event as any).customInstructions;
+    if (typeof ci === "string" && ci.startsWith("__")) return;
 
     const { preparation, signal } = event;
 
@@ -262,7 +269,7 @@ export default function (pi: ExtensionAPI) {
         },
       };
     } catch (e: any) {
-      console.error("[LCM] Compaction failed:", e.message);
+      // No console.error: it bypasses pi's TUI renderer and corrupts the spinner.
       ctx.ui.notify(`LCM compaction failed: ${e.message}. Falling back to default.`, "warning");
       return;
     }
@@ -288,15 +295,13 @@ async function callCompactionModel(ctx: any, config: LcmConfig, prompt: string, 
     let headers: Record<string, string> | undefined;
     if (typeof ctx.modelRegistry.getApiKeyAndHeaders === "function") {
       const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
-      if (!auth || typeof auth.ok !== "boolean") {
-        console.error("[LCM] Unexpected auth response shape");
-        continue;
-      }
+      // ResolvedRequestAuth is { ok: true, apiKey?, headers? } | { ok: false, error }.
+      // `apiKey` is legitimately optional when ok:true — for unconfigured providers
+      // it is undefined. Treat any of those cases as "no usable auth" and silently
+      // try the next model. Do NOT write to stderr: that corrupts pi's TUI spinner.
+      if (!auth || typeof auth.ok !== "boolean") continue;
       if (!auth.ok) continue;
-      if (typeof auth.apiKey !== "string" || auth.apiKey.length === 0) {
-        console.error("[LCM] Auth succeeded but apiKey is missing");
-        continue;
-      }
+      if (typeof auth.apiKey !== "string" || auth.apiKey.length === 0) continue;
       apiKey = auth.apiKey;
       headers = auth.headers != null && typeof auth.headers === "object" ? auth.headers : undefined;
     } else {
@@ -328,15 +333,11 @@ async function callCompactionModel(ctx: any, config: LcmConfig, prompt: string, 
     let fallbackHeaders: Record<string, string> | undefined;
     if (typeof ctx.modelRegistry.getApiKeyAndHeaders === "function") {
       const auth = await ctx.modelRegistry.getApiKeyAndHeaders(ctx.model);
-      if (!auth || typeof auth.ok !== "boolean") {
-        console.error("[LCM] Unexpected auth response shape for fallback model");
-      } else if (auth.ok) {
-        if (typeof auth.apiKey !== "string" || auth.apiKey.length === 0) {
-          console.error("[LCM] Fallback auth succeeded but apiKey is missing");
-        } else {
-          fallbackApiKey = auth.apiKey;
-          fallbackHeaders = auth.headers != null && typeof auth.headers === "object" ? auth.headers : undefined;
-        }
+      // Silent fallback: see note above on ResolvedRequestAuth. console.error
+      // here corrupts the TUI spinner; if no usable apiKey, just give up.
+      if (auth && auth.ok && typeof auth.apiKey === "string" && auth.apiKey.length > 0) {
+        fallbackApiKey = auth.apiKey;
+        fallbackHeaders = auth.headers != null && typeof auth.headers === "object" ? auth.headers : undefined;
       }
     } else {
       fallbackApiKey = await ctx.modelRegistry.getApiKey(ctx.model);
