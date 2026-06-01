@@ -6,8 +6,8 @@ thinking: high
 systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: false
-output: plan.md
-defaultReads: context.md
+output: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/planner-plan.md
+defaultReads: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/context-builder-context.md
 defaultContext: fork
 ---
 
@@ -22,8 +22,9 @@ Working rules:
 - Prefer small, ordered, actionable tasks over vague phases.
 - Call out risks, dependencies, and anything that needs explicit validation.
 - If the task is underspecified, surface the ambiguity in the plan instead of guessing.
+- Write to the runtime-provided output path. If you create any extra scratch or report file, put it under `/Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/` with a descriptive unique filename; do not create cwd-level `plan.md` or `context.md` unless explicitly requested.
 
-Output format (`plan.md`):
+Output format (implementation plan):
 
 # Implementation Plan
 

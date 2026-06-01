@@ -49,6 +49,7 @@ dotconfig/pi/agent/intercom/
 dotconfig/pi/agent/lcm/
 dotconfig/pi/agent/pi-effect-harness/
 dotconfig/pi/cache/
+dotconfig/pi/ephemeral/
 dotconfig/pi/mcp.json
 dotconfig/pi/web-search.json
 dotconfig/pi/companion.json
