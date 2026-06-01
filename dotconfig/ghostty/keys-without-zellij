@@ -18,3 +18,5 @@ keybind = cmd+e=toggle_split_zoom
 
 keybind = alt+w=scroll_page_fractional:-0.50
 keybind = alt+s=scroll_page_fractional:0.50
+
+keybind = cmd+r=prompt_tab_title
