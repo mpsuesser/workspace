@@ -34,11 +34,11 @@ const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
 
 /**
  * Truncate a line to maxWidth, preserving ANSI styling through the ellipsis.
- * 
+ *
  * pi-tui's truncateToWidth adds \x1b[0m before ellipsis which resets all styling,
  * causing background color bleed in the TUI. This implementation tracks active
  * ANSI styles and re-applies them before the ellipsis.
- * 
+ *
  * Uses Intl.Segmenter for proper Unicode/emoji handling (not char-by-char).
  */
 function truncLine(text: string, maxWidth: number): string {
@@ -1254,7 +1254,7 @@ export function renderSubagentResult(
 
 	if (!expanded) return renderMultiCompact(d, theme);
 
-	const hasRunning = d.progress?.some((p) => p.status === "running") 
+	const hasRunning = d.progress?.some((p) => p.status === "running")
 		|| d.results.some((r) => r.progress?.status === "running")
 		|| workflowGraphHasStatus(d, ["running"]);
 	const ok = d.results.filter((r) => r.progress?.status === "completed" || (r.exitCode === 0 && r.progress?.status !== "running")).length;
@@ -1304,7 +1304,7 @@ export function renderSubagentResult(
 	const contextBadge = d.context === "fork" ? theme.fg("warning", " [fork]") : "";
 	const multiLabel = buildMultiProgressLabel(d, hasRunning);
 	const itemTitle = multiLabel.itemTitle;
-	
+
 	const chainVis = d.chainAgents?.length && !multiLabel.hasParallelInChain
 		? d.chainAgents
 				.map((agent, i) => {
@@ -1378,7 +1378,7 @@ export function renderSubagentResult(
 			continue;
 		}
 
-		const progressFromArray = d.progress?.find((p) => p.index === i) 
+		const progressFromArray = d.progress?.find((p) => p.index === i)
 			|| d.progress?.find((p) => p.agent === r.agent && p.status === "running");
 		const rProg = r.progress || progressFromArray || r.progressSummary;
 		const rRunning = rProg?.status === "running";

@@ -933,7 +933,7 @@
 
 ### Fixed
 - **Timer leaks** - Track and clear pendingTimer and cleanupTimers properly
-- **Updates after close** - processClosed flag prevents updates after process terminates  
+- **Updates after close** - processClosed flag prevents updates after process terminates
 - **Session cleanup** - Clear cleanup timers on session_start/switch/branch/shutdown
 
 ## [0.3.1] - 2026-01-24

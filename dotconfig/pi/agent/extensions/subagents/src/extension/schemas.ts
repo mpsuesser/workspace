@@ -112,8 +112,8 @@ const AcceptanceOverride = Type.Unsafe({
 });
 
 const TaskItem = Type.Object({
-	agent: Type.String(), 
-	task: Type.String(), 
+	agent: Type.String(),
+	task: Type.String(),
 	cwd: Type.Optional(Type.String()),
 	count: Type.Optional(Type.Integer({ minimum: 1, description: "Repeat this parallel task N times with the same settings." })),
 	output: Type.Optional(OutputOverride),

@@ -345,10 +345,10 @@ export function buildChainInstructions(
 		suffixParts.push(`Previous step output:\n${previousSummary.trim()}`);
 	}
 
-	const prefix = prefixParts.length > 0 
+	const prefix = prefixParts.length > 0
 		? prefixParts.join("\n") + "\n\n"
 		: "";
-	
+
 	const suffix = suffixParts.length > 0
 		? "\n\n---\n" + suffixParts.join("\n")
 		: "";
