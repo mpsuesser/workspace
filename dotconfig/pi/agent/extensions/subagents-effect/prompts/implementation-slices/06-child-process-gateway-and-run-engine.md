@@ -42,7 +42,7 @@ Responsibilities:
 - add child runtime extension path
 - add fanout child runtime extension path only when authorized
 - apply `--no-extensions` and explicit extension allowlist semantics
-- apply `--no-skills` when inherited skills are disabled
+- apply `--no-skills` only when `inheritAvailableSkills` is false (it defaults to true; legacy `inheritSkills` key still accepted)
 - write system prompt temp file when prompt is provided
 - write task temp file when task exceeds safe CLI arg length
 - set child env vars:

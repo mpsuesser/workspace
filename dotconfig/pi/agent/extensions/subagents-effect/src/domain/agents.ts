@@ -60,9 +60,9 @@ export class AgentDefinition extends Schema.Class<AgentDefinition>("AgentDefinit
 		Schema.withDecodingDefault(Effect.succeed(false)),
 		Schema.withConstructorDefault(Effect.succeed(false))
 	),
-	inheritSkills: Schema.Boolean.pipe(
-		Schema.withDecodingDefault(Effect.succeed(false)),
-		Schema.withConstructorDefault(Effect.succeed(false))
+	inheritAvailableSkills: Schema.Boolean.pipe(
+		Schema.withDecodingDefault(Effect.succeed(true)),
+		Schema.withConstructorDefault(Effect.succeed(true))
 	),
 	defaultContext: Schema.OptionFromOptionalKey(AgentDefaultContext),
 	systemPrompt: Schema.String,
@@ -83,7 +83,7 @@ export class AgentOverride extends Schema.Class<AgentOverride>("AgentOverride")(
 	thinking: Schema.OptionFromOptionalKey(Schema.Union([ThinkingLevel, Schema.Literal(false)])),
 	systemPromptMode: Schema.OptionFromOptionalKey(SystemPromptMode),
 	inheritProjectContext: Schema.OptionFromOptionalKey(Schema.Boolean),
-	inheritSkills: Schema.OptionFromOptionalKey(Schema.Boolean),
+	inheritAvailableSkills: Schema.OptionFromOptionalKey(Schema.Boolean),
 	defaultContext: Schema.OptionFromOptionalKey(Schema.Union([AgentDefaultContext, Schema.Literal(false)])),
 	disabled: Schema.OptionFromOptionalKey(Schema.Boolean),
 	systemPrompt: Schema.OptionFromOptionalKey(Schema.String),
@@ -104,7 +104,7 @@ export class ResolvedAgent extends Schema.Class<ResolvedAgent>("ResolvedAgent")(
 	thinking: Schema.OptionFromOptionalKey(ThinkingLevel),
 	systemPromptMode: SystemPromptMode,
 	inheritProjectContext: Schema.Boolean,
-	inheritSkills: Schema.Boolean,
+	inheritAvailableSkills: Schema.Boolean,
 	defaultContext: Schema.OptionFromOptionalKey(AgentDefaultContext),
 	systemPrompt: Schema.String,
 	skills: Schema.OptionFromOptionalKey(Schema.Array(Schema.String)),

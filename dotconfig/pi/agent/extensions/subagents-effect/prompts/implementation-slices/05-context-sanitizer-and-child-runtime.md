@@ -74,7 +74,7 @@ Do not mutate input message objects in place.
 Responsibilities:
 
 - strip inherited project context when policy says false
-- strip inherited skills catalog when policy says false
+- strip the inherited available-skills catalog when `inheritAvailableSkills` is false (defaults to true; legacy `inheritSkills` key still accepted)
 - strip explicit or catalog `pi-subagents` skill content
 - remove previously injected child boundary instructions before adding the current one
 - inject strict child boundary for normal children
