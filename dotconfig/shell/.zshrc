@@ -24,6 +24,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.zero/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/_/.bin:$PATH"
@@ -152,6 +153,9 @@ wt() {
   fi
 }
 
+
+# direnv logging is configured in ~/.config/direnv/direnv.toml.
 eval "$(direnv hook zsh)"
+
 # CF CLI completions
 [[ -f "/Users/m/.config/cf/completions/_cf.zsh" ]] && source "/Users/m/.config/cf/completions/_cf.zsh"
