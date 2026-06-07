@@ -1,6 +1,6 @@
 ---
 name: audit-program
-description: Audit an existing Foldkit program against the architecture, conventions, and quality bar. Use when the user wants to review their Foldkit code, check for anti-patterns, accessibility gaps, or quality regressions. Triggers on phrases like "audit my app", "review this Foldkit code", "check for anti-patterns", "is this idiomatic?", or "what would the reviewer find?"
+description: Audit an existing Foldkit program against architecture, conventions, and quality. Use to review Foldkit code, check for anti-patterns, accessibility gaps, quality regressions, or whether it's idiomatic.
 argument-hint: '[optional: path or focus area like a11y/effects/naming/decomposition/forms/routing/subscriptions/submodels/types/testing]'
 ---
 

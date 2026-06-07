@@ -1,6 +1,6 @@
 ---
 name: poster-from-tsx
-description: Turn a description into a beautiful rendered image (PNG/JPG/WebP/PDF/SVG) by authoring a single self-contained React/TSX component and rendering it with the `poster-ai` CLI. Use whenever the user says "create/make a poster", "make a poster as png that …", or asks for a chart, dashboard, report card, OG/social-share image, year-in-review, magazine/editorial layout, event poster, cover, certificate, menu, ticket, infographic — any static visual deliverable that should land as one image or document file. Not for interactive UIs.
+description: Render a description into an image or document (PNG/JPG/WebP/PDF/SVG) by authoring one self-contained React/TSX component via the poster-ai CLI. Use when the user asks to create/make a poster, chart, dashboard, OG/social image, infographic, certificate, or any static visual deliverable. Not for interactive UIs.
 ---
 
 # poster-from-tsx

@@ -1,6 +1,6 @@
 ---
 name: writing-user-facing-docs
-description: Read these references before writing user-facing documentation such as README.md files, tutorials, how-to guides, reference docs, or any prose intended for human readers of a project. Use when creating or substantially editing docs aimed at users rather than agent-facing files (e.g. AGENTS.md), which have different conventions.
+description: Read before writing user-facing docs — READMEs, tutorials, how-to guides, reference docs, or any prose for human readers. Use when creating or substantially editing docs aimed at users rather than agent-facing files like AGENTS.md.
 ---
 
 # Writing user-facing docs
