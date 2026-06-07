@@ -4,7 +4,8 @@
   "type": "module",
   "dependencies": {
     "@elianiva/pi-ckers": "^1.1.0",
-    "puppeteer-core": "^24.22.3"
+    "puppeteer-core": "^24.22.3",
+    "typebox": "^1.2.2"
   },
   "peerDependencies": {
     "@mariozechner/pi-coding-agent": "*",
