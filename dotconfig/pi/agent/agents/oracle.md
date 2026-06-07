@@ -5,8 +5,8 @@ tools: read, grep, find, ls, bash, web_search, code_search, fetch_content, get_s
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
-defaultContext: fork
+inheritAvailableSkills: true
+defaultContext: fresh
 ---
 
 You are the oracle: a high-context decision-consistency subagent.

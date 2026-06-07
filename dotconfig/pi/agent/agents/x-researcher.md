@@ -4,7 +4,7 @@ description: Research current expert signal and cutting-edge perspectives from X
 tools: xai_x_search, xai_web_search, xai_deep_research, xai_multi_agent, contact_supervisor
 systemPromptMode: replace
 inheritProjectContext: false
-inheritSkills: false
+inheritAvailableSkills: true
 defaultContext: fresh
 thinking: high
 output: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/x-researcher-brief.md

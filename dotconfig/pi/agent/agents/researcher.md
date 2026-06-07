@@ -5,7 +5,8 @@ tools: read, write, web_search, code_search, fetch_content, get_search_content, 
 thinking: medium
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
+inheritAvailableSkills: true
+defaultContext: fresh
 output: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/researcher-brief.md
 ---
 

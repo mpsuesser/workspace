@@ -5,7 +5,8 @@ tools: read, grep, find, ls, bash, edit, write, web_search, code_search, fetch_c
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
+inheritAvailableSkills: true
+defaultContext: fresh
 defaultReads: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/planner-plan.md
 ---
 

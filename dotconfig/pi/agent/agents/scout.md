@@ -5,7 +5,8 @@ tools: read, grep, find, ls, bash, write, intercom
 thinking: low
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
+inheritAvailableSkills: true
+defaultContext: fresh
 output: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/scout-context.md
 ---
 
