@@ -37,7 +37,9 @@ require("bunny"):setup({
 		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/mydb" },
 
-		{ key = { ".", "c" }, path = "~/.config" },
+		{ key = { ".", "c", "o" }, path = "~/.config" },
+		{ key = { ".", "c", "a", "e" }, path = "~/.cache/effect-v4" },
+		{ key = { ".", "c", "a", "f" }, path = "~/.cache/foldkit" },
 		{ key = { ".", "s" }, path = "~/.state" },
 		{ key = { ".", "b" }, path = "~/.bin" },
 
