@@ -5,7 +5,7 @@ tools: read, grep, find, ls, bash, intercom
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
+inheritAvailableSkills: true
 defaultContext: fork
 ---
 

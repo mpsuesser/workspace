@@ -1,7 +1,8 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { AgentToolResult } from "@earendil-works/pi-agent-core";
-import { formatAsyncRunList, formatAsyncRunOutputPath, formatAsyncRunProgressLabel, listAsyncRuns } from "./async-status.ts";
+import { type AsyncRunSummary, formatAsyncRunList, formatAsyncRunOutputPath, formatAsyncRunProgressLabel, listAsyncRuns } from "./async-status.ts";
+import { describeTerminalRun, lookupTerminalRun } from "./recent-terminal-runs.ts";
 import { formatNestedRunStatusLines } from "../shared/nested-render.ts";
 import { formatModelThinking } from "../../shared/formatters.ts";
 import { formatActivityLabel } from "../../shared/status-format.ts";
@@ -31,6 +32,18 @@ interface RunStatusDeps {
 
 function hasExistingSessionFile(value: unknown): value is string {
 	return typeof value === "string" && fs.existsSync(value);
+}
+
+/**
+ * Whether an async run was launched from the current session. The shared async
+ * dir root holds runs from every pi session on the machine, so an unscoped
+ * listing makes the orchestrator think other sessions' runs are its own. We key
+ * on sessionId, falling back to cwd for runs written before sessionId tracking.
+ */
+function runBelongsToSession(run: AsyncRunSummary, sessionId?: string, baseCwd?: string): boolean {
+	if (sessionId && run.sessionId) return run.sessionId === sessionId;
+	if (baseCwd && run.cwd) return run.cwd === baseCwd;
+	return true;
 }
 
 function formatResumeGuidance(runId: string | undefined, children: Array<{ agent?: unknown; sessionFile?: unknown }>, fallbackSessionFile?: unknown): string {
@@ -111,8 +124,16 @@ export function inspectSubagentStatus(params: RunStatusParams, deps: RunStatusDe
 		}
 		try {
 			const runs = listAsyncRuns(asyncDirRoot, { states: ["queued", "running"], resultsDir, kill: deps.kill, now: deps.now });
+			const sessionId = deps.state?.currentSessionId ?? undefined;
+			const baseCwd = deps.state?.baseCwd;
+			const mine = runs.filter((run) => runBelongsToSession(run, sessionId, baseCwd));
+			const otherCount = runs.length - mine.length;
+			let text = formatAsyncRunList(mine);
+			if (otherCount > 0) {
+				text += `\n\n${otherCount} other active subagent run(s) belong to different pi sessions (not launched from this session) and are excluded above. Ignore them unless you are explicitly coordinating across sessions.`;
+			}
 			return {
-				content: [{ type: "text", text: formatAsyncRunList(runs) }],
+				content: [{ type: "text", text }],
 				details: { mode: "single", results: [] },
 			};
 		} catch (error) {
@@ -152,8 +173,21 @@ export function inspectSubagentStatus(params: RunStatusParams, deps: RunStatusDe
 	const { asyncDir, resultPath, resolvedId } = location;
 
 	if (!asyncDir && !resultPath) {
+		const requestedId = location.resolvedId ?? params.id ?? params.runId;
+		const terminal = requestedId ? lookupTerminalRun(deps.state, requestedId, deps.now?.()) : undefined;
+		if (terminal) {
+			return {
+				content: [{ type: "text", text: describeTerminalRun(terminal) }],
+				details: { mode: "single", results: [] },
+			};
+		}
 		return {
-			content: [{ type: "text", text: "Async run not found. Provide id or dir." }],
+			content: [{
+				type: "text",
+				text: requestedId
+					? `No active subagent run found for id "${requestedId}". It most likely already completed and was cleaned up (its result was delivered when it finished), or it belongs to a different pi session. No status action is needed.`
+					: "Async run not found. Provide id or dir.",
+			}],
 			isError: true,
 			details: { mode: "single", results: [] },
 		};

@@ -6,7 +6,7 @@ import { STRUCTURED_OUTPUT_CAPTURE_ENV, STRUCTURED_OUTPUT_SCHEMA_ENV, validateSt
 import type { JsonSchemaObject } from "../../shared/types.ts";
 
 const SUBAGENT_INHERIT_PROJECT_CONTEXT_ENV = "PI_SUBAGENT_INHERIT_PROJECT_CONTEXT";
-const SUBAGENT_INHERIT_SKILLS_ENV = "PI_SUBAGENT_INHERIT_SKILLS";
+const SUBAGENT_INHERIT_AVAILABLE_SKILLS_ENV = "PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS";
 export const SUBAGENT_INTERCOM_SESSION_NAME_ENV = "PI_SUBAGENT_INTERCOM_SESSION_NAME";
 
 const STRUCTURED_OUTPUT_INSTRUCTIONS = [
@@ -92,13 +92,13 @@ function stripChildBoundaryInstructions(prompt: string): string {
 
 export function rewriteSubagentPrompt(
 	prompt: string,
-	options: { inheritProjectContext: boolean; inheritSkills: boolean; fanoutChild?: boolean },
+	options: { inheritProjectContext: boolean; inheritAvailableSkills: boolean; fanoutChild?: boolean },
 ): string {
 	let rewritten = prompt;
 	if (!options.inheritProjectContext) {
 		rewritten = stripProjectContext(rewritten);
 	}
-	if (!options.inheritSkills) {
+	if (!options.inheritAvailableSkills) {
 		rewritten = stripInheritedSkills(rewritten);
 	}
 	rewritten = stripSubagentOrchestrationSkill(rewritten);
@@ -248,12 +248,12 @@ export default function registerSubagentPromptRuntime(pi: ExtensionAPI): void {
 		}
 
 		const inheritProjectContext = readBooleanEnv(SUBAGENT_INHERIT_PROJECT_CONTEXT_ENV);
-		const inheritSkills = readBooleanEnv(SUBAGENT_INHERIT_SKILLS_ENV);
+		const inheritAvailableSkills = readBooleanEnv(SUBAGENT_INHERIT_AVAILABLE_SKILLS_ENV);
 		const fanoutChild = readBooleanEnv(SUBAGENT_FANOUT_CHILD_ENV);
-		if (inheritProjectContext === undefined && inheritSkills === undefined && fanoutChild === undefined) return;
+		if (inheritProjectContext === undefined && inheritAvailableSkills === undefined && fanoutChild === undefined) return;
 		const rewritten = rewriteSubagentPrompt(event.systemPrompt, {
 			inheritProjectContext: inheritProjectContext ?? true,
-			inheritSkills: inheritSkills ?? true,
+			inheritAvailableSkills: inheritAvailableSkills ?? true,
 			fanoutChild: fanoutChild === true,
 		});
 		if (rewritten === event.systemPrompt) return;

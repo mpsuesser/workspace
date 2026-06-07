@@ -21,7 +21,7 @@ function makeAgent(overrides: Partial<AgentConfig> = {}): AgentConfig {
 		systemPrompt: "Base prompt",
 		systemPromptMode: "replace",
 		inheritProjectContext: false,
-		inheritSkills: false,
+		inheritAvailableSkills: false,
 		source: "user",
 		filePath: "/tmp/worker.md",
 		...overrides,

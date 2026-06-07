@@ -14,6 +14,7 @@ import {
 	SUBAGENT_CONTROL_INTERCOM_EVENT,
 } from "../../shared/types.ts";
 import { readStatus } from "../../shared/utils.ts";
+import { isTerminalRunState, recordTerminalRun } from "./recent-terminal-runs.ts";
 import { normalizeParallelGroups } from "./parallel-groups.ts";
 import { reconcileAsyncRun, reconcileNestedAsyncDescendants } from "./stale-run-reconciler.ts";
 import { hasLiveNestedDescendants, updateAsyncJobNestedProjection } from "../shared/nested-events.ts";
@@ -75,6 +76,10 @@ export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: S
 			const lastNewline = buffer.lastIndexOf(0x0a);
 			if (lastNewline === -1) return;
 			job.controlEventCursor = cursor + lastNewline + 1;
+			// Once a run has terminated, idle/long-running "needs attention" notices
+			// buffered in its events file are stale and only confuse the orchestrator.
+			// Suppress them at the source; completion_guard failures still pass through.
+			const runIsTerminal = isTerminalRunState(readStatus(job.asyncDir)?.state);
 			for (const line of buffer.subarray(0, lastNewline).toString("utf-8").split("\n")) {
 				if (!line.trim()) continue;
 				let parsed: unknown;
@@ -87,6 +92,7 @@ export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: S
 				if (!parsed || typeof parsed !== "object" || (parsed as { type?: unknown }).type !== "subagent.control") continue;
 				const record = parsed as { event?: ControlEvent; channels?: string[]; childIntercomTarget?: string; noticeText?: string; intercom?: { to?: string; message?: string } };
 				if (!record.event || !Array.isArray(record.channels)) continue;
+				if (runIsTerminal && record.event.reason !== "completion_guard") continue;
 				const payload = {
 					event: record.event,
 					source: "async" as const,
@@ -205,6 +211,18 @@ export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: S
 						job.outputFile = status.outputFile ?? job.outputFile;
 						job.totalTokens = status.totalTokens ?? job.totalTokens;
 						job.sessionFile = status.sessionFile ?? job.sessionFile;
+						if ((job.status === "complete" || job.status === "failed" || job.status === "paused") && previousStatus !== job.status) {
+							recordTerminalRun(state, {
+								runId: status.runId ?? job.asyncId,
+								state: job.status,
+								source: "async",
+								mode: job.mode ?? status.mode ?? "single",
+								endedAt: status.endedAt ?? status.lastUpdate ?? Date.now(),
+								...(job.agents?.length ? { agents: job.agents } : {}),
+								...(job.outputFile ? { outputFile: job.outputFile } : {}),
+								...(job.sessionFile ? { sessionFile: job.sessionFile } : {}),
+							});
+						}
 						if ((job.status === "complete" || job.status === "failed" || job.status === "paused") && !nestedRefreshFailed && !hasLiveNestedDescendants(job.nestedChildren) && (previousStatus !== job.status || !state.cleanupTimers.has(job.asyncId))) {
 							scheduleCleanup(job.asyncId);
 						}
@@ -274,8 +292,19 @@ export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: S
 		if (!asyncId) return;
 		const job = state.asyncJobs.get(asyncId);
 		let nestedRefreshFailed = false;
+		const terminalState = result.success ? "complete" : "failed";
+		recordTerminalRun(state, {
+			runId: asyncId,
+			state: terminalState,
+			source: "async",
+			mode: job?.mode ?? "single",
+			endedAt: Date.now(),
+			...(job?.agents?.length ? { agents: job.agents } : {}),
+			...(job?.outputFile ? { outputFile: job.outputFile } : {}),
+			...(job?.sessionFile ? { sessionFile: job.sessionFile } : {}),
+		});
 		if (job) {
-			job.status = result.success ? "complete" : "failed";
+			job.status = terminalState;
 			job.updatedAt = Date.now();
 			if (result.asyncDir) job.asyncDir = result.asyncDir;
 			try {

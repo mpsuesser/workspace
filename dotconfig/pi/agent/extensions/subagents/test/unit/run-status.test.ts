@@ -4,8 +4,43 @@ import * as os from "node:os";
 import * as path from "node:path";
 import { describe, it } from "node:test";
 import { inspectSubagentStatus } from "../../src/runs/background/run-status.ts";
+import { recordTerminalRun } from "../../src/runs/background/recent-terminal-runs.ts";
 import { createNestedRoute, writeNestedEvent } from "../../src/runs/shared/nested-events.ts";
-import { TEMP_ROOT_DIR } from "../../src/shared/types.ts";
+import { TEMP_ROOT_DIR, type SubagentState } from "../../src/shared/types.ts";
+
+function makeState(overrides: Partial<SubagentState> = {}): SubagentState {
+	return {
+		baseCwd: "/tmp/project",
+		currentSessionId: null,
+		asyncJobs: new Map(),
+		foregroundControls: new Map(),
+		lastForegroundControlId: null,
+		cleanupTimers: new Map(),
+		lastUiContext: null,
+		poller: null,
+		completionSeen: new Map(),
+		watcher: null,
+		watcherRestartTimer: null,
+		resultFileCoalescer: { schedule: () => false, clear: () => {} },
+		...overrides,
+	};
+}
+
+function writeRunningRun(asyncRoot: string, runId: string, extra: Record<string, unknown>): void {
+	const asyncDir = path.join(asyncRoot, runId);
+	fs.mkdirSync(asyncDir, { recursive: true });
+	fs.writeFileSync(path.join(asyncDir, "status.json"), JSON.stringify({
+		runId,
+		mode: "single",
+		state: "running",
+		pid: 12345,
+		startedAt: 100,
+		lastUpdate: 100,
+		currentStep: 0,
+		steps: [{ agent: "worker", status: "running", startedAt: 100 }],
+		...extra,
+	}, null, 2), "utf-8");
+}
 
 function errno(code: string): NodeJS.ErrnoException {
 	const error = new Error(code) as NodeJS.ErrnoException;
@@ -560,6 +595,115 @@ describe("async run status inspection", () => {
 			assert.match(text, /Result: /);
 			assert.match(text, /Revive: subagent\(\{ action: "resume", id: "run-result-only", message: "\.\.\." \}\)/);
 			assert.match(text, /result survived missing status/);
+		} finally {
+			fs.rmSync(root, { recursive: true, force: true });
+		}
+	});
+
+	// O3: the shared async dir root holds runs from every pi session; the unscoped
+	// listing made orchestrators treat other sessions' runs as their own.
+	it("scopes the no-id status listing to the current session and flags other sessions' runs", () => {
+		const root = fs.mkdtempSync(path.join(os.tmpdir(), "pi-run-status-scope-"));
+		try {
+			const asyncRoot = path.join(root, "runs");
+			const resultsDir = path.join(root, "results");
+			writeRunningRun(asyncRoot, "run-mine", { sessionId: "sess-A", cwd: "/tmp/project" });
+			writeRunningRun(asyncRoot, "run-other", { sessionId: "sess-B", cwd: "/tmp/other" });
+
+			const result = inspectSubagentStatus({}, {
+				asyncDirRoot: asyncRoot,
+				resultsDir,
+				kill: () => true,
+				now: () => 200,
+				state: makeState({ currentSessionId: "sess-A", baseCwd: "/tmp/project" }),
+			});
+
+			const text = textContent(result);
+			assert.match(text, /run-mine/);
+			assert.doesNotMatch(text, /run-other/, "another session's run must not appear as ours");
+			assert.match(text, /1 other active subagent run\(s\) belong to different pi sessions/);
+		} finally {
+			fs.rmSync(root, { recursive: true, force: true });
+		}
+	});
+
+	it("falls back to cwd scoping for runs written before sessionId tracking", () => {
+		const root = fs.mkdtempSync(path.join(os.tmpdir(), "pi-run-status-scope-cwd-"));
+		try {
+			const asyncRoot = path.join(root, "runs");
+			const resultsDir = path.join(root, "results");
+			writeRunningRun(asyncRoot, "run-here", { cwd: "/tmp/project" });
+			writeRunningRun(asyncRoot, "run-elsewhere", { cwd: "/tmp/other" });
+
+			const result = inspectSubagentStatus({}, {
+				asyncDirRoot: asyncRoot,
+				resultsDir,
+				kill: () => true,
+				now: () => 200,
+				state: makeState({ currentSessionId: "sess-A", baseCwd: "/tmp/project" }),
+			});
+
+			const text = textContent(result);
+			assert.match(text, /run-here/);
+			assert.doesNotMatch(text, /run-elsewhere/);
+		} finally {
+			fs.rmSync(root, { recursive: true, force: true });
+		}
+	});
+
+	// O5: a redundant status query for an already-finished run returned the alarming
+	// "Async run not found" and triggered re-poll loops.
+	it("reports already-completed runs from the in-memory record instead of 'not found'", () => {
+		const root = fs.mkdtempSync(path.join(os.tmpdir(), "pi-run-status-recent-"));
+		try {
+			const asyncRoot = path.join(root, "runs");
+			const resultsDir = path.join(root, "results");
+			fs.mkdirSync(asyncRoot, { recursive: true });
+			const state = makeState();
+			recordTerminalRun(state, {
+				runId: "run-done",
+				state: "complete",
+				source: "foreground",
+				mode: "single",
+				endedAt: 150,
+				agents: ["worker"],
+			});
+
+			const result = inspectSubagentStatus({ id: "run-done" }, {
+				asyncDirRoot: asyncRoot,
+				resultsDir,
+				now: () => 200,
+				state,
+			});
+
+			const text = textContent(result);
+			assert.equal(result.isError, undefined, "a completed run is not an error");
+			assert.match(text, /Run: run-done/);
+			assert.match(text, /State: completed \(worker\)/);
+			assert.match(text, /No further status action is needed\./);
+		} finally {
+			fs.rmSync(root, { recursive: true, force: true });
+		}
+	});
+
+	it("gives an actionable message when an unknown id cannot be found", () => {
+		const root = fs.mkdtempSync(path.join(os.tmpdir(), "pi-run-status-unknown-"));
+		try {
+			const asyncRoot = path.join(root, "runs");
+			const resultsDir = path.join(root, "results");
+			fs.mkdirSync(asyncRoot, { recursive: true });
+
+			const result = inspectSubagentStatus({ id: "never-existed" }, {
+				asyncDirRoot: asyncRoot,
+				resultsDir,
+				now: () => 200,
+				state: makeState(),
+			});
+
+			const text = textContent(result);
+			assert.equal(result.isError, true);
+			assert.match(text, /No active subagent run found for id "never-existed"/);
+			assert.match(text, /No status action is needed\./);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });
 		}

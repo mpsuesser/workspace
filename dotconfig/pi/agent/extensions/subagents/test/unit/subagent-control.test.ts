@@ -5,15 +5,41 @@ import {
 	claimControlNotification,
 	controlNotificationKey,
 	deriveActivityState,
+	foregroundControlNoticeReachesOrchestrator,
 	formatControlIntercomMessage,
 	formatControlNoticeMessage,
 	resolveControlConfig,
 	shouldNotifyControlEvent,
 } from "../../src/runs/shared/subagent-control.ts";
+import type { ControlEvent } from "../../src/shared/types.ts";
 import { nextLongRunningTrigger } from "../../src/runs/shared/long-running-guard.ts";
 
 const config = resolveControlConfig(undefined, {
 	needsAttentionAfterMs: 300,
+});
+
+describe("foreground control notices reaching the orchestrator", () => {
+	const event = (reason: ControlEvent["reason"], type: ControlEvent["type"] = "needs_attention"): ControlEvent => ({
+		type,
+		to: "needs_attention",
+		ts: 1,
+		runId: "run-1",
+		agent: "delegate",
+		index: 0,
+		message: "x",
+		reason,
+	});
+
+	it("suppresses every 'still working' foreground notice", () => {
+		for (const reason of ["idle", "active_long_running", "tool_failures", "time_threshold", "turn_threshold", "token_threshold"] as const) {
+			assert.equal(foregroundControlNoticeReachesOrchestrator(event(reason)), false, `reason ${reason} must not reach the orchestrator`);
+		}
+		assert.equal(foregroundControlNoticeReachesOrchestrator(event("active_long_running", "active_long_running")), false);
+	});
+
+	it("still surfaces a genuine completion_guard failure", () => {
+		assert.equal(foregroundControlNoticeReachesOrchestrator(event("completion_guard")), true);
+	});
 });
 
 describe("subagent control attention state", () => {

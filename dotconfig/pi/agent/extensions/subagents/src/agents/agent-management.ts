@@ -9,7 +9,7 @@ import {
 	type ChainConfig,
 	type ChainStepConfig,
 	defaultInheritProjectContext,
-	defaultInheritSkills,
+	defaultInheritAvailableSkills,
 	defaultSystemPromptMode,
 	discoverAgentsAll,
 	buildRuntimeName,
@@ -282,9 +282,11 @@ function applyAgentConfig(target: AgentConfig, cfg: Record<string, unknown>): st
 		if (typeof cfg.inheritProjectContext !== "boolean") return "config.inheritProjectContext must be a boolean when provided.";
 		target.inheritProjectContext = cfg.inheritProjectContext;
 	}
-	if (hasKey(cfg, "inheritSkills")) {
-		if (typeof cfg.inheritSkills !== "boolean") return "config.inheritSkills must be a boolean when provided.";
-		target.inheritSkills = cfg.inheritSkills;
+	// Accept the legacy `inheritSkills` key from configs written before the rename.
+	if (hasKey(cfg, "inheritAvailableSkills") || hasKey(cfg, "inheritSkills")) {
+		const value = hasKey(cfg, "inheritAvailableSkills") ? cfg.inheritAvailableSkills : cfg.inheritSkills;
+		if (typeof value !== "boolean") return "config.inheritAvailableSkills must be a boolean when provided.";
+		target.inheritAvailableSkills = value;
 	}
 	if (hasKey(cfg, "defaultContext")) {
 		if (cfg.defaultContext === false || cfg.defaultContext === "") target.defaultContext = undefined;
@@ -377,7 +379,7 @@ function formatAgentDetail(agent: AgentConfig): string {
 	if (agent.skills?.length) lines.push(`Skills: ${agent.skills.join(", ")}`);
 	lines.push(`System prompt mode: ${agent.systemPromptMode}`);
 	lines.push(`Inherit project context: ${agent.inheritProjectContext ? "true" : "false"}`);
-	lines.push(`Inherit skills: ${agent.inheritSkills ? "true" : "false"}`);
+	lines.push(`Inherit available skills: ${agent.inheritAvailableSkills ? "true" : "false"}`);
 	if (agent.defaultContext) lines.push(`Default context: ${agent.defaultContext}`);
 	if (agent.source === "builtin") lines.push(`Disabled: ${agent.disabled ? "true" : "false"}`);
 	if (agent.extensions !== undefined) lines.push(`Extensions: ${agent.extensions.length ? agent.extensions.join(", ") : "(none)"}`);
@@ -539,7 +541,7 @@ export function handleCreate(params: ManagementParams, ctx: ManagementContext): 
 		systemPrompt: "",
 		systemPromptMode: defaultSystemPromptMode(name),
 		inheritProjectContext: defaultInheritProjectContext(name),
-		inheritSkills: defaultInheritSkills(),
+		inheritAvailableSkills: defaultInheritAvailableSkills(),
 	};
 	const applyError = applyAgentConfig(agent, cfg);
 	if (applyError) return result(applyError, true);

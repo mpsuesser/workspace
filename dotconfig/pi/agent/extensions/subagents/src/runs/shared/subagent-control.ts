@@ -137,6 +137,25 @@ export function shouldNotifyControlEvent(config: ResolvedControlConfig, event: C
 	return config.enabled && config.notifyOn.includes(event.type);
 }
 
+/**
+ * Whether a control event from a *foreground* (blocking) run should be surfaced
+ * to the orchestrator at all.
+ *
+ * A foreground subagent call blocks the orchestrator's turn, so the orchestrator
+ * cannot act on a child mid-run. Any notice emitted during the run is buffered by
+ * the harness and only reaches the orchestrator at the next turn boundary — i.e.
+ * *after* the foreground call has already returned every child's result inline.
+ * Idle / long-running / threshold "still working" notices therefore always arrive
+ * stale and read as phantom "needs attention" pings for an already-finished run
+ * (the dominant orchestration complaint). Only a genuine `completion_guard`
+ * failure carries signal worth surfacing post-run. In-flight status still reaches
+ * the user through the live foreground status widget, which is driven from
+ * foregroundControl state rather than these events.
+ */
+export function foregroundControlNoticeReachesOrchestrator(event: ControlEvent): boolean {
+	return event.reason === "completion_guard";
+}
+
 export function controlNotificationKey(event: ControlEvent, childIntercomTarget?: string): string {
 	const childKey = childIntercomTarget ?? (event.index !== undefined ? `${event.runId}:${event.index}` : event.runId);
 	return `${childKey}:${event.type}:${event.reason ?? "idle"}`;

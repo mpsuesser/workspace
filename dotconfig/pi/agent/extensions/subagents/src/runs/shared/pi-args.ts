@@ -36,7 +36,7 @@ interface BuildPiArgsInput {
 	thinking?: string;
 	systemPromptMode?: "append" | "replace";
 	inheritProjectContext: boolean;
-	inheritSkills: boolean;
+	inheritAvailableSkills: boolean;
 	tools?: string[];
 	extensions?: string[];
 	systemPrompt?: string | null;
@@ -129,7 +129,7 @@ export function buildPiArgs(input: BuildPiArgsInput): BuildPiArgsResult {
 		}
 	}
 
-	if (!input.inheritSkills) {
+	if (!input.inheritAvailableSkills) {
 		args.push("--no-skills");
 	}
 
@@ -190,7 +190,7 @@ export function buildPiArgs(input: BuildPiArgsInput): BuildPiArgsResult {
 		? input.parentCapabilityToken ?? process.env[SUBAGENT_PARENT_CAPABILITY_TOKEN_ENV] ?? ""
 		: "";
 	env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT = input.inheritProjectContext ? "1" : "0";
-	env.PI_SUBAGENT_INHERIT_SKILLS = input.inheritSkills ? "1" : "0";
+	env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS = input.inheritAvailableSkills ? "1" : "0";
 	if (input.intercomSessionName) {
 		env.PI_SUBAGENT_INTERCOM_SESSION_NAME = input.intercomSessionName;
 	}

@@ -11,6 +11,8 @@ export const KNOWN_FIELDS = new Set([
 	"thinking",
 	"systemPromptMode",
 	"inheritProjectContext",
+	"inheritAvailableSkills",
+	// Legacy alias kept so old `inheritSkills` keys are not echoed into extraFields.
 	"inheritSkills",
 	"defaultContext",
 	"skill",
@@ -49,7 +51,7 @@ export function serializeAgent(config: AgentConfig): string {
 	if (config.thinking && config.thinking !== "off") lines.push(`thinking: ${config.thinking}`);
 	lines.push(`systemPromptMode: ${config.systemPromptMode}`);
 	lines.push(`inheritProjectContext: ${config.inheritProjectContext ? "true" : "false"}`);
-	lines.push(`inheritSkills: ${config.inheritSkills ? "true" : "false"}`);
+	lines.push(`inheritAvailableSkills: ${config.inheritAvailableSkills ? "true" : "false"}`);
 	if (config.defaultContext) lines.push(`defaultContext: ${config.defaultContext}`);
 
 	const skillsValue = joinComma(config.skills);

@@ -1,6 +1,48 @@
+import * as fs from "node:fs";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { controlNotificationKey, formatControlNoticeMessage } from "../runs/shared/subagent-control.ts";
+import { hasTerminalRun, isTerminalRunState } from "../runs/background/recent-terminal-runs.ts";
+import { readStatus } from "../shared/utils.ts";
 import type { ControlEvent, SubagentState } from "../shared/types.ts";
+
+/**
+ * Reads the current persisted state of an async run directory. Injectable so the
+ * delivery gate can be unit-tested without touching the filesystem.
+ */
+export type AsyncRunStateProbe = (asyncDir: string) => { exists: boolean; state?: string };
+
+const defaultAsyncRunStateProbe: AsyncRunStateProbe = (asyncDir) => {
+	if (!fs.existsSync(asyncDir)) return { exists: false };
+	return { exists: true, state: readStatus(asyncDir)?.state };
+};
+
+/**
+ * Decides whether an async control notice is still worth waking the orchestrator
+ * for. We only deliver when there is no positive evidence that the run already
+ * finished — `completion_guard` failure notices are always delivered because
+ * they tell the orchestrator a subagent failed and needs follow-up.
+ *
+ * This is the fix for the dominant orchestration complaint: stale
+ * "needs attention" notices firing for runs that already completed.
+ */
+export function isAsyncNoticeStillActionable(
+	state: SubagentState,
+	details: SubagentControlMessageDetails,
+	probe: AsyncRunStateProbe = defaultAsyncRunStateProbe,
+): boolean {
+	const event = details.event;
+	if (!event) return false;
+	if (event.reason === "completion_guard") return true;
+	const job = state.asyncJobs.get(event.runId);
+	if (job && isTerminalRunState(job.status)) return false;
+	if (hasTerminalRun(state, event.runId)) return false;
+	if (details.asyncDir) {
+		const probed = probe(details.asyncDir);
+		if (!probed.exists) return false;
+		if (isTerminalRunState(probed.state)) return false;
+	}
+	return true;
+}
 
 export const SUBAGENT_CONTROL_MESSAGE_TYPE = "subagent_control_notice";
 
@@ -70,9 +112,11 @@ export function handleSubagentControlNotice(input: {
 	visibleControlNotices: Set<string>;
 	details: SubagentControlMessageDetails;
 	foregroundDelayMs?: number;
+	asyncRunStateProbe?: AsyncRunStateProbe;
 }): void {
 	if (!input.details?.event || input.details.event.type === "active_long_running") return;
 	if (input.details.source !== "foreground") {
+		if (!isAsyncNoticeStillActionable(input.state, input.details, input.asyncRunStateProbe)) return;
 		deliverControlNotice(input);
 		return;
 	}

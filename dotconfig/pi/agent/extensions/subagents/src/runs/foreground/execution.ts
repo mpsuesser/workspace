@@ -161,7 +161,7 @@ async function runSingleAttempt(
 		thinking: agent.thinking,
 		systemPromptMode: agent.systemPromptMode,
 		inheritProjectContext: agent.inheritProjectContext,
-		inheritSkills: agent.inheritSkills,
+		inheritAvailableSkills: agent.inheritAvailableSkills,
 		tools: agent.tools,
 		extensions: agent.extensions,
 		systemPrompt: shared.systemPrompt,

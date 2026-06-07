@@ -5,7 +5,7 @@ tools: read, grep, find, ls, write, intercom
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
+inheritAvailableSkills: true
 output: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/planner-plan.md
 defaultReads: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/context-builder-context.md
 defaultContext: fork

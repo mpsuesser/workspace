@@ -125,7 +125,7 @@ describe("buildPiArgs session wiring", () => {
 				sessionFile,
 				sessionDir: "/tmp/should-not-be-used",
 				inheritProjectContext: false,
-				inheritSkills: false,
+				inheritAvailableSkills: false,
 			});
 
 			assert.ok(args.includes("--session"));
@@ -145,7 +145,7 @@ describe("buildPiArgs session wiring", () => {
 			sessionEnabled: true,
 			sessionDir: "/tmp/subagent-sessions",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.ok(args.includes("--session-dir"));
@@ -162,7 +162,7 @@ describe("buildPiArgs model wiring", () => {
 			sessionEnabled: false,
 			model: "openai-codex/gpt-5.4-mini",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.ok(args.includes("--model"));
@@ -177,7 +177,7 @@ describe("buildPiArgs model wiring", () => {
 			sessionEnabled: false,
 			model: "kimi-k2.5",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.ok(args.includes("--model"));
@@ -194,7 +194,7 @@ describe("buildPiArgs model wiring", () => {
 			model: "openai-codex/gpt-5.4-mini",
 			thinking: "high",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.equal(applyThinkingSuffix("openai-codex/gpt-5.4-mini", "high"), "openai-codex/gpt-5.4-mini:high");
@@ -211,7 +211,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			sessionEnabled: false,
 			systemPrompt: "You are a worker",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.ok(args.includes("--append-system-prompt"));
@@ -226,7 +226,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			systemPrompt: "You are a worker",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.ok(args.includes("--system-prompt"));
@@ -239,14 +239,14 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 		});
 
 		const extensionArgs = args.filter((arg, index) => args[index - 1] === "--extension");
 		assert.ok(extensionArgs.some((arg) => arg.endsWith(path.join("src", "runs", "shared", "subagent-prompt-runtime.ts"))));
 		assert.equal(env.PI_SUBAGENT_CHILD, "1");
 		assert.equal(env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT, "0");
-		assert.equal(env.PI_SUBAGENT_INHERIT_SKILLS, "1");
+		assert.equal(env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS, "1");
 	});
 
 	it("passes child intercom and orchestrator metadata through env", () => {
@@ -255,7 +255,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: true,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 			intercomSessionName: "subagent-worker-78f659a3",
 			orchestratorIntercomTarget: "subagent-chat-parent",
 			runId: "78f659a3",
@@ -276,7 +276,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "grep", "find", "ls", "bash", "edit", "write", "contact_supervisor"],
 		});
 
@@ -293,7 +293,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "bash"],
 			mcpDirectTools: ["chrome-devtools"],
 		});
@@ -311,7 +311,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			mcpDirectTools: ["chrome-devtools"],
 		});
 
@@ -332,7 +332,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read"],
 			mcpDirectTools: ["github/search_repositories"],
 		});
@@ -358,7 +358,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 				task: "hello",
 				sessionEnabled: false,
 				inheritProjectContext: false,
-				inheritSkills: false,
+				inheritAvailableSkills: false,
 				tools: ["read"],
 				mcpDirectTools: ["linear-mcp"],
 			});
@@ -381,7 +381,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read"],
 			mcpDirectTools: ["browser-mcp"],
 		});
@@ -399,7 +399,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "bash"],
 			mcpDirectTools: ["chrome-devtools"],
 		});
@@ -412,7 +412,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "bash"],
 			mcpDirectTools: ["chrome-devtools"],
 		});
@@ -434,7 +434,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read"],
 			mcpDirectTools: ["project-mcp"],
 			cwd: fixture.projectDir,
@@ -452,7 +452,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "./custom-tool.ts"],
 			extensions: ["./allowed-ext.ts"],
 			mcpDirectTools: ["chrome-devtools"],
@@ -471,7 +471,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "subagent"],
 			runId: "parent-run",
 			childIndex: 1,
@@ -501,7 +501,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read", "mcp:server/subagent"],
 			parentEventSink: "/tmp/should-not-leak/events",
 			parentControlInbox: "/tmp/should-not-leak/control",
@@ -540,7 +540,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["subagent"],
 		});
 		assert.equal(fanout.env[SUBAGENT_PARENT_EVENT_SINK_ENV], "/tmp/inherited/events");
@@ -557,7 +557,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read"],
 		});
 		assert.equal(nonFanout.env[SUBAGENT_FANOUT_CHILD_ENV], "0");
@@ -587,7 +587,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["subagent"],
 			runId: "current-nested-run",
 			childIndex: 2,
@@ -612,7 +612,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["read"],
 			mcpDirectTools: ["delegator"],
 		});
@@ -629,7 +629,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			task: "hello",
 			sessionEnabled: false,
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			tools: ["subagent"],
 			extensions: ["./agent-allowed-ext.ts"],
 		});
@@ -649,7 +649,7 @@ describe("buildPiArgs system prompt mode wiring", () => {
 			systemPrompt: "",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 
 		assert.ok(args.includes("--system-prompt"));

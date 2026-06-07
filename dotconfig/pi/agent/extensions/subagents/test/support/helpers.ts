@@ -53,7 +53,7 @@ interface AgentConfig {
 	thinking?: string;
 	systemPromptMode?: string;
 	inheritProjectContext?: boolean;
-	inheritSkills?: boolean;
+	inheritAvailableSkills?: boolean;
 	scope?: string;
 	output?: string | false;
 	reads?: string[] | false;
@@ -70,7 +70,7 @@ export function makeAgentConfigs(names: string[]): AgentConfig[] {
 		systemPrompt: "",
 		systemPromptMode: "replace",
 		inheritProjectContext: false,
-		inheritSkills: false,
+		inheritAvailableSkills: false,
 	}));
 }
 
@@ -81,7 +81,7 @@ export function makeAgent(name: string, overrides: Partial<AgentConfig> = {}): A
 		systemPrompt: "",
 		systemPromptMode: "replace",
 		inheritProjectContext: false,
-		inheritSkills: false,
+		inheritAvailableSkills: false,
 		...overrides,
 	};
 }

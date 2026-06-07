@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+### Added
+- Auto-promote a top-level **foreground** run to **async** when its dispatched agents are supervisor-coordination agents (they declare `contact_supervisor`, e.g. `worker`/`delegate`) and the intercom bridge is active. A foreground run blocks the orchestrator inside the tool call, so a child that calls `contact_supervisor({ reason: "need_decision" })` can never get an answer until the run returns and instead hangs until pi-intercom's 10-minute reply timeout — and the decision is never made. Running async keeps the orchestrator free to answer, so coordination actually works. The promoted run returns a one-line note explaining the switch. Opt out globally with `autoPromoteSupervisorRunsToAsync: false`, or per call with `async: false`. Only fires at depth 0, when async is available, and not during an interactive `clarify` flow.
+
+### Fixed
+- Stopped foreground (blocking) runs from surfacing stale "needs attention" pings to the orchestrator. A foreground subagent call blocks the orchestrator's turn, so idle/long-running/threshold notices emitted mid-run are buffered by the harness and only delivered at the next turn boundary — i.e. after the run has already returned every child's result inline — where they read as phantom "needs attention" notices for an already-finished run. These are now suppressed at emission for foreground runs (both the injected message and the `subagent-control` intercom ping); only a genuine `completion_guard` failure is still surfaced. In-flight status remains visible in the live foreground widget. (The earlier fix only covered the async delivery path.)
+- Stopped stale `needs_attention` control notices from waking the orchestrator after a run already finished. Async attention notices are now suppressed (at both the event source and the delivery gate) once the run has reached a terminal state on disk, in the tracked job, or in the recently-finished record. `completion_guard` failure notices still always deliver.
+- Scoped the no-id `subagent({ action: "status" })` listing to the current session. The shared async-run directory holds runs from every pi session on the machine, which previously made orchestrators treat other sessions' (or orphaned) runs as their own; other sessions' active runs are now excluded from the list and reported only as a count.
+- Replaced the bare "Async run not found." status response with an informative one. Recently-finished runs (foreground or async) are tracked in memory so a redundant `status({ id })` reports that the run already completed and its result was delivered, instead of an alarming "not found" that triggered re-poll loops; genuinely unknown ids now get an actionable explanation.
+
+### Changed
+- Renamed the agent/override/config field `inheritSkills` to `inheritAvailableSkills` for clarity (it controls whether the child sees Pi's discovered skills catalog, not which skills are loaded). The legacy `inheritSkills` key is still accepted when parsing agent frontmatter, builtin override files, and management configs.
+- Changed the default of `inheritAvailableSkills` to `true`, and set it to `true` for all bundled agents. Children now see the discovered skills catalog by default, so skill-aware harnesses (e.g. the Effect harness skill gate) can credit skill reads in subagent runs instead of reporting an empty catalog.
+
 ## [0.26.0] - 2026-05-29
 
 ### Added

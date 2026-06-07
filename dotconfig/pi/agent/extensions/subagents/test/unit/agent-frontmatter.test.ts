@@ -25,7 +25,7 @@ describe("agent frontmatter defaultContext", () => {
 			systemPrompt: "Do work",
 			systemPromptMode: "replace",
 			inheritProjectContext: true,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			source: "project",
 			filePath: "/tmp/worker.md",
 			defaultContext: "fork",
@@ -115,7 +115,7 @@ describe("agent frontmatter completionGuard", () => {
 			systemPrompt: "Validate changes",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			source: "project",
 			filePath: "/tmp/test-runner.md",
 			completionGuard: false,
@@ -132,7 +132,7 @@ describe("agent frontmatter completionGuard", () => {
 			systemPrompt: "Validate changes",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			source: "project",
 			filePath: "/tmp/test-runner.md",
 			completionGuard: true,
@@ -171,7 +171,7 @@ describe("agent frontmatter maxSubagentDepth", () => {
 			systemPrompt: "Inspect code",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			source: "project",
 			filePath: "/tmp/scout.md",
 			maxSubagentDepth: 1,
@@ -209,7 +209,7 @@ describe("agent frontmatter fallbackModels", () => {
 			systemPrompt: "Do work",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			source: "project",
 			filePath: "/tmp/worker.md",
 			fallbackModels: ["openai/gpt-5-mini", "anthropic/claude-sonnet-4"],
@@ -247,7 +247,7 @@ describe("agent frontmatter systemPromptMode", () => {
 			systemPrompt: "Do work",
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 			source: "project",
 			filePath: "/tmp/worker.md",
 		};
@@ -277,24 +277,24 @@ Do work
 });
 
 describe("agent frontmatter prompt inheritance flags", () => {
-	it("serializes inheritProjectContext and inheritSkills into agent frontmatter", () => {
+	it("serializes inheritProjectContext and inheritAvailableSkills into agent frontmatter", () => {
 		const agent: AgentConfig = {
 			name: "worker",
 			description: "Worker",
 			systemPrompt: "Do work",
 			systemPromptMode: "replace",
 			inheritProjectContext: true,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 			source: "project",
 			filePath: "/tmp/worker.md",
 		};
 
 		const serialized = serializeAgent(agent);
 		assert.match(serialized, /inheritProjectContext: true/);
-		assert.match(serialized, /inheritSkills: true/);
+		assert.match(serialized, /inheritAvailableSkills: true/);
 	});
 
-	it("parses inheritProjectContext and inheritSkills from discovered agent frontmatter", () => {
+	it("parses inheritProjectContext and inheritAvailableSkills from discovered agent frontmatter", () => {
 		const dir = fs.mkdtempSync(path.join(os.tmpdir(), "pi-subagents-agent-prompt-inheritance-frontmatter-"));
 		tempDirs.push(dir);
 		const agentsDir = path.join(dir, ".pi", "agents");
@@ -303,7 +303,7 @@ describe("agent frontmatter prompt inheritance flags", () => {
 name: worker
 description: Worker
 inheritProjectContext: true
-inheritSkills: true
+inheritAvailableSkills: true
 ---
 
 Do work
@@ -312,12 +312,12 @@ Do work
 		const result = discoverAgents(dir, "project");
 		const worker = result.agents.find((agent) => agent.name === "worker");
 		assert.equal(worker?.inheritProjectContext, true);
-		assert.equal(worker?.inheritSkills, true);
+		assert.equal(worker?.inheritAvailableSkills, true);
 	});
 });
 
 describe("agent frontmatter prompt assembly defaults", () => {
-	it("defaults ordinary agents to replace mode with no inherited context or skills", () => {
+	it("defaults ordinary agents to replace mode with no inherited context but available skills", () => {
 		const dir = fs.mkdtempSync(path.join(os.tmpdir(), "pi-subagents-agent-default-prompt-settings-"));
 		tempDirs.push(dir);
 		const agentsDir = path.join(dir, ".pi", "agents");
@@ -334,7 +334,7 @@ Do work
 		const worker = result.agents.find((agent) => agent.name === "worker");
 		assert.equal(worker?.systemPromptMode, "replace");
 		assert.equal(worker?.inheritProjectContext, false);
-		assert.equal(worker?.inheritSkills, false);
+		assert.equal(worker?.inheritAvailableSkills, true);
 	});
 
 	it("builtin agents inherit project context by default", () => {
@@ -430,7 +430,7 @@ Do work
 		const delegate = result.agents.find((agent) => agent.name === "delegate");
 		assert.equal(delegate?.systemPromptMode, "append");
 		assert.equal(delegate?.inheritProjectContext, true);
-		assert.equal(delegate?.inheritSkills, false);
+		assert.equal(delegate?.inheritAvailableSkills, true);
 	});
 });
 

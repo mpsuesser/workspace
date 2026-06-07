@@ -35,7 +35,7 @@ import { executeAsyncChain, executeAsyncSingle, formatAsyncStartedMessage, isAsy
 import { createForkContextResolver } from "../../shared/fork-context.ts";
 import { resolveCurrentSessionId } from "../../shared/session-identity.ts";
 import { applyIntercomBridgeToAgent, INTERCOM_BRIDGE_MARKER, resolveIntercomBridge, resolveIntercomSessionTarget, resolveSubagentIntercomTarget, type IntercomBridgeState } from "../../intercom/intercom-bridge.ts";
-import { formatControlIntercomMessage, formatControlNoticeMessage, resolveControlConfig, shouldNotifyControlEvent } from "../shared/subagent-control.ts";
+import { foregroundControlNoticeReachesOrchestrator, formatControlIntercomMessage, formatControlNoticeMessage, resolveControlConfig, shouldNotifyControlEvent } from "../shared/subagent-control.ts";
 import { finalizeSingleOutput, injectSingleOutputInstruction, normalizeSingleOutputOverride, resolveSingleOutputPath, validateFileOnlyOutputMode } from "../shared/single-output.ts";
 import { compactForegroundDetails, getSingleResultOutput, mapConcurrent, readStatus, resolveChildCwd } from "../../shared/utils.ts";
 import {
@@ -53,7 +53,8 @@ import { createNestedRoute, readNestedControlResults, resolveInheritedNestedRout
 import { resolveSubagentRunId, type ResolvedSubagentRunId } from "../background/run-id-resolver.ts";
 import { formatNestedRunStatusLines } from "../shared/nested-render.ts";
 import { inspectSubagentStatus } from "../background/run-status.ts";
-import { applyForceTopLevelAsyncOverride } from "../background/top-level-async.ts";
+import { recordTerminalRun } from "../background/recent-terminal-runs.ts";
+import { applyForceTopLevelAsyncOverride, shouldPromoteForegroundRunForSupervisor } from "../background/top-level-async.ts";
 import {
 	cleanupWorktrees,
 	createWorktrees,
@@ -376,13 +377,18 @@ function getAsyncInterruptTarget(state: SubagentState, runId: string | undefined
 	return newest ? { asyncId: newest.asyncId, asyncDir: newest.asyncDir } : undefined;
 }
 
-function emitControlNotification(input: {
-	pi: ExtensionAPI;
+export function emitControlNotification(input: {
+	pi: Pick<ExtensionAPI, "events">;
 	controlConfig: ResolvedControlConfig;
 	intercomBridge: IntercomBridgeState;
 	event: ControlEvent;
 }): void {
 	if (!shouldNotifyControlEvent(input.controlConfig, input.event)) return;
+	// Foreground runs block the orchestrator's turn: notices emitted mid-run are
+	// only seen after the run returns its results inline, so idle/long-running
+	// pings always arrive stale. Suppress them here; the live widget still shows
+	// in-flight status. See foregroundControlNoticeReachesOrchestrator.
+	if (!foregroundControlNoticeReachesOrchestrator(input.event)) return;
 	const childIntercomTarget = input.intercomBridge.active
 		? resolveSubagentIntercomTarget(input.event.runId, input.event.agent, input.event.index)
 		: undefined;
@@ -858,6 +864,28 @@ function validateExecutionInput(
 	}
 
 	return null;
+}
+
+/**
+ * Whether any agent this run would dispatch *declares* the `contact_supervisor`
+ * tool in its own definition (e.g. worker, delegate). We check the discovered
+ * (pre-bridge) definitions on purpose: the intercom bridge adds the tool to every
+ * agent, but only agents that explicitly carry it are actually designed to block
+ * on a supervisor decision. Combined with an active bridge upstream, this keeps
+ * the promotion targeted at coordination agents instead of every run.
+ */
+export function dispatchedAgentsCanContactSupervisor(params: SubagentParamsLike, agents: AgentConfig[]): boolean {
+	const byName = new Map(agents.map((agent) => [agent.name, agent]));
+	const names: string[] = [];
+	if (params.agent) names.push(params.agent);
+	for (const task of params.tasks ?? []) names.push(task.agent);
+	for (const step of params.chain ?? []) names.push(...getStepAgents(step));
+	return names.some((name) => byName.get(name)?.tools?.includes("contact_supervisor") === true);
+}
+
+function noteSupervisorPromotion(result: AgentToolResult<Details>): AgentToolResult<Details> {
+	const note = "Auto-promoted to an async (background) run: the requested agent(s) can contact_supervisor, so this runs in the background to keep you free to answer their need_decision requests. A foreground run would block you here and the children would hang until a 10-minute timeout. Pass async:false to opt out per-call.";
+	return { ...result, content: [{ type: "text", text: note }, ...(result.content ?? [])] };
 }
 
 function getRequestedModeLabel(params: SubagentParamsLike): Details["mode"] {
@@ -2370,6 +2398,16 @@ export function createSubagentExecutor(deps: ExecutorDeps): {
 		const hasChain = (effectiveParams.chain?.length ?? 0) > 0;
 		const hasTasks = (effectiveParams.tasks?.length ?? 0) > 0;
 		const hasSingle = !hasChain && !hasTasks && Boolean(effectiveParams.agent);
+		const autoPromotedForSupervisor = shouldPromoteForegroundRunForSupervisor({
+			enabled: deps.config.autoPromoteSupervisorRunsToAsync !== false,
+			depth,
+			intercomBridgeActive: intercomBridge.active,
+			asyncAvailable: isAsyncAvailable(),
+			wouldRunForeground: effectiveParams.async === undefined && deps.asyncByDefault !== true,
+			isClarify: effectiveParams.clarify === true,
+			dispatchedAgentsCanContactSupervisor: (hasChain || hasTasks || hasSingle) && dispatchedAgentsCanContactSupervisor(effectiveParams, discoveredAgents),
+		});
+		if (autoPromotedForSupervisor) effectiveParams = { ...effectiveParams, async: true };
 		const allowClarifyTaskPrompt = hasChain
 			&& effectiveParams.clarify === true
 			&& ctx.hasUI
@@ -2529,30 +2567,35 @@ export function createSubagentExecutor(deps: ExecutorDeps): {
 		};
 
 		let nestedForegroundStarted = false;
+		let foregroundResult: AgentToolResult<Details> | undefined;
 		try {
 			const asyncResult = runAsyncPath(execData, deps);
-			if (asyncResult) return withForkContext(asyncResult, effectiveParams.context);
+			if (asyncResult) return withForkContext(autoPromotedForSupervisor ? noteSupervisorPromotion(asyncResult) : asyncResult, effectiveParams.context);
 			if (foregroundControl) {
 				writeNestedForegroundEvent("subagent.nested.started");
 				nestedForegroundStarted = true;
 			}
 			if (hasChain && effectiveParams.chain) {
 				const result = await runChainPath(execData, deps);
+				foregroundResult = result;
 				writeNestedForegroundEvent("subagent.nested.completed", result);
 				return withForkContext(result, effectiveParams.context);
 			}
 			if (hasTasks && effectiveParams.tasks) {
 				const result = await runParallelPath(execData, deps);
+				foregroundResult = result;
 				writeNestedForegroundEvent("subagent.nested.completed", result);
 				return withForkContext(result, effectiveParams.context);
 			}
 			if (hasSingle) {
 				const result = await runSinglePath(execData, deps);
+				foregroundResult = result;
 				writeNestedForegroundEvent("subagent.nested.completed", result);
 				return withForkContext(result, effectiveParams.context);
 			}
 		} catch (error) {
 			const errorResult = toExecutionErrorResult(effectiveParams, error);
+			foregroundResult = errorResult;
 			if (nestedForegroundStarted) writeNestedForegroundEvent("subagent.nested.completed", errorResult);
 			return errorResult;
 		} finally {
@@ -2562,6 +2605,27 @@ export function createSubagentExecutor(deps: ExecutorDeps): {
 				if (deps.state.lastForegroundControlId === runId) {
 					deps.state.lastForegroundControlId = null;
 				}
+				// Remember the just-finished foreground run so a later, redundant
+				// status({ id }) reports "already completed" instead of "not found".
+				const children = foregroundResult?.details?.results ?? [];
+				const terminalState = !foregroundResult || foregroundResult.isError || children.some((child) => child.exitCode !== 0)
+					? "failed"
+					: children.some((child) => child.interrupted)
+						? "paused"
+						: "complete";
+				const agents = children.map((child) => child.agent).filter((agent): agent is string => Boolean(agent));
+				const firstSessionFile = children.find((child) => Boolean(child.sessionFile))?.sessionFile;
+				const firstOutput = children.find((child) => Boolean(child.artifactPaths?.outputPath))?.artifactPaths?.outputPath;
+				recordTerminalRun(deps.state, {
+					runId,
+					state: terminalState,
+					source: "foreground",
+					mode: foregroundMode,
+					endedAt: Date.now(),
+					...(agents.length ? { agents } : {}),
+					...(firstOutput ? { outputFile: firstOutput } : {}),
+					...(firstSessionFile ? { sessionFile: firstSessionFile } : {}),
+				});
 			}
 		}
 

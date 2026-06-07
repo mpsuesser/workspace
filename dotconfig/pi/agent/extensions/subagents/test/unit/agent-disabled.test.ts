@@ -189,7 +189,7 @@ describe("builtin agent disabling", () => {
 			{
 				systemPromptMode: "replace",
 				inheritProjectContext: false,
-				inheritSkills: false,
+				inheritAvailableSkills: false,
 				disabled: undefined,
 				systemPrompt: "Base prompt",
 			},
@@ -199,7 +199,7 @@ describe("builtin agent disabling", () => {
 				thinking: undefined,
 				systemPromptMode: "replace",
 				inheritProjectContext: false,
-				inheritSkills: false,
+				inheritAvailableSkills: false,
 				disabled: false,
 				systemPrompt: "Base prompt",
 				skills: undefined,

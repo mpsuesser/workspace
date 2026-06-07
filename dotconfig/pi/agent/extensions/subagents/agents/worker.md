@@ -4,7 +4,7 @@ description: Implementation agent for normal tasks and approved oracle handoffs
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: true
-inheritSkills: false
+inheritAvailableSkills: true
 tools: read, grep, find, ls, bash, edit, write, contact_supervisor
 defaultContext: fork
 defaultReads: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/context-builder-context.md, /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/planner-plan.md

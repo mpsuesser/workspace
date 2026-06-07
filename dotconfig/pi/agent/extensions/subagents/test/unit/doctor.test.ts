@@ -31,7 +31,7 @@ function makeAgent(name: string, source: AgentConfig["source"]): AgentConfig {
 		systemPrompt: "Prompt",
 		systemPromptMode: "replace",
 		inheritProjectContext: false,
-		inheritSkills: false,
+		inheritAvailableSkills: false,
 		source,
 		filePath: `/tmp/${name}.md`,
 	};

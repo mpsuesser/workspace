@@ -16,7 +16,7 @@ export interface RunnerSubagentStep {
 	systemPrompt?: string | null;
 	systemPromptMode?: "append" | "replace";
 	inheritProjectContext: boolean;
-	inheritSkills: boolean;
+	inheritAvailableSkills: boolean;
 	skills?: string[];
 	outputPath?: string;
 	outputMode?: "inline" | "file-only";

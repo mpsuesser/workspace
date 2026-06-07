@@ -657,7 +657,7 @@ async function runSingleStep(
 			sessionFile: step.sessionFile,
 			model: candidate,
 			inheritProjectContext: step.inheritProjectContext,
-			inheritSkills: step.inheritSkills,
+			inheritAvailableSkills: step.inheritAvailableSkills,
 			tools: step.tools,
 			extensions: step.extensions,
 			systemPrompt: step.systemPrompt,

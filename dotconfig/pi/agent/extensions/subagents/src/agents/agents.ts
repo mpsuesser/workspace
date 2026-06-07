@@ -29,8 +29,8 @@ export function defaultInheritProjectContext(name: string): boolean {
 	return name === "delegate";
 }
 
-export function defaultInheritSkills(): boolean {
-	return false;
+export function defaultInheritAvailableSkills(): boolean {
+	return true;
 }
 
 export interface BuiltinAgentOverrideBase {
@@ -39,7 +39,7 @@ export interface BuiltinAgentOverrideBase {
 	thinking?: string;
 	systemPromptMode: SystemPromptMode;
 	inheritProjectContext: boolean;
-	inheritSkills: boolean;
+	inheritAvailableSkills: boolean;
 	defaultContext?: AgentDefaultContext;
 	disabled?: boolean;
 	systemPrompt: string;
@@ -55,7 +55,7 @@ interface BuiltinAgentOverrideConfig {
 	thinking?: string | false;
 	systemPromptMode?: SystemPromptMode;
 	inheritProjectContext?: boolean;
-	inheritSkills?: boolean;
+	inheritAvailableSkills?: boolean;
 	defaultContext?: AgentDefaultContext | false;
 	disabled?: boolean;
 	systemPrompt?: string;
@@ -82,7 +82,7 @@ export interface AgentConfig {
 	thinking?: string;
 	systemPromptMode: SystemPromptMode;
 	inheritProjectContext: boolean;
-	inheritSkills: boolean;
+	inheritAvailableSkills: boolean;
 	defaultContext?: AgentDefaultContext;
 	systemPrompt: string;
 	source: AgentSource;
@@ -196,7 +196,7 @@ function cloneOverrideBase(agent: AgentConfig): BuiltinAgentOverrideBase {
 		thinking: agent.thinking,
 		systemPromptMode: agent.systemPromptMode,
 		inheritProjectContext: agent.inheritProjectContext,
-		inheritSkills: agent.inheritSkills,
+		inheritAvailableSkills: agent.inheritAvailableSkills,
 		defaultContext: agent.defaultContext,
 		disabled: agent.disabled,
 		systemPrompt: agent.systemPrompt,
@@ -216,7 +216,7 @@ function cloneOverrideValue(override: BuiltinAgentOverrideConfig): BuiltinAgentO
 		...(override.thinking !== undefined ? { thinking: override.thinking } : {}),
 		...(override.systemPromptMode !== undefined ? { systemPromptMode: override.systemPromptMode } : {}),
 		...(override.inheritProjectContext !== undefined ? { inheritProjectContext: override.inheritProjectContext } : {}),
-		...(override.inheritSkills !== undefined ? { inheritSkills: override.inheritSkills } : {}),
+		...(override.inheritAvailableSkills !== undefined ? { inheritAvailableSkills: override.inheritAvailableSkills } : {}),
 		...(override.defaultContext !== undefined ? { defaultContext: override.defaultContext } : {}),
 		...(override.disabled !== undefined ? { disabled: override.disabled } : {}),
 		...(override.systemPrompt !== undefined ? { systemPrompt: override.systemPrompt } : {}),
@@ -335,11 +335,15 @@ function parseBuiltinOverrideEntry(
 		}
 	}
 
-	if ("inheritSkills" in input) {
-		if (typeof input.inheritSkills === "boolean") {
-			override.inheritSkills = input.inheritSkills;
+	// Accept the legacy `inheritSkills` key from override files written before the rename.
+	const inheritAvailableSkillsInput = "inheritAvailableSkills" in input
+		? input.inheritAvailableSkills
+		: (input as { inheritSkills?: unknown }).inheritSkills;
+	if (inheritAvailableSkillsInput !== undefined) {
+		if (typeof inheritAvailableSkillsInput === "boolean") {
+			override.inheritAvailableSkills = inheritAvailableSkillsInput;
 		} else {
-			throw new Error(`Builtin override '${name}' in '${filePath}' has invalid 'inheritSkills'; expected a boolean.`);
+			throw new Error(`Builtin override '${name}' in '${filePath}' has invalid 'inheritAvailableSkills'; expected a boolean.`);
 		}
 	}
 
@@ -429,7 +433,7 @@ function applyBuiltinOverride(
 	if (override.thinking !== undefined) next.thinking = override.thinking === false ? undefined : override.thinking;
 	if (override.systemPromptMode !== undefined) next.systemPromptMode = override.systemPromptMode;
 	if (override.inheritProjectContext !== undefined) next.inheritProjectContext = override.inheritProjectContext;
-	if (override.inheritSkills !== undefined) next.inheritSkills = override.inheritSkills;
+	if (override.inheritAvailableSkills !== undefined) next.inheritAvailableSkills = override.inheritAvailableSkills;
 	if (override.defaultContext !== undefined) next.defaultContext = override.defaultContext === false ? undefined : override.defaultContext;
 	if (override.disabled !== undefined) next.disabled = override.disabled;
 	if (override.systemPrompt !== undefined) next.systemPrompt = override.systemPrompt;
@@ -479,7 +483,7 @@ function applyBuiltinOverrides(
 
 export function buildBuiltinOverrideConfig(
 	base: BuiltinAgentOverrideBase,
-	draft: Pick<AgentConfig, "model" | "fallbackModels" | "thinking" | "systemPromptMode" | "inheritProjectContext" | "inheritSkills" | "defaultContext" | "disabled" | "systemPrompt" | "skills" | "tools" | "mcpDirectTools" | "completionGuard">,
+	draft: Pick<AgentConfig, "model" | "fallbackModels" | "thinking" | "systemPromptMode" | "inheritProjectContext" | "inheritAvailableSkills" | "defaultContext" | "disabled" | "systemPrompt" | "skills" | "tools" | "mcpDirectTools" | "completionGuard">,
 ): BuiltinAgentOverrideConfig | undefined {
 	const override: BuiltinAgentOverrideConfig = {};
 
@@ -488,7 +492,7 @@ export function buildBuiltinOverrideConfig(
 	if (draft.thinking !== base.thinking) override.thinking = draft.thinking ?? false;
 	if (draft.systemPromptMode !== base.systemPromptMode) override.systemPromptMode = draft.systemPromptMode;
 	if (draft.inheritProjectContext !== base.inheritProjectContext) override.inheritProjectContext = draft.inheritProjectContext;
-	if (draft.inheritSkills !== base.inheritSkills) override.inheritSkills = draft.inheritSkills;
+	if (draft.inheritAvailableSkills !== base.inheritAvailableSkills) override.inheritAvailableSkills = draft.inheritAvailableSkills;
 	if (draft.defaultContext !== base.defaultContext) override.defaultContext = draft.defaultContext ?? false;
 	if (draft.disabled !== base.disabled) override.disabled = draft.disabled ?? false;
 	if (draft.systemPrompt !== base.systemPrompt) override.systemPrompt = draft.systemPrompt;
@@ -640,11 +644,13 @@ function loadAgentsFromDir(dir: string, source: AgentSource): AgentConfig[] {
 			: frontmatter.inheritProjectContext === "false"
 				? false
 				: defaultInheritProjectContext(localName);
-		const inheritSkills = frontmatter.inheritSkills === "true"
+		// Accept the legacy `inheritSkills` key for agents authored before the rename.
+		const inheritAvailableSkillsRaw = frontmatter.inheritAvailableSkills ?? frontmatter.inheritSkills;
+		const inheritAvailableSkills = inheritAvailableSkillsRaw === "true"
 			? true
-			: frontmatter.inheritSkills === "false"
+			: inheritAvailableSkillsRaw === "false"
 				? false
-				: defaultInheritSkills();
+				: defaultInheritAvailableSkills();
 		const defaultContext = frontmatter.defaultContext === "fork"
 			? "fork" as const
 			: frontmatter.defaultContext === "fresh"
@@ -683,7 +689,7 @@ function loadAgentsFromDir(dir: string, source: AgentSource): AgentConfig[] {
 			thinking: frontmatter.thinking,
 			systemPromptMode,
 			inheritProjectContext,
-			inheritSkills,
+			inheritAvailableSkills,
 			defaultContext,
 			systemPrompt: body,
 			source,

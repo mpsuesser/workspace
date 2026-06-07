@@ -392,7 +392,7 @@ Example:
 }
 ```
 
-Supported override fields are `model`, `fallbackModels`, `thinking`, `systemPromptMode`, `inheritProjectContext`, `inheritSkills`, `defaultContext`, `disabled`, `skills`, `tools`, and `systemPrompt`. Use `defaultContext: false` in builtin overrides to clear an inherited context default. Project overrides beat user overrides.
+Supported override fields are `model`, `fallbackModels`, `thinking`, `systemPromptMode`, `inheritProjectContext`, `inheritAvailableSkills`, `defaultContext`, `disabled`, `skills`, `tools`, and `systemPrompt`. The legacy `inheritSkills` key is still accepted for backward compatibility. Use `defaultContext: false` in builtin overrides to clear an inherited context default. Project overrides beat user overrides.
 
 Set `disabled: true` to hide a builtin from runtime discovery and agent-facing `subagent({ action: "list" })` output. For bulk control, set `subagents.disableBuiltins: true` in settings.
 
@@ -406,7 +406,7 @@ Use these fields when an agent should see more:
 |-------|--------|
 | `systemPromptMode: append` | Append the agent prompt to Pi’s normal base prompt. |
 | `inheritProjectContext: true` | Keep inherited project instructions from files like `AGENTS.md` and `CLAUDE.md`. |
-| `inheritSkills: true` | Let the child see Pi’s discovered skills catalog. |
+| `inheritAvailableSkills: true` | Let the child see Pi’s discovered skills catalog (the default). |
 | `defaultContext: fork` | Use forked session context when a launch omits `context`; explicit `context: "fresh"` still wins. |
 
 Builtin agents opt into project instruction inheritance by default so they follow repo-specific rules out of the box. `delegate` also uses append mode because its job is orchestration inside the parent workflow.
@@ -428,7 +428,7 @@ fallbackModels: openai/gpt-5-mini, anthropic/claude-sonnet-4
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: false
-inheritSkills: false
+inheritAvailableSkills: true
 skills: safe-bash, chrome-devtools
 output: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/my-agent-output.md
 defaultReads: /Users/m/repos/workspace/dotconfig/pi/ephemeral/subagent-handoffs/my-agent-input.md
@@ -453,9 +453,9 @@ Important fields:
 | `thinking` | Appended as a `:level` suffix at runtime unless a suffix is already present. |
 | `systemPromptMode` | `replace` by default; `append` keeps Pi’s base prompt. |
 | `inheritProjectContext` | Keeps or strips inherited project instruction blocks. |
-| `inheritSkills` | Keeps or strips Pi’s discovered skills catalog. |
+| `inheritAvailableSkills` | Keeps or strips Pi’s discovered skills catalog. Defaults to `true`. (Legacy alias: `inheritSkills`.) |
 | `defaultContext` | Optional `fresh` or `fork` launch context default for this agent. |
-| `skills` | Injects specific skills directly, regardless of `inheritSkills`. |
+| `skills` | Injects specific skills directly, regardless of `inheritAvailableSkills`. |
 | `output` | Default single-agent output file. |
 | `defaultReads` | Files to read before running in chain/parallel behavior. |
 | `defaultProgress` | Maintain the runtime-provided progress file, normally under a chain or Pi ephemeral scratch directory. |
@@ -748,7 +748,7 @@ Agent definitions are not loaded into context by default. Management actions let
   systemPrompt: "You are a code scout...",
   systemPromptMode: "replace",
   inheritProjectContext: false,
-  inheritSkills: false,
+  inheritAvailableSkills: true,
   model: "anthropic/claude-sonnet-4",
   fallbackModels: ["openai/gpt-5-mini", "anthropic/claude-haiku-4-5"],
   tools: "read, bash, mcp:github/search_repositories",

@@ -970,11 +970,11 @@ describe("single sync execution", { skip: !available ? "pi packages not availabl
 	});
 
 	it("passes prompt inheritance env flags through to child execution", async () => {
-		mockPi.onCall({ echoEnv: ["PI_SUBAGENT_INHERIT_PROJECT_CONTEXT", "PI_SUBAGENT_INHERIT_SKILLS"] });
+		mockPi.onCall({ echoEnv: ["PI_SUBAGENT_INHERIT_PROJECT_CONTEXT", "PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS"] });
 		const agents = [makeAgent("echo", {
 			systemPromptMode: "replace",
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		})];
 
 		const result = await runSync(tempDir, agents, "echo", "Task", {
@@ -984,7 +984,7 @@ describe("single sync execution", { skip: !available ? "pi packages not availabl
 		assert.equal(result.exitCode, 0);
 		assert.deepEqual(JSON.parse(result.finalOutput ?? "{}"), {
 			PI_SUBAGENT_INHERIT_PROJECT_CONTEXT: "0",
-			PI_SUBAGENT_INHERIT_SKILLS: "0",
+			PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS: "0",
 		});
 	});
 

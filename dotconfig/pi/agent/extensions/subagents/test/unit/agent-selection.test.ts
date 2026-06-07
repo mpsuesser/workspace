@@ -9,7 +9,7 @@ function makeAgent(name: string, source: "builtin" | "user" | "project", systemP
 		description: `${name} agent`,
 		systemPromptMode: "replace",
 		inheritProjectContext: false,
-		inheritSkills: false,
+		inheritAvailableSkills: false,
 		systemPrompt,
 		source,
 		filePath: `/${source}/${name}.md`,

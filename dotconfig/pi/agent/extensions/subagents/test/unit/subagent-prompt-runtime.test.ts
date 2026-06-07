@@ -18,7 +18,7 @@ import registerSubagentPromptRuntime, {
 
 const envSnapshot = {
 	PI_SUBAGENT_INHERIT_PROJECT_CONTEXT: process.env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT,
-	PI_SUBAGENT_INHERIT_SKILLS: process.env.PI_SUBAGENT_INHERIT_SKILLS,
+	PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS: process.env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS,
 	PI_SUBAGENT_INTERCOM_SESSION_NAME: process.env.PI_SUBAGENT_INTERCOM_SESSION_NAME,
 	PI_SUBAGENT_FANOUT_CHILD: process.env.PI_SUBAGENT_FANOUT_CHILD,
 	PI_SUBAGENT_STRUCTURED_OUTPUT_CAPTURE: process.env.PI_SUBAGENT_STRUCTURED_OUTPUT_CAPTURE,
@@ -45,8 +45,8 @@ const PROMPT_WITH_EXPLICIT_SKILL = [
 afterEach(() => {
 	if (envSnapshot.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT === undefined) delete process.env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT;
 	else process.env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT = envSnapshot.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT;
-	if (envSnapshot.PI_SUBAGENT_INHERIT_SKILLS === undefined) delete process.env.PI_SUBAGENT_INHERIT_SKILLS;
-	else process.env.PI_SUBAGENT_INHERIT_SKILLS = envSnapshot.PI_SUBAGENT_INHERIT_SKILLS;
+	if (envSnapshot.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS === undefined) delete process.env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS;
+	else process.env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS = envSnapshot.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS;
 	if (envSnapshot.PI_SUBAGENT_INTERCOM_SESSION_NAME === undefined) delete process.env.PI_SUBAGENT_INTERCOM_SESSION_NAME;
 	else process.env.PI_SUBAGENT_INTERCOM_SESSION_NAME = envSnapshot.PI_SUBAGENT_INTERCOM_SESSION_NAME;
 	if (envSnapshot.PI_SUBAGENT_FANOUT_CHILD === undefined) delete process.env.PI_SUBAGENT_FANOUT_CHILD;
@@ -101,7 +101,7 @@ describe("subagent prompt runtime", () => {
 	it("can strip both inherited sections together", () => {
 		const rewritten = rewriteSubagentPrompt(BASE_PROMPT, {
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 		assert.ok(!rewritten.includes("# Project Context"));
 		assert.ok(!rewritten.includes("<available_skills>"));
@@ -111,22 +111,22 @@ describe("subagent prompt runtime", () => {
 	it("injects a child-only boundary that forbids proposing or running subagents", () => {
 		const rewritten = rewriteSubagentPrompt(BASE_PROMPT, {
 			inheritProjectContext: true,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 		});
 
 		assert.ok(rewritten.startsWith(CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS));
 		assert.ok(rewritten.includes("Do not propose or run subagents."));
 		assert.ok(rewritten.includes("If you need to edit files, call the actual edit/write tools."));
 		assert.ok(rewritten.includes("Do not print tool-call syntax, patches, or pseudo-tool calls as text."));
-		assert.equal(rewriteSubagentPrompt(rewritten, { inheritProjectContext: true, inheritSkills: true }).indexOf(CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS), 0);
-		assert.equal(rewriteSubagentPrompt(rewritten, { inheritProjectContext: true, inheritSkills: true }).lastIndexOf(CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS), 0);
+		assert.equal(rewriteSubagentPrompt(rewritten, { inheritProjectContext: true, inheritAvailableSkills: true }).indexOf(CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS), 0);
+		assert.equal(rewriteSubagentPrompt(rewritten, { inheritProjectContext: true, inheritAvailableSkills: true }).lastIndexOf(CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS), 0);
 	});
 
 	it("replaces inherited child boundaries with the fanout boundary when authorized", () => {
 		const strictPrompt = `${CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS}\n\n${BASE_PROMPT}`;
 		const rewritten = rewriteSubagentPrompt(strictPrompt, {
 			inheritProjectContext: true,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 			fanoutChild: true,
 		});
 
@@ -140,7 +140,7 @@ describe("subagent prompt runtime", () => {
 		const fanoutPrompt = `${CHILD_FANOUT_BOUNDARY_INSTRUCTIONS}\n\n${BASE_PROMPT}`;
 		const rewritten = rewriteSubagentPrompt(fanoutPrompt, {
 			inheritProjectContext: true,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 		});
 
 		assert.ok(rewritten.startsWith(CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS));
@@ -151,7 +151,7 @@ describe("subagent prompt runtime", () => {
 	it("keeps explicitly injected skill content when inherited skills are stripped", () => {
 		const rewritten = rewriteSubagentPrompt(PROMPT_WITH_EXPLICIT_SKILL, {
 			inheritProjectContext: false,
-			inheritSkills: false,
+			inheritAvailableSkills: false,
 		});
 		assert.ok(rewritten.includes("<skill name=\"explicit\">"));
 		assert.ok(!rewritten.includes("<available_skills>"));
@@ -161,7 +161,7 @@ describe("subagent prompt runtime", () => {
 	it("strips the subagent orchestration skill even when inherited skills remain", () => {
 		const rewritten = rewriteSubagentPrompt(BASE_PROMPT, {
 			inheritProjectContext: true,
-			inheritSkills: true,
+			inheritAvailableSkills: true,
 		});
 
 		assert.ok(rewritten.includes("<name>safe-bash</name>"));
@@ -289,7 +289,7 @@ describe("subagent prompt runtime", () => {
 
 		assert.ok(beforeAgentStart, "expected before_agent_start handler");
 		process.env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT = "0";
-		process.env.PI_SUBAGENT_INHERIT_SKILLS = "0";
+		process.env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS = "0";
 
 		const rewritten = await beforeAgentStart?.({ systemPrompt: BASE_PROMPT });
 		assert.ok(rewritten);
@@ -307,7 +307,7 @@ describe("subagent prompt runtime", () => {
 		} as { on(event: string, handler: (payload: { systemPrompt: string }) => Promise<{ systemPrompt: string } | undefined>): void });
 
 		process.env.PI_SUBAGENT_INHERIT_PROJECT_CONTEXT = "1";
-		process.env.PI_SUBAGENT_INHERIT_SKILLS = "1";
+		process.env.PI_SUBAGENT_INHERIT_AVAILABLE_SKILLS = "1";
 		process.env[SUBAGENT_FANOUT_CHILD_ENV] = "1";
 
 		const rewritten = await beforeAgentStart?.({ systemPrompt: BASE_PROMPT });

@@ -58,7 +58,7 @@ describe("builtin agent overrides", () => {
 						thinking: "xhigh",
 						systemPromptMode: "replace",
 						inheritProjectContext: true,
-						inheritSkills: true,
+						inheritAvailableSkills: true,
 						completionGuard: false,
 					},
 				},
@@ -72,7 +72,7 @@ describe("builtin agent overrides", () => {
 		assert.equal(reviewer.thinking, "xhigh");
 		assert.equal(reviewer.systemPromptMode, "replace");
 		assert.equal(reviewer.inheritProjectContext, true);
-		assert.equal(reviewer.inheritSkills, true);
+		assert.equal(reviewer.inheritAvailableSkills, true);
 		assert.equal(reviewer.completionGuard, false);
 		assert.equal(reviewer.override?.scope, "user");
 		assert.equal(reviewer.override?.path, path.join(tempHome, ".pi", "agent", "settings.json"));
@@ -232,7 +232,7 @@ describe("builtin agent overrides", () => {
 				thinking: "high",
 				systemPromptMode: "append",
 				inheritProjectContext: true,
-				inheritSkills: false,
+				inheritAvailableSkills: false,
 				defaultContext: "fork",
 				systemPrompt: "Base prompt",
 				skills: ["safe-bash"],
@@ -246,7 +246,7 @@ describe("builtin agent overrides", () => {
 				thinking: undefined,
 				systemPromptMode: "replace",
 				inheritProjectContext: false,
-				inheritSkills: false,
+				inheritAvailableSkills: false,
 				defaultContext: undefined,
 				systemPrompt: "Base prompt",
 				skills: undefined,

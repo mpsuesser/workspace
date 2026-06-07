@@ -677,10 +677,30 @@ export interface ForegroundResumeRun {
 	children: ForegroundResumeChild[];
 }
 
+/**
+ * A compact record of a subagent run that has reached a terminal state. Kept in
+ * memory so that a redundant `status` query for an already-finished run can
+ * report "already completed" instead of the alarming "Async run not found", and
+ * so that stale `needs_attention` control notices for finished runs can be
+ * suppressed before they wake the orchestrator.
+ */
+export interface RecentTerminalRun {
+	runId: string;
+	state: "complete" | "failed" | "paused";
+	source: "foreground" | "async";
+	mode: SubagentRunMode;
+	endedAt: number;
+	agents?: string[];
+	outputFile?: string;
+	sessionFile?: string;
+}
+
 export interface SubagentState {
 	baseCwd: string;
 	currentSessionId: string | null;
 	asyncJobs: Map<string, AsyncJobState>;
+	/** Bounded LRU of recently-finished runs; see {@link RecentTerminalRun}. */
+	recentTerminalRuns?: Map<string, RecentTerminalRun>;
 	foregroundRuns?: Map<string, ForegroundResumeRun>;
 	foregroundControls: Map<string, {
 		runId: string;
@@ -818,6 +838,13 @@ interface ExtensionChainConfig {
 export interface ExtensionConfig {
 	asyncByDefault?: boolean;
 	forceTopLevelAsync?: boolean;
+	/**
+	 * Auto-promote a top-level foreground run to async when its dispatched agents
+	 * can `contact_supervisor` (the intercom bridge is active). This keeps the
+	 * orchestrator free to answer `need_decision` requests instead of blocking the
+	 * children until their 10-minute supervisor-reply timeout. Defaults to `true`.
+	 */
+	autoPromoteSupervisorRunsToAsync?: boolean;
 	defaultSessionDir?: string;
 	maxSubagentDepth?: number;
 	control?: ControlConfig;
