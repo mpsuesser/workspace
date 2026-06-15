@@ -146,11 +146,31 @@ describe("subagent control notice delivery", () => {
 			pi: recorder.pi,
 			state,
 			visibleControlNotices: new Set(),
-			details: { source: "async", asyncDir: "/tmp/runs/run-1", event: needsAttentionEvent() },
+			details: { source: "async", asyncDir: "/tmp/runs/run-1", event: needsAttentionEvent({ ts: 1_000 }) },
 			asyncRunStateProbe: () => ({ exists: true, state: "running" }),
 		});
 
 		assert.equal(recorder.sent.length, 1);
+	});
+
+	it("drops async idle notices after later activity is observed", () => {
+		const state = makeState();
+		state.asyncJobs.set("run-1", {
+			...terminalJob("running"),
+			lastActivityAt: 2_000,
+			steps: [{ agent: "worker", status: "running", index: 0, lastActivityAt: 2_000 }],
+		});
+		const recorder = makeRecorder();
+
+		handleSubagentControlNotice({
+			pi: recorder.pi,
+			state,
+			visibleControlNotices: new Set(),
+			details: { source: "async", asyncDir: "/tmp/runs/run-1", event: needsAttentionEvent({ ts: 1_000 }) },
+			asyncRunStateProbe: () => ({ exists: true, state: "running" }),
+		});
+
+		assert.equal(recorder.sent.length, 0);
 	});
 
 	it("always delivers completion_guard failure notices even when the run is terminal", () => {

@@ -101,12 +101,13 @@ describe("subagent control attention state", () => {
 		assert.equal(shouldNotifyControlEvent(config, event), true);
 		assert.equal(shouldNotifyControlEvent(config, activeEvent), true);
 		assert.deepEqual(config.notifyOn, ["active_long_running", "needs_attention"]);
-		assert.deepEqual(config.notifyChannels, ["event", "async", "intercom"]);
+		assert.deepEqual(config.notifyChannels, ["event", "async"]);
 	});
 
 	it("defaults active-long-running notices to elapsed time only", () => {
 		const defaults = resolveControlConfig();
 
+		assert.equal(defaults.needsAttentionAfterMs, 300_000);
 		assert.equal(defaults.activeNoticeAfterMs, 240_000);
 		assert.equal(defaults.activeNoticeAfterTurns, undefined);
 		assert.equal(defaults.activeNoticeAfterTokens, undefined);
@@ -167,7 +168,7 @@ describe("subagent control attention state", () => {
 			notifyChannels: ["bogus" as never],
 		});
 		assert.deepEqual(custom.notifyOn, ["active_long_running", "needs_attention"]);
-		assert.deepEqual(custom.notifyChannels, ["event", "async", "intercom"]);
+		assert.deepEqual(custom.notifyChannels, ["event", "async"]);
 	});
 
 	it("allows empty notification arrays to disable notifications", () => {
@@ -181,17 +182,27 @@ describe("subagent control attention state", () => {
 		assert.equal(shouldNotifyControlEvent(custom, event), false);
 	});
 
-	it("formats control notices with a proactive hint and concrete commands", () => {
+	it("formats control notices with status/interrupt commands but no busy-child nudge", () => {
 		const event = buildControlEvent({ to: "needs_attention", runId: "78f659a3", agent: "worker" });
 
 		const message = formatControlNoticeMessage(event, "subagent-worker-78f659a3");
 
 		assert.match(message, /Subagent needs attention: worker/);
-		assert.match(message, /Hint: Inspect status first unless the run is clearly blocked/);
-		assert.match(message, /Nudge: intercom\(\{ action: "send", to: "subagent-worker-78f659a3"/);
+		assert.match(message, /Hint: Inspect status first/);
+		assert.match(message, /still advancing, wait/);
+		assert.match(message, /Child messages: subagent-worker-78f659a3 is running non-interactively/);
+		assert.match(message, /cannot read freeform intercom messages while busy/);
 		assert.match(message, /Status: subagent\(\{ action: "status", id: "78f659a3" \}\)/);
 		assert.match(message, /Interrupt: subagent\(\{ action: "interrupt", id: "78f659a3" \}\)/);
-		assert.doesNotMatch(message, /Wait:/);
+		assert.doesNotMatch(message, /Nudge: intercom\(\{ action: "send"/);
+	});
+
+	it("can still render a nudge when the caller knows the child is interactive", () => {
+		const event = buildControlEvent({ to: "needs_attention", runId: "78f659a3", agent: "worker" });
+
+		const message = formatControlNoticeMessage(event, "subagent-worker-78f659a3", { childCanReceiveFreeformIntercom: true });
+
+		assert.match(message, /Nudge: intercom\(\{ action: "send", to: "subagent-worker-78f659a3"/);
 	});
 
 	it("formats active-long-running notices as informational", () => {
@@ -212,6 +223,7 @@ describe("subagent control attention state", () => {
 
 		assert.match(message, /Subagent active but long-running: worker/);
 		assert.match(message, /Inspect status/);
+		assert.match(message, /non-interactively/);
 		assert.match(message, /15 turns/);
 		assert.match(message, /160000 tokens/);
 		assert.match(message, /path src\/runs\/background\/async-status\.ts/);
@@ -238,13 +250,14 @@ describe("subagent control attention state", () => {
 		assert.doesNotMatch(message, /What are you blocked on/);
 	});
 
-	it("formats intercom notifications with the same control commands", () => {
+	it("formats intercom notifications without suggesting a busy-child nudge", () => {
 		const event = buildControlEvent({ to: "needs_attention", runId: "78f659a3", agent: "worker" });
 
 		const message = formatControlIntercomMessage(event, "subagent-worker-78f659a3");
 
 		assert.match(message, /worker needs attention in run 78f659a3/);
-		assert.match(message, /Nudge: intercom\(\{ action: "send", to: "subagent-worker-78f659a3"/);
+		assert.match(message, /cannot read freeform intercom messages while busy/);
+		assert.doesNotMatch(message, /Nudge: intercom\(\{ action: "send"/);
 	});
 
 	it("dedupes notifications once per child target and attention state", () => {

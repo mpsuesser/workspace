@@ -1135,9 +1135,33 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 	};
 	const emittedControlEventKeys = new Set<string>();
 	const activeLongRunningSteps = new Set<number>();
+	const idleAttentionSteps = new Set<number>();
 	const mutatingFailureStates = initialStatusSteps.map(() => createMutatingFailureState());
 	const pendingToolResults: Array<{ tool: string; path?: string; mutates: boolean; startedAt?: number } | undefined> = initialStatusSteps.map(() => undefined);
 	const mutatingFailureWindowMs = 5 * 60_000;
+	const deriveRunActivityState = (): ActivityState | undefined => statusPayload.steps.some((step) => step.activityState === "needs_attention")
+		? "needs_attention"
+		: statusPayload.steps.some((step) => step.activityState === "active_long_running")
+			? "active_long_running"
+			: undefined;
+	const syncRunActivityState = (): boolean => {
+		const nextRunState = deriveRunActivityState();
+		if (nextRunState === currentActivityState && statusPayload.activityState === nextRunState) return false;
+		currentActivityState = nextRunState;
+		statusPayload.activityState = nextRunState;
+		return true;
+	};
+	const clearIdleAttentionAfterActivity = (flatIndex: number): boolean => {
+		const step = statusPayload.steps[flatIndex];
+		if (!step || !idleAttentionSteps.has(flatIndex) || step.activityState !== "needs_attention") return false;
+		idleAttentionSteps.delete(flatIndex);
+		step.activityState = activeLongRunningSteps.has(flatIndex) ? "active_long_running" : undefined;
+		return true;
+	};
+	const resetStepControlTracking = (flatIndex: number): void => {
+		idleAttentionSteps.delete(flatIndex);
+		activeLongRunningSteps.delete(flatIndex);
+	};
 	const appendControlEvent = (event: ReturnType<typeof buildControlEvent>) => {
 		if (!controlConfig.enabled) return;
 		const childIntercomTarget = config.childIntercomTargets?.[event.index ?? statusPayload.currentStep];
@@ -1250,8 +1274,10 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 					error: resultText.split("\n").find((line) => line.trim())?.trim().slice(0, 180) ?? "mutating tool failed",
 					ts: now,
 				}, mutatingFailureWindowMs);
-				if (controlConfig.enabled && shouldEscalateMutatingFailures(state, controlConfig.failedToolAttemptsBeforeAttention) && step.activityState !== "needs_attention") {
+				const idleAttentionWasActive = idleAttentionSteps.has(flatIndex);
+				if (controlConfig.enabled && shouldEscalateMutatingFailures(state, controlConfig.failedToolAttemptsBeforeAttention) && (step.activityState !== "needs_attention" || idleAttentionWasActive)) {
 					const previous = step.activityState;
+					idleAttentionSteps.delete(flatIndex);
 					step.activityState = "needs_attention";
 					statusPayload.activityState = "needs_attention";
 					appendControlEvent(buildControlEvent({
@@ -1296,7 +1322,9 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 		step.lastActivityAt = now;
 		statusPayload.lastActivityAt = now;
 		statusPayload.lastUpdate = now;
+		clearIdleAttentionAfterActivity(flatIndex);
 		maybeEmitActiveLongRunning(flatIndex, now);
+		syncRunActivityState();
 		writeStatusPayload();
 	};
 	const updateRunnerActivityState = (now: number): boolean => {
@@ -1322,6 +1350,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 				const previous = step.activityState;
 				step.activityState = "needs_attention";
 				if (previous !== "needs_attention") {
+					idleAttentionSteps.add(index);
 					appendControlEvent(buildControlEvent({
 						from: previous,
 						to: "needs_attention",
@@ -1330,27 +1359,25 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 						index,
 						ts: now,
 						lastActivityAt,
+						turns: step.turnCount,
+						tokens: step.tokens?.total,
+						toolCount: step.toolCount,
+						currentTool: step.currentTool,
+						currentToolDurationMs: step.currentToolStartedAt ? Math.max(0, now - step.currentToolStartedAt) : undefined,
+						currentPath: step.currentPath,
 					}));
 					changed = true;
 				}
-			} else if (maybeEmitActiveLongRunning(index, now)) {
-				changed = true;
+			} else {
+				if (clearIdleAttentionAfterActivity(index)) changed = true;
+				if (maybeEmitActiveLongRunning(index, now)) changed = true;
 			}
 		}
 		if (statusPayload.lastActivityAt !== runLastActivityAt) {
 			statusPayload.lastActivityAt = runLastActivityAt;
 			changed = true;
 		}
-		const nextRunState = statusPayload.steps.some((step) => step.activityState === "needs_attention")
-			? "needs_attention"
-			: statusPayload.steps.some((step) => step.activityState === "active_long_running")
-				? "active_long_running"
-				: undefined;
-		if (nextRunState !== currentActivityState) {
-			currentActivityState = nextRunState;
-			statusPayload.activityState = nextRunState;
-			changed = true;
-		}
+		if (syncRunActivityState()) changed = true;
 		statusPayload.lastUpdate = now;
 		if (changed) writeStatusPayload();
 		return changed;
@@ -1372,10 +1399,11 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 		currentActivityState = undefined;
 		statusPayload.activityState = undefined;
 		statusPayload.lastUpdate = now;
-		for (const step of statusPayload.steps) {
+		for (const [index, step] of statusPayload.steps.entries()) {
 			if (step.status === "running") {
 				step.status = "paused";
 				step.activityState = undefined;
+				resetStepControlTracking(index);
 				step.endedAt = now;
 				step.durationMs = step.startedAt ? now - step.startedAt : undefined;
 				step.lastActivityAt = now;
@@ -1575,6 +1603,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 				statusPayload.steps[fi].status = "running";
 				statusPayload.steps[fi].error = undefined;
 				statusPayload.steps[fi].activityState = undefined;
+				resetStepControlTracking(fi);
 				resetStepLiveDetail(statusPayload.steps[fi]);
 				statusPayload.steps[fi].startedAt = taskStartTime;
 				statusPayload.steps[fi].lastActivityAt = taskStartTime;
@@ -1603,6 +1632,8 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 				});
 				const taskEndTime = Date.now();
 				statusPayload.steps[fi].status = singleResult.exitCode === 0 ? "complete" : "failed";
+				statusPayload.steps[fi].activityState = undefined;
+				resetStepControlTracking(fi);
 				statusPayload.steps[fi].endedAt = taskEndTime;
 				statusPayload.steps[fi].durationMs = taskEndTime - taskStartTime;
 				statusPayload.steps[fi].exitCode = singleResult.exitCode;
@@ -1615,6 +1646,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 				statusPayload.steps[fi].structuredOutputPath = singleResult.structuredOutputPath;
 				statusPayload.steps[fi].structuredOutputSchemaPath = singleResult.structuredOutputSchemaPath;
 				statusPayload.steps[fi].acceptance = singleResult.acceptance;
+				syncRunActivityState();
 				statusPayload.lastUpdate = taskEndTime;
 				writeStatusPayload();
 				appendJsonl(eventsPath, JSON.stringify({
@@ -1798,6 +1830,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 							statusPayload.steps[fi].durationMs = 0;
 							statusPayload.steps[fi].exitCode = -1;
 							statusPayload.steps[fi].activityState = undefined;
+							resetStepControlTracking(fi);
 							statusPayload.lastUpdate = skippedAt;
 							writeStatusPayload();
 							appendJsonl(eventsPath, JSON.stringify({
@@ -1811,6 +1844,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 						statusPayload.steps[fi].status = "running";
 						statusPayload.steps[fi].error = undefined;
 						statusPayload.steps[fi].activityState = undefined;
+						resetStepControlTracking(fi);
 						resetStepLiveDetail(statusPayload.steps[fi]);
 						statusPayload.steps[fi].startedAt = taskStartTime;
 						statusPayload.steps[fi].endedAt = undefined;
@@ -1856,6 +1890,8 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 						const taskDuration = taskEndTime - taskStartTime;
 
 						statusPayload.steps[fi].status = singleResult.exitCode === 0 ? "complete" : "failed";
+						statusPayload.steps[fi].activityState = undefined;
+						resetStepControlTracking(fi);
 						statusPayload.steps[fi].endedAt = taskEndTime;
 						statusPayload.steps[fi].durationMs = taskDuration;
 						statusPayload.steps[fi].exitCode = singleResult.exitCode;
@@ -1868,6 +1904,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 						statusPayload.steps[fi].structuredOutputPath = singleResult.structuredOutputPath;
 						statusPayload.steps[fi].structuredOutputSchemaPath = singleResult.structuredOutputSchemaPath;
 						statusPayload.steps[fi].acceptance = singleResult.acceptance;
+						syncRunActivityState();
 						statusPayload.lastUpdate = taskEndTime;
 						writeStatusPayload();
 
@@ -1977,6 +2014,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 			statusPayload.currentStep = flatIndex;
 			statusPayload.steps[flatIndex].status = "running";
 			statusPayload.steps[flatIndex].activityState = undefined;
+			resetStepControlTracking(flatIndex);
 			statusPayload.activityState = undefined;
 			resetStepLiveDetail(statusPayload.steps[flatIndex]);
 			statusPayload.steps[flatIndex].skills = seqStep.skills;
@@ -2067,6 +2105,8 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 
 			const stepEndTime = Date.now();
 			statusPayload.steps[flatIndex].status = singleResult.exitCode === 0 ? "complete" : "failed";
+			statusPayload.steps[flatIndex].activityState = undefined;
+			resetStepControlTracking(flatIndex);
 			statusPayload.steps[flatIndex].endedAt = stepEndTime;
 			statusPayload.steps[flatIndex].durationMs = stepEndTime - stepStartTime;
 			statusPayload.steps[flatIndex].exitCode = singleResult.exitCode;
@@ -2079,6 +2119,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 			statusPayload.steps[flatIndex].structuredOutputPath = singleResult.structuredOutputPath;
 			statusPayload.steps[flatIndex].structuredOutputSchemaPath = singleResult.structuredOutputSchemaPath;
 			statusPayload.steps[flatIndex].acceptance = singleResult.acceptance;
+			syncRunActivityState();
 			if (stepTokens) {
 				statusPayload.steps[flatIndex].tokens = stepTokens;
 				statusPayload.totalTokens = { ...previousCumulativeTokens };
@@ -2174,6 +2215,10 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 	const runEndedAt = Date.now();
 	statusPayload.state = interrupted ? "paused" : results.every((r) => r.success) ? "complete" : "failed";
 	statusPayload.activityState = undefined;
+	for (const [index, step] of statusPayload.steps.entries()) {
+		step.activityState = undefined;
+		resetStepControlTracking(index);
+	}
 	statusPayload.endedAt = runEndedAt;
 	statusPayload.lastUpdate = runEndedAt;
 	statusPayload.sessionFile = effectiveSessionFile;

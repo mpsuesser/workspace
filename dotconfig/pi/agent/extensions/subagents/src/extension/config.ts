@@ -4,7 +4,7 @@ import type { ExtensionConfig } from "../shared/types.ts";
 import { getAgentDir } from "../shared/utils.ts";
 
 export function loadConfig(): ExtensionConfig {
-	const configPath = path.join(getAgentDir(), "extensions", "subagent", "config.json");
+	const configPath = path.join(getAgentDir(), "subagent-config.json");
 	try {
 		if (fs.existsSync(configPath)) {
 			return JSON.parse(fs.readFileSync(configPath, "utf-8")) as ExtensionConfig;

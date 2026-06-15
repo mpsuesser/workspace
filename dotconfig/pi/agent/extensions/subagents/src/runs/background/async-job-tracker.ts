@@ -6,6 +6,7 @@ import { formatControlNoticeMessage } from "../shared/subagent-control.ts";
 import {
 	type AsyncJobState,
 	type AsyncStartedEvent,
+	type AsyncStatus,
 	type ControlEvent,
 	type SubagentState,
 	POLL_INTERVAL_MS,
@@ -25,6 +26,27 @@ interface AsyncJobTrackerOptions {
 	resultsDir?: string;
 	kill?: (pid: number, signal?: NodeJS.Signals | 0) => boolean;
 	now?: () => number;
+}
+
+function hasObservedProgressAfterIdleEvent(status: AsyncStatus | null | undefined, event: ControlEvent): boolean {
+	if (!status || event.reason !== "idle") return false;
+	const step = event.index !== undefined ? status.steps?.[event.index] : undefined;
+	const lastActivityAt = Math.max(
+		status.lastActivityAt ?? 0,
+		step?.lastActivityAt ?? 0,
+	);
+	if (lastActivityAt > event.ts) return true;
+	const activityState = step?.activityState ?? status.activityState;
+	return status.state === "running" && lastActivityAt > 0 && activityState !== "needs_attention" && lastActivityAt >= event.ts;
+}
+
+function shouldBridgeControlIntercom(record: { event: ControlEvent; channels: string[]; intercom: { to?: string; message?: string } | undefined }): boolean {
+	if (record.event.type === "active_long_running") return false;
+	if (!record.channels.includes("intercom") || !record.intercom?.to || !record.intercom.message) return false;
+	// Avoid duplicate parent wakeups for ordinary async idle/tool attention: the
+	// direct parent event is enough when available. Keep explicit intercom-only
+	// delivery and genuine completion_guard failures visible.
+	return record.event.reason === "completion_guard" || !record.channels.includes("event");
 }
 
 export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: SubagentState, asyncDirRoot: string, options: AsyncJobTrackerOptions = {}): {
@@ -79,7 +101,8 @@ export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: S
 			// Once a run has terminated, idle/long-running "needs attention" notices
 			// buffered in its events file are stale and only confuse the orchestrator.
 			// Suppress them at the source; completion_guard failures still pass through.
-			const runIsTerminal = isTerminalRunState(readStatus(job.asyncDir)?.state);
+			const statusSnapshot = readStatus(job.asyncDir) as AsyncStatus | null;
+			const runIsTerminal = isTerminalRunState(statusSnapshot?.state);
 			for (const line of buffer.subarray(0, lastNewline).toString("utf-8").split("\n")) {
 				if (!line.trim()) continue;
 				let parsed: unknown;
@@ -93,21 +116,25 @@ export function createAsyncJobTracker(pi: Pick<ExtensionAPI, "events">, state: S
 				const record = parsed as { event?: ControlEvent; channels?: string[]; childIntercomTarget?: string; noticeText?: string; intercom?: { to?: string; message?: string } };
 				if (!record.event || !Array.isArray(record.channels)) continue;
 				if (runIsTerminal && record.event.reason !== "completion_guard") continue;
+				if (hasObservedProgressAfterIdleEvent(statusSnapshot, record.event)) continue;
+				const noticeText = record.event.reason === "completion_guard" && typeof record.noticeText === "string"
+					? record.noticeText
+					: formatControlNoticeMessage(record.event, record.childIntercomTarget);
 				const payload = {
 					event: record.event,
 					source: "async" as const,
 					asyncDir: job.asyncDir,
 					childIntercomTarget: record.childIntercomTarget,
-					noticeText: record.noticeText ?? formatControlNoticeMessage(record.event, record.childIntercomTarget),
+					noticeText,
 				};
 				if (record.channels.includes("event")) {
 					pi.events.emit(SUBAGENT_CONTROL_EVENT, payload);
 				}
-				if (record.event.type !== "active_long_running" && record.channels.includes("intercom") && record.intercom?.to && record.intercom.message) {
+				if (shouldBridgeControlIntercom({ event: record.event, channels: record.channels, intercom: record.intercom })) {
 					pi.events.emit(SUBAGENT_CONTROL_INTERCOM_EVENT, {
 						...payload,
-						to: record.intercom.to,
-						message: record.intercom.message,
+						to: record.intercom!.to,
+						message: record.intercom!.message,
 					});
 				}
 			}

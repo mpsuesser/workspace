@@ -40,9 +40,21 @@ describe("emitControlNotification (foreground)", () => {
 		assert.deepEqual(rec.events, []);
 	});
 
-	it("still surfaces a genuine completion_guard failure on both channels", () => {
+	it("still surfaces a genuine completion_guard failure on the default direct event channel", () => {
 		const rec = makeEmitter();
 		emitControlNotification({ pi: rec.pi as never, controlConfig: DEFAULT_CONTROL_CONFIG, intercomBridge, event: event("completion_guard") });
+		const names = rec.events.map((e) => e.name).sort();
+		assert.deepEqual(names, [SUBAGENT_CONTROL_EVENT]);
+	});
+
+	it("can surface completion_guard failures on intercom when that channel is explicitly enabled", () => {
+		const rec = makeEmitter();
+		emitControlNotification({
+			pi: rec.pi as never,
+			controlConfig: { ...DEFAULT_CONTROL_CONFIG, notifyChannels: ["event", "intercom"] },
+			intercomBridge,
+			event: event("completion_guard"),
+		});
 		const names = rec.events.map((e) => e.name).sort();
 		assert.deepEqual(names, [SUBAGENT_CONTROL_EVENT, SUBAGENT_CONTROL_INTERCOM_EVENT].sort());
 	});

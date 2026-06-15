@@ -10,14 +10,15 @@ import {
 const CONTROL_EVENT_TYPES: ControlEventType[] = ["active_long_running", "needs_attention"];
 const CONTROL_NOTIFICATION_CHANNELS: ControlNotificationChannel[] = ["event", "async", "intercom"];
 const DEFAULT_NOTIFY_ON: ControlEventType[] = ["active_long_running", "needs_attention"];
+const DEFAULT_NOTIFY_CHANNELS: ControlNotificationChannel[] = ["event", "async"];
 
 export const DEFAULT_CONTROL_CONFIG: ResolvedControlConfig = {
 	enabled: true,
-	needsAttentionAfterMs: 60_000,
+	needsAttentionAfterMs: 300_000,
 	activeNoticeAfterMs: 240_000,
 	failedToolAttemptsBeforeAttention: 3,
 	notifyOn: DEFAULT_NOTIFY_ON,
-	notifyChannels: CONTROL_NOTIFICATION_CHANNELS,
+	notifyChannels: DEFAULT_NOTIFY_CHANNELS,
 };
 
 function parsePositiveInt(value: unknown): number | undefined {
@@ -180,7 +181,16 @@ function formatLongRunningFacts(event: ControlEvent): string | undefined {
 	return facts.length > 0 ? facts.join(" | ") : undefined;
 }
 
-export function formatControlNoticeMessage(event: ControlEvent, childIntercomTarget?: string): string {
+export interface ControlNoticeFormatOptions {
+	/**
+	 * Most async children run headless (`--mode json -p`) and cannot consume
+	 * arbitrary intercom messages while busy. Leave this false unless the caller
+	 * knows the target is idle/interactive and can read a freeform nudge now.
+	 */
+	childCanReceiveFreeformIntercom?: boolean;
+}
+
+export function formatControlNoticeMessage(event: ControlEvent, childIntercomTarget?: string, options: ControlNoticeFormatOptions = {}): string {
 	const runTarget = event.runId;
 	if (event.reason === "completion_guard") {
 		return [
@@ -192,9 +202,15 @@ export function formatControlNoticeMessage(event: ControlEvent, childIntercomTar
 		].filter((line): line is string => Boolean(line)).join("\n");
 	}
 
-	const nudgeCommand = childIntercomTarget
+	const canNudgeChild = Boolean(childIntercomTarget && options.childCanReceiveFreeformIntercom === true);
+	const nudgeCommand = canNudgeChild
 		? `intercom({ action: "send", to: "${childIntercomTarget}", message: "What are you blocked on? Reply with the smallest next step or ask for a decision." })`
 		: undefined;
+	const childMessageGuidance = childIntercomTarget
+		? canNudgeChild
+			? `Nudge: ${nudgeCommand}`
+			: `Child messages: ${childIntercomTarget} is running non-interactively; it cannot read freeform intercom messages while busy.`
+		: "Child messages: no child message route registered";
 	if (event.type === "active_long_running") {
 		const facts = formatLongRunningFacts(event);
 		return [
@@ -202,10 +218,8 @@ export function formatControlNoticeMessage(event: ControlEvent, childIntercomTar
 			`Run: ${runTarget}${event.index !== undefined ? ` step ${event.index + 1}` : ""}`,
 			`Signal: ${event.message}`,
 			facts ? `Facts: ${facts}` : undefined,
-			"Hint: Inspect status, then nudge if the work seems stuck.",
-			childIntercomTarget
-				? `Nudge: ${nudgeCommand}`
-				: "Nudge: no child message route registered",
+			"Hint: Inspect status first. If turns, tools, or last activity are still advancing, wait; interrupt only if it is clearly stuck.",
+			childMessageGuidance,
 			`Status: subagent({ action: "status", id: "${runTarget}" })`,
 			`Interrupt: subagent({ action: "interrupt", id: "${runTarget}" })`,
 		].filter((line): line is string => Boolean(line)).join("\n");
@@ -216,16 +230,14 @@ export function formatControlNoticeMessage(event: ControlEvent, childIntercomTar
 		`Run: ${runTarget}${event.index !== undefined ? ` step ${event.index + 1}` : ""}`,
 		`Signal: ${event.message}`,
 		event.recentFailureSummary ? `Recent failures: ${event.recentFailureSummary}` : undefined,
-		"Hint: Inspect status first unless the run is clearly blocked.",
-		childIntercomTarget
-			? `Nudge: ${nudgeCommand}`
-			: "Nudge: no child message route registered",
+		"Hint: Inspect status first. If turns, tools, or last activity are still advancing, wait; interrupt only if it is clearly stuck.",
+		childMessageGuidance,
 		`Status: subagent({ action: "status", id: "${runTarget}" })`,
 		`Interrupt: subagent({ action: "interrupt", id: "${runTarget}" })`,
 	].filter((line): line is string => Boolean(line)).join("\n");
 }
 
-export function formatControlIntercomMessage(event: ControlEvent, childIntercomTarget?: string): string {
+export function formatControlIntercomMessage(event: ControlEvent, childIntercomTarget?: string, options: ControlNoticeFormatOptions = {}): string {
 	const statusLabel = event.reason === "completion_guard"
 		? "subagent failed"
 		: event.type === "active_long_running"
@@ -240,6 +252,6 @@ export function formatControlIntercomMessage(event: ControlEvent, childIntercomT
 				? `${event.agent} is still active but long-running in run ${event.runId}.`
 				: `${event.agent} needs attention in run ${event.runId}.`,
 		"",
-		formatControlNoticeMessage(event, childIntercomTarget),
+		formatControlNoticeMessage(event, childIntercomTarget, options),
 	].join("\n");
 }

@@ -702,7 +702,97 @@ describe("async job tracker", { skip: !available ? "pi packages not available" :
 		}
 	});
 
-	it("bridges async control events from events.jsonl to the parent event bus", async () => {
+	it("keeps completion_guard control events visible on explicitly enabled intercom", async () => {
+		const asyncRoot = createTempDir("pi-async-job-tracker-");
+		try {
+			const runDir = path.join(asyncRoot, "run-completion-guard");
+			fs.mkdirSync(runDir, { recursive: true });
+			fs.writeFileSync(path.join(runDir, "status.json"), JSON.stringify({
+				runId: "run-completion-guard",
+				mode: "single",
+				state: "failed",
+				startedAt: Date.now() - 1000,
+				lastUpdate: Date.now(),
+				steps: [{ agent: "worker", status: "failed" }],
+			}), "utf-8");
+			fs.writeFileSync(path.join(runDir, "events.jsonl"), `${JSON.stringify({
+				type: "subagent.control",
+				channels: ["event", "intercom"],
+				event: {
+					type: "needs_attention",
+					to: "needs_attention",
+					ts: 123,
+					runId: "run-completion-guard",
+					agent: "worker",
+					message: "worker completed without making edits",
+					reason: "completion_guard",
+				},
+				intercom: { to: "main", message: "completion guard failed" },
+			})}\n`, "utf-8");
+
+			const state = createState();
+			const recorder = createEventRecorder();
+			const tracker = trackerMod!.createAsyncJobTracker(recorder.pi, state as never, asyncRoot, {
+				pollIntervalMs: 10,
+			});
+			tracker.handleStarted({ id: "run-completion-guard", asyncDir: runDir, agent: "worker" });
+
+			await new Promise((resolve) => setTimeout(resolve, 40));
+
+			assert.equal(recorder.events.some((event) => event.channel === "subagent:control-event"), true);
+			assert.equal(recorder.events.some((event) => event.channel === "subagent:control-intercom"), true);
+		} finally {
+			removeTempDir(asyncRoot);
+		}
+	});
+
+	it("drops stale idle control events when status already shows later activity", async () => {
+		const asyncRoot = createTempDir("pi-async-job-tracker-");
+		try {
+			const runDir = path.join(asyncRoot, "run-stale-idle");
+			fs.mkdirSync(runDir, { recursive: true });
+			fs.writeFileSync(path.join(runDir, "status.json"), JSON.stringify({
+				runId: "run-stale-idle",
+				mode: "single",
+				state: "running",
+				startedAt: 1,
+				lastActivityAt: 2_000,
+				lastUpdate: 2_000,
+				steps: [{ agent: "worker", status: "running", lastActivityAt: 2_000 }],
+			}), "utf-8");
+			fs.writeFileSync(path.join(runDir, "events.jsonl"), `${JSON.stringify({
+				type: "subagent.control",
+				channels: ["event", "intercom"],
+				event: {
+					type: "needs_attention",
+					to: "needs_attention",
+					ts: 1_000,
+					runId: "run-stale-idle",
+					agent: "worker",
+					index: 0,
+					message: "worker needs attention",
+					reason: "idle",
+				},
+				intercom: { to: "main", message: "stale idle" },
+			})}\n`, "utf-8");
+
+			const state = createState();
+			const recorder = createEventRecorder();
+			const tracker = trackerMod!.createAsyncJobTracker(recorder.pi, state as never, asyncRoot, {
+				pollIntervalMs: 10,
+			});
+			tracker.handleStarted({ id: "run-stale-idle", asyncDir: runDir, agent: "worker" });
+
+			await new Promise((resolve) => setTimeout(resolve, 40));
+
+			assert.equal(recorder.events.some((event) => event.channel === "subagent:control-event"), false);
+			assert.equal(recorder.events.some((event) => event.channel === "subagent:control-intercom"), false);
+		} finally {
+			removeTempDir(asyncRoot);
+		}
+	});
+
+	it("bridges async control events from events.jsonl to the parent event bus without duplicate intercom", async () => {
 		const asyncRoot = createTempDir("pi-async-job-tracker-");
 		try {
 			const runDir = path.join(asyncRoot, "run-3");
@@ -727,6 +817,7 @@ describe("async job tracker", { skip: !available ? "pi packages not available" :
 					runId: "run-3",
 					agent: "worker",
 					message: "worker needs attention",
+					reason: "tool_failures",
 				},
 				intercom: { to: "main", message: "SUBAGENT NEEDS ATTENTION: worker in run run-3." },
 			})}\n`, "utf-8");
@@ -742,8 +833,11 @@ describe("async job tracker", { skip: !available ? "pi packages not available" :
 
 			const controlEvent = recorder.events.find((event) => event.channel === "subagent:control-event");
 			assert.ok(controlEvent);
-			assert.match((controlEvent.data as { noticeText?: string }).noticeText ?? "", /subagent-worker-run-3-1/);
-			assert.equal(recorder.events.some((event) => event.channel === "subagent:control-intercom"), true);
+			const noticeText = (controlEvent.data as { noticeText?: string }).noticeText ?? "";
+			assert.match(noticeText, /subagent-worker-run-3-1/);
+			assert.match(noticeText, /cannot read freeform intercom messages while busy/);
+			assert.doesNotMatch(noticeText, /Nudge: intercom/);
+			assert.equal(recorder.events.some((event) => event.channel === "subagent:control-intercom"), false);
 		} finally {
 			removeTempDir(asyncRoot);
 		}

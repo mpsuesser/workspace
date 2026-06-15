@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { dispatchedAgentsCanContactSupervisor } from "../../src/runs/foreground/subagent-executor.ts";
-import { shouldPromoteForegroundRunForSupervisor } from "../../src/runs/background/top-level-async.ts";
+import { INTERCOM_BRIDGE_MARKER } from "../../src/intercom/intercom-bridge.ts";
+import { shouldBlockForegroundRunForSupervisor, shouldPromoteForegroundRunForSupervisor } from "../../src/runs/background/top-level-async.ts";
 import type { AgentConfig } from "../../src/agents/agents.ts";
 
 const base = {
@@ -10,7 +11,6 @@ const base = {
 	intercomBridgeActive: true,
 	asyncAvailable: true,
 	wouldRunForeground: true,
-	isClarify: false,
 	dispatchedAgentsCanContactSupervisor: true,
 };
 
@@ -25,18 +25,25 @@ describe("shouldPromoteForegroundRunForSupervisor", () => {
 		assert.equal(shouldPromoteForegroundRunForSupervisor({ ...base, intercomBridgeActive: false }), false, "no bridge");
 		assert.equal(shouldPromoteForegroundRunForSupervisor({ ...base, asyncAvailable: false }), false, "async unavailable");
 		assert.equal(shouldPromoteForegroundRunForSupervisor({ ...base, wouldRunForeground: false }), false, "already async");
-		assert.equal(shouldPromoteForegroundRunForSupervisor({ ...base, isClarify: true }), false, "interactive clarify");
 		assert.equal(shouldPromoteForegroundRunForSupervisor({ ...base, dispatchedAgentsCanContactSupervisor: false }), false, "no supervisor-capable agent");
+	});
+
+	it("blocks a would-be foreground supervisor run when async is unavailable", () => {
+		assert.equal(shouldBlockForegroundRunForSupervisor({ ...base, asyncAvailable: false }), true);
+		assert.equal(shouldBlockForegroundRunForSupervisor(base), false, "async available can promote instead");
+		assert.equal(shouldBlockForegroundRunForSupervisor({ ...base, wouldRunForeground: false, asyncAvailable: false }), false, "already async");
 	});
 });
 
-function agent(name: string, tools?: string[]): AgentConfig {
-	return { name, description: name, tools } as AgentConfig;
+function agent(name: string, tools?: string[], systemPrompt?: string): AgentConfig {
+	return { name, description: name, tools, systemPrompt } as AgentConfig;
 }
 
 describe("dispatchedAgentsCanContactSupervisor", () => {
 	const agents = [
 		agent("worker", ["read", "bash", "edit", "contact_supervisor"]),
+		agent("planner", ["read", "write", "intercom", "contact_supervisor"], `${INTERCOM_BRIDGE_MARKER}\nbridge`),
+		agent("open-tools", undefined, `${INTERCOM_BRIDGE_MARKER}\nbridge`),
 		agent("scout", ["read", "grep"]),
 	];
 
@@ -52,6 +59,14 @@ describe("dispatchedAgentsCanContactSupervisor", () => {
 
 	it("detects supervisor-capable agents inside chain steps", () => {
 		assert.equal(dispatchedAgentsCanContactSupervisor({ chain: [{ agent: "scout", task: "a" }, { agent: "worker", task: "b" }] }, agents), true);
+	});
+
+	it("detects post-bridge supervisor tools injected into otherwise non-worker agents", () => {
+		assert.equal(dispatchedAgentsCanContactSupervisor({ agent: "planner" }, agents), true);
+	});
+
+	it("treats bridge-injected open-tool agents as supervisor-capable", () => {
+		assert.equal(dispatchedAgentsCanContactSupervisor({ agent: "open-tools" }, agents), true);
 	});
 
 	it("returns false for an unknown agent name", () => {

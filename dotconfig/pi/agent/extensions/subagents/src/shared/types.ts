@@ -839,10 +839,11 @@ export interface ExtensionConfig {
 	asyncByDefault?: boolean;
 	forceTopLevelAsync?: boolean;
 	/**
-	 * Auto-promote a top-level foreground run to async when its dispatched agents
-	 * can `contact_supervisor` (the intercom bridge is active). This keeps the
-	 * orchestrator free to answer `need_decision` requests instead of blocking the
-	 * children until their 10-minute supervisor-reply timeout. Defaults to `true`.
+	 * Auto-promote a top-level foreground run to async when its effective dispatched
+	 * agents can `contact_supervisor` (the intercom bridge is active). This keeps
+	 * the orchestrator free to answer `need_decision` requests instead of blocking
+	 * the children until their 10-minute supervisor-reply timeout. Defaults to
+	 * `true`; disabling it accepts the foreground deadlock risk.
 	 */
 	autoPromoteSupervisorRunsToAsync?: boolean;
 	defaultSessionDir?: string;

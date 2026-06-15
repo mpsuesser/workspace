@@ -225,7 +225,7 @@ The child can use one dedicated coordination tool:
 
 Child-side routine completion handoffs are still not expected. With the intercom bridge active, parent-side `pi-subagents` sends grouped completion results through `pi-intercom`: one grouped message per foreground parent `subagent` run and one per completed async result file. Acknowledged foreground delivery returns a compact receipt with artifact/session paths; if unacknowledged, the normal full output is preserved. Grouped messages include child intercom targets, full child summaries, and compact nested child summaries under the parent child that launched them.
 
-If a child appears stalled, needs-attention notices can show up in the parent session with useful next actions, such as checking `subagent({ action: "status" })`, interrupting the run, or nudging the child.
+If a child appears stalled, needs-attention notices can show up in the parent session with useful next actions, such as checking `subagent({ action: "status" })`, waiting when status is still making progress, or interrupting a clearly stuck run. Async children run headlessly/non-interactively while busy, so generic freeform `intercom({ action: "send", ... })` nudges are not useful; the child cannot read them until it exits. The supported mid-run decision path is child-initiated `contact_supervisor`.
 
 If messages do not show up, run:
 
@@ -864,7 +864,7 @@ After a worktree parallel step completes, per-agent diff stats are appended to t
 
 ## Configuration
 
-`pi-subagents` reads optional JSON config from `~/.pi/agent/extensions/subagent/config.json`.
+`pi-subagents` reads optional JSON config from `~/.pi/agent/subagent-config.json`.
 
 ### `asyncByDefault`
 
@@ -881,6 +881,35 @@ Makes top-level calls use background execution when the request does not explici
 ```
 
 Forces depth-0 single, parallel, and chain runs into background mode and bypasses clarify UI by forcing `clarify: false`. Nested calls keep their own inherited settings.
+
+### `autoPromoteSupervisorRunsToAsync`
+
+```json
+{ "autoPromoteSupervisorRunsToAsync": true }
+```
+
+Defaults to `true`. When the intercom bridge makes any effective top-level child able to call blocking `contact_supervisor`, a would-be foreground run is promoted to async so the parent can answer `need_decision` requests. This check uses the post-bridge child toolset, so agents such as `planner` and `reviewer` are covered when the bridge injects supervisor coordination. Explicit `async: false` and `clarify: true` do not bypass this safety rule. If async execution is unavailable, the run fails closed instead of launching a deadlock-prone foreground child. Set this to `false` only if you intentionally accept that deadlock risk.
+
+### `control`
+
+```json
+{
+  "control": {
+    "enabled": true,
+    "needsAttentionAfterMs": 300000,
+    "activeNoticeAfterMs": 240000,
+    "failedToolAttemptsBeforeAttention": 3,
+    "notifyOn": ["active_long_running", "needs_attention"],
+    "notifyChannels": ["event", "async"]
+  }
+}
+```
+
+Control tracking powers live activity labels and parent notices. The default idle `needs_attention` threshold is five minutes to avoid false positives during normal long tool calls; per-run `control.needsAttentionAfterMs` can raise or lower it. `activeNoticeAfterMs` remains an informational long-running notice at four minutes. Repeated mutating-tool failures still escalate after three failures by default.
+
+`notifyChannels` defaults to direct parent events plus async persistence. The `intercom` channel is opt-in for control notices to avoid duplicate parent wakeups; grouped result delivery through `pi-intercom` is separate and unchanged. `completion_guard` failures are still surfaced even for terminal runs.
+
+Idle `needs_attention` is treated as tentative: if later child activity is observed, status is cleared/downgraded instead of leaving a stale sticky attention state. Failure reasons such as `completion_guard` and repeated mutating-tool failures are not blindly cleared.
 
 ### `parallel`
 
@@ -985,7 +1014,7 @@ Async runs write:
   subagent-log-<id>.md
 ```
 
-`status.json` powers the widget and `subagent({ action: "status" })` output. `events.jsonl` contains wrapper events plus child Pi JSON events annotated with run and step metadata. Nested fanout status is stored as compact sidecar event/registry metadata and merged into parent status views and result/intercom payloads; full recursive status snapshots are not embedded in parent result files. `output-<n>.log` is a live human-readable tail. Fallback information is persisted so background runs are debuggable after completion.
+`status.json` powers the widget and `subagent({ action: "status" })` output. `events.jsonl` contains wrapper events plus child Pi JSON events annotated with run and step metadata. Async child Pi processes are launched headlessly (`--mode json -p`), so while they are working they cannot consume arbitrary freeform intercom messages from the parent; inspect status or interrupt instead of sending a generic nudge. Nested fanout status is stored as compact sidecar event/registry metadata and merged into parent status views and result/intercom payloads; full recursive status snapshots are not embedded in parent result files. `output-<n>.log` is a live human-readable tail. Fallback information is persisted so background runs are debuggable after completion.
 
 ## Acceptance Gates
 
@@ -1067,7 +1096,7 @@ Intercom delivery events:
 - `subagent:control-intercom`
 - `subagent:result-intercom`
 
-The result watcher emits `subagent:async-complete`; `src/extension/index.ts` registers the notification handler that consumes it. Control/attention events are surfaced as visible parent notices and persisted for async runs. With `pi-intercom`, needs-attention notices and grouped parent-side subagent result deliveries can reach the orchestrator over intercom.
+The result watcher emits `subagent:async-complete`; `src/extension/index.ts` registers the notification handler that consumes it. Control/attention events are surfaced as visible parent notices and persisted for async runs. Grouped parent-side subagent result delivery can use `pi-intercom`; control notices use direct parent events by default and only use `subagent:control-intercom` when that channel is explicitly enabled or needed for completion-guard failure visibility.
 
 ## Prompt-template integration
 

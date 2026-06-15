@@ -16,6 +16,17 @@ const defaultAsyncRunStateProbe: AsyncRunStateProbe = (asyncDir) => {
 	return { exists: true, state: readStatus(asyncDir)?.state };
 };
 
+function asyncJobShowsProgressAfterIdleEvent(state: SubagentState, event: ControlEvent): boolean {
+	if (event.reason !== "idle") return false;
+	const job = state.asyncJobs.get(event.runId);
+	if (!job) return false;
+	const step = event.index !== undefined ? job.steps?.find((candidate) => candidate.index === event.index) ?? job.steps?.[event.index] : undefined;
+	const lastActivityAt = Math.max(job.lastActivityAt ?? 0, step?.lastActivityAt ?? 0);
+	if (lastActivityAt > event.ts) return true;
+	const activityState = step?.activityState ?? job.activityState;
+	return job.status === "running" && lastActivityAt > 0 && activityState !== "needs_attention" && lastActivityAt >= event.ts;
+}
+
 /**
  * Decides whether an async control notice is still worth waking the orchestrator
  * for. We only deliver when there is no positive evidence that the run already
@@ -35,6 +46,7 @@ export function isAsyncNoticeStillActionable(
 	if (event.reason === "completion_guard") return true;
 	const job = state.asyncJobs.get(event.runId);
 	if (job && isTerminalRunState(job.status)) return false;
+	if (asyncJobShowsProgressAfterIdleEvent(state, event)) return false;
 	if (hasTerminalRun(state, event.runId)) return false;
 	if (details.asyncDir) {
 		const probed = probe(details.asyncDir);

@@ -1758,6 +1758,66 @@ describe("async execution utilities", { skip: !available ? "pi packages not avai
 		}
 	});
 
+	it("background runs clear idle needs_attention after later child activity", { skip: !isAsyncAvailable() ? "jiti not available" : undefined }, async () => {
+		mockPi.onCall({
+			steps: [
+				{ jsonl: [events.assistantMessage("starting work")] },
+				{ delay: 1_500, jsonl: [events.assistantMessage("made progress after quiet period")] },
+				{ delay: 1_200, jsonl: [events.assistantMessage("done")] },
+			],
+		});
+
+		const id = `async-idle-clear-${Date.now().toString(36)}`;
+		const asyncDir = path.join(ASYNC_DIR, id);
+		const statusPath = path.join(asyncDir, "status.json");
+		const resultPath = path.join(RESULTS_DIR, `${id}.json`);
+
+		executeAsyncSingle(id, {
+			agent: "worker",
+			task: "Implement the approved fixes",
+			agentConfig: makeAgent("worker"),
+			ctx: { pi: { events: { emit() {} } }, cwd: tempDir, currentSessionId: "session-1" },
+			artifactConfig: { enabled: false, includeInput: false, includeOutput: false, includeJsonl: false, includeMetadata: false, cleanupDays: 7 },
+			shareEnabled: false,
+			sessionRoot: path.join(tempDir, "sessions"),
+			maxSubagentDepth: 2,
+			controlConfig: {
+				enabled: true,
+				needsAttentionAfterMs: 800,
+				activeNoticeAfterTurns: 999_999,
+				activeNoticeAfterMs: 999_999,
+				activeNoticeAfterTokens: 999_999,
+				failedToolAttemptsBeforeAttention: 3,
+				notifyOn: ["active_long_running", "needs_attention"],
+				notifyChannels: ["event", "async"],
+			},
+		});
+
+		const deadline = Date.now() + 10_000;
+		let sawNeedsAttention = false;
+		let sawClearedWhileRunning = false;
+		while (Date.now() < deadline) {
+			if (fs.existsSync(statusPath)) {
+				const status = JSON.parse(fs.readFileSync(statusPath, "utf-8")) as AsyncStatusPayload;
+				const step = status.steps?.[0];
+				if (status.state === "running" && status.activityState === "needs_attention" && step?.activityState === "needs_attention") {
+					sawNeedsAttention = true;
+				}
+				if (sawNeedsAttention && status.state === "running" && status.activityState === undefined && step?.activityState === undefined) {
+					sawClearedWhileRunning = true;
+					break;
+				}
+			}
+			if (fs.existsSync(resultPath)) break;
+			await new Promise((resolve) => setTimeout(resolve, 50));
+		}
+
+		assert.equal(sawNeedsAttention, true, "expected the quiet child to trip idle needs_attention first");
+		assert.equal(sawClearedWhileRunning, true, "expected later child activity to clear the idle needs_attention state while still running");
+
+		await waitForAsyncResultFile(id);
+	});
+
 	it("background runs escalate repeated mutating tool failures", { skip: !isAsyncAvailable() ? "jiti not available" : undefined }, async () => {
 		mockPi.onCall({
 			steps: [

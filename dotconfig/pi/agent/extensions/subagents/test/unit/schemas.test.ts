@@ -86,6 +86,12 @@ function hasAnyOfArrayWithStringItems(schema: JsonSchemaNode | undefined): boole
 	});
 }
 
+function arrayItemsSchema(schema: JsonSchemaNode | undefined): JsonSchemaNode | undefined {
+	if (schema?.items && typeof schema.items === "object") return schema.items as JsonSchemaNode;
+	const arrayBranch = anyOfBranches(schema).find((branch) => branch.type === "array" && branch.items && typeof branch.items === "object");
+	return arrayBranch?.items as JsonSchemaNode | undefined;
+}
+
 let schemas: Record<string, JsonSchemaNode> = {};
 let SubagentParams: SubagentParamsSchema | undefined;
 let schemasAvailable = true;
@@ -118,7 +124,8 @@ describe("SubagentParams schema", { skip: !schemasAvailable ? "typebox not avail
 	});
 
 	it("includes count and concurrency on top-level parallel mode", () => {
-		const taskSchema = SubagentParams?.properties?.tasks?.items?.properties;
+		const taskItem = arrayItemsSchema(SubagentParams?.properties?.tasks as JsonSchemaNode | undefined) as { properties?: Record<string, JsonSchemaNode> } | undefined;
+		const taskSchema = taskItem?.properties;
 		const taskCountSchema = taskSchema?.count;
 		assert.ok(taskCountSchema, "tasks[].count schema should exist");
 		assert.equal(taskCountSchema.minimum, 1);
@@ -285,7 +292,7 @@ describe("SubagentParams schema", { skip: !schemasAvailable ? "typebox not avail
 		assert.equal(anyOfBranches(configSchema).some((branch) => branch.type === "object" && branch.additionalProperties === true), true);
 		assert.equal(hasAnyOfType(configSchema, "string"), true);
 
-		const chainItem = SubagentParams?.properties?.chain?.items;
+		const chainItem = arrayItemsSchema(SubagentParams?.properties?.chain as JsonSchemaNode | undefined) as JsonSchemaNode & { properties?: Record<string, JsonSchemaNode> } | undefined;
 		assert.ok(chainItem, "chain item schema should exist");
 		assert.equal(chainItem.type, "object");
 		assert.equal(chainItem.anyOf, undefined);

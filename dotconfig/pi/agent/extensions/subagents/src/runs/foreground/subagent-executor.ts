@@ -54,7 +54,7 @@ import { resolveSubagentRunId, type ResolvedSubagentRunId } from "../background/
 import { formatNestedRunStatusLines } from "../shared/nested-render.ts";
 import { inspectSubagentStatus } from "../background/run-status.ts";
 import { recordTerminalRun } from "../background/recent-terminal-runs.ts";
-import { applyForceTopLevelAsyncOverride, shouldPromoteForegroundRunForSupervisor } from "../background/top-level-async.ts";
+import { applyForceTopLevelAsyncOverride, shouldBlockForegroundRunForSupervisor, shouldPromoteForegroundRunForSupervisor } from "../background/top-level-async.ts";
 import {
 	cleanupWorktrees,
 	createWorktrees,
@@ -867,12 +867,10 @@ function validateExecutionInput(
 }
 
 /**
- * Whether any agent this run would dispatch *declares* the `contact_supervisor`
- * tool in its own definition (e.g. worker, delegate). We check the discovered
- * (pre-bridge) definitions on purpose: the intercom bridge adds the tool to every
- * agent, but only agents that explicitly carry it are actually designed to block
- * on a supervisor decision. Combined with an active bridge upstream, this keeps
- * the promotion targeted at coordination agents instead of every run.
+ * Whether any effective agent this run would dispatch can use a blocking
+ * supervisor coordination channel. This must be checked after intercom bridge
+ * injection, because the bridge can add `contact_supervisor` to agents that do
+ * not declare it in their bundled frontmatter (planner/reviewer/etc.).
  */
 export function dispatchedAgentsCanContactSupervisor(params: SubagentParamsLike, agents: AgentConfig[]): boolean {
 	const byName = new Map(agents.map((agent) => [agent.name, agent]));
@@ -880,11 +878,19 @@ export function dispatchedAgentsCanContactSupervisor(params: SubagentParamsLike,
 	if (params.agent) names.push(params.agent);
 	for (const task of params.tasks ?? []) names.push(task.agent);
 	for (const step of params.chain ?? []) names.push(...getStepAgents(step));
-	return names.some((name) => byName.get(name)?.tools?.includes("contact_supervisor") === true);
+	return names.some((name) => {
+		const agent = byName.get(name);
+		if (!agent) return false;
+		if (agent.tools?.includes("contact_supervisor") === true) return true;
+		// Undefined tools means the child receives normal extension tools. If the
+		// bridge prompt was injected, `contact_supervisor` is available through the
+		// normal pi-intercom extension rather than an explicit allowlist.
+		return agent.tools === undefined && agent.systemPrompt?.includes(INTERCOM_BRIDGE_MARKER) === true;
+	});
 }
 
 function noteSupervisorPromotion(result: AgentToolResult<Details>): AgentToolResult<Details> {
-	const note = "Auto-promoted to an async (background) run: the requested agent(s) can contact_supervisor, so this runs in the background to keep you free to answer their need_decision requests. A foreground run would block you here and the children would hang until a 10-minute timeout. Pass async:false to opt out per-call.";
+	const note = "Auto-promoted to an async (background) run: the effective child agent(s) can contact_supervisor, so this runs in the background to keep you free to answer their need_decision requests. A foreground run would block you here and the children would hang until pi-intercom's 10-minute reply timeout. async:false/clarify:true cannot opt out of this safety rule; use autoPromoteSupervisorRunsToAsync:false only if you intentionally accept that deadlock risk.";
 	return { ...result, content: [{ type: "text", text: note }, ...(result.content ?? [])] };
 }
 
@@ -2398,16 +2404,29 @@ export function createSubagentExecutor(deps: ExecutorDeps): {
 		const hasChain = (effectiveParams.chain?.length ?? 0) > 0;
 		const hasTasks = (effectiveParams.tasks?.length ?? 0) > 0;
 		const hasSingle = !hasChain && !hasTasks && Boolean(effectiveParams.agent);
-		const autoPromotedForSupervisor = shouldPromoteForegroundRunForSupervisor({
+		const asyncAvailable = isAsyncAvailable();
+		const wouldRunForeground = (effectiveParams.async ?? deps.asyncByDefault) !== true;
+		const dispatchedEffectiveAgentsCanContactSupervisor = (hasChain || hasTasks || hasSingle) && dispatchedAgentsCanContactSupervisor(effectiveParams, agents);
+		const supervisorSafetyDepth = inheritedNestedRoute ? Math.max(depth, 1) : depth;
+		const supervisorSafetyInput = {
 			enabled: deps.config.autoPromoteSupervisorRunsToAsync !== false,
-			depth,
+			depth: supervisorSafetyDepth,
 			intercomBridgeActive: intercomBridge.active,
-			asyncAvailable: isAsyncAvailable(),
-			wouldRunForeground: effectiveParams.async === undefined && deps.asyncByDefault !== true,
-			isClarify: effectiveParams.clarify === true,
-			dispatchedAgentsCanContactSupervisor: (hasChain || hasTasks || hasSingle) && dispatchedAgentsCanContactSupervisor(effectiveParams, discoveredAgents),
-		});
-		if (autoPromotedForSupervisor) effectiveParams = { ...effectiveParams, async: true };
+			asyncAvailable,
+			wouldRunForeground,
+			dispatchedAgentsCanContactSupervisor: dispatchedEffectiveAgentsCanContactSupervisor,
+		};
+		const autoPromotedForSupervisor = shouldPromoteForegroundRunForSupervisor(supervisorSafetyInput);
+		if (autoPromotedForSupervisor) effectiveParams = { ...effectiveParams, async: true, clarify: false };
+		else if (shouldBlockForegroundRunForSupervisor(supervisorSafetyInput)) {
+			return toExecutionErrorResult(
+				effectiveParams,
+				new Error(
+					"Refusing to launch a foreground subagent run whose effective child agent(s) can block on contact_supervisor while the intercom bridge is active. " +
+					"The parent would be stuck inside the subagent tool call and unable to answer need_decision requests. Async execution is unavailable, so this run cannot be safely promoted.",
+				),
+			);
+		}
 		const allowClarifyTaskPrompt = hasChain
 			&& effectiveParams.clarify === true
 			&& ctx.hasUI

@@ -23,16 +23,14 @@ export interface SupervisorAsyncPromotionInput {
 	asyncAvailable: boolean;
 	/** The run would otherwise execute foreground (blocking the orchestrator). */
 	wouldRunForeground: boolean;
-	/** Interactive clarify flow — leave it foreground so the user can refine the task. */
-	isClarify: boolean;
-	/** At least one dispatched agent actually carries `contact_supervisor`. */
+	/** At least one dispatched effective agent can call `contact_supervisor`. */
 	dispatchedAgentsCanContactSupervisor: boolean;
 }
 
 /**
  * Decide whether a top-level *foreground* run should be auto-promoted to async.
  *
- * When the intercom bridge is active, dispatched children are armed with
+ * When the intercom bridge is active, dispatched children may be armed with
  * `contact_supervisor`, which blocks the child waiting for the supervisor's
  * reply (up to a 10-minute timeout). A foreground run blocks the orchestrator
  * inside this tool call, so it cannot answer until the run returns — the child
@@ -40,6 +38,10 @@ export interface SupervisorAsyncPromotionInput {
  * keeps the orchestrator idle and able to reply, so supervisor coordination
  * works. This trades inline foreground results for a free orchestrator, which is
  * the right call precisely when the children can ask the orchestrator questions.
+ *
+ * Clarify/explicit-foreground requests do not exempt this safety rule: if the
+ * child can wait on the supervisor, the parent must not be trapped inside the
+ * blocking tool call.
  */
 export function shouldPromoteForegroundRunForSupervisor(input: SupervisorAsyncPromotionInput): boolean {
 	return input.enabled
@@ -47,6 +49,14 @@ export function shouldPromoteForegroundRunForSupervisor(input: SupervisorAsyncPr
 		&& input.intercomBridgeActive
 		&& input.asyncAvailable
 		&& input.wouldRunForeground
-		&& !input.isClarify
+		&& input.dispatchedAgentsCanContactSupervisor;
+}
+
+export function shouldBlockForegroundRunForSupervisor(input: SupervisorAsyncPromotionInput): boolean {
+	return input.enabled
+		&& input.depth === 0
+		&& input.intercomBridgeActive
+		&& !input.asyncAvailable
+		&& input.wouldRunForeground
 		&& input.dispatchedAgentsCanContactSupervisor;
 }
