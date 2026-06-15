@@ -1,7 +1,7 @@
 ---
 name: alchemy
-description: Always load this skill when working directly with any of the following - Cloudflare Workers, Durable Objects, R2, D1, SecretsStore, Queues, Hyperdrive, EmailRouting, EmailSending, Containers; PlanetScale; Drizzle; Axiom
-lastUpdated: 2026-06-01T00:00:00.000Z
+description: Use this skill when working directly with any of the following - Cloudflare Workers, Durable Objects, R2, D1, SecretsStore, Queues, Hyperdrive, EmailRouting, EmailSending, Containers; Drizzle; Axiom
+lastUpdated: 2026-06-07T00:00:00.000Z
 ---
 
 # Alchemy
@@ -243,6 +243,7 @@ Per-resource API reference, generated from JSDoc on the source `.ts` files via `
 ### Build
 
 - [Command](https://v2.alchemy.run/providers/build/command) — A Build resource that runs a shell command and produces an output asset. Input files are hashed using globs to avoid redundant rebuilds.
+- [DevServer](https://v2.alchemy.run/providers/build/devserver) — A long-lived shell process scoped to a stack instance, started during `alchemy dev` and restarted when inputs change. During deploy this is a no-op — `DevServer` resources only run in dev mode.
 
 ### Cloudflare
 
@@ -253,6 +254,10 @@ Per-resource API reference, generated from JSDoc on the source `.ts` files via `
 - [Browser](https://v2.alchemy.run/providers/cloudflare/browser) — A Cloudflare Browser Rendering binding for launching headless browser sessions from Workers via `@cloudflare/puppeteer`.
 - [Container](https://v2.alchemy.run/providers/cloudflare/container) — A Cloudflare Container that runs a long-lived process alongside a Durable Object.
 - [D1Database](https://v2.alchemy.run/providers/cloudflare/d1database) — A Cloudflare D1 serverless SQL database built on SQLite.
+- [DnsRead](https://v2.alchemy.run/providers/cloudflare/dnsread) — Binding that lets a Worker read Cloudflare DNS records at runtime.
+- [DnsReadWrite](https://v2.alchemy.run/providers/cloudflare/dnsreadwrite) — Binding that lets a Worker perform the full Cloudflare DNS record CRUD surface at runtime.
+- [DnsWrite](https://v2.alchemy.run/providers/cloudflare/dnswrite) — Binding that lets a Worker create, update, and delete Cloudflare DNS records at runtime.
+- [DurableObjectChatPersistence](https://v2.alchemy.run/providers/cloudflare/durableobjectchatpersistence) — A `BackingPersistence` layer (Effect AI persistence module) backed by the surrounding Durable Object's `state.storage`. Drop-in storage for `Persistence.layerResultPersisted({ storeId })` so chat history, cached AI responses, or any other persisted state lives in the DO SQLite store with `${storeId}:` key namespacing.
 - [DurableObjectNamespace](https://v2.alchemy.run/providers/cloudflare/durableobjectnamespace) — A Cloudflare Durable Object namespace that manages globally unique, stateful instances with WebSocket hibernation support.
 - [DynamicWorkerLoader](https://v2.alchemy.run/providers/cloudflare/dynamicworkerloader) — Load and run ephemeral Workers at runtime from inline JavaScript modules.
 - [EmailAddress](https://v2.alchemy.run/providers/cloudflare/emailaddress) — A verified destination email address on the account.
@@ -266,6 +271,7 @@ Per-resource API reference, generated from JSDoc on the source `.ts` files via `
 - [R2Bucket](https://v2.alchemy.run/providers/cloudflare/r2bucket) — A Cloudflare R2 object storage bucket with S3-compatible API.
 - [RpcDurableObjectNamespace](https://v2.alchemy.run/providers/cloudflare/rpcdurableobjectnamespace) — `RpcDurableObjectNamespace` is sugar over {@link DurableObjectNamespace} for Durable Objects whose surface is a typed Effect `RpcGroup`. The DO serves an `RpcServer.toHttpEffect(group)` on its own `fetch`, and consumers see `namespace.getByName(id)` as a typed `RpcClient` directly — no manual client wiring.
 - [RpcWorker](https://v2.alchemy.run/providers/cloudflare/rpcworker) — `RpcWorker` is a thin sugar over {@link Worker} for the common case where a worker's entire `fetch` surface is a typed Effect `RpcGroup`. It takes the rpc `schema` directly in props alongside `main`, and accepts an init Effect that returns the already-piped `RpcServer.toHttpEffect(...)`-producing Effect (no `{ fetch }` wrapper) — the wrapper plugs it into the worker's `fetch` for you.
+- [Ruleset](https://v2.alchemy.run/providers/cloudflare/ruleset) — A Cloudflare Ruleset phase entrypoint for a zone.
 - [Secret](https://v2.alchemy.run/providers/cloudflare/secret) — A single secret stored inside a Cloudflare Secrets Store.
 - [SecretsStore](https://v2.alchemy.run/providers/cloudflare/secretsstore) — A Cloudflare Secrets Store, a per-account container for secrets that can be bound into Workers with full redaction and audit support.
 - [SendEmail](https://v2.alchemy.run/providers/cloudflare/sendemail) — A Cloudflare Workers `send_email` binding descriptor.
@@ -278,10 +284,12 @@ Per-resource API reference, generated from JSDoc on the source `.ts` files via `
 - [UserApiToken](https://v2.alchemy.run/providers/cloudflare/userapitoken) — A Cloudflare user-owned API token (`POST /user/tokens`).
 - [VectorizeIndex](https://v2.alchemy.run/providers/cloudflare/vectorizeindex) — A Cloudflare Vectorize index for storing and querying vector embeddings.
 - [VectorizeMetadataIndex](https://v2.alchemy.run/providers/cloudflare/vectorizemetadataindex) — A metadata index on a Cloudflare Vectorize index.
+- [VersionMetadata](https://v2.alchemy.run/providers/cloudflare/versionmetadata) — A Cloudflare Workers Version Metadata binding.
 - [Vite](https://v2.alchemy.run/providers/cloudflare/vite) — A Cloudflare Worker deployed from a Vite project.
 - [VpcService](https://v2.alchemy.run/providers/cloudflare/vpcservice) — A Cloudflare VPC service that exposes a private host (IP or hostname) reachable through a Cloudflare Tunnel for Workers VPC.
 - [Worker](https://v2.alchemy.run/providers/cloudflare/worker) — A Cloudflare Worker host with deploy-time binding support and runtime export collection.
 - [Workflow](https://v2.alchemy.run/providers/cloudflare/workflow) — Service that carries the current workflow event payload. `yield* WorkflowEvent` inside a workflow body to access it.
+- [WorkflowBridge](https://v2.alchemy.run/providers/cloudflare/workflowbridge) — Create a WorkflowBridge class that extends `WorkflowEntrypoint` and delegates the `run(event, step)` call to the Effect-native workflow body registered via `worker.export(...)`.
 - [ZarazConfig](https://v2.alchemy.run/providers/cloudflare/zarazconfig) — A Cloudflare Zaraz zone configuration.
 - [Zone](https://v2.alchemy.run/providers/cloudflare/zone) — A Cloudflare Zone (DNS domain) managed by Alchemy.
 
