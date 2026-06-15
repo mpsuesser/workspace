@@ -159,3 +159,4 @@ eval "$(direnv hook zsh)"
 
 # CF CLI completions
 [[ -f "/Users/m/.config/cf/completions/_cf.zsh" ]] && source "/Users/m/.config/cf/completions/_cf.zsh"
+export PATH=$PATH:$HOME/.maestro/bin

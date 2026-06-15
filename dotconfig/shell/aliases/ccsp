@@ -1,0 +1,3 @@
+ccsp() {
+	claude --dangerously-skip-permissions "$@"
+}
