@@ -1,7 +1,11 @@
 matches:
-  - triggers: [;;4]
+  - triggers: [;;cae]
     replace: |-
-      `.references/effect-v4`
+      `~/.cache/effect-v4/`
+
+  - triggers: [;;refce]
+    replace: |-
+      I encourage you to look through `~/.cache/effect-v4/` for reference code if you encounter any particularly challenging type-inference-related situations, as the Effect team is very good at that sort of problem, so the codebase is filled with useful code examples.
 
   - triggers: [;;shrug]
     replace: |-

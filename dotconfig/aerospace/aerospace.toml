@@ -124,19 +124,19 @@ alt-quote = 'flatten-workspace-tree'
 # f8 = '''exec-and-forget focused=$(aerospace list-windows --focused --format "%{app-bundle-id}"); if [ "$focused" = "com.mitchellh.ghostty" ]; then target="com.google.Chrome.app.idemibpphagihbobmgmaojhjfidlfpdl"; window_id=$(aerospace list-windows --monitor all --app-bundle-id "$target" --format "%{window-id}" | head -1); [ -n "$window_id" ] && aerospace focus --window-id "$window_id"; else open -b com.mitchellh.ghostty; fi'''
 
 # Cmd+Enter/F9: focus `ooo` Chrome PWA; press again while `ooo` is focused to quick-switch back.
-cmd-enter = '''exec-and-forget target="com.google.Chrome.app.idemibpphagihbobmgmaojhjfidlfpdl"
-focused=$(aerospace list-windows --focused --format "%{app-bundle-id}" 2>/dev/null || true)
-
-if [ "$focused" = "$target" ]; then
-    aerospace focus-back-and-forth || aerospace workspace-back-and-forth
-else
-    window_id=$(aerospace list-windows --monitor all --app-bundle-id "$target" --format "%{window-id}" | head -1)
-    if [ -n "$window_id" ]; then
-        aerospace focus --window-id "$window_id"
-    else
-        open -b "$target"
-    fi
-fi'''
+# cmd-enter = '''exec-and-forget target="com.google.Chrome.app.idemibpphagihbobmgmaojhjfidlfpdl"
+# focused=$(aerospace list-windows --focused --format "%{app-bundle-id}" 2>/dev/null || true)
+#
+# if [ "$focused" = "$target" ]; then
+#     aerospace focus-back-and-forth || aerospace workspace-back-and-forth
+# else
+#     window_id=$(aerospace list-windows --monitor all --app-bundle-id "$target" --format "%{window-id}" | head -1)
+#     if [ -n "$window_id" ]; then
+#         aerospace focus --window-id "$window_id"
+#     else
+#         open -b "$target"
+#     fi
+# fi'''
 
 f9 = '''exec-and-forget target="com.google.Chrome.app.idemibpphagihbobmgmaojhjfidlfpdl"
 focused=$(aerospace list-windows --focused --format "%{app-bundle-id}" 2>/dev/null || true)
