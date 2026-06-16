@@ -756,12 +756,18 @@ async function runSingleStep(
 	const output = resolvedOutput.fullOutput;
 	const outputReference = resolvedOutput.savedPath ? formatSavedOutputReference(resolvedOutput.savedPath, output) : undefined;
 	let outputForSummary = output;
-		if (attemptNotes.length > 0) {
-			outputForSummary = `${attemptNotes.join("\n")}\n\n${outputForSummary}`.trim();
-		}
+	if (attemptNotes.length > 0) {
+		outputForSummary = `${attemptNotes.join("\n")}\n\n${outputForSummary}`.trim();
+	}
 	const outputForAcceptance = rawOutput;
-		const finalizedOutput = finalizeSingleOutput({
-			fullOutput: outputForSummary,
+	const acceptanceAdditionalOutputs = resolvedOutput.savedPath && resolvedOutput.fullOutput !== outputForAcceptance
+		? [{
+			label: `saved output (${resolvedOutput.savedPath})`,
+			output: resolvedOutput.fullOutput,
+		}]
+		: [];
+	const finalizedOutput = finalizeSingleOutput({
+		fullOutput: outputForSummary,
 		outputPath: step.outputPath,
 		outputMode: step.outputMode,
 		exitCode: finalResult?.exitCode ?? 1,
@@ -771,11 +777,12 @@ async function runSingleStep(
 	});
 	outputForSummary = finalizedOutput.displayOutput;
 	const acceptance = step.effectiveAcceptance
-			? await evaluateAcceptance({
-				acceptance: step.effectiveAcceptance,
-				output: outputForAcceptance,
-				cwd: step.cwd ?? ctx.cwd,
-			})
+		? await evaluateAcceptance({
+			acceptance: step.effectiveAcceptance,
+			output: outputForAcceptance,
+			additionalOutputs: acceptanceAdditionalOutputs,
+			cwd: step.cwd ?? ctx.cwd,
+		})
 		: undefined;
 	const acceptanceFailure = acceptance ? acceptanceFailureMessage(acceptance) : undefined;
 	const acceptanceCanFailRun = acceptanceFailure && acceptance?.explicit && (finalResult?.exitCode ?? 1) === 0 && !finalResult?.interrupted;

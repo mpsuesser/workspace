@@ -373,6 +373,7 @@ export interface AcceptanceLedger {
 	inferredReason: string[];
 	criteria: ResolvedAcceptanceGate[];
 	childReport?: AcceptanceReport;
+	childReportSource?: string;
 	childReportParseError?: string;
 	runtimeChecks: AcceptanceRuntimeCheck[];
 	verifyRuns: AcceptanceVerifyResult[];

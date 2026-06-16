@@ -68,6 +68,7 @@ import { acceptanceFailureMessage, evaluateAcceptance, formatAcceptancePrompt, r
 
 const artifactOutputByResult = new WeakMap<SingleResult, string>();
 const acceptanceOutputByResult = new WeakMap<SingleResult, string>();
+const acceptanceAdditionalOutputsByResult = new WeakMap<SingleResult, Array<{ label: string; output: string }>>();
 
 function emptyUsage(): Usage {
 	return { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, cost: 0, turns: 0 };
@@ -709,8 +710,8 @@ async function runSingleAttempt(
 		durationMs: progress.durationMs,
 	};
 
-		const acceptanceOutput = getFinalOutput(result.messages);
-		let fullOutput = stripAcceptanceReport(acceptanceOutput);
+	const acceptanceOutput = getFinalOutput(result.messages);
+	let fullOutput = stripAcceptanceReport(acceptanceOutput);
 	const completionGuard = result.exitCode === 0 && !result.error && agent.completionGuard !== false
 		? evaluateCompletionMutationGuard({
 			agent: agent.name,
@@ -736,17 +737,25 @@ async function runSingleAttempt(
 			reason: "completion_guard",
 		}));
 	}
-		if (options.outputPath && result.exitCode === 0) {
-			const resolvedOutput = resolveSingleOutput(options.outputPath, fullOutput, shared.outputSnapshot);
-			fullOutput = stripAcceptanceReport(resolvedOutput.fullOutput);
-			result.savedOutputPath = resolvedOutput.savedPath;
-			result.outputSaveError = resolvedOutput.saveError;
-			if (resolvedOutput.savedPath) {
-				result.outputReference = formatSavedOutputReference(resolvedOutput.savedPath, fullOutput);
-			}
+	const acceptanceAdditionalOutputs: Array<{ label: string; output: string }> = [];
+	if (options.outputPath && result.exitCode === 0) {
+		const resolvedOutput = resolveSingleOutput(options.outputPath, fullOutput, shared.outputSnapshot);
+		if (resolvedOutput.savedPath && resolvedOutput.fullOutput !== acceptanceOutput) {
+			acceptanceAdditionalOutputs.push({
+				label: `saved output (${resolvedOutput.savedPath})`,
+				output: resolvedOutput.fullOutput,
+			});
+		}
+		fullOutput = stripAcceptanceReport(resolvedOutput.fullOutput);
+		result.savedOutputPath = resolvedOutput.savedPath;
+		result.outputSaveError = resolvedOutput.saveError;
+		if (resolvedOutput.savedPath) {
+			result.outputReference = formatSavedOutputReference(resolvedOutput.savedPath, fullOutput);
+		}
 	}
-		artifactOutputByResult.set(result, fullOutput);
-		acceptanceOutputByResult.set(result, acceptanceOutput);
+	artifactOutputByResult.set(result, fullOutput);
+	acceptanceOutputByResult.set(result, acceptanceOutput);
+	acceptanceAdditionalOutputsByResult.set(result, acceptanceAdditionalOutputs);
 	result.outputMode = options.outputMode ?? "inline";
 	result.finalOutput = options.outputMode === "file-only" && result.savedOutputPath && result.outputReference
 		? result.outputReference.message
@@ -969,6 +978,7 @@ export async function runSync(
 		result.acceptance = await evaluateAcceptance({
 			acceptance: effectiveAcceptance,
 			output: acceptanceOutputByResult.get(result) ?? result.finalOutput ?? "",
+			additionalOutputs: acceptanceAdditionalOutputsByResult.get(result),
 			cwd: options.cwd ?? runtimeCwd,
 		});
 		const acceptanceFailure = acceptanceFailureMessage(result.acceptance);

@@ -335,6 +335,18 @@ export function parseAcceptanceReport(output: string): { report?: AcceptanceRepo
 	return { error: "Structured acceptance report not found." };
 }
 
+export interface AcceptanceOutputCandidate {
+	label: string;
+	output: string;
+}
+
+interface ParsedAcceptanceCandidate {
+	label: string;
+	report?: AcceptanceReport;
+	error?: string;
+	runtimeChecks?: AcceptanceRuntimeCheck[];
+}
+
 export function stripAcceptanceReport(output: string): string {
 	return output
 		.replace(/\n?```acceptance-report\s*\n[\s\S]*?```\s*$/i, "")
@@ -415,6 +427,63 @@ function runStructuralChecks(acceptance: ResolvedAcceptanceConfig, report: Accep
 	}
 	if (acceptance.evidence.includes("no-staged-files")) checks.push(checkNoStagedFiles(cwd));
 	return checks;
+}
+
+function runtimeChecksForReport(acceptance: ResolvedAcceptanceConfig, report: AcceptanceReport, cwd: string): AcceptanceRuntimeCheck[] {
+	if (LEVEL_RANK[acceptance.level] < LEVEL_RANK.checked) return [];
+	return [
+		...checkCriteriaSatisfied(acceptance.criteria, report),
+		...runStructuralChecks(acceptance, report, cwd),
+	];
+}
+
+function failedRuntimeChecks(checks: AcceptanceRuntimeCheck[] | undefined): AcceptanceRuntimeCheck[] {
+	return (checks ?? []).filter((check) => check.status === "failed");
+}
+
+function parseAcceptanceCandidates(input: {
+	output: string;
+	additionalOutputs?: AcceptanceOutputCandidate[];
+	report?: AcceptanceReport;
+}): ParsedAcceptanceCandidate[] {
+	if (input.report) return [{ label: "provided report", report: input.report }];
+
+	const seen = new Set<string>();
+	const candidates: AcceptanceOutputCandidate[] = [
+		{ label: "final output", output: input.output },
+		...(input.additionalOutputs ?? []),
+	];
+	return candidates.filter((candidate) => {
+		if (seen.has(candidate.output)) return false;
+		seen.add(candidate.output);
+		return true;
+	}).map((candidate) => {
+		const parsed = parseAcceptanceReport(candidate.output);
+		return { label: candidate.label, report: parsed.report, error: parsed.error };
+	});
+}
+
+function chooseAcceptanceReportCandidate(input: {
+	acceptance: ResolvedAcceptanceConfig;
+	candidates: ParsedAcceptanceCandidate[];
+	cwd: string;
+}): ParsedAcceptanceCandidate | undefined {
+	const parsedReports = input.candidates.filter((candidate) => candidate.report);
+	if (parsedReports.length === 0) return undefined;
+	if (LEVEL_RANK[input.acceptance.level] < LEVEL_RANK.checked) return parsedReports[0];
+
+	const evaluated = parsedReports.map((candidate) => ({
+		...candidate,
+		runtimeChecks: runtimeChecksForReport(input.acceptance, candidate.report!, input.cwd),
+	}));
+	const passing = evaluated.find((candidate) => failedRuntimeChecks(candidate.runtimeChecks).length === 0);
+	if (passing) return passing;
+	return evaluated.sort((a, b) => failedRuntimeChecks(a.runtimeChecks).length - failedRuntimeChecks(b.runtimeChecks).length)[0];
+}
+
+function acceptanceParseError(candidates: ParsedAcceptanceCandidate[]): string {
+	if (candidates.length === 0) return "Structured acceptance report not found.";
+	return candidates.map((candidate) => `${candidate.label}: ${candidate.error ?? "Structured acceptance report not found."}`).join("; ");
 }
 
 function trimOutput(value: string): string | undefined {
@@ -520,6 +589,7 @@ export async function evaluateAcceptance(input: {
 	output: string;
 	cwd: string;
 	report?: AcceptanceReport;
+	additionalOutputs?: AcceptanceOutputCandidate[];
 	reviewResult?: AcceptanceReviewResult;
 }): Promise<AcceptanceLedger> {
 	const acceptance = input.acceptance;
@@ -534,23 +604,22 @@ export async function evaluateAcceptance(input: {
 	};
 	if (acceptance.level === "none") return ledger;
 
-	const parsed = input.report ? { report: input.report } : parseAcceptanceReport(input.output);
-	if (parsed.report) {
-		ledger.childReport = parsed.report;
+	const candidates = parseAcceptanceCandidates(input);
+	const selected = chooseAcceptanceReportCandidate({ acceptance, candidates, cwd: input.cwd });
+	if (selected?.report) {
+		ledger.childReport = selected.report;
+		ledger.childReportSource = selected.label;
 		ledger.status = "attested";
 	} else {
-		ledger.childReportParseError = parsed.error;
-		ledger.runtimeChecks.push({ id: "attestation", status: "failed", message: parsed.error ?? "Structured acceptance report missing." });
+		ledger.childReportParseError = acceptanceParseError(candidates);
+		ledger.runtimeChecks.push({ id: "attestation", status: "failed", message: ledger.childReportParseError });
 		ledger.status = "rejected";
 		return ledger;
 	}
 
 	if (LEVEL_RANK[acceptance.level] >= LEVEL_RANK.checked) {
-		ledger.runtimeChecks = [
-			...checkCriteriaSatisfied(acceptance.criteria, parsed.report),
-			...runStructuralChecks(acceptance, parsed.report, input.cwd),
-		];
-		if (ledger.runtimeChecks.some((check) => check.status === "failed")) {
+		ledger.runtimeChecks = selected.runtimeChecks ?? runtimeChecksForReport(acceptance, selected.report, input.cwd);
+		if (failedRuntimeChecks(ledger.runtimeChecks).length > 0) {
 			ledger.status = "rejected";
 			return ledger;
 		}
@@ -595,10 +664,12 @@ export async function evaluateAcceptance(input: {
 
 export function acceptanceFailureMessage(ledger: AcceptanceLedger): string | undefined {
 	if (ledger.status !== "rejected") return undefined;
-	const failedCheck = ledger.runtimeChecks.find((check) => check.status === "failed");
-	if (failedCheck) return `Acceptance rejected: ${failedCheck.message}`;
-	const failedVerify = ledger.verifyRuns.find((run) => run.status === "failed" || run.status === "timed-out");
-	if (failedVerify) return `Acceptance verification '${failedVerify.id}' ${failedVerify.status}.`;
+	const failedChecks = failedRuntimeChecks(ledger.runtimeChecks);
+	if (failedChecks.length > 0) return `Acceptance rejected: ${failedChecks.map((check) => check.message).join("; ")}`;
+	const failedVerifies = ledger.verifyRuns.filter((run) => run.status === "failed" || run.status === "timed-out");
+	if (failedVerifies.length > 0) {
+		return `Acceptance verification failed: ${failedVerifies.map((run) => `'${run.id}' ${run.status}`).join("; ")}.`;
+	}
 	if (ledger.reviewResult?.status === "needs-parent-decision") return "Acceptance review required but no automatic reviewer result is available.";
 	if (ledger.reviewResult?.status === "blockers") return "Acceptance review found blockers.";
 	return "Acceptance rejected.";

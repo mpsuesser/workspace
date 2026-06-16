@@ -121,6 +121,87 @@ describe("acceptance gates", () => {
 		}
 	});
 
+	it("prefers a saved output acceptance report that satisfies the declared contract", async () => {
+		const cwd = tempRepo();
+		try {
+			const acceptance = resolveEffectiveAcceptance({
+				agentName: "worker",
+				task: "Implement a fix",
+				explicit: {
+					level: "checked",
+					criteria: [
+						{ id: "scope", must: "Stay in scope" },
+						{ id: "edits", must: "Actually edit files" },
+					],
+					evidence: ["diff-summary"],
+				},
+			});
+			const finalOutput = report({
+				criteriaSatisfied: [{ id: "scope", status: "satisfied", evidence: "scope satisfied" }],
+			});
+			const savedOutput = report({
+				criteriaSatisfied: [
+					{ id: "scope", status: "satisfied", evidence: "scope satisfied" },
+					{ id: "edits", status: "satisfied", evidence: "edited src/file.ts" },
+				],
+				diffSummary: "Modified src/file.ts and test/file.test.ts.",
+			});
+
+			const ledger = await evaluateAcceptance({
+				acceptance,
+				output: finalOutput,
+				additionalOutputs: [{ label: "saved output", output: savedOutput }],
+				cwd,
+			});
+
+			assert.equal(ledger.status, "checked");
+			assert.equal(ledger.childReportSource, "saved output");
+		} finally {
+			fs.rmSync(cwd, { recursive: true, force: true });
+		}
+	});
+
+	it("reports all failed structural acceptance checks", async () => {
+		const cwd = tempRepo();
+		try {
+			const acceptance = resolveEffectiveAcceptance({
+				agentName: "worker",
+				task: "Implement a fix",
+				explicit: {
+					level: "checked",
+					criteria: [
+						{ id: "scope", must: "Stay in scope" },
+						{ id: "edits", must: "Actually edit files" },
+					],
+					evidence: ["diff-summary"],
+				},
+			});
+			const ledger = await evaluateAcceptance({
+				acceptance,
+				output: report({
+					criteriaSatisfied: [],
+					changedFiles: [],
+					testsAddedOrUpdated: [],
+					commandsRun: [],
+					residualRisks: undefined,
+					noStagedFiles: false,
+				}),
+				cwd,
+			});
+			const message = acceptanceFailureMessage(ledger) ?? "";
+
+			assert.equal(ledger.status, "rejected");
+			assert.match(message, /Required criterion 'scope' was not reported/);
+			assert.match(message, /Required criterion 'edits' was not reported/);
+			assert.match(message, /changed-files evidence missing/);
+			assert.match(message, /tests-added evidence missing/);
+			assert.match(message, /commands-run evidence missing/);
+			assert.match(message, /diff-summary evidence missing/);
+		} finally {
+			fs.rmSync(cwd, { recursive: true, force: true });
+		}
+	});
+
 	it("checked mode rejects not-satisfied required criteria", async () => {
 		const cwd = tempRepo();
 		try {
