@@ -870,7 +870,7 @@ function validateExecutionInput(
  * Whether any effective agent this run would dispatch can use a blocking
  * supervisor coordination channel. This must be checked after intercom bridge
  * injection, because the bridge can add `contact_supervisor` to agents that do
- * not declare it in their bundled frontmatter (planner/reviewer/etc.).
+ * not declare it in their frontmatter.
  */
 export function dispatchedAgentsCanContactSupervisor(params: SubagentParamsLike, agents: AgentConfig[]): boolean {
 	const byName = new Map(agents.map((agent) => [agent.name, agent]));

@@ -67,7 +67,7 @@ function makeExecutor(cwd: string) {
 			setSessionName: () => {},
 		},
 		state: makeState(cwd),
-		config: {},
+		config: { intercomBridge: { mode: "off" } },
 		asyncByDefault: false,
 		tempArtifactsDir: cwd,
 		getSubagentSessionRoot: () => cwd,

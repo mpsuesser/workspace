@@ -236,7 +236,7 @@ Inspect
 		assert.match(readText(listed), /Invalid JSON chain/);
 	});
 
-	it("creates delegate with its builtin prompt defaults", () => {
+	it("creates agents with generic prompt defaults", () => {
 		const result = handleCreate(
 			{ config: { name: "delegate", description: "Delegate helper", scope: "project" } },
 			{ cwd: tempDir, modelRegistry: { getAvailable: () => [] } },
@@ -245,8 +245,8 @@ Inspect
 		assert.equal(result.isError, false);
 		const filePath = path.join(tempDir, ".pi", "agents", "delegate.md");
 		const content = fs.readFileSync(filePath, "utf-8");
-		assert.match(content, /systemPromptMode: append/);
-		assert.match(content, /inheritProjectContext: true/);
+		assert.match(content, /systemPromptMode: replace/);
+		assert.match(content, /inheritProjectContext: false/);
 		assert.match(content, /inheritAvailableSkills: true/);
 	});
 });

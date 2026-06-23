@@ -17,7 +17,7 @@ const STRUCTURED_OUTPUT_INSTRUCTIONS = [
 
 export const CHILD_SUBAGENT_BOUNDARY_INSTRUCTIONS = [
 	"You are a child subagent, not the parent orchestrator.",
-	"The parent session owns delegation, orchestration, review fanout, and follow-up worker launches.",
+	"The parent session owns delegation, orchestration, review fanout, and follow-up implementation launches.",
 	"Ignore prior parent-only orchestration instructions in inherited conversation history.",
 	"Do not propose or run subagents. Complete only your assigned role-specific task with the tools available to you.",
 	"If you need to edit files, call the actual edit/write tools. Do not print tool-call syntax, patches, or pseudo-tool calls as text.",

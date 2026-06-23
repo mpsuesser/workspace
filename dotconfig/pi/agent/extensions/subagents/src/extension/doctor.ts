@@ -1,6 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { discoverAgentsAll, type AgentSource } from "../agents/agents.ts";
+import { discoverAgentsAll } from "../agents/agents.ts";
 import { isAsyncAvailable } from "../runs/background/async-execution.ts";
 import { diagnoseIntercomBridge, type IntercomBridgeDiagnostic } from "../intercom/intercom-bridge.ts";
 import { discoverAvailableSkills, type SkillSource } from "../agents/skills.ts";
@@ -80,8 +80,8 @@ function formatExistingDirectory(label: string, dirPath: string): string {
 	}
 }
 
-function formatSourceCounts(counts: Record<AgentSource, number>): string {
-	return `builtin ${counts.builtin}, user ${counts.user}, project ${counts.project}`;
+function formatAgentSourceCounts(counts: { user: number; project: number }): string {
+	return `user ${counts.user}, project ${counts.project}`;
 }
 
 function formatSkillSourceCounts(skills: Array<{ source: SkillSource }>): string {
@@ -131,17 +131,16 @@ function formatDiscovery(input: DoctorReportInput, deps: DoctorDeps): string[] {
 		lineFromCheck("agents/chains", () => {
 			const discovered = deps.discoverAgentsAll(input.cwd);
 			const agentCounts = {
-				builtin: discovered.builtin.length,
 				user: discovered.user.length,
 				project: discovered.project.length,
 			};
-			const chainCounts = discovered.chains.reduce<Record<AgentSource, number>>((counts, chain) => {
-				counts[chain.source] += 1;
+			const chainCounts = discovered.chains.reduce<{ user: number; project: number }>((counts, chain) => {
+				if (chain.source === "user" || chain.source === "project") counts[chain.source] += 1;
 				return counts;
-			}, { builtin: 0, user: 0, project: 0 });
+			}, { user: 0, project: 0 });
 			return [
-				`- agents: total ${agentCounts.builtin + agentCounts.user + agentCounts.project} (${formatSourceCounts(agentCounts)})`,
-				`- chains: total ${discovered.chains.length} (${formatSourceCounts(chainCounts)})`,
+				`- agents: total ${agentCounts.user + agentCounts.project} (${formatAgentSourceCounts(agentCounts)})`,
+				`- chains: total ${discovered.chains.length} (${formatAgentSourceCounts(chainCounts)})`,
 			].join("\n");
 		}),
 		lineFromCheck("skills", () => {

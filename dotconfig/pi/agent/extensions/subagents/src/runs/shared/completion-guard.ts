@@ -8,7 +8,7 @@ const REVIEW_ONLY_PATTERNS = [
 	/\breturn findings only\b/i,
 ];
 
-const REVIEWER_REQUIRED_EDIT_PATTERNS = [
+const REQUIRED_EDIT_PATTERNS = [
 	/\bmust\s+(?:edit|modify|change|fix|patch|apply)\b/i,
 	/\brequired\s+to\s+(?:edit|modify|change|fix|patch|apply)\b/i,
 	/\bregardless\s+of\s+findings\b/i,
@@ -32,29 +32,16 @@ const SCOPED_NO_EDIT_CONSTRAINT_PATTERNS = [
 	/\bdo not modify\s+unrelated files?\b/i,
 ];
 
-const RESEARCH_AGENT_PATTERNS = [
-	/\binvestigate\b/i,
-	/\bscout\b/i,
-	/\bresearch(?:er)?\b/i,
-];
-
-const WORKER_IMPLEMENTATION_PATTERNS = [
+const GENERAL_IMPLEMENTATION_PATTERNS = [
 	/\b(?:implement|fix|edit|modify|patch|refactor|delete)\b/i,
 	/\b(?:update|add|remove|replace|create)\b(?!\s+(?:(?:a|an|the)\s+)?(?:report|summary|findings?)(?:\b|$))/i,
-	/\bapply\s+(?:the\s+)?(?:changes?|fix(?:es)?|patch)\b/i,
-	/\bmake\s+(?:the\s+)?changes\b/i,
-	/\bdo those fixes\b/i,
-];
-
-const GENERAL_IMPLEMENTATION_PATTERNS = [
-	/\b(?:implement|fix|edit|modify|patch|refactor)\b/i,
 	/\bapply\s+(?:the\s+)?(?:changes?|fix(?:es)?|patch)\b/i,
 	/\bmake\s+(?:the\s+)?changes\b/i,
 	/\bdo those fixes\b/i,
 	/\b(?:update|add|remove|replace|delete|create)\s+(?:the\s+)?(?:file|files|code|source|implementation|test|tests|component|function|module|class|method|logic|import|imports|readme|docs?|changelog|package\.json|config|manifest|extension|prompt|command)\b/i,
 ];
 
-const READ_ONLY_BUILTIN_TOOLS = new Set([
+const READ_ONLY_CORE_TOOLS = new Set([
 	"read",
 	"grep",
 	"find",
@@ -100,20 +87,16 @@ function declaresOnlyReadOnlyTools(tools: string[] | undefined, mcpDirectTools: 
 	return tools !== undefined
 		&& tools.length > 0
 		&& (mcpDirectTools?.length ?? 0) === 0
-		&& tools.every((tool) => READ_ONLY_BUILTIN_TOOLS.has(tool));
+		&& tools.every((tool) => READ_ONLY_CORE_TOOLS.has(tool));
 }
 
-export function expectsImplementationMutation(agent: string, task: string): boolean {
+export function expectsImplementationMutation(_agent: string, task: string): boolean {
 	const taskText = stripFrameworkInstructions(task);
 	const taskTextWithoutScopedConstraints = stripScopedNoEditConstraints(taskText);
 	if (REVIEW_ONLY_PATTERNS.some((pattern) => pattern.test(taskTextWithoutScopedConstraints))) return false;
 	if (EXPLICIT_NO_EDIT_PATTERNS.some((pattern) => pattern.test(taskTextWithoutScopedConstraints))) return false;
 
-	if (RESEARCH_AGENT_PATTERNS.some((pattern) => pattern.test(agent))) return false;
-	if (/\breviewer\b/i.test(agent)) return REVIEWER_REQUIRED_EDIT_PATTERNS.some((pattern) => pattern.test(taskText));
-
-	const workerIntent = agent === "worker" && WORKER_IMPLEMENTATION_PATTERNS.some((pattern) => pattern.test(taskText));
-	if (workerIntent) return true;
+	if (REQUIRED_EDIT_PATTERNS.some((pattern) => pattern.test(taskText))) return true;
 
 	return GENERAL_IMPLEMENTATION_PATTERNS.some((pattern) => pattern.test(taskText));
 }

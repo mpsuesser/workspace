@@ -142,7 +142,7 @@ describe("fork context execution wiring", { skip: !available ? "subagent executo
 				sendMessage: () => {},
 			},
 			state: makeState(tempDir),
-			config,
+			config: { intercomBridge: { mode: "off" }, ...config },
 			asyncByDefault: false,
 			tempArtifactsDir: tempDir,
 			getSubagentSessionRoot: () => tempDir,
@@ -220,16 +220,6 @@ describe("fork context execution wiring", { skip: !available ? "subagent executo
 		fs.writeFileSync(
 			filePath,
 			`---\nname: ${name}\ndescription: ${name} agent\nmodel: ${model}\n---\n\nUse ${model}.\n`,
-			"utf-8",
-		);
-	}
-
-	function writeProjectOverride(projectRoot: string, agentName: string, model: string): void {
-		const settingsPath = path.join(projectRoot, ".pi", "settings.json");
-		fs.mkdirSync(path.dirname(settingsPath), { recursive: true });
-		fs.writeFileSync(
-			settingsPath,
-			JSON.stringify({ subagents: { agentOverrides: { [agentName]: { model } } } }, null, 2),
 			"utf-8",
 		);
 	}
@@ -989,15 +979,15 @@ describe("fork context execution wiring", { skip: !available ? "subagent executo
 		assert.deepEqual(result.details?.results?.[0]?.skills, ["parallel-step-skill"]);
 	});
 
-	it("uses request cwd for project builtin overrides during management", async () => {
+	it("uses request cwd for project agent discovery during management", async () => {
 		const tempHome = createTempDir("pi-subagent-home-");
 		process.env.HOME = tempHome;
 		process.env.USERPROFILE = tempHome;
 		const worktreeDir = path.join(tempDir, "worktree");
 		fs.mkdirSync(worktreeDir, { recursive: true });
-		writeProjectOverride(tempDir, "reviewer", "openai/gpt-5-main");
-		writeProjectOverride(worktreeDir, "reviewer", "openai/gpt-5-worktree");
-		const executor = makeExecutor();
+		writeAgent(tempDir, "reviewer", "openai/gpt-5-main");
+		writeAgent(worktreeDir, "reviewer", "openai/gpt-5-worktree");
+		const executor = makeExecutorWithDiscoverAgents(discoverAgents);
 
 		try {
 			const result = await executor.execute(

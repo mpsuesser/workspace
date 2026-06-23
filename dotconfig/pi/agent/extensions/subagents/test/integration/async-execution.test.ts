@@ -290,7 +290,7 @@ describe("async execution utilities", { skip: !available ? "pi packages not avai
 		const result = await executor.execute(
 			"async-parallel-fields",
 			{
-				tasks: [{ agent: "worker", task: "Do async work", output: "async-top-output.md", reads: ["input.md"], progress: true }],
+				tasks: [{ agent: "worker", task: "Do async work", output: "async-top-output.md", reads: ["input.md"], progress: true, acceptance: { level: "checked" } }],
 				async: true,
 				clarify: false,
 			},
@@ -1761,8 +1761,8 @@ describe("async execution utilities", { skip: !available ? "pi packages not avai
 	it("background runs clear idle needs_attention after later child activity", { skip: !isAsyncAvailable() ? "jiti not available" : undefined }, async () => {
 		mockPi.onCall({
 			steps: [
-				{ jsonl: [events.assistantMessage("starting work")] },
-				{ delay: 1_500, jsonl: [events.assistantMessage("made progress after quiet period")] },
+				{ jsonl: [events.toolStart("bash", { command: "long-running diagnostic" })] },
+				{ delay: 1_500, jsonl: [events.toolResult("bash", "made progress after quiet period"), events.toolEnd("bash")] },
 				{ delay: 1_200, jsonl: [events.assistantMessage("done")] },
 			],
 		});
@@ -1774,7 +1774,7 @@ describe("async execution utilities", { skip: !available ? "pi packages not avai
 
 		executeAsyncSingle(id, {
 			agent: "worker",
-			task: "Implement the approved fixes",
+			task: "Watch the long-running diagnostic command",
 			agentConfig: makeAgent("worker"),
 			ctx: { pi: { events: { emit() {} } }, cwd: tempDir, currentSessionId: "session-1" },
 			artifactConfig: { enabled: false, includeInput: false, includeOutput: false, includeJsonl: false, includeMetadata: false, cleanupDays: 7 },

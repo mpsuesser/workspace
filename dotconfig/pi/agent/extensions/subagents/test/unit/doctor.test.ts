@@ -71,7 +71,7 @@ describe("buildDoctorReport", () => {
 				deps: {
 					isAsyncAvailable: () => true,
 					discoverAgentsAll: () => ({
-						builtin: [makeAgent("builtin-a", "builtin")],
+						builtin: [],
 						user: [makeAgent("user-a", "user")],
 						project: [makeAgent("project-a", "project"), makeAgent("project-b", "project")],
 						chains: [makeChain("user-flow", "user"), makeChain("project-flow", "project")],
@@ -106,8 +106,8 @@ describe("buildDoctorReport", () => {
 			assert.match(report, /- configured session dir: .*subagent-sessions/);
 			assert.match(report, /- current session file: .*parent\.jsonl/);
 			assert.match(report, /- temp root: ok /);
-			assert.match(report, /- agents: total 4 \(builtin 1, user 1, project 2\)/);
-			assert.match(report, /- chains: total 2 \(builtin 0, user 1, project 1\)/);
+			assert.match(report, /- agents: total 3 \(user 1, project 2\)/);
+			assert.match(report, /- chains: total 2 \(user 1, project 1\)/);
 			assert.match(report, /- skills: total 2 \(project 1, user-package 1\)/);
 			assert.match(report, /- bridge: inactive \(pi-intercom extension was not found\)/);
 			assert.match(report, /- pi-intercom: unavailable /);

@@ -37,7 +37,7 @@ test("implementation task with no mutation triggers the completion guard", () =>
 	});
 });
 
-test("declared read-only builtin tools suppress implementation-word false positives", () => {
+test("declared read-only core tools suppress implementation-word false positives", () => {
 	const result = evaluateCompletionMutationGuard({
 		agent: "architect",
 		task: "Produce a proposal that implements the approved fix",
@@ -67,9 +67,9 @@ test("omitted, empty, bash, unknown, write, and MCP tool capabilities stay conse
 	assert.equal(evaluateCompletionMutationGuard({ ...base, tools: ["read", "grep"], mcpDirectTools: ["github/search"] }).triggered, true);
 });
 
-test("worker with mutating-capable tools still triggers when no mutation is observed", () => {
+test("implementation task with mutating-capable tools still triggers when no mutation is observed", () => {
 	const result = evaluateCompletionMutationGuard({
-		agent: "worker",
+		agent: "implementation-agent",
 		task: "Fix the test implementation",
 		messages: [assistantText("I will edit it next")],
 		tools: ["read", "edit"],
@@ -88,10 +88,10 @@ test("review-only, research, and framework output instructions do not expect mut
 	assert.equal(expectsImplementationMutation("worker", "Review the diff and suggest fixes only. Do not edit files."), false);
 	assert.equal(expectsImplementationMutation("worker", "Implement this. Do not edit files outside this repo. Do not edit files."), false);
 	assert.equal(expectsImplementationMutation("worker", "Investigate why this failed"), false);
-	assert.equal(expectsImplementationMutation("researcher", "Research the API behavior"), false);
-	assert.equal(expectsImplementationMutation("researcher", "Research this and patch the bug"), false);
-	assert.equal(expectsImplementationMutation("reviewer", "Review this and fix any real issues"), false);
-	assert.equal(expectsImplementationMutation("reviewer", "Review this and fix any real issues; regardless of findings, apply changes directly"), true);
+	assert.equal(expectsImplementationMutation("research-agent", "Research the API behavior"), false);
+	assert.equal(expectsImplementationMutation("research-agent", "Research this and patch the bug"), true);
+	assert.equal(expectsImplementationMutation("review-agent", "Review this and fix any real issues"), true);
+	assert.equal(expectsImplementationMutation("review-agent", "Review this and fix any real issues; regardless of findings, apply changes directly"), true);
 	assert.equal(expectsImplementationMutation("worker", "[Write to: /tmp/result.md]\n\nSummarize findings"), false);
 	assert.equal(expectsImplementationMutation("worker", "Write report"), false);
 	assert.equal(expectsImplementationMutation("worker", "Create a report"), false);
@@ -105,21 +105,21 @@ test("review-only, research, and framework output instructions do not expect mut
 	);
 });
 
-test("worker implementation verbs win over investigative wording", () => {
-	assert.equal(expectsImplementationMutation("worker", "Investigate why the worker did not edit files and fix it"), true);
-	assert.equal(expectsImplementationMutation("worker", "Research the current code path and patch the bug"), true);
-	assert.equal(expectsImplementationMutation("worker", "Fix the bug where no edits were made"), true);
-	assert.equal(expectsImplementationMutation("worker", "Implement the fix and return findings."), true);
+test("implementation verbs win over investigative wording", () => {
+	assert.equal(expectsImplementationMutation("implementation-agent", "Investigate why the agent did not edit files and fix it"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Research the current code path and patch the bug"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Fix the bug where no edits were made"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Implement the fix and return findings."), true);
 });
 
-test("worker edit intent covers common docs, config, and source tasks", () => {
-	assert.equal(expectsImplementationMutation("worker", "Update README to mention the native tool"), true);
-	assert.equal(expectsImplementationMutation("worker", "Remove share functionality and all Vercel references"), true);
-	assert.equal(expectsImplementationMutation("worker", "Replace the registered command with a render tool"), true);
-	assert.equal(expectsImplementationMutation("worker", "Create completion-guard.ts"), true);
-	assert.equal(expectsImplementationMutation("worker", "Add tests for the completion guard"), true);
-	assert.equal(expectsImplementationMutation("worker", "Implement the approved fixes. Do not edit files outside this repo."), true);
-	assert.equal(expectsImplementationMutation("worker", "Implement the fix. Do not edit unrelated files."), true);
+test("edit intent covers common docs, config, and source tasks", () => {
+	assert.equal(expectsImplementationMutation("implementation-agent", "Update README to mention the native tool"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Remove share functionality and all Vercel references"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Replace the registered command with a render tool"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Create completion-guard.ts"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Add tests for the completion guard"), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Implement the approved fixes. Do not edit files outside this repo."), true);
+	assert.equal(expectsImplementationMutation("implementation-agent", "Implement the fix. Do not edit unrelated files."), true);
 });
 
 test("edit and write tool calls count as mutation attempts", () => {

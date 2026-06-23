@@ -70,13 +70,10 @@ function inferLevel(input: {
 	dynamic?: boolean;
 	dynamicGroup?: boolean;
 }): { level: Exclude<AcceptanceLevel, "auto">; reasons: string[]; criteria: string[]; evidence: AcceptanceEvidenceKind[]; review?: { agent?: string; required?: boolean } } {
-	const agent = input.agentName.toLowerCase();
 	const task = input.task?.toLowerCase() ?? "";
 	const reasons: string[] = [];
-	const readOnlyAgent = /\b(?:reviewer|scout|context-builder|researcher|analyst)\b/.test(agent);
 	const readOnlyTask = /\b(?:read[- ]only|review[- ]only|do not edit|don't edit|no edits|without edits|inspect|summari[sz]e)\b/.test(task);
-	const writeTask = /\b(?:fix|implement|update|write|edit|modify|migrate|release|security|delete|remove|refactor|commit)\b/.test(task)
-		|| /\bworker\b/.test(agent);
+	const writeTask = /\b(?:fix|implement|update|write|edit|modify|migrate|release|security|delete|remove|refactor|commit)\b/.test(task);
 	const risky = Boolean(input.async && writeTask)
 		|| Boolean(input.dynamic)
 		|| Boolean(input.dynamicGroup)
@@ -90,11 +87,11 @@ function inferLevel(input: {
 			reasons,
 			criteria: ["Implement the requested change without widening scope", "Return evidence sufficient for an independent acceptance review"],
 			evidence: requiredEvidenceForLevel("reviewed"),
-			review: { agent: "reviewer", required: true },
+			review: { required: true },
 		};
 	}
 	if (writeTask && !readOnlyTask) {
-		reasons.push("write-capable worker/task");
+		reasons.push("write-capable task");
 		return {
 			level: "checked",
 			reasons,
@@ -102,8 +99,8 @@ function inferLevel(input: {
 			evidence: requiredEvidenceForLevel("checked"),
 		};
 	}
-	if (readOnlyAgent || readOnlyTask) {
-		reasons.push(readOnlyAgent ? "read-only/reviewer-style agent" : "read-only task wording");
+	if (readOnlyTask) {
+		reasons.push("read-only task wording");
 		return {
 			level: "attested",
 			reasons,

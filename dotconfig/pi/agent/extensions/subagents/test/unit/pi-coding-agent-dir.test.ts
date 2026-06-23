@@ -87,13 +87,7 @@ description: Env chain
 
 Inspect env.
 `);
-		writeFile(settingsPath, JSON.stringify({
-			subagents: {
-				agentOverrides: {
-					worker: { systemPrompt: "Use env-rooted settings." },
-				},
-			},
-		}, null, 2));
+		writeFile(settingsPath, JSON.stringify({ subagents: {} }, null, 2));
 
 		const discovered = discoverAgentsAll(cwd);
 		assert.equal(discovered.userDir, path.join(agentDir, "agents"));
@@ -102,10 +96,7 @@ Inspect env.
 		assert.ok(discovered.user.find((agent) => agent.name === "env-agent" && agent.filePath === path.join(agentDir, "agents", "env-agent.md")));
 		assert.ok(discovered.chains.find((chain) => chain.name === "env-chain" && chain.filePath === path.join(agentDir, "chains", "env-chain.chain.md")));
 
-		const worker = discovered.builtin.find((agent) => agent.name === "worker");
-		assert.equal(worker?.systemPrompt, "Use env-rooted settings.");
-		assert.equal(worker?.override?.path, settingsPath);
-		assert.equal(worker?.override?.scope, "user");
+		assert.deepEqual(discovered.builtin, []);
 
 		const createdName = "created-env-agent";
 		const created = handleCreate(

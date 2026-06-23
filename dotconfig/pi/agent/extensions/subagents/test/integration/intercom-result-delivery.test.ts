@@ -152,6 +152,7 @@ describe("intercom result delivery cutover", { skip: !available ? "executor not 
 			},
 			state,
 			config: {
+				autoPromoteSupervisorRunsToAsync: false,
 				intercomBridge: { mode: options.bridgeMode ?? "always" },
 			},
 			asyncByDefault: false,

@@ -1,7 +1,7 @@
 {
   "name": "subagents",
   "version": "0.26.0",
-  "description": "Pi extension for delegating tasks to subagents with chains, parallel execution, and TUI clarification",
+  "description": "Pi extension for delegating tasks to configured subagents with chains, parallel execution, and TUI clarification",
   "author": "Nico Bailon",
   "license": "MIT",
   "type": "module",
@@ -28,7 +28,6 @@
   "files": [
     "src/**/*.ts",
     "*.mjs",
-    "agents/",
     "skills/**/*",
     "prompts/**/*",
     "README.md",

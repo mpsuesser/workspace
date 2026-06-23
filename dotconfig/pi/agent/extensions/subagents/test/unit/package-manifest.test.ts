@@ -50,6 +50,12 @@ test("old pi package scope is not used by source or tests", () => {
 	}
 });
 
+test("package manifest does not ship bundled agents", () => {
+	const packageJson = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.json"), "utf-8"));
+	assert.equal(fs.existsSync(path.join(projectRoot, "agents")), false);
+	assert.equal((packageJson.files ?? []).includes("agents/"), false);
+});
+
 test("Pi package resolution stays export-map safe", () => {
 	for (const file of [...collectTsFiles(path.join(projectRoot, "src")), ...collectTsFiles(path.join(projectRoot, "test"))]) {
 		const source = fs.readFileSync(file, "utf-8");
