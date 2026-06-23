@@ -71,150 +71,250 @@
   "workbench.colorCustomizations": {},
   "evenBetterToml.formatter.alignComments": true,
   "evenBetterToml.formatter.alignEntries": true,
+  // ---------------------------------------------------------------------------
+  // VSCodeVim - ported from ~/repos/workspace/dotconfig/nvim
+  // ---------------------------------------------------------------------------
   "vim.cursorStylePerMode.insert": "line",
   "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.visualline": "underline",
-  "vim.cursorStylePerMode.visualblock": "underline",
-  "vim.cursorStylePerMode.visual": "underline",
+  "vim.cursorStylePerMode.visual": "line-thin",
+  "vim.cursorStylePerMode.visualline": "line-thin",
+  "vim.cursorStylePerMode.visualblock": "line-thin",
   "vim.cursorStylePerMode.replace": "block",
 
-  // Use system clipboard (matches Helix default-yank-register = '+')
+  // Match nvim options.lua as closely as VSCodeVim allows.
   "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
+  "vim.timeout": 400,
+  "vim.report": 9999,
+  "vim.textwidth": 0,
+  "vim.showmodename": false,
+  "vim.whichwrap": "b,s,h,l,<,>,[,]",
+  "vim.easymotion": true,
+  "vim.easymotionKeys": "qweasdrf",
+  "vim.surround": true,
+  "vim.replaceWithRegister": true,
+  "vim.leader": "<space>",
 
   // ---------------------------------------------------------------------------
-  // NORMAL MODE - WASD Navigation (matching Helix config)
+  // NORMAL MODE - Movement, editing, navigation, and leaders
   // ---------------------------------------------------------------------------
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Basic WASD movement (d handled via vim.handleKeys + keybindings.json)
-    { "before": ["w"], "commands": ["cursorUp"] },
-    { "before": ["s"], "commands": ["cursorDown"] },
+    // WASD movement on wrapped/visual lines.
+    { "before": ["w"], "commands": [{ "command": "cursorMove", "args": { "to": "up", "by": "wrappedLine", "value": 1 } }] },
+    { "before": ["s"], "commands": [{ "command": "cursorMove", "args": { "to": "down", "by": "wrappedLine", "value": 1 } }] },
     { "before": ["a"], "commands": ["cursorLeft"] },
+    { "before": ["d"], "commands": ["cursorRight"] },
+    { "before": ["<left>"], "commands": ["cursorLeft"] },
+    { "before": ["<right>"], "commands": ["cursorRight"] },
+    { "before": ["W"], "commands": [{ "command": "cursorMove", "args": { "to": "up", "by": "wrappedLine", "value": 5 } }] },
+    { "before": ["S"], "commands": [{ "command": "cursorMove", "args": { "to": "down", "by": "wrappedLine", "value": 5 } }] },
+    { "before": ["A"], "after": ["0"] },
+    { "before": ["D"], "commands": ["cursorEnd"] },
 
-    // Shift+WASD - 5 lines / line start (D handled via keybindings.json)
-    { "before": ["W"], "after": ["5", "k"] }, // move up 5 lines
-    { "before": ["S"], "after": ["5", "j"] }, // move down 5 lines
-    { "before": ["A"], "after": ["0"] }, // goto line start
-
-    // Mode switching
-    { "before": ["q"], "after": ["i"] }, // enter insert mode
-    { "before": ["r"], "after": ["v"] }, // enter visual mode
-    { "before": ["v"], "after": ["v"] }, // enter visual mode (alternate)
-
-    // Open line below/above (same as Vim default)
+    // Mode switching and open-line commands.
+    { "before": ["q"], "after": ["i"] },
     { "before": ["o"], "after": ["o"] },
     { "before": ["O"], "after": ["O"] },
+    { "before": ["r"], "after": ["v"] },
+    { "before": ["v"], "after": ["v"] },
 
-    // Edit/Change operations (delete without yank, enter insert)
-    { "before": ["e"], "after": ["\"", "_", "s"] }, // substitute char (no yank) + insert mode
+    // Editing grammar.
+    { "before": ["e"], "after": ["\"", "_", "s"] },
+    { "before": ["c"], "after": ["y", "l"] },
+    { "before": ["x"], "after": ["v", "i", "b"] },
+    { "before": ["u"], "after": ["a", "q", "u"] },
+    { "before": ["k"], "after": ["u"] },
+    { "before": ["K"], "after": ["<C-r>"] },
+    { "before": ["{"], "after": ["v", "i", "b"] },
+    { "before": ["}"], "after": ["v", "a", "b"] },
+    { "before": ["Q"], "after": ["\"", "_", "d", "d"] },
+    { "before": ["R"], "after": ["y", "y"] },
+    { "before": ["X"], "after": ["d", "d"] },
+    { "before": ["p"], "after": ["p"] },
+    { "before": ["E"], "after": ["\"", "_", "x", "P"] },
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
 
-    // Yank/Copy
-    { "before": ["c"], "after": ["y"] }, // yank
+    // Navigation and search.
+    { "before": ["g", "g"], "after": ["g", "g"] },
+    { "before": ["G"], "after": ["G"] },
+    { "before": ["F"], "after": ["/"] },
+    { "before": ["f"], "after": ["<leader>", "<leader>", "w"] },
+    { "before": ["z", "R"], "commands": ["editor.unfoldAll"] },
+    { "before": ["z", "M"], "commands": ["editor.foldAll"] },
 
-    // Delete
-    { "before": ["x"], "after": ["d"] }, // delete
-
-    // Undo/Redo
-    { "before": ["k"], "after": ["u"] }, // undo
-    { "before": ["K"], "after": ["<C-r>"] }, // redo
-
-    // Insert "qu" and stay in insert mode (since q exits insert, this lets you type 'qu')
+    // Markdown bold helpers from nvim's custom b mapping.
     {
-      "before": ["u"],
-      "commands": [{ "command": "type", "args": { "text": "qu" } }]
+      "before": ["b"],
+      "commands": [
+        "editor.action.smartSelect.expand",
+        { "command": "editor.action.insertSnippet", "args": { "snippet": "**${TM_SELECTED_TEXT:${TM_CURRENT_WORD}}**" } },
+        "extension.vim_escape"
+      ]
     },
 
-    // File navigation
-    { "before": ["g", "g"], "after": ["g", "g"] }, // goto file start
-    { "before": ["G"], "after": ["G"] }, // goto file end
+    // Jump prefix (j).
+    { "before": ["j", "w"], "after": ["g", "g"] },
+    { "before": ["j", "a"], "after": ["0"] },
+    { "before": ["j", "s"], "after": ["G"] },
+    { "before": ["j", "d"], "commands": ["cursorEnd"] },
+    { "before": ["j", "l"], "commands": ["cursorEnd"] },
 
-    // Paste
-    { "before": ["E"], "after": ["p"] }, // paste (replace_selections_with_clipboard)
+    // Commenting.
+    { "before": ["<leader>", "c"], "commands": ["editor.action.commentLine"] },
+    { "before": [";", "c"], "commands": ["editor.action.commentLine"] },
 
-    // Search
-    { "before": ["F"], "after": ["/"] }, // search
+    // Space leader: save/quit and selection helpers.
+    { "before": ["<leader>", "q"], "commands": ["workbench.action.files.save", "workbench.action.closeActiveEditor"] },
+    { "before": ["<leader>", "Q"], "commands": ["workbench.action.revertAndCloseActiveEditor"] },
+    { "before": ["<leader>", "w"], "after": ["v", "i", "w"] },
+    { "before": ["<leader>", "W"], "after": ["v", "i", "W"] },
+    { "before": ["<leader>", "A"], "after": ["0"] },
+    { "before": ["<leader>", "S"], "after": ["V"] },
+    { "before": ["<leader>", "i"], "after": ["v", "i"] },
+    { "before": ["<leader>", "d"], "after": ["$", "h", "h", "h", "v", "i", "w"] },
+    { "before": ["<leader>", "e"], "after": ["v", "a", "b", "\"", "_", "c"] },
+    { "before": ["<leader>", "a"], "after": ["g", "g", "V", "G"] },
+    { "before": ["<leader>", "<space>"], "after": ["g", "g", "V", "G"] },
+    { "before": ["<leader>", "s"], "commands": ["workbench.action.toggleStatusbarVisibility"] },
+    { "before": ["<leader>", "f"], "after": ["V"] },
+    { "before": ["<leader>", "t"], "after": ["<leader>", "<leader>", "<leader>", "j"] },
 
-    // Line operations
-    { "before": ["Q"], "after": ["d", "d"] }, // delete line (extend_to_line_bounds + delete_noyank)
-    { "before": ["R"], "after": ["y", "y"] }, // yank line (extend_to_line_bounds + yank)
-    { "before": ["X"], "after": ["d", "d"] }, // cut line (extend_to_line_bounds + delete)
+    // Semicolon leader duplicates.
+    { "before": [";", "q"], "commands": ["workbench.action.files.save", "workbench.action.closeActiveEditor"] },
+    { "before": [";", "Q"], "commands": ["workbench.action.revertAndCloseActiveEditor"] },
+    { "before": [";", "w"], "after": ["v", "i", "w"] },
+    { "before": [";", "W"], "after": ["v", "i", "W"] },
+    { "before": [";", "A"], "after": ["0"] },
+    { "before": [";", "S"], "after": ["V"] },
+    { "before": [";", "i"], "after": ["v", "i"] },
+    { "before": [";", "e"], "after": ["v", "a", "b", "\"", "_", "c"] },
+    { "before": [";", "a"], "after": ["g", "g", "V", "G"] },
+    { "before": [";", "<space>"], "after": ["g", "g", "V", "G"] },
+    { "before": [";", "s"], "after": ["y", "s", "i"] },
+    { "before": [";", "f"], "after": ["V"] },
+    { "before": [";", ";"], "commands": ["workbench.actions.view.problems"] },
 
-    // Jump shortcuts (j prefix)
-    { "before": ["j", "w"], "after": ["g", "g"] }, // goto file start
-    { "before": ["j", "a"], "after": ["0"] }, // goto line start
-    { "before": ["j", "s"], "after": ["G"] }, // goto file end
-    { "before": ["j", "d"], "after": ["$"] }, // goto line end
-    { "before": ["j", "l"], "after": ["$"] }, // goto line end (alternate)
+    // Telescope / picker equivalents.
+    { "before": ["<leader>", "p"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["<leader>", "g"], "commands": ["workbench.action.findInFiles"] },
+    { "before": ["<leader>", "b"], "commands": ["workbench.action.showAllEditors"] },
+    { "before": ["<leader>", "/"], "commands": ["actions.find"] },
+    { "before": ["<leader>", "l", "d"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "s"], "commands": ["workbench.action.gotoSymbol"] },
+    { "before": [";", "p"], "commands": ["workbench.action.quickOpen"] },
+    { "before": [";", "g"], "commands": ["workbench.action.findInFiles"] },
+    { "before": [";", "b"], "commands": ["workbench.action.showAllEditors"] },
 
-    // Word selection with space prefix
-    { "before": ["<leader>", "w"], "after": ["v", "i", "w"] }, // select inner word
-    { "before": ["<leader>", "W"], "after": ["v", "i", "W"] }, // select inner WORD
-    { "before": ["<leader>", "A"], "after": ["0"] }, // goto line start
-    { "before": ["<leader>", "S"], "after": ["V"] }, // select line
-    {
-      "before": ["<leader>", "i"],
-      "commands": ["editor.action.smartSelect.shrink"]
-    }, // select inner textobject
-    { "before": ["<leader>", "a"], "after": ["g", "g", "V", "G"] }, // select all
-    { "before": ["<leader>", "space"], "after": ["g", "g", "V", "G"] }, // select all
-    { "before": ["<leader>", "f"], "after": ["V"] }, // select line (visual line mode)
+    // Explorer / diagnostics / formatting / UI extras.
+    { "before": ["<leader>", "n"], "commands": ["workbench.view.explorer"] },
+    { "before": [";", "n"], "commands": ["workbench.view.explorer"] },
+    { "before": ["<leader>", "l", "x"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "X"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "r"], "commands": ["references-view.findReferences"] },
+    { "before": ["<leader>", "l", "q"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "l"], "commands": ["workbench.actions.view.problems"] },
+    { "before": ["<leader>", "l", "f"], "commands": ["editor.action.formatDocument"] },
+    { "before": ["<leader>", "u", "h"], "commands": ["notifications.showList"] },
+    { "before": ["<leader>", "u", "l"], "commands": ["notifications.showList"] },
+    { "before": ["<leader>", "u", "d"], "commands": ["notifications.clearAll"] },
+    { "before": ["<leader>", "u", "m"], "commands": ["markdown.showPreview"] },
+    { "before": ["<leader>", "u", "z"], "commands": ["workbench.action.toggleZenMode"] },
+    { "before": ["<leader>", "u", "u"], "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"] },
+    { "before": ["<leader>", "k"], "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"] },
 
-    // Command palette
-    { "before": ["<CR>"], "commands": ["workbench.action.showCommands"] },
+    // Cursor replacements for the nvim OpenCode/pi.nvim integration maps.
+    { "before": ["<leader>", "o", "g"], "commands": ["composerMode.agent", "composer.openAsPane", "composer.focusComposer"] },
+    { "before": ["<leader>", "o", "i"], "commands": ["composer.focusComposer"] },
+    { "before": ["<leader>", "o", "I"], "commands": ["composer.createNew", "composerMode.agent", "composer.focusComposer"] },
+    { "before": ["<leader>", "o", "o"], "commands": ["composer.openChatAsEditor"] },
+    { "before": ["<leader>", "o", "t"], "commands": ["composer.focusComposer"] },
+    { "before": ["<leader>", "o", "s"], "commands": ["composer.showComposerHistory"] },
+    { "before": ["<leader>", "p", "a"], "commands": ["composerMode.agent", "composer.focusComposer"] },
+    { "before": ["<leader>", "p", "s"], "commands": ["composer.startComposerPromptFromSelection"] },
+    { "before": ["<leader>", "p", "c"], "commands": ["composer.cancelChat"] },
+    { "before": ["<leader>", "p", "l"], "commands": ["composer.showComposerHistory"] },
 
-    // Quit commands with space prefix
-    { "before": ["<leader>", "q"], "commands": [":wq"] },
-    { "before": ["<leader>", "Q"], "commands": [":q!"] }
+    // LSP/navigation equivalents.
+    { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
+    { "before": ["g", "D"], "commands": ["editor.action.revealDeclaration"] },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
+    { "before": ["g", "t"], "commands": ["editor.action.goToTypeDefinition"] },
+    { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] },
+    { "before": ["<leader>", "c", "a"], "commands": ["editor.action.quickFix"] },
+    { "before": ["<leader>", "h"], "commands": ["editor.action.showHover"] },
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+
+    // Window navigation, matching <C-w>{w,s,a,d} in nvim.
+    { "before": ["<C-w>", "w"], "commands": ["workbench.action.navigateUp"] },
+    { "before": ["<C-w>", "s"], "commands": ["workbench.action.navigateDown"] },
+    { "before": ["<C-w>", "a"], "commands": ["workbench.action.navigateLeft"] },
+    { "before": ["<C-w>", "d"], "commands": ["workbench.action.navigateRight"] }
   ],
 
   // ---------------------------------------------------------------------------
-  // VISUAL MODE - WASD Extend Selection (matching Helix select mode)
+  // VISUAL MODE - movement/selection/editing
   // ---------------------------------------------------------------------------
   "vim.visualModeKeyBindingsNonRecursive": [
-    // WASD extend selection (d handled via keybindings.json)
-    { "before": ["w"], "after": ["k"] }, // extend up
-    { "before": ["s"], "after": ["j"] }, // extend down
-    { "before": ["a"], "after": ["h"] }, // extend left
+    { "before": ["w"], "commands": [{ "command": "cursorMove", "args": { "to": "up", "by": "wrappedLine", "value": 1, "select": true } }] },
+    { "before": ["s"], "commands": [{ "command": "cursorMove", "args": { "to": "down", "by": "wrappedLine", "value": 1, "select": true } }] },
+    { "before": ["a"], "after": ["h"] },
+    { "before": ["d"], "after": ["l"] },
+    { "before": ["W"], "commands": [{ "command": "cursorMove", "args": { "to": "up", "by": "wrappedLine", "value": 5, "select": true } }] },
+    { "before": ["S"], "commands": [{ "command": "cursorMove", "args": { "to": "down", "by": "wrappedLine", "value": 5, "select": true } }] },
+    { "before": ["A"], "after": ["b"] },
+    { "before": ["D"], "after": ["e"] },
+    { "before": ["g", "l"], "after": ["$"] },
+    { "before": ["r"], "after": ["V"] },
+    { "before": ["f"], "after": ["<leader>", "<leader>", "w"] },
+    { "before": ["<leader>", "t"], "after": ["<leader>", "<leader>", "<leader>", "j"] },
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+    { "before": ["x"], "after": ["\"", "_", "d"] },
+    { "before": ["X"], "after": ["d"] },
+    { "before": ["e"], "after": ["\"", "_", "c"] },
+    { "before": ["c"], "after": ["y"] },
+    {
+      "before": ["b"],
+      "commands": [
+        { "command": "editor.action.insertSnippet", "args": { "snippet": "**${TM_SELECTED_TEXT}**" } },
+        "extension.vim_escape"
+      ]
+    },
+    { "before": ["<leader>", "c"], "commands": ["editor.action.commentLine"] },
+    { "before": [";", "c"], "commands": ["editor.action.commentLine"] }
+  ],
 
-    // Shift+WASD - 5 lines / word boundaries (D handled via keybindings.json)
-    { "before": ["W"], "after": ["5", "k"] }, // extend up 5 lines
-    { "before": ["S"], "after": ["5", "j"] }, // extend down 5 lines
-    { "before": ["A"], "after": ["b"] }, // extend to prev word start
-
-    // Line extension
-    { "before": ["r"], "after": ["$"] }, // extend to line end
-
-    // Delete/Cut
-    { "before": ["x"], "after": ["\"", "_", "d"] }, // delete no yank (black hole register)
-    { "before": ["X"], "after": ["d"] }, // delete (with yank)
-
-    // Edit/Change (delete without yank, enter insert)
-    { "before": ["e"], "after": ["\"", "_", "c"] }, // change selection (no yank) + insert mode
-
-    // Yank/Copy
-    { "before": ["c"], "after": ["y"] }
+  // Flash's operator-pending mode is approximated with VSCodeVim EasyMotion.
+  "vim.operatorPendingModeKeyBindingsNonRecursive": [
+    { "before": ["f"], "after": ["<leader>", "<leader>", "w"] },
+    { "before": ["<leader>", "t"], "after": ["<leader>", "<leader>", "<leader>", "j"] }
   ],
 
   // ---------------------------------------------------------------------------
   // INSERT MODE
   // ---------------------------------------------------------------------------
   "vim.insertModeKeyBindingsNonRecursive": [
-    // Exit insert mode with q (matching Helix) - move right to compensate for Vim's left shift
-    { "before": ["q"], "after": ["<Esc>", "l"] },
-
-    // Line navigation while in insert
-    { "before": ["<D-;>"], "after": ["<Esc>", "A"] }, // Cmd+; goto line end
-    { "before": ["<D-S-;>"], "after": ["<Esc>", "I"] } // Cmd+Shift+; goto line start
+    { "before": ["q"], "after": ["<Esc>", "l"] }
   ],
 
-  // Set leader key to space (matching Helix space prefix)
-  "vim.leader": "<space>",
-
-  // Let VS Code handle these keys directly (bypasses Vim entirely)
+  // Let native VS Code/Cursor keybindings win for Cmd-A/D tab navigation.
   "vim.handleKeys": {
-    "d": false,
-    "D": false
+    "<D-a>": false,
+    "<D-d>": false
+  },
+
+  // To improve VSCodeVim responsiveness.
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
   },
 
   // Claude Code
-  "claudeCode.preferredLocation": "panel"
+  "claudeCode.preferredLocation": "panel",
+  "window.autoDetectColorScheme": false
 }

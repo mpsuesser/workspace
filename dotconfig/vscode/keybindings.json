@@ -1,10 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
+  // Cursor / existing dotconfig shortcuts
   {
     "key": "cmd+i",
     "command": "composerMode.agent"
   },
-  // Tab navigation
   {
     "key": "cmd+a",
     "command": "workbench.action.previousEditor"
@@ -18,35 +18,74 @@
     "command": "workbench.action.closeOtherEditors"
   },
   {
-    "key": "cmd+shift+i", // Or your preferred hotkey
+    "key": "cmd+shift+i",
     "command": "workbench.action.tasks.runTask",
     "args": "Bun Format"
   },
-  // WASD navigation - d for cursor right (vim.handleKeys bypasses this to VS Code)
+
+  // nvim: <M-a>/<M-d> focus left/right pane in normal/visual/insert/terminal.
+  {
+    "key": "alt+a",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "alt+d",
+    "command": "workbench.action.navigateRight"
+  },
+
+  // nvim insert-mode line navigation: <D-;> / <D-S-;>.
+  {
+    "key": "cmd+;",
+    "command": "cursorEnd",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
+  },
+  {
+    "key": "cmd+shift+;",
+    "command": "cursorHome",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
+  },
+
+  // nvim insert-mode Option+Backspace -> delete previous word.
+  {
+    "key": "alt+backspace",
+    "command": "deleteWordLeft",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
+  },
+
+  // nvim picker/explorer feel: WASD in VS Code lists/quick open results.
+  {
+    "key": "w",
+    "command": "list.focusUp",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "s",
+    "command": "list.focusDown",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "list.collapse",
+    "when": "listFocus && !inputFocus"
+  },
   {
     "key": "d",
-    "command": "cursorRight",
-    "when": "editorTextFocus && vim.mode == 'Normal'"
+    "command": "list.select",
+    "when": "listFocus && !inputFocus"
   },
   {
-    "key": "shift+d",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "cursorEnd",
-        { "command": "vim.remap", "args": { "after": ["i"] } }
-      ]
-    },
-    "when": "editorTextFocus && vim.mode == 'Normal'"
+    "key": "q",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus && !inputFocus"
   },
   {
-    "key": "d",
-    "command": "cursorRightSelect",
-    "when": "editorTextFocus && vim.mode == 'Visual'"
+    "key": "ctrl+w",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
   },
   {
-    "key": "shift+d",
-    "command": "cursorEndSelect",
-    "when": "editorTextFocus && vim.mode == 'Visual'"
+    "key": "ctrl+s",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
   }
 ]
