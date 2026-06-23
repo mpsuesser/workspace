@@ -1,0 +1,89 @@
+matches:
+  - trigger: ";;eiC"
+    replace: |-
+      import * as Context from 'effect/Context';
+
+  - trigger: ";;eiS"
+    replace: |-
+      import * as Schema from 'effect/Schema';
+
+  - trigger: ";;eiE"
+    replace: |-
+      import * as Effect from 'effect/Effect';
+
+  - trigger: ";;eiO"
+    replace: |-
+      import * as Option from 'effect/Option';
+
+  - trigger: ";;eiM"
+    replace: |-
+      import * as Match from 'effect/Match';
+
+  - trigger: ";;eiL"
+    replace: |-
+      import * as Layer from 'effect/Layer';
+
+  - trigger: ";;eCS"
+    replace: |-
+      export class {{form1.tag}} extends Context.Service<{{form1.tag}},
+        {
+          readonly {{form1.effect}}: () => Effect.Effect<void, never, never>;
+        }>()('{{form1.tag}}') {
+          static readonly layerNoDeps: Layer.Layer<
+            {{form1.tag}},
+            never,
+            Dependency1 | Dependency2
+          > = Layer.effect(
+            {{form1.tag}},
+            Effect.gen(function*() {
+              // const dep1 = yield* Dependency1;
+              // const dep2 = yield* Dependency2;
+
+              const {{form1.effect}} = Effect.fn('{{form1.tag}}.{{form1.effect}}')(function*() {
+                // ...
+              });
+
+              return {{form1.tag}}.of({ {{form1.effect}} });
+            })
+          );
+
+          static readonly defaultLayer: Layer<
+            {{form1.tag}},
+            never,
+            never
+          > = this.layerNoDeps.pipe(
+            Layer.provide(Dependency1.defaultLayer),
+            Layer.provide(Dependency2.defaultLayer)
+          );
+        }
+    vars:
+      - name: "form1"
+        type: form
+        params:
+          layout: |-
+            tag: [[tag]]
+            effect: [[effect]]
+
+  - trigger: ";;eTE"
+    replace: |-
+      export class {{form1.errorClassName}} extends Schema.TaggedErrorClass<{{form1.errorClassName}}>()('{{form1.errorClassName}}', {
+        cause: Schema.Defect()
+      }) {}
+    vars:
+      - name: "form1"
+        type: form
+        params:
+          layout: |-
+            error class name: [[errorClassName]]
+
+  - trigger: ";;eSC"
+    replace: |-
+      export class {{form1.schemaClassName}} extends Schema.Class<{{form1.schemaClassName}}>()('{{form1.schemaClassName}}')({
+        cause: Schema.Defect()
+      }) {}
+    vars:
+      - name: "form1"
+        type: form
+        params:
+          layout: |-
+            schema class name: [[schemaClassName]]
