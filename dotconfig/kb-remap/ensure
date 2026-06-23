@@ -2,4 +2,4 @@
 
 kb-remap --reset
 
-kb-remap --map capslock:f8 --map rcommand:f9 --map roption:f9 --map '0x31:f9'
+kb-remap --map capslock:f8 --map rcommand:f9 --map roption:f9
