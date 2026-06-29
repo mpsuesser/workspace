@@ -316,5 +316,6 @@
 
   // Claude Code
   "claudeCode.preferredLocation": "panel",
-  "window.autoDetectColorScheme": false
+  "window.autoDetectColorScheme": false,
+  "vim.disableExtension": true
 }
