@@ -50,16 +50,16 @@ function formatResumeGuidance(runId: string | undefined, children: Array<{ agent
 	const knownChildren = children
 		.map((child, index) => ({ child, index }))
 		.filter(({ child }) => typeof child.agent === "string");
-	if (!runId || knownChildren.length === 0) return "Resume: unavailable; no child session file was persisted.";
+	if (!runId || knownChildren.length === 0) return "Follow-up unavailable; no child session file was persisted.";
 	const singleSessionFile = knownChildren[0]?.child.sessionFile ?? fallbackSessionFile;
 	if (children.length === 1 && knownChildren.length === 1 && hasExistingSessionFile(singleSessionFile)) {
-		return `Revive: subagent({ action: "resume", id: "${runId}", message: "..." })`;
+		return `Optional follow-up if needed: subagent({ action: "resume", id: "${runId}", message: "..." })`;
 	}
 	const childWithSession = knownChildren.find(({ child }) => hasExistingSessionFile(child.sessionFile));
 	if (childWithSession) {
-		return `Revive child: subagent({ action: "resume", id: "${runId}", index: ${childWithSession.index}, message: "..." })`;
+		return `Optional child follow-up if needed: subagent({ action: "resume", id: "${runId}", index: ${childWithSession.index}, message: "..." })`;
 	}
-	return "Resume: unavailable; no child session file was persisted.";
+	return "Follow-up unavailable; no child session file was persisted.";
 }
 
 function stepLineLabel(status: AsyncStatus, index: number): string {

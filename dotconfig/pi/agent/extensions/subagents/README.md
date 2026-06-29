@@ -298,7 +298,10 @@ blocking decisions and meaningful progress updates.
 
 Use supervisor contact only when the child is blocked on a decision or
 clarification. Do not send routine completion handoffs; normal subagent results
-already return to the parent.
+already return to the parent. When grouped intercom result delivery succeeds for
+an async run, the older compact background notification is suppressed; if grouped
+delivery is unavailable or unacknowledged, the compact notification remains as a
+fallback.
 
 ## Configuration
 

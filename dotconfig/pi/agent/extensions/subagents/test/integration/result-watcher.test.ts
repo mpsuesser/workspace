@@ -337,10 +337,11 @@ describe("result watcher", () => {
 			assert.equal(eventData.mode, "parallel");
 			assert.equal(eventData.status, "failed");
 			const message = String(eventData.message ?? "");
-			assert.match(message, /Revive child: subagent\(\{ action: "resume", id: "async-1", index: 0, message: "\.\.\." \}\)/);
+			assert.match(message, /Optional child follow-up if needed: subagent\(\{ action: "resume", id: "async-1", index: 0, message: "\.\.\." \}\)/);
 			assert.ok(message.includes(`Session: ${firstSession}`));
 			assert.equal(message.includes(missingSession), false);
-			assert.equal(emitted.some((entry) => entry.event === "subagent:async-complete"), true);
+			const completion = emitted.find((entry) => entry.event === "subagent:async-complete")?.data as { resultIntercomDelivered?: boolean } | undefined;
+			assert.equal(completion?.resultIntercomDelivered, true);
 		} finally {
 			fs.rmSync(resultsDir, { recursive: true, force: true });
 		}
@@ -636,8 +637,8 @@ describe("result watcher", () => {
 
 			const eventData = emitted.find((entry) => entry.event === "subagent:result-intercom")?.data as { message?: string } | undefined;
 			assert.ok(eventData);
-			assert.doesNotMatch(String(eventData.message ?? ""), /Revive child:/);
-			assert.match(String(eventData.message ?? ""), /Resume: unavailable; no child session file was persisted/);
+			assert.doesNotMatch(String(eventData.message ?? ""), /Optional child follow-up if needed:/);
+			assert.match(String(eventData.message ?? ""), /Follow-up unavailable; no child session file was persisted/);
 		} finally {
 			fs.rmSync(resultsDir, { recursive: true, force: true });
 		}
@@ -679,7 +680,7 @@ describe("result watcher", () => {
 					mode: "chain",
 					success: false,
 					state: "paused",
-					summary: "Paused after interrupt. Waiting for explicit next action.",
+					summary: "Paused after interrupt. No further work will run unless explicitly resumed.",
 					results: [
 						{ agent: "a", output: "Result from a", success: true, intercomTarget: "subagent-a-run-paused-1" },
 						{ agent: "b", output: "Paused after interrupt", success: false, intercomTarget: "subagent-b-run-paused-2" },
@@ -754,7 +755,8 @@ describe("result watcher", () => {
 			}
 
 			assert.equal(emitted.filter((entry) => entry.event === "subagent:result-intercom").length, 1);
-			assert.equal(emitted.some((entry) => entry.event === "subagent:async-complete"), true);
+			const completion = emitted.find((entry) => entry.event === "subagent:async-complete")?.data as { resultIntercomDelivered?: boolean } | undefined;
+			assert.equal(completion?.resultIntercomDelivered, false);
 			assert.equal(logged.some((entry) => /Subagent async grouped result intercom delivery was not acknowledged/.test(String(entry[0] ?? ""))), true);
 		} finally {
 			fs.rmSync(resultsDir, { recursive: true, force: true });

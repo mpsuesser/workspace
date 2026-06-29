@@ -374,7 +374,7 @@ function runPiStreaming(
 		registerInterrupt?.(() => {
 			if (settled) return;
 			interrupted = true;
-			if (!error) error = "Interrupted. Waiting for explicit next action.";
+			if (!error) error = "Interrupted. No further work will run unless explicitly resumed.";
 			trySignalChild(child, "SIGINT");
 			setTimeout(() => {
 				if (!settled) trySignalChild(child, "SIGTERM");
@@ -2275,7 +2275,7 @@ async function runSubagent(config: SubagentRunConfig): Promise<void> {
 			mode: resultMode,
 			success: !interrupted && results.every((r) => r.success),
 			state: interrupted ? "paused" : results.every((r) => r.success) ? "complete" : "failed",
-			summary: interrupted ? "Paused after interrupt. Waiting for explicit next action." : summary,
+			summary: interrupted ? "Paused after interrupt. No further work will run unless explicitly resumed." : summary,
 			results: results.map((r) => ({
 				agent: r.agent,
 				output: r.output,

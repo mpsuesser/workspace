@@ -88,7 +88,7 @@ describe("async run status inspection", () => {
 			assert.match(text, /Diagnosis: Async runner process 12345 exited or disappeared/);
 			assert.match(text, new RegExp(`Result: ${path.join(resultsDir, "run-stale.json").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
 			assert.match(text, /Step 1: scout failed, error: Async runner process 12345 exited or disappeared/);
-			assert.match(text, /Revive: subagent\(\{ action: "resume", id: "run-stale", message: "\.\.\." \}\)/);
+			assert.match(text, /Optional follow-up if needed: subagent\(\{ action: "resume", id: "run-stale", message: "\.\.\." \}\)/);
 			const resultJson = JSON.parse(fs.readFileSync(path.join(resultsDir, "run-stale.json"), "utf-8"));
 			assert.equal(resultJson.success, false);
 			assert.equal(resultJson.results[0].sessionFile, sessionFile);
@@ -395,7 +395,7 @@ describe("async run status inspection", () => {
 			});
 
 			const text = textContent(result);
-			assert.match(text, /Revive child: subagent\(\{ action: "resume", id: "run-multi", index: 0, message: "\.\.\." \}\)/);
+			assert.match(text, /Optional child follow-up if needed: subagent\(\{ action: "resume", id: "run-multi", index: 0, message: "\.\.\." \}\)/);
 			assert.doesNotMatch(text, /unsupported for multi-child/);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });
@@ -423,7 +423,7 @@ describe("async run status inspection", () => {
 			const result = inspectSubagentStatus({ id: "run-result-index" }, { asyncDirRoot: asyncRoot, resultsDir });
 
 			const text = textContent(result);
-			assert.match(text, /Revive child: subagent\(\{ action: "resume", id: "run-result-index", index: 1, message: "\.\.\." \}\)/);
+			assert.match(text, /Optional child follow-up if needed: subagent\(\{ action: "resume", id: "run-result-index", index: 1, message: "\.\.\." \}\)/);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });
 		}
@@ -559,8 +559,8 @@ describe("async run status inspection", () => {
 
 			const text = textContent(result);
 			assert.equal(result.isError, undefined);
-			assert.match(text, /Resume: unavailable/);
-			assert.doesNotMatch(text, /Revive:/);
+			assert.match(text, /Follow-up unavailable/);
+			assert.doesNotMatch(text, /Optional follow-up if needed:/);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });
 		}
@@ -593,7 +593,7 @@ describe("async run status inspection", () => {
 			assert.equal(result.isError, undefined);
 			assert.match(text, /State: failed/);
 			assert.match(text, /Result: /);
-			assert.match(text, /Revive: subagent\(\{ action: "resume", id: "run-result-only", message: "\.\.\." \}\)/);
+			assert.match(text, /Optional follow-up if needed: subagent\(\{ action: "resume", id: "run-result-only", message: "\.\.\." \}\)/);
 			assert.match(text, /result survived missing status/);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });

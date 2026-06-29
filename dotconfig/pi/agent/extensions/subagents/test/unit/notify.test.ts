@@ -100,7 +100,7 @@ describe("registerSubagentNotify", () => {
 			agent: "worker",
 			success: false,
 			state: "paused",
-			summary: "Paused after interrupt. Waiting for explicit next action.",
+			summary: "Paused after interrupt. No further work will run unless explicitly resumed.",
 			timestamp: 789,
 		});
 
@@ -108,10 +108,25 @@ describe("registerSubagentNotify", () => {
 		assert.deepEqual(sent[0], {
 			message: {
 				customType: "subagent-notify",
-				content: "Background task paused: **worker**\n\nPaused after interrupt. Waiting for explicit next action.",
+				content: "Background task paused: **worker**\n\nPaused after interrupt. No further work will run unless explicitly resumed.",
 				display: true,
 			},
 			options: { triggerTurn: true },
 		});
+	});
+
+	it("does not duplicate a grouped intercom result that was already delivered", () => {
+		const { events, sent } = createPi();
+
+		events.emit(SUBAGENT_ASYNC_COMPLETE_EVENT, {
+			id: "notify-intercom-delivered-1",
+			agent: "worker",
+			success: true,
+			summary: "Delivered over grouped intercom",
+			timestamp: 999,
+			resultIntercomDelivered: true,
+		});
+
+		assert.equal(sent.length, 0);
 	});
 });

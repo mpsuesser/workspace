@@ -68,7 +68,7 @@ describe("result intercom formatter", () => {
 				children: [{ agent: "worker", status: "completed", summary: "done", sessionPath }],
 			});
 
-			assert.match(payload.message, /Revive: subagent\(\{ action: "resume", id: "run-single", message: "\.\.\." \}\)/);
+			assert.match(payload.message, /Optional follow-up if needed: subagent\(\{ action: "resume", id: "run-single", message: "\.\.\." \}\)/);
 			assert.doesNotMatch(payload.message, /unsupported for multi-child/);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });
@@ -94,7 +94,7 @@ describe("result intercom formatter", () => {
 				],
 			});
 
-			assert.match(payload.message, /Revive child: subagent\(\{ action: "resume", id: "run-multi", index: 0, message: "\.\.\." \}\)/);
+			assert.match(payload.message, /Optional child follow-up if needed: subagent\(\{ action: "resume", id: "run-multi", index: 0, message: "\.\.\." \}\)/);
 			assert.doesNotMatch(payload.message, /unsupported for multi-child/);
 		} finally {
 			fs.rmSync(root, { recursive: true, force: true });
@@ -111,8 +111,8 @@ describe("result intercom formatter", () => {
 			children: [{ agent: "worker", status: "failed", summary: "failed", sessionPath: path.join(os.tmpdir(), "missing-pi-session.jsonl") }],
 		});
 
-		assert.match(payload.message, /Resume: unavailable; no child session file was persisted/);
-		assert.doesNotMatch(payload.message, /Revive:/);
+		assert.match(payload.message, /Follow-up unavailable; no child session file was persisted/);
+		assert.doesNotMatch(payload.message, /Optional follow-up if needed:/);
 	});
 
 	it("attaches compact nested children under their parent result child without route secrets", () => {

@@ -117,6 +117,23 @@ describe("async job tracker", { skip: !available ? "pi packages not available" :
 		}
 	});
 
+	it("preserves paused terminal state from async completion events", () => {
+		const asyncRoot = createTempDir("pi-async-job-tracker-paused-");
+		try {
+			const state = createState();
+			const recorder = createEventRecorder();
+			const tracker = trackerMod!.createAsyncJobTracker(recorder.pi, state as never, asyncRoot, {
+				completionRetentionMs: 1000,
+			});
+			tracker.handleStarted({ id: "run-paused", asyncDir: path.join(asyncRoot, "run-paused"), agent: "worker" });
+			tracker.handleComplete({ id: "run-paused", success: false, state: "paused" });
+
+			assert.equal(state.asyncJobs.get("run-paused")?.status, "paused");
+		} finally {
+			removeTempDir(asyncRoot);
+		}
+	});
+
 	it("uses flattened async-start agents for initial parallel group widget state", () => {
 		const asyncRoot = createTempDir("pi-async-job-tracker-");
 		try {

@@ -1868,7 +1868,7 @@ async function runParallelPath(data: ExecutionContextData, deps: ExecutorDeps): 
 		rememberForegroundRun(deps.state, { runId, mode: "parallel", cwd: effectiveCwd, results: details.results });
 		if (interrupted) {
 			return {
-				content: [{ type: "text", text: `Parallel run paused after interrupt (${interrupted.agent}). Waiting for explicit next action.` }],
+				content: [{ type: "text", text: `Parallel run paused after interrupt (${interrupted.agent}). No further work will run unless explicitly resumed.` }],
 				details,
 			};
 		}
@@ -2192,7 +2192,7 @@ async function runSinglePath(data: ExecutionContextData, deps: ExecutorDeps): Pr
 
 	if (r.interrupted) {
 		return {
-			content: [{ type: "text", text: `Run paused after interrupt (${params.agent}). Waiting for explicit next action.` }],
+			content: [{ type: "text", text: `Run paused after interrupt (${params.agent}). No further work will run unless explicitly resumed.` }],
 			details,
 		};
 	}

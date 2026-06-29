@@ -38,6 +38,7 @@ interface SubagentResult {
 	results?: ChainStepResult[];
 	taskIndex?: number;
 	totalTasks?: number;
+	resultIntercomDelivered?: boolean;
 }
 
 export default function registerSubagentNotify(pi: ExtensionAPI): void {
@@ -57,6 +58,7 @@ export default function registerSubagentNotify(pi: ExtensionAPI): void {
 
 	const handleComplete = (data: unknown) => {
 		const result = data as SubagentResult;
+		if (result.resultIntercomDelivered === true) return;
 		const now = Date.now();
 		const key = buildCompletionKey(result, "notify");
 		if (markSeenWithTtl(seen, key, now, ttlMs)) return;

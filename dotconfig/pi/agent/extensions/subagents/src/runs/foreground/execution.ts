@@ -629,7 +629,7 @@ async function runSingleAttempt(
 				progress.status = "running";
 				progress.durationMs = Date.now() - startTime;
 				result.interrupted = true;
-				result.finalOutput = "Interrupted. Waiting for explicit next action.";
+				result.finalOutput = "Interrupted. No further work will run unless explicitly resumed.";
 				progress.activityState = undefined;
 				fireUpdate();
 				trySignalChild(proc, "SIGINT");
@@ -650,7 +650,7 @@ async function runSingleAttempt(
 		result.exitCode = 0;
 		result.interrupted = true;
 		result.error = undefined;
-		result.finalOutput = result.finalOutput || "Interrupted. Waiting for explicit next action.";
+		result.finalOutput = result.finalOutput || "Interrupted. No further work will run unless explicitly resumed.";
 		result.controlEvents = allControlEvents.length ? allControlEvents : undefined;
 		progress.activityState = undefined;
 		progress.durationMs = Date.now() - startTime;
