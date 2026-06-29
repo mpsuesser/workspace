@@ -1,0 +1,13 @@
+firstchar_G() {
+  # Is the current buffer (command line) empty?
+  if [[ -z "$BUFFER" ]]; then
+    BUFFER="git status"
+    zle accept-line
+  else
+    # Behave like a normal 'G'
+    LBUFFER+="G"
+  fi
+}
+
+zle -N firstchar_G
+bindkey "G" firstchar_G
