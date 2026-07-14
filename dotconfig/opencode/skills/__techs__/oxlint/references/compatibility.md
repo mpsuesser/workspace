@@ -11,3 +11,4 @@ In this local skill copy, the full upstream compatibility matrix is not maintain
 Popular ecosystems and runtimes are supported via built-in and JS plugins.
 
 For the live matrix and the latest details, see the upstream compatibility docs in the official Oxlint project.
+

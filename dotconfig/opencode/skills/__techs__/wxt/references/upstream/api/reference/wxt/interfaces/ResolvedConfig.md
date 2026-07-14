@@ -590,3 +590,4 @@ If true, when zipping the extension, also zip the sources.
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

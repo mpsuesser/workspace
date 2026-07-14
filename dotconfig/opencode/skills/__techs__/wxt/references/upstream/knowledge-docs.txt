@@ -65,8 +65,8 @@ WXT is a [MIT-licensed](https://github.com/wxt-dev/wxt/blob/main/LICENSE) open s
 
 WXT simplifies the web extension development process by providing tools for zipping and publishing, the best-in-class dev mode, an opinionated project structure, and more. Iterate faster, develop features not build scripts, and use everything the JS ecosystem has to offer.
 
-
- And who doesn't appreciate a beautiful CLI?
+  
+ And who doesn't appreciate a beautiful CLI? 
 
 ## Who's Using WXT? [​](#who-s-using-wxt)
 
@@ -98,10 +98,10 @@ If you have never written an extension before, follow Chrome's [Hello World tuto
 
 You should also be aware of [Chrome's extension docs](https://developer.chrome.com/docs/extensions) and [Mozilla's extension docs](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions). WXT does not change how you use the extension APIs, and you'll need to refer to these docs often when using specific APIs.
 
-
+  
 ---
 
-
+  
 Alright, got a basic understanding of how web extensions are structured? Do you know how to access the extension APIs? Then continue to the [Installation page](/guide/installation.html) to create your first WXT extension.
 
 ---
@@ -115,7 +115,7 @@ Are you an LLM? You can read better optimized documentation at /guide/installati
 
 Bootstrap a new project, start from scratch, or [migrate an existing project](/guide/resources/migrate.html).
 
-* [Bootstrap Project](#bootstrap-project)
+* [Bootstrap Project](#bootstrap-project)  
    * [Demo](#demo)
 * [From Scratch](#from-scratch)
 * [Next Steps](#next-steps)
@@ -146,10 +146,10 @@ npx wxt@latest init
 :::
 
 :::info Starter Templates:
-[![TypeScript Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/typescript.svg)Vanilla](https://github.com/wxt-dev/wxt/tree/main/templates/vanilla)
-[![Vue Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/vue.svg)Vue](https://github.com/wxt-dev/wxt/tree/main/templates/vue)
-[![React Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/react.svg)React](https://github.com/wxt-dev/wxt/tree/main/templates/react)
-[![Svelte Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/svelte.svg)Svelte](https://github.com/wxt-dev/wxt/tree/main/templates/svelte)
+[![TypeScript Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/typescript.svg)Vanilla](https://github.com/wxt-dev/wxt/tree/main/templates/vanilla)  
+[![Vue Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/vue.svg)Vue](https://github.com/wxt-dev/wxt/tree/main/templates/vue)  
+[![React Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/react.svg)React](https://github.com/wxt-dev/wxt/tree/main/templates/react)  
+[![Svelte Logo](https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/main/icons/svelte.svg)Svelte](https://github.com/wxt-dev/wxt/tree/main/templates/svelte)  
 [![Solid Logo](https://www.solidjs.com/img/favicons/favicon-32x32.png)Solid](https://github.com/wxt-dev/wxt/tree/main/templates/solid)
 
 All templates use TypeScript by default. To use JavaScript, change the file extensions.
@@ -163,78 +163,78 @@ Once you've run the `dev` command, continue to [Next Steps](#next-steps)!
 
 ## From Scratch [​](#from-scratch)
 
-1. Create a new project
-:::code-group
-```sh [PNPM]
-cd my-project
-pnpm init
-```
-```sh [Bun]
-cd my-project
-bun init
-```
-```sh [NPM]
-cd my-project
-npm init
-```
-```sh [Yarn]
-cd my-project
-yarn init
-```
+1. Create a new project  
+:::code-group  
+```sh [PNPM]  
+cd my-project  
+pnpm init  
+```  
+```sh [Bun]  
+cd my-project  
+bun init  
+```  
+```sh [NPM]  
+cd my-project  
+npm init  
+```  
+```sh [Yarn]  
+cd my-project  
+yarn init  
+```  
 :::
-2. Install WXT:
-:::code-group
-```sh [PNPM]
-pnpm i -D wxt
-```
-```sh [Bun]
-bun add -D wxt
-```
-```sh [NPM]
-npm i -D wxt
-```
-```sh [Yarn]
-yarn add --dev wxt
-```
+2. Install WXT:  
+:::code-group  
+```sh [PNPM]  
+pnpm i -D wxt  
+```  
+```sh [Bun]  
+bun add -D wxt  
+```  
+```sh [NPM]  
+npm i -D wxt  
+```  
+```sh [Yarn]  
+yarn add --dev wxt  
+```  
 :::
-3. Add an entrypoint, `my-project/entrypoints/background.ts`:
-:::code-group
-```ts [ts]
-export default defineBackground(() => {
-  console.log('Hello world!');
-});
-```
+3. Add an entrypoint, `my-project/entrypoints/background.ts`:  
+:::code-group  
+```ts [ts]  
+export default defineBackground(() => {  
+  console.log('Hello world!');  
+});  
+```  
 :::
-4. Add scripts to your `package.json`:
-package.json
-```json
-{
-  "scripts": {
-    "dev": "wxt",
-    "dev:firefox": "wxt -b firefox",
-    "build": "wxt build",
-    "build:firefox": "wxt build -b firefox",
-    "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
-    "postinstall": "wxt prepare"
-  }
-}
+4. Add scripts to your `package.json`:  
+package.json  
+```json  
+{  
+  "scripts": {  
+    "dev": "wxt",  
+    "dev:firefox": "wxt -b firefox",  
+    "build": "wxt build",  
+    "build:firefox": "wxt build -b firefox",  
+    "zip": "wxt zip",  
+    "zip:firefox": "wxt zip -b firefox",  
+    "postinstall": "wxt prepare"  
+  }  
+}  
 ```
-5. Run your extension in dev mode
-:::code-group
-```sh [PNPM]
-pnpm dev
-```
-```sh [Bun]
-bun run dev
-```
-```sh [NPM]
-npm run dev
-```
-```sh [Yarn]
-yarn dev
-```
-:::
+5. Run your extension in dev mode  
+:::code-group  
+```sh [PNPM]  
+pnpm dev  
+```  
+```sh [Bun]  
+bun run dev  
+```  
+```sh [NPM]  
+npm run dev  
+```  
+```sh [Yarn]  
+yarn dev  
+```  
+:::  
 WXT will automatically open a browser window with your extension installed.
 
 ## Next Steps [​](#next-steps)
@@ -428,13 +428,13 @@ Instead, use a directory for that entrypoint:
 
 ```html
 📂 entrypoints/
-   📄 popup.html
-   📄 popup.ts
-   📄 popup.css
-   📂 popup/
-      📄 index.html
-      📄 main.ts
-      📄 style.css
+   📄 popup.html 
+   📄 popup.ts 
+   📄 popup.css 
+   📂 popup/ 
+      📄 index.html 
+      📄 main.ts 
+      📄 style.css 
 ```
 :::
 
@@ -446,19 +446,19 @@ Entrypoints must be zero or one levels deep for WXT to discover and build them:
 
 ```html
 📂 entrypoints/
-   📂 youtube/
-       📂 content/
-          📄 index.ts
-          📄 ...
-       📂 injected/
-          📄 index.ts
-          📄 ...
-   📂 youtube.content/
-      📄 index.ts
-      📄 ...
-   📂 youtube-injected/
-      📄 index.ts
-      📄 ...
+   📂 youtube/ 
+       📂 content/ 
+          📄 index.ts 
+          📄 ... 
+       📂 injected/ 
+          📄 index.ts 
+          📄 ... 
+   📂 youtube.content/ 
+      📄 index.ts 
+      📄 ... 
+   📂 youtube-injected/ 
+      📄 index.ts 
+      📄 ... 
 ```
 
 ## Unlisted Entrypoints [​](#unlisted-entrypoints)
@@ -560,14 +560,14 @@ For MV2, the background is added as a script to the background page. For MV3, th
 When defining your background entrypoint, keep in mind that WXT will import this file in a NodeJS environment during the build process. That means you cannot place any runtime code outside the `main` function.
 
 ```ts
-browser.action.onClicked.addListener(() => {
+browser.action.onClicked.addListener(() => { 
   // ...
-});
+}); 
 
 export default defineBackground(() => {
-  browser.action.onClicked.addListener(() => {
+  browser.action.onClicked.addListener(() => { 
     // ...
-  });
+  }); 
 });
 ```
 
@@ -644,13 +644,13 @@ export default defineContentScript({
 When defining content script entrypoints, keep in mind that WXT will import this file in a NodeJS environment during the build process. That means you cannot place any runtime code outside the `main` function.
 
 ```ts
-const container = document.createElement('div');
-document.body.append(container);
+const container = document.createElement('div'); 
+document.body.append(container); 
 
 export default defineContentScript({
   main: function () {
-    const container = document.createElement('div');
-    document.body.append(container);
+    const container = document.createElement('div'); 
+    document.body.append(container); 
   },
 });
 ```
@@ -1001,14 +1001,14 @@ You are responsible for loading/running these scripts where needed. If necessary
 When defining an unlisted script, keep in mind that WXT will import this file in a NodeJS environment during the build process. That means you cannot place any runtime code outside the `main` function.
 
 ```ts
-document.querySelectorAll('a').forEach((anchor) => {
+document.querySelectorAll('a').forEach((anchor) => { 
   // ...
-});
+}); 
 
 export default defineUnlistedScript(() => {
-  document.querySelectorAll('a').forEach((anchor) => {
+  document.querySelectorAll('a').forEach((anchor) => { 
     // ...
-  });
+  }); 
 });
 ```
 
@@ -1316,13 +1316,13 @@ To generate a manifest where a UI appears after clicking the icon, just create a
 If you want to use the `activeTab` permission or the `browser.action.onClicked` event, but don't want to show a popup:
 
 1. Delete the [Popup entrypoint](/guide/essentials/entrypoints.html#popup) if it exists
-2. Add the `action` key to your manifest:
-```ts
-export default defineConfig({
-  manifest: {
-    action: {},
-  },
-});
+2. Add the `action` key to your manifest:  
+```ts  
+export default defineConfig({  
+  manifest: {  
+    action: {},  
+  },  
+});  
 ```
 
 Same as an action with a popup, WXT will fallback on using `browser_action` for MV2\. To use a `page_action` instead, add that key as well:
@@ -1353,13 +1353,13 @@ During development, WXT uses [web-ext by Mozilla](https://www.npmjs.com/package/
 
 You can configure browser startup in 3 places:
 
-1. `<rootDir>/web-ext.config.ts`: Ignored from version control, this file lets you configure your own options for a specific project without affecting other developers
-web-ext.config.ts
-```ts
-import { defineWebExtConfig } from 'wxt';
-export default defineWebExtConfig({
-  // ...
-});
+1. `<rootDir>/web-ext.config.ts`: Ignored from version control, this file lets you configure your own options for a specific project without affecting other developers  
+web-ext.config.ts  
+```ts  
+import { defineWebExtConfig } from 'wxt';  
+export default defineWebExtConfig({  
+  // ...  
+});  
 ```
 2. `<rootDir>/wxt.config.ts`: Via the [webExt config](/api/reference/wxt/interfaces/InlineConfig.html#webext), included in version control
 3. `$HOME/web-ext.config.ts`: Provide default values for all WXT projects on your computer
@@ -1513,7 +1513,7 @@ Add this command to your `postinstall` script so your editor has everything it n
 // package.json
 {
   "scripts": {
-    "postinstall": "wxt prepare",
+    "postinstall": "wxt prepare", 
   },
 }
 ```
@@ -1578,7 +1578,7 @@ Not all developers like auto-imports. To disable them, set `imports` to `false`.
 
 ```ts
 export default defineConfig({
-  imports: false,
+  imports: false, 
 });
 ```
 
@@ -1673,16 +1673,16 @@ To use environment variables in the manifest, you need to use the function synta
 ```ts
 export default defineConfig({
   modules: ['@wxt-dev/module-vue'],
-  manifest: {
-    oauth2: {
+  manifest: { 
+    oauth2: { 
       client_id: import.meta.env.WXT_APP_CLIENT_ID
-    }
-  }
-  manifest: () => ({
-    oauth2: {
+    } 
+  } 
+  manifest: () => ({ 
+    oauth2: { 
       client_id: import.meta.env.WXT_APP_CLIENT_ID
-    }
-  }),
+    } 
+  }), 
 });
 ```
 
@@ -2010,16 +2010,16 @@ To see the order for your project, run `wxt prepare --debug` flag and search for
 
 Changing execution order is simple:
 
-* Prefix your user modules with a number (lower numbers are loaded first):
-```html
-📁 modules/
-   📄 0.my-module.ts
-   📄 1.another-module.ts
+* Prefix your user modules with a number (lower numbers are loaded first):  
+```html  
+📁 modules/  
+   📄 0.my-module.ts  
+   📄 1.another-module.ts  
 ```
-* If you need to run an NPM module after user modules, just make it a user module and prefix the filename with a number!
-```ts
-// modules/2.i18n.ts
-export { default } from '@wxt-dev/i18n/module';
+* If you need to run an NPM module after user modules, just make it a user module and prefix the filename with a number!  
+```ts  
+// modules/2.i18n.ts  
+export { default } from '@wxt-dev/i18n/module';  
 ```
 
 ---
@@ -2155,7 +2155,7 @@ declare module '@wxt-dev/browser' {
 ```
 
 > For this to work, you may need to install `@wxt-dev/browser` as a direct dependency.
->
+> 
 > ```sh
 > pnpm add @wxt-dev/browser
 > ```
@@ -2181,25 +2181,25 @@ The fix is simple, just move your API usage into the entrypoint's main function:
 ```ts [background.ts]
 browser.action.onClicked.addListener(() => {
   /* ... */
-});
+}); 
 
 export default defineBackground(() => {
   browser.action.onClicked.addListener(() => {
     /* ... */
-  });
+  }); 
 });
 ```
 
 ```ts [content.ts]
 browser.runtime.onMessage.addListener(() => {
   /* ... */
-});
+}); 
 
 export default defineContentScript({
   main() {
     browser.runtime.onMessage.addListener(() => {
       /* ... */
-    });
+    }); 
   },
 });
 ```
@@ -2207,12 +2207,12 @@ export default defineContentScript({
 ```ts [unlisted.ts]
 browser.runtime.onMessage.addListener(() => {
   /* ... */
-});
+}); 
 
 export default defineUnlistedScript(() => {
   browser.runtime.onMessage.addListener(() => {
     /* ... */
-  });
+  }); 
 });
 ```
 
@@ -2480,28 +2480,28 @@ Every entrypoint can be included or excluded when targeting specific browsers vi
 
 Here are some examples:
 
-* Content script only built when targeting `firefox`:
-```ts
-export default defineContentScript({
-  include: ['firefox'],
-  main(ctx) {
-    // ...
-  },
-});
+* Content script only built when targeting `firefox`:  
+```ts  
+export default defineContentScript({  
+  include: ['firefox'],  
+  main(ctx) {  
+    // ...  
+  },  
+});  
 ```
-* HTML file only built for all targets other than `chrome`:
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="manifest.exclude" content="['chrome', ...]" />
-  </head>
-  <body>
-    <!-- ... -->
-  </body>
-</html>
+* HTML file only built for all targets other than `chrome`:  
+```html  
+<!doctype html>  
+<html lang="en">  
+  <head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <meta name="manifest.exclude" content="['chrome', ...]" />  
+  </head>  
+  <body>  
+    <!-- ... -->  
+  </body>  
+</html>  
 ```
 
 Alternatively, you can use the [filterEntrypoints config](/api/reference/wxt/interfaces/InlineConfig.html#filterentrypoints) to list all the entrypoints you want to build.
@@ -2586,21 +2586,21 @@ export default defineContentScript({
 To create a standalone content script that only includes a CSS file:
 
 1. Create the CSS file: `entrypoints/example.content.css`
-2. Use the `build:manifestGenerated` hook to add the content script to the manifest:
-wxt.config.ts
-```ts
-export default defineConfig({
-  hooks: {
-    'build:manifestGenerated': (wxt, manifest) => {
-      manifest.content_scripts ??= [];
-      manifest.content_scripts.push({
-        // Build extension once to see where your CSS get's written to
-        css: ['content-scripts/example.css'],
-        matches: ['*://*/*'],
-      });
-    },
-  },
-});
+2. Use the `build:manifestGenerated` hook to add the content script to the manifest:  
+wxt.config.ts  
+```ts  
+export default defineConfig({  
+  hooks: {  
+    'build:manifestGenerated': (wxt, manifest) => {  
+      manifest.content_scripts ??= [];  
+      manifest.content_scripts.push({  
+        // Build extension once to see where your CSS get's written to  
+        css: ['content-scripts/example.css'],  
+        matches: ['*://*/*'],  
+      });  
+    },  
+  },  
+});  
 ```
 
 ## UI [​](#ui)
@@ -2966,54 +2966,54 @@ If you don't need to run your UI in the same frame as the content script, you ca
 
 WXT provides a helper function, [createIframeUi](/api/reference/wxt/utils/content-script-ui/iframe/functions/createIframeUi.html), which simplifies setting up the IFrame.
 
-1. Create an HTML page that will be loaded into your IFrame:
-```html
-<!-- entrypoints/example-iframe.html -->
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Content Script IFrame</title>
-  </head>
-  <body>
-    <!-- ... -->
-  </body>
-</html>
+1. Create an HTML page that will be loaded into your IFrame:  
+```html  
+<!-- entrypoints/example-iframe.html -->  
+<!doctype html>  
+<html lang="en">  
+  <head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>Your Content Script IFrame</title>  
+  </head>  
+  <body>  
+    <!-- ... -->  
+  </body>  
+</html>  
 ```
-2. Add the page to the manifest's `web_accessible_resources`:
-wxt.config.ts
-```ts
-export default defineConfig({
-  manifest: {
-    web_accessible_resources: [
-      {
-        resources: ['example-iframe.html'],
-        matches: [...],
-      },
-    ],
-  },
-});
+2. Add the page to the manifest's `web_accessible_resources`:  
+wxt.config.ts  
+```ts  
+export default defineConfig({  
+  manifest: {  
+    web_accessible_resources: [  
+      {  
+        resources: ['example-iframe.html'],  
+        matches: [...],  
+      },  
+    ],  
+  },  
+});  
 ```
-3. Create and mount the IFrame:
-```ts
-export default defineContentScript({
-  matches: ['<all_urls>'],
-  main(ctx) {
-    // Define the UI
-    const ui = createIframeUi(ctx, {
-      page: '/example-iframe.html',
-      position: 'inline',
-      anchor: 'body',
-      onMount: (wrapper, iframe) => {
-        // Add styles to the iframe like width
-        iframe.width = '123';
-      },
-    });
-    // Show UI to user
-    ui.mount();
-  },
-});
+3. Create and mount the IFrame:  
+```ts  
+export default defineContentScript({  
+  matches: ['<all_urls>'],  
+  main(ctx) {  
+    // Define the UI  
+    const ui = createIframeUi(ctx, {  
+      page: '/example-iframe.html',  
+      position: 'inline',  
+      anchor: 'body',  
+      onMount: (wrapper, iframe) => {  
+        // Add styles to the iframe like width  
+        iframe.width = '123';  
+      },  
+    });  
+    // Show UI to user  
+    ui.mount();  
+  },  
+});  
 ```
 
 See the [API Reference](/api/reference/wxt/utils/content-script-ui/iframe/functions/createIframeUi.html) for the complete list of options.
@@ -3257,8 +3257,8 @@ You can use the vanilla APIs (see docs above), use [WXT's built-in storage API](
 
 1. [wxt/utils/storage](/storage.html) (recommended): WXT ships with its own wrapper around the vanilla storage APIs that simplifies common use cases
 2. DIY: If you're migrating to WXT and already have a storage wrapper, keep using it. In the future, if you want to delete that code, you can use one of these alternatives, but there's no reason to replace working code during a migration.
-3. Any other NPM package: [There are lots of wrappers around the storage API](https://www.npmjs.com/search?q=chrome%20storage), you can find one you like. Here's some popular ones:
-   * [webext-storage](https://www.npmjs.com/package/webext-storage) \- A more usable typed storage API for Web Extensions
+3. Any other NPM package: [There are lots of wrappers around the storage API](https://www.npmjs.com/search?q=chrome%20storage), you can find one you like. Here's some popular ones:  
+   * [webext-storage](https://www.npmjs.com/package/webext-storage) \- A more usable typed storage API for Web Extensions  
    * [@webext-core/storage](https://www.npmjs.com/package/@webext-core/storage) \- A type-safe, localStorage-esque wrapper around the web extension storage APIs
 
 ---
@@ -3304,37 +3304,37 @@ This page discusses how to setup internationalization using the vanilla `browser
 
 ## Usage [​](#usage)
 
-1. Add `default_locale` to your manifest:
-```ts
-export default defineConfig({
-  manifest: {
-    default_locale: 'en',
-  },
-});
+1. Add `default_locale` to your manifest:  
+```ts  
+export default defineConfig({  
+  manifest: {  
+    default_locale: 'en',  
+  },  
+});  
 ```
-2. Create `messages.json` files in the `public/` directory:
-```html
-📂 {rootDir}/
-   📂 public/
-      📂 _locales/
-         📂 en/
-            📄 messages.json
-         📂 de/
-            📄 messages.json
-         📂 ko/
-            📄 messages.json
+2. Create `messages.json` files in the `public/` directory:  
+```html  
+📂 {rootDir}/  
+   📂 public/  
+      📂 _locales/  
+         📂 en/  
+            📄 messages.json  
+         📂 de/  
+            📄 messages.json  
+         📂 ko/  
+            📄 messages.json  
+```  
+```jsonc  
+// public/_locales/en/messages.json  
+{  
+  "helloWorld": {  
+    "message": "Hello world!",  
+  },  
+}  
 ```
-```jsonc
-// public/_locales/en/messages.json
-{
-  "helloWorld": {
-    "message": "Hello world!",
-  },
-}
-```
-3. Get the translation:
-```ts
-browser.i18n.getMessage('helloWorld');
+3. Get the translation:  
+```ts  
+browser.i18n.getMessage('helloWorld');  
 ```
 4. _Optional_: Add translations for extension name and description:
 
@@ -3491,8 +3491,8 @@ WXT provides a "module system" that lets you run code at different steps in the 
 * [Installing a Module](#installing-a-module)
 * [Module Options](#module-options)
 * [Execution Order](#execution-order)
-* [Writing Modules](#writing-modules)
-   * [Recipes](#recipes)
+* [Writing Modules](#writing-modules)  
+   * [Recipes](#recipes)  
    * [Example Modules](#example-modules)
 
 ## Installing a Module [​](#installing-a-module)
@@ -3974,8 +3974,8 @@ Your source code should always be written as ESM. However, you have some control
 Vite only supports bundling JS from HTML pages as ESM. Ensure you have added `type="module"` to your `<script>` tags:
 
 ```html
-<script src="./main.ts"></script>
-<script src="./main.ts" type="module"></script>
+<script src="./main.ts"></script> 
+<script src="./main.ts" type="module"></script> 
 ```
 
 ## Background ≥0.16.0 [​](#background)
@@ -3984,7 +3984,7 @@ By default, your background will be bundled into a single file as IIFE. You can 
 
 ```ts
 export default defineBackground({
-  type: 'module',
+  type: 'module', 
   main() {
     // ...
   },
@@ -4051,8 +4051,8 @@ Are you an LLM? You can read better optimized documentation at /guide/essentials
 
 # Unit Testing [​](#unit-testing)
 
-* [Vitest](#vitest)
-   * [Example Tests](#example-tests)
+* [Vitest](#vitest)  
+   * [Example Tests](#example-tests)  
    * [Mocking WXT APIs](#mocking-wxt-apis)
 * [Other Testing Frameworks](#other-testing-frameworks)
 
@@ -4560,104 +4560,104 @@ See <https://wxt.dev/guide/essentials/config/browser-startup.html#persist-data>
 
 This is usually caused by one of two things (or both) when using `createShadowRootUi`:
 
-1. Styles are added outside the `ShadowRoot`
-:::details
-Some component libraries manually add CSS to the page by adding a `<style>` or `<link>` element. They place this element in the document's `<head>` by default. This causes your styles to be placed outside the `ShadowRoot` and it's isolation blocks the styles from being applied to your UI.
-When a library does this, **you need to tell the library where to put its styles**. Here's the documentation for a few popular component libraries:
-* Ant Design: [StyleProvider](https://ant.design/docs/react/compatible-style#shadow-dom-usage)
-* Mantine: [MantineProvider#getRootElement and MantineProvider#cssVariablesSelector](https://mantine.dev/theming/mantine-provider/)
-> If your library isn't listed above, try searching it's docs/issues for "shadow root", "shadow dom", or "css container". Not all libraries support shadow DOMs, you may have to open an issue to request this feature.
-Here's an example of configuring Antd's styles:
-```tsx
-import { StyleProvider } from '@ant-design/cssinjs';
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-const ui = await create`ShadowRoot`Ui(ctx, {
-  // ...
-  onMount: (container, shadow) => {
-    const cssContainer = shadow.querySelector('head')!;
-    const root = ReactDOM.createRoot(container);
-    root.render(
-      <StyleProvider container={cssContainer}>
-        <App />
-      </StyleProvider>,
-    );
-    return root;
-  },
-});
-```
+1. Styles are added outside the `ShadowRoot`  
+:::details  
+Some component libraries manually add CSS to the page by adding a `<style>` or `<link>` element. They place this element in the document's `<head>` by default. This causes your styles to be placed outside the `ShadowRoot` and it's isolation blocks the styles from being applied to your UI.  
+When a library does this, **you need to tell the library where to put its styles**. Here's the documentation for a few popular component libraries:  
+* Ant Design: [StyleProvider](https://ant.design/docs/react/compatible-style#shadow-dom-usage)  
+* Mantine: [MantineProvider#getRootElement and MantineProvider#cssVariablesSelector](https://mantine.dev/theming/mantine-provider/)  
+> If your library isn't listed above, try searching it's docs/issues for "shadow root", "shadow dom", or "css container". Not all libraries support shadow DOMs, you may have to open an issue to request this feature.  
+Here's an example of configuring Antd's styles:  
+```tsx  
+import { StyleProvider } from '@ant-design/cssinjs';  
+import ReactDOM from 'react-dom/client';  
+import App from './App.tsx';  
+const ui = await create`ShadowRoot`Ui(ctx, {  
+  // ...  
+  onMount: (container, shadow) => {  
+    const cssContainer = shadow.querySelector('head')!;  
+    const root = ReactDOM.createRoot(container);  
+    root.render(  
+      <StyleProvider container={cssContainer}>  
+        <App />  
+      </StyleProvider>,  
+    );  
+    return root;  
+  },  
+});  
+```  
 :::
-2. UI elements are added outside the `ShadowRoot`
-:::details
-This is mostly caused by `Teleport` or `Portal` components that render an element somewhere else in the DOM, usually in the document's `<body>`. This is usually done for dialogs or popover components. This renders the element is outside the `ShadowRoot`, so styles are not applied to it.
-To fix this, **you need to both provide a target to your app AND pass the target to the `Teleport`/`Portal`**.
-First, store the reference to the `ShadowRoot`'s `<body>` element (not the document's `<body>`):
-:::code-group
-```ts [Vue]
-import { createApp } from 'vue';
-import App from './App.vue';
-const ui = await create`ShadowRoot`Ui(ctx, {
-  // ...
-  onMount: (container, shadow) => {
-    const teleportTarget = shadow.querySelector('body')!;
-    const app = createApp(App)
-      .provide('TeleportTarget', teleportTarget)
-      .mount(container);
-    return app;
-  },
-});
-ui.mount();
-```
-```tsx [React]
-// hooks/PortalTargetContext.ts
-import { createContext } from 'react';
-export const PortalTargetContext = createContext<HTMLElement>();
-// entrypoints/example.content.ts
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import PortalTargetContext from '~/hooks/PortalTargetContext';
-const ui = await create`ShadowRoot`Ui(ctx, {
-  // ...
-  onMount: (container, shadow) => {
-    const portalTarget = shadow.querySelector('body')!;
-    const root = ReactDOM.createRoot(container);
-    root.render(
-      <PortalTargetContext.Provider value={portalTarget}>
-        <App />
-      </PortalTargetContext.Provider>,
-    );
-    return root;
-  },
-});
-ui.mount();
-```
-:::
-Then use the reference when teleporting/portaling part of your UI to a different place in the DOM:
-:::code-group
-```vue [Vue]
-<script lang="ts" setup>
-import { Teleport } from 'vue';
-const teleportTarget = inject('TeleportTarget');
-</script>
-<template>
-  <div>
-    <Teleport :to="teleportTarget">
-      <dialog>My dialog</dialog>
-    </Teleport>
-  </div>
-</template>
-```
-```tsx [React]
-import { useContext } from 'react';
-import { createPortal } from 'react-dom';
-import PortalTargetContext from '~/hooks/PortalTargetContext';
-const MyComponent = () => {
-  const portalTarget = useContext(PortalTargetContext);
-  return <div>{createPortal(<dialog>My dialog</dialog>, portalTarget)}</div>;
-};
-```
-:::
-If you use ShadCN, [see this blog post](https://aabidk.dev/blog/building-modern-cross-browser-web-extensions-content-scripts-and-ui/#using-radixui-portals-to-move-the-dialog-to-shadow-dom).
+2. UI elements are added outside the `ShadowRoot`  
+:::details  
+This is mostly caused by `Teleport` or `Portal` components that render an element somewhere else in the DOM, usually in the document's `<body>`. This is usually done for dialogs or popover components. This renders the element is outside the `ShadowRoot`, so styles are not applied to it.  
+To fix this, **you need to both provide a target to your app AND pass the target to the `Teleport`/`Portal`**.  
+First, store the reference to the `ShadowRoot`'s `<body>` element (not the document's `<body>`):  
+:::code-group  
+```ts [Vue]  
+import { createApp } from 'vue';  
+import App from './App.vue';  
+const ui = await create`ShadowRoot`Ui(ctx, {  
+  // ...  
+  onMount: (container, shadow) => {  
+    const teleportTarget = shadow.querySelector('body')!;  
+    const app = createApp(App)  
+      .provide('TeleportTarget', teleportTarget)  
+      .mount(container);  
+    return app;  
+  },  
+});  
+ui.mount();  
+```  
+```tsx [React]  
+// hooks/PortalTargetContext.ts  
+import { createContext } from 'react';  
+export const PortalTargetContext = createContext<HTMLElement>();  
+// entrypoints/example.content.ts  
+import ReactDOM from 'react-dom/client';  
+import App from './App.tsx';  
+import PortalTargetContext from '~/hooks/PortalTargetContext';  
+const ui = await create`ShadowRoot`Ui(ctx, {  
+  // ...  
+  onMount: (container, shadow) => {  
+    const portalTarget = shadow.querySelector('body')!;  
+    const root = ReactDOM.createRoot(container);  
+    root.render(  
+      <PortalTargetContext.Provider value={portalTarget}>  
+        <App />  
+      </PortalTargetContext.Provider>,  
+    );  
+    return root;  
+  },  
+});  
+ui.mount();  
+```  
+:::  
+Then use the reference when teleporting/portaling part of your UI to a different place in the DOM:  
+:::code-group  
+```vue [Vue]  
+<script lang="ts" setup>  
+import { Teleport } from 'vue';  
+const teleportTarget = inject('TeleportTarget');  
+</script>  
+<template>  
+  <div>  
+    <Teleport :to="teleportTarget">  
+      <dialog>My dialog</dialog>  
+    </Teleport>  
+  </div>  
+</template>  
+```  
+```tsx [React]  
+import { useContext } from 'react';  
+import { createPortal } from 'react-dom';  
+import PortalTargetContext from '~/hooks/PortalTargetContext';  
+const MyComponent = () => {  
+  const portalTarget = useContext(PortalTargetContext);  
+  return <div>{createPortal(<dialog>My dialog</dialog>, portalTarget)}</div>;  
+};  
+```  
+:::  
+If you use ShadCN, [see this blog post](https://aabidk.dev/blog/building-modern-cross-browser-web-extensions-content-scripts-and-ui/#using-radixui-portals-to-move-the-dialog-to-shadow-dom).  
 :::
 
 Both issues have the same cause: the library puts something outside the `ShadowRoot`, and the `ShadowRoot`'s isolation prevents CSS from being applied to your UI.
@@ -4692,25 +4692,25 @@ The service responsible for the [Prompt API](https://developer.chrome.com/docs/a
 
 You have two options:
 
-1. Pass the `--disable-features=DisableLoadExtensionCommandLineSwitch` feature flag to enable the service in the browser WXT opens:
-```ts
-// wxt.config.ts
-export default defineConfig({
-  webExt: {
-    chromiumArgs: [
-      '--disable-features=DisableLoadExtensionCommandLineSwitch',
-    ],
-  },
-});
+1. Pass the `--disable-features=DisableLoadExtensionCommandLineSwitch` feature flag to enable the service in the browser WXT opens:  
+```ts  
+// wxt.config.ts  
+export default defineConfig({  
+  webExt: {  
+    chromiumArgs: [  
+      '--disable-features=DisableLoadExtensionCommandLineSwitch',  
+    ],  
+  },  
+});  
 ```
-2. Disable the runner and install your extension in your regular chrome profile manually:
-```ts
-// wxt.config.ts
-export default defineConfig({
-  webExt: {
-    disabled: true,
-  },
-});
+2. Disable the runner and install your extension in your regular chrome profile manually:  
+```ts  
+// wxt.config.ts  
+export default defineConfig({  
+  webExt: {  
+    disabled: true,  
+  },  
+});  
 ```
 
 ---
@@ -4751,14 +4751,14 @@ Are you an LLM? You can read better optimized documentation at /guide/resources/
 
 To upgrade WXT to the latest major version:
 
-1. Install it, skipping scripts so `wxt prepare` doesn't run - it will probably throw an error after a major version change (we'll run it later).
-```sh
-pnpm i wxt@latest --ignore-scripts
+1. Install it, skipping scripts so `wxt prepare` doesn't run - it will probably throw an error after a major version change (we'll run it later).  
+```sh  
+pnpm i wxt@latest --ignore-scripts  
 ```
 2. Follow the upgrade steps below to fix any breaking changes.
-3. Run `wxt prepare`. It should succeed and type errors will go away afterwords.
-```sh
-pnpm wxt prepare
+3. Run `wxt prepare`. It should succeed and type errors will go away afterwords.  
+```sh  
+pnpm wxt prepare  
 ```
 4. Manually test to make sure both dev mode and production builds work.
 
@@ -4792,31 +4792,31 @@ See <https://github.com/wxt-dev/wxt/issues/784>
 
 To upgrade, you have two options:
 
-1. **Stop using the polyfill**
-   * If you're already using `extensionApi: "chrome"`, then you're not using the polyfill and there is nothing to change!
-   * Otherwise there is only one change: `browser.runtime.onMessage` no longer supports using promises to return a response:
-   ```ts
-   browser.runtime.onMessage.addListener(async () => {
-     const res = await someAsyncWork();
-     return res;
-   browser.runtime.onMessage.addListener(async (_message, _sender, sendResponse) => {
-     someAsyncWork().then((res) => {
-       sendResponse(res);
-     });
-     return true;
-   });
+1. **Stop using the polyfill**  
+   * If you're already using `extensionApi: "chrome"`, then you're not using the polyfill and there is nothing to change!  
+   * Otherwise there is only one change: `browser.runtime.onMessage` no longer supports using promises to return a response:  
+   ```ts  
+   browser.runtime.onMessage.addListener(async () => {  
+     const res = await someAsyncWork();  
+     return res;  
+   browser.runtime.onMessage.addListener(async (_message, _sender, sendResponse) => {  
+     someAsyncWork().then((res) => {  
+       sendResponse(res);  
+     });  
+     return true;  
+   });  
    ```
-2. **Continue using the polyfill** \- If you want to keep using the polyfill, you can! One less thing to worry about during this upgrade.
-   * Install `webextension-polyfill` and WXT's [new polyfill module](https://www.npmjs.com/package/@wxt-dev/webextension-polyfill):
-   ```sh
-   pnpm i webextension-polyfill @wxt-dev/webextension-polyfill
-   ```
-   * Add the WXT module to your config:
-   wxt.config.ts
-   ```ts
-   export default defineConfig({
-     modules: ['@wxt-dev/webextension-polyfill'],
-   });
+2. **Continue using the polyfill** \- If you want to keep using the polyfill, you can! One less thing to worry about during this upgrade.  
+   * Install `webextension-polyfill` and WXT's [new polyfill module](https://www.npmjs.com/package/@wxt-dev/webextension-polyfill):  
+   ```sh  
+   pnpm i webextension-polyfill @wxt-dev/webextension-polyfill  
+   ```  
+   * Add the WXT module to your config:  
+   wxt.config.ts  
+   ```ts  
+   export default defineConfig({  
+     modules: ['@wxt-dev/webextension-polyfill'],  
+   });  
    ```
 
 The new `browser` object (and types) is backed by WXT's new package: [@wxt-dev/browser](https://www.npmjs.com/package/@wxt-dev/browser). This package continues WXT's mission of providing useful packages for the whole community. Just like [@wxt-dev/storage](https://www.npmjs.com/package/@wxt-dev/storage), [@wxt-dev/i18n](https://www.npmjs.com/package/@wxt-dev/i18n), [@wxt-dev/analytics](https://www.npmjs.com/package/@wxt-dev/analytics), it is designed to be easy to use in any web extension project, not just those using WXT, and provides a consistent API across all browsers and manifest versions.
@@ -4831,7 +4831,7 @@ wxt.config.ts
 
 ```ts
 export default defineConfig({
-  extensionApi: 'chrome',
+  extensionApi: 'chrome', 
 });
 ```
 
@@ -4844,11 +4844,11 @@ These types are more up-to-date with MV3 APIs, contain less bugs, are better org
 To access types, use the new `Browser` namespace from `wxt/browser`:
 
 ```ts
-import type { Runtime } from 'wxt/browser';
-import type { Browser } from 'wxt/browser';
+import type { Runtime } from 'wxt/browser'; 
+import type { Browser } from 'wxt/browser'; 
 
-function getMessageSenderUrl(sender: Runtime.MessageSender): string {
-function getMessageSenderUrl(sender: Browser.runtime.MessageSender): string {
+function getMessageSenderUrl(sender: Runtime.MessageSender): string { 
+function getMessageSenderUrl(sender: Browser.runtime.MessageSender): string { 
   // ...
 }
 ```
@@ -4862,29 +4862,29 @@ Not all type names will be the same as what `@types/webextension-polyfill` provi
 The default location for the `public/` and `modules/` directories have changed to better align with standards set by other frameworks (Nuxt, Next, Astro, etc). Now, each path is relative to the project's **root directory**, not the src directory.
 
 * If you follow the default folder structure, you don't need to make any changes.
-* If you set a custom `srcDir`, you have two options:
-   1. Move the your `public/` and `modules/` directories to the project root:
-   ```html
-    📂 {rootDir}/
-       📁 modules/
-       📁 public/
-       📂 src/
-          📁 components/
-          📁 entrypoints/
-          📁 modules/
-          📁 public/
-          📁 utils/
-          📄 app.config.ts
-       📄 wxt.config.ts
-   ```
-   2. Keep the folders in the same place and update your project config:
-   wxt.config.ts
-   ```ts
-   export default defineConfig({
-     srcDir: 'src',
-     publicDir: 'src/public',
-     modulesDir: 'src/modules',
-   });
+* If you set a custom `srcDir`, you have two options:  
+   1. Move the your `public/` and `modules/` directories to the project root:  
+   ```html  
+    📂 {rootDir}/  
+       📁 modules/  
+       📁 public/  
+       📂 src/  
+          📁 components/  
+          📁 entrypoints/  
+          📁 modules/  
+          📁 public/  
+          📁 utils/  
+          📄 app.config.ts  
+       📄 wxt.config.ts  
+   ```  
+   2. Keep the folders in the same place and update your project config:  
+   wxt.config.ts  
+   ```ts  
+   export default defineConfig({  
+     srcDir: 'src',  
+     publicDir: 'src/public',  
+     modulesDir: 'src/modules',  
+   });  
    ```
 
 ### Import Path Changes and `#imports` [​](#import-path-changes-and-imports)
@@ -4906,26 +4906,26 @@ However, you don't need to memorize or learn the new import paths! v0.20 introdu
 So to upgrade, just replace any imports from `wxt/storage`, `wxt/client`, and `wxt/sandbox` with an import to the new `#imports` module:
 
 ```ts
-import { storage } from 'wxt/storage';
-import { defineContentScript } from 'wxt/sandbox';
-import { ContentScriptContext, useAppConfig } from 'wxt/client';
-import { storage } from '#imports';
-import { defineContentScript } from '#imports';
-import { ContentScriptContext, getAppConfig } from '#imports';
+import { storage } from 'wxt/storage'; 
+import { defineContentScript } from 'wxt/sandbox'; 
+import { ContentScriptContext, useAppConfig } from 'wxt/client'; 
+import { storage } from '#imports'; 
+import { defineContentScript } from '#imports'; 
+import { ContentScriptContext, getAppConfig } from '#imports'; 
 ```
 
 You can combine the imports into a single import statement, but it's easier to just find/replace each statement.
 
 ```ts
-import { storage } from 'wxt/storage';
-import { defineContentScript } from 'wxt/sandbox';
-import { ContentScriptContext, useAppConfig } from 'wxt/client';
+import { storage } from 'wxt/storage'; 
+import { defineContentScript } from 'wxt/sandbox'; 
+import { ContentScriptContext, useAppConfig } from 'wxt/client'; 
 import {
-  storage,
-  defineContentScript,
-  ContentScriptContext,
-  getAppConfig,
-} from '#imports';
+  storage, 
+  defineContentScript, 
+  ContentScriptContext, 
+  getAppConfig, 
+} from '#imports'; 
 ```
 
 :::tip
@@ -4942,13 +4942,13 @@ This doesn't effect `rem` units. You should continue using `postcss-rem-to-px` o
 
 If you use `createShadowRootUi`:
 
-1. Remove any manual CSS overrides that reset the style of specific websites. For example:
-entrypoints/reddit.content/style.css
-```css
-body {
-  /* Override Reddit's default "hidden" visibility on elements */
-  visibility: visible !important;
-}
+1. Remove any manual CSS overrides that reset the style of specific websites. For example:  
+entrypoints/reddit.content/style.css  
+```css  
+body {  
+  /* Override Reddit's default "hidden" visibility on elements */  
+  visibility: visible !important;  
+}  
 ```
 2. Double check that your UI looks the same as before.
 
@@ -4956,7 +4956,7 @@ If you run into problems with the new behavior, you can disable it and continue 
 
 ```ts
 const ui = await createShadowRootUi({
-  inheritStyles: true,
+  inheritStyles: true, 
   // ...
 });
 ```
@@ -4975,7 +4975,7 @@ wxt.config.ts
 
 ```ts
 export default defineConfig({
-  outDirTemplate: '{{browser}}-mv{{manifestVersion}}',
+  outDirTemplate: '{{browser}}-mv{{manifestVersion}}', 
 });
 ```
 
@@ -4985,19 +4985,19 @@ If you've previously loaded the extension into your browser manually for develop
 
 ### Deprecated APIs Removed [​](#deprecated-apis-removed)
 
-* `entrypointLoader` option: WXT now uses `vite-node` for importing entrypoints during the build process.
+* `entrypointLoader` option: WXT now uses `vite-node` for importing entrypoints during the build process.  
 > This was deprecated in v0.19.0, see the [v0.19 section](#v0-18-5-rarr-v0-19-0) for migration steps.
-* `transformManifest` option: Use the `build:manifestGenerated` hook to transform the manifest instead:
-wxt.config.ts
-```ts
-export default defineConfig({
-  transformManifest(manifest) {
-  hooks: {
-    'build:manifestGenerated': (_, manifest) => {
-       // ...
-    },
-  },
-});
+* `transformManifest` option: Use the `build:manifestGenerated` hook to transform the manifest instead:  
+wxt.config.ts  
+```ts  
+export default defineConfig({  
+  transformManifest(manifest) {  
+  hooks: {  
+    'build:manifestGenerated': (_, manifest) => {  
+       // ...  
+    },  
+  },  
+});  
 ```
 
 ### New Deprecations [​](#new-deprecations)
@@ -5006,26 +5006,26 @@ export default defineConfig({
 
 To improve consistency with the `web-ext.config.ts` filename, the "runner" API and config options have been renamed. You can continue using the old names, but they have been deprecated and will be removed in a future version:
 
-1. The `runner` option has been renamed to `webExt`:
-wxt.config.ts
-```ts
-export default defineConfig({
-  runner: {
-  webExt: {
-    startUrls: ["https://wxt.dev"],
-  },
-});
+1. The `runner` option has been renamed to `webExt`:  
+wxt.config.ts  
+```ts  
+export default defineConfig({  
+  runner: {  
+  webExt: {  
+    startUrls: ["https://wxt.dev"],  
+  },  
+});  
 ```
-2. `defineRunnerConfig` has been renamed to `defineWebExtConfig`:
-web-ext.config.ts
-```ts
-import { defineRunnerConfig } from 'wxt';
-import { defineWebExtConfig } from 'wxt';
+2. `defineRunnerConfig` has been renamed to `defineWebExtConfig`:  
+web-ext.config.ts  
+```ts  
+import { defineRunnerConfig } from 'wxt';  
+import { defineWebExtConfig } from 'wxt';  
 ```
-3. The `ExtensionRunnerConfig` type has been renamed to `WebExtConfig`
-```ts
-import type { ExtensionRunnerConfig } from 'wxt';
-import type { WebExtConfig } from 'wxt';
+3. The `ExtensionRunnerConfig` type has been renamed to `WebExtConfig`  
+```ts  
+import type { ExtensionRunnerConfig } from 'wxt';  
+import type { WebExtConfig } from 'wxt';  
 ```
 
 ## v0.18.5 → v0.19.0 [​](#v0-18-5-rarr-v0-19-0)
@@ -5038,11 +5038,11 @@ wxt.config.ts
 
 ```ts
 export default defineConfig({
-  vite: () => ({
-    ssr: {
-      noExternal: ['@webext-core/messaging', '@webext-core/proxy-service'],
-    },
-  }),
+  vite: () => ({ 
+    ssr: { 
+      noExternal: ['@webext-core/messaging', '@webext-core/proxy-service'], 
+    }, 
+  }), 
 });
 ```
 
@@ -5090,7 +5090,7 @@ wxt.config.ts
 
 ```ts
 export default defineConfig({
-  entrypointLoader: 'jiti',
+  entrypointLoader: 'jiti', 
 });
 ```
 
@@ -5119,12 +5119,12 @@ If you already have `<srcDir>/modules` or `<srcDir>/Modules` directory, `wxt pre
 
 You have two options:
 
-1. \[Recommended\] Keep your files where they are and tell WXT to look in a different folder:
-wxt.config.ts
-```ts
-export default defineConfig({
-  modulesDir: 'wxt-modules', // defaults to "modules"
-});
+1. \[Recommended\] Keep your files where they are and tell WXT to look in a different folder:  
+wxt.config.ts  
+```ts  
+export default defineConfig({  
+  modulesDir: 'wxt-modules', // defaults to "modules"  
+});  
 ```
 2. Rename your `modules` directory to something else.
 
@@ -5143,9 +5143,9 @@ If you list `host_permissions` in your `wxt.config.ts`'s manifest and have relea
 If you were using `defineItem` with versioning and no default value, you will need to add `defaultValue: null` to the options and update the first type parameter:
 
 ```ts
-const item = storage.defineItem<number>("local:count", {
-const item = storage.defineItem<number | null>("local:count", {
-defaultValue: null,
+const item = storage.defineItem<number>("local:count", { 
+const item = storage.defineItem<number | null>("local:count", { 
+defaultValue: null, 
   version: ...,
   migrations: ...,
 })
@@ -5167,8 +5167,8 @@ const value: number | null = await item.getValue();
 
 ```ts
 const item = storage.defineItem<number>('local:count', { defaultValue: 0 });
-item.watch((newValue: number | null, oldValue: number | null) => {
-item.watch((newValue: number, oldValue: number) => {
+item.watch((newValue: number | null, oldValue: number | null) => { 
+item.watch((newValue: number, oldValue: number) => { 
   // ...
 });
 ```
@@ -5201,10 +5201,10 @@ export default defineConfig({
   zip: {
     ignoredSources: [
       /*...*/
-    ],
+    ], 
     excludeSources: [
       /*...*/
-    ],
+    ], 
   },
 });
 ```
@@ -5247,10 +5247,10 @@ Renamed undocumented constants for detecting the build config at runtime in [#38
 `defineContentScript` and `defineBackground` are now exported from `wxt/sandbox` instead of `wxt/client`. ([#284](https://github.com/wxt-dev/wxt/pull/284))
 
 * If you use auto-imports, no changes are required.
-* If you have disabled auto-imports, you'll need to manually update your import statements:
-```ts
-import { defineBackground, defineContentScript } from 'wxt/client';
-import { defineBackground, defineContentScript } from 'wxt/sandbox';
+* If you have disabled auto-imports, you'll need to manually update your import statements:  
+```ts  
+import { defineBackground, defineContentScript } from 'wxt/client';  
+import { defineBackground, defineContentScript } from 'wxt/sandbox';  
 ```
 
 ## v0.10.0 → v0.11.0 [​](#v0-10-0-rarr-v0-11-0)
@@ -5277,8 +5277,8 @@ To add them back to your project, add the following to your project's TSConfig:
 {
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
-    "lib": ["ESNext", "DOM", "WebWorker"]
-  }
+    "lib": ["ESNext", "DOM", "WebWorker"] 
+  } 
 }
 ```
 
@@ -5358,16 +5358,16 @@ We recommend reviewing [project structure](/guide/essentials/project-structure.h
 
 In general, you'll need to:
 
- Install `wxt`
-[Extend .wxt/tsconfig.json](/guide/essentials/config/typescript.html#typescript-configuration) in your project's `tsconfig.json`
- Update/create `package.json` scripts to use `wxt` (don't forget about `postinstall`)
- Move entrypoints into `entrypoints/` directory
- Move assets into either the `assets/` or `public/` directories
- Move `manifest.json` content into `wxt.config.ts`
- Convert custom import syntax to be compatible with Vite
- Add a default export to JS entrypoints (`defineBackground`, `defineContentScript`, or `defineUnlistedScript`)
- Use the `browser` global instead of `chrome`
- ⚠️ Compare final `manifest.json` files, making sure permissions and host permissions are unchanged
+ Install `wxt`  
+[Extend .wxt/tsconfig.json](/guide/essentials/config/typescript.html#typescript-configuration) in your project's `tsconfig.json`  
+ Update/create `package.json` scripts to use `wxt` (don't forget about `postinstall`)  
+ Move entrypoints into `entrypoints/` directory  
+ Move assets into either the `assets/` or `public/` directories  
+ Move `manifest.json` content into `wxt.config.ts`  
+ Convert custom import syntax to be compatible with Vite  
+ Add a default export to JS entrypoints (`defineBackground`, `defineContentScript`, or `defineUnlistedScript`)  
+ Use the `browser` global instead of `chrome`  
+ ⚠️ Compare final `manifest.json` files, making sure permissions and host permissions are unchanged  
 
 :::warning
 If your extension is already live on the Chrome Web Store, use [Google's update testing tool](https://github.com/GoogleChromeLabs/extension-update-testing-tool) to make sure no new permissions are being requested.
@@ -5382,8 +5382,8 @@ Here's specific steps for other popular frameworks/build tools.
 ### Plasmo [​](#plasmo)
 
 1. Install `wxt`
-2. Move entrypoints into `entrypoints/` directory
-   * For JS entrypoints, merge the named exports used to configure your JS entrypoints into WXT's default export
+2. Move entrypoints into `entrypoints/` directory  
+   * For JS entrypoints, merge the named exports used to configure your JS entrypoints into WXT's default export  
    * For HTML entrypoints, you cannot use JSX/Vue/Svelte files directly, you need to create an HTML file and manually create and mount your app. Refer to the [React](https://github.com/wxt-dev/wxt/tree/main/templates/react/entrypoints/popup), [Vue](https://github.com/wxt-dev/wxt/tree/main/templates/vue/entrypoints/popup), and [Svelte](https://github.com/wxt-dev/wxt/tree/main/templates/svelte/src/entrypoints/popup) templates as an example.
 3. Move public `assets/*` into the `public/` directory
 4. If you use CSUI, migrate to WXT's `createContentScriptUi`
@@ -5453,66 +5453,66 @@ Report analytics events from your web extension extension.
 
 ## Install With WXT [​](#install-with-wxt)
 
-1. Install the NPM package:
-```bash
-pnpm i @wxt-dev/analytics
+1. Install the NPM package:  
+```bash  
+pnpm i @wxt-dev/analytics  
 ```
-2. In your `wxt.config.ts`, add the WXT module:
-```ts
-export default defineConfig({
-  modules: ['@wxt-dev/analytics/module'],
-});
+2. In your `wxt.config.ts`, add the WXT module:  
+```ts  
+export default defineConfig({  
+  modules: ['@wxt-dev/analytics/module'],  
+});  
 ```
-3. In your `<srcDir>/app.config.ts`, add a provider:
-```ts
-// <srcDir>/app.config.ts
-import { umami } from '@wxt-dev/analytics/providers/umami';
-export default defineAppConfig({
-  analytics: {
-    debug: true,
-    providers: [
-      // ...
-    ],
-  },
-});
+3. In your `<srcDir>/app.config.ts`, add a provider:  
+```ts  
+// <srcDir>/app.config.ts  
+import { umami } from '@wxt-dev/analytics/providers/umami';  
+export default defineAppConfig({  
+  analytics: {  
+    debug: true,  
+    providers: [  
+      // ...  
+    ],  
+  },  
+});  
 ```
-4. Then use the `#analytics` module to report events:
-```ts
-import { analytics } from '#analytics';
-await analytics.track('some-event');
-await analytics.page();
-await analytics.identify('some-user-id');
-analytics.autoTrack(document.body);
+4. Then use the `#analytics` module to report events:  
+```ts  
+import { analytics } from '#analytics';  
+await analytics.track('some-event');  
+await analytics.page();  
+await analytics.identify('some-user-id');  
+analytics.autoTrack(document.body);  
 ```
 
 ## Install Without WXT [​](#install-without-wxt)
 
-1. Install the NPM package:
-```bash
-pnpm i @wxt-dev/analytics
+1. Install the NPM package:  
+```bash  
+pnpm i @wxt-dev/analytics  
 ```
-2. Create an `analytics` instance:
-```ts
-// utils/analytics.ts
-import { createAnalytics } from '@wxt-dev/analytics';
-export const analytics = createAnalytics({
-  providers: [
-    // ...
-  ],
-});
+2. Create an `analytics` instance:  
+```ts  
+// utils/analytics.ts  
+import { createAnalytics } from '@wxt-dev/analytics';  
+export const analytics = createAnalytics({  
+  providers: [  
+    // ...  
+  ],  
+});  
 ```
-3. Import your analytics module in the background to initialize the message listener:
-```ts
-// background.ts
-import './utils/analytics';
+3. Import your analytics module in the background to initialize the message listener:  
+```ts  
+// background.ts  
+import './utils/analytics';  
 ```
-4. Then use your `analytics` instance to report events:
-```ts
-import { analytics } from './utils/analytics';
-await analytics.track('some-event');
-await analytics.page();
-await analytics.identify('some-user-id');
-analytics.autoTrack(document.body);
+4. Then use your `analytics` instance to report events:  
+```ts  
+import { analytics } from './utils/analytics';  
+await analytics.track('some-event');  
+await analytics.page();  
+await analytics.identify('some-user-id');  
+analytics.autoTrack(document.body);  
 ```
 
 ## Providers [​](#providers)
@@ -5771,12 +5771,12 @@ Are you an LLM? You can read better optimized documentation at /examples.md for 
 
 # Examples
 
+  
+Filter by APIs 
 
-Filter by APIs
+Filter by Permissions 
 
-Filter by Permissions
-
-Filter by Packages
+Filter by Packages 
 
 Loading examples...
 
@@ -5815,59 +5815,59 @@ You don't have to use `wxt` to use this package - it will work in any bundler se
 
 ### With WXT [​](#with-wxt)
 
-1. Install `@wxt-dev/i18n` via your package manager:
-```sh
-pnpm i @wxt-dev/i18n
+1. Install `@wxt-dev/i18n` via your package manager:  
+```sh  
+pnpm i @wxt-dev/i18n  
 ```
-2. Add the WXT module to your `wxt.config.ts` file and setup a default locale:
-```ts
-export default defineConfig({
-  modules: ['@wxt-dev/i18n/module'],
-  manifest: {
-    default_locale: 'en',
-  },
-});
+2. Add the WXT module to your `wxt.config.ts` file and setup a default locale:  
+```ts  
+export default defineConfig({  
+  modules: ['@wxt-dev/i18n/module'],  
+  manifest: {  
+    default_locale: 'en',  
+  },  
+});  
 ```
-3. Create a localization file at `<srcDir>/locales/<default_locale>.yml` or move your existing localization files there.
-```yml
-# <srcDir>/locales/en.yml
-helloWorld: Hello world!
-```
+3. Create a localization file at `<srcDir>/locales/<default_locale>.yml` or move your existing localization files there.  
+```yml  
+# <srcDir>/locales/en.yml  
+helloWorld: Hello world!  
+```  
 > `@wxt-dev/i18n` supports the standard messages format, so if you already have localization files at `<rootDir>/public/_locale/<lang>/messages.json`, you don't need to convert them to YAML or refactor them - just move them to `<srcDir>/locales/<lang>.json` and they'll just work out of the box!
-4. To get a translation, use the auto-imported `i18n` object or import it manually:
-```ts
-import { i18n } from '#i18n';
-i18n.t('helloWorld'); // "Hello world!"
+4. To get a translation, use the auto-imported `i18n` object or import it manually:  
+```ts  
+import { i18n } from '#i18n';  
+i18n.t('helloWorld'); // "Hello world!"  
 ```
 
 And you're done! Using WXT, you get type-safety out of the box.
 
 ### Without WXT [​](#without-wxt)
 
-1. Install `@wxt-dev/i18n` via your package manager:
-```sh
-pnpm i @wxt-dev/i18n
+1. Install `@wxt-dev/i18n` via your package manager:  
+```sh  
+pnpm i @wxt-dev/i18n  
 ```
-2. Create a messages file at `_locales/<lang>/messages.json` or move your existing translations there:
-```json
-{
-  "helloWorld": {
-    "message": "Hello world!"
-  }
-}
-```
-:::unknown NOTE
-For the best DX, you should to integrate `@wxt-dev/i18n` into your build process. This enables:
-1. Plural forms
-2. Simple messages file format
-3. Type safety
-See [Build Integrations](#build-integrations) to set it up.
+2. Create a messages file at `_locales/<lang>/messages.json` or move your existing translations there:  
+```json  
+{  
+  "helloWorld": {  
+    "message": "Hello world!"  
+  }  
+}  
+```  
+:::unknown NOTE  
+For the best DX, you should to integrate `@wxt-dev/i18n` into your build process. This enables:  
+1. Plural forms  
+2. Simple messages file format  
+3. Type safety  
+See [Build Integrations](#build-integrations) to set it up.  
 :::
-3. Create the `i18n` object, export it, and use it wherever you want!
-```ts
-import { createI18n } from '@wxt-dev/i18n';
-export const i18n = createI18n();
-i18n.t('helloWorld'); // "Hello world!";
+3. Create the `i18n` object, export it, and use it wherever you want!  
+```ts  
+import { createI18n } from '@wxt-dev/i18n';  
+export const i18n = createI18n();  
+i18n.t('helloWorld'); // "Hello world!";  
 ```
 
 ## Configuration [​](#configuration)
@@ -6247,8 +6247,8 @@ You also need to have a specific version of the browser installed that supports 
 
 ## TODO [​](#todo)
 
-* \[x\] Provide install functions to allow hooking into already running instances of Chrome/Firefox
-   * \[ \] Try to setup E2E tests on Firefox with Puppeteer using this approach
+* \[x\] Provide install functions to allow hooking into already running instances of Chrome/Firefox  
+   * \[ \] Try to setup E2E tests on Firefox with Puppeteer using this approach  
    * \[ \] Try to setup E2E tests on Chrome with Puppeteer using this approach
 
 ## Options [​](#options)
@@ -6602,27 +6602,27 @@ export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV1[]>(
 ```
 
 ```ts [v2]
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid'; 
 
 type IgnoredWebsiteV1 = string;
-interface IgnoredWebsiteV2 {
-  id: string;
-  website: string;
-}
+interface IgnoredWebsiteV2 { 
+  id: string; 
+  website: string; 
+} 
 
-export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV1[]>(
-export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV2[]>(
+export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV1[]>( 
+export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV2[]>( 
   'local:ignoredWebsites',
   {
     fallback: [],
-    version: 1,
-    version: 2,
-    migrations: {
+    version: 1, 
+    version: 2, 
+    migrations: { 
       // Ran when migrating from v1 to v2
-      2: (websites: IgnoredWebsiteV1[]): IgnoredWebsiteV2[] => {
-        return websites.map((website) => ({ id: nanoid(), website }));
-      },
-    },
+      2: (websites: IgnoredWebsiteV1[]): IgnoredWebsiteV2[] => { 
+        return websites.map((website) => ({ id: nanoid(), website })); 
+      }, 
+    }, 
   },
 );
 ```
@@ -6635,28 +6635,28 @@ interface IgnoredWebsiteV2 {
   id: string;
   website: string;
 }
-interface IgnoredWebsiteV3 {
-  id: string;
-  website: string;
-  enabled: boolean;
-}
+interface IgnoredWebsiteV3 { 
+  id: string; 
+  website: string; 
+  enabled: boolean; 
+} 
 
-export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV2[]>(
-export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV3[]>(
+export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV2[]>( 
+export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV3[]>( 
   'local:ignoredWebsites',
   {
     fallback: [],
-    version: 2,
-    version: 3,
+    version: 2, 
+    version: 3, 
     migrations: {
       // Ran when migrating from v1 to v2
       2: (websites: IgnoredWebsiteV1[]): IgnoredWebsiteV2[] => {
         return websites.map((website) => ({ id: nanoid(), website }));
       },
       // Ran when migrating from v2 to v3
-      3: (websites: IgnoredWebsiteV2[]): IgnoredWebsiteV3[] => {
-        return websites.map((website) => ({ ...website, enabled: true }));
-      },
+      3: (websites: IgnoredWebsiteV2[]): IgnoredWebsiteV3[] => { 
+        return websites.map((website) => ({ ...website, enabled: true })); 
+      }, 
     },
   },
 );
@@ -6688,27 +6688,27 @@ export const ignoredWebsites = storage.defineItem<string[]>(
 ```
 
 ```ts [v2]
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid'; 
 
 // Retroactively add a type for the first version
-type IgnoredWebsiteV1 = string;
-interface IgnoredWebsiteV2 {
-  id: string;
-  website: string;
-}
+type IgnoredWebsiteV1 = string; 
+interface IgnoredWebsiteV2 { 
+  id: string; 
+  website: string; 
+} 
 
-export const ignoredWebsites = storage.defineItem<string[]>(
-export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV2[]>(
+export const ignoredWebsites = storage.defineItem<string[]>( 
+export const ignoredWebsites = storage.defineItem<IgnoredWebsiteV2[]>( 
   'local:ignoredWebsites',
   {
     fallback: [],
-    version: 2,
-    migrations: {
+    version: 2, 
+    migrations: { 
       // Ran when migrating from v1 to v2
-      2: (websites: IgnoredWebsiteV1[]): IgnoredWebsiteV2[] => {
-        return websites.map((website) => ({ id: nanoid(), website }));
-      },
-    },
+      2: (websites: IgnoredWebsiteV1[]): IgnoredWebsiteV2[] => { 
+        return websites.map((website) => ({ id: nanoid(), website })); 
+      }, 
+    }, 
   },
 );
 ```
@@ -6723,26 +6723,26 @@ As soon as `storage.defineItem` is called, WXT checks if migrations need to be r
 
 With `storage.defineItem`, there are multiple ways of defining default values:
 
-1. **`fallback`** \- Return this value from `getValue` instead of `null` if the value is missing.
-This option is great for providing default values for settings:
-```ts
-const theme = storage.defineItem('local:theme', {
-  fallback: 'dark',
-});
-const allowEditing = storage.defineItem('local:allow-editing', {
-  fallback: true,
-});
+1. **`fallback`** \- Return this value from `getValue` instead of `null` if the value is missing.  
+This option is great for providing default values for settings:  
+```ts  
+const theme = storage.defineItem('local:theme', {  
+  fallback: 'dark',  
+});  
+const allowEditing = storage.defineItem('local:allow-editing', {  
+  fallback: true,  
+});  
 ```
-2. **`init`** \- Initialize and save a value in storage if it is not already saved.
-This is great for values that need to be initialized or set once:
-```ts
-const userId = storage.defineItem('local:user-id', {
-  init: () => globalThis.crypto.randomUUID(),
-});
-const installDate = storage.defineItem('local:install-date', {
-  init: () => new Date().getTime(),
-});
-```
+2. **`init`** \- Initialize and save a value in storage if it is not already saved.  
+This is great for values that need to be initialized or set once:  
+```ts  
+const userId = storage.defineItem('local:user-id', {  
+  init: () => globalThis.crypto.randomUUID(),  
+});  
+const installDate = storage.defineItem('local:install-date', {  
+  init: () => new Date().getTime(),  
+});  
+```  
 The value is initialized in storage immediately.
 
 ## Bulk Operations [​](#bulk-operations)

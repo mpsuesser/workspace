@@ -68,3 +68,4 @@ Search [GitHub issues](https://github.com/wxt-dev/wxt/issues?q=is%3Aissue+label%
 
 If an issue doesn't exist for your plugin, [open a new one](https://github.com/wxt-dev/wxt/issues/new/choose).
 :::
+

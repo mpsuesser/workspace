@@ -71,3 +71,4 @@ Function that removes the UI from the webpage.
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

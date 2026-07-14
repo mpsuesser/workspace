@@ -31,3 +31,4 @@ If the logic is simple, write a unit test to cover this logic. If you feel the n
 
 1. In dev mode, remove the `if` statement and reload the extension from `chrome://extensions`
 2. Use [Google's Extension Update Testing tool](https://github.com/GoogleChromeLabs/extension-update-testing-tool)
+

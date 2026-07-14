@@ -128,3 +128,4 @@ export default defineWebExtConfig({
 There is no comprehensive list of what feature flags enable what APIs and services.
 
 Alternatively, if you can't find a flag that enables a feature you're looking for, [disable the opening the browser during development](#disable-opening-browser) and use your regular chrome profile for development.
+

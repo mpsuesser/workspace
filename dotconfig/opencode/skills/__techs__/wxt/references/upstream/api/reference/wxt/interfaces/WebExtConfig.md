@@ -248,3 +248,4 @@ https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#s
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

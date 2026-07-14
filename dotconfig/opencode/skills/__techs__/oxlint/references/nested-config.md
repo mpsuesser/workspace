@@ -144,3 +144,4 @@ Only some properties can be extended. The supported properties are:
 - `rules`
 - `plugins`
 - `overrides`
+

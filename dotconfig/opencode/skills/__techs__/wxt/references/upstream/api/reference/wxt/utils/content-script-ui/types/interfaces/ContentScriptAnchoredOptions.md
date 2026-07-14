@@ -50,3 +50,4 @@ In combination with `anchor`, decide how to add the UI to the DOM.
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

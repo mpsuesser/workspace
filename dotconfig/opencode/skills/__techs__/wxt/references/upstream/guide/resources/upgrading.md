@@ -594,3 +594,4 @@ Add type safety to `browser.runtime.getURL`.
 ### Rename `defineBackground`
 
 Rename `defineBackgroundScript` to `defineBackground`.
+

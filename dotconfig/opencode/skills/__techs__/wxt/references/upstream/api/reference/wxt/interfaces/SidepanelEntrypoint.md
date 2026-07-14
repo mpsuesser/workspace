@@ -130,3 +130,4 @@ https://wxt.dev/guide/essentials/target-different-browsers.html#filtering-entryp
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

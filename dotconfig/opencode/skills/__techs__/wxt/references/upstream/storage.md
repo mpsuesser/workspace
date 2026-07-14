@@ -350,3 +350,4 @@ await storage.setItems([
 ```
 
 Refer to the [API Reference](/api/reference/wxt/utils/storage/interfaces/WxtStorage) for types and examples of how to use all the bulk APIs.
+

@@ -20,3 +20,4 @@ package](https://www.npmjs.com/package/@webext-core/match-patterns).
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

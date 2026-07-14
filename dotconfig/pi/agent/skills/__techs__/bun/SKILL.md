@@ -1,8 +1,8 @@
 ---
 name: bun
 description: Bun is an all-in-one JavaScript/TypeScript toolkit that ships as a single binary. It includes a runtime (drop-in Node.js replacement), package manager, test runner, and bundler.
-access_date: 2026-05-02T11:49:23.000Z
-current_date: 2026-05-02T11:49:23.800Z
+access_date: 2026-07-14T11:49:23.000Z
+current_date: 2026-07-14T11:49:23.800Z
 ---
 
 # Bun
@@ -48,7 +48,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Deploy a Bun application on AWS Lambda](https://bun.com/docs/guides/deployment/aws-lambda.md)
 - [Deploy a Bun application on DigitalOcean](https://bun.com/docs/guides/deployment/digital-ocean.md)
 - [Deploy a Bun application on Google Cloud Run](https://bun.com/docs/guides/deployment/google-cloud-run.md)
-- [Deploy a Bun application on Railway](https://bun.com/docs/guides/deployment/railway.md): Deploy Bun applications to Railway with this step-by-step guide covering CLI and dashboard methods, optional PostgreSQL setup, and automatic SSL configuration.
+- [Deploy a Bun application on Railway](https://bun.com/docs/guides/deployment/railway.md): Deploy a Bun application to Railway from the CLI or dashboard, with optional PostgreSQL setup and automatic SSL
 - [Deploy a Bun application on Render](https://bun.com/docs/guides/deployment/render.md)
 - [Deploy a Bun application on Vercel](https://bun.com/docs/guides/deployment/vercel.md)
 - [Build an app with Astro and Bun](https://bun.com/docs/guides/ecosystem/astro.md)
@@ -81,7 +81,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Build a frontend using Vite and Bun](https://bun.com/docs/guides/ecosystem/vite.md)
 - [Extract links from a webpage using HTMLRewriter](https://bun.com/docs/guides/html-rewriter/extract-links.md)
 - [Extract social share images and Open Graph tags](https://bun.com/docs/guides/html-rewriter/extract-social-meta.md)
-- [Start a cluster of HTTP servers](https://bun.com/docs/guides/http/cluster.md): Run multiple HTTP servers concurrently via the "reusePort" option to share the same port across multiple processes
+- [Start a cluster of HTTP servers](https://bun.com/docs/guides/http/cluster.md): Run multiple HTTP servers concurrently with the "reusePort" option to share the same port across multiple processes
 - [Send an HTTP request using fetch](https://bun.com/docs/guides/http/fetch.md)
 - [fetch with unix domain sockets in Bun](https://bun.com/docs/guides/http/fetch-unix.md)
 - [Upload files via HTTP using FormData](https://bun.com/docs/guides/http/file-uploads.md)
@@ -94,7 +94,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Streaming HTTP Server with Async Iterators](https://bun.com/docs/guides/http/stream-iterator.md)
 - [Streaming HTTP Server with Node.js Streams](https://bun.com/docs/guides/http/stream-node-streams-in-bun.md)
 - [Configure TLS on an HTTP server](https://bun.com/docs/guides/http/tls.md)
-- [Guides](https://bun.com/docs/guides/index.md): A collection of code samples and walkthroughs for performing common tasks with Bun.
+- [Guides](https://bun.com/docs/guides/index.md): Code samples and walkthroughs for common tasks with Bun
 - [Add a dependency](https://bun.com/docs/guides/install/add.md)
 - [Add a development dependency](https://bun.com/docs/guides/install/add-dev.md)
 - [Add a Git dependency](https://bun.com/docs/guides/install/add-git.md)
@@ -181,7 +181,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Mark a test as a "todo" with the Bun test runner](https://bun.com/docs/guides/test/todo-tests.md)
 - [Update snapshots in `bun test`](https://bun.com/docs/guides/test/update-snapshots.md)
 - [Run tests in watch mode with Bun](https://bun.com/docs/guides/test/watch-mode.md)
-- [Encode and decode base64 strings](https://bun.com/docs/guides/util/base64.md)
+- [Encode and decode base64 data](https://bun.com/docs/guides/util/base64.md)
 - [Check if two objects are deeply equal](https://bun.com/docs/guides/util/deep-equals.md)
 - [Compress and decompress data with DEFLATE](https://bun.com/docs/guides/util/deflate.md)
 - [Detect when code is executed with Bun](https://bun.com/docs/guides/util/detect-bun.md)
@@ -268,7 +268,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [File Types](https://bun.com/docs/runtime/file-types.md): File types and loaders supported by Bun's bundler and runtime
 - [Glob](https://bun.com/docs/runtime/glob.md): Use Bun's fast native implementation of file globbing
 - [Globals](https://bun.com/docs/runtime/globals.md): Use Bun's global objects
-- [Hashing](https://bun.com/docs/runtime/hashing.md): Bun provides a set of utility functions for hashing and verifying passwords with various cryptographically secure algorithms
+- [Hashing](https://bun.com/docs/runtime/hashing.md): Utility functions for hashing and verifying passwords with various cryptographically secure algorithms
 - [HTMLRewriter](https://bun.com/docs/runtime/html-rewriter.md): Use Bun's HTMLRewriter to transform HTML documents with CSS selectors
 - [Cookies](https://bun.com/docs/runtime/http/cookies.md): Work with cookies in HTTP requests and responses using Bun's built-in Cookie API.
 - [Error Handling](https://bun.com/docs/runtime/http/error-handling.md): Learn how to handle errors in Bun's development server
@@ -277,6 +277,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Server](https://bun.com/docs/runtime/http/server.md): Use `Bun.serve` to start a high-performance HTTP server in Bun
 - [TLS](https://bun.com/docs/runtime/http/tls.md): Enable TLS in Bun.serve
 - [WebSockets](https://bun.com/docs/runtime/http/websockets.md): Server-side WebSockets in Bun
+- [Image](https://bun.com/docs/runtime/image.md): Decode, transform, and encode images with a fast native pipeline
 - [Bun Runtime](https://bun.com/docs/runtime/index.md): Execute JavaScript/TypeScript files, package.json scripts, and executable packages with Bun's fast runtime.
 - [JSON5](https://bun.com/docs/runtime/json5.md): Use Bun's built-in support for JSON5 files through both runtime APIs and bundler integration
 - [JSONL](https://bun.com/docs/runtime/jsonl.md): Parse newline-delimited JSON (JSONL) with Bun's built-in streaming parser
@@ -285,7 +286,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Module Resolution](https://bun.com/docs/runtime/module-resolution.md): How Bun resolves modules and handles imports in JavaScript and TypeScript
 - [DNS](https://bun.com/docs/runtime/networking/dns.md): Use Bun's DNS module to resolve DNS records
 - [Fetch](https://bun.com/docs/runtime/networking/fetch.md): Send HTTP requests with Bun's fetch API
-- [TCP](https://bun.com/docs/runtime/networking/tcp.md): Use Bun's native TCP API to implement performance sensitive systems like database clients, game servers, or anything that needs to communicate over TCP (instead of HTTP)
+- [TCP](https://bun.com/docs/runtime/networking/tcp.md): Use Bun's native TCP API to implement performance-sensitive systems like database clients, game servers, or anything that needs to communicate over TCP (instead of HTTP)
 - [UDP](https://bun.com/docs/runtime/networking/udp.md): Use Bun's UDP API to implement services with advanced real-time requirements, such as voice chat.
 - [Node-API](https://bun.com/docs/runtime/node-api.md): Use Bun's Node-API module to build native add-ons to Node.js
 - [Node.js Compatibility](https://bun.com/docs/runtime/nodejs-compat.md): Bun's compatibility status with Node.js APIs, modules, and globals
@@ -309,8 +310,8 @@ current_date: 2026-05-02T11:49:23.800Z
 - [WebView](https://bun.com/docs/runtime/webview.md): Control a headless browser from Bun for automation, testing, and scraping — zero dependencies on macOS, Chrome DevTools Protocol everywhere else
 - [Workers](https://bun.com/docs/runtime/workers.md): Use Bun's Workers API to create and communicate with a new JavaScript instance running on a separate thread while sharing I/O resources with the main thread
 - [YAML](https://bun.com/docs/runtime/yaml.md): Use Bun's built-in support for YAML files through both runtime APIs and bundler integration
-- [Code coverage](https://bun.com/docs/test/code-coverage.md): Learn how to use Bun's built-in code coverage reporting to track test coverage and find untested areas in your codebase
-- [Test configuration](https://bun.com/docs/test/configuration.md): Learn how to configure Bun test behavior using bunfig.toml and command-line options
+- [Code coverage](https://bun.com/docs/test/code-coverage.md): Use Bun's built-in code coverage reporting to track test coverage and find untested code
+- [Test configuration](https://bun.com/docs/test/configuration.md): Configure bun test behavior with bunfig.toml and command-line options
 - [Dates and times](https://bun.com/docs/test/dates-times.md): Learn how to manipulate time and dates in your Bun tests using setSystemTime and Jest compatibility functions
 - [Finding tests](https://bun.com/docs/test/discovery.md): Learn how Bun's test runner discovers and filters test files in your project
 - [DOM testing](https://bun.com/docs/test/dom.md): Learn how to test DOM elements and components using Bun with happy-dom and React Testing Library
@@ -320,7 +321,7 @@ current_date: 2026-05-02T11:49:23.800Z
 - [Test Reporters](https://bun.com/docs/test/reporters.md)
 - [Runtime behavior](https://bun.com/docs/test/runtime-behavior.md): Learn about Bun test's runtime integration, environment variables, timeouts, and error handling
 - [Snapshots](https://bun.com/docs/test/snapshots.md): Learn how to use snapshot testing in Bun to save and compare output between test runs
-- [Writing tests](https://bun.com/docs/test/writing-tests.md): Learn how to write tests using Bun's Jest-compatible API with support for async tests, timeouts, and various test modifiers
+- [Writing tests](https://bun.com/docs/test/writing-tests.md): Write tests with Bun's Jest-compatible API, including async tests, timeouts, and test modifiers
 - [TypeScript](https://bun.com/docs/typescript.md): Using TypeScript with Bun, including type definitions and compiler options
 - [TypeScript 6 and 7](https://bun.com/docs/typescript-6.md): How to configure Bun's type definitions for TypeScript 6.0 and 7.0, which no longer auto-discover @types packages. Fix 'Cannot find name Bun' and other missing type errors after upgrading TypeScript.
 

@@ -59,3 +59,4 @@ This has several advantages:
 * Define all expected environment variables in a single file
 * Convert strings to other types, like booleans or arrays
 * Provide default values if an environment variable is not provided
+

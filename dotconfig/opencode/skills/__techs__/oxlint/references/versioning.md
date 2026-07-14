@@ -79,3 +79,4 @@ updates:
 ```
 
 If you use [eslint-plugin-oxlint](https://npmx.dev/package/eslint-plugin-oxlint), ensure that it is also updated alongside Oxlint to avoid compatibility issues.
+

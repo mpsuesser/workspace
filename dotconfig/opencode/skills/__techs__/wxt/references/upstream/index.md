@@ -65,9 +65,10 @@ WXT is a [MIT-licensed](https://github.com/wxt-dev/wxt/blob/main/LICENSE) open s
 
 WXT simplifies the web extension development process by providing tools for zipping and publishing, the best-in-class dev mode, an opinionated project structure, and more. Iterate faster, develop features not build scripts, and use everything the JS ecosystem has to offer.
 
-
- And who doesn't appreciate a beautiful CLI?
+  
+ And who doesn't appreciate a beautiful CLI? 
 
 ## Who's Using WXT? [​](#who-s-using-wxt)
 
 Battle tested and ready for production. Explore web extensions made with WXT.
+

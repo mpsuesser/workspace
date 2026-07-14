@@ -144,3 +144,4 @@ Oxlint is used in production by popular projects such as:
 - [CLI reference](./references/cli.md)
 - [Config file reference](./references/config-file-reference.md)
 - [Versioning policy](./references/versioning.md)
+

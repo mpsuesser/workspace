@@ -100,3 +100,4 @@ export default defineConfig({
 ```
 
 You can use absolute or relative paths.
+

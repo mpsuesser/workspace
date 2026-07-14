@@ -265,3 +265,4 @@ Additional bundles:
 | WXT Auto Icons | `references/upstream/auto-icons.md` | <https://wxt.dev/auto-icons.md> |
 | WXT Storage | `references/upstream/storage.md` | <https://wxt.dev/storage.md> |
 | WXT UnoCSS | `references/upstream/unocss.md` | <https://wxt.dev/unocss.md> |
+

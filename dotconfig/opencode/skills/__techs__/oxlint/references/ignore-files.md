@@ -92,3 +92,4 @@ To disable all ignore behavior, including ignore files and CLI ignore options, u
 ```bash
 oxlint --no-ignore
 ```
+

@@ -22,3 +22,4 @@ If you're running into errors while importing entrypoints, run `wxt prepare --de
 :::
 
 Once the environment has been polyfilled and your code pre-processed, it's up the entrypoint loader to import your code, extracting the options from the default export.
+

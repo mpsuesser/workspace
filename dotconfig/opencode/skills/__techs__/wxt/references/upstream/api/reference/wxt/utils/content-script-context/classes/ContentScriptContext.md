@@ -495,3 +495,4 @@ Timeouts can be cleared by calling the normal `setTimeout` function.
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

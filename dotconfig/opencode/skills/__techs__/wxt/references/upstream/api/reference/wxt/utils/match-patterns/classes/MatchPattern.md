@@ -208,3 +208,4 @@ node\_modules/.bun/@webext-core+match-patterns@1.0.3/node\_modules/@webext-core/
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

@@ -83,3 +83,4 @@ Here are some examples:
   ```
 
 Alternatively, you can use the [`filterEntrypoints` config](/api/reference/wxt/interfaces/InlineConfig#filterentrypoints) to list all the entrypoints you want to build.
+

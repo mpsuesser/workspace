@@ -74,3 +74,4 @@ Lets compare the features of WXT vs [Plasmo](https://docs.plasmo.com/framework) 
 \[^m]: See [crxjs/chrome-extension-tools#974](https://github.com/crxjs/chrome-extension-tools/discussions/974)
 
 \[^n]: Appears to be in maintenance mode with little to no maintainers nor feature development happening and *(see [wxt-dev/wxt#1404 (comment)](https://github.com/wxt-dev/wxt/pull/1404#issuecomment-2643089518))*
+

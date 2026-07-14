@@ -297,3 +297,4 @@ Rust-JS interop comes into play.
 ## Next steps
 
 See the [API Support](./js-plugins.md#api-support) section for the ESLint APIs which are supported for usage in Oxlint plugins.
+

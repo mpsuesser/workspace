@@ -72,3 +72,4 @@ Or with just `oxlint --fix` if you have type-aware linting enabled via your conf
 ## JS Plugins
 
 [JS Plugins](./js-plugins.md) that provide fixers or suggestions can also be applied by Oxlint.
+

@@ -368,3 +368,4 @@ https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#is
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

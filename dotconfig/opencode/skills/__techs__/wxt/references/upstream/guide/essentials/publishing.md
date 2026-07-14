@@ -227,3 +227,4 @@ However, if you have features specifically for Edge, create a separate ZIP with:
 ```sh
 wxt zip -b edge
 ```
+

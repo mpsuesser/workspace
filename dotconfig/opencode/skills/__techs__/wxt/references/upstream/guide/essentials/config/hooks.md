@@ -63,3 +63,4 @@ Changing execution order is simple:
   // modules/2.i18n.ts
   export { default } from '@wxt-dev/i18n/module';
   ```
+

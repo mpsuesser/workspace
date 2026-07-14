@@ -20,3 +20,4 @@ import { isBackground } from '@wxt-dev/is-background';
 
 isBackground(); // true | false
 ```
+

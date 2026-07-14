@@ -225,3 +225,4 @@ We use the new [WebDriver BiDi protocol](https://www.w3.org/TR/webdriver-bidi) t
 We use the [CDP](https://chromedevtools.github.io/devtools-protocol/) with `--remote-debugging-pipe` and `--enable-unsafe-extension-debugging` to install the extension by sending a message via IO pipes 3 and 4.
 
 We don't use Webdriver Bidi because it's not built into Chrome yet. It requires us instantiating a separate child process for `chromedriver`. This is slower and more difficult than just using the CDP built into Chrome.
+

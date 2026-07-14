@@ -85,3 +85,4 @@ Since you're already using Vite, it's a simple refactor.
 5. Move the `manifest.json` into `wxt.config.ts`
 6. Move any custom settings from `vite.config.ts` into `wxt.config.ts`'s
 7. ⚠️ Compare the old production manifest to `.output/*/manifest.json`. They should have the same content as before. If not, tweak your entrypoints and config until they are the same.
+

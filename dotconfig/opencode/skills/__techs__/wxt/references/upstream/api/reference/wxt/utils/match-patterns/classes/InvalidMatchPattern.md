@@ -240,3 +240,4 @@ node\_modules/.bun/@types+node@20.19.33/node\_modules/@types/node/globals.d.ts:5
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

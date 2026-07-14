@@ -804,3 +804,4 @@ Use the links below to jump directly to rule behavior, options, and examples.
 - [vue/require-typed-ref](./rules/vue/require-typed-ref.md)
 - [vue/valid-define-emits](./rules/vue/valid-define-emits.md)
 - [vue/valid-define-props](./rules/vue/valid-define-props.md)
+

@@ -7,3 +7,4 @@ This section provides a practical CLI reference.
 ```sh
 oxlint --help
 ```
+

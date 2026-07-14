@@ -191,3 +191,4 @@ export default defineContentScript({
 This code is taken directly from `@oxc-parser/wasm` docs with one exception: We manually pass in a file path. In a standard NodeJS or web project, the default path works just fine so you don't have to pass anything in. However, extensions are different. You should always explicitly pass in the full URL to the WASM file in your output directory, which is what `browser.runtime.getURL` returns.
 
 Run your extension, and you should see OXC parse the TS file!
+

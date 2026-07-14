@@ -8,3 +8,4 @@ Vendored from https://wxt.dev/llms-full.txt on 2026-04-30.
 :::warning 🚧 Under construction
 These docs will be coming soon!
 :::
+

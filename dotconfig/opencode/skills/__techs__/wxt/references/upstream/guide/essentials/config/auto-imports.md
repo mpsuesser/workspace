@@ -121,3 +121,4 @@ import {
 To learn more about how the `#imports` module works, read the [related blog post](/blog/2024-12-06-using-imports-module).
 
 If you've disabled auto-imports, you should still use `#imports` to import all of WXT's APIs from a single place.
+

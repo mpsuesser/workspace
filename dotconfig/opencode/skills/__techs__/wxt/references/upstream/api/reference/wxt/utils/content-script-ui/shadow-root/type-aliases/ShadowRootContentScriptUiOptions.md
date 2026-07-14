@@ -115,3 +115,4 @@ Optionally return a value that can be accessed at `ui.mounted` or in the
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

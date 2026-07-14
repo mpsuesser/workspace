@@ -18,3 +18,4 @@ node\_modules/.bun/@webext-core+fake-browser@1.3.4/node\_modules/@webext-core/fa
 ***
 
 Generated using [typedoc-plugin-markdown](https://www.npmjs.com/package/typedoc-plugin-markdown) and [TypeDoc](https://typedoc.org/)
+

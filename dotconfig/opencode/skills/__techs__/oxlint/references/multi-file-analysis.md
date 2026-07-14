@@ -51,3 +51,4 @@ export default defineConfig({
 
 When running `import/*` rules, Oxlint automatically discovers `tsconfig.json`
 to resolve TypeScript path aliases such as `compilerOptions.paths`.
+

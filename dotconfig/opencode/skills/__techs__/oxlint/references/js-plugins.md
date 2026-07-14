@@ -154,3 +154,4 @@ ESLint APIs that were removed in ESLint v9 or earlier will not be implemented in
 
 We will be implementing the remaining features over the next few months, aiming to support 100% of ESLint's
 plugin API surface.
+

@@ -18,3 +18,4 @@ You can use the vanilla APIs (see docs above), use [WXT's built-in storage API](
 3. Any other NPM package: [There are lots of wrappers around the storage API](https://www.npmjs.com/search?q=chrome%20storage), you can find one you like. Here's some popular ones:
    * [`webext-storage`](https://www.npmjs.com/package/webext-storage) - A more usable typed storage API for Web Extensions
    * [`@webext-core/storage`](https://www.npmjs.com/package/@webext-core/storage) - A type-safe, localStorage-esque wrapper around the web extension storage APIs
+

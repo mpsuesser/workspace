@@ -105,3 +105,4 @@ Refer to your router's docs for information about hash mode and how to enable it
 * [`vue-router`](https://router.vuejs.org/guide/essentials/history-mode.html#Hash-Mode)
 * [`svelte-spa-router`](https://www.npmjs.com/package/svelte-spa-router#hash-based-routing)
 * [`solid-router`](https://github.com/solidjs/solid-router?tab=readme-ov-file#hash-mode-router)
+

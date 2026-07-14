@@ -1,6 +1,6 @@
 ---
 name: wxt
-description: Comprehensive WXT web extension framework skill. Use when building, modifying, debugging, testing, configuring, migrating, or publishing browser/web extensions with WXT; covers project structure, entrypoints, manifest generation, content scripts/UI, storage, messaging, modules, CLI, browser targets, frontend frameworks, testing, and publishing.
+description: WXT web extension framework — entrypoints, manifest generation, content scripts/UI, storage, messaging, modules, CLI, browser targets, publishing. Use when building, debugging, configuring, migrating, or publishing browser/web extensions with WXT.
 metadata:
   source: https://wxt.dev/llms-full.txt
   vendored: "2026-04-30"

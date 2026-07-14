@@ -36,19 +36,19 @@ or collapsed.
 Examples of **incorrect** code for this rule:
 
 ```jsx
-<div role="datepicker"></div>
-<div role="range"></div>
-<div role=""></div>
-<Foo role={role}></Foo>
+<div role="datepicker"></div> 
+<div role="range"></div>      
+<div role=""></div>           
+<Foo role={role}></Foo>       
 ```
 
 Examples of **correct** code for this rule:
 
 ```jsx
-<div role="button"></div>
-<div role={role}></div>
-<div></div>
-<Foo role={role}></Foo>
+<div role="button"></div>     
+<div role={role}></div>       
+<div></div>                   
+<Foo role={role}></Foo>       
 ```
 
 ## Configuration

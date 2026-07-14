@@ -235,6 +235,6 @@ The full list is in the [Rules reference](./rules.md).
 - [Setup editors](./editors.md)
 - [Setup CI](./ci.md)
 - Learn advanced features: [Multi-file analysis](./multi-file-analysis.md), [Type-aware linting](./type-aware.md), [JS plugins](./js-plugins.md)
-- Migrate: [From ESLint](./migrate-from-eslint.md)
+- Migrate: [From ESLint](./migrate-from-eslint.md) 
 - [Compatibility matrix](./compatibility.md)
 - [CLI reference](./cli.md)

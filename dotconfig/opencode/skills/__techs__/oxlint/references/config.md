@@ -514,3 +514,4 @@ export default defineConfig({
 - [Nested configs](./nested-config.md): Monorepos and per-package configuration.
 - [Config file reference](./config-file-reference.md): Full schema and field documentation.
 - [CLI reference](./cli.md): Complete list of flags and output formats.
+
