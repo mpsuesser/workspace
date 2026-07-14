@@ -78,8 +78,8 @@ matches:
 
   - trigger: ";;eSC"
     replace: |-
-      export class {{form1.schemaClassName}} extends Schema.Class<{{form1.schemaClassName}}>()('{{form1.schemaClassName}}')({
-        cause: Schema.Defect()
+      export class {{form1.schemaClassName}} extends Schema.Class<{{form1.schemaClassName}}>('{{form1.schemaClassName}}')({
+
       }) {}
     vars:
       - name: "form1"
