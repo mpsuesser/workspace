@@ -1,0 +1,27 @@
+{
+  "theme": {
+    "name": "palenight",
+    "mode": "dark"
+  },
+  "diffs": {
+    "wrap": "word",
+    "view": "auto"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": true,
+    "thinking": "show"
+  },
+  "hints": {
+    "tips": true,
+    "onboarding": false
+  },
+  "animations": true,
+  "keybinds": {
+    "model_list": "alt+m",
+    "messages_page_up": "alt+w",
+    "messages_half_page_up": "alt+w",
+    "messages_page_down": "alt+s",
+    "messages_half_page_down": "alt+s"
+  }
+}
