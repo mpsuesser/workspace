@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.80.2",
+  "lastChangelogVersion": "0.80.3",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "xhigh",
@@ -15,7 +15,9 @@
     "npm:glimpseui",
     "~/repos/pi-effect-harness",
     "git:github.com/BlockedPath/pi-xai-oauth",
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "npm:pi-sidequest",
+    "npm:@plannotator/pi-extension"
   ],
   "skills": [
     "-skills/engineering/documentation-driven-development/SKILL.md",
