@@ -1,7 +1,7 @@
 firstchar_O() {
   # Is the current buffer (command line) empty?
   if [[ -z "$BUFFER" ]]; then
-    BUFFER="oc"
+    BUFFER="opencode2"
     zle accept-line
   else
     # Behave like a normal 'O'

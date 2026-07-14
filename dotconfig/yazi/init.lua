@@ -18,7 +18,7 @@ togglepane:entry("min-preview")
 require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
-		{ key = "i", path = "~/repos/ideas" },
+		{ key = "i", path = "~/repos/interview-me" },
 		{ key = "n", path = "~/repos/nonaspace" },
 		{ key = "w", path = "~/repos/workspace" },
 		{ key = "g", path = "~/repos/mydb/packages/graph" },
