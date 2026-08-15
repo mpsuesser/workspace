@@ -7,7 +7,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_BIN_HOME="$HOME/.local/bin"
 
-export EDITOR="nvim"
+export EDITOR="hx-wrapped"
 export VISUAL="$EDITOR"
 
 # =============================================================================
@@ -80,11 +80,8 @@ fi
 
 # Option/Alt word-editing + word-motion bindings.
 #
-# In zsh's default `viins` keymap (we're in vi mode because $EDITOR=nvim),
-# most Option-prefixed sequences are undefined. When zsh can't match an
-# ESC-prefixed sequence it strips the leading ESC and processes it as
-# `vi-cmd-mode`, leaving the trailing bytes to run in `vicmd` -- silently
-# swapping modes and doing weird things instead of editing/moving.
+# Option-prefixed sequences vary by terminal and are not always defined by
+# zsh's active keymap, which can make them edit or move unexpectedly.
 #
 # Ghostty hides this because `macos-option-as-alt` defaults to false, so
 # Option is swallowed upstream. Zellij forwards Option as Alt, which exposes

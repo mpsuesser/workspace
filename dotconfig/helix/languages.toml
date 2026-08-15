@@ -28,6 +28,12 @@ cargo = { features = "all" }
 format = { enable = true }
 validation = true
 
+[language-server.vscode-json-language-server.config.json]
+validate.enable = true
+schemas = [
+  { fileMatch = ["**/opencode.json", "**/opencode.jsonc"], schema = { allowComments = true, allowTrailingCommas = true } },
+]
+
 # -----------------------------------------------------------------------------
 # Languages
 # -----------------------------------------------------------------------------
