@@ -1,0 +1,3 @@
+cspace() {
+	bun /Users/m/repos/curationspace/packages/cli/src/main.ts "$@"
+}
