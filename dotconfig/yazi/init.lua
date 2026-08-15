@@ -19,7 +19,6 @@ require("bunny"):setup({
 	hops = {
 		{ key = "r", path = "~/repos" },
 		{ key = "i", path = "~/repos/interview-me" },
-		{ key = "n", path = "~/repos/nonaspace" },
 		{ key = "w", path = "~/repos/workspace" },
 		{ key = "g", path = "~/repos/mydb/packages/graph" },
 		{ key = "a", path = "~/repos/mydb/packages/app/src" },
@@ -29,22 +28,22 @@ require("bunny"):setup({
 		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
+    { key = "b", path = "~/repos/opencode-plugin-beamstream" },
 		{ key = "h", path = "~/repos/pi-effect-harness" },
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
-		{ key = "e", path = "~/repos/workspace/dotconfig/pi/agent/extensions" },
+		{ key = "e", path = "~/repos/editor" },
 		{ key = "c", path = "~/repos/curationspace" },
-		{ key = "m", path = "~/repos/mydb" },
+		{ key = "m", path = "~/repos/marcsuesser.com" },
+		{ key = "d", path = "~/repos/dojo" },
 
 		{ key = { ".", "c", "o" }, path = "~/.config" },
-		{ key = { ".", "c", "a", "e" }, path = "~/.cache/effect-v4" },
-		{ key = { ".", "c", "a", "f" }, path = "~/.cache/foldkit" },
 		{ key = { ".", "s" }, path = "~/.state" },
 		{ key = { ".", "b" }, path = "~/.bin" },
 
-		{ key = "d", path = "~/Desktop" },
-		{ key = "D", path = "~/Downloads" },
+		{ key = { "D", "e" }, path = "~/Desktop" },
+		{ key = { "D", "o" }, path = "~/Downloads" },
 	},
 
 	tabs = true,
