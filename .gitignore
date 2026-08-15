@@ -74,7 +74,7 @@ Thumbs.db
 dotconfig/opencode/bun.lock
 dotconfig/opencode/node_modules/
 dotconfig/opencode/package-lock.json
-dotconfig/opencode/service.json
+dotconfig/opencode/service*.json
 dotconfig/raycast/extensions/node_modules
 
 # Raycast live state (managed locally, not tracked)
