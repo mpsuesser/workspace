@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "build",
+  "references": {
+    "effect": {
+      "repository": "Effect-TS/effect",
+      "branch": "main",
+      "description": "Effect v4 full source code",
+    },
+    "alchemy": {
+      "repository": "alchemy-run/alchemy-effect",
+      "branch": "main",
+      "description": "Alchemy full source code",
+    },
+    "opencode": {
+      "repository": "anomalyco/opencode",
+      "branch": "dev",
+      "description": "OpenCode full source code",
+    },
+  },
+}

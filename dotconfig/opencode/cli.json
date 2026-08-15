@@ -8,9 +8,12 @@
     "view": "auto"
   },
   "session": {
-    "sidebar": "auto",
+    "sidebar": "hide",
     "scrollbar": true,
     "thinking": "show"
+  },
+  "tabs": {
+    "enabled": false
   },
   "hints": {
     "tips": true,
@@ -18,10 +21,15 @@
   },
   "animations": true,
   "keybinds": {
-    "model_list": "alt+m",
-    "messages_page_up": "alt+w",
-    "messages_half_page_up": "alt+w",
-    "messages_page_down": "alt+s",
-    "messages_half_page_down": "alt+s"
+    "command.palette.show": "alt+p",
+    "prompt.editor": "ctrl+e",
+    "model.list": "alt+m",
+    "variant.list": "alt+v",
+    "session.half.page.up": "alt+w",
+    "session.half.page.down": "alt+s",
+    "messages.copy": ["alt+y", "alt+shift+c"],
+    "agent.cycle": "tab",
+    "agent.cycle.reverse": "shift+tab",
+    "agent.list": "alt+a"
   }
 }

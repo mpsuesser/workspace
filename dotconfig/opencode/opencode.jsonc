@@ -1,5 +1,125 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "default_agent": "build",
-  "permission": "allow"
+  "plugins": [
+    // "@kitlangton/opencode-session-recap",
+    "/Users/m/repos/opencode-effect-enforcer/src/index.ts",
+  ],
+  "mcp": {
+    "servers": {
+      "github": {
+        "type": "local",
+        "command": [
+          "/bin/sh",
+          "-c",
+          "export GITHUB_PERSONAL_ACCESS_TOKEN=\"$(/opt/homebrew/bin/gh auth token)\"; exec /opt/homebrew/bin/github-mcp-server stdio --tools search_repositories --read-only",
+        ],
+      },
+    },
+  },
+  "permissions": [
+    { "action": "*", "resource": "*", "effect": "allow" },
+  ],
+  "references": {
+    "effect": {
+      "repository": "Effect-TS/effect",
+      "branch": "main",
+      "description": "Effect v4 full source code",
+    },
+    "foldkit": {
+      "repository": "foldkit/foldkit",
+      "branch": "main",
+      "description": "Foldkit full source code",
+    },
+    "alchemy": {
+      "repository": "alchemy-run/alchemy-effect",
+      "branch": "main",
+      "description": "Alchemy full source code",
+    },
+    "foldkit-docs": {
+      "repository": "mpsuesser/scraped-docs-foldkit",
+      "branch": "main",
+      "description": "Full scraped documentation for Foldkit",
+    },
+    "alchemy-docs": {
+      "repository": "mpsuesser/scraped-docs-alchemy",
+      "branch": "main",
+      "description": "Full scraped documentation for Alchemy",
+    },
+    "curationspace": {
+      "path": "/Users/m/repos/curationspace",
+    },
+    "mydb": {
+      "path": "/Users/m/repos/mydb",
+    },
+    "effect-oxlint": {
+      "path": "/Users/m/repos/effect-oxlint",
+    },
+    "oxlint-plugin-effect": {
+      "path": "/Users/m/repos/oxlint-plugin-effect",
+    },
+    "grove": {
+      "path": "/Users/m/repos/grove",
+    },
+    "editor": {
+      "path": "/Users/m/repos/editor",
+    },
+    "workspace": {
+      "path": "/Users/m/repos/workspace",
+    },
+    "opencode-dotconfig": {
+      "path": "/Users/m/repos/workspace/dotconfig/opencode",
+    },
+    "helix-dotconfig": {
+      "path": "/Users/m/repos/workspace/dotconfig/helix/",
+    },
+    "helix": {
+      "repository": "helix-editor/helix",
+      "branch": "master",
+    },
+    "opencode": {
+      "repository": "anomalyco/opencode",
+      "branch": "dev",
+    },
+    "opentui": {
+      "repository": "anomalyco/opentui",
+      "branch": "main",
+    },
+    "interview-me-yap-studio": {
+      "path": "/Users/m/repos/interview-me",
+    },
+    "mpsuesser": {
+      "path": "/Users/m/repos/mpsuesser",
+    },
+    "write-like-me": {
+      "path": "/Users/m/repos/write-like-me",
+    },
+  },
+  "agents": {
+    "build": {
+      "permissions": [
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+        { "action": "subagent", "resource": "explore", "effect": "allow" },
+        { "action": "subagent", "resource": "general", "effect": "allow" },
+      ],
+    },
+    "plan": {
+      "permissions": [
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+        { "action": "subagent", "resource": "explore", "effect": "allow" },
+        { "action": "subagent", "resource": "general", "effect": "allow" },
+      ],
+    },
+    "explore": {
+      "permissions": [
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+      ],
+    },
+    "general": {
+      "permissions": [
+        { "action": "subagent", "resource": "*", "effect": "deny" },
+      ],
+    },
+  },
+  "experimental": {
+    "disable_paste_summary": true,
+  },
 }
