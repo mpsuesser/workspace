@@ -2,6 +2,7 @@
   "plugins": [
     // "@kitlangton/opencode-session-recap",
     "/Users/m/repos/opencode-effect-enforcer/src/index.ts",
+    "@plannotator/opencode@latest",
   ],
   "mcp": {
     "servers": {
