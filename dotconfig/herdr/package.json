@@ -1,0 +1,7 @@
+{
+  "name": "@workspace/herdr-dotconfig",
+  "private": true,
+  "scripts": {
+    "install:dotconfig": "mkdir -p ~/.config/herdr && ln -sfn \"$(pwd)/config.toml\" ~/.config/herdr/config.toml"
+  }
+}

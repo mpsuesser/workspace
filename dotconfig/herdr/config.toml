@@ -1,0 +1,33 @@
+onboarding = false
+
+[keys]
+prefix = "f8"
+settings = "prefix+comma"
+workspace_picker = "prefix+space"
+detach = "prefix+shift+q"
+previous_workspace = "prefix+["
+next_workspace = "prefix+]"
+switch_workspace = "cmd+1..9"
+previous_agent = "prefix+alt+["
+next_agent = "prefix+alt+]"
+focus_agent = "prefix+alt+1..9"
+
+focus_pane_up = ["cmd+w", "cmd+alt+up"]
+focus_pane_down = ["cmd+s", "cmd+alt+down"]
+focus_pane_left = ["cmd+a", "cmd+alt+left"]
+focus_pane_right = ["cmd+d", "cmd+alt+right"]
+
+split_horizontal = "cmd+shift+s"
+split_vertical = "cmd+shift+d"
+close_pane = "cmd+q"
+zoom = "cmd+e"
+rename_tab = "cmd+r"
+new_tab = "cmd+t"
+close_tab = "cmd+alt+w"
+previous_tab = ["cmd+shift+[", "ctrl+shift+tab"]
+next_tab = ["cmd+shift+]", "ctrl+tab"]
+cycle_pane_previous = "cmd+["
+cycle_pane_next = "cmd+]"
+
+edit_scrollback = "prefix+shift+e"
+resize_mode = "prefix+alt+r"

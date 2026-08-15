@@ -198,3 +198,42 @@ local appWatcher = hs.application.watcher.new(function(appName, eventType, app)
     end
 end)
 appWatcher:start()
+
+--------------------------------------------------------------------------------
+-- F8: focus Ghostty globally, pass through to Herdr when already focused
+--------------------------------------------------------------------------------
+local ghosttyBundleID = "com.mitchellh.ghostty"
+local f8KeyCode = hs.keycodes.map.f8
+local consumeF8UntilKeyUp = false
+
+local ghosttyFocusTap = hs.eventtap.new({
+    hs.eventtap.event.types.keyDown,
+    hs.eventtap.event.types.keyUp
+}, function(event)
+    if event:getKeyCode() ~= f8KeyCode then
+        return false
+    end
+
+    if event:getType() == hs.eventtap.event.types.keyUp then
+        if consumeF8UntilKeyUp then
+            consumeF8UntilKeyUp = false
+            return true
+        end
+        return false
+    end
+
+    if consumeF8UntilKeyUp then
+        return true
+    end
+
+    local frontmostApp = hs.application.frontmostApplication()
+    if frontmostApp and frontmostApp:bundleID() == ghosttyBundleID then
+        return false
+    end
+
+    consumeF8UntilKeyUp = true
+    hs.application.launchOrFocusByBundleID(ghosttyBundleID)
+    return true
+end)
+
+ghosttyFocusTap:start()

@@ -1,4 +1,5 @@
-keybind = global:f8=toggle_visibility
+# Hammerspoon focuses Ghostty globally and passes F8 through when Ghostty is
+# already active, allowing Herdr to use F8 as its prefix.
 # keybind = global:cmd+f8=toggle_quick_terminal
 
 # keybind = ctrl+s=text:s\x0d

@@ -1,22 +1,56 @@
-keybind = cmd+w=goto_split:up
-keybind = cmd+s=goto_split:down
-keybind = cmd+a=goto_split:left
-keybind = cmd+d=goto_split:right
+# Herdr owns pane, tab, and workspace layout. Unbinding these Ghostty actions
+# lets the chords reach Herdr through the terminal keyboard protocol.
+keybind = cmd+w=unbind
+keybind = cmd+s=unbind
+keybind = cmd+a=unbind
+keybind = cmd+d=unbind
+keybind = cmd+alt+up=unbind
+keybind = cmd+alt+down=unbind
+keybind = cmd+alt+left=unbind
+keybind = cmd+alt+right=unbind
 
-keybind = cmd+shift+w=new_split:up
-keybind = cmd+shift+a=new_split:left
-keybind = cmd+shift+s=new_split:down
-keybind = cmd+shift+d=new_split:right
+keybind = cmd+shift+w=unbind
+keybind = cmd+shift+a=unbind
+keybind = cmd+shift+s=unbind
+keybind = cmd+shift+d=unbind
+keybind = cmd+ctrl+up=unbind
+keybind = cmd+ctrl+down=unbind
+keybind = cmd+ctrl+left=unbind
+keybind = cmd+ctrl+right=unbind
+keybind = cmd+ctrl+==unbind
+keybind = alt+e=unbind
 
-keybind = cmd+q=close_surface
+keybind = cmd+q=unbind
+keybind = cmd+e=unbind
+keybind = cmd+r=unbind
+
+keybind = cmd+t=unbind
+keybind = cmd+alt+w=unbind
+keybind = cmd+[=unbind
+keybind = cmd+]=unbind
+keybind = cmd+shift+[=unbind
+keybind = cmd+shift+]=unbind
+keybind = ctrl+tab=unbind
+keybind = ctrl+shift+tab=unbind
+
+keybind = cmd+1=unbind
+keybind = cmd+2=unbind
+keybind = cmd+3=unbind
+keybind = cmd+4=unbind
+keybind = cmd+5=unbind
+keybind = cmd+6=unbind
+keybind = cmd+7=unbind
+keybind = cmd+8=unbind
+keybind = cmd+9=unbind
+keybind = cmd+digit_1=unbind
+keybind = cmd+digit_2=unbind
+keybind = cmd+digit_3=unbind
+keybind = cmd+digit_4=unbind
+keybind = cmd+digit_5=unbind
+keybind = cmd+digit_6=unbind
+keybind = cmd+digit_7=unbind
+keybind = cmd+digit_8=unbind
+keybind = cmd+digit_9=unbind
 
 keybind = cmd+n=unbind
 keybind = ctrl+m=unbind
-
-keybind = alt+e=equalize_splits
-keybind = cmd+e=toggle_split_zoom
-
-keybind = unconsumed:alt+w=scroll_page_fractional:-0.50
-keybind = unconsumed:alt+s=scroll_page_fractional:0.50
-
-keybind = cmd+r=prompt_tab_title
