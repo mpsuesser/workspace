@@ -1,12 +1,15 @@
 onboarding = false
 
+[theme]
+name = "catppuccin"
+
 [keys]
-prefix = "f8"
+prefix = "ctrl+space"
 settings = "prefix+comma"
 workspace_picker = "prefix+space"
 detach = "prefix+shift+q"
-previous_workspace = "prefix+["
-next_workspace = "prefix+]"
+previous_workspace = "cmd+shift+w"
+next_workspace = "cmd+shift+s"
 switch_workspace = "cmd+1..9"
 previous_agent = "prefix+alt+["
 next_agent = "prefix+alt+]"
@@ -17,17 +20,43 @@ focus_pane_down = ["cmd+s", "cmd+alt+down"]
 focus_pane_left = ["cmd+a", "cmd+alt+left"]
 focus_pane_right = ["cmd+d", "cmd+alt+right"]
 
-split_horizontal = "cmd+shift+s"
-split_vertical = "cmd+shift+d"
+split_horizontal = "cmd+shift+x"
+split_vertical = "cmd+x"
 close_pane = "cmd+q"
 zoom = "cmd+e"
 rename_tab = "cmd+r"
 new_tab = "cmd+t"
 close_tab = "cmd+alt+w"
-previous_tab = ["cmd+shift+[", "ctrl+shift+tab"]
-next_tab = ["cmd+shift+]", "ctrl+tab"]
+previous_tab = "cmd+shift+a"
+next_tab = "cmd+shift+d"
 cycle_pane_previous = "cmd+["
 cycle_pane_next = "cmd+]"
 
 edit_scrollback = "prefix+shift+e"
 resize_mode = "prefix+alt+r"
+
+[ui]
+sidebar_width = 39
+sidebar_min_width = 27
+sidebar_max_width = 54
+agent_panel_sort = "priority"
+
+[ui.sidebar.agents]
+row_gap = 0
+rows = [["state_icon", "workspace"]]
+
+[ui.sidebar.spaces]
+row_gap = 0
+rows = [["state_icon", "workspace"]]
+
+[experimental]
+kitty_graphics = true
+
+[[keys.command]]
+key = "cmd+f8"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[ui.toast]
+delivery = "system"
