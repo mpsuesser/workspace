@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -eu
+
+direction=${1:-}
+workspace_id=${HERDR_ACTIVE_WORKSPACE_ID:-}
+herdr_bin=${HERDR_BIN_PATH:-herdr}
+socket_path=${HERDR_SOCKET_PATH:-}
+
+if [ -z "$workspace_id" ] || [ -z "$socket_path" ]; then
+	exit 1
+fi
+
+snapshot=$("$herdr_bin" api snapshot)
+position=$(printf '%s\n' "$snapshot" | jq -r --arg id "$workspace_id" \
+	'.result.snapshot.workspaces | map(.workspace_id) | index($id) // empty')
+count=$(printf '%s\n' "$snapshot" | jq -r '.result.snapshot.workspaces | length')
+[ -n "$position" ] || exit 1
+
+case "$direction" in
+	up)
+		[ "$position" -gt 0 ] || exit 0
+		insert_index=$((position - 1))
+		;;
+	down)
+		[ "$position" -lt $((count - 1)) ] || exit 0
+		insert_index=$((position + 2))
+		;;
+	*)
+		exit 1
+		;;
+esac
+
+request=$(jq -cn \
+	--arg workspace_id "$workspace_id" \
+	--argjson insert_index "$insert_index" \
+	'{id: "keybind:workspace:move", method: "workspace.move", params: {workspace_id: $workspace_id, insert_index: $insert_index}}')
+
+printf '%s\n' "$request" | nc -U "$socket_path" | jq -e 'has("result")' >/dev/null
