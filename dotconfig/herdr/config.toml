@@ -3,6 +3,9 @@ onboarding = false
 [theme]
 name = "catppuccin"
 
+[terminal]
+new_cwd = "~/repos"
+
 [keys]
 prefix = "cmd+shift+;"
 settings = "prefix+comma"
@@ -22,14 +25,14 @@ focus_pane_down = ["cmd+s", "cmd+alt+down"]
 focus_pane_left = ["cmd+a", "cmd+alt+left"]
 focus_pane_right = ["cmd+d", "cmd+alt+right"]
 
-split_horizontal = ["cmd+shift+x", "cmd+\\"]
-split_vertical = ["cmd+x", "cmd+]"]
+split_horizontal = "cmd+shift+p"
+split_vertical = "cmd+p"
 close_pane = "cmd+q"
 zoom = "cmd+e"
 rename_tab = "cmd+r"
 new_tab = "cmd+t"
 close_tab = "cmd+alt+w"
-previous_tab = "cmd+shift+a"
+previous_tab = "prefix+p"
 next_tab = "cmd+shift+d"
 cycle_pane_previous = "cmd+["
 cycle_pane_next = "prefix+tab"
@@ -43,6 +46,9 @@ sidebar_min_width = 27
 sidebar_max_width = 54
 agent_panel_sort = "priority"
 prompt_new_workspace_name = true
+hide_tab_bar_when_single_tab = true
+tab_bar_position = "bottom"
+pane_scrollbars = false
 
 [ui.sidebar.agents]
 row_gap = 0
@@ -58,6 +64,7 @@ rows = [[
   { token = "$kind_agent", fg = "#89b4fa", bold = true },
   { token = "$kind_post", fg = "#fab387", bold = true },
   { token = "$kind_skill", fg = "#cba6f7", bold = true },
+  { token = "$kind_project", fg = "#a6e3a1", bold = true },
   "$workspace_title",
 ]]
 
@@ -66,6 +73,18 @@ kitty_graphics = true
 
 [[keys.command]]
 key = "cmd+k"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+key = "cmd+f8"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+key = "cmd+shift+a"
 type = "plugin_action"
 command = "herdr-navigator.open"
 description = "jump to anything"

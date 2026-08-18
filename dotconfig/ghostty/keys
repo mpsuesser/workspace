@@ -1,6 +1,7 @@
 keybind = global:f8=toggle_visibility
 # keybind = global:cmd+f8=toggle_quick_terminal
 keybind = cmd+k=unbind
+keybind = cmd+shift+p=unbind
 
 # keybind = ctrl+s=text:s\x0d
 # keybind = ctrl+a=text:clear\x0d

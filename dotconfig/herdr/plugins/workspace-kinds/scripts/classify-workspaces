@@ -6,6 +6,7 @@ herdr_bin=${HERDR_BIN_PATH:-herdr}
 source_id=plugin:local.workspace-kinds
 blank_cell=$(printf '\342\240\200')
 post_label="[Post]$blank_cell"
+project_label="[Proj]$blank_cell"
 uncategorized_padding="$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell"
 
 classify() {
@@ -19,7 +20,8 @@ classify() {
 				--token 'kind_agent=[Agent]' \
 				--token "workspace_title=${label#Agent: }" \
 				--clear-token kind_post \
-				--clear-token kind_skill >/dev/null
+				--clear-token kind_skill \
+				--clear-token kind_project >/dev/null
 			;;
 		"Post: "*)
 			"$herdr_bin" workspace report-metadata "$workspace_id" \
@@ -27,7 +29,8 @@ classify() {
 				--token "kind_post=$post_label" \
 				--token "workspace_title=${label#Post: }" \
 				--clear-token kind_agent \
-				--clear-token kind_skill >/dev/null
+				--clear-token kind_skill \
+				--clear-token kind_project >/dev/null
 			;;
 		"Skill: "*)
 			"$herdr_bin" workspace report-metadata "$workspace_id" \
@@ -35,7 +38,17 @@ classify() {
 				--token 'kind_skill=[Skill]' \
 				--token "workspace_title=${label#Skill: }" \
 				--clear-token kind_agent \
-				--clear-token kind_post >/dev/null
+				--clear-token kind_post \
+				--clear-token kind_project >/dev/null
+			;;
+		"Project: "*)
+			"$herdr_bin" workspace report-metadata "$workspace_id" \
+				--source "$source_id" \
+				--token "kind_project=$project_label" \
+				--token "workspace_title=${label#Project: }" \
+				--clear-token kind_agent \
+				--clear-token kind_post \
+				--clear-token kind_skill >/dev/null
 			;;
 		*)
 			"$herdr_bin" workspace report-metadata "$workspace_id" \
@@ -43,7 +56,8 @@ classify() {
 				--token "workspace_title=$uncategorized_padding$label" \
 				--clear-token kind_agent \
 				--clear-token kind_post \
-				--clear-token kind_skill >/dev/null
+				--clear-token kind_skill \
+				--clear-token kind_project >/dev/null
 			;;
 	esac
 }

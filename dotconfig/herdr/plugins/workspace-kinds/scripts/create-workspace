@@ -49,7 +49,7 @@ choose_post() {
 	} | gum choose --header 'Choose a post' --height 12
 }
 
-kind=$(gum choose Agent Post Skill None --header 'Workspace kind' --height 6)
+kind=$(gum choose Agent Post Skill Project None --header 'Workspace kind' --height 7)
 
 case "$kind" in
 	Post)
@@ -72,7 +72,7 @@ case "$kind" in
 		workspace_label="Post: $title"
 		workspace_cwd=$POST_WORKSPACE_DIR
 		;;
-	Agent | Skill)
+	Agent | Skill | Project)
 		title=$(normalize_title "$(read_title "New $kind workspace" 'Workspace title')")
 		require_title "$title"
 		workspace_label="$kind: $title"

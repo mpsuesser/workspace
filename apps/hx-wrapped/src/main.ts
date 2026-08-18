@@ -11,6 +11,7 @@ import { ChildProcess } from 'effect/unstable/process';
 const args = Bun.argv.slice(2);
 
 const command = ChildProcess.make('hx', args, {
+	detached: false,
 	env: {
 		HX_MODETHEME_NORMAL: 'rose_pine',
 		HX_MODETHEME_INSERT: 'beans',

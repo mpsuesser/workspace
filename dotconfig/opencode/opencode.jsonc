@@ -3,6 +3,12 @@
     // "@kitlangton/opencode-session-recap",
     "/Users/m/repos/opencode-effect-enforcer/src/index.ts",
     {
+      "package": "/Users/m/repos/EeveE/packages/opencode/src/index.ts",
+      "options": {
+        "agentsDirectory": "/Users/m/repos/workspace/dotconfig/opencode/agents",
+      },
+    },
+    {
       "package": "/Users/m/repos/opencode-imagen/dist/plugin.js",
       "options": {},
     },
@@ -95,7 +101,7 @@
       "path": "/Users/m/repos/mpsuesser",
     },
     "write-like-me": {
-      "path": "/Users/m/repos/write-like-me",
+      "path": "/Users/m/repos/WriteLikeMe",
     },
     "marcsuesser.com": {
       "path": "/Users/m/repos/marcsuesser.com",
@@ -104,10 +110,13 @@
       "path": "/Users/m/repos/dojo",
     },
     "project-cli": {
-      "path": "/Users/m/repos/project",
+      "path": "/Users/m/repos/ReposCLI",
     },
     "faraday-exchange": {
-      "path": "/Users/m/repos/faraday-exchange",
+      "path": "/Users/m/repos/FaradayExchange",
+    },
+    "Dev Agents": {
+      "path": "/Users/m/repos/.opencode/agents"
     }
   },
   "agents": {

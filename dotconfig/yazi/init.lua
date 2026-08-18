@@ -28,7 +28,7 @@ require("bunny"):setup({
 		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
-    { key = "b", path = "~/repos/opencode-plugin-beamstream" },
+    { key = "b", path = "~/repos/EeveE" },
 		{ key = "h", path = "~/repos/pi-effect-harness" },
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
