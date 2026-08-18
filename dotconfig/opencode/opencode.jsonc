@@ -97,6 +97,18 @@
     "write-like-me": {
       "path": "/Users/m/repos/write-like-me",
     },
+    "marcsuesser.com": {
+      "path": "/Users/m/repos/marcsuesser.com",
+    },
+    "dojo": {
+      "path": "/Users/m/repos/dojo",
+    },
+    "project-cli": {
+      "path": "/Users/m/repos/project",
+    },
+    "faraday-exchange": {
+      "path": "/Users/m/repos/faraday-exchange",
+    }
   },
   "agents": {
     "build": {
