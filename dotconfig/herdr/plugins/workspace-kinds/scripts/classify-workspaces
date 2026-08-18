@@ -1,0 +1,55 @@
+#!/bin/sh
+
+set -eu
+
+herdr_bin=${HERDR_BIN_PATH:-herdr}
+source_id=plugin:local.workspace-kinds
+blank_cell=$(printf '\342\240\200')
+post_label="[Post]$blank_cell"
+uncategorized_padding="$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell$blank_cell"
+
+classify() {
+	workspace_id=$1
+	label=$2
+
+	case "$label" in
+		"Agent: "*)
+			"$herdr_bin" workspace report-metadata "$workspace_id" \
+				--source "$source_id" \
+				--token 'kind_agent=[Agent]' \
+				--token "workspace_title=${label#Agent: }" \
+				--clear-token kind_post \
+				--clear-token kind_skill >/dev/null
+			;;
+		"Post: "*)
+			"$herdr_bin" workspace report-metadata "$workspace_id" \
+				--source "$source_id" \
+				--token "kind_post=$post_label" \
+				--token "workspace_title=${label#Post: }" \
+				--clear-token kind_agent \
+				--clear-token kind_skill >/dev/null
+			;;
+		"Skill: "*)
+			"$herdr_bin" workspace report-metadata "$workspace_id" \
+				--source "$source_id" \
+				--token 'kind_skill=[Skill]' \
+				--token "workspace_title=${label#Skill: }" \
+				--clear-token kind_agent \
+				--clear-token kind_post >/dev/null
+			;;
+		*)
+			"$herdr_bin" workspace report-metadata "$workspace_id" \
+				--source "$source_id" \
+				--token "workspace_title=$uncategorized_padding$label" \
+				--clear-token kind_agent \
+				--clear-token kind_post \
+				--clear-token kind_skill >/dev/null
+			;;
+	esac
+}
+
+"$herdr_bin" workspace list | jq -r \
+	'.result.workspaces[] | [.workspace_id, .label] | @tsv' |
+	while IFS="$(printf '\t')" read -r workspace_id label; do
+		classify "$workspace_id" "$label"
+	done
