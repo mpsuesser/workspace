@@ -2,6 +2,10 @@
   "plugins": [
     // "@kitlangton/opencode-session-recap",
     "/Users/m/repos/opencode-effect-enforcer/src/index.ts",
+    {
+      "package": "/Users/m/repos/opencode-imagen/dist/plugin.js",
+      "options": {},
+    },
     "@plannotator/opencode@latest",
   ],
   "mcp": {
