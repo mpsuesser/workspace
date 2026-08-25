@@ -1,0 +1,3 @@
+fe() {
+	bun run /Users/m/repos/FaradayExchange/packages/cli/src/main.ts "$@"
+}
