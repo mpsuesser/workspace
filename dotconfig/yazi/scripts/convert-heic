@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+input=${1:?"Usage: convert-heic <image.heic>"}
+
+if ! command -v sips >/dev/null 2>&1; then
+	printf 'Error: sips is required to convert HEIC images.\n' >&2
+	exit 1
+fi
+
+directory=$(dirname -- "$input")
+filename=$(basename -- "$input")
+stem=${filename%.*}
+png="$directory/$stem.png"
+jpeg="$directory/$stem.jpeg"
+temporary_png="$directory/.$stem.heic-convert.$$.png"
+temporary_jpeg="$directory/.$stem.heic-convert.$$.jpeg"
+
+cleanup() {
+	rm -f -- "$temporary_png" "$temporary_jpeg"
+}
+trap cleanup EXIT INT TERM
+
+if [[ -e "$png" || -e "$jpeg" ]]; then
+	printf 'One or more outputs already exist:\n  %s\n  %s\n\n' "$png" "$jpeg"
+	printf '[r] replace both, or any other key to cancel: '
+	IFS= read -r choice
+	if [[ "$choice" != "r" && "$choice" != "R" ]]; then
+		printf 'Cancelled; existing files were left unchanged.\n'
+		exit 0
+	fi
+fi
+
+printf 'Converting %s at maximum quality…\n' "$filename"
+
+# PNG remains lossless (and sips preserves the HEIC's high bit depth), while
+# JPEG uses the highest quality setting offered by macOS Image I/O.
+sips --setProperty format png "$input" --out "$temporary_png" >/dev/null
+sips --setProperty format jpeg --setProperty formatOptions best \
+	"$input" --out "$temporary_jpeg" >/dev/null
+
+mv -f -- "$temporary_png" "$png"
+mv -f -- "$temporary_jpeg" "$jpeg"
+
+printf '\nCreated:\n  [p] %s (lossless PNG)\n  [j] %s (best-quality JPEG)\n  [b] keep both\n\nKeep which format? ' "$png" "$jpeg"
+IFS= read -r choice
+
+case $choice in
+	p | P | png | PNG)
+		rm -f -- "$jpeg"
+		printf 'Kept %s\n' "$png"
+		;;
+	j | J | jpeg | JPEG | jpg | JPG)
+		rm -f -- "$png"
+		printf 'Kept %s\n' "$jpeg"
+		;;
+	*)
+		printf 'Kept both outputs.\n'
+		;;
+esac

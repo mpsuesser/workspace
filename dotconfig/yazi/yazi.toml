@@ -39,6 +39,9 @@ ueberzug_scale = 1
 ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
+convert-heic = [
+  { run = '~/.config/yazi/scripts/convert-heic %s1', desc = "Convert to PNG/JPEG", block = true, for = "macos" },
+]
 edit = [
   { run = '${EDITOR:-vi} %s', desc = "$EDITOR", block = true, for = "unix" },
   { run = 'code %s', orphan = true, desc = "code", for = "windows" },
@@ -66,6 +69,8 @@ play = [
 
 [open]
 rules = [
+  # HEIC is already previewed inline; opening it converts it instead of launching Finder.
+  { url = "*.heic", use = "convert-heic" },
   # Markdown - explicit rules to prevent tiny/odd files from falling through to macOS `open`
   { url = "*.md", use = ["edit", "reveal"] },
   { url = "*.mdx", use = ["edit", "reveal"] },
