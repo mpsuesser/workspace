@@ -29,14 +29,15 @@ require("bunny"):setup({
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
     { key = "b", path = "~/repos/EeveE" },
-		{ key = "h", path = "~/repos/pi-effect-harness" },
+		{ key = "h", path = "~/repos/opencode-effect-enforcer" },
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
-		{ key = "e", path = "~/repos/editor" },
+		{ key = "e", path = "~/repos/Editor" },
 		{ key = "c", path = "~/repos/curationspace" },
 		{ key = "m", path = "~/repos/marcsuesser.com" },
-		{ key = "d", path = "~/repos/dojo" },
+		{ key = "d", path = "~/repos/Dojo" },
+		{ key = "f", path = "~/repos/FaradayExchange" },
 
 		{ key = { ".", "c", "o" }, path = "~/.config" },
 		{ key = { ".", "s" }, path = "~/.state" },
