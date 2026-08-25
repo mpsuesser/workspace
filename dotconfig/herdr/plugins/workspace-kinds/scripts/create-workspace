@@ -16,6 +16,14 @@ read_title() {
 		--width 60
 }
 
+choose() {
+	tv \
+		--no-preview \
+		--no-remote \
+		--no-status-bar \
+		--input-header "$1"
+}
+
 normalize_title() {
 	printf '%s' "$1" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//'
 }
@@ -46,14 +54,16 @@ choose_post() {
 			filename=${path##*/}
 			printf '%s\n' "${filename%.md}"
 		done
-	} | gum choose --header 'Choose a post' --height 12
+	} | choose 'Choose a post'
 }
 
-kind=$(gum choose Agent Post Skill Project None --header 'Workspace kind' --height 7)
+kind=$(printf '%s\n' Agent Post Skill Project None | choose 'Workspace kind')
+[ -n "$kind" ] || exit 0
 
 case "$kind" in
 	Post)
 		selection=$(choose_post)
+		[ -n "$selection" ] || exit 0
 		if [ "$selection" = 'Create new post...' ]; then
 			title=$(normalize_title "$(read_title 'New post' 'Post title')")
 			title=${title%.md}

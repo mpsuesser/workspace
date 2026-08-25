@@ -13,8 +13,8 @@ workspace_picker = "prefix+space"
 new_workspace = ""
 rename_workspace = ["prefix+r", "cmd+shift+r"]
 detach = "prefix+shift+q"
-previous_workspace = "cmd+shift+w"
-next_workspace = "cmd+shift+s"
+previous_workspace = ""
+next_workspace = ""
 switch_workspace = "cmd+1..9"
 previous_agent = "prefix+alt+["
 next_agent = "prefix+alt+]"
@@ -25,15 +25,15 @@ focus_pane_down = ["cmd+s", "cmd+alt+down"]
 focus_pane_left = ["cmd+a", "cmd+alt+left"]
 focus_pane_right = ["cmd+d", "cmd+alt+right"]
 
-split_horizontal = "cmd+shift+p"
-split_vertical = "cmd+p"
+split_horizontal = "cmd+shift+s"
+split_vertical = "cmd+shift+d"
 close_pane = "cmd+q"
 zoom = "cmd+e"
 rename_tab = "cmd+r"
 new_tab = "cmd+t"
 close_tab = "cmd+alt+w"
 previous_tab = "prefix+p"
-next_tab = "cmd+shift+d"
+next_tab = ""
 cycle_pane_previous = "cmd+["
 cycle_pane_next = "prefix+tab"
 
@@ -85,6 +85,12 @@ description = "jump to anything"
 
 [[keys.command]]
 key = "cmd+shift+a"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+key = "cmd+shift+w"
 type = "plugin_action"
 command = "herdr-navigator.open"
 description = "jump to anything"
