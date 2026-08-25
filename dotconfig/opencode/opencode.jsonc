@@ -5,7 +5,7 @@
     {
       "package": "/Users/m/repos/EeveE/packages/opencode/src/index.ts",
       "options": {
-        "agentsDirectory": "/Users/m/repos/workspace/dotconfig/opencode/agents",
+        "agentsDirectory": "/Users/m/repos/.opencode/agents",
       },
     },
     {
@@ -147,5 +147,8 @@
   },
   "experimental": {
     "disable_paste_summary": true,
+  },
+  "websearch": {
+    "provider": "random"
   },
 }
