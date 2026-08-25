@@ -40,6 +40,7 @@ v = ['select_mode', ':theme %sh{echo $HX_MODETHEME_SELECT}']
 
 space.q = ':wq'
 space.Q = ':q!'
+space.r = ':reload'
 space.w = '@miw'
 space.W = '@miW'
 space.A = 'goto_line_start'
