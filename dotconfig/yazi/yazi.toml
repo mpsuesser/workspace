@@ -22,8 +22,8 @@ expandable_dirs = [
   "/Users/m/repos/testbed/fixtures",
   "/Users/m/repos/omnirepo/.odb/data",
   "/Users/m/repos/omnirepo/.odb",
-  "/Users/m/repos/curationspace/docs",
-  "/Users/m/repos/curationspace/packages",
+  "/Users/m/repos/CurationSpace/docs",
+  "/Users/m/repos/CurationSpace/packages",
 ]
 
 [preview]
