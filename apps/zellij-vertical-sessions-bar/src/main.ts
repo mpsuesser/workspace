@@ -1,8 +1,7 @@
 /**
  * zellij-vertical-sessions-bar — single-file OpenTUI sidebar that lists every
  * running zellij session in a 20-col vertical bar, with the currently-attached
- * session highlighted with a dracula-orange `▌` marker on each rendered
- * line (name / aggregate agent state).
+ * session highlighted with a dracula-orange `▌` marker beside its name.
  *
  * Replaces the Rust + wasm zellij plugin previously at
  * `/Users/m/repos/zellij-vertical-sessions-bar` with a Bun + OpenTUI program.
@@ -76,11 +75,6 @@ import * as Bool from 'effect/Boolean';
 import * as Cause from 'effect/Cause';
 import * as Option from 'effect/Option';
 import * as Schema from 'effect/Schema';
-import {
-	aggregateRunStateForSession,
-	readResolvedAgentSessionStateRecords,
-	type PiAgentRunState
-} from 'pi-zellij-sessions-bar-integration/state';
 
 // ─── Style constants (dracula palette; tweak these to re-skin) ───────────
 
@@ -88,8 +82,6 @@ const FG = '#f8f8f2';
 const ACCENT = '#ffb86c';
 const MUTED = '#6272a4';
 const ERROR = '#ff5555';
-const WORKING = '#50fa7b';
-const DONE = '#ffd700';
 const MARKER = '▌';
 
 class RendererCreateError
@@ -197,12 +189,6 @@ const isActive = (
 		onSome: (name) => name === row.name
 	});
 
-const stateContent = (state: PiAgentRunState) => {
-	if (state === 'working') return fg(WORKING)('working');
-	if (state === 'done') return fg(DONE)('done');
-	return dim(fg(MUTED)('idle'));
-};
-
 // ─── Navigation ──────────────────────────────────────────────────────────
 //
 // Navigation walks the latest sorted snapshot in `rowsRef`, finds the
@@ -246,8 +232,7 @@ const targetForDelta = (
 const buildBlock = (
 	renderer: CliRenderer,
 	row: SessionStatus,
-	isCurrent: boolean,
-	agentState: PiAgentRunState
+	isCurrent: boolean
 ): BoxRenderable => {
 	const block = new BoxRenderable(renderer, {
 		flexDirection: 'column',
@@ -256,26 +241,15 @@ const buildBlock = (
 		width: '100%'
 	});
 
-	// Active blocks get a bold orange `▌` on every line plus a bold name;
-	// inactive blocks use a 2-space gutter and plain foreground for the
-	// headline element. Line 2 is the aggregate pi agent state for every
-	// pi pane in this zellij session (`working > done > idle`). `isCurrent`
-	// is supplied by the caller (rename-safe override) rather than read
-	// from `row`.
-	const renderedState = stateContent(agentState);
-	const lines = Bool.match(isCurrent, {
-		onTrue: () => ({
-			name: t`${fg(ACCENT)(MARKER)} ${bold(fg(FG)(row.name))}`,
-			state: t`${fg(ACCENT)(MARKER)} ${renderedState}`
-		}),
-		onFalse: () => ({
-			name: t`  ${fg(FG)(row.name)}`,
-			state: t`  ${renderedState}`
-		})
+	// Active blocks get a bold orange `▌` and a bold name; inactive
+	// blocks use a 2-space gutter and plain foreground. `isCurrent` is
+	// supplied by the caller (rename-safe override) rather than `row`.
+	const content = Bool.match(isCurrent, {
+		onTrue: () => t`${fg(ACCENT)(MARKER)} ${bold(fg(FG)(row.name))}`,
+		onFalse: () => t`  ${fg(FG)(row.name)}`
 	});
 
-	block.add(new TextRenderable(renderer, { content: lines.name }));
-	block.add(new TextRenderable(renderer, { content: lines.state }));
+	block.add(new TextRenderable(renderer, { content }));
 	return block;
 };
 
@@ -480,18 +454,10 @@ const main = Effect.gen(function* () {
 	const refresh = Effect.gen(function* () {
 		const rows = yield* fetchRows();
 		yield* Ref.set(rowsRef, rows);
-		const piRecords = yield* readResolvedAgentSessionStateRecords();
 		const current = yield* findCurrent();
 		yield* Ref.set(currentNameRef, current);
 		yield* replaceChildren(
-			rows.map((r) =>
-				buildBlock(
-					renderer,
-					r,
-					isActive(current, r),
-					aggregateRunStateForSession(r.name, piRecords)
-				)
-			)
+			Arr.map(rows, (r) => buildBlock(renderer, r, isActive(current, r)))
 		);
 	}).pipe(
 		// Render the failure inside the bar itself rather than crashing

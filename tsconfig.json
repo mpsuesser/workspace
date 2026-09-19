@@ -13,9 +13,6 @@
     { "path": "bindings/tmux" },
     { "path": "bindings/zellij" },
     { "path": "runtime" },
-    {
-      "path": "dotconfig/pi/agent/extensions/pi-zellij-sessions-bar-integration"
-    },
     { "path": "scratchpad" }
   ]
 }
