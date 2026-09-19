@@ -33,7 +33,11 @@ selection-background = #44475a
 selection-foreground = #f8f8f2
 
 # font-family = Maple Mono
-font-family = Maple Mono NF
+# font-family = Maple Mono NF
+font-family = SF Mono
+font-style = Semibold
+# font-family = SF Pro
+adjust-cell-width = 3.5%
 # font-family = Annotation Mono
 # font-family = JetBrainsMono Nerd Font Mono
 # font-family = JetBrainsMonoNL Nerd Font Mono
