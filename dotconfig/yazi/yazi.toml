@@ -15,16 +15,7 @@ show_symlink = true
 scrolloff = 5
 mouse_events = ["scroll"]
 title_format = "@ {cwd}"
-expandable_dirs = [
-  "/Users/m/repos/omnirepo/packages",
-  "/Users/m/repos/omnirepo/docs",
-  "/Users/m/repos/omnirepo/docs/adr",
-  "/Users/m/repos/testbed/fixtures",
-  "/Users/m/repos/omnirepo/.odb/data",
-  "/Users/m/repos/omnirepo/.odb",
-  "/Users/m/repos/CurationSpace/docs",
-  "/Users/m/repos/CurationSpace/packages",
-]
+expandable_dirs = []
 
 [preview]
 wrap = "yes"
