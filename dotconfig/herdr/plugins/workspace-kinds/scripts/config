@@ -1,3 +1,0 @@
-# Kind-specific workspace locations.
-POST_WORKSPACE_DIR=${POST_WORKSPACE_DIR:-"$HOME/repos/marcsuesser.com"}
-POSTS_DIR=${POSTS_DIR:-"$POST_WORKSPACE_DIR/posts"}
