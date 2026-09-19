@@ -42,7 +42,7 @@ space.q = ':wq'
 space.Q = ':q!'
 space.r = ':reload'
 space.w = '@miw'
-space.W = '@miW'
+space.W = '@mim' # select inside the nearest surrounding pair
 space.A = 'goto_line_start'
 space.S = 'extend_to_line_bounds'
 space.i = 'select_textobject_inner'
@@ -98,6 +98,8 @@ w = 'extend_line_up'
 a = 'extend_char_left'
 s = 'extend_line_down'
 d = 'extend_char_right'
+
+g.e = ['extend_to_last_line', 'extend_to_line_end']
 
 # W = 'select_regex' # "within"
 W = [
