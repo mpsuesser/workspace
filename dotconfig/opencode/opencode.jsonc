@@ -109,24 +109,18 @@
     "mpsuesser": {
       "path": "/Users/m/repos/mpsuesser",
     },
-    "write-like-me": {
+    "WriteLikeMe": {
       "path": "/Users/m/repos/WriteLikeMe",
     },
-    "marcsuesser.com": {
+    "MarcSuesser.com": {
       "path": "/Users/m/repos/marcsuesser.com",
     },
-    "dojo": {
+    "Dojo": {
       "path": "/Users/m/repos/dojo",
     },
-    "project-cli": {
-      "path": "/Users/m/repos/ReposCLI",
-    },
-    "faraday-exchange": {
+    "FaradayExchange": {
       "path": "/Users/m/repos/FaradayExchange",
     },
-    "Dev Agents": {
-      "path": "/Users/m/repos/.opencode/agents"
-    }
   },
   "agents": {
     "build": {
