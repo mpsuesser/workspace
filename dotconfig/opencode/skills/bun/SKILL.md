@@ -1,8 +1,8 @@
 ---
 name: bun
 description: Bun is an all-in-one JavaScript/TypeScript toolkit that ships as a single binary. It includes a runtime (drop-in Node.js replacement), package manager, test runner, and bundler.
-access_date: 2026-07-14T11:49:23.000Z
-current_date: 2026-07-14T11:49:23.800Z
+access_date: 2026-09-19T09:13:21.000Z
+current_date: 2026-09-19T09:13:21.000Z
 ---
 
 # Bun
@@ -73,7 +73,6 @@ current_date: 2026-07-14T11:49:23.800Z
 - [Add Sentry to a Bun app](https://bun.com/docs/guides/ecosystem/sentry.md)
 - [Build an app with SolidStart and Bun](https://bun.com/docs/guides/ecosystem/solidstart.md)
 - [Server-side render (SSR) a React component](https://bun.com/docs/guides/ecosystem/ssr-react.md)
-- [Build an HTTP server using StricJS and Bun](https://bun.com/docs/guides/ecosystem/stric.md)
 - [Build an app with SvelteKit and Bun](https://bun.com/docs/guides/ecosystem/sveltekit.md)
 - [Run Bun as a daemon with systemd](https://bun.com/docs/guides/ecosystem/systemd.md)
 - [Use TanStack Start with Bun](https://bun.com/docs/guides/ecosystem/tanstack-start.md)
@@ -141,6 +140,7 @@ current_date: 2026-07-14T11:49:23.800Z
 - [Import a JSON file](https://bun.com/docs/guides/runtime/import-json.md)
 - [Import a JSON5 file](https://bun.com/docs/guides/runtime/import-json5.md)
 - [Import a TOML file](https://bun.com/docs/guides/runtime/import-toml.md)
+- [Import an XML file](https://bun.com/docs/guides/runtime/import-xml.md)
 - [Import a YAML file](https://bun.com/docs/guides/runtime/import-yaml.md)
 - [Read environment variables](https://bun.com/docs/guides/runtime/read-env.md)
 - [Set environment variables](https://bun.com/docs/guides/runtime/set-env.md)
@@ -220,15 +220,17 @@ current_date: 2026-07-14T11:49:23.800Z
 - [Catalogs](https://bun.com/docs/pm/catalogs.md): Share common dependency versions across multiple packages in a monorepo
 - [bun add](https://bun.com/docs/pm/cli/add.md): Add packages to your project with Bun's fast package manager
 - [bun audit](https://bun.com/docs/pm/cli/audit.md): Check your installed packages for known security vulnerabilities
+- [bun dedupe](https://bun.com/docs/pm/cli/dedupe.md): Remove duplicate versions of packages from bun.lock
 - [bun info](https://bun.com/docs/pm/cli/info.md): Display package metadata from the npm registry
 - [bun install](https://bun.com/docs/pm/cli/install.md): Install packages with Bun's fast package manager
 - [bun link](https://bun.com/docs/pm/cli/link.md): Link local packages for development
 - [bun outdated](https://bun.com/docs/pm/cli/outdated.md): Check for outdated dependencies
 - [bun patch](https://bun.com/docs/pm/cli/patch.md): Persistently patch node_modules packages in a git-friendly way
 - [bun pm](https://bun.com/docs/pm/cli/pm.md): Package manager utilities
+- [bun prune](https://bun.com/docs/pm/cli/prune.md): Remove packages that are not in bun.lock from node_modules
 - [bun publish](https://bun.com/docs/pm/cli/publish.md): Use `bun publish` to publish a package to the npm registry
 - [bun remove](https://bun.com/docs/pm/cli/remove.md): Remove dependencies from your project
-- [bun update](https://bun.com/docs/pm/cli/update.md): Update dependencies to latest versions
+- [bun update](https://bun.com/docs/pm/cli/update.md): Update dependencies to the newest versions their ranges allow
 - [bun why](https://bun.com/docs/pm/cli/why.md): Explain why a package is installed
 - [bun --filter](https://bun.com/docs/pm/filter.md): Select packages by pattern in a monorepo using the --filter flag
 - [Global cache](https://bun.com/docs/pm/global-cache.md): How Bun stores and manages packages in its global cache
@@ -309,6 +311,7 @@ current_date: 2026-07-14T11:49:23.800Z
 - [Web APIs](https://bun.com/docs/runtime/web-apis.md): Web-standard APIs supported by Bun for server-side JavaScript
 - [WebView](https://bun.com/docs/runtime/webview.md): Control a headless browser from Bun for automation, testing, and scraping — zero dependencies on macOS, Chrome DevTools Protocol everywhere else
 - [Workers](https://bun.com/docs/runtime/workers.md): Use Bun's Workers API to create and communicate with a new JavaScript instance running on a separate thread while sharing I/O resources with the main thread
+- [XML](https://bun.com/docs/runtime/xml.md): Use Bun's built-in support for XML through both runtime APIs and bundler integration
 - [YAML](https://bun.com/docs/runtime/yaml.md): Use Bun's built-in support for YAML files through both runtime APIs and bundler integration
 - [Code coverage](https://bun.com/docs/test/code-coverage.md): Use Bun's built-in code coverage reporting to track test coverage and find untested code
 - [Test configuration](https://bun.com/docs/test/configuration.md): Configure bun test behavior with bunfig.toml and command-line options
@@ -318,6 +321,7 @@ current_date: 2026-07-14T11:49:23.800Z
 - [Test runner](https://bun.com/docs/test/index.md): Bun's fast, built-in, Jest-compatible test runner with TypeScript support, lifecycle hooks, mocking, and watch mode
 - [Lifecycle hooks](https://bun.com/docs/test/lifecycle.md): Learn how to use beforeAll, beforeEach, afterEach, and afterAll lifecycle hooks in Bun tests
 - [Mocks](https://bun.com/docs/test/mocks.md): Learn how to create and use mock functions, spies, and module mocks in Bun tests
+- [Parallel & isolated test runs](https://bun.com/docs/test/parallel.md): Run test files across CPU cores with --parallel, isolate files from each other with --isolate, run tests within a file concurrently, and split suites across CI machines with --shard and --timings
 - [Test Reporters](https://bun.com/docs/test/reporters.md)
 - [Runtime behavior](https://bun.com/docs/test/runtime-behavior.md): Learn about Bun test's runtime integration, environment variables, timeouts, and error handling
 - [Snapshots](https://bun.com/docs/test/snapshots.md): Learn how to use snapshot testing in Bun to save and compare output between test runs
