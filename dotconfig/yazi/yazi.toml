@@ -66,6 +66,9 @@ rules = [
   { url = "*.md", use = ["edit", "reveal"] },
   { url = "*.mdx", use = ["edit", "reveal"] },
   { url = "*.markdown", use = ["edit", "reveal"] },
+  # YAML - explicit rules so empty files do not fall through as application/octet-stream
+  { url = "*.yaml", use = ["edit", "reveal"] },
+  { url = "*.yml", use = ["edit", "reveal"] },
   # TypeScript - explicit rule to prevent binary-detected files from falling through
   { url = "*.ts", use = ["edit", "reveal"] },
   { url = "*.tsx", use = ["edit", "reveal"] },
