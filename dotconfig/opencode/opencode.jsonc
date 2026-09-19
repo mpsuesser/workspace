@@ -1,7 +1,7 @@
 {
   "plugins": [
     // "@kitlangton/opencode-session-recap",
-    "/Users/m/repos/opencode-effect-enforcer/src/index.ts",
+    "/Users/m/repos/opencode-effect-enforcer/src",
     {
       "package": "/Users/m/repos/EeveE/packages/opencode/src/index.ts",
       "options": {
@@ -9,7 +9,7 @@
       },
     },
     {
-      "package": "/Users/m/repos/opencode-imagen/dist/plugin.js",
+      "package": "/Users/m/repos/opencode-imagen/dist",
       "options": {},
     },
     "@plannotator/opencode@latest",
@@ -23,6 +23,18 @@
           "-c",
           "export GITHUB_PERSONAL_ACCESS_TOKEN=\"$(/opt/homebrew/bin/gh auth token)\"; exec /opt/homebrew/bin/github-mcp-server stdio --tools search_repositories --read-only",
         ],
+      },
+      "linear": {
+        "type": "remote",
+        "url": "https://mcp.linear.app/mcp",
+      },
+      "marco-polo": {
+        "type": "remote",
+        "url": "https://executor.sh/marco-polo/mcp",
+      },
+      "notion": {
+        "type": "remote",
+        "url": "https://mcp.notion.com/mcp"
       },
     },
   },
@@ -55,10 +67,10 @@
       "branch": "main",
       "description": "Full scraped documentation for Alchemy",
     },
-    "curationspace": {
+    "CurationSpace": {
       "path": "/Users/m/repos/CurationSpace",
     },
-    "mydb": {
+    "MyDB": {
       "path": "/Users/m/repos/mydb",
     },
     "effect-oxlint": {
@@ -66,9 +78,6 @@
     },
     "oxlint-plugin-effect": {
       "path": "/Users/m/repos/oxlint-plugin-effect",
-    },
-    "grove": {
-      "path": "/Users/m/repos/grove",
     },
     "editor": {
       "path": "/Users/m/repos/editor",
