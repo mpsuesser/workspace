@@ -1,0 +1,36 @@
+matches:
+  - triggers: [;!p]
+    replace: |-
+      <!-- pause -->
+
+  - triggers: [;!e, ;!s]
+    replace: |-
+      <!-- end_slide -->
+
+  - triggers: [;!m, ;!jtm]
+    replace: |-
+      <!-- jump_to_middle -->
+
+  - triggers: [;!nl]
+    replace: |-
+      <!-- new_lines: $|$ -->
+
+  - triggers: [;!a]
+    replace: |-
+      <!-- alignment: $|$ -->
+
+  - triggers: [;!il]
+    replace: |-
+      <!-- incremental_lists: true -->
+
+  - triggers: [;!cl]
+    replace: |-
+      <!-- column_layout: [$|$] -->
+
+  - triggers: [;!col]
+    replace: |-
+      <!-- column: $|$ -->
+
+  - triggers: [;!rl]
+    replace: |-
+      <!-- reset_layout -->

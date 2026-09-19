@@ -1,1 +1,49 @@
+speaker_notes:
+  always_publish: true
 
+bindings:
+  # the keys that cause the presentation to move forwards.
+  next: ["d"]
+
+  # the keys that cause the presentation to move backwards.
+  previous: ["a"]
+
+  # the keys that cause the presentation to move "fast" to the next slide. this will ignore:
+  #
+  # * Pauses.
+  # * Dynamic code highlights.
+  # * Slide transitions, if enabled.
+  next_fast: ["D"]
+
+  # same as `next_fast` but jumps fast to the previous slide.
+  previous_fast: ["A"]
+
+  # the key binding to jump to the first slide.
+  first_slide: ["gg"]
+
+  # the key binding to jump to the last slide.
+  last_slide: ["G"]
+
+  # the key binding to jump to a specific slide.
+  go_to_slide: ["<number>g"]
+
+  # the key binding to execute a piece of shell code.
+  execute_code: ["x"]
+
+  # the key binding to reload the presentation.
+  reload: ["<c-r>", "r"]
+
+  # the key binding to toggle the slide index modal.
+  toggle_slide_index: ["e", "i"]
+
+  # the key binding to toggle the key bindings modal.
+  toggle_bindings: ["?"]
+
+  # the key binding to close the currently open modal.
+  close_modal: ["<esc>"]
+
+  # the key binding to close the application.
+  exit: ["<c-c>", "q"]
+
+  # the key binding to suspend the application.
+  suspend: ["<c-z>"]
