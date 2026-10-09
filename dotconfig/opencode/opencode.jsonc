@@ -3,12 +3,6 @@
     // "@kitlangton/opencode-session-recap",
     "/Users/m/repos/opencode-effect-enforcer/src/opencode",
     {
-      "package": "/Users/m/repos/EeveE/packages/opencode/src/index.ts",
-      "options": {
-        "agentsDirectory": "/Users/m/repos/.opencode/agents",
-      },
-    },
-    {
       "package": "/Users/m/repos/opencode-imagen/dist",
       "options": {},
     },

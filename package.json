@@ -33,7 +33,7 @@
     "check": "dprint check && oxlint && bun run typecheck",
     "format": "dprint fmt",
     "gen:zellij-layouts": "bun run scripts/generate-zellij-layout-kdl-files.ts",
-    "install:dotconfig": "bun run --filter='*' install:dotconfig",
+    "install:dotconfig": "sh dotconfig/agents/install.sh && bun run --filter='*' install:dotconfig",
     "lint": "oxlint",
     "prepare": "effect-tsgo patch",
     "test": "bun test",
