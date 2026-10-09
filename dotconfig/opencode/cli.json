@@ -20,13 +20,22 @@
     "onboarding": false
   },
   "animations": true,
+  "cursor": {
+    "style": "line"
+  },
+  "prompt": {
+    "paste": "full"
+  },
   "keybinds": {
     "command.palette.show": "alt+p",
-    "prompt.editor": "ctrl+e",
+    "prompt.editor": "alt+e",
+    "input.visual.line.end": "none",
+    "input.line.end": "ctrl+e,super+right",
     "model.list": "alt+m",
     "variant.list": "alt+v",
     "session.half.page.up": "alt+w",
     "session.half.page.down": "alt+s",
+    "session.list": "alt+shift+s",
     "messages.copy": ["alt+y", "alt+shift+c"],
     "agent.cycle": "tab",
     "agent.cycle.reverse": "shift+tab",

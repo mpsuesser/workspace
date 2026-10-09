@@ -1,0 +1,1 @@
+For local file hyperlinks, use `file://Marcs-MacBook-Pro.local/<absolute-path>` with URL-encoded paths so Ghostty opens them in the default app; resolve paths against the session directory, never link bare or relative paths.
