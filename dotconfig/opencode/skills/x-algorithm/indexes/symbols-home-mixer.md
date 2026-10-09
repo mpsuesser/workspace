@@ -1,0 +1,2670 @@
+# home-mixer: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`home-mixer/ads/following_ad_blender.rs:9`](../source/home-mixer/ads/following_ad_blender.rs#L9) — `const DEFAULT_SPACING: usize = 3;`
+- [`home-mixer/ads/following_ad_blender.rs:10`](../source/home-mixer/ads/following_ad_blender.rs#L10) — `const MIN_REQUESTED_GAP: usize = 3;`
+- [`home-mixer/ads/following_ad_blender.rs:11`](../source/home-mixer/ads/following_ad_blender.rs#L11) — `const SPACING_PROBE_ADS: usize = 4;`
+- [`home-mixer/ads/following_ad_blender.rs:13`](../source/home-mixer/ads/following_ad_blender.rs#L13) — `pub struct FollowingAdBlender {`
+- [`home-mixer/ads/following_ad_blender.rs:18`](../source/home-mixer/ads/following_ad_blender.rs#L18) — `fn default() -> Self {`
+- [`home-mixer/ads/following_ad_blender.rs:26`](../source/home-mixer/ads/following_ad_blender.rs#L26) — `fn blend_inner(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/following_ad_blender.rs:31`](../source/home-mixer/ads/following_ad_blender.rs#L31) — `pub(crate) fn compute_spacing(ads: &[AdIndexInfo]) -> usize {`
+- [`home-mixer/ads/following_ad_blender.rs:55`](../source/home-mixer/ads/following_ad_blender.rs#L55) — `pub(crate) fn compute_first_position(ads: &[AdIndexInfo], spacing: usize) -> usize {`
+- [`home-mixer/ads/following_ad_blender.rs:63`](../source/home-mixer/ads/following_ad_blender.rs#L63) — `fn same_conversation_unit(a: &ScoredPost, b: &ScoredPost) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:69`](../source/home-mixer/ads/following_ad_blender.rs#L69) — `pub(crate) fn blend_units(posts: &[ScoredPost]) -> Vec<std::ops::Range<usize>> {`
+- [`home-mixer/ads/following_ad_blender.rs:85`](../source/home-mixer/ads/following_ad_blender.rs#L85) — `fn is_medium_risk(post: &ScoredPost) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:92`](../source/home-mixer/ads/following_ad_blender.rs#L92) — `fn is_low_risk(post: &ScoredPost) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:96`](../source/home-mixer/ads/following_ad_blender.rs#L96) — `fn unit_medium_risk(unit: &[ScoredPost]) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:100`](../source/home-mixer/ads/following_ad_blender.rs#L100) — `fn unit_low_risk(unit: &[ScoredPost]) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:104`](../source/home-mixer/ads/following_ad_blender.rs#L104) — `fn unit_drops_handle(ad: &AdIndexInfo, unit: &[ScoredPost]) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:108`](../source/home-mixer/ads/following_ad_blender.rs#L108) — `fn unit_drops_keyword(ad: &AdIndexInfo, unit: &[ScoredPost]) -> bool {`
+- [`home-mixer/ads/following_ad_blender.rs:112`](../source/home-mixer/ads/following_ad_blender.rs#L112) — `pub(crate) fn blend_impl(`
+- [`home-mixer/ads/following_ad_blender.rs:122`](../source/home-mixer/ads/following_ad_blender.rs#L122) — `pub(crate) fn blend_with_spacing(`
+- [`home-mixer/ads/mod.rs:20`](../source/home-mixer/ads/mod.rs#L20) — `pub trait AdsBlender: Send + Sync {`
+- [`home-mixer/ads/mod.rs:21`](../source/home-mixer/ads/mod.rs#L21) — `fn blend_inner(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem>;`
+- [`home-mixer/ads/mod.rs:23`](../source/home-mixer/ads/mod.rs#L23) — `fn blend(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/multi_risk_blender.rs:9`](../source/home-mixer/ads/multi_risk_blender.rs#L9) — `const ENFORCEMENT_METRIC: &str = "MultiRisk.enforcement";`
+- [`home-mixer/ads/multi_risk_blender.rs:10`](../source/home-mixer/ads/multi_risk_blender.rs#L10) — `const SLOT_OUTCOME_METRIC: &str = "MultiRisk.slot_outcome";`
+- [`home-mixer/ads/multi_risk_blender.rs:11`](../source/home-mixer/ads/multi_risk_blender.rs#L11) — `const SERVING_LIMITATION_METRIC: &str = "MultiRisk.serving_limitation";`
+- [`home-mixer/ads/multi_risk_blender.rs:13`](../source/home-mixer/ads/multi_risk_blender.rs#L13) — `pub struct MultiRiskAdsBlender;`
+- [`home-mixer/ads/multi_risk_blender.rs:16`](../source/home-mixer/ads/multi_risk_blender.rs#L16) — `fn blend_inner(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/multi_risk_blender.rs:21`](../source/home-mixer/ads/multi_risk_blender.rs#L21) — `pub(crate) fn blend_impl(`
+- [`home-mixer/ads/multi_risk_blender.rs:241`](../source/home-mixer/ads/multi_risk_blender.rs#L241) — `pub(crate) fn serving_limitation(`
+- [`home-mixer/ads/multi_risk_blender.rs:256`](../source/home-mixer/ads/multi_risk_blender.rs#L256) — `fn emit_serving_limitation(factor: &'static str) {`
+- [`home-mixer/ads/multi_risk_blender.rs:264`](../source/home-mixer/ads/multi_risk_blender.rs#L264) — `pub(crate) struct SlotRejections {`
+- [`home-mixer/ads/multi_risk_blender.rs:271`](../source/home-mixer/ads/multi_risk_blender.rs#L271) — `pub(crate) fn stuck_outcome(&self) -> &'static str {`
+- [`home-mixer/ads/multi_risk_blender.rs:284`](../source/home-mixer/ads/multi_risk_blender.rs#L284) — `fn emit_slot_outcome_metrics(filled: u64, unfilled: u64, stuck: &SlotRejections) {`
+- [`home-mixer/ads/multi_risk_blender.rs:308`](../source/home-mixer/ads/multi_risk_blender.rs#L308) — `fn emit_enforcement_metrics(bsr_drop: u64, bsr_ok: u64, handle_drop: u64, keyword_drop: u64) {`
+- [`home-mixer/ads/partition_organic_blender.rs:9`](../source/home-mixer/ads/partition_organic_blender.rs#L9) — `const ENFORCEMENT_METRIC: &str = "PartitionOrganic.enforcement";`
+- [`home-mixer/ads/partition_organic_blender.rs:10`](../source/home-mixer/ads/partition_organic_blender.rs#L10) — `const SLOT_OUTCOME_METRIC: &str = "PartitionOrganic.slot_outcome";`
+- [`home-mixer/ads/partition_organic_blender.rs:11`](../source/home-mixer/ads/partition_organic_blender.rs#L11) — `const SERVING_LIMITATION_METRIC: &str = "PartitionOrganic.serving_limitation";`
+- [`home-mixer/ads/partition_organic_blender.rs:13`](../source/home-mixer/ads/partition_organic_blender.rs#L13) — `pub struct PartitionOrganicAdsBlender;`
+- [`home-mixer/ads/partition_organic_blender.rs:16`](../source/home-mixer/ads/partition_organic_blender.rs#L16) — `fn blend_inner(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/partition_organic_blender.rs:21`](../source/home-mixer/ads/partition_organic_blender.rs#L21) — `pub(crate) fn blend_impl(`
+- [`home-mixer/ads/partition_organic_blender.rs:201`](../source/home-mixer/ads/partition_organic_blender.rs#L201) — `pub(crate) fn serving_limitation(`
+- [`home-mixer/ads/partition_organic_blender.rs:216`](../source/home-mixer/ads/partition_organic_blender.rs#L216) — `fn emit_serving_limitation(factor: &'static str) {`
+- [`home-mixer/ads/partition_organic_blender.rs:224`](../source/home-mixer/ads/partition_organic_blender.rs#L224) — `pub(crate) struct SlotRejections {`
+- [`home-mixer/ads/partition_organic_blender.rs:231`](../source/home-mixer/ads/partition_organic_blender.rs#L231) — `pub(crate) fn stuck_outcome(&self) -> &'static str {`
+- [`home-mixer/ads/partition_organic_blender.rs:244`](../source/home-mixer/ads/partition_organic_blender.rs#L244) — `fn emit_slot_outcome_metrics(filled: u64, unfilled: u64, stuck: &SlotRejections) {`
+- [`home-mixer/ads/partition_organic_blender.rs:268`](../source/home-mixer/ads/partition_organic_blender.rs#L268) — `fn emit_enforcement_metrics(bsr_drop: u64, bsr_ok: u64, handle_drop: u64, keyword_drop: u64) {`
+- [`home-mixer/ads/safe_gap_blender.rs:7`](../source/home-mixer/ads/safe_gap_blender.rs#L7) — `pub struct SafeGapAdsBlender {`
+- [`home-mixer/ads/safe_gap_blender.rs:12`](../source/home-mixer/ads/safe_gap_blender.rs#L12) — `fn default() -> Self {`
+- [`home-mixer/ads/safe_gap_blender.rs:20`](../source/home-mixer/ads/safe_gap_blender.rs#L20) — `fn blend_inner(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/safe_gap_blender.rs:25`](../source/home-mixer/ads/safe_gap_blender.rs#L25) — `pub(crate) fn blend_impl(`
+- [`home-mixer/ads/safe_gap_blender.rs:45`](../source/home-mixer/ads/safe_gap_blender.rs#L45) — `pub(crate) fn assign_ads_to_gaps(`
+- [`home-mixer/ads/safe_gap_blender.rs:84`](../source/home-mixer/ads/safe_gap_blender.rs#L84) — `pub(crate) fn find_best_gap(gaps: &[usize], ideal: usize, min: usize) -> Option<(usize, usize)> {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:12`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L12) — `const HIGH_RISK_LABEL_POST_RATE: f64 = 0.045;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:13`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L13) — `const NSFW_AUTHOR_POST_RATE: f64 = 0.117;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:14`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L14) — `const MEDIUM_RISK_POST_RATE: f64 = 0.411;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:15`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L15) — `const LOW_RISK_POST_RATE: f64 = 0.093;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:17`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L17) — `const NSFW_AUTHOR_POOL: &[u64] = &[2001, 2002, 2003, 2004, 2005];`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:19`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L19) — `const BSR_LOW_AD_RATE: f64 = 0.214;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:20`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L20) — `const BSR_IAS_AD_RATE: f64 = 0.003;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:21`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L21) — `const BSR_NO_RISK_AD_RATE: f64 = 0.013;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:22`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L22) — `const BSR_HIGH_AD_RATE: f64 = 0.10;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:24`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L24) — `const KNOWN_HANDLE_POST_RATE: f64 = 0.10;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:25`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L25) — `const AD_EXCLUDED_HANDLES_RATE: f64 = 0.10;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:26`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L26) — `const AD_EXCLUDED_KEYWORDS_RATE: f64 = 0.10;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:28`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L28) — `const HANDLE_POOL: &[i64] = &[1001, 1002, 1003, 1004, 1005];`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:30`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L30) — `const SCREEN_NAME_POOL: &[&str] = &["user_a", "user_b", "user_c", "user_d", "user_e"];`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:32`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L32) — `const KEYWORD_POOL: &[&str] = &["alpha", "bravo", "charlie", "delta", "echo"];`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:34`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L34) — `const KEYWORD_IN_TEXT_RATE: f64 = 0.10;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:36`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L36) — `const SAFE_TEXT_POOL: &[&str] = &[`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:44`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L44) — `const IDEAL_GAPS: &[usize] = &[1, 5, 9, 13, 17, 21, 25];`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:46`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L46) — `const NUM_SCENARIOS: usize = 1000;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:48`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L48) — `const RNG_SEED: u64 = 412;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:50`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L50) — `struct Scenario {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:55`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L55) — `fn expected_high_risk_post_rate() -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:59`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L59) — `fn is_avoid_verdict(verdict: BrandSafetyVerdict) -> bool {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:66`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L66) — `fn block_ideal_gaps(posts: &mut [ScoredPost]) {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:86`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L86) — `fn generate_scenarios(rng: &mut StdRng) -> Vec<Scenario> {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:201`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L201) — `fn ad_count(items: &[FeedItem]) -> usize {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:208`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L208) — `fn post_count(items: &[FeedItem]) -> usize {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:215`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L215) — `fn ad_positions(items: &[FeedItem]) -> Vec<i32> {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:223`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L223) — `fn ad_bsr(ad: &AdIndexInfo) -> BrandSafetyRiskLevel {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:230`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L230) — `fn is_bsr_low_or_ias(risk: BrandSafetyRiskLevel) -> bool {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:237`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L237) — `struct AdjacencyViolations {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:253`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L253) — `fn count_adjacency_violations(`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:349`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L349) — `fn check_invariants(items: &[FeedItem], blender_name: &str, scenario_idx: usize) -> bool {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:378`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L378) — `struct BlenderStats {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:403`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L403) — `fn new(name: &'static str) -> Self {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:429`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L429) — `fn ad_fill_rate(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:436`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L436) — `fn ad_load_pct(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:443`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L443) — `fn avg_spacing(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:450`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L450) — `fn medrisk_adj_pct(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:457`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L457) — `fn bsr_low_lowrisk_adj_pct(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:464`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L464) — `fn bsr_low_drop_pct(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:471`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L471) — `fn bsr_high_drop_pct(&self) -> f64 {`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:479`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L479) — `type BlendFn = fn(Vec<ScoredPost>, Vec<AdIndexInfo>, usize) -> Vec<FeedItem>;`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:481`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L481) — `fn safe_gap_blend(`
+- [`home-mixer/ads/tests/blender_comparison_test.rs:490`](../source/home-mixer/ads/tests/blender_comparison_test.rs#L490) — `fn blender_comparison_report() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:6`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L6) — `fn make_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:10`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L10) — `fn make_post_with(`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:25`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L25) — `fn make_reply(tweet_id: u64, ancestors: &[u64], verdict: BrandSafetyVerdict) -> ScoredPost {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:35`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L35) — `fn make_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:39`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L39) — `fn make_ad_at(post_id: i64, insert_position: i32) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:47`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L47) — `fn make_ad_with(`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:71`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L71) — `fn is_ad(item: &FeedItem) -> bool {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:75`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L75) — `fn organic_ids(items: &[FeedItem]) -> Vec<u64> {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:85`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L85) — `fn ad_ids(items: &[FeedItem]) -> Vec<i64> {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:95`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L95) — `fn gaps_between_ads(items: &[FeedItem]) -> Vec<usize> {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:113`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L113) — `fn blend(`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:123`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L123) — `fn blends_with_spacing_and_never_first_or_last() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:138`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L138) — `fn spacing_and_first_position_from_insert_positions() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:152`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L152) — `fn medium_risk_blocks_and_can_widen_gap() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:175`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L175) — `fn defers_incompatible_ads() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:195`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L195) — `fn truncates_without_trailing_ad() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:205`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L205) — `fn conversation_units_and_min_posts() {`
+- [`home-mixer/ads/tests/following_ad_blender_tests.rs:244`](../source/home-mixer/ads/tests/following_ad_blender_tests.rs#L244) — `fn empty_or_short_feeds_skip_ads() {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:5`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L5) — `fn make_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:13`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L13) — `fn make_avoid_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:22`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L22) — `fn make_high_risk_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:31`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L31) — `fn make_normal_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:42`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L42) — `fn make_bsr_high_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:53`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L53) — `fn make_bsr_high_ad_with_handles(post_id: i64, handles: &[i64]) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:65`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L65) — `fn ad_count(items: &[FeedItem]) -> usize {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:72`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L72) — `fn ad_neighbour_verdicts(items: &[FeedItem]) -> Vec<(BrandSafetyVerdict, BrandSafetyVerdict)> {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:98`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L98) — `fn ad_bsr_levels(items: &[FeedItem]) -> Vec<BrandSafetyRiskLevel> {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:114`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L114) — `fn bsr_high_ad_adjacent_to_medium_risk() {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:125`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L125) — `fn normal_ad_not_adjacent_to_medium_risk_when_bsr_high_fills() {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:148`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L148) — `fn high_risk_never_adjacent_including_bsr_high() {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:162`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L162) — `fn all_medium_risk_places_bsr_high_drops_normal() {`
+- [`home-mixer/ads/tests/multi_risk_blender_tests.rs:175`](../source/home-mixer/ads/tests/multi_risk_blender_tests.rs#L175) — `fn excluded_high_does_not_burn_medium_pair() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:6`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L6) — `fn make_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:14`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L14) — `fn make_low_risk_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:23`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L23) — `fn make_avoid_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:32`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L32) — `fn make_normal_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:43`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L43) — `fn make_sensitive_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:54`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L54) — `fn make_bsr_high_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:65`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L65) — `fn ad_count(items: &[FeedItem]) -> usize {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:72`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L72) — `fn ad_neighbour_verdicts(items: &[FeedItem]) -> Vec<(BrandSafetyVerdict, BrandSafetyVerdict)> {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:98`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L98) — `fn ad_bsr_levels(items: &[FeedItem]) -> Vec<BrandSafetyRiskLevel> {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:114`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L114) — `fn test_no_ads() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:122`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L122) — `fn test_no_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:128`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L128) — `fn test_too_few_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:135`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L135) — `fn test_basic_blending_all_safe() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:148`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L148) — `fn test_bsr_low_ad_not_adjacent_to_low_risk_post() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:177`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L177) — `fn test_bsr_normal_ad_can_be_adjacent_to_low_risk_post() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:192`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L192) — `fn test_bsr_low_ad_dropped_when_group_has_low_risk() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:211`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L211) — `fn test_bsr_low_ad_dropped_when_no_safe_swap() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:230`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L230) — `fn test_mixed_bsr_ads() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:263`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L263) — `fn test_all_low_risk_posts_bsr_low_ads_dropped_normal_placed() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:280`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L280) — `fn test_no_medium_risk_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:307`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L307) — `fn test_ad_never_first_or_last() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:323`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L323) — `fn test_result_size_truncation() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:344`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L344) — `fn test_drop_single_sensitive_ad_both_neighbours_low_risk_no_swap() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:354`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L354) — `fn test_drop_sensitive_keep_normal_all_low_risk_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:378`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L378) — `fn test_drop_sensitive_ad_when_only_one_safe_post_available() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:400`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L400) — `fn test_multiple_sensitive_ads_compete_for_safe_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:432`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L432) — `fn test_sensitive_ad_dropped_normal_ad_still_placed() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:461`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L461) — `fn test_all_ads_dropped_returns_posts_only() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:479`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L479) — `fn test_drop_preserves_sequential_positions() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:493`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L493) — `fn test_mixed_verdicts_sensitive_ad_swap_chain() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:557`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L557) — `fn test_large_timeline_stress() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:623`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L623) — `fn make_post_with_text(tweet_id: u64, text: &str) -> ScoredPost {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:632`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L632) — `fn kw_drop_above(ad: &AdIndexInfo, post: &ScoredPost) -> bool {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:636`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L636) — `fn kw_drop_both(ad: &AdIndexInfo, above: &ScoredPost, below: &ScoredPost) -> bool {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:640`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L640) — `fn make_ad_with_keywords(post_id: i64, keywords: &[&str]) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:653`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L653) — `fn test_keyword_exact_word_match() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:663`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L663) — `fn test_keyword_no_sub_word_match() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:673`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L673) — `fn test_keyword_no_sub_word_match_pot() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:683`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L683) — `fn test_keyword_no_sub_word_match_ass() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:693`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L693) — `fn test_keyword_no_sub_word_match_meth() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:703`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L703) — `fn test_keyword_no_sub_word_match_cop() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:713`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L713) — `fn test_keyword_empty_string_never_matches() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:723`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L723) — `fn test_keyword_all_empty_keywords_never_match() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:733`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L733) — `fn test_keyword_empty_tweet_text_never_matches() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:743`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L743) — `fn test_keyword_case_insensitive() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:753`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L753) — `fn test_keyword_with_punctuation() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:763`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L763) — `fn test_keyword_multi_word_phrase_match() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:773`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L773) — `fn test_keyword_multi_word_phrase_no_match_non_consecutive() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:783`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L783) — `fn test_keyword_multi_word_phrase_match_names() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:793`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L793) — `fn test_keyword_multi_word_no_partial() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:803`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L803) — `fn test_keyword_with_hashtag() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:813`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L813) — `fn test_keyword_checks_both_neighbours() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:824`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L824) — `fn test_keyword_no_match_returns_false() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:831`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L831) — `fn test_keyword_short_word_18_no_match_in_2018() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:841`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L841) — `fn test_keyword_accent_normalization() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:851`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L851) — `fn test_keyword_multi_word_two_word_match() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:861`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L861) — `fn test_keyword_multi_word_three_word_match() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:871`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L871) — `fn test_keyword_multi_word_broken_by_intervening_word() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:881`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L881) — `fn test_dropped_ad_does_not_lose_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:910`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L910) — `fn test_all_ads_dropped_preserves_all_posts() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:933`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L933) — `fn test_dropped_ads_do_not_waste_group_slot() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:989`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L989) — `fn make_ad_with_handles(post_id: i64, handles: &[i64]) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1002`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1002) — `fn test_keyword_and_handle_drops_do_not_waste_group_slot() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1060`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1060) — `fn stuck_outcome_no_rejections_is_no_ads() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1066`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1066) — `fn stuck_outcome_picks_dominant_cause() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1090`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1090) — `fn stuck_outcome_ties_break_bsr_then_keyword() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1107`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1107) — `fn serving_limitation_picks_binding_constraint() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1115`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1115) — `fn serving_limitation_ties_break_supply_then_spacing() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1122`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1122) — `fn bsr_high_ad_sits_next_to_safe_not_medium() {`
+- [`home-mixer/ads/tests/partition_organic_blender_tests.rs:1134`](../source/home-mixer/ads/tests/partition_organic_blender_tests.rs#L1134) — `fn bsr_high_ad_dropped_when_only_medium_posts() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:8`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L8) — `fn make_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:15`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L15) — `fn make_avoid_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:23`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L23) — `fn make_ad(post_id: i64) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:30`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L30) — `fn make_ad_at(post_id: i64, insert_position: i32) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:38`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L38) — `fn ad_count(items: &[FeedItem]) -> usize {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:45`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L45) — `fn ad_positions(items: &[FeedItem]) -> Vec<i32> {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:54`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L54) — `fn test_has_avoid_returns_false_for_safe_verdict() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:63`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L63) — `fn test_has_avoid_returns_false_for_limited_verdict() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:72`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L72) — `fn test_has_avoid_returns_false_for_default_verdict() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:77`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L77) — `fn test_has_avoid_returns_true_for_avoid_verdict() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:82`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L82) — `fn test_find_safe_gaps_all_safe() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:88`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L88) — `fn test_find_safe_gaps_avoid_blocks_adjacent_gaps() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:94`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L94) — `fn test_find_safe_gaps_all_avoid() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:100`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L100) — `fn test_find_safe_gaps_empty_posts() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:105`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L105) — `fn test_compute_spacing_standard() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:123`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L123) — `fn test_compute_spacing_wide() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:141`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L141) — `fn test_compute_spacing_single_ad_uses_default() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:146`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L146) — `fn test_compute_spacing_empty_uses_default() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:151`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L151) — `fn test_compute_spacing_same_positions_uses_default() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:157`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L157) — `fn test_compute_spacing_small_gap_falls_back_to_default() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:163`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L163) — `fn test_compute_spacing_gap_of_two_falls_back_to_default() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:169`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L169) — `fn test_compute_spacing_consecutive_positions_fall_back_to_default() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:175`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L175) — `fn test_compute_spacing_gap_of_three_is_accepted() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:187`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L187) — `fn test_compute_spacing_unsorted_positions() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:199`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L199) — `fn test_find_best_gap_exact_match() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:204`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L204) — `fn test_find_best_gap_prefers_closer_below() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:209`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L209) — `fn test_find_best_gap_prefers_closer_above() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:214`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L214) — `fn test_find_best_gap_all_below_ideal() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:219`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L219) — `fn test_find_best_gap_all_above_ideal() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:224`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L224) — `fn test_find_best_gap_none_above_min() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:229`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L229) — `fn test_find_best_gap_empty() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:234`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L234) — `fn test_assign_targets_ideal_spacing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:244`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L244) — `fn test_assign_falls_back_to_min_when_ideal_blocked() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:256`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L256) — `fn test_assign_wider_spacing_targets_ideal() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:266`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L266) — `fn test_assign_limited_by_num_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:275`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L275) — `fn test_assign_no_safe_gaps() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:284`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L284) — `fn test_assign_sparse_gaps_beyond_ideal() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:293`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L293) — `fn test_no_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:306`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L306) — `fn test_no_posts() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:313`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L313) — `fn test_too_few_posts_skips_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:323`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L323) — `fn test_ads_placed_at_ideal_spacing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:338`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L338) — `fn test_ad_never_at_position_zero() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:348`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L348) — `fn test_ad_not_placed_next_to_avoid_post() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:357`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L357) — `fn test_avoid_at_start_pushes_ad_down() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:365`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L365) — `fn test_avoid_at_end_still_allows_earlier_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:373`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L373) — `fn test_all_posts_avoid_drops_all_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:382`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L382) — `fn test_ideal_spacing_with_many_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:400`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L400) — `fn test_excess_ads_dropped_from_bottom() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:423`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L423) — `fn test_two_avoid_posts_create_isolated_safe_zones() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:443`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L443) — `fn test_same_insert_positions_uses_default_spacing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:454`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L454) — `fn test_wide_spacing_targets_ideal_gap() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:471`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L471) — `fn test_avoid_expands_then_recovers_ideal() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:485`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L485) — `fn test_tight_insert_positions_fall_back_to_default_spacing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:505`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L505) — `fn test_all_zero_insert_positions_fall_back_to_default_spacing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:517`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L517) — `fn test_gap_of_two_falls_back_to_default_spacing_e2e() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:529`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L529) — `fn test_never_fewer_than_two_posts_between_ads() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:549`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L549) — `fn test_excess_ads_dropped_never_trailing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:563`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L563) — `fn test_avoid_posts_dont_inflate_spacing() {`
+- [`home-mixer/ads/tests/safe_gap_blender_tests.rs:586`](../source/home-mixer/ads/tests/safe_gap_blender_tests.rs#L586) — `fn test_positions_are_sequential() {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:5`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L5) — `fn make_post(tweet_id: u64) -> ScoredPost {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:13`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L13) — `fn make_post_dwell(tweet_id: u64, dwell: f32) -> ScoredPost {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:22`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L22) — `fn make_ad_at(post_id: i64, insert_position: i32) -> AdIndexInfo {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:34`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L34) — `fn ad_count(items: &[FeedItem]) -> usize {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:41`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L41) — `fn default_cfg() -> TimeGapConfig {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:50`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L50) — `fn min_organics_between_ads(items: &[FeedItem]) -> Option<usize> {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:64`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L64) — `fn test_time_gap_places_second_ad_when_need_met() {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:74`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L74) — `fn test_time_gap_drops_later_ads_when_need_unmet() {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:95`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L95) — `fn test_time_gap_missing_dwell_uses_t() {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:105`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L105) — `fn test_normalized_dwell_clamp() {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:114`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L114) — `fn test_min_organic_gap_forces_filler_when_time_already_met() {`
+- [`home-mixer/ads/tests/time_gap_blender_tests.rs:129`](../source/home-mixer/ads/tests/time_gap_blender_tests.rs#L129) — `fn test_min_organic_gap_zero_allows_two_organics() {`
+- [`home-mixer/ads/time_gap_blender.rs:9`](../source/home-mixer/ads/time_gap_blender.rs#L9) — `const ENFORCEMENT_METRIC: &str = "TimeGapAds.enforcement";`
+- [`home-mixer/ads/time_gap_blender.rs:12`](../source/home-mixer/ads/time_gap_blender.rs#L12) — `pub struct TimeGapConfig {`
+- [`home-mixer/ads/time_gap_blender.rs:20`](../source/home-mixer/ads/time_gap_blender.rs#L20) — `pub(crate) fn normalized_dwell(&self, post: &ScoredPost) -> f64 {`
+- [`home-mixer/ads/time_gap_blender.rs:32`](../source/home-mixer/ads/time_gap_blender.rs#L32) — `fn need_sec(&self, spacing: &AdSpacing) -> f64 {`
+- [`home-mixer/ads/time_gap_blender.rs:38`](../source/home-mixer/ads/time_gap_blender.rs#L38) — `pub struct TimeGapAdsBlender {`
+- [`home-mixer/ads/time_gap_blender.rs:43`](../source/home-mixer/ads/time_gap_blender.rs#L43) — `fn blend_inner(&self, scored_posts: Vec<ScoredPost>, ads: Vec<AdIndexInfo>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/time_gap_blender.rs:48`](../source/home-mixer/ads/time_gap_blender.rs#L48) — `pub(crate) fn blend_impl(`
+- [`home-mixer/ads/time_gap_blender.rs:179`](../source/home-mixer/ads/time_gap_blender.rs#L179) — `fn push_post(items: &mut Vec<FeedItem>, post: ScoredPost) {`
+- [`home-mixer/ads/time_gap_blender.rs:186`](../source/home-mixer/ads/time_gap_blender.rs#L186) — `fn push_ad(items: &mut Vec<FeedItem>, ad: AdIndexInfo) {`
+- [`home-mixer/ads/time_gap_blender.rs:193`](../source/home-mixer/ads/time_gap_blender.rs#L193) — `fn assemble_time_gap(`
+- [`home-mixer/ads/time_gap_blender.rs:247`](../source/home-mixer/ads/time_gap_blender.rs#L247) — `fn emit_enforcement_metrics(bsr_drop: u64, bsr_ok: u64, handle_drop: u64, keyword_drop: u64) {`
+- [`home-mixer/ads/util.rs:9`](../source/home-mixer/ads/util.rs#L9) — `pub(crate) const MIN_POSTS_FOR_ADS: usize = 5;`
+- [`home-mixer/ads/util.rs:11`](../source/home-mixer/ads/util.rs#L11) — `pub(crate) const MIN_REQUESTED_GAP: usize = 3;`
+- [`home-mixer/ads/util.rs:13`](../source/home-mixer/ads/util.rs#L13) — `pub(crate) const DEFAULT_SPACING: AdSpacing = AdSpacing {`
+- [`home-mixer/ads/util.rs:19`](../source/home-mixer/ads/util.rs#L19) — `pub(crate) struct AdSpacing {`
+- [`home-mixer/ads/util.rs:24`](../source/home-mixer/ads/util.rs#L24) — `pub(crate) fn has_avoid(post: &ScoredPost) -> bool {`
+- [`home-mixer/ads/util.rs:31`](../source/home-mixer/ads/util.rs#L31) — `pub(crate) fn is_high_risk(post: &ScoredPost) -> bool {`
+- [`home-mixer/ads/util.rs:35`](../source/home-mixer/ads/util.rs#L35) — `pub(crate) fn is_medium_risk(post: &ScoredPost) -> bool {`
+- [`home-mixer/ads/util.rs:39`](../source/home-mixer/ads/util.rs#L39) — `pub(crate) fn find_safe_gaps(scored_posts: &[ScoredPost]) -> Vec<usize> {`
+- [`home-mixer/ads/util.rs:54`](../source/home-mixer/ads/util.rs#L54) — `pub(crate) fn compute_spacing(ads: &[AdIndexInfo]) -> AdSpacing {`
+- [`home-mixer/ads/util.rs:77`](../source/home-mixer/ads/util.rs#L77) — `pub(crate) fn is_bsr_low_ad(ad: &AdIndexInfo) -> bool {`
+- [`home-mixer/ads/util.rs:89`](../source/home-mixer/ads/util.rs#L89) — `pub(crate) fn is_bsr_high_ad(ad: &AdIndexInfo) -> bool {`
+- [`home-mixer/ads/util.rs:97`](../source/home-mixer/ads/util.rs#L97) — `pub(crate) fn should_drop_bsr_low(`
+- [`home-mixer/ads/util.rs:117`](../source/home-mixer/ads/util.rs#L117) — `pub(crate) fn should_drop_handle(`
+- [`home-mixer/ads/util.rs:136`](../source/home-mixer/ads/util.rs#L136) — `pub(crate) fn should_drop_keyword(`
+- [`home-mixer/ads/util.rs:152`](../source/home-mixer/ads/util.rs#L152) — `pub(crate) fn keyword_matches(`
+- [`home-mixer/ads/util.rs:171`](../source/home-mixer/ads/util.rs#L171) — `pub(crate) fn tokenize_tweet_text(text: &str) -> TokenSequence {`
+- [`home-mixer/ads/util.rs:175`](../source/home-mixer/ads/util.rs#L175) — `pub(crate) fn tokenize_ad_keywords(ad: &AdIndexInfo) -> Option<Vec<TokenSequence>> {`
+- [`home-mixer/ads/util.rs:194`](../source/home-mixer/ads/util.rs#L194) — `pub(crate) fn tokens_match_any_keyword(`
+- [`home-mixer/ads/util.rs:206`](../source/home-mixer/ads/util.rs#L206) — `pub(crate) fn posts_to_feed_items(scored_posts: Vec<ScoredPost>) -> Vec<FeedItem> {`
+- [`home-mixer/ads/util.rs:217`](../source/home-mixer/ads/util.rs#L217) — `pub(crate) fn interleave_and_finalize(`
+- [`home-mixer/ads/util.rs:254`](../source/home-mixer/ads/util.rs#L254) — `const VERDICT_METRIC: &str = "AdsBlender.post_brand_safety_verdict";`
+- [`home-mixer/ads/util.rs:255`](../source/home-mixer/ads/util.rs#L255) — `const RISK_METRIC: &str = "AdsBlender.ad_brand_safety_risk";`
+- [`home-mixer/ads/util.rs:257`](../source/home-mixer/ads/util.rs#L257) — `pub(crate) fn record_post_verdict_stats(posts: &[ScoredPost]) {`
+- [`home-mixer/ads/util.rs:268`](../source/home-mixer/ads/util.rs#L268) — `pub(crate) fn record_ad_risk_stats(ads: &[AdIndexInfo]) {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L16) — `const NSFW_AUTHOR_METRIC: &str = "AdsBrandSafetyVf.nsfw_author";`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:18`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L18) — `pub struct AdsBrandSafetyVfHydrator {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:22`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L22) — `fn to_safety_label_infos(labels: &SafetyLabelMap) -> impl Iterator<Item = SafetyLabelInfo> {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:32`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L32) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:138`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L138) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:152`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L152) — `struct FakeVfClient {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:158`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L158) — `async fn get_safety_labels(`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:167`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L167) — `async fn safe_verdict_with_grok_sfa() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:194`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L194) — `async fn medium_risk_when_not_scored() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:219`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L219) — `async fn vf_failure_returns_error() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:240`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L240) — `async fn quoted_tweet_failure_gives_medium_risk() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:268`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L268) — `async fn retweet_uses_retweeted_id() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:296`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L296) — `async fn safe_when_candidate_and_ancestors_safe() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:324`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L324) — `async fn ancestor_high_risk_escalates_verdict() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:359`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L359) — `async fn ancestor_low_risk_escalates_safe_candidate() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:393`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L393) — `async fn ancestor_failure_gives_medium_risk() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:421`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L421) — `async fn unscored_ancestor_gives_medium_risk() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:449`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L449) — `async fn batch_rpc_failure_returns_errors_for_all() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:450`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L450) — `struct FailingClient;`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:453`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L453) — `async fn get_safety_labels(`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:484`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L484) — `async fn nsfw_author_escalates_to_high_risk() {`
+- [`home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs:512`](../source/home-mixer/candidate_hydrators/ads_brand_safety_vf_hydrator.rs#L512) — `async fn non_nsfw_author_keeps_safe_verdict() {`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:12`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L12) — `const TOP_TREND_COUNT: usize = 2;`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:14`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L14) — `pub struct AiTrendFeedbackContextHydrator {`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:19`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L19) — `fn is_eligible_original_post(candidate: &PostCandidate) -> bool {`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:26`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L26) — `fn select_feedback_targets(candidate_trends: &[(usize, i64)]) -> HashMap<usize, i64> {`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:59`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L59) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:65`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L65) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs:153`](../source/home-mixer/candidate_hydrators/ai_trend_feedback_context_hydrator.rs#L153) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:10`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L10) — `pub struct BidirectionalFollowHydrator {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L16) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:20`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L20) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:69`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L69) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:81`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L81) — `struct MockSocialGraph {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:87`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L87) — `async fn get_following_list(&self, _user_id: u64) -> Result<Vec<u64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:90`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L90) — `async fn check_blocked_by(`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:97`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L97) — `async fn check_followed_by(`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:109`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L109) — `async fn get_blocked_user_ids(&self, _viewer_id: u64) -> Result<Vec<i64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:112`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L112) — `async fn get_muted_user_ids(&self, _viewer_id: u64) -> Result<Vec<i64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:115`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L115) — `async fn get_followed_user_ids(&self, _viewer_id: u64) -> Result<Vec<i64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:118`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L118) — `async fn get_follower_ids(&self, _user_id: u64) -> Result<Vec<i64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:121`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L121) — `async fn get_subscribed_user_ids(&self, _viewer_id: u64) -> Result<Vec<i64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:124`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L124) — `async fn get_device_following_user_ids(&self, _viewer_id: u64) -> Result<Vec<i64>, Status> {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:127`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L127) — `async fn get_hide_recommendations_user_ids(`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:135`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L135) — `fn hydrator(followers: Vec<i64>) -> BidirectionalFollowHydrator {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:141`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L141) — `fn query(followed: Vec<i64>, enabled: bool) -> ScoredPostsQuery {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:161`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L161) — `fn candidate(author_id: u64) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:169`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L169) — `async fn tags_only_mutual_follow_authors() {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:188`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L188) — `async fn empty_following_tags_all_false() {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:201`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L201) — `fn follows_feature_switch() {`
+- [`home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs:208`](../source/home-mixer/candidate_hydrators/bidirectional_follow_hydrator.rs#L208) — `fn disabled_for_cached_posts() {`
+- [`home-mixer/candidate_hydrators/blocked_by_hydrator.rs:8`](../source/home-mixer/candidate_hydrators/blocked_by_hydrator.rs#L8) — `pub struct BlockedByHydrator {`
+- [`home-mixer/candidate_hydrators/blocked_by_hydrator.rs:13`](../source/home-mixer/candidate_hydrators/blocked_by_hydrator.rs#L13) — `pub async fn new(socialgraph_client: Arc<dyn SocialGraphClientOps>) -> Self {`
+- [`home-mixer/candidate_hydrators/blocked_by_hydrator.rs:20`](../source/home-mixer/candidate_hydrators/blocked_by_hydrator.rs#L20) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/blocked_by_hydrator.rs:24`](../source/home-mixer/candidate_hydrators/blocked_by_hydrator.rs#L24) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/blocked_by_hydrator.rs:54`](../source/home-mixer/candidate_hydrators/blocked_by_hydrator.rs#L54) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L16) — `const LIVENESS_CACHE_TTL: Duration = Duration::from_secs(5 * 60);`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:17`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L17) — `const LIVENESS_CACHE_SIZE: u64 = 100_000;`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:19`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L19) — `pub struct BroadcastLivenessHydrator {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:27`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L27) — `pub fn new(`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:42`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L42) — `fn emit_cache_stats(&self, cache: &str, cache_hits: usize, cache_misses: usize) {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:63`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L63) — `fn extract_broadcast_id(url: &str) -> Option<String> {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:64`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L64) — `const MARKER: &str = "/i/broadcasts/";`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:73`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L73) — `fn broadcast_id_from_urls(urls: Option<&UrlEntities>) -> Option<String> {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:81`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L81) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:85`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L85) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:188`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L188) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:201`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L201) — `fn broadcast_url(id: &str) -> UrlEntity {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:207`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L207) — `fn query() -> ScoredPostsQuery {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:218`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L218) — `fn candidate(tweet_id: u64) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs:227`](../source/home-mixer/candidate_hydrators/broadcast_liveness_hydrator.rs#L227) — `async fn in_network_live_broadcast_is_live() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:10`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L10) — `pub struct ConversationGapAncestorHydrator {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L15) — `pub fn new(tes_client: Arc<dyn TESClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:22`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L22) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:55`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L55) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:62`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L62) — `fn expand_ancestors_for_gap(`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:83`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L83) — `fn tombstone_ancestor_ids(`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:94`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L94) — `fn ancestor_texts(`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:114`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L114) — `fn candidate(tweet_id: u64, ancestors: Vec<u64>) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:122`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L122) — `fn parent_core(parent_id: u64, in_reply_to: Option<u64>) -> HashMap<u64, Option<PureCoreData>> {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:134`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L134) — `async fn run(`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:153`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L153) — `async fn deep_chain_inserts_grandparent() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:159`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L159) — `async fn short_chain_unchanged_when_parent_replies_to_root() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:165`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L165) — `async fn single_ancestor_unchanged() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:171`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L171) — `async fn tes_miss_fail_open() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:177`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L177) — `async fn deleted_root_is_tombstone() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:185`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L185) — `async fn parent_without_reply_to_unchanged() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:191`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L191) — `fn tes_err_surfaces_as_err() {`
+- [`home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs:199`](../source/home-mixer/candidate_hydrators/conversation_gap_ancestor_hydrator.rs#L199) — `async fn batches_unique_parents_across_candidates() {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:12`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L12) — `const FOUND_SCOPE: [(&str, &str); 1] = [("hydration", "found")];`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:13`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L13) — `const MISSING_SCOPE: [(&str, &str); 1] = [("hydration", "missing")];`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L16) — `pub struct CoreDataCandidateHydrator {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:22`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L22) — `pub async fn new(tes_client: Arc<dyn TESClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:32`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L32) — `type CacheKey = u64;`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:34`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L34) — `type CacheValue = CoreDataCacheValue;`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:36`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L36) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:40`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L40) — `fn already_hydrated(&self, candidate: &PostCandidate) -> bool {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:44`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L44) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:47`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L47) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:51`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L51) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:62`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L62) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:74`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L74) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:141`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L141) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:153`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L153) — `fn core_data_fetch_ids(candidates: &[PostCandidate]) -> Vec<u64> {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:164`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L164) — `fn build_ancestor_users(`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:184`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L184) — `pub struct CoreDataCacheValue {`
+- [`home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs:194`](../source/home-mixer/candidate_hydrators/core_data_candidate_hydrator.rs#L194) — `fn record_hydration_stats(&self, hydrated_count: usize, missing_count: usize) {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:18`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L18) — `pub struct CachedCounts {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:29`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L29) — `fn from_proto(c: &EngagementCounts) -> Self {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:41`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L41) — `fn to_candidate(&self) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:55`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L55) — `fn preserve_counts(c: &PostCandidate) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:68`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L68) — `pub struct EngagementCountsHydrator {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:74`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L74) — `pub async fn new(client: Arc<dyn EngagementCountsClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:85`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L85) — `type CacheKey = u64;`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:86`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L86) — `type CacheValue = CachedCounts;`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:88`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L88) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:92`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L92) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:96`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L96) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:100`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L100) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:112`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L112) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:116`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L116) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:160`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L160) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:177`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L177) — `const COUNTS: &str = "rust_home_mixer_enable_engagement_counts_hydration";`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:178`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L178) — `const COLD_START: &str = "rust_home_mixer_enable_viewer_cold_start_boost";`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:179`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L179) — `const CAP: &str = "rust_home_mixer_cold_start_follower_cap";`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:181`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L181) — `fn query(has_cached_posts: bool, flags: &[(&str, &str)]) -> ScoredPostsQuery {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:196`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L196) — `fn view_counts(entries: &[(u64, u64)]) -> HashMap<u64, EngagementCounts> {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:211`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L211) — `async fn hydrator(counts: HashMap<u64, EngagementCounts>) -> EngagementCountsHydrator {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:216`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L216) — `async fn enable_matrix() {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:228`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L228) — `async fn no_cached_posts_hydrates_all() {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:252`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L252) — `async fn author_cold_start_on_cached_posts_refreshes_eligible_and_preserves_ineligible() {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:289`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L289) — `struct CountingClient {`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:296`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L296) — `async fn get_engagement_counts(`
+- [`home-mixer/candidate_hydrators/engagement_counts_hydrator.rs:309`](../source/home-mixer/candidate_hydrators/engagement_counts_hydrator.rs#L309) — `async fn cached_cold_start_serves_repeat_from_moka_cache() {`
+- [`home-mixer/candidate_hydrators/filtered_topics_hydrator.rs:14`](../source/home-mixer/candidate_hydrators/filtered_topics_hydrator.rs#L14) — `fn decode_topics_pair(`
+- [`home-mixer/candidate_hydrators/filtered_topics_hydrator.rs:49`](../source/home-mixer/candidate_hydrators/filtered_topics_hydrator.rs#L49) — `pub struct FilteredTopicsHydrator {`
+- [`home-mixer/candidate_hydrators/filtered_topics_hydrator.rs:55`](../source/home-mixer/candidate_hydrators/filtered_topics_hydrator.rs#L55) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/filtered_topics_hydrator.rs:59`](../source/home-mixer/candidate_hydrators/filtered_topics_hydrator.rs#L59) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/filtered_topics_hydrator.rs:128`](../source/home-mixer/candidate_hydrators/filtered_topics_hydrator.rs#L128) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs:8`](../source/home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs#L8) — `pub struct FollowingBlockedByHydrator {`
+- [`home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs:13`](../source/home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs#L13) — `pub async fn new(socialgraph_client: Arc<dyn SocialGraphClientOps>) -> Self {`
+- [`home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs:20`](../source/home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs#L20) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs:59`](../source/home-mixer/candidate_hydrators/following_blocked_by_hydrator.rs#L59) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:13`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L13) — `const VIEWER_FOLLOWERS_THRESHOLD: i64 = 1000;`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:14`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L14) — `const FACEPILE_MAX_USERS: usize = 3;`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L16) — `pub struct FollowingRepliedUsersHydrator;`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:19`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L19) — `fn build_reply_author_map(`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:42`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L42) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:51`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L51) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:111`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L111) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:121`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L121) — `fn make_query(follower_count: i64, replies: Vec<InNetworkReply>) -> ScoredPostsQuery {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:125`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L125) — `fn make_query_with_socialgraph(`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:159`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L159) — `fn root_candidate(tweet_id: u64, author_id: u64) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:168`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L168) — `fn reply_candidate(tweet_id: u64, author_id: u64, reply_to: u64) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:178`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L178) — `async fn test_basic_hydration() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:203`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L203) — `async fn test_skips_reply_candidates() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:218`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L218) — `async fn test_excludes_root_author() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:239`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L239) — `async fn test_max_posts_cap() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:291`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L291) — `async fn test_disabled_below_follower_threshold() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:298`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L298) — `async fn test_deduplicates_authors() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:323`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L323) — `async fn test_excludes_blocked_and_muted_repliers() {`
+- [`home-mixer/candidate_hydrators/following_replied_users_hydrator.rs:348`](../source/home-mixer/candidate_hydrators/following_replied_users_hydrator.rs#L348) — `async fn test_all_repliers_blocked_yields_no_facepile() {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:11`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L11) — `pub struct GizmoduckCandidateHydrator {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:17`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L17) — `pub async fn new(gizmoduck_client: Arc<dyn GizmoduckClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:28`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L28) — `type CacheKey = GizmoduckCacheKey;`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:29`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L29) — `type CacheValue = GizmoduckCacheValue;`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:31`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L31) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:35`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L35) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:38`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L38) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:45`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L45) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:56`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L56) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:68`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L68) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:169`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L169) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:180`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L180) — `pub struct GizmoduckCacheKey {`
+- [`home-mixer/candidate_hydrators/gizmoduck_hydrator.rs:186`](../source/home-mixer/candidate_hydrators/gizmoduck_hydrator.rs#L186) — `pub struct GizmoduckCacheValue {`
+- [`home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs:7`](../source/home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs#L7) — `pub struct InNetworkCandidateHydrator;`
+- [`home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs:11`](../source/home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs#L11) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs#L15) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs:42`](../source/home-mixer/candidate_hydrators/in_network_candidate_hydrator.rs#L42) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:9`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L9) — `pub struct LanguageCodeHydrator {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L15) — `pub async fn new(tes_client: Arc<dyn TESClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:23`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L23) — `type CacheKey = u64;`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:25`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L25) — `type CacheValue = Option<String>;`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:27`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L27) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:31`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L31) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:35`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L35) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:39`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L39) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:43`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L43) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:50`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L50) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:81`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L81) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:94`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L94) — `async fn test_language_code_found() {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:122`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L122) — `async fn test_language_code_none() {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:147`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L147) — `async fn test_language_code_caching() {`
+- [`home-mixer/candidate_hydrators/language_code_hydrator.rs:180`](../source/home-mixer/candidate_hydrators/language_code_hydrator.rs#L180) — `async fn test_language_code_multiple_candidates() {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:12`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L12) — `pub struct MediaInfoCacheValue {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:22`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L22) — `fn from_candidate(candidate: &PostCandidate) -> Self {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:33`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L33) — `fn no_media() -> Self {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:44`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L44) — `fn into_candidate(self) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:57`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L57) — `pub struct MediaInfoHydrator {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:63`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L63) — `pub async fn new(media_info_cache_client: Arc<dyn MediaInfoCacheClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:72`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L72) — `fn min_video_duration_ms(durations: &[i64]) -> Option<i32> {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:76`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L76) — `fn max_video_duration_ms(durations: &[i64]) -> Option<i32> {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:82`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L82) — `type CacheKey = u64;`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:84`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L84) — `type CacheValue = MediaInfoCacheValue;`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:86`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L86) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:90`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L90) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:94`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L94) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:98`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L98) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:102`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L102) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:106`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L106) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:142`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L142) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:160`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L160) — `fn mock_client(entries: HashMap<u64, Option<TweetMediaInfo>>) -> Arc<dyn MediaInfoCacheClient> {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:166`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L166) — `fn info(has_media: bool, video_durations_ms: Vec<i64>) -> TweetMediaInfo {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:177`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L177) — `async fn test_has_media_and_duration() {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:204`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L204) — `async fn test_has_media_false_no_duration() {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:230`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L230) — `async fn test_miss_is_no_media() {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:250`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L250) — `async fn test_caching() {`
+- [`home-mixer/candidate_hydrators/media_info_hydrator.rs:278`](../source/home-mixer/candidate_hydrators/media_info_hydrator.rs#L278) — `async fn test_multiple_candidates() {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:10`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L10) — `const MIN_HASHES: usize = 256;`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:12`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L12) — `pub struct MutualFollowJaccardHydrator {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L16) — `fn jaccard_from_minhash(a: &[i64], b: &[i64]) -> f64 {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:27`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L27) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:31`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L31) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:115`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L115) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:125`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L125) — `fn identical_signatures_yield_1() {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:131`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L131) — `fn completely_different_signatures_yield_0() {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:138`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L138) — `fn empty_signatures_yield_0() {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:143`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L143) — `fn partial_overlap() {`
+- [`home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs:154`](../source/home-mixer/candidate_hydrators/mutual_follow_jaccard_hydrator.rs#L154) — `fn mixed_length_256_vs_1024_compares_shared_prefix() {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L15) — `const QUOTED_CONTENT_CACHE_METRIC: &str = "QuoteHydrator.quoted_content_cache";`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L16) — `const QUOTED_CONTENT_TIMEOUT: std::time::Duration = std::time::Duration::from_millis(200);`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:18`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L18) — `pub struct QuoteHydrator {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:27`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L27) — `pub async fn new(`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:41`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L41) — `async fn get_quoted_video_durations(`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:62`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L62) — `async fn get_blocked_by(&self, viewer_id: u64, quoted_user_ids: Vec<u64>) -> HashSet<u64> {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:72`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L72) — `async fn get_quoted_content(&self, quoted_tweet_ids: Vec<u64>) -> HashMap<u64, QuotedContent> {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:133`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L133) — `fn stat_quoted_content_cache(hits: usize, misses: usize) {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:154`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L154) — `pub struct QuoteCacheValue {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:160`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L160) — `pub struct QuotedMedia {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:169`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L169) — `pub struct QuotedContent {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:175`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L175) — `fn apply(&self, candidate: &mut PostCandidate) {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:189`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L189) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:193`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L193) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/quote_hydrator.rs:294`](../source/home-mixer/candidate_hydrators/quote_hydrator.rs#L294) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs:9`](../source/home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs#L9) — `pub struct QuotedPostTextHydrator {`
+- [`home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs:14`](../source/home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs#L14) — `pub fn new(tes_client: Arc<dyn TESClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs:21`](../source/home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs#L21) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs:57`](../source/home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs#L57) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs:69`](../source/home-mixer/candidate_hydrators/quoted_post_text_hydrator.rs#L69) — `async fn fills_quoted_text_and_leaves_non_quotes_empty() {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L16) — `const CACHE_SIZE: u64 = 1_000_000;`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:17`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L17) — `const CACHE_TTL: Duration = Duration::from_secs(7200);`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:19`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L19) — `fn endpoint_hash(endpoint: &str) -> u64 {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:25`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L25) — `pub struct SemanticIdHydrator {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:31`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L31) — `pub fn new(client: Arc<dyn SidClient>) -> Self {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:42`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L42) — `type CacheKey = (u64, u64);`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:43`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L43) — `type CacheValue = Vec<i32>;`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:45`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L45) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:51`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L51) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:55`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L55) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:59`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L59) — `fn cache_key_for(&self, query: &ScoredPostsQuery, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:66`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L66) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:70`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L70) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:77`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L77) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/semantic_id_hydrator.rs:116`](../source/home-mixer/candidate_hydrators/semantic_id_hydrator.rs#L116) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:9`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L9) — `pub struct SubscriptionHydrator {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L15) — `pub async fn new(tes_client: Arc<dyn TESClient + Send + Sync>) -> Self {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:23`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L23) — `type CacheKey = u64;`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:24`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L24) — `type CacheValue = Option<u64>;`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:26`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L26) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:30`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L30) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue> {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:33`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L33) — `fn cache_key(&self, candidate: &PostCandidate) -> Self::CacheKey {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:37`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L37) — `fn cache_value(&self, hydrated: &PostCandidate) -> Self::CacheValue {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:41`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L41) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> PostCandidate {`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:48`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L48) — `async fn hydrate_from_client(`
+- [`home-mixer/candidate_hydrators/subscription_hydrator.rs:79`](../source/home-mixer/candidate_hydrators/subscription_hydrator.rs#L79) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L15) — `const FID_TOPICS: i16 = -9948;`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L16) — `const FID_ANNOTATIONS: i16 = 31524;`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:17`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L17) — `const TOP_TOPIC_COUNT: usize = 2;`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:19`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L19) — `pub struct TopicFeedbackContextHydrator {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:24`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L24) — `fn is_eligible_original_post(candidate: &PostCandidate) -> bool {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:31`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L31) — `fn is_subtopic(topic_id: i64) -> bool {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:35`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L35) — `fn decode_topics(bytes: &[u8]) -> (Vec<TopicAnnotation>, Vec<String>) {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:70`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L70) — `fn select_feedback_targets(`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:117`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L117) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:123`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L123) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:184`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L184) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:192`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L192) — `struct TopicAnnotation {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:198`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L198) — `struct QualifiedId {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:203`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L203) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Self> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:221`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L221) — `fn write_to_out_protocol(&self, _o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:227`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L227) — `struct EntityWithMetadata {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:232`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L232) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Self> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:250`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L250) — `fn write_to_out_protocol(&self, _o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:256`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L256) — `struct UnifiedPostAnnotations {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:261`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L261) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Self> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:287`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L287) — `fn write_to_out_protocol(&self, _o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:293`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L293) — `struct UnifiedPostAnnotationsValue {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:299`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L299) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Self> {`
+- [`home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs:327`](../source/home-mixer/candidate_hydrators/topic_feedback_context_hydrator.rs#L327) — `fn write_to_out_protocol(&self, _o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:12`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L12) — `const THIRTY_MINUTES_MS: u64 = 30 * 60 * 1000;`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:13`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L13) — `const ONE_HOUR_MS: u64 = 60 * 60 * 1000;`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:14`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L14) — `const SIX_HOURS_MS: u64 = 6 * 60 * 60 * 1000;`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:15`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L15) — `const TWELVE_HOURS_MS: u64 = 12 * 60 * 60 * 1000;`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:16`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L16) — `const TWENTY_FOUR_HOURS_MS: u64 = 24 * 60 * 60 * 1000;`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:18`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L18) — `pub struct TweetTypeMetricsHydrator;`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:21`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L21) — `pub fn new() -> Self {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:25`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L25) — `pub fn create_tweet_type_bitset(`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:138`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L138) — `pub fn author_diversity_bits(authors: &Composition) -> HashSet<usize> {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:164`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L164) — `pub fn slate_position_bits(`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:225`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L225) — `pub fn bitset_to_bytes(bits: &HashSet<usize>) -> Vec<u8> {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:246`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L246) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:273`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L273) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:286`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L286) — `fn test_bitset_to_bytes_empty() {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:293`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L293) — `fn test_bitset_to_bytes_multiple_bits_same_byte() {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:303`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L303) — `fn test_bitset_to_bytes_multiple_bytes() {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:313`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L313) — `fn test_bitset_to_bytes_large_bit_index() {`
+- [`home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs:322`](../source/home-mixer/candidate_hydrators/tweet_type_metrics_hydrator.rs#L322) — `async fn test_hydrate_multiple_candidates() {`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:18`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L18) — `pub struct VFCandidateHydrator {`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:24`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L24) — `pub async fn new(`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:34`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L34) — `async fn fetch_vf_results(`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:53`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L53) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:133`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L133) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:140`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L140) — `pub(crate) fn should_drop_ancillary(`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:172`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L172) — `pub(crate) fn visibility_fields(`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:190`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L190) — `fn visibility(action: Action) -> Result<TweetVisibility> {`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:198`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L198) — `struct StratoReply(Vec<u8>);`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:202`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L202) — `async fn issue3(`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:221`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L221) — `async fn strato_suppression_bytes_keep_primary_and_ancillaries() {`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:285`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L285) — `fn ancillary_drops_on_dropped_quoted_tweet_but_not_avoid() {`
+- [`home-mixer/candidate_hydrators/vf_candidate_hydrator.rs:306`](../source/home-mixer/candidate_hydrators/vf_candidate_hydrator.rs#L306) — `fn ancillary_skips_tombstoned_ancestors_and_errors() {`
+- [`home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs:14`](../source/home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs#L14) — `pub struct VFFollowingCandidateHydrator {`
+- [`home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs:20`](../source/home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs#L20) — `pub fn new(`
+- [`home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs:33`](../source/home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs#L33) — `async fn hydrate(`
+- [`home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs:88`](../source/home-mixer/candidate_hydrators/vf_following_candidate_hydrator.rs#L88) — `fn update(&self, candidate: &mut PostCandidate, hydrated: PostCandidate) {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:52`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L52) — `pub struct FollowingCandidatePipeline {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:63`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L63) — `pub async fn new(datacenter: &str) -> Self {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:150`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L150) — `fn build(`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:218`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L218) — `pub async fn mock() -> Self {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:255`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L255) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<ScoredPostsQuery>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:259`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L259) — `fn sources(&self) -> &[Box<dyn Source<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:263`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L263) — `fn hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:267`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L267) — `fn filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:271`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L271) — `fn scorers(&self) -> &[Box<dyn Scorer<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:275`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L275) — `fn selector(&self) -> &dyn Selector<ScoredPostsQuery, FeedItem> {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:279`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L279) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:283`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L283) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:287`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L287) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<ScoredPostsQuery, FeedItem>>>> {`
+- [`home-mixer/candidate_pipeline/following_candidate_pipeline.rs:291`](../source/home-mixer/candidate_pipeline/following_candidate_pipeline.rs#L291) — `fn result_size(&self) -> usize {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:57`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L57) — `pub struct ForYouCandidatePipeline {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:67`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L67) — `pub async fn new(`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:169`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L169) — `fn build(`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:246`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L246) — `pub async fn mock(scored_posts_server: Arc<ScoredPostsServer>) -> Self {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:287`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L287) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<ScoredPostsQuery>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:291`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L291) — `fn sources(&self) -> &[Box<dyn Source<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:295`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L295) — `fn hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:299`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L299) — `fn filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:303`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L303) — `fn scorers(&self) -> &[Box<dyn Scorer<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:307`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L307) — `fn selector(&self) -> &dyn Selector<ScoredPostsQuery, FeedItem> {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:311`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L311) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:315`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L315) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:319`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L319) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<ScoredPostsQuery, FeedItem>>>> {`
+- [`home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs:323`](../source/home-mixer/candidate_pipeline/for_you_candidate_pipeline.rs#L323) — `fn result_size(&self) -> usize {`
+- [`home-mixer/candidate_pipeline/mod.rs:18`](../source/home-mixer/candidate_pipeline/mod.rs#L18) — `pub type VmRankerXdsConfig = XdsP2cConfig;`
+- [`home-mixer/candidate_pipeline/mod.rs:20`](../source/home-mixer/candidate_pipeline/mod.rs#L20) — `pub(crate) async fn build_phoenix_xds_client(`
+- [`home-mixer/candidate_pipeline/mod.rs:32`](../source/home-mixer/candidate_pipeline/mod.rs#L32) — `pub(crate) async fn build_phoenix_xds_retrieval_client(`
+- [`home-mixer/candidate_pipeline/mod.rs:44`](../source/home-mixer/candidate_pipeline/mod.rs#L44) — `pub(crate) async fn build_vm_ranker_xds_client(`
+- [`home-mixer/candidate_pipeline/mod.rs:56`](../source/home-mixer/candidate_pipeline/mod.rs#L56) — `async fn build_vm_ranker_xds_client_uncached(`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:179`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L179) — `pub struct PhoenixCandidatePipeline {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:192`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L192) — `pub(crate) async fn build_with_clients(`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:486`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L486) — `pub async fn prod(`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:880`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L880) — `pub async fn mock() -> PhoenixCandidatePipeline {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:980`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L980) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<ScoredPostsQuery>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:984`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L984) — `fn sources(&self) -> &[Box<dyn Source<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:987`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L987) — `fn hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:991`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L991) — `fn filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:995`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L995) — `fn scorers(&self) -> &[Box<dyn Scorer<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:999`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L999) — `fn selector(&self) -> &dyn Selector<ScoredPostsQuery, PostCandidate> {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1003`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1003) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1007`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1007) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1011`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1011) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<ScoredPostsQuery, PostCandidate>>>> {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1015`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1015) — `fn result_size(&self) -> usize {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1027`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1027) — `async fn test_candidate_pipeline() -> Result<(), Box<dyn std::error::Error>> {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1051`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1051) — `fn test_bulk_topic_detection() {`
+- [`home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs:1073`](../source/home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs#L1073) — `fn test_feature_switches() {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:78`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L78) — `const RESULT_SIZE: usize = 2800;`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:80`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L80) — `pub struct PhoenixScoresPipeline {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:92`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L92) — `pub(crate) async fn build_with_clients(`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:191`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L191) — `pub async fn prod(`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:367`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L367) — `pub async fn mock() -> PhoenixScoresPipeline {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:411`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L411) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<ScoredPostsQuery>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:415`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L415) — `fn sources(&self) -> &[Box<dyn Source<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:419`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L419) — `fn hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:423`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L423) — `fn filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:427`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L427) — `fn scorers(&self) -> &[Box<dyn Scorer<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:431`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L431) — `fn selector(&self) -> &dyn Selector<ScoredPostsQuery, PostCandidate> {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:435`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L435) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:439`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L439) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:443`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L443) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<ScoredPostsQuery, PostCandidate>>>> {`
+- [`home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs:447`](../source/home-mixer/candidate_pipeline/phoenix_scores_pipeline.rs#L447) — `fn result_size(&self) -> usize {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:40`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L40) — `pub struct RankedFollowingCandidatePipeline {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:49`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L49) — `pub async fn new(scored_posts_server: Arc<ScoredPostsServer>, datacenter: &str) -> Self {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:102`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L102) — `fn build(`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:159`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L159) — `pub async fn mock(scored_posts_server: Arc<ScoredPostsServer>) -> Self {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:188`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L188) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<ScoredPostsQuery>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:192`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L192) — `fn sources(&self) -> &[Box<dyn Source<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:196`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L196) — `fn hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:200`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L200) — `fn filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:204`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L204) — `fn scorers(&self) -> &[Box<dyn Scorer<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:208`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L208) — `fn selector(&self) -> &dyn Selector<ScoredPostsQuery, FeedItem> {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:212`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L212) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:216`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L216) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, FeedItem>>] {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:220`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L220) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<ScoredPostsQuery, FeedItem>>>> {`
+- [`home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs:224`](../source/home-mixer/candidate_pipeline/ranked_following_candidate_pipeline.rs#L224) — `fn result_size(&self) -> usize {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:40`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L40) — `pub struct ReverseChronPostsPipeline {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:51`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L51) — `pub async fn new(datacenter: &str) -> Self {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:128`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L128) — `pub async fn mock() -> Self {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:140`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L140) — `async fn build(`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:199`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L199) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<ScoredPostsQuery>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:203`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L203) — `fn sources(&self) -> &[Box<dyn Source<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:207`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L207) — `fn hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:211`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L211) — `fn filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:215`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L215) — `fn scorers(&self) -> &[Box<dyn Scorer<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:219`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L219) — `fn selector(&self) -> &dyn Selector<ScoredPostsQuery, PostCandidate> {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:223`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L223) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:227`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L227) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<ScoredPostsQuery, PostCandidate>>] {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:231`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L231) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<ScoredPostsQuery, PostCandidate>>>> {`
+- [`home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs:235`](../source/home-mixer/candidate_pipeline/reverse_chron_posts_pipeline.rs#L235) — `fn result_size(&self) -> usize {`
+- [`home-mixer/clients/ad_index_client.rs:18`](../source/home-mixer/clients/ad_index_client.rs#L18) — `const WILY_PATH: &str = "/s/ads/xai-ad-index:grpc";`
+- [`home-mixer/clients/ad_index_client.rs:19`](../source/home-mixer/clients/ad_index_client.rs#L19) — `const TIMEOUT_MS: u64 = 1200;`
+- [`home-mixer/clients/ad_index_client.rs:20`](../source/home-mixer/clients/ad_index_client.rs#L20) — `const NUM_ENDPOINTS: usize = 5;`
+- [`home-mixer/clients/ad_index_client.rs:21`](../source/home-mixer/clients/ad_index_client.rs#L21) — `const DNS_POLL_INTERVAL_MS: u64 = 30_000;`
+- [`home-mixer/clients/ad_index_client.rs:22`](../source/home-mixer/clients/ad_index_client.rs#L22) — `const METRIC_NAME: &str = "AdIndexClient.get_eligible_ads";`
+- [`home-mixer/clients/ad_index_client.rs:24`](../source/home-mixer/clients/ad_index_client.rs#L24) — `fn app_env() -> String {`
+- [`home-mixer/clients/ad_index_client.rs:28`](../source/home-mixer/clients/ad_index_client.rs#L28) — `fn ad_index_wily_path(dc: &str, env: &str) -> String {`
+- [`home-mixer/clients/ad_index_client.rs:36`](../source/home-mixer/clients/ad_index_client.rs#L36) — `fn ad_index_sni(dc: &str, env: &str) -> String {`
+- [`home-mixer/clients/ad_index_client.rs:41`](../source/home-mixer/clients/ad_index_client.rs#L41) — `pub enum AdIndexCluster {`
+- [`home-mixer/clients/ad_index_client.rs:47`](../source/home-mixer/clients/ad_index_client.rs#L47) — `fn as_label(&self) -> &'static str {`
+- [`home-mixer/clients/ad_index_client.rs:59`](../source/home-mixer/clients/ad_index_client.rs#L59) — `pub trait AdIndexClient: Send + Sync {`
+- [`home-mixer/clients/ad_index_client.rs:60`](../source/home-mixer/clients/ad_index_client.rs#L60) — `async fn get_eligible_ads(&self, request: AdIndexRequest) -> Result<AdIndexResponse, Status>;`
+- [`home-mixer/clients/ad_index_client.rs:63`](../source/home-mixer/clients/ad_index_client.rs#L63) — `pub struct ProdAdIndexClient {`
+- [`home-mixer/clients/ad_index_client.rs:69`](../source/home-mixer/clients/ad_index_client.rs#L69) — `pub async fn new(dc: &str) -> Result<Self, Status> {`
+- [`home-mixer/clients/ad_index_client.rs:102`](../source/home-mixer/clients/ad_index_client.rs#L102) — `async fn build_client(dc: &str) -> Result<AdIndexServiceClient<Channel>, Status> {`
+- [`home-mixer/clients/ad_index_client.rs:158`](../source/home-mixer/clients/ad_index_client.rs#L158) — `fn pick_cluster_and_client(&self) -> (AdIndexCluster, AdIndexServiceClient<Channel>) {`
+- [`home-mixer/clients/ad_index_client.rs:172`](../source/home-mixer/clients/ad_index_client.rs#L172) — `fn record_stats(&self, cluster: AdIndexCluster, success: bool, latency_ms: f64) {`
+- [`home-mixer/clients/ad_index_client.rs:198`](../source/home-mixer/clients/ad_index_client.rs#L198) — `fn peer_dc(dc: &str) -> Option<&'static str> {`
+- [`home-mixer/clients/ad_index_client.rs:208`](../source/home-mixer/clients/ad_index_client.rs#L208) — `async fn get_eligible_ads(&self, request: AdIndexRequest) -> Result<AdIndexResponse, Status> {`
+- [`home-mixer/clients/ad_index_client.rs:230`](../source/home-mixer/clients/ad_index_client.rs#L230) — `pub struct MockAdIndexClient;`
+- [`home-mixer/clients/ad_index_client.rs:234`](../source/home-mixer/clients/ad_index_client.rs#L234) — `async fn get_eligible_ads(&self, _request: AdIndexRequest) -> Result<AdIndexResponse, Status> {`
+- [`home-mixer/clients/ad_index_client.rs:247`](../source/home-mixer/clients/ad_index_client.rs#L247) — `fn peer_dc_atla_pairs_with_pdxa() {`
+- [`home-mixer/clients/ad_index_client.rs:252`](../source/home-mixer/clients/ad_index_client.rs#L252) — `fn peer_dc_pdxa_pairs_with_atla() {`
+- [`home-mixer/clients/ad_index_client.rs:257`](../source/home-mixer/clients/ad_index_client.rs#L257) — `fn peer_dc_unknown_returns_none() {`
+- [`home-mixer/clients/ad_index_client.rs:264`](../source/home-mixer/clients/ad_index_client.rs#L264) — `fn cluster_labels_are_stable() {`
+- [`home-mixer/clients/ad_index_client.rs:270`](../source/home-mixer/clients/ad_index_client.rs#L270) — `fn prod_wily_path_is_plain_serverset() {`
+- [`home-mixer/clients/ad_index_client.rs:282`](../source/home-mixer/clients/ad_index_client.rs#L282) — `fn staging_wily_path_targets_staging_serverset_with_encoded_hash() {`
+- [`home-mixer/clients/ad_index_client.rs:294`](../source/home-mixer/clients/ad_index_client.rs#L294) — `fn sni_matches_env() {`
+- [`home-mixer/clients/engagement_counts_client.rs:10`](../source/home-mixer/clients/engagement_counts_client.rs#L10) — `const CACHE_NAME: &str = "view-count-cache";`
+- [`home-mixer/clients/engagement_counts_client.rs:11`](../source/home-mixer/clients/engagement_counts_client.rs#L11) — `const CACHE_ENVIRONMENT: &str = "prod";`
+- [`home-mixer/clients/engagement_counts_client.rs:12`](../source/home-mixer/clients/engagement_counts_client.rs#L12) — `const CACHE_NAMESPACE: &str = "cache";`
+- [`home-mixer/clients/engagement_counts_client.rs:13`](../source/home-mixer/clients/engagement_counts_client.rs#L13) — `const RESPONSE_TIMEOUT: Duration = Duration::from_millis(200);`
+- [`home-mixer/clients/engagement_counts_client.rs:14`](../source/home-mixer/clients/engagement_counts_client.rs#L14) — `const MGET_NODE_TIMEOUT: Duration = Duration::from_millis(100);`
+- [`home-mixer/clients/engagement_counts_client.rs:17`](../source/home-mixer/clients/engagement_counts_client.rs#L17) — `pub trait EngagementCountsClient: Send + Sync {`
+- [`home-mixer/clients/engagement_counts_client.rs:18`](../source/home-mixer/clients/engagement_counts_client.rs#L18) — `async fn get_engagement_counts(`
+- [`home-mixer/clients/engagement_counts_client.rs:24`](../source/home-mixer/clients/engagement_counts_client.rs#L24) — `pub struct ProdEngagementCountsClient {`
+- [`home-mixer/clients/engagement_counts_client.rs:29`](../source/home-mixer/clients/engagement_counts_client.rs#L29) — `pub async fn new(datacenter: &str) -> anyhow::Result<Self> {`
+- [`home-mixer/clients/engagement_counts_client.rs:50`](../source/home-mixer/clients/engagement_counts_client.rs#L50) — `async fn mget_engagement_counts(`
+- [`home-mixer/clients/engagement_counts_client.rs:85`](../source/home-mixer/clients/engagement_counts_client.rs#L85) — `fn eds_resource_name(datacenter: &str) -> String {`
+- [`home-mixer/clients/engagement_counts_client.rs:91`](../source/home-mixer/clients/engagement_counts_client.rs#L91) — `fn cache_key(tweet_id: u64) -> Vec<u8> {`
+- [`home-mixer/clients/engagement_counts_client.rs:95`](../source/home-mixer/clients/engagement_counts_client.rs#L95) — `fn parse_engagement_counts(bytes: &[u8]) -> Option<EngagementCounts> {`
+- [`home-mixer/clients/engagement_counts_client.rs:99`](../source/home-mixer/clients/engagement_counts_client.rs#L99) — `fn is_total_failure(stats: &[NodeOpStat]) -> bool {`
+- [`home-mixer/clients/engagement_counts_client.rs:103`](../source/home-mixer/clients/engagement_counts_client.rs#L103) — `fn record_metrics(queried: u64, missing: u64, elapsed: Duration) {`
+- [`home-mixer/clients/engagement_counts_client.rs:126`](../source/home-mixer/clients/engagement_counts_client.rs#L126) — `async fn get_engagement_counts(`
+- [`home-mixer/clients/engagement_counts_client.rs:135`](../source/home-mixer/clients/engagement_counts_client.rs#L135) — `pub struct MockEngagementCountsClient {`
+- [`home-mixer/clients/engagement_counts_client.rs:141`](../source/home-mixer/clients/engagement_counts_client.rs#L141) — `async fn get_engagement_counts(`
+- [`home-mixer/clients/engagement_counts_client.rs:157`](../source/home-mixer/clients/engagement_counts_client.rs#L157) — `fn decodes_view_count_from_engagement_counts() {`
+- [`home-mixer/clients/engagement_counts_client.rs:167`](../source/home-mixer/clients/engagement_counts_client.rs#L167) — `fn cache_key_matches_writer_encoding() {`
+- [`home-mixer/clients/engagement_counts_client.rs:172`](../source/home-mixer/clients/engagement_counts_client.rs#L172) — `fn total_failure_only_when_no_shard_succeeds() {`
+- [`home-mixer/clients/engagement_signals_client.rs:11`](../source/home-mixer/clients/engagement_signals_client.rs#L11) — `const MH_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/clients/engagement_signals_client.rs:12`](../source/home-mixer/clients/engagement_signals_client.rs#L12) — `const DECODE_FAILURE_METRIC: &str = "EngagementSignalsClient.decode_failures";`
+- [`home-mixer/clients/engagement_signals_client.rs:14`](../source/home-mixer/clients/engagement_signals_client.rs#L14) — `fn engaged_tweets_tenant() -> Tenant {`
+- [`home-mixer/clients/engagement_signals_client.rs:22`](../source/home-mixer/clients/engagement_signals_client.rs#L22) — `fn tweet_engagements_tenant() -> Tenant {`
+- [`home-mixer/clients/engagement_signals_client.rs:30`](../source/home-mixer/clients/engagement_signals_client.rs#L30) — `fn video_view_tweets_tenant() -> Tenant {`
+- [`home-mixer/clients/engagement_signals_client.rs:38`](../source/home-mixer/clients/engagement_signals_client.rs#L38) — `fn long_to_native_bytes(value: i64) -> Vec<u8> {`
+- [`home-mixer/clients/engagement_signals_client.rs:45`](../source/home-mixer/clients/engagement_signals_client.rs#L45) — `pub trait EngagementSignalsClient: Send + Sync {`
+- [`home-mixer/clients/engagement_signals_client.rs:46`](../source/home-mixer/clients/engagement_signals_client.rs#L46) — `async fn fetch_engaged_tweets(`
+- [`home-mixer/clients/engagement_signals_client.rs:51`](../source/home-mixer/clients/engagement_signals_client.rs#L51) — `async fn fetch_tweet_engagements(`
+- [`home-mixer/clients/engagement_signals_client.rs:57`](../source/home-mixer/clients/engagement_signals_client.rs#L57) — `async fn fetch_video_view_tweets(`
+- [`home-mixer/clients/engagement_signals_client.rs:64`](../source/home-mixer/clients/engagement_signals_client.rs#L64) — `pub struct ProdEngagementSignalsClient {`
+- [`home-mixer/clients/engagement_signals_client.rs:70`](../source/home-mixer/clients/engagement_signals_client.rs#L70) — `pub async fn new(datacenter: &str, s2s: S2sConfig) -> Result<Self, String> {`
+- [`home-mixer/clients/engagement_signals_client.rs:100`](../source/home-mixer/clients/engagement_signals_client.rs#L100) — `async fn get_and_decode<T>(`
+- [`home-mixer/clients/engagement_signals_client.rs:144`](../source/home-mixer/clients/engagement_signals_client.rs#L144) — `async fn fetch_engaged_tweets(`
+- [`home-mixer/clients/engagement_signals_client.rs:157`](../source/home-mixer/clients/engagement_signals_client.rs#L157) — `async fn fetch_tweet_engagements(`
+- [`home-mixer/clients/engagement_signals_client.rs:171`](../source/home-mixer/clients/engagement_signals_client.rs#L171) — `async fn fetch_video_view_tweets(`
+- [`home-mixer/clients/engagement_signals_client.rs:186`](../source/home-mixer/clients/engagement_signals_client.rs#L186) — `pub struct MockEngagementSignalsClient;`
+- [`home-mixer/clients/engagement_signals_client.rs:190`](../source/home-mixer/clients/engagement_signals_client.rs#L190) — `async fn fetch_engaged_tweets(`
+- [`home-mixer/clients/engagement_signals_client.rs:197`](../source/home-mixer/clients/engagement_signals_client.rs#L197) — `async fn fetch_tweet_engagements(`
+- [`home-mixer/clients/engagement_signals_client.rs:205`](../source/home-mixer/clients/engagement_signals_client.rs#L205) — `async fn fetch_video_view_tweets(`
+- [`home-mixer/clients/impressed_posts_client.rs:11`](../source/home-mixer/clients/impressed_posts_client.rs#L11) — `const WILY_PATH: &str = "/s/cache/timelines_impressionstore:twemcaches";`
+- [`home-mixer/clients/impressed_posts_client.rs:12`](../source/home-mixer/clients/impressed_posts_client.rs#L12) — `const CLIENT_NAME: &str = "home-mixer";`
+- [`home-mixer/clients/impressed_posts_client.rs:13`](../source/home-mixer/clients/impressed_posts_client.rs#L13) — `const REQUEST_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/clients/impressed_posts_client.rs:16`](../source/home-mixer/clients/impressed_posts_client.rs#L16) — `pub trait ImpressedPostsClient: Send + Sync {`
+- [`home-mixer/clients/impressed_posts_client.rs:17`](../source/home-mixer/clients/impressed_posts_client.rs#L17) — `async fn get(&self, user_id: u64) -> Result<Vec<u64>, String>;`
+- [`home-mixer/clients/impressed_posts_client.rs:20`](../source/home-mixer/clients/impressed_posts_client.rs#L20) — `pub struct ProdImpressedPostsClient {`
+- [`home-mixer/clients/impressed_posts_client.rs:25`](../source/home-mixer/clients/impressed_posts_client.rs#L25) — `pub async fn new(datacenter: &str) -> anyhow::Result<Self> {`
+- [`home-mixer/clients/impressed_posts_client.rs:53`](../source/home-mixer/clients/impressed_posts_client.rs#L53) — `fn cache_key(user_id: u64) -> Result<Key, String> {`
+- [`home-mixer/clients/impressed_posts_client.rs:60`](../source/home-mixer/clients/impressed_posts_client.rs#L60) — `async fn get(&self, user_id: u64) -> Result<Vec<u64>, String> {`
+- [`home-mixer/clients/impressed_posts_client.rs:88`](../source/home-mixer/clients/impressed_posts_client.rs#L88) — `pub struct MockImpressedPostsClient {`
+- [`home-mixer/clients/impressed_posts_client.rs:94`](../source/home-mixer/clients/impressed_posts_client.rs#L94) — `async fn get(&self, _user_id: u64) -> Result<Vec<u64>, String> {`
+- [`home-mixer/clients/night_owl_client.rs:12`](../source/home-mixer/clients/night_owl_client.rs#L12) — `const WILY_PATH: &str = "/s/search-ai/night-owl";`
+- [`home-mixer/clients/night_owl_client.rs:13`](../source/home-mixer/clients/night_owl_client.rs#L13) — `const AUTHORITY: &str = "search-ai.night-owl.prod.{datacenter}.s2s.twttr.net";`
+- [`home-mixer/clients/night_owl_client.rs:14`](../source/home-mixer/clients/night_owl_client.rs#L14) — `pub const REQUEST_TIMEOUT_MS: u64 = 700;`
+- [`home-mixer/clients/night_owl_client.rs:15`](../source/home-mixer/clients/night_owl_client.rs#L15) — `const CONNECT_TIMEOUT_MS: u64 = 1000;`
+- [`home-mixer/clients/night_owl_client.rs:16`](../source/home-mixer/clients/night_owl_client.rs#L16) — `const DNS_POLL_INTERVAL_SECS: u64 = 5;`
+- [`home-mixer/clients/night_owl_client.rs:17`](../source/home-mixer/clients/night_owl_client.rs#L17) — `const NUM_ENDPOINTS: usize = 12;`
+- [`home-mixer/clients/night_owl_client.rs:18`](../source/home-mixer/clients/night_owl_client.rs#L18) — `const MAX_DECODING_MESSAGE_SIZE: usize = 20 * 1024 * 1024;`
+- [`home-mixer/clients/night_owl_client.rs:21`](../source/home-mixer/clients/night_owl_client.rs#L21) — `pub trait NightOwlClient: Send + Sync {`
+- [`home-mixer/clients/night_owl_client.rs:22`](../source/home-mixer/clients/night_owl_client.rs#L22) — `async fn search(`
+- [`home-mixer/clients/night_owl_client.rs:29`](../source/home-mixer/clients/night_owl_client.rs#L29) — `pub struct ProdNightOwlClient {`
+- [`home-mixer/clients/night_owl_client.rs:34`](../source/home-mixer/clients/night_owl_client.rs#L34) — `pub async fn new(datacenter: &str) -> Result<Self, tonic::Status> {`
+- [`home-mixer/clients/night_owl_client.rs:71`](../source/home-mixer/clients/night_owl_client.rs#L71) — `async fn search(`
+- [`home-mixer/clients/night_owl_client.rs:85`](../source/home-mixer/clients/night_owl_client.rs#L85) — `pub struct MockNightOwlClient;`
+- [`home-mixer/clients/night_owl_client.rs:89`](../source/home-mixer/clients/night_owl_client.rs#L89) — `async fn search(`
+- [`home-mixer/clients/past_request_timestamps_client.rs:8`](../source/home-mixer/clients/past_request_timestamps_client.rs#L8) — `const CLUSTER: &str = "omega";`
+- [`home-mixer/clients/past_request_timestamps_client.rs:9`](../source/home-mixer/clients/past_request_timestamps_client.rs#L9) — `const APP_ID: &str = "timelineservice_user_session_store";`
+- [`home-mixer/clients/past_request_timestamps_client.rs:10`](../source/home-mixer/clients/past_request_timestamps_client.rs#L10) — `const DATASET: &str = "tls_user_session_store";`
+- [`home-mixer/clients/past_request_timestamps_client.rs:11`](../source/home-mixer/clients/past_request_timestamps_client.rs#L11) — `const DEFAULT_TIMEOUT: Duration = Duration::from_millis(500);`
+- [`home-mixer/clients/past_request_timestamps_client.rs:12`](../source/home-mixer/clients/past_request_timestamps_client.rs#L12) — `const DEFAULT_RETRIES: usize = 1;`
+- [`home-mixer/clients/past_request_timestamps_client.rs:14`](../source/home-mixer/clients/past_request_timestamps_client.rs#L14) — `const NON_POLLING_TIMES_DATASET_ID: i32 = 1;`
+- [`home-mixer/clients/past_request_timestamps_client.rs:15`](../source/home-mixer/clients/past_request_timestamps_client.rs#L15) — `const VERSION_NUM_V1: i32 = 1;`
+- [`home-mixer/clients/past_request_timestamps_client.rs:17`](../source/home-mixer/clients/past_request_timestamps_client.rs#L17) — `fn tenant() -> Tenant {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:25`](../source/home-mixer/clients/past_request_timestamps_client.rs#L25) — `fn lkey() -> Vec<Vec<u8>> {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:32`](../source/home-mixer/clients/past_request_timestamps_client.rs#L32) — `fn pkey(user_id: u64) -> Vec<Vec<u8>> {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:37`](../source/home-mixer/clients/past_request_timestamps_client.rs#L37) — `pub trait PastRequestTimestampsClient: Send + Sync {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:38`](../source/home-mixer/clients/past_request_timestamps_client.rs#L38) — `async fn get(&self, user_id: u64) -> Result<Option<NonPollingTimestamps>, String>;`
+- [`home-mixer/clients/past_request_timestamps_client.rs:39`](../source/home-mixer/clients/past_request_timestamps_client.rs#L39) — `async fn put(&self, user_id: u64, npt: &NonPollingTimestamps) -> Result<(), String>;`
+- [`home-mixer/clients/past_request_timestamps_client.rs:42`](../source/home-mixer/clients/past_request_timestamps_client.rs#L42) — `pub struct ProdPastRequestTimestampsClient {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:47`](../source/home-mixer/clients/past_request_timestamps_client.rs#L47) — `pub async fn new(dc: &str) -> anyhow::Result<Self> {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:65`](../source/home-mixer/clients/past_request_timestamps_client.rs#L65) — `async fn get(&self, user_id: u64) -> Result<Option<NonPollingTimestamps>, String> {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:84`](../source/home-mixer/clients/past_request_timestamps_client.rs#L84) — `async fn put(&self, user_id: u64, npt: &NonPollingTimestamps) -> Result<(), String> {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:95`](../source/home-mixer/clients/past_request_timestamps_client.rs#L95) — `pub struct MockPastRequestTimestampsClient;`
+- [`home-mixer/clients/past_request_timestamps_client.rs:99`](../source/home-mixer/clients/past_request_timestamps_client.rs#L99) — `async fn get(&self, _user_id: u64) -> Result<Option<NonPollingTimestamps>, String> {`
+- [`home-mixer/clients/past_request_timestamps_client.rs:103`](../source/home-mixer/clients/past_request_timestamps_client.rs#L103) — `async fn put(&self, _user_id: u64, _npt: &NonPollingTimestamps) -> Result<(), String> {`
+- [`home-mixer/clients/prompts_client.rs:18`](../source/home-mixer/clients/prompts_client.rs#L18) — `const WILY_PATH: &str = "/s/onboarding-task-service/onboarding-task-service:grpc";`
+- [`home-mixer/clients/prompts_client.rs:19`](../source/home-mixer/clients/prompts_client.rs#L19) — `const TIMEOUT_MS: u64 = 500;`
+- [`home-mixer/clients/prompts_client.rs:20`](../source/home-mixer/clients/prompts_client.rs#L20) — `const NUM_ENDPOINTS: usize = 10;`
+- [`home-mixer/clients/prompts_client.rs:21`](../source/home-mixer/clients/prompts_client.rs#L21) — `const DNS_POLL_INTERVAL_MS: u64 = 30_000;`
+- [`home-mixer/clients/prompts_client.rs:22`](../source/home-mixer/clients/prompts_client.rs#L22) — `const METRIC_NAME: &str = "PromptsClient.get_injections";`
+- [`home-mixer/clients/prompts_client.rs:25`](../source/home-mixer/clients/prompts_client.rs#L25) — `pub trait PromptsClient: Send + Sync {`
+- [`home-mixer/clients/prompts_client.rs:26`](../source/home-mixer/clients/prompts_client.rs#L26) — `async fn get_injections(&self, request: GetInjectionsRequest)`
+- [`home-mixer/clients/prompts_client.rs:30`](../source/home-mixer/clients/prompts_client.rs#L30) — `pub struct ProdPromptsClient {`
+- [`home-mixer/clients/prompts_client.rs:35`](../source/home-mixer/clients/prompts_client.rs#L35) — `pub async fn new(dc: &str) -> Result<Self, Status> {`
+- [`home-mixer/clients/prompts_client.rs:90`](../source/home-mixer/clients/prompts_client.rs#L90) — `async fn get_injections(`
+- [`home-mixer/clients/prompts_client.rs:131`](../source/home-mixer/clients/prompts_client.rs#L131) — `pub struct MockPromptsClient;`
+- [`home-mixer/clients/prompts_client.rs:135`](../source/home-mixer/clients/prompts_client.rs#L135) — `async fn get_injections(`
+- [`home-mixer/clients/resurrection_date_client.rs:10`](../source/home-mixer/clients/resurrection_date_client.rs#L10) — `const MH_CLUSTER: &str = "omega";`
+- [`home-mixer/clients/resurrection_date_client.rs:11`](../source/home-mixer/clients/resurrection_date_client.rs#L11) — `const MH_APP_ID: &str = "home_user_latest_activity";`
+- [`home-mixer/clients/resurrection_date_client.rs:12`](../source/home-mixer/clients/resurrection_date_client.rs#L12) — `const MH_DATASET: &str = "user_latest_resurrection";`
+- [`home-mixer/clients/resurrection_date_client.rs:13`](../source/home-mixer/clients/resurrection_date_client.rs#L13) — `const MH_TIMEOUT: Duration = Duration::from_millis(100);`
+- [`home-mixer/clients/resurrection_date_client.rs:14`](../source/home-mixer/clients/resurrection_date_client.rs#L14) — `const METRIC_NAME: &str = "ResurrectionDateClient";`
+- [`home-mixer/clients/resurrection_date_client.rs:16`](../source/home-mixer/clients/resurrection_date_client.rs#L16) — `const MIN_RESURRECTION_DORMANCY_MS: i64 = 30 * 24 * 60 * 60 * 1000;`
+- [`home-mixer/clients/resurrection_date_client.rs:18`](../source/home-mixer/clients/resurrection_date_client.rs#L18) — `fn tenant() -> Tenant {`
+- [`home-mixer/clients/resurrection_date_client.rs:26`](../source/home-mixer/clients/resurrection_date_client.rs#L26) — `fn user_id_to_pkey_bytes(user_id: i64) -> Vec<u8> {`
+- [`home-mixer/clients/resurrection_date_client.rs:30`](../source/home-mixer/clients/resurrection_date_client.rs#L30) — `fn decode_resurrection_timestamp_ms(bytes: &[u8]) -> Option<i64> {`
+- [`home-mixer/clients/resurrection_date_client.rs:40`](../source/home-mixer/clients/resurrection_date_client.rs#L40) — `pub fn compute_resurrection_fs_fields(`
+- [`home-mixer/clients/resurrection_date_client.rs:51`](../source/home-mixer/clients/resurrection_date_client.rs#L51) — `fn record_stats(result: &str, latency_ms: f64) {`
+- [`home-mixer/clients/resurrection_date_client.rs:65`](../source/home-mixer/clients/resurrection_date_client.rs#L65) — `pub trait ResurrectionDateClient: Send + Sync {`
+- [`home-mixer/clients/resurrection_date_client.rs:66`](../source/home-mixer/clients/resurrection_date_client.rs#L66) — `async fn fetch(&self, user_id: u64) -> Result<Option<i64>, String>;`
+- [`home-mixer/clients/resurrection_date_client.rs:69`](../source/home-mixer/clients/resurrection_date_client.rs#L69) — `pub struct ProdResurrectionDateClient {`
+- [`home-mixer/clients/resurrection_date_client.rs:74`](../source/home-mixer/clients/resurrection_date_client.rs#L74) — `pub async fn new(datacenter: &str) -> anyhow::Result<Self> {`
+- [`home-mixer/clients/resurrection_date_client.rs:94`](../source/home-mixer/clients/resurrection_date_client.rs#L94) — `async fn fetch(&self, user_id: u64) -> Result<Option<i64>, String> {`
+- [`home-mixer/clients/resurrection_date_client.rs:125`](../source/home-mixer/clients/resurrection_date_client.rs#L125) — `pub struct MockResurrectionDateClient;`
+- [`home-mixer/clients/resurrection_date_client.rs:129`](../source/home-mixer/clients/resurrection_date_client.rs#L129) — `async fn fetch(&self, _user_id: u64) -> Result<Option<i64>, String> {`
+- [`home-mixer/clients/resurrection_date_client.rs:138`](../source/home-mixer/clients/resurrection_date_client.rs#L138) — `const DAY_MS: i64 = 86_400_000;`
+- [`home-mixer/clients/resurrection_date_client.rs:140`](../source/home-mixer/clients/resurrection_date_client.rs#L140) — `fn encoded_record(resurrection_ts: i64, previous_visit_ms: Option<i64>) -> Vec<u8> {`
+- [`home-mixer/clients/resurrection_date_client.rs:153`](../source/home-mixer/clients/resurrection_date_client.rs#L153) — `fn counts_when_dormant_at_least_30d() {`
+- [`home-mixer/clients/resurrection_date_client.rs:160`](../source/home-mixer/clients/resurrection_date_client.rs#L160) — `fn counts_at_exactly_30d_boundary() {`
+- [`home-mixer/clients/resurrection_date_client.rs:167`](../source/home-mixer/clients/resurrection_date_client.rs#L167) — `fn counts_when_no_previous_visit() {`
+- [`home-mixer/clients/resurrection_date_client.rs:174`](../source/home-mixer/clients/resurrection_date_client.rs#L174) — `fn skips_when_visit_within_30d() {`
+- [`home-mixer/clients/resurrection_date_client.rs:181`](../source/home-mixer/clients/resurrection_date_client.rs#L181) — `fn incomplete_record_returns_none() {`
+- [`home-mixer/clients/resurrection_date_client.rs:189`](../source/home-mixer/clients/resurrection_date_client.rs#L189) — `fn fs_fields_from_timestamp() {`
+- [`home-mixer/clients/rotating_channel.rs:9`](../source/home-mixer/clients/rotating_channel.rs#L9) — `const NUM_SLOTS: usize = 2;`
+- [`home-mixer/clients/rotating_channel.rs:11`](../source/home-mixer/clients/rotating_channel.rs#L11) — `pub struct RotatingChannel {`
+- [`home-mixer/clients/rotating_channel.rs:18`](../source/home-mixer/clients/rotating_channel.rs#L18) — `pub async fn new(`
+- [`home-mixer/clients/rotating_channel.rs:47`](../source/home-mixer/clients/rotating_channel.rs#L47) — `pub fn next(&self) -> Arc<Channel> {`
+- [`home-mixer/clients/rotating_channel.rs:52`](../source/home-mixer/clients/rotating_channel.rs#L52) — `async fn refresh(&self, slot: usize, request_timeout: Duration) {`
+- [`home-mixer/clients/rotating_channel.rs:64`](../source/home-mixer/clients/rotating_channel.rs#L64) — `async fn build(endpoint: &str, request_timeout: Duration) -> Result<Channel, tonic::Status> {`
+- [`home-mixer/clients/served_history_client.rs:13`](../source/home-mixer/clients/served_history_client.rs#L13) — `const MH_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/clients/served_history_client.rs:14`](../source/home-mixer/clients/served_history_client.rs#L14) — `const SCAN_LIMIT: u32 = 100;`
+- [`home-mixer/clients/served_history_client.rs:18`](../source/home-mixer/clients/served_history_client.rs#L18) — `pub enum TimelineType {`
+- [`home-mixer/clients/served_history_client.rs:29`](../source/home-mixer/clients/served_history_client.rs#L29) — `pub fn for_request(request_type: RequestType) -> Self {`
+- [`home-mixer/clients/served_history_client.rs:38`](../source/home-mixer/clients/served_history_client.rs#L38) — `fn timeline_pkey(timeline_type: TimelineType, user_id: u64, client_platform: i32) -> Vec<Vec<u8>> {`
+- [`home-mixer/clients/served_history_client.rs:47`](../source/home-mixer/clients/served_history_client.rs#L47) — `pub trait ServedHistoryClient: Send + Sync {`
+- [`home-mixer/clients/served_history_client.rs:48`](../source/home-mixer/clients/served_history_client.rs#L48) — `async fn get_recent(`
+- [`home-mixer/clients/served_history_client.rs:55`](../source/home-mixer/clients/served_history_client.rs#L55) — `async fn put(`
+- [`home-mixer/clients/served_history_client.rs:64`](../source/home-mixer/clients/served_history_client.rs#L64) — `async fn delete(`
+- [`home-mixer/clients/served_history_client.rs:73`](../source/home-mixer/clients/served_history_client.rs#L73) — `pub struct ProdServedHistoryClient {`
+- [`home-mixer/clients/served_history_client.rs:79`](../source/home-mixer/clients/served_history_client.rs#L79) — `pub async fn new(datacenter: &str) -> Result<Self> {`
+- [`home-mixer/clients/served_history_client.rs:106`](../source/home-mixer/clients/served_history_client.rs#L106) — `async fn get_recent(`
+- [`home-mixer/clients/served_history_client.rs:154`](../source/home-mixer/clients/served_history_client.rs#L154) — `async fn put(`
+- [`home-mixer/clients/served_history_client.rs:173`](../source/home-mixer/clients/served_history_client.rs#L173) — `async fn delete(`
+- [`home-mixer/clients/served_history_client.rs:192`](../source/home-mixer/clients/served_history_client.rs#L192) — `pub struct MockServedHistoryClient;`
+- [`home-mixer/clients/served_history_client.rs:196`](../source/home-mixer/clients/served_history_client.rs#L196) — `async fn get_recent(`
+- [`home-mixer/clients/served_history_client.rs:205`](../source/home-mixer/clients/served_history_client.rs#L205) — `async fn put(`
+- [`home-mixer/clients/served_history_client.rs:216`](../source/home-mixer/clients/served_history_client.rs#L216) — `async fn delete(`
+- [`home-mixer/clients/simclusters_ann_client.rs:19`](../source/home-mixer/clients/simclusters_ann_client.rs#L19) — `const WILY_PATH: &str = "/s/simclusters-ann/simclusters-ann:grpc";`
+- [`home-mixer/clients/simclusters_ann_client.rs:20`](../source/home-mixer/clients/simclusters_ann_client.rs#L20) — `const TIMEOUT_MS: u64 = 600;`
+- [`home-mixer/clients/simclusters_ann_client.rs:21`](../source/home-mixer/clients/simclusters_ann_client.rs#L21) — `const NUM_ENDPOINTS: usize = 15;`
+- [`home-mixer/clients/simclusters_ann_client.rs:22`](../source/home-mixer/clients/simclusters_ann_client.rs#L22) — `const DNS_POLL_INTERVAL_MS: u64 = 30_000;`
+- [`home-mixer/clients/simclusters_ann_client.rs:23`](../source/home-mixer/clients/simclusters_ann_client.rs#L23) — `const METRIC_NAME: &str = "SimClustersAnnClient.get_tweet_candidates";`
+- [`home-mixer/clients/simclusters_ann_client.rs:26`](../source/home-mixer/clients/simclusters_ann_client.rs#L26) — `pub trait SimClustersAnnClient: Send + Sync {`
+- [`home-mixer/clients/simclusters_ann_client.rs:27`](../source/home-mixer/clients/simclusters_ann_client.rs#L27) — `async fn get_tweet_candidates(`
+- [`home-mixer/clients/simclusters_ann_client.rs:33`](../source/home-mixer/clients/simclusters_ann_client.rs#L33) — `pub struct ProdSimClustersAnnClient {`
+- [`home-mixer/clients/simclusters_ann_client.rs:38`](../source/home-mixer/clients/simclusters_ann_client.rs#L38) — `pub async fn new(dc: &str) -> Result<Self, Status> {`
+- [`home-mixer/clients/simclusters_ann_client.rs:93`](../source/home-mixer/clients/simclusters_ann_client.rs#L93) — `async fn get_tweet_candidates(`
+- [`home-mixer/clients/simclusters_ann_client.rs:134`](../source/home-mixer/clients/simclusters_ann_client.rs#L134) — `pub struct MockSimClustersAnnClient;`
+- [`home-mixer/clients/simclusters_ann_client.rs:138`](../source/home-mixer/clients/simclusters_ann_client.rs#L138) — `async fn get_tweet_candidates(`
+- [`home-mixer/clients/uas_fetcher.rs:20`](../source/home-mixer/clients/uas_fetcher.rs#L20) — `pub trait UserActionSequenceOps {`
+- [`home-mixer/clients/uas_fetcher.rs:21`](../source/home-mixer/clients/uas_fetcher.rs#L21) — `fn get_by_user_id(&self, user_id: i64) -> impl Future<Output = Result<TUserActionSequence>>;`
+- [`home-mixer/clients/uas_fetcher.rs:24`](../source/home-mixer/clients/uas_fetcher.rs#L24) — `pub struct UserActionSequenceFetcher {`
+- [`home-mixer/clients/uas_fetcher.rs:29`](../source/home-mixer/clients/uas_fetcher.rs#L29) — `pub fn new() -> Result<Self> {`
+- [`home-mixer/clients/uas_fetcher.rs:37`](../source/home-mixer/clients/uas_fetcher.rs#L37) — `async fn get_by_user_id(&self, user_id: i64) -> Result<TUserActionSequence> {`
+- [`home-mixer/clients/uas_fetcher.rs:61`](../source/home-mixer/clients/uas_fetcher.rs#L61) — `fn maybe_decompress(uas: TUserActionSequence) -> Result<TUserActionSequence> {`
+- [`home-mixer/clients/uas_fetcher.rs:78`](../source/home-mixer/clients/uas_fetcher.rs#L78) — `async fn test_mh_connection() {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:25`](../source/home-mixer/clients/user_action_aggregation_client.rs#L25) — `pub struct AggregatedSequenceResult {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:30`](../source/home-mixer/clients/user_action_aggregation_client.rs#L30) — `const TIMEOUT_MS: u64 = 200;`
+- [`home-mixer/clients/user_action_aggregation_client.rs:31`](../source/home-mixer/clients/user_action_aggregation_client.rs#L31) — `const MAX_RETRIES: u32 = 2;`
+- [`home-mixer/clients/user_action_aggregation_client.rs:32`](../source/home-mixer/clients/user_action_aggregation_client.rs#L32) — `const METRIC_NAME: &str = "UserActionAggregationClient.fetch";`
+- [`home-mixer/clients/user_action_aggregation_client.rs:34`](../source/home-mixer/clients/user_action_aggregation_client.rs#L34) — `const UAS_XDS_LISTENER: &str = "recsys-user-action-aggregation.prod.recsys-infra:grpc";`
+- [`home-mixer/clients/user_action_aggregation_client.rs:35`](../source/home-mixer/clients/user_action_aggregation_client.rs#L35) — `const UAS_XDS_APERTURE_SIZE: usize = 16;`
+- [`home-mixer/clients/user_action_aggregation_client.rs:36`](../source/home-mixer/clients/user_action_aggregation_client.rs#L36) — `const REFRESH_INTERVAL: Duration = Duration::from_secs(60);`
+- [`home-mixer/clients/user_action_aggregation_client.rs:43`](../source/home-mixer/clients/user_action_aggregation_client.rs#L43) — `pub enum UserActionsCluster {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:49`](../source/home-mixer/clients/user_action_aggregation_client.rs#L49) — `pub fn endpoint(&self) -> String {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:54`](../source/home-mixer/clients/user_action_aggregation_client.rs#L54) — `pub fn parse(s: &str) -> Self {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:60`](../source/home-mixer/clients/user_action_aggregation_client.rs#L60) — `pub trait UserActionAggregationClient {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:61`](../source/home-mixer/clients/user_action_aggregation_client.rs#L61) — `async fn fetch_aggregated_sequence(`
+- [`home-mixer/clients/user_action_aggregation_client.rs:76`](../source/home-mixer/clients/user_action_aggregation_client.rs#L76) — `pub struct ProdUserActionAggregationClient {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:82`](../source/home-mixer/clients/user_action_aggregation_client.rs#L82) — `pub async fn new() -> Result<Self, Status> {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:92`](../source/home-mixer/clients/user_action_aggregation_client.rs#L92) — `async fn build_envoy_channels(`
+- [`home-mixer/clients/user_action_aggregation_client.rs:112`](../source/home-mixer/clients/user_action_aggregation_client.rs#L112) — `async fn build_xds_client(`
+- [`home-mixer/clients/user_action_aggregation_client.rs:153`](../source/home-mixer/clients/user_action_aggregation_client.rs#L153) — `async fn warm_connection(client: &UserActionAggregationServiceClient<LoadBalancedChannel>) {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:188`](../source/home-mixer/clients/user_action_aggregation_client.rs#L188) — `fn record_stats(cluster: UserActionsCluster, success: bool, latency_ms: f64) {`
+- [`home-mixer/clients/user_action_aggregation_client.rs:211`](../source/home-mixer/clients/user_action_aggregation_client.rs#L211) — `async fn fetch_aggregated_sequence(`
+- [`home-mixer/clients/user_action_aggregation_client.rs:308`](../source/home-mixer/clients/user_action_aggregation_client.rs#L308) — `pub struct MockUserActionAggregationClient;`
+- [`home-mixer/clients/user_action_aggregation_client.rs:312`](../source/home-mixer/clients/user_action_aggregation_client.rs#L312) — `async fn fetch_aggregated_sequence(`
+- [`home-mixer/clients/vm_ranker_client.rs:21`](../source/home-mixer/clients/vm_ranker_client.rs#L21) — `pub const TIMEOUT_MS: u64 = 400;`
+- [`home-mixer/clients/vm_ranker_client.rs:22`](../source/home-mixer/clients/vm_ranker_client.rs#L22) — `const METRIC_NAME: &str = "VMRankerClient.rank";`
+- [`home-mixer/clients/vm_ranker_client.rs:23`](../source/home-mixer/clients/vm_ranker_client.rs#L23) — `const REFRESH_INTERVAL: Duration = Duration::from_secs(60);`
+- [`home-mixer/clients/vm_ranker_client.rs:25`](../source/home-mixer/clients/vm_ranker_client.rs#L25) — `const XDS_METRIC_NAME: &str = "VMRankerClient.xds";`
+- [`home-mixer/clients/vm_ranker_client.rs:26`](../source/home-mixer/clients/vm_ranker_client.rs#L26) — `const XDS_BUILD_METRIC_NAME: &str = "VMRankerClient.xds_build";`
+- [`home-mixer/clients/vm_ranker_client.rs:27`](../source/home-mixer/clients/vm_ranker_client.rs#L27) — `const XDS_ENDPOINTS_METRIC_NAME: &str = "VMRankerClient.xds_endpoints";`
+- [`home-mixer/clients/vm_ranker_client.rs:28`](../source/home-mixer/clients/vm_ranker_client.rs#L28) — `const TRANSPORT_SAFETY_NET_MS: u64 = 3000;`
+- [`home-mixer/clients/vm_ranker_client.rs:29`](../source/home-mixer/clients/vm_ranker_client.rs#L29) — `const XDS_BUILD_TIMEOUT: Duration = Duration::from_secs(10);`
+- [`home-mixer/clients/vm_ranker_client.rs:30`](../source/home-mixer/clients/vm_ranker_client.rs#L30) — `const XDS_SEND_TIMEOUT: Duration = Duration::from_millis(TIMEOUT_MS + 1300);`
+- [`home-mixer/clients/vm_ranker_client.rs:33`](../source/home-mixer/clients/vm_ranker_client.rs#L33) — `pub enum VMRankerCluster {`
+- [`home-mixer/clients/vm_ranker_client.rs:49`](../source/home-mixer/clients/vm_ranker_client.rs#L49) — `pub fn endpoint(&self) -> String {`
+- [`home-mixer/clients/vm_ranker_client.rs:56`](../source/home-mixer/clients/vm_ranker_client.rs#L56) — `pub fn xds_eds_resource(&self, authority: &str) -> String {`
+- [`home-mixer/clients/vm_ranker_client.rs:68`](../source/home-mixer/clients/vm_ranker_client.rs#L68) — `pub fn gate_name(&self) -> String {`
+- [`home-mixer/clients/vm_ranker_client.rs:72`](../source/home-mixer/clients/vm_ranker_client.rs#L72) — `pub fn parse(s: &str) -> Self {`
+- [`home-mixer/clients/vm_ranker_client.rs:78`](../source/home-mixer/clients/vm_ranker_client.rs#L78) — `pub trait VMRankerClient: Send + Sync {`
+- [`home-mixer/clients/vm_ranker_client.rs:79`](../source/home-mixer/clients/vm_ranker_client.rs#L79) — `async fn rank(`
+- [`home-mixer/clients/vm_ranker_client.rs:86`](../source/home-mixer/clients/vm_ranker_client.rs#L86) — `pub struct ProdVMRankerClient {`
+- [`home-mixer/clients/vm_ranker_client.rs:91`](../source/home-mixer/clients/vm_ranker_client.rs#L91) — `pub async fn new() -> Result<Self, Status> {`
+- [`home-mixer/clients/vm_ranker_client.rs:108`](../source/home-mixer/clients/vm_ranker_client.rs#L108) — `async fn rank(`
+- [`home-mixer/clients/vm_ranker_client.rs:146`](../source/home-mixer/clients/vm_ranker_client.rs#L146) — `pub struct XdsVMRankerClient {`
+- [`home-mixer/clients/vm_ranker_client.rs:151`](../source/home-mixer/clients/vm_ranker_client.rs#L151) — `pub async fn new(`
+- [`home-mixer/clients/vm_ranker_client.rs:268`](../source/home-mixer/clients/vm_ranker_client.rs#L268) — `fn record_build(cluster: VMRankerCluster, built: bool) {`
+- [`home-mixer/clients/vm_ranker_client.rs:280`](../source/home-mixer/clients/vm_ranker_client.rs#L280) — `fn spawn_endpoint_gauge(cluster: VMRankerCluster, mut state_rx: watch::Receiver<ServiceState>) {`
+- [`home-mixer/clients/vm_ranker_client.rs:309`](../source/home-mixer/clients/vm_ranker_client.rs#L309) — `async fn rank(`
+- [`home-mixer/clients/vm_ranker_client.rs:351`](../source/home-mixer/clients/vm_ranker_client.rs#L351) — `pub struct MockVMRankerClient;`
+- [`home-mixer/clients/vm_ranker_client.rs:355`](../source/home-mixer/clients/vm_ranker_client.rs#L355) — `async fn rank(`
+- [`home-mixer/clients/vm_ranker_client.rs:369`](../source/home-mixer/clients/vm_ranker_client.rs#L369) — `fn xds_eds_resource_matches_deployed_registration() {`
+- [`home-mixer/clients/vm_ranker_client.rs:377`](../source/home-mixer/clients/vm_ranker_client.rs#L377) — `fn gate_name_matches_cluster_id_param_value() {`
+- [`home-mixer/clients/vm_ranker_client.rs:384`](../source/home-mixer/clients/vm_ranker_client.rs#L384) — `fn experiment_2_eds_and_gate_name() {`
+- [`home-mixer/clients/vm_ranker_client.rs:395`](../source/home-mixer/clients/vm_ranker_client.rs#L395) — `fn experiment_3_eds_and_gate_name() {`
+- [`home-mixer/clients/who_to_follow_client.rs:18`](../source/home-mixer/clients/who_to_follow_client.rs#L18) — `const WILY_PATH: &str = "/s/account-recs-mixer/account-recs-mixer:grpc";`
+- [`home-mixer/clients/who_to_follow_client.rs:19`](../source/home-mixer/clients/who_to_follow_client.rs#L19) — `const TIMEOUT_MS: u64 = 600;`
+- [`home-mixer/clients/who_to_follow_client.rs:20`](../source/home-mixer/clients/who_to_follow_client.rs#L20) — `const NUM_ENDPOINTS: usize = 15;`
+- [`home-mixer/clients/who_to_follow_client.rs:21`](../source/home-mixer/clients/who_to_follow_client.rs#L21) — `const DNS_POLL_INTERVAL_MS: u64 = 30_000;`
+- [`home-mixer/clients/who_to_follow_client.rs:22`](../source/home-mixer/clients/who_to_follow_client.rs#L22) — `const METRIC_NAME: &str = "WhoToFollowClient.get_wtf_recommendations";`
+- [`home-mixer/clients/who_to_follow_client.rs:25`](../source/home-mixer/clients/who_to_follow_client.rs#L25) — `pub trait WhoToFollowClient: Send + Sync {`
+- [`home-mixer/clients/who_to_follow_client.rs:26`](../source/home-mixer/clients/who_to_follow_client.rs#L26) — `async fn get_wtf_recommendations(`
+- [`home-mixer/clients/who_to_follow_client.rs:32`](../source/home-mixer/clients/who_to_follow_client.rs#L32) — `pub struct ProdWhoToFollowClient {`
+- [`home-mixer/clients/who_to_follow_client.rs:37`](../source/home-mixer/clients/who_to_follow_client.rs#L37) — `pub async fn new(dc: &str) -> Result<Self, Status> {`
+- [`home-mixer/clients/who_to_follow_client.rs:94`](../source/home-mixer/clients/who_to_follow_client.rs#L94) — `async fn get_wtf_recommendations(`
+- [`home-mixer/clients/who_to_follow_client.rs:123`](../source/home-mixer/clients/who_to_follow_client.rs#L123) — `pub struct MockWhoToFollowClient;`
+- [`home-mixer/clients/who_to_follow_client.rs:127`](../source/home-mixer/clients/who_to_follow_client.rs#L127) — `async fn get_wtf_recommendations(`
+- [`home-mixer/config.rs:3`](../source/home-mixer/config.rs#L3) — `pub const ENV_GRPC_MTLS_ENABLED: &str = "GRPC_MTLS_ENABLED";`
+- [`home-mixer/config.rs:4`](../source/home-mixer/config.rs#L4) — `pub const ENV_GRPC_MTLS_SERVER_KEY_PATH: &str = "GRPC_MTLS_SERVER_KEY_PATH";`
+- [`home-mixer/config.rs:5`](../source/home-mixer/config.rs#L5) — `pub const ENV_GRPC_MTLS_SERVER_CRT_PATH: &str = "GRPC_MTLS_SERVER_CRT_PATH";`
+- [`home-mixer/config.rs:6`](../source/home-mixer/config.rs#L6) — `pub const ENV_GRPC_MTLS_SERVER_CHAIN_PATH: &str = "GRPC_MTLS_SERVER_CHAIN_PATH";`
+- [`home-mixer/config.rs:7`](../source/home-mixer/config.rs#L7) — `pub const ENV_GRPC_MTLS_CLIENT_CA_PATH: &str = "GRPC_MTLS_CLIENT_CA_PATH";`
+- [`home-mixer/config.rs:10`](../source/home-mixer/config.rs#L10) — `pub struct GrpcMtlsConfig {`
+- [`home-mixer/config.rs:17`](../source/home-mixer/config.rs#L17) — `pub fn from_env() -> anyhow::Result<Option<Self>> {`
+- [`home-mixer/config.rs:70`](../source/home-mixer/config.rs#L70) — `pub fn server_tls_config(&self) -> anyhow::Result<tonic::transport::ServerTlsConfig> {`
+- [`home-mixer/dark_traffic_setup.rs:11`](../source/home-mixer/dark_traffic_setup.rs#L11) — `const CONFIG_PATH: &str = "/config/dark-traffic/dark_traffic.yaml";`
+- [`home-mixer/dark_traffic_setup.rs:13`](../source/home-mixer/dark_traffic_setup.rs#L13) — `pub type DarkLayer = Either<DarkTrafficLayer, tower::layer::util::Identity>;`
+- [`home-mixer/dark_traffic_setup.rs:15`](../source/home-mixer/dark_traffic_setup.rs#L15) — `pub fn resolve_layer() -> DarkLayer {`
+- [`home-mixer/dark_traffic_setup.rs:69`](../source/home-mixer/dark_traffic_setup.rs#L69) — `fn should_enable(ordinal: Option<u32>, max_ordinal: Option<u32>) -> bool {`
+- [`home-mixer/dark_traffic_setup.rs:80`](../source/home-mixer/dark_traffic_setup.rs#L80) — `fn default_only_pod0() {`
+- [`home-mixer/dark_traffic_setup.rs:87`](../source/home-mixer/dark_traffic_setup.rs#L87) — `fn no_ordinal_disables() {`
+- [`home-mixer/dark_traffic_setup.rs:93`](../source/home-mixer/dark_traffic_setup.rs#L93) — `fn max_ordinal_threshold() {`
+- [`home-mixer/dark_traffic_setup.rs:102`](../source/home-mixer/dark_traffic_setup.rs#L102) — `fn max_ordinal_zero_disables_all() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:11`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L11) — `const ACTION_METRIC: &str = "AdAdjacentServed.action";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:12`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L12) — `const OUTCOME_METRIC: &str = "AdAdjacentServed.ad_outcome";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:13`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L13) — `const AD_STATUS_METRIC: &str = "AdAdjacentServed.ad_status";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:14`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L14) — `const FEED_STATUS_METRIC: &str = "AdAdjacentServed.feed_status";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:15`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L15) — `const FEED_POSTS_METRIC: &str = "AdAdjacentServed.feed_posts";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:16`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L16) — `const SWAP_FAILURE_METRIC: &str = "AdAdjacentServed.swap_failure";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:17`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L17) — `const UNSERVED_BUCKET_METRIC: &str = "AdAdjacentServed.unserved_posts_bucket";`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:19`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L19) — `pub struct AdAdjacentServedFilter;`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:22`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L22) — `enum Side {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:28`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L28) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:46`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L46) — `fn filter(`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:134`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L134) — `fn is_ad(item: &FeedItem) -> bool {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:138`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L138) — `fn as_ad(item: &FeedItem) -> Option<&AdIndexInfo> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:145`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L145) — `fn as_post(item: &FeedItem) -> Option<&ScoredPost> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:152`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L152) — `fn post_tweet_id(item: &FeedItem) -> Option<u64> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:156`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L156) — `fn first_served_adjacency(items: &[FeedItem], served: &HashSet<u64>) -> Option<(usize, Side)> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:179`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L179) — `fn is_eligible_neighbour(ad: &AdIndexInfo, post: &ScoredPost, served: &HashSet<u64>) -> bool {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:187`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L187) — `fn is_ad_neighbour(items: &[FeedItem], idx: usize) -> bool {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:193`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L193) — `fn find_swap_in_candidate(`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:220`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L220) — `fn insert_eligible_neighbour(items: &mut Vec<FeedItem>, ad_idx: usize, side: Side, c_idx: usize) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:231`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L231) — `fn classify_swap_failure(items: &[FeedItem], ad_idx: usize, served: &HashSet<u64>) -> &'static str {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:259`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L259) — `fn emit_action_metrics(inserts: u64, drops: u64) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:271`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L271) — `fn emit_swap_failure(reason: &'static str) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:278`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L278) — `fn emit_ad_outcome(kept: u64, dropped: u64) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:290`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L290) — `fn emit_ad_status(clean: u64, needs_action: u64) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:306`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L306) — `fn emit_feed_status(needs_action: bool) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:318`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L318) — `fn count_served_posts(items: &[FeedItem], served: &HashSet<u64>) -> (u64, u64) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:333`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L333) — `fn emit_feed_posts(served: u64, unserved: u64) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:345`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L345) — `fn unserved_bucket(n: u64) -> &'static str {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:362`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L362) — `fn emit_unserved_bucket(unserved: u64) {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:379`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L379) — `fn post(tweet_id: u64) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:389`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L389) — `fn post_with_verdict(tweet_id: u64, verdict: BrandSafetyVerdict) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:400`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L400) — `fn post_by_author(tweet_id: u64, author_id: u64) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:411`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L411) — `fn post_with_text(tweet_id: u64, text: &str) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:423`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L423) — `fn count_served_posts_splits_posts_and_ignores_ads() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:432`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L432) — `fn unserved_bucket_boundaries() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:447`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L447) — `fn classify_swap_failure_no_unserved() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:454`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L454) — `fn classify_swap_failure_all_ad_neighbours() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:463`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L463) — `fn ad(post_id: i64) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:473`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L473) — `fn sensitive_ad(post_id: i64) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:487`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L487) — `fn ad_excluding_handle(post_id: i64, handle: i64) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:501`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L501) — `fn ad_excluding_keyword(post_id: i64, keyword: &str) -> FeedItem {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:515`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L515) — `fn query_with_served(served_ids: Vec<u64>) -> ScoredPostsQuery {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:523`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L523) — `fn kept_post_ids(items: &[FeedItem]) -> Vec<u64> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:527`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L527) — `fn ad_neighbours_clean(items: &[FeedItem], served: &HashSet<u64>) -> bool {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:547`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L547) — `fn ad_above_id(items: &[FeedItem]) -> Option<u64> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:552`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L552) — `fn ad_below_id(items: &[FeedItem]) -> Option<u64> {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:558`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L558) — `fn no_op_when_served_ids_empty() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:568`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L568) — `fn no_op_when_no_neighbor_in_served() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:579`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L579) — `fn inserts_from_near_side_when_above_served() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:595`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L595) — `fn inserts_from_other_side_when_near_side_exhausted() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:611`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L611) — `fn is_ad_neighbour_flags_posts_next_to_ads() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:619`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L619) — `fn widens_search_beyond_adjacent_ad_to_save_ad() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:647`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L647) — `fn skips_medium_risk_candidate_and_uses_safe_one() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:667`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L667) — `fn sensitive_ad_skips_low_risk_candidate() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:684`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L684) — `fn skips_excluded_handle_candidate() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:701`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L701) — `fn skips_excluded_keyword_candidate() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:718`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L718) — `fn falls_back_to_drop_ad_only_when_no_eligible_candidate() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:738`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L738) — `fn never_drops_organic_even_when_both_sides_served() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:757`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L757) — `fn rewrites_positions_after_insert() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:771`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L771) — `fn handles_multiple_ads_independently() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:797`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L797) — `fn fixes_both_sides_of_one_ad() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:811`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L811) — `fn params_with_filter_on() -> xai_feature_switches::Params {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:827`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L827) — `fn enable_skips_bottom_request() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:838`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L838) — `fn enable_skips_pull_to_refresh() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:848`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L848) — `fn enable_skips_all_denylist_contexts() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:863`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L863) — `fn enable_runs_for_blue_pill_top_request() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:874`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L874) — `fn enable_runs_for_silent_polling() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:885`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L885) — `fn enable_runs_for_default_foreground() {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:894`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L894) — `fn params_with_filter_off() -> xai_feature_switches::Params {`
+- [`home-mixer/filters/ad_adjacent_served_filter.rs:906`](../source/home-mixer/filters/ad_adjacent_served_filter.rs#L906) — `fn disable_when_fs_off() {`
+- [`home-mixer/filters/age_filter.rs:7`](../source/home-mixer/filters/age_filter.rs#L7) — `pub struct AgeFilter {`
+- [`home-mixer/filters/age_filter.rs:12`](../source/home-mixer/filters/age_filter.rs#L12) — `pub fn new(max_age: Duration) -> Self {`
+- [`home-mixer/filters/age_filter.rs:16`](../source/home-mixer/filters/age_filter.rs#L16) — `fn is_within_age(&self, tweet_id: u64) -> bool {`
+- [`home-mixer/filters/age_filter.rs:24`](../source/home-mixer/filters/age_filter.rs#L24) — `fn filter(`
+- [`home-mixer/filters/ancillary_vf_filter.rs:5`](../source/home-mixer/filters/ancillary_vf_filter.rs#L5) — `pub struct AncillaryVFFilter;`
+- [`home-mixer/filters/ancillary_vf_filter.rs:8`](../source/home-mixer/filters/ancillary_vf_filter.rs#L8) — `fn filter(`
+- [`home-mixer/filters/author_socialgraph_filter.rs:7`](../source/home-mixer/filters/author_socialgraph_filter.rs#L7) — `pub struct AuthorSocialgraphFilter;`
+- [`home-mixer/filters/author_socialgraph_filter.rs:10`](../source/home-mixer/filters/author_socialgraph_filter.rs#L10) — `fn filter(`
+- [`home-mixer/filters/author_socialgraph_filter.rs:67`](../source/home-mixer/filters/author_socialgraph_filter.rs#L67) — `fn make_candidate(tweet_id: u64, author_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:75`](../source/home-mixer/filters/author_socialgraph_filter.rs#L75) — `fn make_query_with_features(user_features: UserFeatures) -> ScoredPostsQuery {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:83`](../source/home-mixer/filters/author_socialgraph_filter.rs#L83) — `async fn test_no_blocked_or_muted_users_keeps_all() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:100`](../source/home-mixer/filters/author_socialgraph_filter.rs#L100) — `async fn test_blocked_user_is_removed() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:124`](../source/home-mixer/filters/author_socialgraph_filter.rs#L124) — `async fn test_muted_user_is_removed() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:148`](../source/home-mixer/filters/author_socialgraph_filter.rs#L148) — `async fn test_multiple_blocked_users_are_removed() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:174`](../source/home-mixer/filters/author_socialgraph_filter.rs#L174) — `async fn test_multiple_muted_users_are_removed() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:200`](../source/home-mixer/filters/author_socialgraph_filter.rs#L200) — `async fn test_both_blocked_and_muted_users_are_removed() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:227`](../source/home-mixer/filters/author_socialgraph_filter.rs#L227) — `async fn test_user_in_both_blocked_and_muted_lists() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:250`](../source/home-mixer/filters/author_socialgraph_filter.rs#L250) — `async fn test_empty_candidates_list() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:267`](../source/home-mixer/filters/author_socialgraph_filter.rs#L267) — `async fn test_all_candidates_blocked() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:288`](../source/home-mixer/filters/author_socialgraph_filter.rs#L288) — `async fn test_author_blocks_viewer() {`
+- [`home-mixer/filters/author_socialgraph_filter.rs:311`](../source/home-mixer/filters/author_socialgraph_filter.rs#L311) — `async fn test_multiple_authors_block_viewer() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5630`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5630) — `pub struct Brazil2026ElectionFilter;`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5633`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5633) — `fn is_excluded_author(user_id: u64, followed_user_ids: &FxHashSet<u64>) -> bool {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5637`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5637) — `fn should_remove(candidate: &PostCandidate, followed_user_ids: &FxHashSet<u64>) -> bool {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5655`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5655) — `fn filter(`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5680`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5680) — `const SAMPLE_LISTED: [u64; 4] = [14160928, 14492205, 15022409, 20242549];`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5682`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5682) — `fn make_candidate(tweet_id: u64, author_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5691`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5691) — `fn keeps_candidates_from_non_listed_authors() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5706`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5706) — `fn removes_candidates_from_listed_authors() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5725`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5725) — `fn removes_retweets_of_listed_authors() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5741`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5741) — `fn removes_quotes_of_listed_authors() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5757`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5757) — `fn removes_replies_with_listed_ancestor_users() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5775`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5775) — `fn keeps_replies_with_only_non_listed_ancestor_users() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5790`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5790) — `fn empty_candidates_list() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5799`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5799) — `fn all_candidates_listed() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5812`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5812) — `fn hardcoded_list_is_non_empty() {`
+- [`home-mixer/filters/brazil_2026_election_filter.rs:5818`](../source/home-mixer/filters/brazil_2026_election_filter.rs#L5818) — `fn contains_known_listed_ids() {`
+- [`home-mixer/filters/core_data_hydration_filter.rs:5`](../source/home-mixer/filters/core_data_hydration_filter.rs#L5) — `pub struct CoreDataHydrationFilter;`
+- [`home-mixer/filters/core_data_hydration_filter.rs:8`](../source/home-mixer/filters/core_data_hydration_filter.rs#L8) — `fn filter(`
+- [`home-mixer/filters/dedup_conversation_filter.rs:6`](../source/home-mixer/filters/dedup_conversation_filter.rs#L6) — `pub struct DedupConversationFilter;`
+- [`home-mixer/filters/dedup_conversation_filter.rs:9`](../source/home-mixer/filters/dedup_conversation_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/dedup_conversation_filter.rs:42`](../source/home-mixer/filters/dedup_conversation_filter.rs#L42) — `fn get_conversation_id(candidate: &PostCandidate) -> u64 {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:55`](../source/home-mixer/filters/dedup_conversation_filter.rs#L55) — `fn candidate(tweet_id: u64, ancestors: Vec<u64>, score: Option<f64>) -> PostCandidate {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:64`](../source/home-mixer/filters/dedup_conversation_filter.rs#L64) — `fn retweet(tweet_id: u64, retweeted_tweet_id: u64, score: Option<f64>) -> PostCandidate {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:74`](../source/home-mixer/filters/dedup_conversation_filter.rs#L74) — `async fn keeps_highest_scored_per_conversation() {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:97`](../source/home-mixer/filters/dedup_conversation_filter.rs#L97) — `async fn keeps_first_when_scores_are_equal() {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:115`](../source/home-mixer/filters/dedup_conversation_filter.rs#L115) — `async fn does_not_dedup_without_conversation_id() {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:131`](../source/home-mixer/filters/dedup_conversation_filter.rs#L131) — `async fn dedups_retweet_with_reply_sharing_original_as_ancestor() {`
+- [`home-mixer/filters/dedup_conversation_filter.rs:149`](../source/home-mixer/filters/dedup_conversation_filter.rs#L149) — `async fn keeps_higher_scored_retweet_over_reply_in_same_conversation() {`
+- [`home-mixer/filters/drop_duplicates_filter.rs:6`](../source/home-mixer/filters/drop_duplicates_filter.rs#L6) — `pub struct DropDuplicatesFilter;`
+- [`home-mixer/filters/drop_duplicates_filter.rs:9`](../source/home-mixer/filters/drop_duplicates_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/fav_holdout_filter.rs:7`](../source/home-mixer/filters/fav_holdout_filter.rs#L7) — `pub struct FavHoldoutFilter;`
+- [`home-mixer/filters/fav_holdout_filter.rs:10`](../source/home-mixer/filters/fav_holdout_filter.rs#L10) — `const STEPS: &'static [(i64, u32)] = &[`
+- [`home-mixer/filters/fav_holdout_filter.rs:36`](../source/home-mixer/filters/fav_holdout_filter.rs#L36) — `pub(crate) fn holdout_percent(fav_count: Option<i64>) -> u32 {`
+- [`home-mixer/filters/fav_holdout_filter.rs:51`](../source/home-mixer/filters/fav_holdout_filter.rs#L51) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/fav_holdout_filter.rs:55`](../source/home-mixer/filters/fav_holdout_filter.rs#L55) — `fn filter(`
+- [`home-mixer/filters/fav_holdout_filter.rs:74`](../source/home-mixer/filters/fav_holdout_filter.rs#L74) — `fn post(tweet_id: u64, fav_count: Option<i64>) -> PostCandidate {`
+- [`home-mixer/filters/fav_holdout_filter.rs:82`](../source/home-mixer/filters/fav_holdout_filter.rs#L82) — `fn params(enable: bool) -> Params {`
+- [`home-mixer/filters/fav_holdout_filter.rs:93`](../source/home-mixer/filters/fav_holdout_filter.rs#L93) — `fn query(viewer_id: u64, enable: bool) -> ScoredPostsQuery {`
+- [`home-mixer/filters/fav_holdout_filter.rs:102`](../source/home-mixer/filters/fav_holdout_filter.rs#L102) — `fn percent_is_zero_at_or_below_moe_eligibility() {`
+- [`home-mixer/filters/fav_holdout_filter.rs:109`](../source/home-mixer/filters/fav_holdout_filter.rs#L109) — `fn percent_follows_tc_table() {`
+- [`home-mixer/filters/fav_holdout_filter.rs:123`](../source/home-mixer/filters/fav_holdout_filter.rs#L123) — `fn disabled_master_switch_disables_the_filter() {`
+- [`home-mixer/filters/fav_holdout_filter.rs:129`](../source/home-mixer/filters/fav_holdout_filter.rs#L129) — `fn low_fav_posts_are_never_held_out() {`
+- [`home-mixer/filters/fav_holdout_filter.rs:138`](../source/home-mixer/filters/fav_holdout_filter.rs#L138) — `fn high_fav_holdout_is_approximately_the_table_percent() {`
+- [`home-mixer/filters/fav_holdout_filter.rs:154`](../source/home-mixer/filters/fav_holdout_filter.rs#L154) — `fn filter_drops_only_hashed_high_fav_posts() {`
+- [`home-mixer/filters/following_retweet_deduplication_filter.rs:6`](../source/home-mixer/filters/following_retweet_deduplication_filter.rs#L6) — `pub struct FollowingRetweetDeduplicationFilter;`
+- [`home-mixer/filters/following_retweet_deduplication_filter.rs:9`](../source/home-mixer/filters/following_retweet_deduplication_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/following_viewer_muted_keyword_filter.rs:7`](../source/home-mixer/filters/following_viewer_muted_keyword_filter.rs#L7) — `pub struct FollowingViewerMutedKeywordFilter {`
+- [`home-mixer/filters/following_viewer_muted_keyword_filter.rs:12`](../source/home-mixer/filters/following_viewer_muted_keyword_filter.rs#L12) — `pub fn new() -> Self {`
+- [`home-mixer/filters/following_viewer_muted_keyword_filter.rs:20`](../source/home-mixer/filters/following_viewer_muted_keyword_filter.rs#L20) — `fn filter(`
+- [`home-mixer/filters/following_viewer_muted_keyword_filter.rs:55`](../source/home-mixer/filters/following_viewer_muted_keyword_filter.rs#L55) — `fn candidate_matches(`
+- [`home-mixer/filters/ineligible_subscription_filter.rs:6`](../source/home-mixer/filters/ineligible_subscription_filter.rs#L6) — `pub struct IneligibleSubscriptionFilter;`
+- [`home-mixer/filters/ineligible_subscription_filter.rs:9`](../source/home-mixer/filters/ineligible_subscription_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/ineligible_subscription_filter.rs:37`](../source/home-mixer/filters/ineligible_subscription_filter.rs#L37) — `fn candidate(subscription_author_id: Option<u64>) -> PostCandidate {`
+- [`home-mixer/filters/ineligible_subscription_filter.rs:45`](../source/home-mixer/filters/ineligible_subscription_filter.rs#L45) — `async fn keeps_only_subscribed_authors() {`
+- [`home-mixer/filters/invalid_conversation_module_filter.rs:6`](../source/home-mixer/filters/invalid_conversation_module_filter.rs#L6) — `pub struct InvalidConversationModuleFilter;`
+- [`home-mixer/filters/invalid_conversation_module_filter.rs:9`](../source/home-mixer/filters/invalid_conversation_module_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/inventory_holdout_filter.rs:10`](../source/home-mixer/filters/inventory_holdout_filter.rs#L10) — `enum PostKind {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:17`](../source/home-mixer/filters/inventory_holdout_filter.rs#L17) — `fn of(candidate: &PostCandidate) -> Self {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:28`](../source/home-mixer/filters/inventory_holdout_filter.rs#L28) — `pub struct InventoryHoldoutFilter;`
+- [`home-mixer/filters/inventory_holdout_filter.rs:31`](../source/home-mixer/filters/inventory_holdout_filter.rs#L31) — `pub(crate) fn holdout_bucket(post_id: u64, viewer_id: u64) -> u64 {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:46`](../source/home-mixer/filters/inventory_holdout_filter.rs#L46) — `pub(crate) fn is_held_out(post_id: u64, viewer_id: u64, percent: u32) -> bool {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:52`](../source/home-mixer/filters/inventory_holdout_filter.rs#L52) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:59`](../source/home-mixer/filters/inventory_holdout_filter.rs#L59) — `fn filter(`
+- [`home-mixer/filters/inventory_holdout_filter.rs:87`](../source/home-mixer/filters/inventory_holdout_filter.rs#L87) — `fn original(tweet_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:94`](../source/home-mixer/filters/inventory_holdout_filter.rs#L94) — `fn reply(tweet_id: u64, in_reply_to: u64) -> PostCandidate {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:102`](../source/home-mixer/filters/inventory_holdout_filter.rs#L102) — `fn retweet(retweet_id: u64, original_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:110`](../source/home-mixer/filters/inventory_holdout_filter.rs#L110) — `fn params(enable: bool, originals: u32, replies: u32, retweets: u32) -> Params {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:133`](../source/home-mixer/filters/inventory_holdout_filter.rs#L133) — `fn query(viewer_id: u64, params: Params) -> ScoredPostsQuery {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:142`](../source/home-mixer/filters/inventory_holdout_filter.rs#L142) — `fn post_kind_classification() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:155`](../source/home-mixer/filters/inventory_holdout_filter.rs#L155) — `fn holdout_is_deterministic_for_same_pair() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:162`](../source/home-mixer/filters/inventory_holdout_filter.rs#L162) — `fn different_viewers_get_different_held_out_sets() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:175`](../source/home-mixer/filters/inventory_holdout_filter.rs#L175) — `fn holdout_rate_is_approximately_the_configured_percent() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:189`](../source/home-mixer/filters/inventory_holdout_filter.rs#L189) — `fn percent_zero_holds_out_nothing_and_hundred_holds_out_everything() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:202`](../source/home-mixer/filters/inventory_holdout_filter.rs#L202) — `fn retweet_shares_holdout_decision_with_its_original_at_equal_rate() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:217`](../source/home-mixer/filters/inventory_holdout_filter.rs#L217) — `fn filter_targets_only_the_enabled_kind() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:242`](../source/home-mixer/filters/inventory_holdout_filter.rs#L242) — `fn filter_can_target_replies_and_retweets_independently() {`
+- [`home-mixer/filters/inventory_holdout_filter.rs:253`](../source/home-mixer/filters/inventory_holdout_filter.rs#L253) — `fn disabled_master_switch_disables_the_filter() {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:12`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L12) — `pub struct NewUserMinEngagementFilter;`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:15`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L15) — `enum Metric {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:22`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L22) — `fn parse(s: &str) -> Self {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:32`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L32) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:37`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L37) — `fn filter(`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:64`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L64) — `fn should_keep(candidate: &PostCandidate, metric: Metric, use_ratio: bool, threshold: f64) -> bool {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:74`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L74) — `fn within_account_age(query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:83`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L83) — `fn within_resurrection_window(query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:96`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L96) — `fn metric_value(candidate: &PostCandidate, metric: Metric, use_ratio: bool) -> Option<f64> {`
+- [`home-mixer/filters/new_user_min_engagement_filter.rs:110`](../source/home-mixer/filters/new_user_min_engagement_filter.rs#L110) — `fn engagement_sum(candidate: &PostCandidate) -> Option<i64> {`
+- [`home-mixer/filters/oon_nsfw_simclusters_filter.rs:7`](../source/home-mixer/filters/oon_nsfw_simclusters_filter.rs#L7) — `pub struct OONNsfwSimclustersFilter;`
+- [`home-mixer/filters/oon_nsfw_simclusters_filter.rs:10`](../source/home-mixer/filters/oon_nsfw_simclusters_filter.rs#L10) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/oon_nsfw_simclusters_filter.rs:14`](../source/home-mixer/filters/oon_nsfw_simclusters_filter.rs#L14) — `fn filter(`
+- [`home-mixer/filters/oon_retweet_reply_filter.rs:5`](../source/home-mixer/filters/oon_retweet_reply_filter.rs#L5) — `pub struct OONRetweetReplyFilter;`
+- [`home-mixer/filters/oon_retweet_reply_filter.rs:8`](../source/home-mixer/filters/oon_retweet_reply_filter.rs#L8) — `fn filter(`
+- [`home-mixer/filters/oon_retweet_reply_filter.rs:28`](../source/home-mixer/filters/oon_retweet_reply_filter.rs#L28) — `fn candidate(`
+- [`home-mixer/filters/oon_retweet_reply_filter.rs:46`](../source/home-mixer/filters/oon_retweet_reply_filter.rs#L46) — `async fn drops_oon_retweets_replies_and_replies_missing_ancestors() {`
+- [`home-mixer/filters/oon_retweet_reply_filter.rs:72`](../source/home-mixer/filters/oon_retweet_reply_filter.rs#L72) — `async fn integrates_with_in_network_hydrator() {`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:7`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L7) — `pub struct PopularTopicsAuthorDedupFilter;`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:10`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L10) — `fn filter(`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:39`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L39) — `fn popular(tweet_id: u64, author_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:48`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L48) — `fn organic(tweet_id: u64, author_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:58`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L58) — `fn keeps_first_popular_per_author() {`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:72`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L72) — `fn does_not_dedup_organic_candidates() {`
+- [`home-mixer/filters/popular_topics_author_dedup_filter.rs:83`](../source/home-mixer/filters/popular_topics_author_dedup_filter.rs#L83) — `fn organic_does_not_block_popular() {`
+- [`home-mixer/filters/previously_seen_posts_backup_filter.rs:7`](../source/home-mixer/filters/previously_seen_posts_backup_filter.rs#L7) — `pub struct PreviouslySeenPostsBackupFilter;`
+- [`home-mixer/filters/previously_seen_posts_backup_filter.rs:10`](../source/home-mixer/filters/previously_seen_posts_backup_filter.rs#L10) — `fn filter(`
+- [`home-mixer/filters/previously_seen_posts_backup_filter.rs:36`](../source/home-mixer/filters/previously_seen_posts_backup_filter.rs#L36) — `fn make_candidate(tweet_id: u64) -> PostCandidate {`
+- [`home-mixer/filters/previously_seen_posts_backup_filter.rs:44`](../source/home-mixer/filters/previously_seen_posts_backup_filter.rs#L44) — `fn test_filters_out_impressed_posts() {`
+- [`home-mixer/filters/previously_seen_posts_backup_filter.rs:67`](../source/home-mixer/filters/previously_seen_posts_backup_filter.rs#L67) — `fn test_no_impressed_posts_keeps_all() {`
+- [`home-mixer/filters/previously_seen_posts_backup_filter.rs:81`](../source/home-mixer/filters/previously_seen_posts_backup_filter.rs#L81) — `fn test_empty_candidates() {`
+- [`home-mixer/filters/previously_seen_posts_filter.rs:8`](../source/home-mixer/filters/previously_seen_posts_filter.rs#L8) — `pub struct PreviouslySeenPostsFilter;`
+- [`home-mixer/filters/previously_seen_posts_filter.rs:11`](../source/home-mixer/filters/previously_seen_posts_filter.rs#L11) — `fn filter(`
+- [`home-mixer/filters/previously_served_posts_filter.rs:11`](../source/home-mixer/filters/previously_served_posts_filter.rs#L11) — `pub struct PreviouslyServedPostsFilter;`
+- [`home-mixer/filters/previously_served_posts_filter.rs:14`](../source/home-mixer/filters/previously_served_posts_filter.rs#L14) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/previously_served_posts_filter.rs:21`](../source/home-mixer/filters/previously_served_posts_filter.rs#L21) — `fn filter(`
+- [`home-mixer/filters/push_to_home_dedup_filter.rs:5`](../source/home-mixer/filters/push_to_home_dedup_filter.rs#L5) — `pub struct PushToHomeDedupFilter;`
+- [`home-mixer/filters/push_to_home_dedup_filter.rs:8`](../source/home-mixer/filters/push_to_home_dedup_filter.rs#L8) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/push_to_home_dedup_filter.rs:12`](../source/home-mixer/filters/push_to_home_dedup_filter.rs#L12) — `fn filter(`
+- [`home-mixer/filters/result_size_filter.rs:6`](../source/home-mixer/filters/result_size_filter.rs#L6) — `pub struct ResultSizeFilter;`
+- [`home-mixer/filters/result_size_filter.rs:9`](../source/home-mixer/filters/result_size_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:6`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L6) — `pub struct RetweetDeduplicationFilter;`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:9`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:40`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L40) — `fn make_candidate(tweet_id: u64, retweeted_tweet_id: Option<u64>) -> PostCandidate {`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:49`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L49) — `async fn test_multiple_retweets_keeps_first() {`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:67`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L67) — `async fn test_original_before_retweets_removes_retweets() {`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:85`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L85) — `async fn test_retweet_before_original_removes_original() {`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:103`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L103) — `async fn test_non_retweets_always_kept() {`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:120`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L120) — `async fn test_mixed_retweets_of_different_tweets() {`
+- [`home-mixer/filters/retweet_deduplication_filter.rs:142`](../source/home-mixer/filters/retweet_deduplication_filter.rs#L142) — `async fn test_retweet_before_original_deduplicates() {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:6`](../source/home-mixer/filters/self_reply_chain_filter.rs#L6) — `pub struct SelfReplyChainFilter;`
+- [`home-mixer/filters/self_reply_chain_filter.rs:9`](../source/home-mixer/filters/self_reply_chain_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/self_reply_chain_filter.rs:30`](../source/home-mixer/filters/self_reply_chain_filter.rs#L30) — `fn should_keep(candidate: &PostCandidate, allowed_users: &HashSet<u64>) -> bool {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:53`](../source/home-mixer/filters/self_reply_chain_filter.rs#L53) — `fn candidate(`
+- [`home-mixer/filters/self_reply_chain_filter.rs:68`](../source/home-mixer/filters/self_reply_chain_filter.rs#L68) — `fn query(viewer: u64, followed: Vec<i64>) -> ScoredPostsQuery {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:80`](../source/home-mixer/filters/self_reply_chain_filter.rs#L80) — `fn keeps_non_replies_and_missing_ancestor_users() {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:96`](../source/home-mixer/filters/self_reply_chain_filter.rs#L96) — `fn keeps_pure_self_reply_chain() {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:105`](../source/home-mixer/filters/self_reply_chain_filter.rs#L105) — `fn keeps_when_effective_target_is_followed() {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:113`](../source/home-mixer/filters/self_reply_chain_filter.rs#L113) — `fn keeps_when_effective_target_is_viewer() {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:121`](../source/home-mixer/filters/self_reply_chain_filter.rs#L121) — `fn drops_self_reply_directed_at_unfollowed_user() {`
+- [`home-mixer/filters/self_reply_chain_filter.rs:146`](../source/home-mixer/filters/self_reply_chain_filter.rs#L146) — `fn drops_majority_of_batch_when_rules_match() {`
+- [`home-mixer/filters/self_tweet_filter.rs:5`](../source/home-mixer/filters/self_tweet_filter.rs#L5) — `pub struct SelfTweetFilter;`
+- [`home-mixer/filters/self_tweet_filter.rs:8`](../source/home-mixer/filters/self_tweet_filter.rs#L8) — `fn filter(`
+- [`home-mixer/filters/topic_ids_filter.rs:10`](../source/home-mixer/filters/topic_ids_filter.rs#L10) — `const EXCLUDED_TOPIC_METRIC: &str = "TopicIdsFilter.excluded_topic_id";`
+- [`home-mixer/filters/topic_ids_filter.rs:12`](../source/home-mixer/filters/topic_ids_filter.rs#L12) — `pub struct TopicIdsFilter;`
+- [`home-mixer/filters/topic_ids_filter.rs:15`](../source/home-mixer/filters/topic_ids_filter.rs#L15) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/topic_ids_filter.rs:19`](../source/home-mixer/filters/topic_ids_filter.rs#L19) — `fn filter(`
+- [`home-mixer/filters/topic_ids_filter.rs:108`](../source/home-mixer/filters/topic_ids_filter.rs#L108) — `pub struct TopicIdExpansion;`
+- [`home-mixer/filters/topic_ids_filter.rs:111`](../source/home-mixer/filters/topic_ids_filter.rs#L111) — `const SCIENCE_TECHNOLOGY: i64 = 1000000000000000001;`
+- [`home-mixer/filters/topic_ids_filter.rs:112`](../source/home-mixer/filters/topic_ids_filter.rs#L112) — `const ENTERTAINMENT: i64 = 1000000000000000002;`
+- [`home-mixer/filters/topic_ids_filter.rs:113`](../source/home-mixer/filters/topic_ids_filter.rs#L113) — `const BUSINESS_FINANCE: i64 = 1000000000000000003;`
+- [`home-mixer/filters/topic_ids_filter.rs:114`](../source/home-mixer/filters/topic_ids_filter.rs#L114) — `const SPORTS: i64 = 1000000000000000004;`
+- [`home-mixer/filters/topic_ids_filter.rs:116`](../source/home-mixer/filters/topic_ids_filter.rs#L116) — `pub const XAI_POLITICS: i64 = 1925952771733262336;`
+- [`home-mixer/filters/topic_ids_filter.rs:117`](../source/home-mixer/filters/topic_ids_filter.rs#L117) — `pub const XAI_AI: i64 = 1925953013547450368;`
+- [`home-mixer/filters/topic_ids_filter.rs:118`](../source/home-mixer/filters/topic_ids_filter.rs#L118) — `pub const XAI_GAMING: i64 = 1925949766673797120;`
+- [`home-mixer/filters/topic_ids_filter.rs:119`](../source/home-mixer/filters/topic_ids_filter.rs#L119) — `pub const XAI_CRYPTOCURRENCY: i64 = 1925949693290295298;`
+- [`home-mixer/filters/topic_ids_filter.rs:120`](../source/home-mixer/filters/topic_ids_filter.rs#L120) — `pub const XAI_US_IRAN_WAR: i64 = 2000000000000000001;`
+- [`home-mixer/filters/topic_ids_filter.rs:121`](../source/home-mixer/filters/topic_ids_filter.rs#L121) — `pub const XAI_STOCKS_ECONOMY: i64 = 2000000000000000002;`
+- [`home-mixer/filters/topic_ids_filter.rs:123`](../source/home-mixer/filters/topic_ids_filter.rs#L123) — `pub const XAI_NEWS: i64 = 1925949634972626944;`
+- [`home-mixer/filters/topic_ids_filter.rs:124`](../source/home-mixer/filters/topic_ids_filter.rs#L124) — `const XAI_NATURAL_DISASTERS: i64 = 1925952795854745601;`
+- [`home-mixer/filters/topic_ids_filter.rs:125`](../source/home-mixer/filters/topic_ids_filter.rs#L125) — `pub const XAI_MOVIES_TV: i64 = 1925949788068909057;`
+- [`home-mixer/filters/topic_ids_filter.rs:126`](../source/home-mixer/filters/topic_ids_filter.rs#L126) — `const XAI_STREAMING: i64 = 1925950455806369792;`
+- [`home-mixer/filters/topic_ids_filter.rs:127`](../source/home-mixer/filters/topic_ids_filter.rs#L127) — `pub const XAI_MUSIC: i64 = 1925949604224196608;`
+- [`home-mixer/filters/topic_ids_filter.rs:128`](../source/home-mixer/filters/topic_ids_filter.rs#L128) — `pub const XAI_DANCE: i64 = 1925950383899267072;`
+- [`home-mixer/filters/topic_ids_filter.rs:129`](../source/home-mixer/filters/topic_ids_filter.rs#L129) — `pub const XAI_CELEBRITY: i64 = 1925949555071176704;`
+- [`home-mixer/filters/topic_ids_filter.rs:130`](../source/home-mixer/filters/topic_ids_filter.rs#L130) — `pub const XAI_ANIME: i64 = 1925949503837798401;`
+- [`home-mixer/filters/topic_ids_filter.rs:131`](../source/home-mixer/filters/topic_ids_filter.rs#L131) — `const XAI_SOCCER: i64 = 1925950498420469760;`
+- [`home-mixer/filters/topic_ids_filter.rs:132`](../source/home-mixer/filters/topic_ids_filter.rs#L132) — `const XAI_BUNDESLIGA: i64 = 1925951257107206144;`
+- [`home-mixer/filters/topic_ids_filter.rs:133`](../source/home-mixer/filters/topic_ids_filter.rs#L133) — `const XAI_LA_LIGA: i64 = 1925951079100928001;`
+- [`home-mixer/filters/topic_ids_filter.rs:134`](../source/home-mixer/filters/topic_ids_filter.rs#L134) — `const XAI_LIGUE1: i64 = 1925951305895272448;`
+- [`home-mixer/filters/topic_ids_filter.rs:135`](../source/home-mixer/filters/topic_ids_filter.rs#L135) — `const XAI_UEFA_CL: i64 = 1925951334777233408;`
+- [`home-mixer/filters/topic_ids_filter.rs:136`](../source/home-mixer/filters/topic_ids_filter.rs#L136) — `const XAI_UEFA_EL: i64 = 1925951366175813632;`
+- [`home-mixer/filters/topic_ids_filter.rs:137`](../source/home-mixer/filters/topic_ids_filter.rs#L137) — `const XAI_UEFA_ECL: i64 = 1925951417010753536;`
+- [`home-mixer/filters/topic_ids_filter.rs:138`](../source/home-mixer/filters/topic_ids_filter.rs#L138) — `const XAI_BASKETBALL: i64 = 1925950530842464256;`
+- [`home-mixer/filters/topic_ids_filter.rs:139`](../source/home-mixer/filters/topic_ids_filter.rs#L139) — `const XAI_NBA: i64 = 1925951454121967616;`
+- [`home-mixer/filters/topic_ids_filter.rs:140`](../source/home-mixer/filters/topic_ids_filter.rs#L140) — `const XAI_WNBA: i64 = 1925951561211023361;`
+- [`home-mixer/filters/topic_ids_filter.rs:141`](../source/home-mixer/filters/topic_ids_filter.rs#L141) — `const XAI_AMERICAN_FOOTBALL: i64 = 1925950554133446656;`
+- [`home-mixer/filters/topic_ids_filter.rs:142`](../source/home-mixer/filters/topic_ids_filter.rs#L142) — `const XAI_NCAA_FOOTBALL: i64 = 1925951645872975873;`
+- [`home-mixer/filters/topic_ids_filter.rs:143`](../source/home-mixer/filters/topic_ids_filter.rs#L143) — `const XAI_NFL: i64 = 1925951614067650560;`
+- [`home-mixer/filters/topic_ids_filter.rs:144`](../source/home-mixer/filters/topic_ids_filter.rs#L144) — `const XAI_BASEBALL: i64 = 1925950576740675584;`
+- [`home-mixer/filters/topic_ids_filter.rs:145`](../source/home-mixer/filters/topic_ids_filter.rs#L145) — `const XAI_MLB: i64 = 1925951672561319936;`
+- [`home-mixer/filters/topic_ids_filter.rs:146`](../source/home-mixer/filters/topic_ids_filter.rs#L146) — `const XAI_TENNIS: i64 = 1925950625835008001;`
+- [`home-mixer/filters/topic_ids_filter.rs:147`](../source/home-mixer/filters/topic_ids_filter.rs#L147) — `const XAI_CRICKET: i64 = 1925950653035151360;`
+- [`home-mixer/filters/topic_ids_filter.rs:148`](../source/home-mixer/filters/topic_ids_filter.rs#L148) — `const XAI_IPL: i64 = 1925951866464006145;`
+- [`home-mixer/filters/topic_ids_filter.rs:149`](../source/home-mixer/filters/topic_ids_filter.rs#L149) — `const XAI_MMA: i64 = 1925950600140718080;`
+- [`home-mixer/filters/topic_ids_filter.rs:150`](../source/home-mixer/filters/topic_ids_filter.rs#L150) — `const XAI_WWE: i64 = 1925950864117702656;`
+- [`home-mixer/filters/topic_ids_filter.rs:151`](../source/home-mixer/filters/topic_ids_filter.rs#L151) — `const XAI_BOXING: i64 = 1925950713982537888;`
+- [`home-mixer/filters/topic_ids_filter.rs:152`](../source/home-mixer/filters/topic_ids_filter.rs#L152) — `const XAI_GOLF: i64 = 1925950690574180352;`
+- [`home-mixer/filters/topic_ids_filter.rs:153`](../source/home-mixer/filters/topic_ids_filter.rs#L153) — `const XAI_RACING: i64 = 1943810034309246976;`
+- [`home-mixer/filters/topic_ids_filter.rs:154`](../source/home-mixer/filters/topic_ids_filter.rs#L154) — `const XAI_FORMULA1: i64 = 1925950746756800513;`
+- [`home-mixer/filters/topic_ids_filter.rs:155`](../source/home-mixer/filters/topic_ids_filter.rs#L155) — `const XAI_NASCAR: i64 = 1925951703007858688;`
+- [`home-mixer/filters/topic_ids_filter.rs:156`](../source/home-mixer/filters/topic_ids_filter.rs#L156) — `const XAI_ICE_HOCKEY: i64 = 1925950813043662848;`
+- [`home-mixer/filters/topic_ids_filter.rs:157`](../source/home-mixer/filters/topic_ids_filter.rs#L157) — `const XAI_NHL: i64 = 1925951775544061952;`
+- [`home-mixer/filters/topic_ids_filter.rs:158`](../source/home-mixer/filters/topic_ids_filter.rs#L158) — `const XAI_OLYMPICS: i64 = 1943811470724153345;`
+- [`home-mixer/filters/topic_ids_filter.rs:159`](../source/home-mixer/filters/topic_ids_filter.rs#L159) — `const XAI_RUGBY: i64 = 1925950895595876352;`
+- [`home-mixer/filters/topic_ids_filter.rs:160`](../source/home-mixer/filters/topic_ids_filter.rs#L160) — `const XAI_CYCLING: i64 = 1925950926910582786;`
+- [`home-mixer/filters/topic_ids_filter.rs:161`](../source/home-mixer/filters/topic_ids_filter.rs#L161) — `const XAI_SKIING: i64 = 1925950954962096130;`
+- [`home-mixer/filters/topic_ids_filter.rs:162`](../source/home-mixer/filters/topic_ids_filter.rs#L162) — `const XAI_SNOWBOARDING: i64 = 1925950982346682368;`
+- [`home-mixer/filters/topic_ids_filter.rs:163`](../source/home-mixer/filters/topic_ids_filter.rs#L163) — `const XAI_HEALTH_FITNESS: i64 = 1925949856834588672;`
+- [`home-mixer/filters/topic_ids_filter.rs:164`](../source/home-mixer/filters/topic_ids_filter.rs#L164) — `const XAI_NUTRITION: i64 = 1925953366091350017;`
+- [`home-mixer/filters/topic_ids_filter.rs:165`](../source/home-mixer/filters/topic_ids_filter.rs#L165) — `const XAI_WORKOUTS: i64 = 1925953337020555264;`
+- [`home-mixer/filters/topic_ids_filter.rs:166`](../source/home-mixer/filters/topic_ids_filter.rs#L166) — `const XAI_TRAVEL: i64 = 1925949812844769280;`
+- [`home-mixer/filters/topic_ids_filter.rs:167`](../source/home-mixer/filters/topic_ids_filter.rs#L167) — `const XAI_AVIATION: i64 = 1925950031476957184;`
+- [`home-mixer/filters/topic_ids_filter.rs:168`](../source/home-mixer/filters/topic_ids_filter.rs#L168) — `const XAI_FOOD: i64 = 1925949835649126400;`
+- [`home-mixer/filters/topic_ids_filter.rs:169`](../source/home-mixer/filters/topic_ids_filter.rs#L169) — `const XAI_COOKING: i64 = 1925953199694819328;`
+- [`home-mixer/filters/topic_ids_filter.rs:170`](../source/home-mixer/filters/topic_ids_filter.rs#L170) — `const XAI_BAKING: i64 = 1925953282146451456;`
+- [`home-mixer/filters/topic_ids_filter.rs:171`](../source/home-mixer/filters/topic_ids_filter.rs#L171) — `const XAI_RESTAURANTS: i64 = 1925953243223339009;`
+- [`home-mixer/filters/topic_ids_filter.rs:172`](../source/home-mixer/filters/topic_ids_filter.rs#L172) — `const XAI_DRINKS: i64 = 1925953310894252033;`
+- [`home-mixer/filters/topic_ids_filter.rs:173`](../source/home-mixer/filters/topic_ids_filter.rs#L173) — `const XAI_MEMES: i64 = 1925949876694556672;`
+- [`home-mixer/filters/topic_ids_filter.rs:174`](../source/home-mixer/filters/topic_ids_filter.rs#L174) — `const XAI_BEAUTY: i64 = 1925950199861538818;`
+- [`home-mixer/filters/topic_ids_filter.rs:175`](../source/home-mixer/filters/topic_ids_filter.rs#L175) — `const XAI_FASHION: i64 = 1925949932181082112;`
+- [`home-mixer/filters/topic_ids_filter.rs:176`](../source/home-mixer/filters/topic_ids_filter.rs#L176) — `const XAI_NATURE_OUTDOORS: i64 = 1925950228047216640;`
+- [`home-mixer/filters/topic_ids_filter.rs:177`](../source/home-mixer/filters/topic_ids_filter.rs#L177) — `const XAI_PETS: i64 = 1925950249245282304;`
+- [`home-mixer/filters/topic_ids_filter.rs:178`](../source/home-mixer/filters/topic_ids_filter.rs#L178) — `const XAI_CATS: i64 = 1925953794732433408;`
+- [`home-mixer/filters/topic_ids_filter.rs:179`](../source/home-mixer/filters/topic_ids_filter.rs#L179) — `const XAI_DOGS: i64 = 1925953826281902080;`
+- [`home-mixer/filters/topic_ids_filter.rs:180`](../source/home-mixer/filters/topic_ids_filter.rs#L180) — `const XAI_HOME_GARDEN: i64 = 1925950341452845057;`
+- [`home-mixer/filters/topic_ids_filter.rs:181`](../source/home-mixer/filters/topic_ids_filter.rs#L181) — `const XAI_ART: i64 = 1925949898106540032;`
+- [`home-mixer/filters/topic_ids_filter.rs:182`](../source/home-mixer/filters/topic_ids_filter.rs#L182) — `const XAI_RELIGION: i64 = 1925949956008878080;`
+- [`home-mixer/filters/topic_ids_filter.rs:183`](../source/home-mixer/filters/topic_ids_filter.rs#L183) — `const XAI_SHOPPING: i64 = 1925949979966701568;`
+- [`home-mixer/filters/topic_ids_filter.rs:184`](../source/home-mixer/filters/topic_ids_filter.rs#L184) — `const XAI_EDUCATION: i64 = 1925950405709631490;`
+- [`home-mixer/filters/topic_ids_filter.rs:185`](../source/home-mixer/filters/topic_ids_filter.rs#L185) — `const XAI_CAREER: i64 = 1925950361245786112;`
+- [`home-mixer/filters/topic_ids_filter.rs:186`](../source/home-mixer/filters/topic_ids_filter.rs#L186) — `const XAI_CARS: i64 = 1925950007624028160;`
+- [`home-mixer/filters/topic_ids_filter.rs:187`](../source/home-mixer/filters/topic_ids_filter.rs#L187) — `const XAI_MOTORCYCLES: i64 = 1925950100397793280;`
+- [`home-mixer/filters/topic_ids_filter.rs:188`](../source/home-mixer/filters/topic_ids_filter.rs#L188) — `const XAI_RELATIONSHIPS: i64 = 1925950276835454977;`
+- [`home-mixer/filters/topic_ids_filter.rs:189`](../source/home-mixer/filters/topic_ids_filter.rs#L189) — `const XAI_FAMILY: i64 = 1925954059338493952;`
+- [`home-mixer/filters/topic_ids_filter.rs:190`](../source/home-mixer/filters/topic_ids_filter.rs#L190) — `const XAI_MARRIAGE: i64 = 1925953930002907137;`
+- [`home-mixer/filters/topic_ids_filter.rs:191`](../source/home-mixer/filters/topic_ids_filter.rs#L191) — `const XAI_PARENTING: i64 = 1925954095342338048;`
+- [`home-mixer/filters/topic_ids_filter.rs:192`](../source/home-mixer/filters/topic_ids_filter.rs#L192) — `const XAI_PODCASTS: i64 = 1925950433807175680;`
+- [`home-mixer/filters/topic_ids_filter.rs:193`](../source/home-mixer/filters/topic_ids_filter.rs#L193) — `const XAI_POP: i64 = 1925952179791151105;`
+- [`home-mixer/filters/topic_ids_filter.rs:194`](../source/home-mixer/filters/topic_ids_filter.rs#L194) — `const XAI_K_POP: i64 = 1925952056088530944;`
+- [`home-mixer/filters/topic_ids_filter.rs:195`](../source/home-mixer/filters/topic_ids_filter.rs#L195) — `const XAI_COUNTRY_MUSIC: i64 = 1925952353485602816;`
+- [`home-mixer/filters/topic_ids_filter.rs:196`](../source/home-mixer/filters/topic_ids_filter.rs#L196) — `const XAI_ELECTRONIC: i64 = 1925952257893257217;`
+- [`home-mixer/filters/topic_ids_filter.rs:197`](../source/home-mixer/filters/topic_ids_filter.rs#L197) — `const XAI_J_POP: i64 = 1925952123960709120;`
+- [`home-mixer/filters/topic_ids_filter.rs:198`](../source/home-mixer/filters/topic_ids_filter.rs#L198) — `const XAI_ROCK: i64 = 1925952228818354177;`
+- [`home-mixer/filters/topic_ids_filter.rs:199`](../source/home-mixer/filters/topic_ids_filter.rs#L199) — `const XAI_PHOTOGRAPHY: i64 = 1925954143472017408;`
+- [`home-mixer/filters/topic_ids_filter.rs:200`](../source/home-mixer/filters/topic_ids_filter.rs#L200) — `const XAI_DESIGN: i64 = 1925954681496322048;`
+- [`home-mixer/filters/topic_ids_filter.rs:201`](../source/home-mixer/filters/topic_ids_filter.rs#L201) — `const XAI_SOFTWARE_DEVELOPMENT: i64 = 1925953040130953216;`
+- [`home-mixer/filters/topic_ids_filter.rs:202`](../source/home-mixer/filters/topic_ids_filter.rs#L202) — `const XAI_ROBOTICS: i64 = 1925953169307189248;`
+- [`home-mixer/filters/topic_ids_filter.rs:203`](../source/home-mixer/filters/topic_ids_filter.rs#L203) — `const XAI_SPACE: i64 = 1925953141452718081;`
+- [`home-mixer/filters/topic_ids_filter.rs:204`](../source/home-mixer/filters/topic_ids_filter.rs#L204) — `const XAI_BIOTECH: i64 = 1925953107038519296;`
+- [`home-mixer/filters/topic_ids_filter.rs:205`](../source/home-mixer/filters/topic_ids_filter.rs#L205) — `const XAI_ELECTRONICS: i64 = 1925953073983139840;`
+- [`home-mixer/filters/topic_ids_filter.rs:206`](../source/home-mixer/filters/topic_ids_filter.rs#L206) — `const XAI_STOCKS: i64 = 1925952876284727296;`
+- [`home-mixer/filters/topic_ids_filter.rs:207`](../source/home-mixer/filters/topic_ids_filter.rs#L207) — `const XAI_ENTREPRENEURSHIP: i64 = 1925952916411564032;`
+- [`home-mixer/filters/topic_ids_filter.rs:208`](../source/home-mixer/filters/topic_ids_filter.rs#L208) — `const XAI_REAL_ESTATE: i64 = 1925952947197784064;`
+- [`home-mixer/filters/topic_ids_filter.rs:209`](../source/home-mixer/filters/topic_ids_filter.rs#L209) — `const XAI_PERSONAL_FINANCE: i64 = 1925952988486447104;`
+- [`home-mixer/filters/topic_ids_filter.rs:210`](../source/home-mixer/filters/topic_ids_filter.rs#L210) — `const XAI_CRIME: i64 = 1925952744239620096;`
+- [`home-mixer/filters/topic_ids_filter.rs:211`](../source/home-mixer/filters/topic_ids_filter.rs#L211) — `const XAI_DATING: i64 = 1925953884108824576;`
+- [`home-mixer/filters/topic_ids_filter.rs:212`](../source/home-mixer/filters/topic_ids_filter.rs#L212) — `const XAI_ELECTIONS: i64 = 1925952820714332161;`
+- [`home-mixer/filters/topic_ids_filter.rs:213`](../source/home-mixer/filters/topic_ids_filter.rs#L213) — `const XAI_ESPORTS: i64 = 1925950783448576000;`
+- [`home-mixer/filters/topic_ids_filter.rs:214`](../source/home-mixer/filters/topic_ids_filter.rs#L214) — `const XAI_HIP_HOP: i64 = 1925952203962896384;`
+- [`home-mixer/filters/topic_ids_filter.rs:215`](../source/home-mixer/filters/topic_ids_filter.rs#L215) — `const XAI_JAZZ: i64 = 1925952300213768192;`
+- [`home-mixer/filters/topic_ids_filter.rs:216`](../source/home-mixer/filters/topic_ids_filter.rs#L216) — `const XAI_CONCERTS: i64 = 1925952145615974400;`
+- [`home-mixer/filters/topic_ids_filter.rs:217`](../source/home-mixer/filters/topic_ids_filter.rs#L217) — `const XAI_MENTAL_HEALTH: i64 = 1925953421338726400;`
+- [`home-mixer/filters/topic_ids_filter.rs:218`](../source/home-mixer/filters/topic_ids_filter.rs#L218) — `const XAI_MOTO_GP: i64 = 1925951732204335105;`
+- [`home-mixer/filters/topic_ids_filter.rs:219`](../source/home-mixer/filters/topic_ids_filter.rs#L219) — `const XAI_PREMIER_LEAGUE: i64 = 1925951020036751361;`
+- [`home-mixer/filters/topic_ids_filter.rs:220`](../source/home-mixer/filters/topic_ids_filter.rs#L220) — `const XAI_SERIE_A: i64 = 1925951109660577792;`
+- [`home-mixer/filters/topic_ids_filter.rs:221`](../source/home-mixer/filters/topic_ids_filter.rs#L221) — `const XAI_CHRISTIANITY: i64 = 1925953452644978688;`
+- [`home-mixer/filters/topic_ids_filter.rs:222`](../source/home-mixer/filters/topic_ids_filter.rs#L222) — `const XAI_BUDDHISM: i64 = 1925953574929842176;`
+- [`home-mixer/filters/topic_ids_filter.rs:223`](../source/home-mixer/filters/topic_ids_filter.rs#L223) — `const XAI_HINDUISM: i64 = 1925953483758338048;`
+- [`home-mixer/filters/topic_ids_filter.rs:224`](../source/home-mixer/filters/topic_ids_filter.rs#L224) — `const XAI_ISLAM: i64 = 1925953516834590721;`
+- [`home-mixer/filters/topic_ids_filter.rs:225`](../source/home-mixer/filters/topic_ids_filter.rs#L225) — `const XAI_JUDAISM: i64 = 1925953757117865984;`
+- [`home-mixer/filters/topic_ids_filter.rs:226`](../source/home-mixer/filters/topic_ids_filter.rs#L226) — `const XAI_DIGITAL_ART: i64 = 1925954197326831616;`
+- [`home-mixer/filters/topic_ids_filter.rs:228`](../source/home-mixer/filters/topic_ids_filter.rs#L228) — `pub const XAI_SCIENCE: i64 = 1925949744683114496;`
+- [`home-mixer/filters/topic_ids_filter.rs:229`](../source/home-mixer/filters/topic_ids_filter.rs#L229) — `pub const XAI_TECHNOLOGY: i64 = 1925949722688126976;`
+- [`home-mixer/filters/topic_ids_filter.rs:230`](../source/home-mixer/filters/topic_ids_filter.rs#L230) — `pub const XAI_BUSINESS_FINANCE_REAL: i64 = 1925949659857530880;`
+- [`home-mixer/filters/topic_ids_filter.rs:231`](../source/home-mixer/filters/topic_ids_filter.rs#L231) — `pub const XAI_SPORTS_REAL: i64 = 1925949452197478400;`
+- [`home-mixer/filters/topic_ids_filter.rs:232`](../source/home-mixer/filters/topic_ids_filter.rs#L232) — `const XAI_ATHLETICS: i64 = 1925950838414942210;`
+- [`home-mixer/filters/topic_ids_filter.rs:234`](../source/home-mixer/filters/topic_ids_filter.rs#L234) — `pub fn category_ids(topic_id: i64) -> Option<&'static [i64]> {`
+- [`home-mixer/filters/topic_ids_filter.rs:415`](../source/home-mixer/filters/topic_ids_filter.rs#L415) — `pub fn expand(topic_ids: &HashSet<i64>) -> HashSet<i64> {`
+- [`home-mixer/filters/topic_ids_filter.rs:432`](../source/home-mixer/filters/topic_ids_filter.rs#L432) — `pub fn all_production_topic_ids() -> HashSet<i64> {`
+- [`home-mixer/filters/topic_ids_filter.rs:523`](../source/home-mixer/filters/topic_ids_filter.rs#L523) — `pub fn resolve_first(topic_id: i64) -> i64 {`
+- [`home-mixer/filters/topic_ids_filter.rs:527`](../source/home-mixer/filters/topic_ids_filter.rs#L527) — `pub fn supertopic(topic_id: i64) -> i64 {`
+- [`home-mixer/filters/topic_ids_filter.rs:630`](../source/home-mixer/filters/topic_ids_filter.rs#L630) — `pub fn expand_supertopic(topic_id: i64) -> HashSet<i64> {`
+- [`home-mixer/filters/topic_ids_filter.rs:640`](../source/home-mixer/filters/topic_ids_filter.rs#L640) — `pub struct TopicFilteringOverrideMap {`
+- [`home-mixer/filters/topic_ids_filter.rs:645`](../source/home-mixer/filters/topic_ids_filter.rs#L645) — `pub fn parse(raw: &str) -> Self {`
+- [`home-mixer/filters/topic_ids_filter.rs:678`](../source/home-mixer/filters/topic_ids_filter.rs#L678) — `pub fn resolve(`
+- [`home-mixer/filters/topic_ids_filter.rs:700`](../source/home-mixer/filters/topic_ids_filter.rs#L700) — `fn test_expand_news_includes_news_and_natural_disasters() {`
+- [`home-mixer/filters/topic_ids_filter.rs:709`](../source/home-mixer/filters/topic_ids_filter.rs#L709) — `fn test_expand_entertainment_group() {`
+- [`home-mixer/filters/topic_ids_filter.rs:722`](../source/home-mixer/filters/topic_ids_filter.rs#L722) — `fn test_expand_science_technology_group() {`
+- [`home-mixer/filters/topic_ids_filter.rs:736`](../source/home-mixer/filters/topic_ids_filter.rs#L736) — `fn test_expand_business_finance_group() {`
+- [`home-mixer/filters/topic_ids_filter.rs:748`](../source/home-mixer/filters/topic_ids_filter.rs#L748) — `fn test_expand_sports_group() {`
+- [`home-mixer/filters/topic_ids_filter.rs:761`](../source/home-mixer/filters/topic_ids_filter.rs#L761) — `fn test_expand_unknown_topic_passed_through() {`
+- [`home-mixer/filters/topic_ids_filter.rs:768`](../source/home-mixer/filters/topic_ids_filter.rs#L768) — `fn test_filter_enables_for_any_topic_request() {`
+- [`home-mixer/filters/topic_ids_filter.rs:795`](../source/home-mixer/filters/topic_ids_filter.rs#L795) — `fn test_inclusion_mode_keeps_only_matching() {`
+- [`home-mixer/filters/topic_ids_filter.rs:826`](../source/home-mixer/filters/topic_ids_filter.rs#L826) — `fn test_bulk_filter_removes_only_excluded_topics() {`
+- [`home-mixer/filters/topic_ids_filter.rs:889`](../source/home-mixer/filters/topic_ids_filter.rs#L889) — `fn test_expand_us_iran_war_maps_to_self() {`
+- [`home-mixer/filters/topic_ids_filter.rs:897`](../source/home-mixer/filters/topic_ids_filter.rs#L897) — `fn test_resolve_first_us_iran_war() {`
+- [`home-mixer/filters/topic_ids_filter.rs:905`](../source/home-mixer/filters/topic_ids_filter.rs#L905) — `fn test_resolve_first_is_identity() {`
+- [`home-mixer/filters/topic_ids_filter.rs:930`](../source/home-mixer/filters/topic_ids_filter.rs#L930) — `fn test_filter_keeps_us_iran_war_candidates() {`
+- [`home-mixer/filters/topic_ids_filter.rs:955`](../source/home-mixer/filters/topic_ids_filter.rs#L955) — `fn test_override_map_parse_empty() {`
+- [`home-mixer/filters/topic_ids_filter.rs:967`](../source/home-mixer/filters/topic_ids_filter.rs#L967) — `fn test_override_map_parse_single() {`
+- [`home-mixer/filters/topic_ids_filter.rs:983`](../source/home-mixer/filters/topic_ids_filter.rs#L983) — `fn test_override_map_parse_multiple() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1004`](../source/home-mixer/filters/topic_ids_filter.rs#L1004) — `fn test_override_map_skips_malformed_entries() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1015`](../source/home-mixer/filters/topic_ids_filter.rs#L1015) — `fn test_override_map_unknown_experiment_falls_back_to_unfiltered() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1027`](../source/home-mixer/filters/topic_ids_filter.rs#L1027) — `fn test_resolve_no_overrides_returns_default() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1037`](../source/home-mixer/filters/topic_ids_filter.rs#L1037) — `fn test_resolve_override_wins_over_default() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1047`](../source/home-mixer/filters/topic_ids_filter.rs#L1047) — `fn test_resolve_first_override_wins_tiebreaker() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1064`](../source/home-mixer/filters/topic_ids_filter.rs#L1064) — `fn test_resolve_no_matching_override_returns_default() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1074`](../source/home-mixer/filters/topic_ids_filter.rs#L1074) — `fn test_excluded_topics_removes_matching_posts() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1111`](../source/home-mixer/filters/topic_ids_filter.rs#L1111) — `fn test_excluded_topics_removes_any_match() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1132`](../source/home-mixer/filters/topic_ids_filter.rs#L1132) — `fn test_excluded_entertainment_group() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1163`](../source/home-mixer/filters/topic_ids_filter.rs#L1163) — `fn test_excluded_topics_not_a_topic_request() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1173`](../source/home-mixer/filters/topic_ids_filter.rs#L1173) — `fn test_mixed_inclusion_and_exclusion() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1213`](../source/home-mixer/filters/topic_ids_filter.rs#L1213) — `fn test_multiple_excluded_topics() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1252`](../source/home-mixer/filters/topic_ids_filter.rs#L1252) — `fn test_excluded_news_removes_news_and_natural_disasters() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1283`](../source/home-mixer/filters/topic_ids_filter.rs#L1283) — `fn test_expand_granular_soccer() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1294`](../source/home-mixer/filters/topic_ids_filter.rs#L1294) — `fn test_supertopic_music_children() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1322`](../source/home-mixer/filters/topic_ids_filter.rs#L1322) — `fn test_supertopic_sports_hierarchy() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1342`](../source/home-mixer/filters/topic_ids_filter.rs#L1342) — `fn test_supertopic_self_identity() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1363`](../source/home-mixer/filters/topic_ids_filter.rs#L1363) — `fn test_expand_supertopic() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1377`](../source/home-mixer/filters/topic_ids_filter.rs#L1377) — `fn test_inclusion_pop_music_supertopic_fallback() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1429`](../source/home-mixer/filters/topic_ids_filter.rs#L1429) — `fn test_inclusion_bundesliga_supertopic_fallback() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1459`](../source/home-mixer/filters/topic_ids_filter.rs#L1459) — `fn test_inclusion_self_supertopic_no_regression() {`
+- [`home-mixer/filters/topic_ids_filter.rs:1486`](../source/home-mixer/filters/topic_ids_filter.rs#L1486) — `fn test_inclusion_no_unfiltered_topics_path2_fails() {`
+- [`home-mixer/filters/vf_filter.rs:6`](../source/home-mixer/filters/vf_filter.rs#L6) — `pub struct VFFilter;`
+- [`home-mixer/filters/vf_filter.rs:9`](../source/home-mixer/filters/vf_filter.rs#L9) — `fn filter(`
+- [`home-mixer/filters/vf_filter.rs:22`](../source/home-mixer/filters/vf_filter.rs#L22) — `pub(crate) fn should_drop_action(action: &Action) -> bool {`
+- [`home-mixer/filters/vf_filter.rs:35`](../source/home-mixer/filters/vf_filter.rs#L35) — `fn partitions_by_action() {`
+- [`home-mixer/filters/video_filter.rs:5`](../source/home-mixer/filters/video_filter.rs#L5) — `pub struct VideoFilter;`
+- [`home-mixer/filters/video_filter.rs:8`](../source/home-mixer/filters/video_filter.rs#L8) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/filters/video_filter.rs:12`](../source/home-mixer/filters/video_filter.rs#L12) — `fn filter(`
+- [`home-mixer/filters/video_filter.rs:30`](../source/home-mixer/filters/video_filter.rs#L30) — `fn test_disabled_by_default() {`
+- [`home-mixer/filters/video_filter.rs:36`](../source/home-mixer/filters/video_filter.rs#L36) — `fn test_enabled_when_set() {`
+- [`home-mixer/filters/video_filter.rs:45`](../source/home-mixer/filters/video_filter.rs#L45) — `fn test_removes_video_posts() {`
+- [`home-mixer/filters/video_filter.rs:76`](../source/home-mixer/filters/video_filter.rs#L76) — `fn test_keeps_all_when_no_videos() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:7`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L7) — `pub struct ViewerMutedKeywordFilter {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:12`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L12) — `pub fn new() -> Self {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:21`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L21) — `fn filter(`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:66`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L66) — `fn create_test_candidate(tweet_id: u64, tweet_text: &str) -> PostCandidate {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:75`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L75) — `fn create_test_query(muted_keywords: Vec<String>) -> ScoredPostsQuery {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:86`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L86) — `async fn test_no_muted_keywords() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:102`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L102) — `async fn test_simple_keyword_match() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:120`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L120) — `async fn test_hashtag_keyword_without_hash() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:140`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L140) — `async fn test_hashtag_keyword_with_hash() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:158`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L158) — `async fn test_mention_keyword() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:176`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L176) — `async fn test_multi_word_phrase() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:194`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L194) — `async fn test_multiple_muted_keywords() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:217`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L217) — `async fn test_case_insensitive_matching() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:236`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L236) — `async fn test_unicode_and_accents() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:254`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L254) — `async fn test_empty_candidates() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:267`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L267) — `async fn test_all_candidates_removed() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:283`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L283) — `async fn test_cjk_keyword_whole_token_only() {`
+- [`home-mixer/filters/viewer_muted_keyword_filter.rs:301`](../source/home-mixer/filters/viewer_muted_keyword_filter.rs#L301) — `async fn test_punctuation_handling() {`
+- [`home-mixer/following_feed_server.rs:11`](../source/home-mixer/following_feed_server.rs#L11) — `pub(crate) struct FollowingFeedOutput {`
+- [`home-mixer/following_feed_server.rs:16`](../source/home-mixer/following_feed_server.rs#L16) — `pub struct FollowingFeedServer {`
+- [`home-mixer/following_feed_server.rs:22`](../source/home-mixer/following_feed_server.rs#L22) — `pub fn new(query_builder: QueryBuilder, pipeline: FollowingCandidatePipeline) -> Self {`
+- [`home-mixer/following_feed_server.rs:29`](../source/home-mixer/following_feed_server.rs#L29) — `pub(crate) async fn get_following_feed(`
+- [`home-mixer/following_feed_server.rs:56`](../source/home-mixer/following_feed_server.rs#L56) — `pub(crate) async fn get_following_feed_urt(`
+- [`home-mixer/for_you_server.rs:11`](../source/home-mixer/for_you_server.rs#L11) — `pub(crate) struct ForYouFeedOutput {`
+- [`home-mixer/for_you_server.rs:15`](../source/home-mixer/for_you_server.rs#L15) — `pub struct ForYouFeedServer {`
+- [`home-mixer/for_you_server.rs:21`](../source/home-mixer/for_you_server.rs#L21) — `pub fn new(query_builder: QueryBuilder, pipeline: ForYouCandidatePipeline) -> Self {`
+- [`home-mixer/for_you_server.rs:28`](../source/home-mixer/for_you_server.rs#L28) — `pub(crate) async fn get_for_you_feed(`
+- [`home-mixer/for_you_server.rs:44`](../source/home-mixer/for_you_server.rs#L44) — `pub(crate) async fn get_for_you_feed_urt(`
+- [`home-mixer/frames/catalog.rs:9`](../source/home-mixer/frames/catalog.rs#L9) — `pub enum Cadence {`
+- [`home-mixer/frames/catalog.rs:15`](../source/home-mixer/frames/catalog.rs#L15) — `fn should_emit(self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/frames/catalog.rs:23`](../source/home-mixer/frames/catalog.rs#L23) — `pub struct FrameDef {`
+- [`home-mixer/frames/catalog.rs:32`](../source/home-mixer/frames/catalog.rs#L32) — `pub struct TopicTimeline {`
+- [`home-mixer/frames/catalog.rs:38`](../source/home-mixer/frames/catalog.rs#L38) — `pub const SOCCER_TOPIC_ID: i64 = 1925950498420469760;`
+- [`home-mixer/frames/catalog.rs:39`](../source/home-mixer/frames/catalog.rs#L39) — `pub const NFL_TOPIC_ID: i64 = 1925951614067650560;`
+- [`home-mixer/frames/catalog.rs:40`](../source/home-mixer/frames/catalog.rs#L40) — `pub const MLB_TOPIC_ID: i64 = 1925951672561319936;`
+- [`home-mixer/frames/catalog.rs:41`](../source/home-mixer/frames/catalog.rs#L41) — `pub const BASEBALL_TOPIC_ID: i64 = 1925950576740675584;`
+- [`home-mixer/frames/catalog.rs:43`](../source/home-mixer/frames/catalog.rs#L43) — `const NFL_ROTATION_INTERVAL: usize = 7;`
+- [`home-mixer/frames/catalog.rs:45`](../source/home-mixer/frames/catalog.rs#L45) — `pub const TIMELINES: &[TopicTimeline] = &[`
+- [`home-mixer/frames/catalog.rs:110`](../source/home-mixer/frames/catalog.rs#L110) — `pub fn eligible(query: &ScoredPostsQuery) -> impl Iterator<Item = &'static FrameDef> + '_ {`
+- [`home-mixer/frames/catalog.rs:114`](../source/home-mixer/frames/catalog.rs#L114) — `pub fn placement_for_route(route: &str) -> Option<Placement> {`
+- [`home-mixer/frames/catalog.rs:118`](../source/home-mixer/frames/catalog.rs#L118) — `pub(super) fn eligible_in<'a>(`
+- [`home-mixer/frames/catalog.rs:134`](../source/home-mixer/frames/catalog.rs#L134) — `pub(super) fn placement_in(timelines: &'static [TopicTimeline], route: &str) -> Option<Placement> {`
+- [`home-mixer/frames/catalog.rs:147`](../source/home-mixer/frames/catalog.rs#L147) — `fn cadence_controls_scroll_down_eligibility() {`
+- [`home-mixer/frames/placement.rs:2`](../source/home-mixer/frames/placement.rs#L2) — `pub enum Placement {`
+- [`home-mixer/frames/placement.rs:14`](../source/home-mixer/frames/placement.rs#L14) — `pub fn occurrences(self, feed_len: usize) -> usize {`
+- [`home-mixer/frames/placement.rs:21`](../source/home-mixer/frames/placement.rs#L21) — `pub fn recurring_slots(self, feed_len: usize) -> Vec<usize> {`
+- [`home-mixer/frames/placement.rs:43`](../source/home-mixer/frames/placement.rs#L43) — `fn occurrences_tell_the_source_how_many_payloads_to_fetch() {`
+- [`home-mixer/frames/placement.rs:57`](../source/home-mixer/frames/placement.rs#L57) — `fn every_n_items_fills_the_page() {`
+- [`home-mixer/frames/placement.rs:67`](../source/home-mixer/frames/placement.rs#L67) — `fn every_n_items_yields_nothing_when_the_page_is_too_short() {`
+- [`home-mixer/frames/placement.rs:77`](../source/home-mixer/frames/placement.rs#L77) — `fn every_n_items_with_zero_interval_yields_nothing() {`
+- [`home-mixer/frames/plan.rs:9`](../source/home-mixer/frames/plan.rs#L9) — `pub fn plan(frames: Vec<Frame>, feed_len: usize) -> Vec<(usize, Frame)> {`
+- [`home-mixer/frames/plan.rs:13`](../source/home-mixer/frames/plan.rs#L13) — `fn plan_in(`
+- [`home-mixer/frames/plan.rs:61`](../source/home-mixer/frames/plan.rs#L61) — `const TOPIC: i64 = 1;`
+- [`home-mixer/frames/plan.rs:63`](../source/home-mixer/frames/plan.rs#L63) — `const fn pinned(route: &'static str, rank: usize) -> FrameDef {`
+- [`home-mixer/frames/plan.rs:74`](../source/home-mixer/frames/plan.rs#L74) — `const fn recurring(route: &'static str, first_slot: usize, interval: usize) -> FrameDef {`
+- [`home-mixer/frames/plan.rs:89`](../source/home-mixer/frames/plan.rs#L89) — `const fn timeline(frames: &'static [FrameDef]) -> [TopicTimeline; 1] {`
+- [`home-mixer/frames/plan.rs:108`](../source/home-mixer/frames/plan.rs#L108) — `fn frame(route: &str) -> Frame {`
+- [`home-mixer/frames/plan.rs:120`](../source/home-mixer/frames/plan.rs#L120) — `fn occurrences_of(route: &str, count: u32) -> Vec<Frame> {`
+- [`home-mixer/frames/plan.rs:129`](../source/home-mixer/frames/plan.rs#L129) — `fn routes(planned: &[(usize, Frame)]) -> Vec<(usize, &str)> {`
+- [`home-mixer/frames/plan.rs:137`](../source/home-mixer/frames/plan.rs#L137) — `fn the_nfl_timeline_pins_one_card_and_spaces_the_rest() {`
+- [`home-mixer/frames/plan.rs:161`](../source/home-mixer/frames/plan.rs#L161) — `fn a_route_that_is_not_in_the_catalog_is_dropped() {`
+- [`home-mixer/frames/plan.rs:166`](../source/home-mixer/frames/plan.rs#L166) — `fn a_duplicate_route_is_placed_once() {`
+- [`home-mixer/frames/plan.rs:177`](../source/home-mixer/frames/plan.rs#L177) — `fn placed(timelines: &'static [TopicTimeline], routes: &[&str]) -> Vec<(usize, String)> {`
+- [`home-mixer/frames/plan.rs:186`](../source/home-mixer/frames/plan.rs#L186) — `fn each_fetched_occurrence_lands_on_its_own_slot() {`
+- [`home-mixer/frames/plan.rs:198`](../source/home-mixer/frames/plan.rs#L198) — `fn a_failed_occurrence_closes_up_instead_of_leaving_a_double_gap() {`
+- [`home-mixer/frames/plan.rs:212`](../source/home-mixer/frames/plan.rs#L212) — `fn surplus_occurrences_are_dropped_when_the_page_is_short() {`
+- [`home-mixer/frames/plan.rs:218`](../source/home-mixer/frames/plan.rs#L218) — `fn pinned_and_recurring_frames_coexist_on_one_timeline() {`
+- [`home-mixer/frames/plan.rs:242`](../source/home-mixer/frames/plan.rs#L242) — `fn a_lower_pinned_frame_moves_up_when_the_one_above_is_absent() {`
+- [`home-mixer/frames/plan.rs:252`](../source/home-mixer/frames/plan.rs#L252) — `fn no_response_carries_more_frames_than_the_reserved_budget() {`
+- [`home-mixer/frames/served.rs:3`](../source/home-mixer/frames/served.rs#L3) — `pub const FRAME_ENTITY_TYPE: EntityIdType = EntityIdType::ENTRY_POINT_PIVOT;`
+- [`home-mixer/frames/served.rs:5`](../source/home-mixer/frames/served.rs#L5) — `pub fn resume_index(history: &[ServedHistory], route: &str) -> Option<u32> {`
+- [`home-mixer/frames/served.rs:18`](../source/home-mixer/frames/served.rs#L18) — `fn split_fetch_route(fetch_route: &str) -> Option<(&str, u32)> {`
+- [`home-mixer/main.rs:16`](../source/home-mixer/main.rs#L16) — `struct Args {`
+- [`home-mixer/main.rs:83`](../source/home-mixer/main.rs#L83) — `fn parse_shard(args: &Args) -> Option<ShardCoordinate> {`
+- [`home-mixer/main.rs:95`](../source/home-mixer/main.rs#L95) — `async fn main() -> anyhow::Result<()> {`
+- [`home-mixer/models/brand_safety.rs:6`](../source/home-mixer/models/brand_safety.rs#L6) — `pub enum BrandSafetyVerdict {`
+- [`home-mixer/models/brand_safety.rs:15`](../source/home-mixer/models/brand_safety.rs#L15) — `pub(crate) const HIGH_RISK_LABELS: &[SafetyLabelType] = &[`
+- [`home-mixer/models/brand_safety.rs:24`](../source/home-mixer/models/brand_safety.rs#L24) — `pub(crate) const MEDIUM_RISK_LABELS: &[SafetyLabelType] = &[`
+- [`home-mixer/models/brand_safety.rs:37`](../source/home-mixer/models/brand_safety.rs#L37) — `pub(crate) const LOW_RISK_LABELS: &[SafetyLabelType] = &[`
+- [`home-mixer/models/brand_safety.rs:43`](../source/home-mixer/models/brand_safety.rs#L43) — `const PTOS_CUTOFF_TWEET_ID: u64 = 2_054_275_414_225_846_272;`
+- [`home-mixer/models/brand_safety.rs:45`](../source/home-mixer/models/brand_safety.rs#L45) — `pub fn compute_verdict(`
+- [`home-mixer/models/brand_safety.rs:74`](../source/home-mixer/models/brand_safety.rs#L74) — `pub(crate) const MEDIUM_RISK_LABELS_V2: &[SafetyLabelType] = &[`
+- [`home-mixer/models/brand_safety.rs:87`](../source/home-mixer/models/brand_safety.rs#L87) — `pub(crate) const LOW_RISK_LABELS_V2: &[SafetyLabelType] = &[`
+- [`home-mixer/models/brand_safety.rs:92`](../source/home-mixer/models/brand_safety.rs#L92) — `const V2_WRITTEN_LABELS: &[SafetyLabelType] = &[`
+- [`home-mixer/models/brand_safety.rs:99`](../source/home-mixer/models/brand_safety.rs#L99) — `pub(crate) fn compute_verdict_v2(`
+- [`home-mixer/models/brand_safety.rs:130`](../source/home-mixer/models/brand_safety.rs#L130) — `pub fn worst_verdict(a: &BrandSafetyVerdict, b: &BrandSafetyVerdict) -> BrandSafetyVerdict {`
+- [`home-mixer/models/brand_safety.rs:138`](../source/home-mixer/models/brand_safety.rs#L138) — `pub(crate) fn botmaker_rule_id_from(label: &SafetyLabel) -> Option<i64> {`
+- [`home-mixer/models/brand_safety.rs:148`](../source/home-mixer/models/brand_safety.rs#L148) — `pub(crate) fn botmaker_rule_category(rule_id: i64) -> &'static str {`
+- [`home-mixer/models/brand_safety.rs:159`](../source/home-mixer/models/brand_safety.rs#L159) — `pub(crate) fn truncate_description(s: &str) -> String {`
+- [`home-mixer/models/brand_safety.rs:167`](../source/home-mixer/models/brand_safety.rs#L167) — `fn labels_with(types: &[SafetyLabelType]) -> HashMap<SafetyLabelType, SafetyLabel> {`
+- [`home-mixer/models/brand_safety.rs:171`](../source/home-mixer/models/brand_safety.rs#L171) — `const POST_CUTOFF_ID: u64 = PTOS_CUTOFF_TWEET_ID;`
+- [`home-mixer/models/brand_safety.rs:173`](../source/home-mixer/models/brand_safety.rs#L173) — `const PRE_CUTOFF_ID: u64 = PTOS_CUTOFF_TWEET_ID - 1;`
+- [`home-mixer/models/brand_safety.rs:176`](../source/home-mixer/models/brand_safety.rs#L176) — `fn safe_with_grok_sfa_only() {`
+- [`home-mixer/models/brand_safety.rs:185`](../source/home-mixer/models/brand_safety.rs#L185) — `fn high_risk_with_nsfw_label() {`
+- [`home-mixer/models/brand_safety.rs:197`](../source/home-mixer/models/brand_safety.rs#L197) — `fn medium_risk_with_grok_nsfa() {`
+- [`home-mixer/models/brand_safety.rs:206`](../source/home-mixer/models/brand_safety.rs#L206) — `fn low_risk_with_limited_inventory() {`
+- [`home-mixer/models/brand_safety.rs:218`](../source/home-mixer/models/brand_safety.rs#L218) — `fn low_risk_with_grok_nsfa_limited() {`
+- [`home-mixer/models/brand_safety.rs:230`](../source/home-mixer/models/brand_safety.rs#L230) — `fn low_risk_with_grok_nsfa_limited_without_grok_sfa() {`
+- [`home-mixer/models/brand_safety.rs:242`](../source/home-mixer/models/brand_safety.rs#L242) — `fn high_risk_trumps_low_risk() {`
+- [`home-mixer/models/brand_safety.rs:255`](../source/home-mixer/models/brand_safety.rs#L255) — `fn post_cutoff_medium_risk_without_ptos_reviewed() {`
+- [`home-mixer/models/brand_safety.rs:264`](../source/home-mixer/models/brand_safety.rs#L264) — `fn post_cutoff_safe_with_grok_sfa_and_ptos_reviewed() {`
+- [`home-mixer/models/brand_safety.rs:273`](../source/home-mixer/models/brand_safety.rs#L273) — `fn pre_cutoff_safe_with_grok_sfa_only() {`
+- [`home-mixer/models/brand_safety.rs:282`](../source/home-mixer/models/brand_safety.rs#L282) — `fn v2_defers_to_v1_when_v2_has_not_ruled() {`
+- [`home-mixer/models/brand_safety.rs:334`](../source/home-mixer/models/brand_safety.rs#L334) — `fn v2_mirrors_v1_across_tier_matrix() {`
+- [`home-mixer/models/brand_safety.rs:335`](../source/home-mixer/models/brand_safety.rs#L335) — `fn to_v2(v1_set: &[SafetyLabelType]) -> Vec<SafetyLabelType> {`
+- [`home-mixer/models/brand_safety.rs:422`](../source/home-mixer/models/brand_safety.rs#L422) — `fn worst_verdict_ordering() {`
+- [`home-mixer/models/candidate.rs:12`](../source/home-mixer/models/candidate.rs#L12) — `pub struct PostCandidate {`
+- [`home-mixer/models/candidate.rs:105`](../source/home-mixer/models/candidate.rs#L105) — `pub struct RetrievalSource {`
+- [`home-mixer/models/candidate.rs:117`](../source/home-mixer/models/candidate.rs#L117) — `pub fn from_served_type(served_type: pb::ServedType) -> Self {`
+- [`home-mixer/models/candidate.rs:129`](../source/home-mixer/models/candidate.rs#L129) — `pub struct SlateContext {`
+- [`home-mixer/models/candidate.rs:155`](../source/home-mixer/models/candidate.rs#L155) — `fn from(c: xai_recsys_proto::SlateContext) -> Self {`
+- [`home-mixer/models/candidate.rs:179`](../source/home-mixer/models/candidate.rs#L179) — `pub struct SafetyLabelInfo {`
+- [`home-mixer/models/candidate.rs:186`](../source/home-mixer/models/candidate.rs#L186) — `fn serialize_served_type<S>(`
+- [`home-mixer/models/candidate.rs:196`](../source/home-mixer/models/candidate.rs#L196) — `fn deserialize_served_type<'de, D>(deserializer: D) -> Result<Option<pb::ServedType>, D::Error>`
+- [`home-mixer/models/candidate.rs:209`](../source/home-mixer/models/candidate.rs#L209) — `fn serialize_served_type_value<S>(`
+- [`home-mixer/models/candidate.rs:219`](../source/home-mixer/models/candidate.rs#L219) — `fn deserialize_served_type_value<'de, D>(deserializer: D) -> Result<pb::ServedType, D::Error>`
+- [`home-mixer/models/candidate.rs:227`](../source/home-mixer/models/candidate.rs#L227) — `pub trait CandidateHelpers {`
+- [`home-mixer/models/candidate.rs:228`](../source/home-mixer/models/candidate.rs#L228) — `fn get_screen_names(&self) -> HashMap<u64, String>;`
+- [`home-mixer/models/candidate.rs:229`](../source/home-mixer/models/candidate.rs#L229) — `fn get_original_tweet_id(&self) -> u64;`
+- [`home-mixer/models/candidate.rs:230`](../source/home-mixer/models/candidate.rs#L230) — `fn get_original_author_id(&self) -> u64;`
+- [`home-mixer/models/candidate.rs:231`](../source/home-mixer/models/candidate.rs#L231) — `fn semantic_id_prefix(&self, levels: usize) -> Option<&[i32]>;`
+- [`home-mixer/models/candidate.rs:232`](../source/home-mixer/models/candidate.rs#L232) — `fn as_tweet_info(&self, is_followed_by_viewer: bool) -> xai_recsys_proto::TweetInfo;`
+- [`home-mixer/models/candidate.rs:233`](../source/home-mixer/models/candidate.rs#L233) — `fn as_score_info_no_prediction_scores(&self) -> xai_recsys_proto::ScoreInfo;`
+- [`home-mixer/models/candidate.rs:237`](../source/home-mixer/models/candidate.rs#L237) — `fn get_screen_names(&self) -> HashMap<u64, String> {`
+- [`home-mixer/models/candidate.rs:250`](../source/home-mixer/models/candidate.rs#L250) — `fn get_original_tweet_id(&self) -> u64 {`
+- [`home-mixer/models/candidate.rs:254`](../source/home-mixer/models/candidate.rs#L254) — `fn get_original_author_id(&self) -> u64 {`
+- [`home-mixer/models/candidate.rs:258`](../source/home-mixer/models/candidate.rs#L258) — `fn semantic_id_prefix(&self, levels: usize) -> Option<&[i32]> {`
+- [`home-mixer/models/candidate.rs:265`](../source/home-mixer/models/candidate.rs#L265) — `fn as_score_info_no_prediction_scores(&self) -> xai_recsys_proto::ScoreInfo {`
+- [`home-mixer/models/candidate.rs:295`](../source/home-mixer/models/candidate.rs#L295) — `fn as_tweet_info(&self, is_followed_by_viewer: bool) -> xai_recsys_proto::TweetInfo {`
+- [`home-mixer/models/candidate.rs:364`](../source/home-mixer/models/candidate.rs#L364) — `fn safety_label_info_serde_roundtrip() {`
+- [`home-mixer/models/candidate.rs:386`](../source/home-mixer/models/candidate.rs#L386) — `fn safety_label_info_deserializes_from_i32() {`
+- [`home-mixer/models/candidate.rs:395`](../source/home-mixer/models/candidate.rs#L395) — `fn post_candidate_deserializes_without_slate_context_field() {`
+- [`home-mixer/models/candidate.rs:424`](../source/home-mixer/models/candidate.rs#L424) — `fn post_candidate_with_safety_labels_roundtrip() {`
+- [`home-mixer/models/candidate_features.rs:13`](../source/home-mixer/models/candidate_features.rs#L13) — `pub struct BlockedByUserIds {`
+- [`home-mixer/models/candidate_features.rs:17`](../source/home-mixer/models/candidate_features.rs#L17) — `const BLOCKED_BY_USER_IDS_FIELD: i16 = -29174;`
+- [`home-mixer/models/candidate_features.rs:19`](../source/home-mixer/models/candidate_features.rs#L19) — `fn thrift_type() -> TType {`
+- [`home-mixer/models/candidate_features.rs:23`](../source/home-mixer/models/candidate_features.rs#L23) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`home-mixer/models/candidate_features.rs:47`](../source/home-mixer/models/candidate_features.rs#L47) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`home-mixer/models/candidate_features.rs:53`](../source/home-mixer/models/candidate_features.rs#L53) — `pub enum TopicFilteringExperiment {`
+- [`home-mixer/models/candidate_features.rs:63`](../source/home-mixer/models/candidate_features.rs#L63) — `pub fn parse(s: &str) -> Self {`
+- [`home-mixer/models/candidate_features.rs:75`](../source/home-mixer/models/candidate_features.rs#L75) — `pub fn as_proto_mode(&self) -> i32 {`
+- [`home-mixer/models/candidate_features.rs:88`](../source/home-mixer/models/candidate_features.rs#L88) — `pub struct FilteredTopicsByExperiment {`
+- [`home-mixer/models/candidate_features.rs:98`](../source/home-mixer/models/candidate_features.rs#L98) — `pub fn topic_ids_for_experiment(`
+- [`home-mixer/models/candidate_features.rs:114`](../source/home-mixer/models/candidate_features.rs#L114) — `fn thrift_type() -> TType {`
+- [`home-mixer/models/candidate_features.rs:118`](../source/home-mixer/models/candidate_features.rs#L118) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`home-mixer/models/candidate_features.rs:143`](../source/home-mixer/models/candidate_features.rs#L143) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`home-mixer/models/content_features.rs:4`](../source/home-mixer/models/content_features.rs#L4) — `const URL_WEIGHTED_LEN: u32 = 23;`
+- [`home-mixer/models/content_features.rs:5`](../source/home-mixer/models/content_features.rs#L5) — `const SINGLE_WEIGHT_CODEPOINT_RANGES: [(u32, u32); 4] =`
+- [`home-mixer/models/content_features.rs:8`](../source/home-mixer/models/content_features.rs#L8) — `pub fn build(candidate: &PostCandidate) -> ContentFeatures {`
+- [`home-mixer/models/content_features.rs:22`](../source/home-mixer/models/content_features.rs#L22) — `pub fn build_quoted(candidate: &PostCandidate) -> Option<ContentFeatures> {`
+- [`home-mixer/models/content_features.rs:39`](../source/home-mixer/models/content_features.rs#L39) — `pub struct TextMetrics {`
+- [`home-mixer/models/content_features.rs:45`](../source/home-mixer/models/content_features.rs#L45) — `pub fn of(text: &str, attachment_urls: u32) -> Self {`
+- [`home-mixer/models/content_features.rs:68`](../source/home-mixer/models/content_features.rs#L68) — `fn is_url(token: &str) -> bool {`
+- [`home-mixer/models/content_features.rs:72`](../source/home-mixer/models/content_features.rs#L72) — `fn char_weight(ch: char) -> u32 {`
+- [`home-mixer/models/content_features.rs:87`](../source/home-mixer/models/content_features.rs#L87) — `fn non_negative(value: Option<i32>) -> u32 {`
+- [`home-mixer/models/content_features.rs:95`](../source/home-mixer/models/content_features.rs#L95) — `fn weighted(text: &str) -> u32 {`
+- [`home-mixer/models/content_features.rs:100`](../source/home-mixer/models/content_features.rs#L100) — `fn weighted_text_len_follows_twitter_text_rules() {`
+- [`home-mixer/models/content_features.rs:110`](../source/home-mixer/models/content_features.rs#L110) — `fn media_attachment_url_is_not_an_external_link() {`
+- [`home-mixer/models/content_features.rs:124`](../source/home-mixer/models/content_features.rs#L124) — `fn build_reads_retained_media_and_text_fields() {`
+- [`home-mixer/models/content_features.rs:153`](../source/home-mixer/models/content_features.rs#L153) — `fn build_quoted_reads_quoted_post_fields() {`
+- [`home-mixer/models/content_features.rs:181`](../source/home-mixer/models/content_features.rs#L181) — `fn build_defaults_when_nothing_is_hydrated() {`
+- [`home-mixer/models/engagement_signals.rs:5`](../source/home-mixer/models/engagement_signals.rs#L5) — `pub enum EngagementSignalType {`
+- [`home-mixer/models/engagement_signals.rs:18`](../source/home-mixer/models/engagement_signals.rs#L18) — `pub fn as_str(&self) -> &'static str {`
+- [`home-mixer/models/engagement_signals.rs:34`](../source/home-mixer/models/engagement_signals.rs#L34) — `pub struct EngagementSignal {`
+- [`home-mixer/models/engagement_signals.rs:40`](../source/home-mixer/models/engagement_signals.rs#L40) — `pub type EngagementSignalsByType = BTreeMap<EngagementSignalType, Vec<EngagementSignal>>;`
+- [`home-mixer/models/engagement_signals.rs:42`](../source/home-mixer/models/engagement_signals.rs#L42) — `pub fn sort_dedup_truncate(`
+- [`home-mixer/models/fs_recipient.rs:9`](../source/home-mixer/models/fs_recipient.rs#L9) — `pub struct FsRecipientInputs {`
+- [`home-mixer/models/fs_recipient.rs:25`](../source/home-mixer/models/fs_recipient.rs#L25) — `pub fn recipient(&self) -> SimpleRecipient {`
+- [`home-mixer/models/in_network_reply.rs:5`](../source/home-mixer/models/in_network_reply.rs#L5) — `pub struct InNetworkReply {`
+- [`home-mixer/models/in_network_reply.rs:10`](../source/home-mixer/models/in_network_reply.rs#L10) — `pub type InNetworkReplies = OnceLock<Vec<InNetworkReply>>;`
+- [`home-mixer/models/in_network_reply.rs:12`](../source/home-mixer/models/in_network_reply.rs#L12) — `pub fn serialize_in_network_replies<S>(`
+- [`home-mixer/models/query.rs:21`](../source/home-mixer/models/query.rs#L21) — `pub struct ImpressionBloomFilterEntry {`
+- [`home-mixer/models/query.rs:28`](../source/home-mixer/models/query.rs#L28) — `pub enum RequestType {`
+- [`home-mixer/models/query.rs:38`](../source/home-mixer/models/query.rs#L38) — `pub struct FollowingPaginationMeta {`
+- [`home-mixer/models/query.rs:44`](../source/home-mixer/models/query.rs#L44) — `pub struct ScoredPostsQuery {`
+- [`home-mixer/models/query.rs:132`](../source/home-mixer/models/query.rs#L132) — `pub fn new(`
+- [`home-mixer/models/query.rs:238`](../source/home-mixer/models/query.rs#L238) — `pub fn is_topic_request(&self) -> bool {`
+- [`home-mixer/models/query.rs:242`](../source/home-mixer/models/query.rs#L242) — `pub fn is_bulk_topic_request(&self) -> bool {`
+- [`home-mixer/models/query.rs:246`](../source/home-mixer/models/query.rs#L246) — `pub fn has_excluded_topics(&self) -> bool {`
+- [`home-mixer/models/query.rs:252`](../source/home-mixer/models/query.rs#L252) — `fn get_viewer(&self) -> Option<TwitterContextViewer> {`
+- [`home-mixer/models/query.rs:264`](../source/home-mixer/models/query.rs#L264) — `fn params(&self) -> &Params {`
+- [`home-mixer/models/query.rs:268`](../source/home-mixer/models/query.rs#L268) — `fn decider(&self) -> Option<&Decider> {`
+- [`home-mixer/models/query.rs:273`](../source/home-mixer/models/query.rs#L273) — `pub fn current_time_ms() -> i64 {`
+- [`home-mixer/models/query.rs:280`](../source/home-mixer/models/query.rs#L280) — `fn serialize_debug<S, T: std::fmt::Debug>(value: &T, serializer: S) -> Result<S::Ok, S::Error>`
+- [`home-mixer/models/user_features.rs:7`](../source/home-mixer/models/user_features.rs#L7) — `pub struct UserFeatures {`
+- [`home-mixer/models/user_features.rs:16`](../source/home-mixer/models/user_features.rs#L16) — `const MUTED_KEYWORDS_FIELD: i16 = 23093;`
+- [`home-mixer/models/user_features.rs:17`](../source/home-mixer/models/user_features.rs#L17) — `const BLOCKED_USER_IDS_FIELD: i16 = -28831;`
+- [`home-mixer/models/user_features.rs:18`](../source/home-mixer/models/user_features.rs#L18) — `const MUTED_USER_IDS_FIELD: i16 = -7422;`
+- [`home-mixer/models/user_features.rs:19`](../source/home-mixer/models/user_features.rs#L19) — `const FOLLOWED_USER_IDS_FIELD: i16 = -8003;`
+- [`home-mixer/models/user_features.rs:20`](../source/home-mixer/models/user_features.rs#L20) — `const SUBSCRIBED_USER_IDS_FIELD: i16 = -21197;`
+- [`home-mixer/models/user_features.rs:21`](../source/home-mixer/models/user_features.rs#L21) — `const FOLLOWER_COUNT_FIELD: i16 = -23663;`
+- [`home-mixer/models/user_features.rs:24`](../source/home-mixer/models/user_features.rs#L24) — `fn thrift_type() -> TType {`
+- [`home-mixer/models/user_features.rs:28`](../source/home-mixer/models/user_features.rs#L28) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`home-mixer/models/user_features.rs:77`](../source/home-mixer/models/user_features.rs#L77) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`home-mixer/params/config.rs:1`](../source/home-mixer/params/config.rs#L1) — `pub const FS_PATH: &str = "/usr/local/config/features/home-mixer/main/rust_home_mixer.yml";`
+- [`home-mixer/params/config.rs:3`](../source/home-mixer/params/config.rs#L3) — `pub const STRINGCENTER_BUNDLE_PATH: &str = "/config/stringcenter/timelinemixer.json";`
+- [`home-mixer/params/config.rs:5`](../source/home-mixer/params/config.rs#L5) — `pub fn decider_path() -> String {`
+- [`home-mixer/params/config.rs:13`](../source/home-mixer/params/config.rs#L13) — `pub const TEST_USER_IDS: &[u64] = &[123, 234];`
+- [`home-mixer/params/config.rs:14`](../source/home-mixer/params/config.rs#L14) — `pub const TRACE_USER_IDS: &[u64] = &[];`
+- [`home-mixer/params/config.rs:16`](../source/home-mixer/params/config.rs#L16) — `pub const MAX_GRPC_MESSAGE_SIZE: usize = 128 * 1024 * 1024;`
+- [`home-mixer/params/config.rs:17`](../source/home-mixer/params/config.rs#L17) — `pub const TOP_K_CANDIDATES_TO_SELECT: usize = 50;`
+- [`home-mixer/params/config.rs:18`](../source/home-mixer/params/config.rs#L18) — `pub const RESULT_SIZE: usize = 35;`
+- [`home-mixer/params/config.rs:19`](../source/home-mixer/params/config.rs#L19) — `pub const FEED_MODULE_SLOTS: usize = 4;`
+- [`home-mixer/params/config.rs:20`](../source/home-mixer/params/config.rs#L20) — `pub const MAX_JETFUEL_FRAMES_PER_RESPONSE: usize = 8;`
+- [`home-mixer/params/config.rs:21`](../source/home-mixer/params/config.rs#L21) — `pub const FOR_YOU_MAX_RESULT_SIZE: usize =`
+- [`home-mixer/params/config.rs:23`](../source/home-mixer/params/config.rs#L23) — `pub const RANKED_FOLLOWING_MAX_RESULT_SIZE: usize = 38;`
+- [`home-mixer/params/config.rs:24`](../source/home-mixer/params/config.rs#L24) — `pub const FOLLOWING_MAX_RESULT_SIZE: usize = 110;`
+- [`home-mixer/params/config.rs:25`](../source/home-mixer/params/config.rs#L25) — `pub const FOLLOWING_ADS_TOP_K: usize = 9;`
+- [`home-mixer/params/config.rs:26`](../source/home-mixer/params/config.rs#L26) — `pub const FOLLOWING_POST_FETCH_SIZE: usize = FOLLOWING_MAX_RESULT_SIZE - FOLLOWING_ADS_TOP_K;`
+- [`home-mixer/params/config.rs:27`](../source/home-mixer/params/config.rs#L27) — `pub const FOLLOWING_PIPELINE_RESULT_SIZE: usize = FOLLOWING_MAX_RESULT_SIZE + 2;`
+- [`home-mixer/params/config.rs:29`](../source/home-mixer/params/config.rs#L29) — `pub const WHO_TO_FOLLOW_POSITION: usize = 6;`
+- [`home-mixer/params/config.rs:30`](../source/home-mixer/params/config.rs#L30) — `pub const FOLLOWING_WHO_TO_FOLLOW_MIN_POSTS: usize = 10;`
+- [`home-mixer/params/config.rs:31`](../source/home-mixer/params/config.rs#L31) — `pub const PROMPTS_POSITION: i32 = 0;`
+- [`home-mixer/params/config.rs:32`](../source/home-mixer/params/config.rs#L32) — `pub const FEED_SURVEY_POSITION: usize = 12;`
+- [`home-mixer/params/config.rs:34`](../source/home-mixer/params/config.rs#L34) — `pub const UAS_WINDOW_TIME_MS: i64 = 300_000;`
+- [`home-mixer/params/config.rs:36`](../source/home-mixer/params/config.rs#L36) — `pub const MAX_POST_AGE: u64 = 48 * 60 * 60;`
+- [`home-mixer/params/config.rs:38`](../source/home-mixer/params/config.rs#L38) — `pub const NEW_USER_MIN_FOLLOWING: usize = 5;`
+- [`home-mixer/params/config.rs:39`](../source/home-mixer/params/config.rs#L39) — `pub const NEGATIVE_SCORES_OFFSET: f64 = 0.001;`
+- [`home-mixer/phoenix_scores_server.rs:13`](../source/home-mixer/phoenix_scores_server.rs#L13) — `pub(crate) struct PhoenixScoresOutput {`
+- [`home-mixer/phoenix_scores_server.rs:18`](../source/home-mixer/phoenix_scores_server.rs#L18) — `pub struct PhoenixScoresServer {`
+- [`home-mixer/phoenix_scores_server.rs:24`](../source/home-mixer/phoenix_scores_server.rs#L24) — `pub fn new(`
+- [`home-mixer/phoenix_scores_server.rs:34`](../source/home-mixer/phoenix_scores_server.rs#L34) — `pub(crate) async fn run_pipeline(`
+- [`home-mixer/phoenix_scores_server.rs:65`](../source/home-mixer/phoenix_scores_server.rs#L65) — `pub(crate) fn build_query_builder_input(`
+- [`home-mixer/phoenix_scores_server.rs:71`](../source/home-mixer/phoenix_scores_server.rs#L71) — `fn candidates_to_phoenix_scores(candidates: &[PostCandidate]) -> Vec<PhoenixScore> {`
+- [`home-mixer/query_hydrators/blocked_user_ids_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/blocked_user_ids_query_hydrator.rs#L8) — `pub struct BlockedUserIdsQueryHydrator {`
+- [`home-mixer/query_hydrators/blocked_user_ids_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/blocked_user_ids_query_hydrator.rs#L14) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/blocked_user_ids_query_hydrator.rs:30`](../source/home-mixer/query_hydrators/blocked_user_ids_query_hydrator.rs#L30) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/cached_posts_query_hydrator.rs:11`](../source/home-mixer/query_hydrators/cached_posts_query_hydrator.rs#L11) — `const MIN_CACHED_POSTS_THRESHOLD: usize = 500;`
+- [`home-mixer/query_hydrators/cached_posts_query_hydrator.rs:12`](../source/home-mixer/query_hydrators/cached_posts_query_hydrator.rs#L12) — `const REDIS_GET_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/cached_posts_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/cached_posts_query_hydrator.rs#L14) — `pub struct CachedPostsQueryHydrator {`
+- [`home-mixer/query_hydrators/cached_posts_query_hydrator.rs:20`](../source/home-mixer/query_hydrators/cached_posts_query_hydrator.rs#L20) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/cached_posts_query_hydrator.rs:24`](../source/home-mixer/query_hydrators/cached_posts_query_hydrator.rs#L24) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/cached_posts_query_hydrator.rs:78`](../source/home-mixer/query_hydrators/cached_posts_query_hydrator.rs#L78) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:16`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L16) — `const HYDRATE_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:17`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L17) — `const SIGNALS_METRIC: &str = "ExplicitEngagementSignals.signals";`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:19`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L19) — `pub struct ExplicitEngagementSignalsQueryHydrator {`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:24`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L24) — `pub fn new(client: Arc<dyn EngagementSignalsClient>) -> Self {`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:31`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L31) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:35`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L35) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:63`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L63) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs:68`](../source/home-mixer/query_hydrators/explicit_engagement_signals_query_hydrator.rs#L68) — `fn split_by_type(`
+- [`home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs:11`](../source/home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs#L11) — `const MH_GET_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs:12`](../source/home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs#L12) — `pub struct FollowedGrokTopicsQueryHydrator {`
+- [`home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs:17`](../source/home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs#L17) — `pub fn new(client: Arc<dyn FollowedGrokTopicsStoreClient>) -> Self {`
+- [`home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs:24`](../source/home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs#L24) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs:28`](../source/home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs#L28) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs:41`](../source/home-mixer/query_hydrators/followed_grok_topics_query_hydrator.rs#L41) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs:11`](../source/home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs#L11) — `const MH_GET_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs:12`](../source/home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs#L12) — `pub struct FollowedStarterPacksQueryHydrator {`
+- [`home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs:17`](../source/home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs#L17) — `pub fn new(client: Arc<dyn FollowedStarterPacksStoreClient>) -> Self {`
+- [`home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs:24`](../source/home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs#L24) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs:28`](../source/home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs#L28) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs:41`](../source/home-mixer/query_hydrators/followed_starter_packs_query_hydrator.rs#L41) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs#L8) — `pub struct FollowedUserIdsQueryHydrator {`
+- [`home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs#L14) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs:18`](../source/home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs#L18) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs:34`](../source/home-mixer/query_hydrators/followed_user_ids_query_hydrator.rs#L34) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:19`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L19) — `const HYDRATE_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:20`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L20) — `const SIGNALS_METRIC: &str = "ImplicitEngagementSignals.signals";`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:21`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L21) — `const MIN_VIDEO_DURATION_SECS: i64 = 10;`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:23`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L23) — `pub struct ImplicitEngagementSignalsQueryHydrator {`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:28`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L28) — `pub fn new(client: Arc<dyn EngagementSignalsClient>) -> Self {`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:35`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L35) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:39`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L39) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:93`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L93) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:98`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L98) — `fn insert_tweet_engagements(`
+- [`home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs:117`](../source/home-mixer/query_hydrators/implicit_engagement_signals_query_hydrator.rs#L117) — `fn insert_video_views(`
+- [`home-mixer/query_hydrators/impressed_posts_query_hydrator.rs:7`](../source/home-mixer/query_hydrators/impressed_posts_query_hydrator.rs#L7) — `pub struct ImpressedPostsQueryHydrator {`
+- [`home-mixer/query_hydrators/impressed_posts_query_hydrator.rs:13`](../source/home-mixer/query_hydrators/impressed_posts_query_hydrator.rs#L13) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/impressed_posts_query_hydrator.rs:22`](../source/home-mixer/query_hydrators/impressed_posts_query_hydrator.rs#L22) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/impressed_posts_query_hydrator.rs:33`](../source/home-mixer/query_hydrators/impressed_posts_query_hydrator.rs#L33) — `async fn test_hydrate_populates_impressed_post_ids() {`
+- [`home-mixer/query_hydrators/impressed_posts_query_hydrator.rs:52`](../source/home-mixer/query_hydrators/impressed_posts_query_hydrator.rs#L52) — `async fn test_hydrate_cache_miss_returns_empty() {`
+- [`home-mixer/query_hydrators/impressed_posts_query_hydrator.rs:68`](../source/home-mixer/query_hydrators/impressed_posts_query_hydrator.rs#L68) — `async fn test_update_overwrites_field() {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:9`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L9) — `pub struct ImpressionBloomFilterQueryHydrator {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:15`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L15) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:19`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L19) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:41`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L41) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:46`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L46) — `fn thrift_entry_to_proto(`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:65`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L65) — `fn test_thrift_entry_to_proto_conversion() {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:85`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L85) — `async fn test_hydrate_populates_bloom_filter_entries() {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:119`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L119) — `async fn test_hydrate_cache_miss_returns_empty() {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:135`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L135) — `async fn test_update_overwrites_field() {`
+- [`home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs:166`](../source/home-mixer/query_hydrators/impression_bloom_filter_query_hydrator.rs#L166) — `fn test_enable_dedup_guard() {`
+- [`home-mixer/query_hydrators/ip_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/ip_query_hydrator.rs#L8) — `pub struct IpQueryHydrator {`
+- [`home-mixer/query_hydrators/ip_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/ip_query_hydrator.rs#L14) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/ip_query_hydrator.rs:18`](../source/home-mixer/query_hydrators/ip_query_hydrator.rs#L18) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/ip_query_hydrator.rs:27`](../source/home-mixer/query_hydrators/ip_query_hydrator.rs#L27) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/muted_user_ids_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/muted_user_ids_query_hydrator.rs#L8) — `pub struct MutedUserIdsQueryHydrator {`
+- [`home-mixer/query_hydrators/muted_user_ids_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/muted_user_ids_query_hydrator.rs#L14) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/muted_user_ids_query_hydrator.rs:30`](../source/home-mixer/query_hydrators/muted_user_ids_query_hydrator.rs#L30) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/mutual_follow_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/mutual_follow_query_hydrator.rs#L8) — `pub struct MutualFollowQueryHydrator {`
+- [`home-mixer/query_hydrators/mutual_follow_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/mutual_follow_query_hydrator.rs#L14) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/mutual_follow_query_hydrator.rs:18`](../source/home-mixer/query_hydrators/mutual_follow_query_hydrator.rs#L18) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/mutual_follow_query_hydrator.rs:34`](../source/home-mixer/query_hydrators/mutual_follow_query_hydrator.rs#L34) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs#L8) — `pub struct PastRequestTimestampsQueryHydrator {`
+- [`home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs:13`](../source/home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs#L13) — `pub fn new(client: Arc<dyn PastRequestTimestampsClient>) -> Self {`
+- [`home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs:20`](../source/home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs#L20) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs:24`](../source/home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs#L24) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs:33`](../source/home-mixer/query_hydrators/past_request_timestamps_query_hydrator.rs#L33) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs:16`](../source/home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs#L16) — `pub struct RetrievalSequenceQueryHydrator {`
+- [`home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs:21`](../source/home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs#L21) — `pub fn new(`
+- [`home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs:32`](../source/home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs#L32) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs:36`](../source/home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs#L36) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs:70`](../source/home-mixer/query_hydrators/retrieval_sequence_query_hydrator.rs#L70) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs:17`](../source/home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs#L17) — `pub struct ScoringSequenceQueryHydrator {`
+- [`home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs:22`](../source/home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs#L22) — `pub fn new(`
+- [`home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs:33`](../source/home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs#L33) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs:37`](../source/home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs#L37) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs:70`](../source/home-mixer/query_hydrators/scoring_sequence_query_hydrator.rs#L70) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:13`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L13) — `pub struct ServedHistoryQueryHydrator {`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:18`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L18) — `pub fn from_client(client: Arc<dyn ServedHistoryClient>) -> Self {`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:25`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L25) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:29`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L29) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:68`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L68) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:76`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L76) — `fn recently_served_ids(`
+- [`home-mixer/query_hydrators/served_history_query_hydrator.rs:101`](../source/home-mixer/query_hydrators/served_history_query_hydrator.rs#L101) — `fn is_module_eligible(`
+- [`home-mixer/query_hydrators/subscribed_user_ids_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/subscribed_user_ids_query_hydrator.rs#L8) — `pub struct SubscribedUserIdsQueryHydrator {`
+- [`home-mixer/query_hydrators/subscribed_user_ids_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/subscribed_user_ids_query_hydrator.rs#L14) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/subscribed_user_ids_query_hydrator.rs:30`](../source/home-mixer/query_hydrators/subscribed_user_ids_query_hydrator.rs#L30) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/user_demographics_query_hydrator.rs:8`](../source/home-mixer/query_hydrators/user_demographics_query_hydrator.rs#L8) — `pub struct UserDemographicsQueryHydrator {`
+- [`home-mixer/query_hydrators/user_demographics_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/user_demographics_query_hydrator.rs#L14) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/user_demographics_query_hydrator.rs:18`](../source/home-mixer/query_hydrators/user_demographics_query_hydrator.rs#L18) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/user_demographics_query_hydrator.rs:27`](../source/home-mixer/query_hydrators/user_demographics_query_hydrator.rs#L27) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:12`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L12) — `const MH_GET_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:14`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L14) — `pub struct UserInferredGenderQueryHydrator {`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:20`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L20) — `pub fn new(`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:33`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L33) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:37`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L37) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:57`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L57) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs:63`](../source/home-mixer/query_hydrators/user_inferred_gender_query_hydrator.rs#L63) — `fn is_new_user(user_id: u64) -> bool {`
+- [`home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs:10`](../source/home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs#L10) — `const MH_GET_TIMEOUT: Duration = Duration::from_millis(300);`
+- [`home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs:12`](../source/home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs#L12) — `pub struct UserInstalledAppsQueryHydrator {`
+- [`home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs:17`](../source/home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs#L17) — `pub fn new(client: Arc<dyn UserInstalledAppsStoreClient>) -> Self {`
+- [`home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs:24`](../source/home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs#L24) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs:28`](../source/home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs#L28) — `async fn hydrate(&self, query: &ScoredPostsQuery) -> Result<ScoredPostsQuery, String> {`
+- [`home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs:47`](../source/home-mixer/query_hydrators/user_installed_apps_query_hydrator.rs#L47) — `fn update(&self, query: &mut ScoredPostsQuery, hydrated: ScoredPostsQuery) {`
+- [`home-mixer/ranked_following_feed_server.rs:11`](../source/home-mixer/ranked_following_feed_server.rs#L11) — `pub(crate) struct RankedFollowingFeedOutput {`
+- [`home-mixer/ranked_following_feed_server.rs:15`](../source/home-mixer/ranked_following_feed_server.rs#L15) — `pub struct RankedFollowingFeedServer {`
+- [`home-mixer/ranked_following_feed_server.rs:21`](../source/home-mixer/ranked_following_feed_server.rs#L21) — `pub fn new(query_builder: QueryBuilder, pipeline: RankedFollowingCandidatePipeline) -> Self {`
+- [`home-mixer/ranked_following_feed_server.rs:28`](../source/home-mixer/ranked_following_feed_server.rs#L28) — `pub(crate) async fn get_ranked_following_feed(`
+- [`home-mixer/ranked_following_feed_server.rs:44`](../source/home-mixer/ranked_following_feed_server.rs#L44) — `pub(crate) async fn get_ranked_following_feed_urt(`
+- [`home-mixer/scored_posts_server.rs:18`](../source/home-mixer/scored_posts_server.rs#L18) — `const PRODUCT_SURFACE_METRIC: &str = "ScoredPostsServer.product_surface";`
+- [`home-mixer/scored_posts_server.rs:19`](../source/home-mixer/scored_posts_server.rs#L19) — `const TOPIC_METRIC: &str = "ScoredPosts.topic";`
+- [`home-mixer/scored_posts_server.rs:20`](../source/home-mixer/scored_posts_server.rs#L20) — `const SURFACE_RANKED_FOLLOWING: &str = "ranked_following";`
+- [`home-mixer/scored_posts_server.rs:21`](../source/home-mixer/scored_posts_server.rs#L21) — `const SURFACE_TOPICS: &str = "topics";`
+- [`home-mixer/scored_posts_server.rs:22`](../source/home-mixer/scored_posts_server.rs#L22) — `const SURFACE_FOR_YOU: &str = "for_you";`
+- [`home-mixer/scored_posts_server.rs:23`](../source/home-mixer/scored_posts_server.rs#L23) — `const SURFACE_FOR_YOU_WITH_SNOOZED_TOPICS: &str = "for_you_with_snoozed_topics";`
+- [`home-mixer/scored_posts_server.rs:25`](../source/home-mixer/scored_posts_server.rs#L25) — `pub struct ScoredPostsServer {`
+- [`home-mixer/scored_posts_server.rs:31`](../source/home-mixer/scored_posts_server.rs#L31) — `pub fn new(`
+- [`home-mixer/scored_posts_server.rs:41`](../source/home-mixer/scored_posts_server.rs#L41) — `pub(crate) async fn run_pipeline(`
+- [`home-mixer/scored_posts_server.rs:77`](../source/home-mixer/scored_posts_server.rs#L77) — `fn candidates_to_scored_posts(candidates: &[PostCandidate]) -> Vec<ScoredPost> {`
+- [`home-mixer/scored_posts_server.rs:127`](../source/home-mixer/scored_posts_server.rs#L127) — `pub(crate) fn build_debug_json(`
+- [`home-mixer/scored_posts_server.rs:147`](../source/home-mixer/scored_posts_server.rs#L147) — `fn log_request_info(query: &ScoredPostsQuery) {`
+- [`home-mixer/scored_posts_server.rs:181`](../source/home-mixer/scored_posts_server.rs#L181) — `fn log_response_stats(pipeline_result: &PipelineResult<ScoredPostsQuery, PostCandidate>) {`
+- [`home-mixer/scored_posts_server.rs:201`](../source/home-mixer/scored_posts_server.rs#L201) — `fn safety_label_to_proto(label: SafetyLabelType) -> Option<i32> {`
+- [`home-mixer/scorers/author_cold_start.rs:21`](../source/home-mixer/scorers/author_cold_start.rs#L21) — `enum ViewerArm {`
+- [`home-mixer/scorers/author_cold_start.rs:28`](../source/home-mixer/scorers/author_cold_start.rs#L28) — `fn as_str(self) -> &'static str {`
+- [`home-mixer/scorers/author_cold_start.rs:38`](../source/home-mixer/scorers/author_cold_start.rs#L38) — `enum AuthorCorpus {`
+- [`home-mixer/scorers/author_cold_start.rs:44`](../source/home-mixer/scorers/author_cold_start.rs#L44) — `struct ColdStartParams {`
+- [`home-mixer/scorers/author_cold_start.rs:62`](../source/home-mixer/scorers/author_cold_start.rs#L62) — `fn read(query: &ScoredPostsQuery) -> Self {`
+- [`home-mixer/scorers/author_cold_start.rs:82`](../source/home-mixer/scorers/author_cold_start.rs#L82) — `fn viewer_arm(query: &ScoredPostsQuery) -> ViewerArm {`
+- [`home-mixer/scorers/author_cold_start.rs:92`](../source/home-mixer/scorers/author_cold_start.rs#L92) — `fn positions_among_nonzero(scores: &[f64]) -> (Vec<usize>, usize) {`
+- [`home-mixer/scorers/author_cold_start.rs:108`](../source/home-mixer/scorers/author_cold_start.rs#L108) — `fn record_cold_started_posts(is_moe: bool, viewer_arm: &str, count: u64) {`
+- [`home-mixer/scorers/author_cold_start.rs:124`](../source/home-mixer/scorers/author_cold_start.rs#L124) — `fn parse_tracked_ids(raw: &str) -> HashSet<u64> {`
+- [`home-mixer/scorers/author_cold_start.rs:130`](../source/home-mixer/scorers/author_cold_start.rs#L130) — `fn count_tracked_ids(`
+- [`home-mixer/scorers/author_cold_start.rs:148`](../source/home-mixer/scorers/author_cold_start.rs#L148) — `fn record_tracked_ids(candidates: &[PostCandidate], raw: &str) {`
+- [`home-mixer/scorers/author_cold_start.rs:167`](../source/home-mixer/scorers/author_cold_start.rs#L167) — `fn is_phoenix_moe(c: &PostCandidate) -> bool {`
+- [`home-mixer/scorers/author_cold_start.rs:171`](../source/home-mixer/scorers/author_cold_start.rs#L171) — `pub(crate) fn cold_start_base_eligible(c: &PostCandidate, follower_cap: i64) -> bool {`
+- [`home-mixer/scorers/author_cold_start.rs:178`](../source/home-mixer/scorers/author_cold_start.rs#L178) — `fn author_corpus(`
+- [`home-mixer/scorers/author_cold_start.rs:199`](../source/home-mixer/scorers/author_cold_start.rs#L199) — `fn apply_moe_ranking_policy(`
+- [`home-mixer/scorers/author_cold_start.rs:220`](../source/home-mixer/scorers/author_cold_start.rs#L220) — `fn cold_start_target(params: &ColdStartParams, scores: &[f64]) -> Option<(usize, f64)> {`
+- [`home-mixer/scorers/author_cold_start.rs:232`](../source/home-mixer/scorers/author_cold_start.rs#L232) — `fn cold_start_corpus_eligible(arm: ViewerArm, c: &PostCandidate, corpus: AuthorCorpus) -> bool {`
+- [`home-mixer/scorers/author_cold_start.rs:240`](../source/home-mixer/scorers/author_cold_start.rs#L240) — `fn pick_by_score(eligible: &[usize], scores: &[f64]) -> Option<usize> {`
+- [`home-mixer/scorers/author_cold_start.rs:247`](../source/home-mixer/scorers/author_cold_start.rs#L247) — `fn sample_reward<R: Rng + ?Sized>(`
+- [`home-mixer/scorers/author_cold_start.rs:261`](../source/home-mixer/scorers/author_cold_start.rs#L261) — `fn pick_thompson<R: Rng + ?Sized>(`
+- [`home-mixer/scorers/author_cold_start.rs:289`](../source/home-mixer/scorers/author_cold_start.rs#L289) — `fn apply_cold_start(`
+- [`home-mixer/scorers/author_cold_start.rs:340`](../source/home-mixer/scorers/author_cold_start.rs#L340) — `pub(crate) struct ColdStartLift {`
+- [`home-mixer/scorers/author_cold_start.rs:345`](../source/home-mixer/scorers/author_cold_start.rs#L345) — `pub(crate) struct ColdStartOutcome {`
+- [`home-mixer/scorers/author_cold_start.rs:352`](../source/home-mixer/scorers/author_cold_start.rs#L352) — `pub fn lift_to_rank(&self, index: usize) -> Option<u32> {`
+- [`home-mixer/scorers/author_cold_start.rs:361`](../source/home-mixer/scorers/author_cold_start.rs#L361) — `pub struct AuthorColdStart {`
+- [`home-mixer/scorers/author_cold_start.rs:367`](../source/home-mixer/scorers/author_cold_start.rs#L367) — `fn apply(`
+- [`home-mixer/scorers/author_cold_start.rs:376`](../source/home-mixer/scorers/author_cold_start.rs#L376) — `pub(crate) fn apply_with_decisions(`
+- [`home-mixer/scorers/author_cold_start.rs:430`](../source/home-mixer/scorers/author_cold_start.rs#L430) — `struct ArmChooser {`
+- [`home-mixer/scorers/author_cold_start.rs:436`](../source/home-mixer/scorers/author_cold_start.rs#L436) — `fn choose_buckets(&self, _recipient: &dyn Recipient) -> BucketMembership {`
+- [`home-mixer/scorers/author_cold_start.rs:440`](../source/home-mixer/scorers/author_cold_start.rs#L440) — `fn choose_bucket_without_overrides(`
+- [`home-mixer/scorers/author_cold_start.rs:460`](../source/home-mixer/scorers/author_cold_start.rs#L460) — `fn cold_start_with_arms(treatment: Vec<u64>, control: Vec<u64>) -> AuthorColdStart {`
+- [`home-mixer/scorers/author_cold_start.rs:464`](../source/home-mixer/scorers/author_cold_start.rs#L464) — `fn cold_start_with_author_impressor(`
+- [`home-mixer/scorers/author_cold_start.rs:510`](../source/home-mixer/scorers/author_cold_start.rs#L510) — `fn minutes(n: u64) -> Duration {`
+- [`home-mixer/scorers/author_cold_start.rs:514`](../source/home-mixer/scorers/author_cold_start.rs#L514) — `fn tweet_id_with_age(age: Duration) -> u64 {`
+- [`home-mixer/scorers/author_cold_start.rs:518`](../source/home-mixer/scorers/author_cold_start.rs#L518) — `fn cold_start_candidate(`
+- [`home-mixer/scorers/author_cold_start.rs:526`](../source/home-mixer/scorers/author_cold_start.rs#L526) — `fn cold_start_candidate_with_favs(`
+- [`home-mixer/scorers/author_cold_start.rs:542`](../source/home-mixer/scorers/author_cold_start.rs#L542) — `fn moe_candidate(author_id: u64, age: Duration, view_count_on_home: u64) -> PostCandidate {`
+- [`home-mixer/scorers/author_cold_start.rs:546`](../source/home-mixer/scorers/author_cold_start.rs#L546) — `fn moe_candidate_with_favs(`
+- [`home-mixer/scorers/author_cold_start.rs:558`](../source/home-mixer/scorers/author_cold_start.rs#L558) — `fn base_query() -> ScoredPostsQuery {`
+- [`home-mixer/scorers/author_cold_start.rs:600`](../source/home-mixer/scorers/author_cold_start.rs#L600) — `fn ts_query(viewer_treatment: bool, top_k: u32) -> ScoredPostsQuery {`
+- [`home-mixer/scorers/author_cold_start.rs:615`](../source/home-mixer/scorers/author_cold_start.rs#L615) — `fn codivert_query(viewer_control: bool, viewer_treatment: bool) -> ScoredPostsQuery {`
+- [`home-mixer/scorers/author_cold_start.rs:630`](../source/home-mixer/scorers/author_cold_start.rs#L630) — `fn query_with_max_post_age(viewer_treatment: bool, max_post_age_secs: u64) -> ScoredPostsQuery {`
+- [`home-mixer/scorers/author_cold_start.rs:642`](../source/home-mixer/scorers/author_cold_start.rs#L642) — `fn holdout_zeros_moe_and_cold_starts_non_moe() {`
+- [`home-mixer/scorers/author_cold_start.rs:654`](../source/home-mixer/scorers/author_cold_start.rs#L654) — `fn control_viewer_zeros_moe_and_cold_starts_control_corpus_only() {`
+- [`home-mixer/scorers/author_cold_start.rs:674`](../source/home-mixer/scorers/author_cold_start.rs#L674) — `fn control_viewer_dedups_author_rules_eval_for_duplicate_authors() {`
+- [`home-mixer/scorers/author_cold_start.rs:690`](../source/home-mixer/scorers/author_cold_start.rs#L690) — `fn treatment_viewer_cold_starts_treatment_authors_only() {`
+- [`home-mixer/scorers/author_cold_start.rs:708`](../source/home-mixer/scorers/author_cold_start.rs#L708) — `fn skips_post_older_than_max_post_age() {`
+- [`home-mixer/scorers/author_cold_start.rs:723`](../source/home-mixer/scorers/author_cold_start.rs#L723) — `fn cold_start_respects_max_position_ratio() {`
+- [`home-mixer/scorers/author_cold_start.rs:745`](../source/home-mixer/scorers/author_cold_start.rs#L745) — `fn ts_top_k_zero_falls_back_to_argmax_score() {`
+- [`home-mixer/scorers/author_cold_start.rs:755`](../source/home-mixer/scorers/author_cold_start.rs#L755) — `const CODIVERT_EXPERIMENT: &str = "moe_codivert_viewer";`
+- [`home-mixer/scorers/author_cold_start.rs:757`](../source/home-mixer/scorers/author_cold_start.rs#L757) — `const CODIVERT_YAML: &str = r#"`
+- [`home-mixer/scorers/author_cold_start.rs:788`](../source/home-mixer/scorers/author_cold_start.rs#L788) — `fn codivert_viewer(arm: &str) -> (ScoredPostsQuery, Arc<SpyingBucketImpressor>) {`
+- [`home-mixer/scorers/author_cold_start.rs:811`](../source/home-mixer/scorers/author_cold_start.rs#L811) — `fn both_arms_log_the_same_codivert_impressions() {`
+- [`home-mixer/scorers/author_cold_start.rs:828`](../source/home-mixer/scorers/author_cold_start.rs#L828) — `fn viewer_query(control: bool, treatment: bool, cold_start: bool) -> ScoredPostsQuery {`
+- [`home-mixer/scorers/author_cold_start.rs:840`](../source/home-mixer/scorers/author_cold_start.rs#L840) — `fn both_viewer_arms_log_the_same_author_impressions() {`
+- [`home-mixer/scorers/author_cold_start.rs:861`](../source/home-mixer/scorers/author_cold_start.rs#L861) — `fn parse_tracked_ids_splits_and_skips_junk() {`
+- [`home-mixer/scorers/author_cold_start.rs:869`](../source/home-mixer/scorers/author_cold_start.rs#L869) — `fn count_tracked_ids_matches_tweet_or_author() {`
+- [`home-mixer/scorers/author_cold_start.rs:917`](../source/home-mixer/scorers/author_cold_start.rs#L917) — `fn pick_thompson_top_k_one_prefers_uncertain_over_peaked_zero() {`
+- [`home-mixer/scorers/phoenix_scorer.rs:17`](../source/home-mixer/scorers/phoenix_scorer.rs#L17) — `pub const PHOENIX_RANKER_KILL_SWITCH_DECIDER: &str = "disable_home_mixer_phoenix_ranker";`
+- [`home-mixer/scorers/phoenix_scorer.rs:19`](../source/home-mixer/scorers/phoenix_scorer.rs#L19) — `pub struct PhoenixScorer {`
+- [`home-mixer/scorers/phoenix_scorer.rs:24`](../source/home-mixer/scorers/phoenix_scorer.rs#L24) — `pub(crate) fn resolve_cluster(query: &ScoredPostsQuery) -> PhoenixCluster {`
+- [`home-mixer/scorers/phoenix_scorer.rs:65`](../source/home-mixer/scorers/phoenix_scorer.rs#L65) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/scorers/phoenix_scorer.rs:76`](../source/home-mixer/scorers/phoenix_scorer.rs#L76) — `async fn score(`
+- [`home-mixer/scorers/phoenix_scorer.rs:123`](../source/home-mixer/scorers/phoenix_scorer.rs#L123) — `fn update(&self, candidate: &mut PostCandidate, scored: PostCandidate) {`
+- [`home-mixer/scorers/phoenix_scores_ranking_scorer.rs:7`](../source/home-mixer/scorers/phoenix_scores_ranking_scorer.rs#L7) — `pub struct PhoenixScoresRankingScorer;`
+- [`home-mixer/scorers/phoenix_scores_ranking_scorer.rs:11`](../source/home-mixer/scorers/phoenix_scores_ranking_scorer.rs#L11) — `fn enable(&self, _query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/scorers/phoenix_scores_ranking_scorer.rs:15`](../source/home-mixer/scorers/phoenix_scores_ranking_scorer.rs#L15) — `async fn score(`
+- [`home-mixer/scorers/phoenix_scores_ranking_scorer.rs:34`](../source/home-mixer/scorers/phoenix_scores_ranking_scorer.rs#L34) — `fn update(&self, candidate: &mut PostCandidate, scored: PostCandidate) {`
+- [`home-mixer/scorers/ranking_scorer.rs:13`](../source/home-mixer/scorers/ranking_scorer.rs#L13) — `pub(crate) const WEIGHTED_VALUE_MODEL_MODE: &str = "weighted";`
+- [`home-mixer/scorers/ranking_scorer.rs:15`](../source/home-mixer/scorers/ranking_scorer.rs#L15) — `pub(crate) struct ScoringWeights {`
+- [`home-mixer/scorers/ranking_scorer.rs:55`](../source/home-mixer/scorers/ranking_scorer.rs#L55) — `pub(crate) fn from_params(params: &xai_feature_switches::Params) -> Self {`
+- [`home-mixer/scorers/ranking_scorer.rs:135`](../source/home-mixer/scorers/ranking_scorer.rs#L135) — `fn recompute_sums(&mut self) {`
+- [`home-mixer/scorers/ranking_scorer.rs:166`](../source/home-mixer/scorers/ranking_scorer.rs#L166) — `pub(crate) fn perturbed(mut self, query: &ScoredPostsQuery) -> Self {`
+- [`home-mixer/scorers/ranking_scorer.rs:179`](../source/home-mixer/scorers/ranking_scorer.rs#L179) — `fn weights_mut(&mut self) -> [(&'static str, &mut f64); 26] {`
+- [`home-mixer/scorers/ranking_scorer.rs:214`](../source/home-mixer/scorers/ranking_scorer.rs#L214) — `pub(crate) fn perturbation_sign(salt: &str, user_id: u64, head: &str) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:224`](../source/home-mixer/scorers/ranking_scorer.rs#L224) — `fn post_unexplored_active_for(&self, candidate: &PostCandidate) -> bool {`
+- [`home-mixer/scorers/ranking_scorer.rs:228`](../source/home-mixer/scorers/ranking_scorer.rs#L228) — `fn bidirectional_boost_eligible(candidate: &PostCandidate) -> bool {`
+- [`home-mixer/scorers/ranking_scorer.rs:234`](../source/home-mixer/scorers/ranking_scorer.rs#L234) — `fn reply_weight_for(&self, candidate: &PostCandidate) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:243`](../source/home-mixer/scorers/ranking_scorer.rs#L243) — `fn click_dwell_term(&self, scores: &PhoenixScores) -> Option<f64> {`
+- [`home-mixer/scorers/ranking_scorer.rs:254`](../source/home-mixer/scorers/ranking_scorer.rs#L254) — `fn dwell_weight_for(&self, candidate: &PostCandidate) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:263`](../source/home-mixer/scorers/ranking_scorer.rs#L263) — `pub(crate) fn applied_weights_map(&self) -> HashMap<String, f64> {`
+- [`home-mixer/scorers/ranking_scorer.rs:334`](../source/home-mixer/scorers/ranking_scorer.rs#L334) — `pub struct RankingScorer {`
+- [`home-mixer/scorers/ranking_scorer.rs:368`](../source/home-mixer/scorers/ranking_scorer.rs#L368) — `fn apply(score: Option<f64>, weight: f64) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:372`](../source/home-mixer/scorers/ranking_scorer.rs#L372) — `pub(crate) fn compute_weighted_score(`
+- [`home-mixer/scorers/ranking_scorer.rs:381`](../source/home-mixer/scorers/ranking_scorer.rs#L381) — `pub(crate) fn compute_weighted_parts(`
+- [`home-mixer/scorers/ranking_scorer.rs:475`](../source/home-mixer/scorers/ranking_scorer.rs#L475) — `pub(crate) fn offset_score(combined_score: f64, w: &ScoringWeights) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:485`](../source/home-mixer/scorers/ranking_scorer.rs#L485) — `fn diversity_multiplier(decay_factor: f64, floor: f64, exponent: f64) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:489`](../source/home-mixer/scorers/ranking_scorer.rs#L489) — `fn author_pool_counts(candidates: &[PostCandidate], pre_diversity_scores: &[f64]) -> Vec<u32> {`
+- [`home-mixer/scorers/ranking_scorer.rs:508`](../source/home-mixer/scorers/ranking_scorer.rs#L508) — `fn served_slate_contexts(candidates: &[PostCandidate]) -> Option<Vec<SlateContext>> {`
+- [`home-mixer/scorers/ranking_scorer.rs:512`](../source/home-mixer/scorers/ranking_scorer.rs#L512) — `fn stored_slate_contexts(candidates: &[PostCandidate]) -> Option<Vec<SlateContext>> {`
+- [`home-mixer/scorers/ranking_scorer.rs:516`](../source/home-mixer/scorers/ranking_scorer.rs#L516) — `fn author_diversity_multipliers(query: &ScoredPostsQuery, counts: &[u32]) -> Vec<f64> {`
+- [`home-mixer/scorers/ranking_scorer.rs:526`](../source/home-mixer/scorers/ranking_scorer.rs#L526) — `fn apply_author_diversity(`
+- [`home-mixer/scorers/ranking_scorer.rs:540`](../source/home-mixer/scorers/ranking_scorer.rs#L540) — `fn effective_oon_weight(query: &ScoredPostsQuery) -> f64 {`
+- [`home-mixer/scorers/ranking_scorer.rs:564`](../source/home-mixer/scorers/ranking_scorer.rs#L564) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/scorers/ranking_scorer.rs:568`](../source/home-mixer/scorers/ranking_scorer.rs#L568) — `async fn score(`
+- [`home-mixer/scorers/ranking_scorer.rs:687`](../source/home-mixer/scorers/ranking_scorer.rs#L687) — `fn update(&self, candidate: &mut PostCandidate, scored: PostCandidate) {`
+- [`home-mixer/scorers/ranking_scorer.rs:702`](../source/home-mixer/scorers/ranking_scorer.rs#L702) — `fn test_scorer() -> RankingScorer {`
+- [`home-mixer/scorers/ranking_scorer.rs:711`](../source/home-mixer/scorers/ranking_scorer.rs#L711) — `fn query_with_flags(flags: &[(&str, &str)]) -> ScoredPostsQuery {`
+- [`home-mixer/scorers/ranking_scorer.rs:723`](../source/home-mixer/scorers/ranking_scorer.rs#L723) — `fn candidate(author_id: u64, in_network: Option<bool>) -> PostCandidate {`
+- [`home-mixer/scorers/ranking_scorer.rs:731`](../source/home-mixer/scorers/ranking_scorer.rs#L731) — `fn candidate_with_reply(author_id: u64, in_network: Option<bool>) -> PostCandidate {`
+- [`home-mixer/scorers/ranking_scorer.rs:740`](../source/home-mixer/scorers/ranking_scorer.rs#L740) — `fn candidate_with_retweet(author_id: u64, in_network: Option<bool>) -> PostCandidate {`
+- [`home-mixer/scorers/ranking_scorer.rs:750`](../source/home-mixer/scorers/ranking_scorer.rs#L750) — `async fn applies_author_diversity_decay_in_score_order() {`
+- [`home-mixer/scorers/ranking_scorer.rs:778`](../source/home-mixer/scorers/ranking_scorer.rs#L778) — `async fn recomputes_contexts_for_scoring_on_cached_posts() {`
+- [`home-mixer/scorers/ranking_scorer.rs:813`](../source/home-mixer/scorers/ranking_scorer.rs#L813) — `async fn falls_back_to_pool_recompute_when_stored_missing() {`
+- [`home-mixer/scorers/ranking_scorer.rs:838`](../source/home-mixer/scorers/ranking_scorer.rs#L838) — `async fn applies_oon_discount_to_out_of_network() {`
+- [`home-mixer/scorers/ranking_scorer.rs:852`](../source/home-mixer/scorers/ranking_scorer.rs#L852) — `fn video_open_head_is_weighted_into_score() {`
+- [`home-mixer/scorers/ranking_scorer.rs:879`](../source/home-mixer/scorers/ranking_scorer.rs#L879) — `fn post_unexplored_additive_when_multiplicative_disabled() {`
+- [`home-mixer/scorers/ranking_scorer.rs:915`](../source/home-mixer/scorers/ranking_scorer.rs#L915) — `fn post_unexplored_test_flags<'a>(extra: &[(&'a str, &'a str)]) -> Vec<(&'a str, &'a str)> {`
+- [`home-mixer/scorers/ranking_scorer.rs:958`](../source/home-mixer/scorers/ranking_scorer.rs#L958) — `fn post_unexplored_candidate(`
+- [`home-mixer/scorers/ranking_scorer.rs:974`](../source/home-mixer/scorers/ranking_scorer.rs#L974) — `fn multiplicative_post_unexplored_modulates_only_the_dwell_time_term() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1000`](../source/home-mixer/scorers/ranking_scorer.rs#L1000) — `fn post_unexplored_in_network_only_zeroes_additive_term_for_oon() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1020`](../source/home-mixer/scorers/ranking_scorer.rs#L1020) — `fn post_unexplored_in_network_only_skips_multiplicative_modulation_for_oon() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1048`](../source/home-mixer/scorers/ranking_scorer.rs#L1048) — `fn bidirectional_weight_boosts_only_mutual_original_posts() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1091`](../source/home-mixer/scorers/ranking_scorer.rs#L1091) — `fn bidirectional_weight_zero_boost_is_noop() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1115`](../source/home-mixer/scorers/ranking_scorer.rs#L1115) — `async fn fs_off_does_not_discount_in_network_replies_or_retweets() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1139`](../source/home-mixer/scorers/ranking_scorer.rs#L1139) — `async fn fs_on_applies_oon_discount_to_in_network_replies_and_retweets() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1171`](../source/home-mixer/scorers/ranking_scorer.rs#L1171) — `async fn new_user_applies_new_user_oon_weight() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1195`](../source/home-mixer/scorers/ranking_scorer.rs#L1195) — `async fn new_user_oon_weight_skipped_when_threshold_zero() {`
+- [`home-mixer/scorers/ranking_scorer.rs:1219`](../source/home-mixer/scorers/ranking_scorer.rs#L1219) — `async fn new_user_oon_weight_skipped_below_min_following() {`
+- [`home-mixer/scorers/vm_ranker.rs:13`](../source/home-mixer/scorers/vm_ranker.rs#L13) — `const DPP_VALUE_MODEL_ID: &str = "dpp";`
+- [`home-mixer/scorers/vm_ranker.rs:14`](../source/home-mixer/scorers/vm_ranker.rs#L14) — `const METRIC_PREFIX: &str = "VMRanker";`
+- [`home-mixer/scorers/vm_ranker.rs:16`](../source/home-mixer/scorers/vm_ranker.rs#L16) — `pub struct VMRanker {`
+- [`home-mixer/scorers/vm_ranker.rs:22`](../source/home-mixer/scorers/vm_ranker.rs#L22) — `async fn rank(`
+- [`home-mixer/scorers/vm_ranker.rs:55`](../source/home-mixer/scorers/vm_ranker.rs#L55) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/scorers/vm_ranker.rs:59`](../source/home-mixer/scorers/vm_ranker.rs#L59) — `async fn score(`
+- [`home-mixer/scorers/vm_ranker.rs:120`](../source/home-mixer/scorers/vm_ranker.rs#L120) — `fn update(&self, candidate: &mut PostCandidate, scored: PostCandidate) {`
+- [`home-mixer/scorers/vm_ranker.rs:125`](../source/home-mixer/scorers/vm_ranker.rs#L125) — `fn record_request_mode(mode: &str) {`
+- [`home-mixer/scorers/vm_ranker.rs:131`](../source/home-mixer/scorers/vm_ranker.rs#L131) — `fn record_fallback(reason: &str, candidate_count: usize) {`
+- [`home-mixer/scorers/vm_ranker.rs:141`](../source/home-mixer/scorers/vm_ranker.rs#L141) — `fn build_request(`
+- [`home-mixer/scorers/vm_ranker_request.rs:6`](../source/home-mixer/scorers/vm_ranker_request.rs#L6) — `pub(crate) fn write_value_model_inputs(`
+- [`home-mixer/scorers/vm_ranker_request.rs:16`](../source/home-mixer/scorers/vm_ranker_request.rs#L16) — `pub(crate) fn write_candidate_inputs(candidate: &PostCandidate, out: &mut pb::RankCandidate) {`
+- [`home-mixer/scorers/vm_ranker_request.rs:28`](../source/home-mixer/scorers/vm_ranker_request.rs#L28) — `fn viewer_context_proto(inputs: &FsRecipientInputs) -> pb::ViewerContext {`
+- [`home-mixer/scorers/vm_ranker_request.rs:45`](../source/home-mixer/scorers/vm_ranker_request.rs#L45) — `fn phoenix_scores_proto(s: &PhoenixScores) -> pb::PhoenixScores {`
+- [`home-mixer/selectors/blender_selector.rs:17`](../source/home-mixer/selectors/blender_selector.rs#L17) — `pub struct BlenderSelector {`
+- [`home-mixer/selectors/blender_selector.rs:24`](../source/home-mixer/selectors/blender_selector.rs#L24) — `pub fn new() -> Self {`
+- [`home-mixer/selectors/blender_selector.rs:34`](../source/home-mixer/selectors/blender_selector.rs#L34) — `fn select(`
+- [`home-mixer/selectors/blender_selector.rs:97`](../source/home-mixer/selectors/blender_selector.rs#L97) — `fn score(&self, _candidate: &FeedItem) -> f64 {`
+- [`home-mixer/selectors/blender_selector.rs:102`](../source/home-mixer/selectors/blender_selector.rs#L102) — `fn insert_prompts(blended: &mut Vec<FeedItem>, prompts: Vec<Prompt>) {`
+- [`home-mixer/selectors/blender_selector.rs:114`](../source/home-mixer/selectors/blender_selector.rs#L114) — `fn insert_who_to_follow(blended: &mut Vec<FeedItem>, wtf_modules: Vec<WhoToFollowModule>) {`
+- [`home-mixer/selectors/blender_selector.rs:128`](../source/home-mixer/selectors/blender_selector.rs#L128) — `fn pin_push_to_home(blended: &mut Vec<FeedItem>, push_to_home: Option<PushToHomePost>) {`
+- [`home-mixer/selectors/blender_selector.rs:141`](../source/home-mixer/selectors/blender_selector.rs#L141) — `fn insert_frames(blended: &mut Vec<FeedItem>, frames: Vec<Frame>) {`
+- [`home-mixer/selectors/blender_selector.rs:149`](../source/home-mixer/selectors/blender_selector.rs#L149) — `fn insert_planned_frames(blended: &mut Vec<FeedItem>, planned: Vec<(usize, Frame)>) {`
+- [`home-mixer/selectors/blender_selector.rs:164`](../source/home-mixer/selectors/blender_selector.rs#L164) — `fn insert_feed_survey(blended: &mut Vec<FeedItem>, feed_survey: Option<FeedSurvey>) {`
+- [`home-mixer/selectors/blender_selector.rs:178`](../source/home-mixer/selectors/blender_selector.rs#L178) — `fn build_non_selected_placeholders(dropped_posts: usize, dropped_ads: usize) -> Vec<FeedItem> {`
+- [`home-mixer/selectors/blender_selector.rs:195`](../source/home-mixer/selectors/blender_selector.rs#L195) — `struct PartitionedFeedItems {`
+- [`home-mixer/selectors/blender_selector.rs:205`](../source/home-mixer/selectors/blender_selector.rs#L205) — `fn partition_feed_items(items: Vec<FeedItem>) -> PartitionedFeedItems {`
+- [`home-mixer/selectors/blender_selector.rs:240`](../source/home-mixer/selectors/blender_selector.rs#L240) — `fn frame(route: &str) -> Frame {`
+- [`home-mixer/selectors/blender_selector.rs:252`](../source/home-mixer/selectors/blender_selector.rs#L252) — `fn post_item() -> FeedItem {`
+- [`home-mixer/selectors/blender_selector.rs:259`](../source/home-mixer/selectors/blender_selector.rs#L259) — `fn routes(items: &[FeedItem]) -> Vec<String> {`
+- [`home-mixer/selectors/blender_selector.rs:270`](../source/home-mixer/selectors/blender_selector.rs#L270) — `fn every_frame_is_retained_by_the_partition() {`
+- [`home-mixer/selectors/blender_selector.rs:285`](../source/home-mixer/selectors/blender_selector.rs#L285) — `fn frames_sharing_a_slot_keep_their_planned_order() {`
+- [`home-mixer/selectors/blender_selector.rs:298`](../source/home-mixer/selectors/blender_selector.rs#L298) — `fn frame_indices(items: &[FeedItem]) -> Vec<usize> {`
+- [`home-mixer/selectors/blender_selector.rs:307`](../source/home-mixer/selectors/blender_selector.rs#L307) — `fn gaps_between(indices: &[usize]) -> Vec<usize> {`
+- [`home-mixer/selectors/blender_selector.rs:314`](../source/home-mixer/selectors/blender_selector.rs#L314) — `fn nfl_cards(count: u32) -> Vec<Frame> {`
+- [`home-mixer/selectors/blender_selector.rs:324`](../source/home-mixer/selectors/blender_selector.rs#L324) — `fn exactly_seven_feed_items_sit_between_consecutive_nfl_cards() {`
+- [`home-mixer/selectors/blender_selector.rs:331`](../source/home-mixer/selectors/blender_selector.rs#L331) — `fn the_spacing_holds_when_only_some_payloads_come_back() {`
+- [`home-mixer/selectors/blender_selector.rs:352`](../source/home-mixer/selectors/blender_selector.rs#L352) — `fn pinned_frames_stack_without_an_organic_post_between_them() {`
+- [`home-mixer/selectors/blender_selector.rs:365`](../source/home-mixer/selectors/blender_selector.rs#L365) — `fn the_pinned_nfl_card_sits_above_organic_posts() {`
+- [`home-mixer/selectors/following_blender_selector.rs:11`](../source/home-mixer/selectors/following_blender_selector.rs#L11) — `pub struct FollowingBlenderSelector;`
+- [`home-mixer/selectors/following_blender_selector.rs:14`](../source/home-mixer/selectors/following_blender_selector.rs#L14) — `pub fn new() -> Self {`
+- [`home-mixer/selectors/following_blender_selector.rs:20`](../source/home-mixer/selectors/following_blender_selector.rs#L20) — `fn select(`
+- [`home-mixer/selectors/following_blender_selector.rs:64`](../source/home-mixer/selectors/following_blender_selector.rs#L64) — `fn score(&self, _candidate: &FeedItem) -> f64 {`
+- [`home-mixer/selectors/following_blender_selector.rs:69`](../source/home-mixer/selectors/following_blender_selector.rs#L69) — `fn insert_prompts(blended: &mut Vec<FeedItem>, prompts: Vec<Prompt>) {`
+- [`home-mixer/selectors/following_blender_selector.rs:81`](../source/home-mixer/selectors/following_blender_selector.rs#L81) — `fn insert_who_to_follow(blended: &mut Vec<FeedItem>, wtf_modules: Vec<WhoToFollowModule>) {`
+- [`home-mixer/selectors/following_blender_selector.rs:95`](../source/home-mixer/selectors/following_blender_selector.rs#L95) — `fn build_non_selected_placeholders(dropped_posts: usize, dropped_ads: usize) -> Vec<FeedItem> {`
+- [`home-mixer/selectors/following_blender_selector.rs:112`](../source/home-mixer/selectors/following_blender_selector.rs#L112) — `struct PartitionedFeedItems {`
+- [`home-mixer/selectors/following_blender_selector.rs:119`](../source/home-mixer/selectors/following_blender_selector.rs#L119) — `fn partition_feed_items(items: Vec<FeedItem>) -> PartitionedFeedItems {`
+- [`home-mixer/selectors/passthrough_selector.rs:5`](../source/home-mixer/selectors/passthrough_selector.rs#L5) — `pub struct PassthroughSelector;`
+- [`home-mixer/selectors/passthrough_selector.rs:8`](../source/home-mixer/selectors/passthrough_selector.rs#L8) — `fn score(&self, candidate: &PostCandidate) -> f64 {`
+- [`home-mixer/selectors/top_k_score_selector.rs:6`](../source/home-mixer/selectors/top_k_score_selector.rs#L6) — `pub struct TopKScoreSelector;`
+- [`home-mixer/selectors/top_k_score_selector.rs:9`](../source/home-mixer/selectors/top_k_score_selector.rs#L9) — `fn score(&self, candidate: &PostCandidate) -> f64 {`
+- [`home-mixer/selectors/top_k_score_selector.rs:12`](../source/home-mixer/selectors/top_k_score_selector.rs#L12) — `fn size(&self) -> Option<usize> {`
+- [`home-mixer/server.rs:45`](../source/home-mixer/server.rs#L45) — `const VIEWER_ROLES_TIMEOUT_MS: u64 = 200;`
+- [`home-mixer/server.rs:47`](../source/home-mixer/server.rs#L47) — `pub struct RequestContext {`
+- [`home-mixer/server.rs:53`](../source/home-mixer/server.rs#L53) — `pub(crate) struct PipelineOutput {`
+- [`home-mixer/server.rs:58`](../source/home-mixer/server.rs#L58) — `pub struct HomeMixerConfig {`
+- [`home-mixer/server.rs:65`](../source/home-mixer/server.rs#L65) — `pub struct QueryBuilder {`
+- [`home-mixer/server.rs:74`](../source/home-mixer/server.rs#L74) — `pub async fn build(`
+- [`home-mixer/server.rs:178`](../source/home-mixer/server.rs#L178) — `fn evaluate_feature_switches(`
+- [`home-mixer/server.rs:198`](../source/home-mixer/server.rs#L198) — `async fn fetch_viewer_data(&self, viewer_id: u64) -> ViewerData {`
+- [`home-mixer/server.rs:210`](../source/home-mixer/server.rs#L210) — `async fn fetch_resurrection_time(&self, user_id: u64) -> Option<i64> {`
+- [`home-mixer/server.rs:229`](../source/home-mixer/server.rs#L229) — `pub fn mock() -> Self {`
+- [`home-mixer/server.rs:240`](../source/home-mixer/server.rs#L240) — `pub struct HomeMixerServer {`
+- [`home-mixer/server.rs:251`](../source/home-mixer/server.rs#L251) — `async fn get_scored_posts(`
+- [`home-mixer/server.rs:281`](../source/home-mixer/server.rs#L281) — `async fn get_debug_scored_posts(`
+- [`home-mixer/server.rs:324`](../source/home-mixer/server.rs#L324) — `async fn get_for_you_feed(`
+- [`home-mixer/server.rs:358`](../source/home-mixer/server.rs#L358) — `async fn get_for_you_feed_urt(`
+- [`home-mixer/server.rs:415`](../source/home-mixer/server.rs#L415) — `async fn get_debug_for_you_feed(`
+- [`home-mixer/server.rs:453`](../source/home-mixer/server.rs#L453) — `async fn get_debug_for_you_feed_urt(`
+- [`home-mixer/server.rs:519`](../source/home-mixer/server.rs#L519) — `async fn get_ranked_following_feed_urt(`
+- [`home-mixer/server.rs:577`](../source/home-mixer/server.rs#L577) — `async fn get_debug_ranked_following_feed(`
+- [`home-mixer/server.rs:622`](../source/home-mixer/server.rs#L622) — `async fn get_following_feed_urt(`
+- [`home-mixer/server.rs:680`](../source/home-mixer/server.rs#L680) — `async fn get_debug_following_feed(`
+- [`home-mixer/server.rs:722`](../source/home-mixer/server.rs#L722) — `async fn get_phoenix_scores(`
+- [`home-mixer/server.rs:757`](../source/home-mixer/server.rs#L757) — `async fn get_debug_phoenix_scores(`
+- [`home-mixer/server.rs:802`](../source/home-mixer/server.rs#L802) — `type Config = HomeMixerConfig;`
+- [`home-mixer/server.rs:804`](../source/home-mixer/server.rs#L804) — `async fn build(ctx: xai_x_service_builder::ServiceContext<HomeMixerConfig>) -> Self {`
+- [`home-mixer/server.rs:912`](../source/home-mixer/server.rs#L912) — `fn register(self: Arc<Self>, routes: &mut tonic::service::RoutesBuilder) {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:20`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L20) — `pub struct AdsInjectionLoggingSideEffect {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:25`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L25) — `pub fn new(kafka_client: Arc<dyn KafkaPublisherClient>) -> Self {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:29`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L29) — `pub async fn prod() -> Self {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:38`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L38) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:42`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L42) — `async fn side_effect(`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:120`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L120) — `fn build_timeline_entry(item: &FeedItem, position: usize) -> TimelineEntry {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:154`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L154) — `fn slim_ad_info(ad: &AdIndexInfo) -> AdIndexInfo {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:168`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L168) — `fn sub_level_to_proto(level: CoreSubscriptionLevel) -> SubscriptionLevel {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:176`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L176) — `fn count_posts(items: &[FeedItem]) -> usize {`
+- [`home-mixer/side_effects/ads_injection_logging_side_effect.rs:183`](../source/home-mixer/side_effects/ads_injection_logging_side_effect.rs#L183) — `fn count_ads(items: &[FeedItem]) -> usize {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:11`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L11) — `const SERVED_METRIC: &str = "AuthorServedMetrics.Served";`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:12`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L12) — `const REQUESTS_METRIC: &str = "AuthorServedMetrics.Requests";`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:15`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L15) — `enum PostType {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:22`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L22) — `fn classify(candidate: &PostCandidate) -> Self {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:32`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L32) — `fn as_str(self) -> &'static str {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:41`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L41) — `pub struct AuthorServedMetricsSideEffect;`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:45`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L45) — `async fn side_effect(`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:101`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L101) — `fn aggregate_counts(`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:120`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L120) — `fn original(author_id: u64) -> PostCandidate {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:127`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L127) — `fn reply(author_id: u64) -> PostCandidate {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:135`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L135) — `fn retweet(author_id: u64) -> PostCandidate {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:145`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L145) — `fn classify_distinguishes_types() {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:152`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L152) — `fn retweet_takes_precedence_over_reply() {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:159`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L159) — `fn aggregate_counts_filters_untracked_and_buckets_by_type() {`
+- [`home-mixer/side_effects/author_served_metrics_side_effect.rs:181`](../source/home-mixer/side_effects/author_served_metrics_side_effect.rs#L181) — `fn aggregate_counts_empty_when_no_tracked_match() {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:20`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L20) — `pub struct ClientEventsKafkaSideEffect {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:25`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L25) — `pub fn new(kafka_client: Arc<dyn KafkaPublisherClient>) -> Self {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:29`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L29) — `pub async fn prod() -> Self {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:38`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L38) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:42`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L42) — `async fn side_effect(`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:104`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L104) — `fn conversation_post_count(post: &ScoredPost) -> i64 {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:120`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L120) — `fn section_for(request_type: RequestType) -> &'static str {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:128`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L128) — `fn build_served_events(`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:158`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L158) — `fn build_tweet_type_events(base: &ClientEventParams, posts: &[&ScoredPost]) -> Vec<LogEvent> {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:176`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L176) — `fn build_served_type_events(base: &ClientEventParams, posts: &[&ScoredPost]) -> Vec<LogEvent> {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:192`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L192) — `fn build_video_events(base: &ClientEventParams, posts: &[&ScoredPost]) -> Vec<LogEvent> {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:205`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L205) — `fn build_empty_timeline_events(base: &ClientEventParams, post_count: i64) -> Vec<LogEvent> {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:216`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L216) — `fn build_query_events(base: &ClientEventParams, post_count: i64) -> Vec<LogEvent> {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:262`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L262) — `struct ClientEventParams<'a> {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:272`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L272) — `fn build_log_event(p: &ClientEventParams) -> LogEvent {`
+- [`home-mixer/side_effects/client_events_kafka_side_effect.rs:282`](../source/home-mixer/side_effects/client_events_kafka_side_effect.rs#L282) — `fn base_build_log_event(`
+- [`home-mixer/side_effects/debug_side_effect.rs:10`](../source/home-mixer/side_effects/debug_side_effect.rs#L10) — `const CANDIDATES_METRIC: &str = "DebugSideEffect.candidates";`
+- [`home-mixer/side_effects/debug_side_effect.rs:12`](../source/home-mixer/side_effects/debug_side_effect.rs#L12) — `pub struct DebugSideEffect;`
+- [`home-mixer/side_effects/debug_side_effect.rs:16`](../source/home-mixer/side_effects/debug_side_effect.rs#L16) — `async fn side_effect(`
+- [`home-mixer/side_effects/mutual_follow_stats_side_effect.rs:12`](../source/home-mixer/side_effects/mutual_follow_stats_side_effect.rs#L12) — `const METRIC_PREFIX: &str = "MutualFollowJaccard";`
+- [`home-mixer/side_effects/mutual_follow_stats_side_effect.rs:14`](../source/home-mixer/side_effects/mutual_follow_stats_side_effect.rs#L14) — `pub struct MutualFollowStatsSideEffect;`
+- [`home-mixer/side_effects/mutual_follow_stats_side_effect.rs:18`](../source/home-mixer/side_effects/mutual_follow_stats_side_effect.rs#L18) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/mutual_follow_stats_side_effect.rs:22`](../source/home-mixer/side_effects/mutual_follow_stats_side_effect.rs#L22) — `async fn side_effect(`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:23`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L23) — `pub struct PhoenixExperimentsSideEffect {`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:31`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L31) — `pub fn new(`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:48`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L48) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:52`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L52) — `async fn side_effect(`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:188`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L188) — `fn insert_cluster_scores(`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:232`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L232) — `fn build_logged_scored_candidate(`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:270`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L270) — `fn prefixes_present_heads_with_cluster() {`
+- [`home-mixer/side_effects/phoenix_experiments_side_effect.rs:298`](../source/home-mixer/side_effects/phoenix_experiments_side_effect.rs#L298) — `fn copies_candidate_identity_and_features() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:18`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L18) — `const KEY_PREFIX: &str = "phoenix_request_cache";`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:19`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L19) — `const ZSTD_COMPRESSION_LEVEL: i32 = 3;`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:21`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L21) — `fn encode_cache_value<T: Message>(message: &T) -> Result<Vec<u8>, String> {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:26`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L26) — `pub struct PhoenixRequestCacheSideEffect {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:32`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L32) — `pub fn new(`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:43`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L43) — `pub fn request_level_cache_key(prediction_request_id: u64) -> String {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:47`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L47) — `pub fn candidate_cache_key(prediction_request_id: u64, post_id: u64) -> String {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:53`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L53) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:57`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L57) — `async fn side_effect(`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:156`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L156) — `const TEST_PREDICTION_REQUEST_ID: u64 = 99;`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:158`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L158) — `fn test_query() -> Arc<ScoredPostsQuery> {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:165`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L165) — `fn candidate(tweet_id: u64, author_id: u64) -> PostCandidate {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:174`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L174) — `async fn decode_tweet_info(redis_client: &MockRedisClient, key: &str) -> TweetInfo {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:184`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L184) — `async fn decode_request(`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:197`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L197) — `fn test_query_with_flags(flags: &[(&str, &str)]) -> Arc<ScoredPostsQuery> {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:213`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L213) — `async fn attaches_score_info_when_slate_context_logging_enabled() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:279`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L279) — `async fn omits_score_info_when_slate_context_logging_disabled() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:304`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L304) — `async fn writes_request_and_candidate_entries() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:356`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L356) — `async fn writes_to_xdc_redis() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:399`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L399) — `async fn skips_request_write_for_cached_posts() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:434`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L434) — `async fn skips_when_no_prediction_request_id() {`
+- [`home-mixer/side_effects/phoenix_request_cache_side_effect.rs:458`](../source/home-mixer/side_effects/phoenix_request_cache_side_effect.rs#L458) — `async fn skips_when_no_candidates() {`
+- [`home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs:17`](../source/home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs#L17) — `pub struct PublishSeenIdsToKafkaSideEffect {`
+- [`home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs:22`](../source/home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs#L22) — `pub fn new(kafka_client: Arc<dyn KafkaPublisherClient>) -> Self {`
+- [`home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs:26`](../source/home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs#L26) — `pub async fn prod() -> Self {`
+- [`home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs:36`](../source/home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs#L36) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs:40`](../source/home-mixer/side_effects/publish_seen_ids_to_kafka_side_effect.rs#L40) — `async fn side_effect(`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:10`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L10) — `const REDIS_TTL_SECONDS: u64 = 180;`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:11`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L11) — `const ZSTD_COMPRESSION_LEVEL: i32 = 6;`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:13`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L13) — `pub struct RedisPostCandidateCacheSideEffect {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:18`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L18) — `pub fn new(redis_client: Arc<dyn RedisClient>) -> Self {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:22`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L22) — `fn get_candidates_to_cache<'a>(`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:45`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L45) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:49`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L49) — `async fn side_effect(`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:100`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L100) — `fn test_query() -> Arc<ScoredPostsQuery> {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:104`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L104) — `fn candidate(tweet_id: u64, author_id: u64, score: Option<f64>) -> PostCandidate {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:114`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L114) — `async fn redis_side_effect_writes_payload_with_ttl() {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:156`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L156) — `async fn caches_selected_and_non_selected_sorted_by_score_desc() {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:194`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L194) — `fn get_candidates_to_cache_truncates_to_max() {`
+- [`home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs:215`](../source/home-mixer/side_effects/redis_post_candidate_cache_side_effect.rs#L215) — `fn get_candidates_to_cache_filters_none_and_zero_scores() {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:14`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L14) — `const TOP_K: usize = 50;`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:16`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L16) — `pub struct RerankingKafkaSideEffect {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:21`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L21) — `pub fn new(kafka_client: Arc<dyn KafkaPublisherClient>) -> Self {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:28`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L28) — `fn enable(&self, _query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:32`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L32) — `async fn side_effect(`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:98`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L98) — `fn build_scored_candidate(candidate: &PostCandidate, position: i32) -> pb::ScoredCandidate {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:179`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L179) — `fn insert_score(map: &mut HashMap<String, f64>, name: &str, value: Option<f64>) {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:192`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L192) — `fn default_weights_map() -> HashMap<String, f64> {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:197`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L197) — `fn applied_weights_match_param_defaults() {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:212`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L212) — `fn every_logged_head_has_an_applied_weight() {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:235`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L235) — `fn logs_previously_missing_heads() {`
+- [`home-mixer/side_effects/reranking_kafka_side_effect.rs:261`](../source/home-mixer/side_effects/reranking_kafka_side_effect.rs#L261) — `fn passes_through_weight_context_fields() {`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:13`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L13) — `const METRIC_PREFIX: &str = "ResponseDiversity";`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:14`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L14) — `const DEFAULT_SAMPLING_RATE: f64 = 0.05;`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:15`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L15) — `const TOP_POSITIONS: usize = 10;`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:17`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L17) — `const STAGE_FINAL: &str = "final";`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:18`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L18) — `const STAGE_TOP10: &str = "top10";`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:19`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L19) — `const STAGE_PRE_HEURISTIC: &str = "pre_heuristic";`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:21`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L21) — `pub struct ResponseDiversityStatsSideEffect;`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:25`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L25) — `async fn side_effect(`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:71`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L71) — `fn sorted_desc<'a>(`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:85`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L85) — `fn pre_heuristic_top_k<'a>(`
+- [`home-mixer/side_effects/response_diversity_stats_side_effect.rs:97`](../source/home-mixer/side_effects/response_diversity_stats_side_effect.rs#L97) — `fn record_stage(`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:16`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L16) — `const TYPE_TOTAL: (&str, &str) = ("type", "total");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:17`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L17) — `const TYPE_POSTS: (&str, &str) = ("type", "posts");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:18`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L18) — `const TYPE_ADS: (&str, &str) = ("type", "ads");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:19`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L19) — `const TYPE_EMPTY_ADS: (&str, &str) = ("type", "empty_ads");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:20`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L20) — `const TYPE_EMPTY_POSTS: (&str, &str) = ("type", "empty_posts");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:21`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L21) — `const TYPE_SUFFICIENT_ADS: (&str, &str) = ("type", "sufficient_ads");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:22`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L22) — `const TYPE_SUFFICIENT_POSTS: (&str, &str) = ("type", "sufficient_posts");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:23`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L23) — `const STAGE_RESPONSE: (&str, &str) = ("stage", "response");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:24`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L24) — `const STAGE_FETCHED: (&str, &str) = ("stage", "fetched");`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:26`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L26) — `pub struct ResponseStatsSideEffect;`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:30`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L30) — `async fn side_effect(`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:63`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L63) — `fn stat_response(`
+- [`home-mixer/side_effects/response_stats_side_effect.rs:127`](../source/home-mixer/side_effects/response_stats_side_effect.rs#L127) — `fn stat_request_context(feed: &str, query: &ScoredPostsQuery) {`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:17`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L17) — `pub struct RetrievalCandidatesKafkaSideEffect {`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:22`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L22) — `pub fn new(kafka_client: Arc<dyn KafkaPublisherClient>) -> Self {`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:27`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L27) — `fn candidate_record(`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:54`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L54) — `fn build_batch(`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:97`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L97) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:107`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L107) — `async fn side_effect(`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:129`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L129) — `fn post(tweet_id: u64, served_type: ServedType, score: Option<f64>) -> PostCandidate {`
+- [`home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs:140`](../source/home-mixer/side_effects/retrieval_candidates_kafka_side_effect.rs#L140) — `fn batch_covers_selected_and_non_selected_candidates() {`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:19`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L19) — `const METRIC_PREFIX: &str = "ScoredStats";`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:21`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L21) — `const PRESENT_SCOPE: [(&str, &str); 1] = [("score_status", "present")];`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:22`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L22) — `const MISSING_SCOPE: [(&str, &str); 1] = [("score_status", "missing")];`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:24`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L24) — `const HEAVY_RANKER_TOP_K: &[usize] = &[1, 10, 35];`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:26`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L26) — `const PHOENIX_RETRIEVAL_TOP_K: &[u32] = &[10, 100, 200, 500, 1000];`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:28`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L28) — `const DEFAULT_SAMPLING_RATE: f64 = 0.05;`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:30`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L30) — `pub struct ScoredStatsSideEffect;`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:34`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L34) — `fn enable(&self, _query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:38`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L38) — `async fn side_effect(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:134`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L134) — `fn record_served_by_source(receiver: &dyn StatsReceiverExt, selected_candidates: &[PostCandidate]) {`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:154`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L154) — `fn record_retrieval_source_contribution(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:221`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L221) — `fn within_top_k(candidate: &PostCandidate, source: ServedType, k: Option<u32>) -> bool {`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:228`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L228) — `fn record_head(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:245`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L245) — `fn record_head_with_buckets(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:284`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L284) — `fn record_score_distributions<'a>(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:374`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L374) — `fn record_trace_author_score_distributions(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:410`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L410) — `fn post_type(candidate: &PostCandidate) -> &'static str {`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:420`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L420) — `fn record_trace_author_served_by_type(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:463`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L463) — `fn record_phoenix_retrieval_stats(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:481`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L481) — `fn record_phoenix_retrieval_moe_stats(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:499`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L499) — `fn record_phoenix_retrieval_cold_stats(`
+- [`home-mixer/side_effects/scored_stats_side_effect.rs:517`](../source/home-mixer/side_effects/scored_stats_side_effect.rs#L517) — `fn record_retrieval_source_stats(`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:12`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L12) — `const AD_HISTORY_CACHE_TTL: Duration = Duration::from_secs(5 * 60);`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:14`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L14) — `pub struct ServedAdHistoryCacheSideEffect {`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:19`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L19) — `pub fn new(store: Arc<dyn UserAdHistoryStore>) -> Self {`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:23`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L23) — `pub async fn prod(datacenter: &str) -> Self {`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:29`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L29) — `fn ads_in_feed(items: &[FeedItem]) -> Vec<&AdIndexInfo> {`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:41`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L41) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/served_ad_history_cache_side_effect.rs:45`](../source/home-mixer/side_effects/served_ad_history_cache_side_effect.rs#L45) — `async fn side_effect(`
+- [`home-mixer/side_effects/served_candidates_kafka_side_effect.rs:19`](../source/home-mixer/side_effects/served_candidates_kafka_side_effect.rs#L19) — `pub struct ServedCandidatesKafkaSideEffect {`
+- [`home-mixer/side_effects/served_candidates_kafka_side_effect.rs:24`](../source/home-mixer/side_effects/served_candidates_kafka_side_effect.rs#L24) — `pub fn new(kafka_client: Arc<dyn KafkaPublisherClient>) -> Self {`
+- [`home-mixer/side_effects/served_candidates_kafka_side_effect.rs:28`](../source/home-mixer/side_effects/served_candidates_kafka_side_effect.rs#L28) — `pub async fn prod() -> Self {`
+- [`home-mixer/side_effects/served_candidates_kafka_side_effect.rs:37`](../source/home-mixer/side_effects/served_candidates_kafka_side_effect.rs#L37) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/served_candidates_kafka_side_effect.rs:41`](../source/home-mixer/side_effects/served_candidates_kafka_side_effect.rs#L41) — `async fn side_effect(`
+- [`home-mixer/side_effects/served_candidates_kafka_side_effect.rs:122`](../source/home-mixer/side_effects/served_candidates_kafka_side_effect.rs#L122) — `fn build_entry_info(item: &FeedItem) -> Option<EntryInfo> {`
+- [`home-mixer/side_effects/truncate_served_history_side_effect.rs:11`](../source/home-mixer/side_effects/truncate_served_history_side_effect.rs#L11) — `const MAX_RESPONSES: usize = 50;`
+- [`home-mixer/side_effects/truncate_served_history_side_effect.rs:13`](../source/home-mixer/side_effects/truncate_served_history_side_effect.rs#L13) — `pub struct TruncateServedHistorySideEffect {`
+- [`home-mixer/side_effects/truncate_served_history_side_effect.rs:18`](../source/home-mixer/side_effects/truncate_served_history_side_effect.rs#L18) — `pub fn new(client: Arc<dyn ServedHistoryClient>) -> Self {`
+- [`home-mixer/side_effects/truncate_served_history_side_effect.rs:25`](../source/home-mixer/side_effects/truncate_served_history_side_effect.rs#L25) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/truncate_served_history_side_effect.rs:31`](../source/home-mixer/side_effects/truncate_served_history_side_effect.rs#L31) — `async fn side_effect(`
+- [`home-mixer/side_effects/update_past_request_timestamps_side_effect.rs:12`](../source/home-mixer/side_effects/update_past_request_timestamps_side_effect.rs#L12) — `const MAX_NON_POLLING_TIMES: usize = 10;`
+- [`home-mixer/side_effects/update_past_request_timestamps_side_effect.rs:14`](../source/home-mixer/side_effects/update_past_request_timestamps_side_effect.rs#L14) — `pub struct UpdatePastRequestTimestampsSideEffect {`
+- [`home-mixer/side_effects/update_past_request_timestamps_side_effect.rs:19`](../source/home-mixer/side_effects/update_past_request_timestamps_side_effect.rs#L19) — `pub fn new(client: Arc<dyn PastRequestTimestampsClient>) -> Self {`
+- [`home-mixer/side_effects/update_past_request_timestamps_side_effect.rs:26`](../source/home-mixer/side_effects/update_past_request_timestamps_side_effect.rs#L26) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/update_past_request_timestamps_side_effect.rs:35`](../source/home-mixer/side_effects/update_past_request_timestamps_side_effect.rs#L35) — `async fn side_effect(`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:21`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L21) — `pub struct UpdateServedHistorySideEffect {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:26`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L26) — `pub fn new(client: Arc<dyn ServedHistoryClient>) -> Self {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:33`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L33) — `fn enable(&self, query: Arc<ScoredPostsQuery>) -> bool {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:37`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L37) — `async fn side_effect(`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:80`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L80) — `fn request_type(query: &ScoredPostsQuery) -> RequestType {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:95`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L95) — `fn build_entries(feed_item: &FeedItem, position: i64) -> Vec<EntryWithItemIds> {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:112`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L112) — `fn build_post_entries(post: &ScoredPost, position: i64) -> Vec<EntryWithItemIds> {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:126`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L126) — `fn nonzero(v: u64) -> Option<i64> {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:134`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L134) — `fn build_tweet_entry(post: &ScoredPost, tweet_id: u64, position: i64) -> EntryWithItemIds {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:177`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L177) — `fn build_ad_entry(ad: &AdIndexInfo, position: i64) -> EntryWithItemIds {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:200`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L200) — `fn build_feed_survey_entry(position: i64) -> EntryWithItemIds {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:209`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L209) — `fn build_frame_entry(frame: &Frame, position: i64) -> Option<EntryWithItemIds> {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:234`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L234) — `fn build_prompt_entry(position: i64) -> EntryWithItemIds {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:243`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L243) — `fn build_push_to_home_entries(pth: &PushToHomePost, position: i64) -> Vec<EntryWithItemIds> {`
+- [`home-mixer/side_effects/update_served_history_side_effect.rs:283`](../source/home-mixer/side_effects/update_served_history_side_effect.rs#L283) — `fn build_wtf_entry(wtf: &WhoToFollowModule, position: i64) -> Option<EntryWithItemIds> {`
+- [`home-mixer/sources/ads_source.rs:10`](../source/home-mixer/sources/ads_source.rs#L10) — `pub struct AdsSource {`
+- [`home-mixer/sources/ads_source.rs:16`](../source/home-mixer/sources/ads_source.rs#L16) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/ads_source.rs:20`](../source/home-mixer/sources/ads_source.rs#L20) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/ads_source.rs:41`](../source/home-mixer/sources/ads_source.rs#L41) — `fn build_ad_index_request(query: &ScoredPostsQuery) -> AdIndexRequest {`
+- [`home-mixer/sources/ads_source.rs:82`](../source/home-mixer/sources/ads_source.rs#L82) — `fn ads_source() -> AdsSource {`
+- [`home-mixer/sources/ads_source.rs:89`](../source/home-mixer/sources/ads_source.rs#L89) — `fn enable_returns_false_when_is_preview() {`
+- [`home-mixer/sources/ads_source.rs:98`](../source/home-mixer/sources/ads_source.rs#L98) — `fn forwards_dsp_client_context_into_ad_index_request() {`
+- [`home-mixer/sources/ads_source.rs:123`](../source/home-mixer/sources/ads_source.rs#L123) — `fn omits_dsp_client_context_when_gsig_empty() {`
+- [`home-mixer/sources/ads_source.rs:139`](../source/home-mixer/sources/ads_source.rs#L139) — `fn omits_dsp_client_context_when_no_gsig() {`
+- [`home-mixer/sources/cached_posts_source.rs:6`](../source/home-mixer/sources/cached_posts_source.rs#L6) — `pub struct CachedPostsSource;`
+- [`home-mixer/sources/cached_posts_source.rs:10`](../source/home-mixer/sources/cached_posts_source.rs#L10) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/cached_posts_source.rs:14`](../source/home-mixer/sources/cached_posts_source.rs#L14) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/feed_survey_source.rs:7`](../source/home-mixer/sources/feed_survey_source.rs#L7) — `pub struct FeedSurveySource;`
+- [`home-mixer/sources/feed_survey_source.rs:11`](../source/home-mixer/sources/feed_survey_source.rs#L11) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/feed_survey_source.rs:15`](../source/home-mixer/sources/feed_survey_source.rs#L15) — `async fn source(&self, _query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/following_night_owl_source.rs:16`](../source/home-mixer/sources/following_night_owl_source.rs#L16) — `const BASE_FILTERS: &str = "filter:follows include:retweets include:protected include:spam";`
+- [`home-mixer/sources/following_night_owl_source.rs:17`](../source/home-mixer/sources/following_night_owl_source.rs#L17) — `const MAX_RESULTS: u32 = FOLLOWING_POST_FETCH_SIZE as u32;`
+- [`home-mixer/sources/following_night_owl_source.rs:18`](../source/home-mixer/sources/following_night_owl_source.rs#L18) — `const COLLECTOR_TIMEOUT_MS: u32 = 300;`
+- [`home-mixer/sources/following_night_owl_source.rs:19`](../source/home-mixer/sources/following_night_owl_source.rs#L19) — `const RECALL_MAX_AGE_SECS: i64 = 365 * 24 * 60 * 60;`
+- [`home-mixer/sources/following_night_owl_source.rs:21`](../source/home-mixer/sources/following_night_owl_source.rs#L21) — `pub struct FollowingNightOwlSource {`
+- [`home-mixer/sources/following_night_owl_source.rs:27`](../source/home-mixer/sources/following_night_owl_source.rs#L27) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/following_night_owl_source.rs:31`](../source/home-mixer/sources/following_night_owl_source.rs#L31) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/following_night_owl_source.rs:52`](../source/home-mixer/sources/following_night_owl_source.rs#L52) — `fn build_request(query: &ScoredPostsQuery) -> Result<night_owl::SearchRequest, String> {`
+- [`home-mixer/sources/following_night_owl_source.rs:87`](../source/home-mixer/sources/following_night_owl_source.rs#L87) — `fn base_query(request_time_ms: i64) -> String {`
+- [`home-mixer/sources/following_night_owl_source.rs:98`](../source/home-mixer/sources/following_night_owl_source.rs#L98) — `fn pagination_for_cursor(query: &ScoredPostsQuery) -> Result<(String, Pagination), String> {`
+- [`home-mixer/sources/following_night_owl_source.rs:131`](../source/home-mixer/sources/following_night_owl_source.rs#L131) — `fn from_size_pagination() -> Pagination {`
+- [`home-mixer/sources/following_night_owl_source.rs:140`](../source/home-mixer/sources/following_night_owl_source.rs#L140) — `fn fresh_since_pagination(since_id: u64) -> Pagination {`
+- [`home-mixer/sources/following_night_owl_source.rs:149`](../source/home-mixer/sources/following_night_owl_source.rs#L149) — `fn search_after_pagination(max_id: u64) -> Pagination {`
+- [`home-mixer/sources/following_night_owl_source.rs:159`](../source/home-mixer/sources/following_night_owl_source.rs#L159) — `fn pagination_cursor_bytes(tweet_id: u64) -> bytes::Bytes {`
+- [`home-mixer/sources/following_night_owl_source.rs:167`](../source/home-mixer/sources/following_night_owl_source.rs#L167) — `fn hit_to_post_candidate(hit: night_owl::SearchHit) -> PostCandidate {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:17`](../source/home-mixer/sources/jetfuel_frame_source.rs#L17) — `const PAYLOAD_FAILED_METRIC: &str = "JetfuelFrameSource.payload_failed";`
+- [`home-mixer/sources/jetfuel_frame_source.rs:19`](../source/home-mixer/sources/jetfuel_frame_source.rs#L19) — `const MAX_ORGANIC_FEED_LEN: usize = FOR_YOU_MAX_RESULT_SIZE - MAX_JETFUEL_FRAMES_PER_RESPONSE;`
+- [`home-mixer/sources/jetfuel_frame_source.rs:21`](../source/home-mixer/sources/jetfuel_frame_source.rs#L21) — `pub struct JetfuelFrameSource {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:27`](../source/home-mixer/sources/jetfuel_frame_source.rs#L27) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:31`](../source/home-mixer/sources/jetfuel_frame_source.rs#L31) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:119`](../source/home-mixer/sources/jetfuel_frame_source.rs#L119) — `fn params(soccer_enabled: bool) -> Params {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:131`](../source/home-mixer/sources/jetfuel_frame_source.rs#L131) — `fn query(soccer_enabled: bool, request_topics: Vec<i64>) -> ScoredPostsQuery {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:140`](../source/home-mixer/sources/jetfuel_frame_source.rs#L140) — `fn query_with(overrides: &[(&str, bool)], topic_ids: Vec<i64>) -> ScoredPostsQuery {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:156`](../source/home-mixer/sources/jetfuel_frame_source.rs#L156) — `fn nfl_query(nfl_enabled: bool) -> ScoredPostsQuery {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:163`](../source/home-mixer/sources/jetfuel_frame_source.rs#L163) — `fn source(payload: Option<(String, i32)>) -> JetfuelFrameSource {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:172`](../source/home-mixer/sources/jetfuel_frame_source.rs#L172) — `fn frames_of(items: &[FeedItem]) -> Vec<&Frame> {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:182`](../source/home-mixer/sources/jetfuel_frame_source.rs#L182) — `async fn emitted_routes(query: &ScoredPostsQuery) -> Vec<String> {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:191`](../source/home-mixer/sources/jetfuel_frame_source.rs#L191) — `fn enabled_when_configured_topic_is_requested() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:197`](../source/home-mixer/sources/jetfuel_frame_source.rs#L197) — `fn disabled_when_frame_fs_off() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:203`](../source/home-mixer/sources/jetfuel_frame_source.rs#L203) — `fn disabled_when_topic_not_requested() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:209`](../source/home-mixer/sources/jetfuel_frame_source.rs#L209) — `fn disabled_on_scroll_down_when_first_response_only() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:218`](../source/home-mixer/sources/jetfuel_frame_source.rs#L218) — `fn nfl_timeline_disabled_by_default_emits_nothing() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:223`](../source/home-mixer/sources/jetfuel_frame_source.rs#L223) — `async fn nfl_timeline_emits_the_pinned_card() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:238`](../source/home-mixer/sources/jetfuel_frame_source.rs#L238) — `async fn the_rotating_card_is_fetched_once_per_occurrence() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:271`](../source/home-mixer/sources/jetfuel_frame_source.rs#L271) — `async fn only_the_rotating_card_carries_a_rotation_index() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:327`](../source/home-mixer/sources/jetfuel_frame_source.rs#L327) — `async fn the_pinned_and_rotating_cards_are_emitted_together() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:350`](../source/home-mixer/sources/jetfuel_frame_source.rs#L350) — `const NFL_TIMELINE_ON: &[(&str, bool)] = &[`
+- [`home-mixer/sources/jetfuel_frame_source.rs:362`](../source/home-mixer/sources/jetfuel_frame_source.rs#L362) — `fn nfl_timeline_page(cards_already_served: &[u32]) -> ScoredPostsQuery {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:397`](../source/home-mixer/sources/jetfuel_frame_source.rs#L397) — `async fn rotation_indices(query: &ScoredPostsQuery) -> Vec<u32> {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:420`](../source/home-mixer/sources/jetfuel_frame_source.rs#L420) — `async fn the_rotation_picks_up_after_the_last_card_already_served() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:426`](../source/home-mixer/sources/jetfuel_frame_source.rs#L426) — `async fn three_pages_of_scrolling_never_ask_for_the_same_card_twice() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:445`](../source/home-mixer/sources/jetfuel_frame_source.rs#L445) — `async fn each_frame_carries_the_route_it_was_fetched_with() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:470`](../source/home-mixer/sources/jetfuel_frame_source.rs#L470) — `async fn baseball_topic_emits_mlb_carousel() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:481`](../source/home-mixer/sources/jetfuel_frame_source.rs#L481) — `const EVERY_FRAME_ON: &[(&str, bool)] = &[`
+- [`home-mixer/sources/jetfuel_frame_source.rs:495`](../source/home-mixer/sources/jetfuel_frame_source.rs#L495) — `const EVERY_TOPIC: &[i64] = &[`
+- [`home-mixer/sources/jetfuel_frame_source.rs:502`](../source/home-mixer/sources/jetfuel_frame_source.rs#L502) — `fn query_with_master_switch(enabled: bool, topic_id: i64) -> ScoredPostsQuery {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:509`](../source/home-mixer/sources/jetfuel_frame_source.rs#L509) — `async fn the_master_switch_stops_every_jetfuel_fetch() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:527`](../source/home-mixer/sources/jetfuel_frame_source.rs#L527) — `async fn source_emits_rendered_payload() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:543`](../source/home-mixer/sources/jetfuel_frame_source.rs#L543) — `async fn source_emits_nothing_when_payload_missing() {`
+- [`home-mixer/sources/jetfuel_frame_source.rs:549`](../source/home-mixer/sources/jetfuel_frame_source.rs#L549) — `async fn source_emits_nothing_when_disabled() {`
+- [`home-mixer/sources/phoenix_moe_source.rs:16`](../source/home-mixer/sources/phoenix_moe_source.rs#L16) — `pub const PHOENIX_MOE_SOURCE_KILL_SWITCH_DECIDER: &str = "disable_home_mixer_phoenix_moe_source";`
+- [`home-mixer/sources/phoenix_moe_source.rs:18`](../source/home-mixer/sources/phoenix_moe_source.rs#L18) — `pub struct PhoenixMOESource {`
+- [`home-mixer/sources/phoenix_moe_source.rs:24`](../source/home-mixer/sources/phoenix_moe_source.rs#L24) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/phoenix_moe_source.rs:35`](../source/home-mixer/sources/phoenix_moe_source.rs#L35) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/phoenix_moe_source.rs:84`](../source/home-mixer/sources/phoenix_moe_source.rs#L84) — `const ENABLE_FS: &str = "rust_home_mixer_enable_phoenix_moe_source";`
+- [`home-mixer/sources/phoenix_moe_source.rs:86`](../source/home-mixer/sources/phoenix_moe_source.rs#L86) — `fn source() -> PhoenixMOESource {`
+- [`home-mixer/sources/phoenix_moe_source.rs:95`](../source/home-mixer/sources/phoenix_moe_source.rs#L95) — `fn query(kill_switch: Option<bool>) -> ScoredPostsQuery {`
+- [`home-mixer/sources/phoenix_moe_source.rs:117`](../source/home-mixer/sources/phoenix_moe_source.rs#L117) — `fn enable_when_kill_switch_absent() {`
+- [`home-mixer/sources/phoenix_moe_source.rs:122`](../source/home-mixer/sources/phoenix_moe_source.rs#L122) — `fn disable_when_kill_switch_on() {`
+- [`home-mixer/sources/phoenix_source.rs:18`](../source/home-mixer/sources/phoenix_source.rs#L18) — `pub struct PhoenixSource {`
+- [`home-mixer/sources/phoenix_source.rs:23`](../source/home-mixer/sources/phoenix_source.rs#L23) — `pub(crate) fn resolve_cluster(query: &ScoredPostsQuery) -> PhoenixRetrievalCluster {`
+- [`home-mixer/sources/phoenix_source.rs:64`](../source/home-mixer/sources/phoenix_source.rs#L64) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/phoenix_source.rs:71`](../source/home-mixer/sources/phoenix_source.rs#L71) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/phoenix_source.rs:111`](../source/home-mixer/sources/phoenix_source.rs#L111) — `const HOME_COLD_DATASET_TYPE: u32 = 13;`
+- [`home-mixer/sources/phoenix_source.rs:113`](../source/home-mixer/sources/phoenix_source.rs#L113) — `fn served_type_for_dataset(dataset_type: u32) -> pb::ServedType {`
+- [`home-mixer/sources/phoenix_source.rs:127`](../source/home-mixer/sources/phoenix_source.rs#L127) — `fn source() -> PhoenixSource {`
+- [`home-mixer/sources/phoenix_source.rs:137`](../source/home-mixer/sources/phoenix_source.rs#L137) — `fn enable_returns_false_when_in_network_only() {`
+- [`home-mixer/sources/phoenix_source.rs:146`](../source/home-mixer/sources/phoenix_source.rs#L146) — `fn enable_returns_false_when_has_cached_posts() {`
+- [`home-mixer/sources/phoenix_source.rs:155`](../source/home-mixer/sources/phoenix_source.rs#L155) — `fn candidates_from_response_sets_served_type() {`
+- [`home-mixer/sources/phoenix_topics_source.rs:18`](../source/home-mixer/sources/phoenix_topics_source.rs#L18) — `const INCLUDED_TOPIC_METRIC: &str = "PhoenixTopicsSource.included_topic_id";`
+- [`home-mixer/sources/phoenix_topics_source.rs:20`](../source/home-mixer/sources/phoenix_topics_source.rs#L20) — `pub struct PhoenixTopicsSource {`
+- [`home-mixer/sources/phoenix_topics_source.rs:26`](../source/home-mixer/sources/phoenix_topics_source.rs#L26) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/phoenix_topics_source.rs:33`](../source/home-mixer/sources/phoenix_topics_source.rs#L33) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/popular_topics_source.rs:10`](../source/home-mixer/sources/popular_topics_source.rs#L10) — `const ALL_TOPICS: &[i64] = &[`
+- [`home-mixer/sources/popular_topics_source.rs:35`](../source/home-mixer/sources/popular_topics_source.rs#L35) — `const SMART_TOPICS: &[i64] = &[`
+- [`home-mixer/sources/popular_topics_source.rs:42`](../source/home-mixer/sources/popular_topics_source.rs#L42) — `fn topic_ids_for_subset(subset: &str) -> &'static [i64] {`
+- [`home-mixer/sources/popular_topics_source.rs:49`](../source/home-mixer/sources/popular_topics_source.rs#L49) — `pub struct PopularTopicsSource {`
+- [`home-mixer/sources/popular_topics_source.rs:55`](../source/home-mixer/sources/popular_topics_source.rs#L55) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/popular_topics_source.rs:59`](../source/home-mixer/sources/popular_topics_source.rs#L59) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/prompts_source.rs:14`](../source/home-mixer/sources/prompts_source.rs#L14) — `pub struct PromptsSource {`
+- [`home-mixer/sources/prompts_source.rs:20`](../source/home-mixer/sources/prompts_source.rs#L20) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/prompts_source.rs:24`](../source/home-mixer/sources/prompts_source.rs#L24) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/prompts_source.rs:49`](../source/home-mixer/sources/prompts_source.rs#L49) — `fn build_get_injections_request(query: &ScoredPostsQuery) -> GetInjectionsRequest {`
+- [`home-mixer/sources/push_to_home_source.rs:10`](../source/home-mixer/sources/push_to_home_source.rs#L10) — `const MAX_REPLIERS: usize = 3;`
+- [`home-mixer/sources/push_to_home_source.rs:12`](../source/home-mixer/sources/push_to_home_source.rs#L12) — `pub struct PushToHomeSource {`
+- [`home-mixer/sources/push_to_home_source.rs:19`](../source/home-mixer/sources/push_to_home_source.rs#L19) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/push_to_home_source.rs:23`](../source/home-mixer/sources/push_to_home_source.rs#L23) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/push_to_home_source.rs:71`](../source/home-mixer/sources/push_to_home_source.rs#L71) — `async fn fetch_top_repliers(`
+- [`home-mixer/sources/push_to_home_source.rs:107`](../source/home-mixer/sources/push_to_home_source.rs#L107) — `fn make_source(mock: MockTESClient) -> PushToHomeSource {`
+- [`home-mixer/sources/push_to_home_source.rs:115`](../source/home-mixer/sources/push_to_home_source.rs#L115) — `fn enable_returns_false_when_no_push_to_home() {`
+- [`home-mixer/sources/push_to_home_source.rs:122`](../source/home-mixer/sources/push_to_home_source.rs#L122) — `fn enable_returns_true_when_push_to_home_set() {`
+- [`home-mixer/sources/push_to_home_source.rs:132`](../source/home-mixer/sources/push_to_home_source.rs#L132) — `async fn returns_empty_when_tweet_not_found() {`
+- [`home-mixer/sources/push_to_home_source.rs:143`](../source/home-mixer/sources/push_to_home_source.rs#L143) — `async fn returns_focal_tweet_when_found() {`
+- [`home-mixer/sources/push_to_home_source.rs:171`](../source/home-mixer/sources/push_to_home_source.rs#L171) — `async fn sets_conversation_fields_for_reply() {`
+- [`home-mixer/sources/reverse_chron_posts_source.rs:13`](../source/home-mixer/sources/reverse_chron_posts_source.rs#L13) — `pub struct ReverseChronPostsSource {`
+- [`home-mixer/sources/reverse_chron_posts_source.rs:18`](../source/home-mixer/sources/reverse_chron_posts_source.rs#L18) — `pub fn new(pipeline: Arc<ReverseChronPostsPipeline>) -> Self {`
+- [`home-mixer/sources/reverse_chron_posts_source.rs:25`](../source/home-mixer/sources/reverse_chron_posts_source.rs#L25) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/reverse_chron_posts_source.rs:29`](../source/home-mixer/sources/reverse_chron_posts_source.rs#L29) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/reverse_chron_posts_source.rs:57`](../source/home-mixer/sources/reverse_chron_posts_source.rs#L57) — `fn post_candidate_to_scored_post(candidate: &PostCandidate) -> ScoredPost {`
+- [`home-mixer/sources/scored_posts_source.rs:8`](../source/home-mixer/sources/scored_posts_source.rs#L8) — `pub struct ScoredPostsSource {`
+- [`home-mixer/sources/scored_posts_source.rs:14`](../source/home-mixer/sources/scored_posts_source.rs#L14) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/seed_candidates_source.rs:6`](../source/home-mixer/sources/seed_candidates_source.rs#L6) — `pub struct SeedCandidatesSource;`
+- [`home-mixer/sources/seed_candidates_source.rs:10`](../source/home-mixer/sources/seed_candidates_source.rs#L10) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/seed_candidates_source.rs:14`](../source/home-mixer/sources/seed_candidates_source.rs#L14) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/simclusters_source.rs:24`](../source/home-mixer/sources/simclusters_source.rs#L24) — `const MAX_SANN_CANDIDATES: usize = 10_000;`
+- [`home-mixer/sources/simclusters_source.rs:25`](../source/home-mixer/sources/simclusters_source.rs#L25) — `const MAX_RESULTS: usize = 800;`
+- [`home-mixer/sources/simclusters_source.rs:26`](../source/home-mixer/sources/simclusters_source.rs#L26) — `const SOURCE_EMBEDDING_TYPE: EmbeddingType = EmbeddingType::LOG_FAV_LONGEST_L2_EMBEDDING_TWEET;`
+- [`home-mixer/sources/simclusters_source.rs:27`](../source/home-mixer/sources/simclusters_source.rs#L27) — `const CANDIDATE_EMBEDDING_TYPE: EmbeddingType = EmbeddingType::LOG_FAV_BASED_TWEET;`
+- [`home-mixer/sources/simclusters_source.rs:28`](../source/home-mixer/sources/simclusters_source.rs#L28) — `const MODEL_VERSION: ModelVersion = ModelVersion::MODEL_20M_145K_2020;`
+- [`home-mixer/sources/simclusters_source.rs:29`](../source/home-mixer/sources/simclusters_source.rs#L29) — `const ANN_MAX_NUM_RESULTS: i32 = 200;`
+- [`home-mixer/sources/simclusters_source.rs:30`](../source/home-mixer/sources/simclusters_source.rs#L30) — `const ANN_MIN_SCORE: f64 = 0.0;`
+- [`home-mixer/sources/simclusters_source.rs:31`](../source/home-mixer/sources/simclusters_source.rs#L31) — `const ANN_MAX_TOP_POSTS_PER_CLUSTER: i32 = 800;`
+- [`home-mixer/sources/simclusters_source.rs:32`](../source/home-mixer/sources/simclusters_source.rs#L32) — `const ANN_MAX_SCAN_CLUSTERS: i32 = 50;`
+- [`home-mixer/sources/simclusters_source.rs:33`](../source/home-mixer/sources/simclusters_source.rs#L33) — `const ANN_MIN_POST_CANDIDATE_AGE_HOURS: i32 = 0;`
+- [`home-mixer/sources/simclusters_source.rs:34`](../source/home-mixer/sources/simclusters_source.rs#L34) — `const POST_ANN_MIN_SCORE: f64 = 0.5;`
+- [`home-mixer/sources/simclusters_source.rs:35`](../source/home-mixer/sources/simclusters_source.rs#L35) — `const CACHE_METRIC: &str = "SimclustersSource.cache";`
+- [`home-mixer/sources/simclusters_source.rs:37`](../source/home-mixer/sources/simclusters_source.rs#L37) — `pub struct SimclustersSource {`
+- [`home-mixer/sources/simclusters_source.rs:44`](../source/home-mixer/sources/simclusters_source.rs#L44) — `pub fn new(`
+- [`home-mixer/sources/simclusters_source.rs:58`](../source/home-mixer/sources/simclusters_source.rs#L58) — `async fn get_post_candidates(`
+- [`home-mixer/sources/simclusters_source.rs:80`](../source/home-mixer/sources/simclusters_source.rs#L80) — `fn stat_cache(result: &'static str) {`
+- [`home-mixer/sources/simclusters_source.rs:89`](../source/home-mixer/sources/simclusters_source.rs#L89) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/simclusters_source.rs:96`](../source/home-mixer/sources/simclusters_source.rs#L96) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/simclusters_source.rs:146`](../source/home-mixer/sources/simclusters_source.rs#L146) — `fn has_post_signals(query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/simclusters_source.rs:156`](../source/home-mixer/sources/simclusters_source.rs#L156) — `fn post_signal_ids(query: &ScoredPostsQuery) -> Vec<i64> {`
+- [`home-mixer/sources/simclusters_source.rs:182`](../source/home-mixer/sources/simclusters_source.rs#L182) — `fn build_query(signal_id: i64, max_candidate_age_hours: i32) -> Query {`
+- [`home-mixer/sources/simclusters_source.rs:205`](../source/home-mixer/sources/simclusters_source.rs#L205) — `fn interleave_by_post_id(`
+- [`home-mixer/sources/thunder_source.rs:16`](../source/home-mixer/sources/thunder_source.rs#L16) — `pub const THUNDER_CAPI_DECIDER: &str = "enable_thunder_capi_home_mixer";`
+- [`home-mixer/sources/thunder_source.rs:18`](../source/home-mixer/sources/thunder_source.rs#L18) — `pub struct ThunderSource {`
+- [`home-mixer/sources/thunder_source.rs:25`](../source/home-mixer/sources/thunder_source.rs#L25) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/thunder_source.rs:29`](../source/home-mixer/sources/thunder_source.rs#L29) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/tweet_mixer_source.rs:17`](../source/home-mixer/sources/tweet_mixer_source.rs#L17) — `const MAX_POST_AGE: Duration = Duration::from_secs(48 * 60 * 60);`
+- [`home-mixer/sources/tweet_mixer_source.rs:19`](../source/home-mixer/sources/tweet_mixer_source.rs#L19) — `pub struct TweetMixerSource {`
+- [`home-mixer/sources/tweet_mixer_source.rs:25`](../source/home-mixer/sources/tweet_mixer_source.rs#L25) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/tweet_mixer_source.rs:31`](../source/home-mixer/sources/tweet_mixer_source.rs#L31) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<PostCandidate>, String> {`
+- [`home-mixer/sources/tweet_mixer_source.rs:118`](../source/home-mixer/sources/tweet_mixer_source.rs#L118) — `fn source() -> TweetMixerSource {`
+- [`home-mixer/sources/tweet_mixer_source.rs:125`](../source/home-mixer/sources/tweet_mixer_source.rs#L125) — `fn enable_returns_false_when_in_network_only() {`
+- [`home-mixer/sources/tweet_mixer_source.rs:134`](../source/home-mixer/sources/tweet_mixer_source.rs#L134) — `fn enable_returns_false_when_has_cached_posts() {`
+- [`home-mixer/sources/who_to_follow_source.rs:15`](../source/home-mixer/sources/who_to_follow_source.rs#L15) — `const EXCLUDED_USER_IDS_LIMIT: usize = 200;`
+- [`home-mixer/sources/who_to_follow_source.rs:16`](../source/home-mixer/sources/who_to_follow_source.rs#L16) — `const MAX_WHO_TO_FOLLOW_USERS: usize = 3;`
+- [`home-mixer/sources/who_to_follow_source.rs:18`](../source/home-mixer/sources/who_to_follow_source.rs#L18) — `pub struct WhoToFollowSource {`
+- [`home-mixer/sources/who_to_follow_source.rs:24`](../source/home-mixer/sources/who_to_follow_source.rs#L24) — `fn enable(&self, query: &ScoredPostsQuery) -> bool {`
+- [`home-mixer/sources/who_to_follow_source.rs:28`](../source/home-mixer/sources/who_to_follow_source.rs#L28) — `async fn source(&self, query: &ScoredPostsQuery) -> Result<Vec<FeedItem>, String> {`
+- [`home-mixer/sources/who_to_follow_source.rs:56`](../source/home-mixer/sources/who_to_follow_source.rs#L56) — `fn build_wtf_request(query: &ScoredPostsQuery) -> AccountRecommendationsMixerRequest {`
+- [`home-mixer/sources/who_to_follow_source.rs:106`](../source/home-mixer/sources/who_to_follow_source.rs#L106) — `fn get_excluded_user_ids(query: &ScoredPostsQuery) -> Vec<i64> {`
+- [`home-mixer/util/author_rules.rs:10`](../source/home-mixer/util/author_rules.rs#L10) — `const CACHE_TTL: Duration = Duration::from_secs(10 * 60);`
+- [`home-mixer/util/author_rules.rs:11`](../source/home-mixer/util/author_rules.rs#L11) — `const CACHE_SIZE: u64 = 500_000;`
+- [`home-mixer/util/author_rules.rs:12`](../source/home-mixer/util/author_rules.rs#L12) — `const NUM_SHARDS: usize = 64;`
+- [`home-mixer/util/author_rules.rs:14`](../source/home-mixer/util/author_rules.rs#L14) — `fn impress_cache_key(author_id: u64, experiment: &str) -> u64 {`
+- [`home-mixer/util/author_rules.rs:21`](../source/home-mixer/util/author_rules.rs#L21) — `pub struct AuthorRulesEvaluator {`
+- [`home-mixer/util/author_rules.rs:27`](../source/home-mixer/util/author_rules.rs#L27) — `pub fn new(feature_switches: Arc<FeatureSwitches>) -> Self {`
+- [`home-mixer/util/author_rules.rs:37`](../source/home-mixer/util/author_rules.rs#L37) — `pub fn get<T: FromFeatureSwitch + FromValue>(&self, author_id: u64, p: impl Param<T>) -> T {`
+- [`home-mixer/util/author_rules.rs:68`](../source/home-mixer/util/author_rules.rs#L68) — `fn build_fs(`
+- [`home-mixer/util/author_rules.rs:85`](../source/home-mixer/util/author_rules.rs#L85) — `const YAML: &str = r#"`
+- [`home-mixer/util/author_rules.rs:97`](../source/home-mixer/util/author_rules.rs#L97) — `const MULTI_EXP_YAML: &str = r#"`
+- [`home-mixer/util/author_rules.rs:116`](../source/home-mixer/util/author_rules.rs#L116) — `fn impression_once_per_author_experiment() {`
+- [`home-mixer/util/author_rules.rs:128`](../source/home-mixer/util/author_rules.rs#L128) — `fn unbucketed_author_gets_fs_default() {`
+- [`home-mixer/util/author_rules.rs:138`](../source/home-mixer/util/author_rules.rs#L138) — `fn impression_per_experiment_for_same_author() {`
+- [`home-mixer/util/candidates_util.rs:4`](../source/home-mixer/util/candidates_util.rs#L4) — `const MAX_FOLLOWERS_THRESHOLD: i64 = 10_000;`
+- [`home-mixer/util/candidates_util.rs:6`](../source/home-mixer/util/candidates_util.rs#L6) — `pub fn get_related_post_ids(candidate: &PostCandidate) -> Vec<u64> {`
+- [`home-mixer/util/candidates_util.rs:13`](../source/home-mixer/util/candidates_util.rs#L13) — `pub fn related_post_ids_iter(candidate: &PostCandidate) -> impl Iterator<Item = u64> {`
+- [`home-mixer/util/candidates_util.rs:19`](../source/home-mixer/util/candidates_util.rs#L19) — `pub fn vqv_weight(`
+- [`home-mixer/util/candidates_util.rs:42`](../source/home-mixer/util/candidates_util.rs#L42) — `pub fn quoted_vqv_weight(`
+- [`home-mixer/util/candidates_util.rs:67`](../source/home-mixer/util/candidates_util.rs#L67) — `fn quoted_vqv_returns_weight_when_check_disabled() {`
+- [`home-mixer/util/candidates_util.rs:76`](../source/home-mixer/util/candidates_util.rs#L76) — `fn quoted_vqv_returns_weight_when_duration_exceeds_threshold() {`
+- [`home-mixer/util/candidates_util.rs:85`](../source/home-mixer/util/candidates_util.rs#L85) — `fn quoted_vqv_returns_zero_when_duration_below_threshold() {`
+- [`home-mixer/util/candidates_util.rs:94`](../source/home-mixer/util/candidates_util.rs#L94) — `fn quoted_vqv_returns_zero_when_duration_equals_threshold() {`
+- [`home-mixer/util/candidates_util.rs:103`](../source/home-mixer/util/candidates_util.rs#L103) — `fn quoted_vqv_returns_zero_when_duration_is_none() {`
+- [`home-mixer/util/composition.rs:5`](../source/home-mixer/util/composition.rs#L5) — `pub struct Composition {`
+- [`home-mixer/util/composition.rs:14`](../source/home-mixer/util/composition.rs#L14) — `pub fn from_keys<K: Hash + Eq>(keys: impl IntoIterator<Item = K>) -> Self {`
+- [`home-mixer/util/composition.rs:22`](../source/home-mixer/util/composition.rs#L22) — `pub fn from_counts(counts: impl IntoIterator<Item = usize>) -> Self {`
+- [`home-mixer/util/composition.rs:48`](../source/home-mixer/util/composition.rs#L48) — `pub fn unique_ratio(&self) -> f64 {`
+- [`home-mixer/util/composition.rs:56`](../source/home-mixer/util/composition.rs#L56) — `pub fn max_share(&self) -> f64 {`
+- [`home-mixer/util/conversation_grouping.rs:6`](../source/home-mixer/util/conversation_grouping.rs#L6) — `pub fn select_conversation_modules(items: Vec<FeedItem>) -> (Vec<FeedItem>, Vec<FeedItem>) {`
+- [`home-mixer/util/conversation_grouping.rs:58`](../source/home-mixer/util/conversation_grouping.rs#L58) — `fn is_reply(post: &ScoredPost) -> bool {`
+- [`home-mixer/util/conversation_grouping.rs:62`](../source/home-mixer/util/conversation_grouping.rs#L62) — `fn as_post(item: &FeedItem) -> Option<&ScoredPost> {`
+- [`home-mixer/util/conversation_grouping.rs:73`](../source/home-mixer/util/conversation_grouping.rs#L73) — `fn post(tweet_id: u64, in_reply_to: u64, ancestors: &[u64]) -> FeedItem {`
+- [`home-mixer/util/conversation_grouping.rs:85`](../source/home-mixer/util/conversation_grouping.rs#L85) — `fn retweet(tweet_id: u64, source: u64) -> FeedItem {`
+- [`home-mixer/util/conversation_grouping.rs:96`](../source/home-mixer/util/conversation_grouping.rs#L96) — `fn ids(items: &[FeedItem]) -> Vec<u64> {`
+- [`home-mixer/util/conversation_grouping.rs:104`](../source/home-mixer/util/conversation_grouping.rs#L104) — `fn drops_retweet_of_absorbed_root() {`
+- [`home-mixer/util/conversation_grouping.rs:112`](../source/home-mixer/util/conversation_grouping.rs#L112) — `fn keeps_unrelated_retweet() {`
+- [`home-mixer/util/conversation_grouping.rs:119`](../source/home-mixer/util/conversation_grouping.rs#L119) — `fn does_not_absorb_focal_with_shallow_ancestors() {`
+- [`home-mixer/util/country_codes.rs:1`](../source/home-mixer/util/country_codes.rs#L1) — `const TOP_COUNTRIES: &[&str] = &[`
+- [`home-mixer/util/country_codes.rs:6`](../source/home-mixer/util/country_codes.rs#L6) — `pub fn bucket_country(country_code: &str) -> &str {`
+- [`home-mixer/util/feed_log.rs:6`](../source/home-mixer/util/feed_log.rs#L6) — `pub fn feed_name(request_type: RequestType) -> &'static str {`
+- [`home-mixer/util/feed_log.rs:14`](../source/home-mixer/util/feed_log.rs#L14) — `pub fn count_posts(items: &[FeedItem]) -> usize {`
+- [`home-mixer/util/feed_log.rs:21`](../source/home-mixer/util/feed_log.rs#L21) — `pub fn count_ads(items: &[FeedItem]) -> usize {`
+- [`home-mixer/util/feed_log.rs:28`](../source/home-mixer/util/feed_log.rs#L28) — `pub fn log_feed_request(query: &ScoredPostsQuery) {`
+- [`home-mixer/util/feed_log.rs:41`](../source/home-mixer/util/feed_log.rs#L41) — `pub fn log_feed_response(result: &PipelineResult<ScoredPostsQuery, FeedItem>) {`
+- [`home-mixer/util/phoenix_request.rs:15`](../source/home-mixer/util/phoenix_request.rs#L15) — `const PHOENIX_CLIENT_MAX_CANDIDATES: usize = 2800;`
+- [`home-mixer/util/phoenix_request.rs:17`](../source/home-mixer/util/phoenix_request.rs#L17) — `pub fn candidates_from_retrieval_response(`
+- [`home-mixer/util/phoenix_request.rs:59`](../source/home-mixer/util/phoenix_request.rs#L59) — `fn positions_within_served_type(scored: &[(TweetInfo, f32, pb::ServedType)]) -> Vec<u32> {`
+- [`home-mixer/util/phoenix_request.rs:72`](../source/home-mixer/util/phoenix_request.rs#L72) — `pub fn build_client_context(query: &ScoredPostsQuery) -> Option<ClientContext> {`
+- [`home-mixer/util/phoenix_request.rs:89`](../source/home-mixer/util/phoenix_request.rs#L89) — `pub fn build_user_context(query: &ScoredPostsQuery) -> Option<UserContext> {`
+- [`home-mixer/util/phoenix_request.rs:138`](../source/home-mixer/util/phoenix_request.rs#L138) — `pub fn build_device_feature(query: &ScoredPostsQuery) -> DeviceFeature {`
+- [`home-mixer/util/phoenix_request.rs:147`](../source/home-mixer/util/phoenix_request.rs#L147) — `fn followed_user_ids(query: &ScoredPostsQuery) -> FxHashSet<u64> {`
+- [`home-mixer/util/phoenix_request.rs:157`](../source/home-mixer/util/phoenix_request.rs#L157) — `fn candidate_to_tweet_info(`
+- [`home-mixer/util/phoenix_request.rs:167`](../source/home-mixer/util/phoenix_request.rs#L167) — `pub fn build_tweet_infos(`
+- [`home-mixer/util/phoenix_request.rs:179`](../source/home-mixer/util/phoenix_request.rs#L179) — `pub fn build_request_without_sequence_and_candidates(`
+- [`home-mixer/util/phoenix_request.rs:204`](../source/home-mixer/util/phoenix_request.rs#L204) — `pub fn parse_experiment_overrides(spec: &str) -> std::collections::HashMap<String, String> {`
+- [`home-mixer/util/phoenix_request.rs:214`](../source/home-mixer/util/phoenix_request.rs#L214) — `pub fn build_prediction_request(`
+- [`home-mixer/util/rescore.rs:3`](../source/home-mixer/util/rescore.rs#L3) — `pub fn rescore_slots(`
+- [`home-mixer/util/rescore.rs:59`](../source/home-mixer/util/rescore.rs#L59) — `fn all_anchors_returns_unchanged() {`
+- [`home-mixer/util/rescore.rs:73`](../source/home-mixer/util/rescore.rs#L73) — `fn rank_pair_gets_the_two_slots() {`
+- [`home-mixer/util/rescore.rs:87`](../source/home-mixer/util/rescore.rs#L87) — `fn treatment_only_ranks_by_effective() {`
+- [`home-mixer/util/rescore.rs:99`](../source/home-mixer/util/rescore.rs#L99) — `fn control_only_ranks_by_original() {`
+- [`home-mixer/util/rescore.rs:111`](../source/home-mixer/util/rescore.rs#L111) — `fn anchors_never_displaced() {`
+- [`home-mixer/util/rescore.rs:127`](../source/home-mixer/util/rescore.rs#L127) — `fn uneven_groups_no_tail_pinning() {`
+- [`home-mixer/util/rescore.rs:140`](../source/home-mixer/util/rescore.rs#L140) — `fn union_set_ranks_against_full_slate() {`
+- [`home-mixer/util/shadow.rs:9`](../source/home-mixer/util/shadow.rs#L9) — `pub fn shadow_rate_for_cluster(params: &Params, cluster_name: &str) -> f64 {`
+- [`home-mixer/util/shadow.rs:24`](../source/home-mixer/util/shadow.rs#L24) — `pub fn is_shadow_sampled_for_cluster(`
+- [`home-mixer/util/shadow.rs:36`](../source/home-mixer/util/shadow.rs#L36) — `pub fn is_shadow_traffic(params: &Params, request_id: u64) -> bool {`
+- [`home-mixer/util/shadow.rs:47`](../source/home-mixer/util/shadow.rs#L47) — `fn params_with(rates: Vec<&str>, default_pct: Option<f64>) -> Params {`
+- [`home-mixer/util/shadow.rs:65`](../source/home-mixer/util/shadow.rs#L65) — `fn override_applies_to_listed_cluster_only() {`
+- [`home-mixer/util/shadow.rs:72`](../source/home-mixer/util/shadow.rs#L72) — `fn override_can_disable_a_cluster() {`
+- [`home-mixer/util/shadow.rs:83`](../source/home-mixer/util/shadow.rs#L83) — `fn malformed_entry_falls_back_to_default() {`
+- [`home-mixer/util/shadow.rs:89`](../source/home-mixer/util/shadow.rs#L89) — `fn entry_whitespace_is_tolerated() {`
+- [`home-mixer/util/shadow.rs:95`](../source/home-mixer/util/shadow.rs#L95) — `fn configurable_default_percent() {`
+- [`home-mixer/util/shadow.rs:101`](../source/home-mixer/util/shadow.rs#L101) — `fn shadow_traffic_union_matches_per_cluster_gates() {`
+- [`home-mixer/util/shadow.rs:127`](../source/home-mixer/util/shadow.rs#L127) — `fn zero_default_and_no_overrides_disables_shadow_traffic() {`
+- [`home-mixer/util/strato_context.rs:5`](../source/home-mixer/util/strato_context.rs#L5) — `const STRATO_CONTEXT_KEY: &str = "stratocontext";`
+- [`home-mixer/util/strato_context.rs:6`](../source/home-mixer/util/strato_context.rs#L6) — `const STRATO_CONTEXT_BIN_KEY: &str = "stratocontext-bin";`
+- [`home-mixer/util/strato_context.rs:9`](../source/home-mixer/util/strato_context.rs#L9) — `pub struct StratoContext {`
+- [`home-mixer/util/strato_context.rs:18`](../source/home-mixer/util/strato_context.rs#L18) — `pub fn parse(metadata: &MetadataMap) -> Option<StratoContext> {`
+- [`home-mixer/util/strato_context.rs:40`](../source/home-mixer/util/strato_context.rs#L40) — `fn encode_ascii(ctx: &StratoContext) -> MetadataMap {`
+- [`home-mixer/util/strato_context.rs:47`](../source/home-mixer/util/strato_context.rs#L47) — `fn polling(ctx: StratoContext) -> StratoContext {`
+- [`home-mixer/util/strato_context.rs:55`](../source/home-mixer/util/strato_context.rs#L55) — `fn polling_true() {`
+- [`home-mixer/util/strato_context.rs:61`](../source/home-mixer/util/strato_context.rs#L61) — `fn polling_false() {`
+- [`home-mixer/util/strato_context.rs:67`](../source/home-mixer/util/strato_context.rs#L67) — `fn binary_metadata() {`
+- [`home-mixer/util/strato_context.rs:77`](../source/home-mixer/util/strato_context.rs#L77) — `fn missing_context() {`
+- [`home-mixer/util/strato_context.rs:82`](../source/home-mixer/util/strato_context.rs#L82) — `fn decodes_device_ids() {`
+- [`home-mixer/util/string_case.rs:1`](../source/home-mixer/util/string_case.rs#L1) — `pub fn upper_snake_to_pascal(s: &str) -> String {`
+- [`home-mixer/util/tweet_type_metrics.rs:1`](../source/home-mixer/util/tweet_type_metrics.rs#L1) — `pub const ANY_CANDIDATE: usize = 0;`
+- [`home-mixer/util/tweet_type_metrics.rs:2`](../source/home-mixer/util/tweet_type_metrics.rs#L2) — `pub const RETWEET: usize = 1;`
+- [`home-mixer/util/tweet_type_metrics.rs:3`](../source/home-mixer/util/tweet_type_metrics.rs#L3) — `pub const REPLY: usize = 2;`
+- [`home-mixer/util/tweet_type_metrics.rs:4`](../source/home-mixer/util/tweet_type_metrics.rs#L4) — `pub const VIDEO: usize = 5;`
+- [`home-mixer/util/tweet_type_metrics.rs:5`](../source/home-mixer/util/tweet_type_metrics.rs#L5) — `pub const SUBSCRIPTION_POST: usize = 10;`
+- [`home-mixer/util/tweet_type_metrics.rs:6`](../source/home-mixer/util/tweet_type_metrics.rs#L6) — `pub const NEAR_EMPTY: usize = 23;`
+- [`home-mixer/util/tweet_type_metrics.rs:7`](../source/home-mixer/util/tweet_type_metrics.rs#L7) — `pub const EMPTY_REQUEST: usize = 32;`
+- [`home-mixer/util/tweet_type_metrics.rs:8`](../source/home-mixer/util/tweet_type_metrics.rs#L8) — `pub const HAS_ANCESTORS: usize = 37;`
+- [`home-mixer/util/tweet_type_metrics.rs:9`](../source/home-mixer/util/tweet_type_metrics.rs#L9) — `pub const FULL_SCORING_SUCCEEDED: usize = 38;`
+- [`home-mixer/util/tweet_type_metrics.rs:10`](../source/home-mixer/util/tweet_type_metrics.rs#L10) — `pub const SERVED_SIZE_LESS_THAN_20: usize = 39;`
+- [`home-mixer/util/tweet_type_metrics.rs:11`](../source/home-mixer/util/tweet_type_metrics.rs#L11) — `pub const SERVED_SIZE_LESS_THAN_10: usize = 40;`
+- [`home-mixer/util/tweet_type_metrics.rs:12`](../source/home-mixer/util/tweet_type_metrics.rs#L12) — `pub const SERVED_SIZE_LESS_THAN_5: usize = 41;`
+- [`home-mixer/util/tweet_type_metrics.rs:13`](../source/home-mixer/util/tweet_type_metrics.rs#L13) — `pub const IN_NETWORK: usize = 80;`
+- [`home-mixer/util/tweet_type_metrics.rs:14`](../source/home-mixer/util/tweet_type_metrics.rs#L14) — `pub const VIDEO_LTE_10_SEC: usize = 151;`
+- [`home-mixer/util/tweet_type_metrics.rs:15`](../source/home-mixer/util/tweet_type_metrics.rs#L15) — `pub const VIDEO_BT_10_60_SEC: usize = 152;`
+- [`home-mixer/util/tweet_type_metrics.rs:16`](../source/home-mixer/util/tweet_type_metrics.rs#L16) — `pub const VIDEO_GT_60_SEC: usize = 153;`
+- [`home-mixer/util/tweet_type_metrics.rs:17`](../source/home-mixer/util/tweet_type_metrics.rs#L17) — `pub const TWEET_AGE_LTE_30_MINUTES: usize = 154;`
+- [`home-mixer/util/tweet_type_metrics.rs:18`](../source/home-mixer/util/tweet_type_metrics.rs#L18) — `pub const TWEET_AGE_LTE_1_HOUR: usize = 155;`
+- [`home-mixer/util/tweet_type_metrics.rs:19`](../source/home-mixer/util/tweet_type_metrics.rs#L19) — `pub const TWEET_AGE_LTE_6_HOURS: usize = 156;`
+- [`home-mixer/util/tweet_type_metrics.rs:20`](../source/home-mixer/util/tweet_type_metrics.rs#L20) — `pub const TWEET_AGE_LTE_12_HOURS: usize = 157;`
+- [`home-mixer/util/tweet_type_metrics.rs:21`](../source/home-mixer/util/tweet_type_metrics.rs#L21) — `pub const TWEET_AGE_GTE_24_HOURS: usize = 158;`
+- [`home-mixer/util/tweet_type_metrics.rs:22`](../source/home-mixer/util/tweet_type_metrics.rs#L22) — `pub const UNIQUE_AUTHOR_RATIO_LTE_50_PCT: usize = 239;`
+- [`home-mixer/util/tweet_type_metrics.rs:23`](../source/home-mixer/util/tweet_type_metrics.rs#L23) — `pub const UNIQUE_AUTHOR_LTE_5: usize = 240;`
+- [`home-mixer/util/tweet_type_metrics.rs:24`](../source/home-mixer/util/tweet_type_metrics.rs#L24) — `pub const UNIQUE_AUTHOR_LTE_10: usize = 241;`
+- [`home-mixer/util/tweet_type_metrics.rs:25`](../source/home-mixer/util/tweet_type_metrics.rs#L25) — `pub const UNIQUE_AUTHOR_LTE_15: usize = 242;`
+- [`home-mixer/util/tweet_type_metrics.rs:26`](../source/home-mixer/util/tweet_type_metrics.rs#L26) — `pub const SINGLE_AUTHOR_GTE_25_PCT: usize = 243;`
+- [`home-mixer/util/tweet_type_metrics.rs:27`](../source/home-mixer/util/tweet_type_metrics.rs#L27) — `pub const SINGLE_AUTHOR_GTE_50_PCT: usize = 244;`
+- [`home-mixer/util/tweet_type_metrics.rs:28`](../source/home-mixer/util/tweet_type_metrics.rs#L28) — `pub const AUTHOR_FOLLOWERS_0_100: usize = 309;`
+- [`home-mixer/util/tweet_type_metrics.rs:29`](../source/home-mixer/util/tweet_type_metrics.rs#L29) — `pub const AUTHOR_FOLLOWERS_100_1K: usize = 310;`
+- [`home-mixer/util/tweet_type_metrics.rs:30`](../source/home-mixer/util/tweet_type_metrics.rs#L30) — `pub const AUTHOR_FOLLOWERS_1K_10K: usize = 311;`
+- [`home-mixer/util/tweet_type_metrics.rs:31`](../source/home-mixer/util/tweet_type_metrics.rs#L31) — `pub const AUTHOR_FOLLOWERS_10K_100K: usize = 312;`
+- [`home-mixer/util/tweet_type_metrics.rs:32`](../source/home-mixer/util/tweet_type_metrics.rs#L32) — `pub const AUTHOR_FOLLOWERS_100K_1M: usize = 313;`
+- [`home-mixer/util/tweet_type_metrics.rs:33`](../source/home-mixer/util/tweet_type_metrics.rs#L33) — `pub const AUTHOR_FOLLOWERS_1M_PLUS: usize = 314;`
+- [`home-mixer/util/tweet_type_metrics.rs:34`](../source/home-mixer/util/tweet_type_metrics.rs#L34) — `pub const AUTHOR_REPEAT_IN_SLATE: usize = 315;`
+- [`home-mixer/util/tweet_type_metrics.rs:35`](../source/home-mixer/util/tweet_type_metrics.rs#L35) — `pub const AUTHOR_REPEAT_GTE_3_IN_SLATE: usize = 316;`
+- [`home-mixer/util/tweet_type_metrics.rs:36`](../source/home-mixer/util/tweet_type_metrics.rs#L36) — `pub const AUTHOR_NOT_ENGAGED_BY_VIEWER: usize = 317;`
+- [`home-mixer/util/tweet_type_metrics.rs:37`](../source/home-mixer/util/tweet_type_metrics.rs#L37) — `pub const HAS_SEMANTIC_IDS: usize = 318;`
+- [`home-mixer/util/tweet_type_metrics.rs:38`](../source/home-mixer/util/tweet_type_metrics.rs#L38) — `pub const SID_L1_REPEAT_IN_SLATE: usize = 319;`
+- [`home-mixer/util/tweet_type_metrics.rs:39`](../source/home-mixer/util/tweet_type_metrics.rs#L39) — `pub const SID_L2_REPEAT_IN_SLATE: usize = 320;`
+- [`home-mixer/util/tweet_type_metrics.rs:41`](../source/home-mixer/util/tweet_type_metrics.rs#L41) — `pub const TWEET_TYPE_PREDICATES: &[(usize, &str)] = &[`
+- [`home-mixer/util/tweet_type_metrics.rs:86`](../source/home-mixer/util/tweet_type_metrics.rs#L86) — `pub fn bitset_get(bytes: &[u8], bit_index: usize) -> bool {`
+- [`home-mixer/util/url.rs:1`](../source/home-mixer/util/url.rs#L1) — `pub fn percent_encode(s: &str) -> String {`
+- [`home-mixer/util/url.rs:22`](../source/home-mixer/util/url.rs#L22) — `fn passes_through_unreserved() {`
+- [`home-mixer/util/url.rs:27`](../source/home-mixer/util/url.rs#L27) — `fn encodes_base64_specials() {`
+- [`home-mixer/util/url.rs:32`](../source/home-mixer/util/url.rs#L32) — `fn encodes_space_and_other_ascii() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:4`](../source/home-mixer/util/urt/ad_marshaller.rs#L4) — `const ENTRY_NAMESPACE_PROMOTED_TWEET: &str = "promoted-tweet";`
+- [`home-mixer/util/urt/ad_marshaller.rs:25`](../source/home-mixer/util/urt/ad_marshaller.rs#L25) — `const CLIENT_TWEET_OPEN_LINK: usize = 39;`
+- [`home-mixer/util/urt/ad_marshaller.rs:26`](../source/home-mixer/util/urt/ad_marshaller.rs#L26) — `const LIKELY_TO_OPEN_LINK_THRESHOLD: f64 = 0.1;`
+- [`home-mixer/util/urt/ad_marshaller.rs:28`](../source/home-mixer/util/urt/ad_marshaller.rs#L28) — `const ENTRY_NAMESPACE_RTB_IMAGE_AD: &str = "rtb-image-ad";`
+- [`home-mixer/util/urt/ad_marshaller.rs:29`](../source/home-mixer/util/urt/ad_marshaller.rs#L29) — `const ENTRY_NAMESPACE_HEADER_IMAGE_PROMPT_AD: &str = "header-image-prompt-ad";`
+- [`home-mixer/util/urt/ad_marshaller.rs:30`](../source/home-mixer/util/urt/ad_marshaller.rs#L30) — `const GOOGLE_SDK_NATIVE_AD: &str = "GoogleSDKNativeAd";`
+- [`home-mixer/util/urt/ad_marshaller.rs:31`](../source/home-mixer/util/urt/ad_marshaller.rs#L31) — `const EMPTY_LANDING_URL: &str = "emptyLandingUrl";`
+- [`home-mixer/util/urt/ad_marshaller.rs:32`](../source/home-mixer/util/urt/ad_marshaller.rs#L32) — `const DSP_IMPRESSION_PREAMBLE: &str = "IS1:";`
+- [`home-mixer/util/urt/ad_marshaller.rs:33`](../source/home-mixer/util/urt/ad_marshaller.rs#L33) — `const DEFAULT_DSP_CREATIVE_ID: &str = "default-dsp-creative-id";`
+- [`home-mixer/util/urt/ad_marshaller.rs:35`](../source/home-mixer/util/urt/ad_marshaller.rs#L35) — `pub(super) fn marshal_ad(`
+- [`home-mixer/util/urt/ad_marshaller.rs:223`](../source/home-mixer/util/urt/ad_marshaller.rs#L223) — `fn marshal_header_image_prompt_ad(`
+- [`home-mixer/util/urt/ad_marshaller.rs:314`](../source/home-mixer/util/urt/ad_marshaller.rs#L314) — `fn to_callbacks(endpoints: &[String]) -> Option<Vec<Callback>> {`
+- [`home-mixer/util/urt/ad_marshaller.rs:328`](../source/home-mixer/util/urt/ad_marshaller.rs#L328) — `fn rtb_ad_metadata(ad: &AdIndexInfo) -> Option<Box<RTBAdMetadata>> {`
+- [`home-mixer/util/urt/ad_marshaller.rs:337`](../source/home-mixer/util/urt/ad_marshaller.rs#L337) — `fn marshal_ssp_ad(ad: &AdIndexInfo, sort_index: i64, impression_string: &str) -> TimelineEntry {`
+- [`home-mixer/util/urt/ad_marshaller.rs:391`](../source/home-mixer/util/urt/ad_marshaller.rs#L391) — `fn likely_to_open_link(ad: &AdIndexInfo) -> bool {`
+- [`home-mixer/util/urt/ad_marshaller.rs:397`](../source/home-mixer/util/urt/ad_marshaller.rs#L397) — `fn contextual_ref(post_id: i64) -> ContextualTweetRef {`
+- [`home-mixer/util/urt/ad_marshaller.rs:407`](../source/home-mixer/util/urt/ad_marshaller.rs#L407) — `fn convert_skan(data: &xai_recsys_proto::SkAdNetworkData) -> SkAdNetworkData {`
+- [`home-mixer/util/urt/ad_marshaller.rs:421`](../source/home-mixer/util/urt/ad_marshaller.rs#L421) — `fn convert_skan_list(data: &[xai_recsys_proto::SkAdNetworkData]) -> Option<Vec<SkAdNetworkData>> {`
+- [`home-mixer/util/urt/ad_marshaller.rs:428`](../source/home-mixer/util/urt/ad_marshaller.rs#L428) — `fn convert_skan_cta(data: &[xai_recsys_proto::SkAdNetworkData]) -> Option<SkAdNetworkData> {`
+- [`home-mixer/util/urt/ad_marshaller.rs:438`](../source/home-mixer/util/urt/ad_marshaller.rs#L438) — `fn promoted_metadata_for(ad: AdIndexInfo) -> PromotedMetadata {`
+- [`home-mixer/util/urt/ad_marshaller.rs:452`](../source/home-mixer/util/urt/ad_marshaller.rs#L452) — `fn header_image_prompt_ad_marshals_to_message_prompt_entry() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:525`](../source/home-mixer/util/urt/ad_marshaller.rs#L525) — `fn header_image_prompt_ad_emits_secondary_button_when_set() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:570`](../source/home-mixer/util/urt/ad_marshaller.rs#L570) — `fn header_image_prompt_ad_info_absent_stays_a_tweet_item() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:586`](../source/home-mixer/util/urt/ad_marshaller.rs#L586) — `fn rtb_ad_metadata_present_maps_to_urt() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:606`](../source/home-mixer/util/urt/ad_marshaller.rs#L606) — `fn empty_response_content_maps_to_none() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:623`](../source/home-mixer/util/urt/ad_marshaller.rs#L623) — `fn dsp_id_maps_to_enum_value() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:637`](../source/home-mixer/util/urt/ad_marshaller.rs#L637) — `fn absent_rtb_ad_metadata_yields_none() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:645`](../source/home-mixer/util/urt/ad_marshaller.rs#L645) — `fn ssp_ad() -> AdIndexInfo {`
+- [`home-mixer/util/urt/ad_marshaller.rs:658`](../source/home-mixer/util/urt/ad_marshaller.rs#L658) — `fn ssp_ad_emits_rtb_image_ad_item() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:699`](../source/home-mixer/util/urt/ad_marshaller.rs#L699) — `fn tweet_backed_ad_with_rtb_metadata_stays_a_tweet_item() {`
+- [`home-mixer/util/urt/ad_marshaller.rs:718`](../source/home-mixer/util/urt/ad_marshaller.rs#L718) — `fn ssp_ad_without_rtb_metadata_stays_a_tweet_item() {`
+- [`home-mixer/util/urt/client_event.rs:8`](../source/home-mixer/util/urt/client_event.rs#L8) — `pub(super) const ELEMENT_TWEET: &str = "tweet";`
+- [`home-mixer/util/urt/client_event.rs:9`](../source/home-mixer/util/urt/client_event.rs#L9) — `pub(super) const ELEMENT_USER: &str = "user";`
+- [`home-mixer/util/urt/client_event.rs:10`](../source/home-mixer/util/urt/client_event.rs#L10) — `pub(super) const COMPONENT_WTF: &str = "suggest_who_to_follow";`
+- [`home-mixer/util/urt/client_event.rs:11`](../source/home-mixer/util/urt/client_event.rs#L11) — `const COMPONENT_ADS_FOR_YOU: &str = "for_you_promoted";`
+- [`home-mixer/util/urt/client_event.rs:12`](../source/home-mixer/util/urt/client_event.rs#L12) — `const ADS_INJECTION_TYPE_FOR_YOU: &str = "ForYouPromoted";`
+- [`home-mixer/util/urt/client_event.rs:13`](../source/home-mixer/util/urt/client_event.rs#L13) — `const COMPONENT_ADS_FOLLOWING: &str = "following_promoted";`
+- [`home-mixer/util/urt/client_event.rs:14`](../source/home-mixer/util/urt/client_event.rs#L14) — `const ADS_INJECTION_TYPE_FOLLOWING: &str = "FollowingPromoted";`
+- [`home-mixer/util/urt/client_event.rs:15`](../source/home-mixer/util/urt/client_event.rs#L15) — `const COMPONENT_ADS_RANKED_FOLLOWING: &str = "ranked_following_promoted";`
+- [`home-mixer/util/urt/client_event.rs:16`](../source/home-mixer/util/urt/client_event.rs#L16) — `const ADS_INJECTION_TYPE_RANKED_FOLLOWING: &str = "RankedFollowingPromoted";`
+- [`home-mixer/util/urt/client_event.rs:17`](../source/home-mixer/util/urt/client_event.rs#L17) — `const WTF_INJECTION_TYPE: &str = "WhoToFollow";`
+- [`home-mixer/util/urt/client_event.rs:19`](../source/home-mixer/util/urt/client_event.rs#L19) — `pub(super) fn served_type_component(st: i32) -> String {`
+- [`home-mixer/util/urt/client_event.rs:26`](../source/home-mixer/util/urt/client_event.rs#L26) — `pub(super) fn empty_details() -> ClientEventDetails {`
+- [`home-mixer/util/urt/client_event.rs:49`](../source/home-mixer/util/urt/client_event.rs#L49) — `pub(super) fn post_client_event_info(`
+- [`home-mixer/util/urt/client_event.rs:76`](../source/home-mixer/util/urt/client_event.rs#L76) — `pub(super) fn ad_client_event_info(ad: &AdIndexInfo, request_type: RequestType) -> ClientEventInfo {`
+- [`home-mixer/util/urt/client_event.rs:102`](../source/home-mixer/util/urt/client_event.rs#L102) — `pub(super) fn wtf_item_client_event_info(tracking_token: Option<&str>) -> ClientEventInfo {`
+- [`home-mixer/util/urt/client_event.rs:119`](../source/home-mixer/util/urt/client_event.rs#L119) — `pub(super) fn wtf_module_client_event_info(tracking_token: Option<&str>) -> ClientEventInfo {`
+- [`home-mixer/util/urt/controller_data.rs:7`](../source/home-mixer/util/urt/controller_data.rs#L7) — `pub(super) fn post_controller_data(`
+- [`home-mixer/util/urt/controller_data.rs:45`](../source/home-mixer/util/urt/controller_data.rs#L45) — `pub(super) fn ad_item_controller_data() -> Option<String> {`
+- [`home-mixer/util/urt/controller_data.rs:53`](../source/home-mixer/util/urt/controller_data.rs#L53) — `pub(super) fn ad_index_controller_data(ad: &AdIndexInfo) -> Option<AdindexDetails> {`
+- [`home-mixer/util/urt/controller_data.rs:68`](../source/home-mixer/util/urt/controller_data.rs#L68) — `pub(super) fn wtf_controller_data(tracking_token: &str) -> Option<String> {`
+- [`home-mixer/util/urt/controller_data.rs:74`](../source/home-mixer/util/urt/controller_data.rs#L74) — `fn serialize_b64(val: &cd::ControllerData) -> Option<String> {`
+- [`home-mixer/util/urt/convo_marshaller.rs:12`](../source/home-mixer/util/urt/convo_marshaller.rs#L12) — `const ENTRY_NAMESPACE_CONVERSATION: &str = "home-conversation";`
+- [`home-mixer/util/urt/convo_marshaller.rs:13`](../source/home-mixer/util/urt/convo_marshaller.rs#L13) — `const NUM_INTERMEDIATE_ANCESTORS: usize = 1;`
+- [`home-mixer/util/urt/convo_marshaller.rs:15`](../source/home-mixer/util/urt/convo_marshaller.rs#L15) — `pub(super) fn marshal_conversation_module(`
+- [`home-mixer/util/urt/convo_marshaller.rs:114`](../source/home-mixer/util/urt/convo_marshaller.rs#L114) — `fn following_replied_facepile(post: &ScoredPost) -> Option<TweetFacepile> {`
+- [`home-mixer/util/urt/cursors.rs:6`](../source/home-mixer/util/urt/cursors.rs#L6) — `const TOP_CURSOR_OFFSET: i64 = 10000;`
+- [`home-mixer/util/urt/cursors.rs:7`](../source/home-mixer/util/urt/cursors.rs#L7) — `const CURSOR_TOP_ENTRY_ID: &str = "cursor-top";`
+- [`home-mixer/util/urt/cursors.rs:8`](../source/home-mixer/util/urt/cursors.rs#L8) — `const CURSOR_BOTTOM_ENTRY_ID: &str = "cursor-bottom";`
+- [`home-mixer/util/urt/cursors.rs:10`](../source/home-mixer/util/urt/cursors.rs#L10) — `pub(super) fn initial_sort_index(cursor: Option<&UrtOrderedCursor>) -> i64 {`
+- [`home-mixer/util/urt/cursors.rs:25`](../source/home-mixer/util/urt/cursors.rs#L25) — `pub(super) fn build_cursors(`
+- [`home-mixer/util/urt/cursors.rs:68`](../source/home-mixer/util/urt/cursors.rs#L68) — `fn build_cursor_entry(`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:9`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L9) — `const ENTRY_ID: &str = "relevanceprompt-feed-survey-prompt";`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:10`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L10) — `const COMPONENT: &str = "for_you_relevance_prompt";`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:11`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L11) — `const ELEMENT: &str = "relevance_prompt";`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:13`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L13) — `struct SurveyStrings {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:21`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L21) — `const ENGLISH: SurveyStrings = SurveyStrings {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:29`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L29) — `const JAPANESE: SurveyStrings = SurveyStrings {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:37`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L37) — `pub(super) fn marshal_feed_survey(`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:86`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L86) — `fn survey_strings(language_code: &str) -> &'static SurveyStrings {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:99`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L99) — `fn survey_callback(feedback_type: &str, served_id: u64) -> Callback {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:115`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L115) — `fn relevance_prompt(entry: &TimelineEntry) -> &RelevancePrompt {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:130`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L130) — `fn marshals_english_prompt_by_default() {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:142`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L142) — `fn marshals_japanese_prompt() {`
+- [`home-mixer/util/urt/feed_survey_marshaller.rs:154`](../source/home-mixer/util/urt/feed_survey_marshaller.rs#L154) — `fn callbacks_carry_feedback_type_and_metadata() {`
+- [`home-mixer/util/urt/feedback.rs:12`](../source/home-mixer/util/urt/feedback.rs#L12) — `pub(super) const FEEDBACK_TTL_MS: i64 = 30 * 24 * 60 * 60 * 1000;`
+- [`home-mixer/util/urt/feedback.rs:15`](../source/home-mixer/util/urt/feedback.rs#L15) — `pub const DONT_LIKE: &str = "Feedback.dontLike";`
+- [`home-mixer/util/urt/feedback.rs:16`](../source/home-mixer/util/urt/feedback.rs#L16) — `pub const DONT_LIKE_CONFIRMATION: &str = "Feedback.dontLikeConfirmation";`
+- [`home-mixer/util/urt/feedback.rs:17`](../source/home-mixer/util/urt/feedback.rs#L17) — `pub const NOT_RELEVANT: &str = "Feedback.notRelevant";`
+- [`home-mixer/util/urt/feedback.rs:18`](../source/home-mixer/util/urt/feedback.rs#L18) — `pub const NOT_RELEVANT_CONFIRMATION: &str = "Feedback.notRelevantConfirmation";`
+- [`home-mixer/util/urt/feedback.rs:19`](../source/home-mixer/util/urt/feedback.rs#L19) — `pub const SHOW_FEWER_TWEETS: &str = "Feedback.showFewerTweets";`
+- [`home-mixer/util/urt/feedback.rs:20`](../source/home-mixer/util/urt/feedback.rs#L20) — `pub const SHOW_FEWER_TWEETS_CONFIRMATION: &str = "Feedback.showFewerTweetsConfirmation";`
+- [`home-mixer/util/urt/feedback.rs:21`](../source/home-mixer/util/urt/feedback.rs#L21) — `pub const SHOW_FEWER_RETWEETS: &str = "Feedback.showFewerRetweets";`
+- [`home-mixer/util/urt/feedback.rs:22`](../source/home-mixer/util/urt/feedback.rs#L22) — `pub const SHOW_FEWER_RETWEETS_CONFIRMATION: &str = "Feedback.showFewerRetweetsConfirmation";`
+- [`home-mixer/util/urt/feedback.rs:23`](../source/home-mixer/util/urt/feedback.rs#L23) — `pub const NOT_INTERESTED_IN_TOPIC: &str = "Feedback.notInterestedInTopic";`
+- [`home-mixer/util/urt/feedback.rs:24`](../source/home-mixer/util/urt/feedback.rs#L24) — `pub const NOT_INTERESTED_IN_TOPIC_CONFIRMATION: &str =`
+- [`home-mixer/util/urt/feedback.rs:28`](../source/home-mixer/util/urt/feedback.rs#L28) — `pub(super) struct PostFeedback {`
+- [`home-mixer/util/urt/feedback.rs:33`](../source/home-mixer/util/urt/feedback.rs#L33) — `pub(super) fn build_dont_like_feedback(`
+- [`home-mixer/util/urt/feedback.rs:250`](../source/home-mixer/util/urt/feedback.rs#L250) — `fn generate_key(action: &FeedbackAction) -> String {`
+- [`home-mixer/util/urt/feedback.rs:256`](../source/home-mixer/util/urt/feedback.rs#L256) — `pub(super) fn feedback_url(feedback_type: &str, metadata: &FeedbackMetadata) -> String {`
+- [`home-mixer/util/urt/feedback.rs:266`](../source/home-mixer/util/urt/feedback.rs#L266) — `fn lookup(key: &str, language: &str, country: Option<&str>) -> Option<String> {`
+- [`home-mixer/util/urt/feedback.rs:270`](../source/home-mixer/util/urt/feedback.rs#L270) — `fn lookup_with_user(`
+- [`home-mixer/util/urt/feedback.rs:280`](../source/home-mixer/util/urt/feedback.rs#L280) — `fn lookup_with_topic(`
+- [`home-mixer/util/urt/frame_marshaller.rs:8`](../source/home-mixer/util/urt/frame_marshaller.rs#L8) — `const ENTRY_NAMESPACE_FRAME: &str = "frame";`
+- [`home-mixer/util/urt/frame_marshaller.rs:9`](../source/home-mixer/util/urt/frame_marshaller.rs#L9) — `const ELEMENT_FRAME: &str = "frame";`
+- [`home-mixer/util/urt/frame_marshaller.rs:10`](../source/home-mixer/util/urt/frame_marshaller.rs#L10) — `const INJECTION_TYPE: &str = "JetfuelFrame";`
+- [`home-mixer/util/urt/frame_marshaller.rs:11`](../source/home-mixer/util/urt/frame_marshaller.rs#L11) — `const COMPONENT_FRAME: &str = "for_you_jetfuel_frame";`
+- [`home-mixer/util/urt/frame_marshaller.rs:13`](../source/home-mixer/util/urt/frame_marshaller.rs#L13) — `pub(super) fn marshal_frame(f: &Frame, sort_index: i64, page: i64) -> TimelineEntry {`
+- [`home-mixer/util/urt/frame_marshaller.rs:35`](../source/home-mixer/util/urt/frame_marshaller.rs#L35) — `fn frame_entry_id(f: &Frame, page: i64) -> String {`
+- [`home-mixer/util/urt/frame_marshaller.rs:40`](../source/home-mixer/util/urt/frame_marshaller.rs#L40) — `fn build_frame_client_event_info(component: &str) -> ClientEventInfo {`
+- [`home-mixer/util/urt/frame_marshaller.rs:60`](../source/home-mixer/util/urt/frame_marshaller.rs#L60) — `fn frame(occurrence: u32) -> Frame {`
+- [`home-mixer/util/urt/frame_marshaller.rs:73`](../source/home-mixer/util/urt/frame_marshaller.rs#L73) — `fn marshals_frame_entry() {`
+- [`home-mixer/util/urt/frame_marshaller.rs:87`](../source/home-mixer/util/urt/frame_marshaller.rs#L87) — `fn repeated_occurrences_get_distinct_entry_ids() {`
+- [`home-mixer/util/urt/frame_marshaller.rs:102`](../source/home-mixer/util/urt/frame_marshaller.rs#L102) — `fn the_same_frame_gets_distinct_entry_ids_across_pages() {`
+- [`home-mixer/util/urt/mod.rs:29`](../source/home-mixer/util/urt/mod.rs#L29) — `pub(crate) fn make_urt_timeline(`
+- [`home-mixer/util/urt/mod.rs:172`](../source/home-mixer/util/urt/mod.rs#L172) — `fn urt_page(request_type: RequestType) -> &'static str {`
+- [`home-mixer/util/urt/mod.rs:182`](../source/home-mixer/util/urt/mod.rs#L182) — `fn cursor_post_ids(items: &[FeedItem]) -> (Option<i64>, Option<i64>) {`
+- [`home-mixer/util/urt/mod.rs:201`](../source/home-mixer/util/urt/mod.rs#L201) — `fn post_item(tweet_id: u64) -> FeedItem {`
+- [`home-mixer/util/urt/mod.rs:211`](../source/home-mixer/util/urt/mod.rs#L211) — `fn ad_item(post_id: i64) -> FeedItem {`
+- [`home-mixer/util/urt/mod.rs:221`](../source/home-mixer/util/urt/mod.rs#L221) — `fn rendered_entries(items: &[FeedItem], entry_id_nonce: Option<u64>) -> Vec<TimelineEntry> {`
+- [`home-mixer/util/urt/mod.rs:245`](../source/home-mixer/util/urt/mod.rs#L245) — `fn rendered_entry_ids(items: &[FeedItem], entry_id_nonce: Option<u64>) -> Vec<String> {`
+- [`home-mixer/util/urt/mod.rs:252`](../source/home-mixer/util/urt/mod.rs#L252) — `fn cursor_post_id(entry: &TimelineEntry) -> Option<i64> {`
+- [`home-mixer/util/urt/mod.rs:264`](../source/home-mixer/util/urt/mod.rs#L264) — `fn without_nonce_entry_ids_are_unchanged() {`
+- [`home-mixer/util/urt/mod.rs:271`](../source/home-mixer/util/urt/mod.rs#L271) — `fn nonce_suffixes_posts_but_not_ads_or_cursors() {`
+- [`home-mixer/util/urt/mod.rs:283`](../source/home-mixer/util/urt/mod.rs#L283) — `fn cursors_use_first_and_last_post_ids_skipping_ads() {`
+- [`home-mixer/util/urt/mod.rs:318`](../source/home-mixer/util/urt/mod.rs#L318) — `fn cursor_post_ids_single_post() {`
+- [`home-mixer/util/urt/navigation.rs:8`](../source/home-mixer/util/urt/navigation.rs#L8) — `const MIN_ENTRIES_TO_CLEAR_CACHE: usize = 10;`
+- [`home-mixer/util/urt/navigation.rs:10`](../source/home-mixer/util/urt/navigation.rs#L10) — `pub(super) fn build_navigation_instructions(`
+- [`home-mixer/util/urt/navigation.rs:24`](../source/home-mixer/util/urt/navigation.rs#L24) — `fn build_clear_cache(`
+- [`home-mixer/util/urt/navigation.rs:62`](../source/home-mixer/util/urt/navigation.rs#L62) — `fn build_navigation(ctx: RequestContext, client_app_id: i32) -> Option<TimelineInstruction> {`
+- [`home-mixer/util/urt/new_tweets_pill.rs:14`](../source/home-mixer/util/urt/new_tweets_pill.rs#L14) — `const NUM_AVATARS: usize = 3;`
+- [`home-mixer/util/urt/new_tweets_pill.rs:15`](../source/home-mixer/util/urt/new_tweets_pill.rs#L15) — `const TRIGGER_DELAY_MS: i32 = 4 * 60 * 1000;`
+- [`home-mixer/util/urt/new_tweets_pill.rs:16`](../source/home-mixer/util/urt/new_tweets_pill.rs#L16) — `const DISPLAY_DURATION_MS: i32 = -1;`
+- [`home-mixer/util/urt/new_tweets_pill.rs:17`](../source/home-mixer/util/urt/new_tweets_pill.rs#L17) — `const SHOW_ALERT_ELEMENT: &str = "showAlert";`
+- [`home-mixer/util/urt/new_tweets_pill.rs:18`](../source/home-mixer/util/urt/new_tweets_pill.rs#L18) — `const TWEETED_KEY: &str = "Tweeted";`
+- [`home-mixer/util/urt/new_tweets_pill.rs:20`](../source/home-mixer/util/urt/new_tweets_pill.rs#L20) — `pub(super) fn build_new_tweets_pill_instruction(`
+- [`home-mixer/util/urt/new_tweets_pill.rs:86`](../source/home-mixer/util/urt/new_tweets_pill.rs#L86) — `fn pill_text(language: &str, country: Option<&str>) -> Option<RichText> {`
+- [`home-mixer/util/urt/new_tweets_pill.rs:96`](../source/home-mixer/util/urt/new_tweets_pill.rs#L96) — `fn extract_pill_user_ids(items: &[FeedItem], viewer_id: u64) -> Option<Vec<i64>> {`
+- [`home-mixer/util/urt/post_marshaller.rs:11`](../source/home-mixer/util/urt/post_marshaller.rs#L11) — `pub(super) const ENTRY_NAMESPACE_TWEET: &str = "tweet";`
+- [`home-mixer/util/urt/post_marshaller.rs:13`](../source/home-mixer/util/urt/post_marshaller.rs#L13) — `pub(super) fn make_tweet(id: u64) -> Tweet {`
+- [`home-mixer/util/urt/post_marshaller.rs:17`](../source/home-mixer/util/urt/post_marshaller.rs#L17) — `pub(super) fn make_tweet_helper(`
+- [`home-mixer/util/urt/post_marshaller.rs:57`](../source/home-mixer/util/urt/post_marshaller.rs#L57) — `pub(super) fn make_tweet_item(`
+- [`home-mixer/util/urt/post_marshaller.rs:71`](../source/home-mixer/util/urt/post_marshaller.rs#L71) — `pub(super) fn tweet_context_from_post(post: &ScoredPost) -> Option<TweetContext> {`
+- [`home-mixer/util/urt/post_marshaller.rs:114`](../source/home-mixer/util/urt/post_marshaller.rs#L114) — `fn is_standalone_original_post(post: &ScoredPost) -> bool {`
+- [`home-mixer/util/urt/post_marshaller.rs:121`](../source/home-mixer/util/urt/post_marshaller.rs#L121) — `pub(super) fn marshal_post(`
+- [`home-mixer/util/urt/prompt_marshaller.rs:55`](../source/home-mixer/util/urt/prompt_marshaller.rs#L55) — `const ENTRY_NAMESPACE: &str = "flip-prompt-message";`
+- [`home-mixer/util/urt/prompt_marshaller.rs:57`](../source/home-mixer/util/urt/prompt_marshaller.rs#L57) — `pub(super) enum PromptUrtResult {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:62`](../source/home-mixer/util/urt/prompt_marshaller.rs#L62) — `pub(super) fn marshal_prompt(module: &PromptProto, sort_index: i64) -> Option<PromptUrtResult> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:79`](../source/home-mixer/util/urt/prompt_marshaller.rs#L79) — `fn marshal_inline_prompt(p: &FlipInlinePrompt, sort_index: i64) -> Option<TimelineEntry> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:134`](../source/home-mixer/util/urt/prompt_marshaller.rs#L134) — `fn build_inline_prompt_client_event_info(p: &FlipInlinePrompt) -> Option<ClientEventInfo> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:152`](../source/home-mixer/util/urt/prompt_marshaller.rs#L152) — `fn marshal_full_cover(c: &FlipFullCover) -> Option<TimelineInstruction> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:177`](../source/home-mixer/util/urt/prompt_marshaller.rs#L177) — `fn marshal_half_cover(c: &FlipHalfCover) -> Option<TimelineInstruction> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:208`](../source/home-mixer/util/urt/prompt_marshaller.rs#L208) — `fn marshal_relevance_prompt(p: &FlipRelevancePrompt, sort_index: i64) -> Option<TimelineEntry> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:269`](../source/home-mixer/util/urt/prompt_marshaller.rs#L269) — `fn build_relevance_confirmation(p: &FlipRelevancePrompt) -> String {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:273`](../source/home-mixer/util/urt/prompt_marshaller.rs#L273) — `fn button_dismiss_feedback_text(button: &FlipButtonAction) -> Option<String> {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:280`](../source/home-mixer/util/urt/prompt_marshaller.rs#L280) — `fn convert_relevance_callback(button: &FlipButtonAction) -> Callback {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:290`](../source/home-mixer/util/urt/prompt_marshaller.rs#L290) — `fn convert_rich_text(rt: &FlipRichText) -> RichText {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:309`](../source/home-mixer/util/urt/prompt_marshaller.rs#L309) — `fn convert_reference_object(r: &FlipRefObj) -> ReferenceObject {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:330`](../source/home-mixer/util/urt/prompt_marshaller.rs#L330) — `fn convert_format(f: &FlipFormat) -> RichTextFormat {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:338`](../source/home-mixer/util/urt/prompt_marshaller.rs#L338) — `fn convert_alignment(a: &FlipAlignment) -> RichTextAlignment {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:346`](../source/home-mixer/util/urt/prompt_marshaller.rs#L346) — `fn convert_url(u: &FlipUrl) -> Url {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:369`](../source/home-mixer/util/urt/prompt_marshaller.rs#L369) — `fn convert_callback(cb: &FlipCallback) -> Callback {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:375`](../source/home-mixer/util/urt/prompt_marshaller.rs#L375) — `fn convert_button_action(ba: &FlipButtonAction) -> MessageTextAction {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:396`](../source/home-mixer/util/urt/prompt_marshaller.rs#L396) — `fn convert_cover_cta(ba: &FlipButtonAction) -> CoverCta {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:410`](../source/home-mixer/util/urt/prompt_marshaller.rs#L410) — `fn convert_cover_cta_behavior(behavior: &FlipButtonBehavior) -> CoverCtaBehavior {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:421`](../source/home-mixer/util/urt/prompt_marshaller.rs#L421) — `fn convert_horizon_icon(icon: &FlipHorizonIcon) -> HorizonIcon {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:425`](../source/home-mixer/util/urt/prompt_marshaller.rs#L425) — `fn convert_button_style(style: &FlipCtaButtonStyle) -> ButtonStyle {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:429`](../source/home-mixer/util/urt/prompt_marshaller.rs#L429) — `fn convert_half_cover_display_type(`
+- [`home-mixer/util/urt/prompt_marshaller.rs:439`](../source/home-mixer/util/urt/prompt_marshaller.rs#L439) — `fn convert_client_event_info(cei: &FlipClientEventInfo) -> ClientEventInfo {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:449`](../source/home-mixer/util/urt/prompt_marshaller.rs#L449) — `fn convert_message_image(img: &FlipImage) -> MessageImage {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:462`](../source/home-mixer/util/urt/prompt_marshaller.rs#L462) — `fn convert_image_variant(img: &FlipImage) -> ImageVariant {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:471`](../source/home-mixer/util/urt/prompt_marshaller.rs#L471) — `fn convert_cover_image(img: &FlipImage) -> CoverImage {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:482`](../source/home-mixer/util/urt/prompt_marshaller.rs#L482) — `fn convert_cover_image_display_type(img: &FlipImage) -> urt_cover::ImageDisplayType {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:491`](../source/home-mixer/util/urt/prompt_marshaller.rs#L491) — `fn convert_cover_image_animation_type(`
+- [`home-mixer/util/urt/prompt_marshaller.rs:500`](../source/home-mixer/util/urt/prompt_marshaller.rs#L500) — `fn convert_dismiss_info(di: &FlipDismissInfo) -> DismissInfo {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:509`](../source/home-mixer/util/urt/prompt_marshaller.rs#L509) — `fn convert_social_context(rt: &FlipRichText) -> SocialContext {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:519`](../source/home-mixer/util/urt/prompt_marshaller.rs#L519) — `fn convert_user_facepile(uf: &FlipUserFacepile) -> UserFacepile {`
+- [`home-mixer/util/urt/prompt_marshaller.rs:530`](../source/home-mixer/util/urt/prompt_marshaller.rs#L530) — `fn convert_feedback_info(fi: &FeedbackInfo) -> UrtFeedbackInfo {`
+- [`home-mixer/util/urt/push_to_home_marshaller.rs:12`](../source/home-mixer/util/urt/push_to_home_marshaller.rs#L12) — `const ENTRY_NAMESPACE: &str = "push-to-home";`
+- [`home-mixer/util/urt/push_to_home_marshaller.rs:14`](../source/home-mixer/util/urt/push_to_home_marshaller.rs#L14) — `pub(super) fn marshal_push_to_home(post: &PushToHomePost, sort_index: i64) -> TimelineEntry {`
+- [`home-mixer/util/urt/push_to_home_marshaller.rs:90`](../source/home-mixer/util/urt/push_to_home_marshaller.rs#L90) — `fn build_client_event_info(component: &str) -> ClientEventInfo {`
+- [`home-mixer/util/urt/push_to_home_marshaller.rs:106`](../source/home-mixer/util/urt/push_to_home_marshaller.rs#L106) — `fn build_all_tweet_ids(post: &PushToHomePost) -> Vec<i64> {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:9`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L9) — `const TOP_CURSOR_OFFSET: i64 = 10000;`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:10`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L10) — `const CURSOR_TOP_ENTRY_ID: &str = "cursor-top";`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:11`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L11) — `const CURSOR_BOTTOM_ENTRY_ID: &str = "cursor-bottom";`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:12`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L12) — `const CURSOR_GAP_ENTRY_ID: &str = "cursor-gap";`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:14`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L14) — `pub(super) fn initial_sort_index(cursor: Option<&UrtOrderedCursor>) -> i64 {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:28`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L28) — `pub(super) fn build_cursors(`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:97`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L97) — `pub(super) fn should_emit_gap_cursor(`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:115`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L115) — `fn post_id(item: &FeedItem) -> Option<u64> {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:122`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L122) — `fn build_cursor_entry(`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:153`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L153) — `fn post_item(tweet_id: u64) -> FeedItem {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:163`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L163) — `fn top_cursor() -> UrtOrderedCursor {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:167`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L167) — `fn cursor_id(entry: &TimelineEntry) -> Option<i64> {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:178`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L178) — `fn gap_not_emitted_without_source_truncation() {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:188`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L188) — `fn gap_emitted_on_source_truncation() {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:198`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L198) — `fn source_truncation_gap_uses_pre_groupby_bottom() {`
+- [`home-mixer/util/urt/reverse_chron_following/cursors.rs:218`](../source/home-mixer/util/urt/reverse_chron_following/cursors.rs#L218) — `fn bottom_cursor_uses_pre_groupby_bottom() {`
+- [`home-mixer/util/urt/reverse_chron_following/mod.rs:20`](../source/home-mixer/util/urt/reverse_chron_following/mod.rs#L20) — `pub(crate) fn make_urt_timeline(`
+- [`home-mixer/util/urt/reverse_chron_following/mod.rs:125`](../source/home-mixer/util/urt/reverse_chron_following/mod.rs#L125) — `fn cursor_post_ids(items: &[FeedItem]) -> (Option<i64>, Option<i64>) {`
+- [`home-mixer/util/urt/wtf_marshaller.rs:3`](../source/home-mixer/util/urt/wtf_marshaller.rs#L3) — `const ENTRY_NAMESPACE_USER: &str = "user";`
+- [`home-mixer/util/urt/wtf_marshaller.rs:4`](../source/home-mixer/util/urt/wtf_marshaller.rs#L4) — `const ENTRY_NAMESPACE_WTF: &str = "who-to-follow";`
+- [`home-mixer/util/urt/wtf_marshaller.rs:19`](../source/home-mixer/util/urt/wtf_marshaller.rs#L19) — `pub(super) fn marshal_wtf(`
+- [`home-mixer/util/viewer_history.rs:6`](../source/home-mixer/util/viewer_history.rs#L6) — `const COL_AUTHOR_ID: &str = "authorId";`
+- [`home-mixer/util/viewer_history.rs:7`](../source/home-mixer/util/viewer_history.rs#L7) — `const COL_ACTION_NAME_MULTI_HOT: &str = "actionNameMultiHot";`
+- [`home-mixer/util/viewer_history.rs:9`](../source/home-mixer/util/viewer_history.rs#L9) — `const POSITIVE_ENGAGEMENTS: [ActionName; 18] = [`
+- [`home-mixer/util/viewer_history.rs:30`](../source/home-mixer/util/viewer_history.rs#L30) — `pub fn positively_engaged_author_ids(columnar_sequence: &bytes::Bytes) -> Option<HashSet<u64>> {`
+- [`home-mixer/util/xds.rs:4`](../source/home-mixer/util/xds.rs#L4) — `pub const XDS_GATE: RouteGate = RouteGate::decider_only("enable_phoenix_xds_traffic");`
+- [`home-mixer/util/xds.rs:6`](../source/home-mixer/util/xds.rs#L6) — `pub const RETRIEVAL_XDS_GATE: RouteGate =`
+- [`home-mixer/util/xds.rs:9`](../source/home-mixer/util/xds.rs#L9) — `pub const VM_RANKER_XDS_GATE: RouteGate = RouteGate::decider_only("enable_vm_ranker_xds_traffic");`
+- [`home-mixer/util/xds.rs:11`](../source/home-mixer/util/xds.rs#L11) — `pub const ENABLE_PHOENIX_XDS_TRAFFIC_DECIDER: &str = "enable_phoenix_xds_traffic";`
+- [`home-mixer/util/xds.rs:13`](../source/home-mixer/util/xds.rs#L13) — `pub fn use_xds_for_cluster(query: &ScoredPostsQuery, cluster_name: &str) -> bool {`
+- [`home-mixer/util/xds.rs:17`](../source/home-mixer/util/xds.rs#L17) — `pub fn use_xds_for_vm_ranker_cluster(query: &ScoredPostsQuery, cluster_name: &str) -> bool {`

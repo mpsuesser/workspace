@@ -1,0 +1,1184 @@
+# grox: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`grox/config/config.py:25`](../source/grox/config/config.py#L25) — `def _get_config_file_paths() -> list[str]:`
+- [`grox/config/config.py:40`](../source/grox/config/config.py#L40) — `def _read_bearer_token() -> str:`
+- [`grox/config/config.py:51`](../source/grox/config/config.py#L51) — `def _read_xai_api_key() -> str:`
+- [`grox/config/config.py:55`](../source/grox/config/config.py#L55) — `class ModelConfig(BaseModel):`
+- [`grox/config/config.py:68`](../source/grox/config/config.py#L68) — `class EapiModelConfig(BaseModel):`
+- [`grox/config/config.py:79`](../source/grox/config/config.py#L79) — `class ModelName:`
+- [`grox/config/config.py:96`](../source/grox/config/config.py#L96) — `class NightOwlConfig(BaseModel):`
+- [`grox/config/config.py:103`](../source/grox/config/config.py#L103) — `class MediaHydrationConfig(BaseModel):`
+- [`grox/config/config.py:123`](../source/grox/config/config.py#L123) — `class GroxKafkaLoaderConfig(BaseModel):`
+- [`grox/config/config.py:131`](../source/grox/config/config.py#L131) — `class GrpcServerConfig(BaseModel):`
+- [`grox/config/config.py:138`](../source/grox/config/config.py#L138) — `class EngineConfig(BaseModel):`
+- [`grox/config/config.py:145`](../source/grox/config/config.py#L145) — `class TaskGeneratorConfig(BaseModel):`
+- [`grox/config/config.py:153`](../source/grox/config/config.py#L153) — `class DispatcherConfig(BaseModel):`
+- [`grox/config/config.py:161`](../source/grox/config/config.py#L161) — `class KerberosConfig(BaseModel):`
+- [`grox/config/config.py:168`](../source/grox/config/config.py#L168) — `class ASRConfig(BaseModel):`
+- [`grox/config/config.py:179`](../source/grox/config/config.py#L179) — `class ProductMediaConfig(BaseModel):`
+- [`grox/config/config.py:185`](../source/grox/config/config.py#L185) — `class PeriodicGcConfig(BaseModel):`
+- [`grox/config/config.py:192`](../source/grox/config/config.py#L192) — `class PromptTokensConfig(BaseModel):`
+- [`grox/config/config.py:202`](../source/grox/config/config.py#L202) — `class MediaReferenceBundleConfig(BaseModel):`
+- [`grox/config/config.py:209`](../source/grox/config/config.py#L209) — `class GroxConfig(BaseSettings):`
+- [`grox/config/config.py:243`](../source/grox/config/config.py#L243) — `def settings_customise_sources(`
+- [`grox/config/config.py:259`](../source/grox/config/config.py#L259) — `def get_model(self, model_name: str) -> ModelConfig:`
+- [`grox/config/config.py:262`](../source/grox/config/config.py#L262) — `def get_embedding_model(self, model_name: str) -> EmbeddingModelConfig:`
+- [`grox/config/config.py:265`](../source/grox/config/config.py#L265) — `def get_eapi_model(self, model_name: str) -> EapiModelConfig:`
+- [`grox/config/config.py:268`](../source/grox/config/config.py#L268) — `def get_oai_model(self, model_name: str) -> OaiModelConfig:`
+- [`grox/config/config.py:271`](../source/grox/config/config.py#L271) — `def get_kafka_producer_topic(self, topic_name: str) -> KafkaProducerConfig:`
+- [`grox/config/config.py:274`](../source/grox/config/config.py#L274) — `def get_kafka_producer(self, name: str) -> MultiRegionKafkaProducerConfig:`
+- [`grox/config/config.py:277`](../source/grox/config/config.py#L277) — `def get_kafka_consumer_topic(self, topic_name: str) -> KafkaConsumerConfig:`
+- [`grox/config/config.py:280`](../source/grox/config/config.py#L280) — `def get_kafka_loader_topic(self, topic_name: str) -> GroxKafkaLoaderConfig:`
+- [`grox/core/clients/nightowl_client.py:27`](../source/grox/core/clients/nightowl_client.py#L27) — `class NightOwlClient:`
+- [`grox/core/clients/nightowl_client.py:28`](../source/grox/core/clients/nightowl_client.py#L28) — `def __init__(self, endpoint: str, timeout: float = 2.0):`
+- [`grox/core/clients/nightowl_client.py:34`](../source/grox/core/clients/nightowl_client.py#L34) — `async def _ensure_stub(self) -> NightOwlSearchServiceStub:`
+- [`grox/core/clients/nightowl_client.py:49`](../source/grox/core/clients/nightowl_client.py#L49) — `async def search(`
+- [`grox/core/clients/nightowl_client.py:77`](../source/grox/core/clients/nightowl_client.py#L77) — `async def close(self) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:25`](../source/grox/core/data_loaders/asr_processor.py#L25) — `class _ASRRequest(BaseModel):`
+- [`grox/core/data_loaders/asr_processor.py:32`](../source/grox/core/data_loaders/asr_processor.py#L32) — `class _ASRResult(BaseModel):`
+- [`grox/core/data_loaders/asr_processor.py:39`](../source/grox/core/data_loaders/asr_processor.py#L39) — `def _extract_wav_from_url(`
+- [`grox/core/data_loaders/asr_processor.py:81`](../source/grox/core/data_loaders/asr_processor.py#L81) — `def _clean_asr(raw: str) -> str:`
+- [`grox/core/data_loaders/asr_processor.py:89`](../source/grox/core/data_loaders/asr_processor.py#L89) — `class _ASRWorker:`
+- [`grox/core/data_loaders/asr_processor.py:90`](../source/grox/core/data_loaders/asr_processor.py#L90) — `def __init__(`
+- [`grox/core/data_loaders/asr_processor.py:98`](../source/grox/core/data_loaders/asr_processor.py#L98) — `def _metrics_attributes() -> dict[str, str]:`
+- [`grox/core/data_loaders/asr_processor.py:101`](../source/grox/core/data_loaders/asr_processor.py#L101) — `async def _transcribe(self, request: _ASRRequest) -> str | None:`
+- [`grox/core/data_loaders/asr_processor.py:184`](../source/grox/core/data_loaders/asr_processor.py#L184) — `async def _process(self, request: _ASRRequest, ctx: dict[str, str]) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:185`](../source/grox/core/data_loaders/asr_processor.py#L185) — `def result(**kwargs) -> _ASRResult:`
+- [`grox/core/data_loaders/asr_processor.py:223`](../source/grox/core/data_loaders/asr_processor.py#L223) — `async def _init_run(self) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:227`](../source/grox/core/data_loaders/asr_processor.py#L227) — `async def _run(self) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:249`](../source/grox/core/data_loaders/asr_processor.py#L249) — `def run(self) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:250`](../source/grox/core/data_loaders/asr_processor.py#L250) — `async def wrapper():`
+- [`grox/core/data_loaders/asr_processor.py:259`](../source/grox/core/data_loaders/asr_processor.py#L259) — `def _start_loop(self) -> Process:`
+- [`grox/core/data_loaders/asr_processor.py:264`](../source/grox/core/data_loaders/asr_processor.py#L264) — `def start(self) -> list[Process]:`
+- [`grox/core/data_loaders/asr_processor.py:267`](../source/grox/core/data_loaders/asr_processor.py#L267) — `def _is_shutdown(self) -> bool:`
+- [`grox/core/data_loaders/asr_processor.py:280`](../source/grox/core/data_loaders/asr_processor.py#L280) — `class ASRProcessor:`
+- [`grox/core/data_loaders/asr_processor.py:291`](../source/grox/core/data_loaders/asr_processor.py#L291) — `async def process(`
+- [`grox/core/data_loaders/asr_processor.py:320`](../source/grox/core/data_loaders/asr_processor.py#L320) — `def _submit(`
+- [`grox/core/data_loaders/asr_processor.py:339`](../source/grox/core/data_loaders/asr_processor.py#L339) — `async def _result_loop(cls) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:358`](../source/grox/core/data_loaders/asr_processor.py#L358) — `def start(cls) -> None:`
+- [`grox/core/data_loaders/asr_processor.py:373`](../source/grox/core/data_loaders/asr_processor.py#L373) — `async def stop(cls, timeout: float = 5) -> None:`
+- [`grox/core/data_loaders/data_types.py:15`](../source/grox/core/data_loaders/data_types.py#L15) — `class AffiliatedBusiness(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:20`](../source/grox/core/data_loaders/data_types.py#L20) — `class User(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:45`](../source/grox/core/data_loaders/data_types.py#L45) — `def from_thrift_model(cls, author_metadata: t.AuthorMetadata) -> "User":`
+- [`grox/core/data_loaders/data_types.py:96`](../source/grox/core/data_loaders/data_types.py#L96) — `class Image(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:105`](../source/grox/core/data_loaders/data_types.py#L105) — `def from_thrift_model(cls, media_entity: t.MediaEntity) -> "Image":`
+- [`grox/core/data_loaders/data_types.py:112`](../source/grox/core/data_loaders/data_types.py#L112) — `def to_convo(self, idx: int = 0) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:143`](../source/grox/core/data_loaders/data_types.py#L143) — `class VideoVariant(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:149`](../source/grox/core/data_loaders/data_types.py#L149) — `def from_thrift_model(cls, video_variant: t.VideoVariant) -> "VideoVariant":`
+- [`grox/core/data_loaders/data_types.py:157`](../source/grox/core/data_loaders/data_types.py#L157) — `class VideoInfo(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:162`](../source/grox/core/data_loaders/data_types.py#L162) — `def from_thrift_model(`
+- [`grox/core/data_loaders/data_types.py:178`](../source/grox/core/data_loaders/data_types.py#L178) — `def get_best_variant(self) -> VideoVariant | None:`
+- [`grox/core/data_loaders/data_types.py:187`](../source/grox/core/data_loaders/data_types.py#L187) — `def get_highest_variant(self) -> VideoVariant | None:`
+- [`grox/core/data_loaders/data_types.py:198`](../source/grox/core/data_loaders/data_types.py#L198) — `def get_highest_variant_within(`
+- [`grox/core/data_loaders/data_types.py:211`](../source/grox/core/data_loaders/data_types.py#L211) — `def get_highest_bitrate(self) -> int | None:`
+- [`grox/core/data_loaders/data_types.py:218`](../source/grox/core/data_loaders/data_types.py#L218) — `class Video(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:227`](../source/grox/core/data_loaders/data_types.py#L227) — `def from_thrift_model(cls, media_entity: t.MediaEntity) -> "Video":`
+- [`grox/core/data_loaders/data_types.py:246`](../source/grox/core/data_loaders/data_types.py#L246) — `def to_convo(self, idx: int = 0) -> list[str | ConvoVideo]:`
+- [`grox/core/data_loaders/data_types.py:250`](../source/grox/core/data_loaders/data_types.py#L250) — `class Card(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:258`](../source/grox/core/data_loaders/data_types.py#L258) — `def from_thrift_model_card_metadata(`
+- [`grox/core/data_loaders/data_types.py:277`](../source/grox/core/data_loaders/data_types.py#L277) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:292`](../source/grox/core/data_loaders/data_types.py#L292) — `class PollCard(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:297`](../source/grox/core/data_loaders/data_types.py#L297) — `def from_thrift_model(cls, poll_card_metadata: t.PollCardMetadata) -> "PollCard":`
+- [`grox/core/data_loaders/data_types.py:307`](../source/grox/core/data_loaders/data_types.py#L307) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:316`](../source/grox/core/data_loaders/data_types.py#L316) — `class GrokShareCard(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:321`](../source/grox/core/data_loaders/data_types.py#L321) — `def from_thrift_model(cls, metadata: t.GrokShareCardMetadata) -> "GrokShareCard":`
+- [`grox/core/data_loaders/data_types.py:324`](../source/grox/core/data_loaders/data_types.py#L324) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:335`](../source/grox/core/data_loaders/data_types.py#L335) — `class LegacyCard(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:344`](../source/grox/core/data_loaders/data_types.py#L344) — `def from_thrift_model(`
+- [`grox/core/data_loaders/data_types.py:374`](../source/grox/core/data_loaders/data_types.py#L374) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:395`](../source/grox/core/data_loaders/data_types.py#L395) — `class GrokShare(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:400`](../source/grox/core/data_loaders/data_types.py#L400) — `def from_thrift_model(cls, metadata: t.GrokShareMetadata) -> "GrokShare":`
+- [`grox/core/data_loaders/data_types.py:408`](../source/grox/core/data_loaders/data_types.py#L408) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:419`](../source/grox/core/data_loaders/data_types.py#L419) — `class UnifiedCard(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:426`](../source/grox/core/data_loaders/data_types.py#L426) — `def from_thrift_model(`
+- [`grox/core/data_loaders/data_types.py:446`](../source/grox/core/data_loaders/data_types.py#L446) — `def to_convo(self) -> list[str | ConvoImage | ConvoVideo]:`
+- [`grox/core/data_loaders/data_types.py:462`](../source/grox/core/data_loaders/data_types.py#L462) — `class CardV2(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:467`](../source/grox/core/data_loaders/data_types.py#L467) — `def from_thrift_model(cls, card_metadata_v2: t.CardMetadataV2) -> "CardV2":`
+- [`grox/core/data_loaders/data_types.py:483`](../source/grox/core/data_loaders/data_types.py#L483) — `def to_convo(self) -> list[str | ConvoImage | ConvoVideo]:`
+- [`grox/core/data_loaders/data_types.py:493`](../source/grox/core/data_loaders/data_types.py#L493) — `class Counts(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:501`](../source/grox/core/data_loaders/data_types.py#L501) — `def from_strato_model(cls, counts: StratoCounts) -> "Counts":`
+- [`grox/core/data_loaders/data_types.py:511`](../source/grox/core/data_loaders/data_types.py#L511) — `def from_thrift_model(cls, counts: t.StatusCounts) -> "Counts":`
+- [`grox/core/data_loaders/data_types.py:527`](../source/grox/core/data_loaders/data_types.py#L527) — `class BroadcastMetadata(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:535`](../source/grox/core/data_loaders/data_types.py#L535) — `def from_thrift_model(`
+- [`grox/core/data_loaders/data_types.py:546`](../source/grox/core/data_loaders/data_types.py#L546) — `def to_convo(self) -> list[str | ConvoImage | ConvoVideo]:`
+- [`grox/core/data_loaders/data_types.py:557`](../source/grox/core/data_loaders/data_types.py#L557) — `class ListMetadata(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:561`](../source/grox/core/data_loaders/data_types.py#L561) — `def from_thrift_model(cls, listMetadata: t.ListMetadata) -> "ListMetadata":`
+- [`grox/core/data_loaders/data_types.py:568`](../source/grox/core/data_loaders/data_types.py#L568) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:578`](../source/grox/core/data_loaders/data_types.py#L578) — `class ChatGroupMetadata(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:583`](../source/grox/core/data_loaders/data_types.py#L583) — `def from_thrift_model(cls, metadata: t.ChatGroupMetadata) -> "ChatGroupMetadata":`
+- [`grox/core/data_loaders/data_types.py:591`](../source/grox/core/data_loaders/data_types.py#L591) — `def to_convo(self) -> list[str | ConvoImage]:`
+- [`grox/core/data_loaders/data_types.py:604`](../source/grox/core/data_loaders/data_types.py#L604) — `class SpaceMetadata(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:608`](../source/grox/core/data_loaders/data_types.py#L608) — `def from_thrift_model(cls, metadata: t.SpaceMetadata) -> "SpaceMetadata":`
+- [`grox/core/data_loaders/data_types.py:611`](../source/grox/core/data_loaders/data_types.py#L611) — `def to_convo(self) -> list[str]:`
+- [`grox/core/data_loaders/data_types.py:620`](../source/grox/core/data_loaders/data_types.py#L620) — `class ArticleMetadata(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:626`](../source/grox/core/data_loaders/data_types.py#L626) — `def _transform_media_entities(`
+- [`grox/core/data_loaders/data_types.py:640`](../source/grox/core/data_loaders/data_types.py#L640) — `def from_thrift_model(cls, articleMetadata: t.ArticleMetadata) -> "ArticleMetadata":`
+- [`grox/core/data_loaders/data_types.py:651`](../source/grox/core/data_loaders/data_types.py#L651) — `def to_convo(self) -> list[str | ConvoImage | ConvoVideo]:`
+- [`grox/core/data_loaders/data_types.py:666`](../source/grox/core/data_loaders/data_types.py#L666) — `class Reply(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:672`](../source/grox/core/data_loaders/data_types.py#L672) — `class Post(BaseModel):`
+- [`grox/core/data_loaders/data_types.py:702`](../source/grox/core/data_loaders/data_types.py#L702) — `def get_images(self) -> list[Image]:`
+- [`grox/core/data_loaders/data_types.py:714`](../source/grox/core/data_loaders/data_types.py#L714) — `def get_fav_count(self) -> int:`
+- [`grox/core/data_loaders/data_types.py:721`](../source/grox/core/data_loaders/data_types.py#L721) — `def _collect_urls(self) -> list[str]:`
+- [`grox/core/data_loaders/data_types.py:735`](../source/grox/core/data_loaders/data_types.py#L735) — `def extract_domains(self) -> list[str]:`
+- [`grox/core/data_loaders/data_types.py:736`](../source/grox/core/data_loaders/data_types.py#L736) — `def hostname(url: str) -> str | None:`
+- [`grox/core/data_loaders/data_types.py:750`](../source/grox/core/data_loaders/data_types.py#L750) — `def from_post_metadata(cls, post_metadata: t.PostMetadataV2) -> "Post":`
+- [`grox/core/data_loaders/data_types.py:854`](../source/grox/core/data_loaders/data_types.py#L854) — `def _transform_media_entities(`
+- [`grox/core/data_loaders/data_types.py:868`](../source/grox/core/data_loaders/data_types.py#L868) — `def from_post_quote_metadata(`
+- [`grox/core/data_loaders/data_types.py:879`](../source/grox/core/data_loaders/data_types.py#L879) — `def from_content_understanding_metadata(`
+- [`grox/core/data_loaders/data_types.py:900`](../source/grox/core/data_loaders/data_types.py#L900) — `def from_thrift_content_understanding_metadata(cls, message_value: Any) -> "Post":`
+- [`grox/core/data_loaders/descendant_hydrator.py:14`](../source/grox/core/data_loaders/descendant_hydrator.py#L14) — `class DescendantHydrator:`
+- [`grox/core/data_loaders/descendant_hydrator.py:15`](../source/grox/core/data_loaders/descendant_hydrator.py#L15) — `def __init__(self):`
+- [`grox/core/data_loaders/descendant_hydrator.py:18`](../source/grox/core/data_loaders/descendant_hydrator.py#L18) — `async def hydrate(self, post_ids: list[int]) -> list[Post]:`
+- [`grox/core/data_loaders/descendant_id_provider.py:10`](../source/grox/core/data_loaders/descendant_id_provider.py#L10) — `class DescendantIdProvider:`
+- [`grox/core/data_loaders/descendant_id_provider.py:11`](../source/grox/core/data_loaders/descendant_id_provider.py#L11) — `def __init__(self, client: NightOwlClient):`
+- [`grox/core/data_loaders/descendant_id_provider.py:14`](../source/grox/core/data_loaders/descendant_id_provider.py#L14) — `async def fetch(self, post_id: int, num_results: int = 30) -> list[int]:`
+- [`grox/core/data_loaders/kafka_loader.py:33`](../source/grox/core/data_loaders/kafka_loader.py#L33) — `def parse_native_encoding(data: bytes) -> int:`
+- [`grox/core/data_loaders/kafka_loader.py:41`](../source/grox/core/data_loaders/kafka_loader.py#L41) — `class KafkaLoader(MessageQueueLoader):`
+- [`grox/core/data_loaders/kafka_loader.py:42`](../source/grox/core/data_loaders/kafka_loader.py#L42) — `def __init__(self, topic_name: str):`
+- [`grox/core/data_loaders/kafka_loader.py:61`](../source/grox/core/data_loaders/kafka_loader.py#L61) — `def _is_shutdown(self) -> bool:`
+- [`grox/core/data_loaders/kafka_loader.py:70`](../source/grox/core/data_loaders/kafka_loader.py#L70) — `async def start(self):`
+- [`grox/core/data_loaders/kafka_loader.py:78`](../source/grox/core/data_loaders/kafka_loader.py#L78) — `async def stop(self):`
+- [`grox/core/data_loaders/kafka_loader.py:91`](../source/grox/core/data_loaders/kafka_loader.py#L91) — `def _current_limit(self) -> RateLimitItemPerSecond | None:`
+- [`grox/core/data_loaders/kafka_loader.py:102`](../source/grox/core/data_loaders/kafka_loader.py#L102) — `async def poll(self) -> AsyncGenerator[MessageQueuePayload | None, None]:`
+- [`grox/core/data_loaders/kafka_loader.py:130`](../source/grox/core/data_loaders/kafka_loader.py#L130) — `async def ack(self, mid: str, success: bool = True):`
+- [`grox/core/data_loaders/kafka_loader.py:134`](../source/grox/core/data_loaders/kafka_loader.py#L134) — `def _messages_to_payloads(`
+- [`grox/core/data_loaders/kafka_loader.py:139`](../source/grox/core/data_loaders/kafka_loader.py#L139) — `def _process_messages(`
+- [`grox/core/data_loaders/kafka_loader.py:153`](../source/grox/core/data_loaders/kafka_loader.py#L153) — `async def _prefetcher(self) -> None:`
+- [`grox/core/data_loaders/kafka_loader.py:181`](../source/grox/core/data_loaders/kafka_loader.py#L181) — `class KafkaPostLoader(KafkaLoader):`
+- [`grox/core/data_loaders/kafka_loader.py:182`](../source/grox/core/data_loaders/kafka_loader.py#L182) — `def __init__(self, topic_name: str):`
+- [`grox/core/data_loaders/kafka_loader.py:186`](../source/grox/core/data_loaders/kafka_loader.py#L186) — `def _messages_to_payloads(`
+- [`grox/core/data_loaders/kafka_loader.py:205`](../source/grox/core/data_loaders/kafka_loader.py#L205) — `class KafkaTweetEmbeddingLoader(KafkaLoader):`
+- [`grox/core/data_loaders/kafka_loader.py:206`](../source/grox/core/data_loaders/kafka_loader.py#L206) — `def __init__(self, topic_name: str):`
+- [`grox/core/data_loaders/kafka_loader.py:210`](../source/grox/core/data_loaders/kafka_loader.py#L210) — `def _messages_to_payloads(`
+- [`grox/core/data_loaders/media_loader.py:32`](../source/grox/core/data_loaders/media_loader.py#L32) — `def _create_descendant_id_provider() -> DescendantIdProvider | None:`
+- [`grox/core/data_loaders/media_loader.py:46`](../source/grox/core/data_loaders/media_loader.py#L46) — `class MediaLoader:`
+- [`grox/core/data_loaders/media_loader.py:56`](../source/grox/core/data_loaders/media_loader.py#L56) — `def _metrics_attributes(cls) -> dict[str, str]:`
+- [`grox/core/data_loaders/media_loader.py:61`](../source/grox/core/data_loaders/media_loader.py#L61) — `async def _download(cls, url: str) -> bytes | None:`
+- [`grox/core/data_loaders/media_loader.py:65`](../source/grox/core/data_loaders/media_loader.py#L65) — `def _ton_vid_url(cls, url: str) -> str | None:`
+- [`grox/core/data_loaders/media_loader.py:78`](../source/grox/core/data_loaders/media_loader.py#L78) — `def get_fav_count(cls, post: Post) -> int:`
+- [`grox/core/data_loaders/media_loader.py:86`](../source/grox/core/data_loaders/media_loader.py#L86) — `def post_media_is_screenshot_target(cls, post: Post) -> bool:`
+- [`grox/core/data_loaders/media_loader.py:100`](../source/grox/core/data_loaders/media_loader.py#L100) — `async def hydrate_screenshot(cls, post: Post) -> None:`
+- [`grox/core/data_loaders/media_loader.py:123`](../source/grox/core/data_loaders/media_loader.py#L123) — `async def hydrate_post(cls, post: Post) -> None:`
+- [`grox/core/data_loaders/media_loader.py:173`](../source/grox/core/data_loaders/media_loader.py#L173) — `def ranked_posts_associated(cls, post: Post) -> list[Post]:`
+- [`grox/core/data_loaders/media_loader.py:182`](../source/grox/core/data_loaders/media_loader.py#L182) — `async def _hydrate_url_video(`
+- [`grox/core/data_loaders/media_loader.py:197`](../source/grox/core/data_loaders/media_loader.py#L197) — `def _extract_video_urls(cls, post: Post) -> list[str]:`
+- [`grox/core/data_loaders/media_loader.py:218`](../source/grox/core/data_loaders/media_loader.py#L218) — `async def hydrate_media(`
+- [`grox/core/data_loaders/media_loader.py:327`](../source/grox/core/data_loaders/media_loader.py#L327) — `async def hydrate_image(`
+- [`grox/core/data_loaders/media_loader.py:383`](../source/grox/core/data_loaders/media_loader.py#L383) — `async def hydrate_video(`
+- [`grox/core/data_loaders/media_loader.py:489`](../source/grox/core/data_loaders/media_loader.py#L489) — `async def hydrate_video_preview(cls, video: Video, is_deluxe: bool) -> None:`
+- [`grox/core/data_loaders/media_loader.py:521`](../source/grox/core/data_loaders/media_loader.py#L521) — `def _get_broadcast_loader(cls) -> BroadcastLoader:`
+- [`grox/core/data_loaders/media_loader.py:530`](../source/grox/core/data_loaders/media_loader.py#L530) — `async def _extract_broadcast_video(`
+- [`grox/core/data_loaders/media_loader.py:560`](../source/grox/core/data_loaders/media_loader.py#L560) — `async def hydrate_broadcast(cls, broadcast_metadata: BroadcastMetadata) -> None:`
+- [`grox/core/data_loaders/media_loader.py:603`](../source/grox/core/data_loaders/media_loader.py#L603) — `async def fetch_video_subtitles(cls, media_id: str) -> list[str] | None:`
+- [`grox/core/data_loaders/media_loader.py:613`](../source/grox/core/data_loaders/media_loader.py#L613) — `async def construct_convo_video(`
+- [`grox/core/data_loaders/media_processor.py:22`](../source/grox/core/data_loaders/media_processor.py#L22) — `class _Result(BaseModel):`
+- [`grox/core/data_loaders/media_processor.py:29`](../source/grox/core/data_loaders/media_processor.py#L29) — `class _MediaWorker:`
+- [`grox/core/data_loaders/media_processor.py:30`](../source/grox/core/data_loaders/media_processor.py#L30) — `def __init__(`
+- [`grox/core/data_loaders/media_processor.py:37`](../source/grox/core/data_loaders/media_processor.py#L37) — `async def _hydrate(self, post: Post):`
+- [`grox/core/data_loaders/media_processor.py:40`](../source/grox/core/data_loaders/media_processor.py#L40) — `async def _process(self, post: Post, ctx: dict[str, str], request_id: str) -> None:`
+- [`grox/core/data_loaders/media_processor.py:72`](../source/grox/core/data_loaders/media_processor.py#L72) — `async def _init_run(self) -> None:`
+- [`grox/core/data_loaders/media_processor.py:75`](../source/grox/core/data_loaders/media_processor.py#L75) — `async def _run(self) -> None:`
+- [`grox/core/data_loaders/media_processor.py:91`](../source/grox/core/data_loaders/media_processor.py#L91) — `def run(self) -> None:`
+- [`grox/core/data_loaders/media_processor.py:92`](../source/grox/core/data_loaders/media_processor.py#L92) — `async def wrapper():`
+- [`grox/core/data_loaders/media_processor.py:98`](../source/grox/core/data_loaders/media_processor.py#L98) — `def _start_loop(self) -> Process:`
+- [`grox/core/data_loaders/media_processor.py:103`](../source/grox/core/data_loaders/media_processor.py#L103) — `def start(self) -> list[Process]:`
+- [`grox/core/data_loaders/media_processor.py:108`](../source/grox/core/data_loaders/media_processor.py#L108) — `def _is_shutdown(self) -> bool:`
+- [`grox/core/data_loaders/media_processor.py:121`](../source/grox/core/data_loaders/media_processor.py#L121) — `class MediaProcessor:`
+- [`grox/core/data_loaders/media_processor.py:131`](../source/grox/core/data_loaders/media_processor.py#L131) — `async def process(cls, post: Post) -> None:`
+- [`grox/core/data_loaders/media_processor.py:154`](../source/grox/core/data_loaders/media_processor.py#L154) — `def _submit(cls, post: Post) -> tuple[str, asyncio.Future[Post]]:`
+- [`grox/core/data_loaders/media_processor.py:162`](../source/grox/core/data_loaders/media_processor.py#L162) — `async def _result_loop(cls) -> None:`
+- [`grox/core/data_loaders/media_processor.py:191`](../source/grox/core/data_loaders/media_processor.py#L191) — `def start(cls) -> None:`
+- [`grox/core/data_loaders/media_processor.py:200`](../source/grox/core/data_loaders/media_processor.py#L200) — `async def stop(cls, timeout: float = 5) -> None:`
+- [`grox/core/data_loaders/media_reference_bundle.py:23`](../source/grox/core/data_loaders/media_reference_bundle.py#L23) — `class MediaReferenceVideo(BaseModel):`
+- [`grox/core/data_loaders/media_reference_bundle.py:30`](../source/grox/core/data_loaders/media_reference_bundle.py#L30) — `class MediaReferenceManifest(BaseModel):`
+- [`grox/core/data_loaders/media_reference_bundle.py:36`](../source/grox/core/data_loaders/media_reference_bundle.py#L36) — `class MediaReferenceBundle:`
+- [`grox/core/data_loaders/media_reference_bundle.py:42`](../source/grox/core/data_loaders/media_reference_bundle.py#L42) — `def blobstore_for(uri: str) -> Blobstore:`
+- [`grox/core/data_loaders/media_reference_bundle.py:55`](../source/grox/core/data_loaders/media_reference_bundle.py#L55) — `async def _get_required(store: Blobstore, key: str) -> bytes:`
+- [`grox/core/data_loaders/media_reference_bundle.py:66`](../source/grox/core/data_loaders/media_reference_bundle.py#L66) — `async def _fetch_bundle(uri: str) -> MediaReferenceBundle:`
+- [`grox/core/data_loaders/media_reference_bundle.py:93`](../source/grox/core/data_loaders/media_reference_bundle.py#L93) — `class _BundleState:`
+- [`grox/core/data_loaders/media_reference_bundle.py:94`](../source/grox/core/data_loaders/media_reference_bundle.py#L94) — `def __init__(self) -> None:`
+- [`grox/core/data_loaders/media_reference_bundle.py:99`](../source/grox/core/data_loaders/media_reference_bundle.py#L99) — `def due(self, refresh_interval_s: float) -> bool:`
+- [`grox/core/data_loaders/media_reference_bundle.py:106`](../source/grox/core/data_loaders/media_reference_bundle.py#L106) — `class MediaReferenceBundleLoader:`
+- [`grox/core/data_loaders/media_reference_bundle.py:110`](../source/grox/core/data_loaders/media_reference_bundle.py#L110) — `async def current(cls, name: str) -> MediaReferenceBundle | None:`
+- [`grox/core/data_loaders/message_queue_loader.py:11`](../source/grox/core/data_loaders/message_queue_loader.py#L11) — `class MessageQueuePayload(ExtendableModel):`
+- [`grox/core/data_loaders/message_queue_loader.py:18`](../source/grox/core/data_loaders/message_queue_loader.py#L18) — `class MessageQueueLoader(ABC):`
+- [`grox/core/data_loaders/message_queue_loader.py:19`](../source/grox/core/data_loaders/message_queue_loader.py#L19) — `def __init__(self):`
+- [`grox/core/data_loaders/message_queue_loader.py:23`](../source/grox/core/data_loaders/message_queue_loader.py#L23) — `async def start(self):`
+- [`grox/core/data_loaders/message_queue_loader.py:27`](../source/grox/core/data_loaders/message_queue_loader.py#L27) — `async def stop(self):`
+- [`grox/core/data_loaders/message_queue_loader.py:31`](../source/grox/core/data_loaders/message_queue_loader.py#L31) — `def poll(self) -> AsyncGenerator[MessageQueuePayload | None, None]:`
+- [`grox/core/data_loaders/message_queue_loader.py:35`](../source/grox/core/data_loaders/message_queue_loader.py#L35) — `async def ack(self, mid: str, success: bool = True):`
+- [`grox/core/data_loaders/post_mapper.py:46`](../source/grox/core/data_loaders/post_mapper.py#L46) — `class PostMapper:`
+- [`grox/core/data_loaders/post_mapper.py:48`](../source/grox/core/data_loaders/post_mapper.py#L48) — `def from_strato_post_with_quote_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:61`](../source/grox/core/data_loaders/post_mapper.py#L61) — `def from_strato_content_understanding_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:86`](../source/grox/core/data_loaders/post_mapper.py#L86) — `def from_post_metadata_strato(cls, post_metadata: StratoPostMetadata) -> Post:`
+- [`grox/core/data_loaders/post_mapper.py:177`](../source/grox/core/data_loaders/post_mapper.py#L177) — `def _from_strato_media_entities_to_media_list(`
+- [`grox/core/data_loaders/post_mapper.py:186`](../source/grox/core/data_loaders/post_mapper.py#L186) — `def _from_strato_media_entity_post_media(`
+- [`grox/core/data_loaders/post_mapper.py:227`](../source/grox/core/data_loaders/post_mapper.py#L227) — `def _from_strato_media_entity_to_image(`
+- [`grox/core/data_loaders/post_mapper.py:237`](../source/grox/core/data_loaders/post_mapper.py#L237) — `def _from_strato_cardmetadata_to_card(`
+- [`grox/core/data_loaders/post_mapper.py:256`](../source/grox/core/data_loaders/post_mapper.py#L256) — `def _from_strato_broadcast_metadata_to_broadcast_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:268`](../source/grox/core/data_loaders/post_mapper.py#L268) — `def _from_strato_article_metadata_to_article_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:286`](../source/grox/core/data_loaders/post_mapper.py#L286) — `def _from_strato_list_metadata_to_list_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:296`](../source/grox/core/data_loaders/post_mapper.py#L296) — `def _from_strato_chat_group_metadata_to_chat_group_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:307`](../source/grox/core/data_loaders/post_mapper.py#L307) — `def _from_strato_space_metadata_to_space_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:313`](../source/grox/core/data_loaders/post_mapper.py#L313) — `def _from_strato_poll_card_metadata_to_poll_card(`
+- [`grox/core/data_loaders/post_mapper.py:324`](../source/grox/core/data_loaders/post_mapper.py#L324) — `def _from_strato_grok_share_card_metadata_to_grok_share_card(`
+- [`grox/core/data_loaders/post_mapper.py:330`](../source/grox/core/data_loaders/post_mapper.py#L330) — `def _from_strato_grok_share_metadata(`
+- [`grox/core/data_loaders/post_mapper.py:337`](../source/grox/core/data_loaders/post_mapper.py#L337) — `def _from_strato_user_metadata_to_user(`
+- [`grox/core/data_loaders/post_mapper.py:370`](../source/grox/core/data_loaders/post_mapper.py#L370) — `def _from_strato_cardmetadataV2_to_cardV2(`
+- [`grox/core/data_loaders/strato_loader.py:27`](../source/grox/core/data_loaders/strato_loader.py#L27) — `class TweetStratoLoader:`
+- [`grox/core/data_loaders/strato_loader.py:34`](../source/grox/core/data_loaders/strato_loader.py#L34) — `async def load_post(`
+- [`grox/core/data_loaders/strato_loader.py:60`](../source/grox/core/data_loaders/strato_loader.py#L60) — `class UserStratoLoader:`
+- [`grox/core/data_loaders/strato_loader.py:66`](../source/grox/core/data_loaders/strato_loader.py#L66) — `async def load_user(cls, user_id: int) -> User | None:`
+- [`grox/core/data_loaders/strato_loader.py:74`](../source/grox/core/data_loaders/strato_loader.py#L74) — `async def fetch_high_page_rank_v2(cls, user_id: int) -> HighPageRankUser | None:`
+- [`grox/core/data_loaders/strato_loader.py:78`](../source/grox/core/data_loaders/strato_loader.py#L78) — `async def is_high_page_rank_v2_user(cls, user_id: int) -> bool:`
+- [`grox/core/data_loaders/strato_loader.py:83`](../source/grox/core/data_loaders/strato_loader.py#L83) — `async def is_grey_badge_user(cls, user_id: int) -> bool:`
+- [`grox/core/data_loaders/strato_loader.py:87`](../source/grox/core/data_loaders/strato_loader.py#L87) — `class UserRecentPostsLoader:`
+- [`grox/core/data_loaders/strato_loader.py:93`](../source/grox/core/data_loaders/strato_loader.py#L93) — `async def load(cls, user_id: int, limit: int = 10) -> list[Post]:`
+- [`grox/core/dispatcher.py:22`](../source/grox/core/dispatcher.py#L22) — `class Dispatcher:`
+- [`grox/core/dispatcher.py:23`](../source/grox/core/dispatcher.py#L23) — `def __init__(self, context: ScheduleContext):`
+- [`grox/core/dispatcher.py:34`](../source/grox/core/dispatcher.py#L34) — `def _is_shutdown(self) -> bool:`
+- [`grox/core/dispatcher.py:46`](../source/grox/core/dispatcher.py#L46) — `def _is_queue_connection_shutdown(self) -> bool:`
+- [`grox/core/dispatcher.py:58`](../source/grox/core/dispatcher.py#L58) — `async def _init_run(self):`
+- [`grox/core/dispatcher.py:67`](../source/grox/core/dispatcher.py#L67) — `def _get_task_generator(self) -> TaskGenerator:`
+- [`grox/core/dispatcher.py:74`](../source/grox/core/dispatcher.py#L74) — `async def _submit_task(self, task_payload: TaskPayload) -> None:`
+- [`grox/core/dispatcher.py:91`](../source/grox/core/dispatcher.py#L91) — `async def _fill_loop(self):`
+- [`grox/core/dispatcher.py:112`](../source/grox/core/dispatcher.py#L112) — `async def _poll_result(self) -> TaskResult | None:`
+- [`grox/core/dispatcher.py:127`](../source/grox/core/dispatcher.py#L127) — `async def _result_loop(self) -> None:`
+- [`grox/core/dispatcher.py:166`](../source/grox/core/dispatcher.py#L166) — `async def _wait_for_queue_connection_shutdown(self):`
+- [`grox/core/dispatcher.py:174`](../source/grox/core/dispatcher.py#L174) — `async def _inflight_monitor_loop(self) -> None:`
+- [`grox/core/dispatcher.py:180`](../source/grox/core/dispatcher.py#L180) — `async def _run(self, started_event: Event):`
+- [`grox/core/dispatcher.py:190`](../source/grox/core/dispatcher.py#L190) — `def run(self, started_event: Event):`
+- [`grox/core/dispatcher.py:193`](../source/grox/core/dispatcher.py#L193) — `async def start(self):`
+- [`grox/core/dispatcher.py:203`](../source/grox/core/dispatcher.py#L203) — `async def stop(self):`
+- [`grox/core/engine.py:27`](../source/grox/core/engine.py#L27) — `class Engine:`
+- [`grox/core/engine.py:28`](../source/grox/core/engine.py#L28) — `def __init__(self, context: ScheduleContext):`
+- [`grox/core/engine.py:36`](../source/grox/core/engine.py#L36) — `def _is_shutdown(self) -> bool:`
+- [`grox/core/engine.py:48`](../source/grox/core/engine.py#L48) — `async def _init_run(self):`
+- [`grox/core/engine.py:56`](../source/grox/core/engine.py#L56) — `async def _process_task(self, task: TaskPayload) -> TaskResult:`
+- [`grox/core/engine.py:65`](../source/grox/core/engine.py#L65) — `async def _run_task(self, task: TaskPayload):`
+- [`grox/core/engine.py:122`](../source/grox/core/engine.py#L122) — `async def _poll_task(self) -> TaskPayload | None:`
+- [`grox/core/engine.py:139`](../source/grox/core/engine.py#L139) — `async def _run(self, started_event: Event):`
+- [`grox/core/engine.py:150`](../source/grox/core/engine.py#L150) — `def run(self, started_event: Event):`
+- [`grox/core/engine.py:154`](../source/grox/core/engine.py#L154) — `async def start(self):`
+- [`grox/core/engine.py:164`](../source/grox/core/engine.py#L164) — `async def stop(self):`
+- [`grox/core/generators/registry.py:7`](../source/grox/core/generators/registry.py#L7) — `def register_task_generator(cls: type[TaskGenerator]) -> type[TaskGenerator]:`
+- [`grox/core/generators/registry.py:26`](../source/grox/core/generators/registry.py#L26) — `def build(cfg: TaskGeneratorConfig) -> TaskGenerator:`
+- [`grox/core/generators/registry.py:35`](../source/grox/core/generators/registry.py#L35) — `def registered_types() -> set[str]:`
+- [`grox/core/generators/stream_generator.py:12`](../source/grox/core/generators/stream_generator.py#L12) — `class StreamTaskGenerator(TaskGenerator, metaclass=abc.ABCMeta):`
+- [`grox/core/generators/stream_generator.py:15`](../source/grox/core/generators/stream_generator.py#L15) — `def __init__(self, max_qps: int | None):`
+- [`grox/core/generators/stream_generator.py:20`](../source/grox/core/generators/stream_generator.py#L20) — `def _get_loader(self) -> MessageQueueLoader:`
+- [`grox/core/generators/stream_generator.py:23`](../source/grox/core/generators/stream_generator.py#L23) — `async def start(self) -> None:`
+- [`grox/core/generators/stream_generator.py:27`](../source/grox/core/generators/stream_generator.py#L27) — `async def stop(self) -> None:`
+- [`grox/core/generators/stream_generator.py:32`](../source/grox/core/generators/stream_generator.py#L32) — `async def _poll(self) -> AsyncGenerator[TaskPayload | None, None]:`
+- [`grox/core/generators/stream_generator.py:47`](../source/grox/core/generators/stream_generator.py#L47) — `async def ack(self, result: TaskResult):`
+- [`grox/core/generators/task_generator.py:16`](../source/grox/core/generators/task_generator.py#L16) — `class TaskGenerator(ABC):`
+- [`grox/core/generators/task_generator.py:19`](../source/grox/core/generators/task_generator.py#L19) — `def __init__(self, max_qps: int | None):`
+- [`grox/core/generators/task_generator.py:25`](../source/grox/core/generators/task_generator.py#L25) — `def from_config(cls, cfg: TaskGeneratorConfig) -> "TaskGenerator":`
+- [`grox/core/generators/task_generator.py:28`](../source/grox/core/generators/task_generator.py#L28) — `def is_shutdown(self) -> bool:`
+- [`grox/core/generators/task_generator.py:37`](../source/grox/core/generators/task_generator.py#L37) — `async def start(self) -> None:`
+- [`grox/core/generators/task_generator.py:40`](../source/grox/core/generators/task_generator.py#L40) — `async def stop(self) -> None:`
+- [`grox/core/generators/task_generator.py:44`](../source/grox/core/generators/task_generator.py#L44) — `async def poll(self) -> AsyncGenerator[TaskPayload | None, None]:`
+- [`grox/core/generators/task_generator.py:57`](../source/grox/core/generators/task_generator.py#L57) — `def _poll(self) -> AsyncGenerator[TaskPayload | None, None]:`
+- [`grox/core/generators/task_generator.py:60`](../source/grox/core/generators/task_generator.py#L60) — `async def ack(self, result: TaskResult):`
+- [`grox/core/generators/task_generator.py:63`](../source/grox/core/generators/task_generator.py#L63) — `def identify_task_origin(self, result: TaskResult) -> str | None:`
+- [`grox/core/generators/task_generator.py:66`](../source/grox/core/generators/task_generator.py#L66) — `def on_terminal_failure(self, result: TaskResult) -> None:`
+- [`grox/core/generators/task_generator.py:70`](../source/grox/core/generators/task_generator.py#L70) — `class PriorityTaskGenerator(TaskGenerator):`
+- [`grox/core/generators/task_generator.py:71`](../source/grox/core/generators/task_generator.py#L71) — `def __init__(self, generators: list[tuple[TaskGenerator, int]]):`
+- [`grox/core/generators/task_generator.py:88`](../source/grox/core/generators/task_generator.py#L88) — `async def start(self) -> None:`
+- [`grox/core/generators/task_generator.py:94`](../source/grox/core/generators/task_generator.py#L94) — `async def stop(self) -> None:`
+- [`grox/core/generators/task_generator.py:100`](../source/grox/core/generators/task_generator.py#L100) — `async def _poll(self) -> AsyncGenerator[TaskPayload | None, None]:`
+- [`grox/core/generators/task_generator.py:140`](../source/grox/core/generators/task_generator.py#L140) — `async def ack(self, result: TaskResult):`
+- [`grox/core/generators/task_generator.py:151`](../source/grox/core/generators/task_generator.py#L151) — `def identify_task_origin(self, result: TaskResult) -> str | None:`
+- [`grox/core/generators/task_generator.py:162`](../source/grox/core/generators/task_generator.py#L162) — `def on_terminal_failure(self, result: TaskResult) -> None:`
+- [`grox/core/lib/utils.py:1`](../source/grox/core/lib/utils.py#L1) — `def camel_to_snake(s: str) -> str:`
+- [`grox/core/lib/utils.py:5`](../source/grox/core/lib/utils.py#L5) — `def detect_image_content_type(image_bytes: bytes) -> str:`
+- [`grox/core/lm/convo.py:34`](../source/grox/core/lm/convo.py#L34) — `class Role(str, Enum):`
+- [`grox/core/lm/convo.py:41`](../source/grox/core/lm/convo.py#L41) — `class Image(BaseModel):`
+- [`grox/core/lm/convo.py:45`](../source/grox/core/lm/convo.py#L45) — `def serialize_content(self, value: bytes) -> str:`
+- [`grox/core/lm/convo.py:50`](../source/grox/core/lm/convo.py#L50) — `def deserialize_content(cls, value: str | bytes) -> bytes:`
+- [`grox/core/lm/convo.py:56`](../source/grox/core/lm/convo.py#L56) — `class Video(BaseModel):`
+- [`grox/core/lm/convo.py:67`](../source/grox/core/lm/convo.py#L67) — `def serialize_frames(self, value: list[bytes]) -> list[str]:`
+- [`grox/core/lm/convo.py:71`](../source/grox/core/lm/convo.py#L71) — `def serialize_preview_image(self, value: bytes | None) -> str | None:`
+- [`grox/core/lm/convo.py:76`](../source/grox/core/lm/convo.py#L76) — `def decode_preview_image(cls, value: str | bytes | None) -> bytes | None:`
+- [`grox/core/lm/convo.py:81`](../source/grox/core/lm/convo.py#L81) — `def decode_frames(cls, value: list[str] | list[bytes]) -> list[bytes]:`
+- [`grox/core/lm/convo.py:87`](../source/grox/core/lm/convo.py#L87) — `def _create_storyboard(`
+- [`grox/core/lm/convo.py:128`](../source/grox/core/lm/convo.py#L128) — `def interleave_storyboard(`
+- [`grox/core/lm/convo.py:190`](../source/grox/core/lm/convo.py#L190) — `type Content = str | Image | Video`
+- [`grox/core/lm/convo.py:193`](../source/grox/core/lm/convo.py#L193) — `class Message(BaseModel):`
+- [`grox/core/lm/convo.py:198`](../source/grox/core/lm/convo.py#L198) — `def is_empty(self) -> bool:`
+- [`grox/core/lm/convo.py:201`](../source/grox/core/lm/convo.py#L201) — `def sanitize_text(self, text: str):`
+- [`grox/core/lm/convo.py:212`](../source/grox/core/lm/convo.py#L212) — `def interleave(self) -> list[str | bytes]:`
+- [`grox/core/lm/convo.py:232`](../source/grox/core/lm/convo.py#L232) — `def convert_grox_content_to_xai_content_list(`
+- [`grox/core/lm/convo.py:238`](../source/grox/core/lm/convo.py#L238) — `def flush_text_buffer():`
+- [`grox/core/lm/convo.py:274`](../source/grox/core/lm/convo.py#L274) — `def interleaveToEapi(self) -> chat_pb2.Message:`
+- [`grox/core/lm/convo.py:286`](../source/grox/core/lm/convo.py#L286) — `def to_prompt(self) -> str:`
+- [`grox/core/lm/convo.py:303`](../source/grox/core/lm/convo.py#L303) — `def to_prompt_eapi(self) -> chat_pb2.Message:`
+- [`grox/core/lm/convo.py:327`](../source/grox/core/lm/convo.py#L327) — `class Conversation(BaseModel):`
+- [`grox/core/lm/convo.py:331`](../source/grox/core/lm/convo.py#L331) — `def interleave(self) -> list[str | bytes]:`
+- [`grox/core/lm/convo.py:341`](../source/grox/core/lm/convo.py#L341) — `def interleaveToEapi(self) -> list[chat_pb2.Message]:`
+- [`grox/core/lm/convo.py:348`](../source/grox/core/lm/convo.py#L348) — `def to_openai_messages(self) -> list[dict]:`
+- [`grox/core/lm/convo.py:361`](../source/grox/core/lm/convo.py#L361) — `def _clean_text(text: str) -> str:`
+- [`grox/core/lm/convo.py:366`](../source/grox/core/lm/convo.py#L366) — `def _image_part(image_bytes: bytes) -> dict:`
+- [`grox/core/lm/convo.py:429`](../source/grox/core/lm/convo.py#L429) — `def to_prompt(self) -> str:`
+- [`grox/core/lm/convo.py:432`](../source/grox/core/lm/convo.py#L432) — `def to_prompt_eapi(self) -> list[chat_pb2.Message]:`
+- [`grox/core/lm/post.py:7`](../source/grox/core/lm/post.py#L7) — `def remove_tco_links(text, remove_twitter_links: bool = False):`
+- [`grox/core/lm/post.py:20`](../source/grox/core/lm/post.py#L20) — `def get_replies_handle_string(post: Post) -> str:`
+- [`grox/core/lm/post.py:28`](../source/grox/core/lm/post.py#L28) — `class PostRenderer:`
+- [`grox/core/lm/post.py:30`](../source/grox/core/lm/post.py#L30) — `def has_media(cls, post: Post) -> bool:`
+- [`grox/core/lm/post.py:36`](../source/grox/core/lm/post.py#L36) — `def render(`
+- [`grox/core/lm/post.py:141`](../source/grox/core/lm/post.py#L141) — `class LitePostRenderer:`
+- [`grox/core/lm/post.py:143`](../source/grox/core/lm/post.py#L143) — `def render(`
+- [`grox/core/lm/thread.py:13`](../source/grox/core/lm/thread.py#L13) — `class ThreadRenderer:`
+- [`grox/core/lm/thread.py:15`](../source/grox/core/lm/thread.py#L15) — `def render(`
+- [`grox/core/lm/thread.py:36`](../source/grox/core/lm/thread.py#L36) — `def _render_signals(cls, post: Post) -> list[Content]:`
+- [`grox/core/lm/thread.py:69`](../source/grox/core/lm/thread.py#L69) — `def _render_thread(`
+- [`grox/core/lm/user.py:6`](../source/grox/core/lm/user.py#L6) — `class UserRenderer:`
+- [`grox/core/lm/user.py:8`](../source/grox/core/lm/user.py#L8) — `def render(`
+- [`grox/core/loading.py:18`](../source/grox/core/loading.py#L18) — `def _import_recursively(package: ModuleType) -> None:`
+- [`grox/core/loading.py:25`](../source/grox/core/loading.py#L25) — `def _assert_framework_only() -> None:`
+- [`grox/core/loading.py:35`](../source/grox/core/loading.py#L35) — `def _validate_plan_keys() -> None:`
+- [`grox/core/loading.py:49`](../source/grox/core/loading.py#L49) — `def _validate_generator_types() -> None:`
+- [`grox/core/loading.py:58`](../source/grox/core/loading.py#L58) — `def load_all() -> None:`
+- [`grox/core/plans/plan.py:16`](../source/grox/core/plans/plan.py#L16) — `class Plan(ABC):`
+- [`grox/core/plans/plan.py:21`](../source/grox/core/plans/plan.py#L21) — `def __init__(self):`
+- [`grox/core/plans/plan.py:28`](../source/grox/core/plans/plan.py#L28) — `async def execute(self, task: TaskPayload) -> TaskResult | None:`
+- [`grox/core/plans/plan.py:74`](../source/grox/core/plans/plan.py#L74) — `def _eligible(self, ctx: TaskPayload) -> bool:`
+- [`grox/core/plans/plan.py:77`](../source/grox/core/plans/plan.py#L77) — `async def _execute_task(`
+- [`grox/core/plans/plan.py:102`](../source/grox/core/plans/plan.py#L102) — `def get_name(self) -> str:`
+- [`grox/core/plans/plan_master.py:10`](../source/grox/core/plans/plan_master.py#L10) — `class PlanMaster:`
+- [`grox/core/plans/plan_master.py:14`](../source/grox/core/plans/plan_master.py#L14) — `def _all_plans(cls) -> list[Plan]:`
+- [`grox/core/plans/plan_master.py:24`](../source/grox/core/plans/plan_master.py#L24) — `async def exec(cls, task: TaskPayload) -> TaskResult:`
+- [`grox/core/plans/plan_master.py:30`](../source/grox/core/plans/plan_master.py#L30) — `def merge_results(cls, task: TaskPayload, results: list[TaskResult]) -> TaskResult:`
+- [`grox/core/plans/registry.py:6`](../source/grox/core/plans/registry.py#L6) — `def register_plan(cls: type[Plan]) -> type[Plan]:`
+- [`grox/core/plans/registry.py:14`](../source/grox/core/plans/registry.py#L14) — `def registered_plans() -> list[type[Plan]]:`
+- [`grox/core/processors.py:8`](../source/grox/core/processors.py#L8) — `class EngineProcessor(Protocol):`
+- [`grox/core/processors.py:10`](../source/grox/core/processors.py#L10) — `def start(cls) -> None: ...`
+- [`grox/core/processors.py:13`](../source/grox/core/processors.py#L13) — `async def stop(cls, timeout: float = 5) -> None: ...`
+- [`grox/core/processors.py:19`](../source/grox/core/processors.py#L19) — `def register_processor[T: type](cls: T, *, enabled: bool) -> T:`
+- [`grox/core/processors.py:33`](../source/grox/core/processors.py#L33) — `def start_registered() -> None:`
+- [`grox/core/processors.py:44`](../source/grox/core/processors.py#L44) — `async def stop_registered() -> None:`
+- [`grox/core/registry.py:8`](../source/grox/core/registry.py#L8) — `def register[T: type](cls: T) -> T:`
+- [`grox/core/schedules/context.py:7`](../source/grox/core/schedules/context.py#L7) — `type ScheduleContext = DictProxy[str, Any]`
+- [`grox/core/schedules/context.py:12`](../source/grox/core/schedules/context.py#L12) — `def get_manager() -> SyncManager:`
+- [`grox/core/schedules/context.py:19`](../source/grox/core/schedules/context.py#L19) — `def new_context() -> ScheduleContext:`
+- [`grox/core/schedules/context.py:29`](../source/grox/core/schedules/context.py#L29) — `def prevent_default() -> None:`
+- [`grox/core/schedules/context.py:34`](../source/grox/core/schedules/context.py#L34) — `def shutdown_context(context: ScheduleContext) -> None:`
+- [`grox/core/schedules/context.py:38`](../source/grox/core/schedules/context.py#L38) — `def queue_connection_shutdown_context(context: ScheduleContext) -> None:`
+- [`grox/core/schedules/context.py:42`](../source/grox/core/schedules/context.py#L42) — `def cleanup() -> None:`
+- [`grox/core/schedules/init.py:16`](../source/grox/core/schedules/init.py#L16) — `async def init_proc(proc_name: str, defer_metrics: bool = False):`
+- [`grox/core/schedules/init.py:26`](../source/grox/core/schedules/init.py#L26) — `def init_metrics(proc_name: str):`
+- [`grox/core/schedules/init.py:30`](../source/grox/core/schedules/init.py#L30) — `async def periodic_gc(proc_name: str):`
+- [`grox/core/schedules/types.py:11`](../source/grox/core/schedules/types.py#L11) — `def _ext_key(cls: type) -> str:`
+- [`grox/core/schedules/types.py:15`](../source/grox/core/schedules/types.py#L15) — `class ExtendableModel(BaseModel):`
+- [`grox/core/schedules/types.py:18`](../source/grox/core/schedules/types.py#L18) — `def ext[T](self, cls: type[T]) -> T | None:`
+- [`grox/core/schedules/types.py:21`](../source/grox/core/schedules/types.py#L21) — `def set_ext(self, value: Any) -> None:`
+- [`grox/core/schedules/types.py:25`](../source/grox/core/schedules/types.py#L25) — `class TaskPayload(ExtendableModel):`
+- [`grox/core/schedules/types.py:34`](../source/grox/core/schedules/types.py#L34) — `class TaskResult(BaseModel):`
+- [`grox/core/schedules/types.py:42`](../source/grox/core/schedules/types.py#L42) — `class TaskContext:`
+- [`grox/core/schedules/types.py:43`](../source/grox/core/schedules/types.py#L43) — `def __init__(self, task: TaskPayload):`
+- [`grox/core/schedules/types.py:50`](../source/grox/core/schedules/types.py#L50) — `def state[T](self, cls: type[T]) -> T:`
+- [`grox/core/services/registry.py:8`](../source/grox/core/services/registry.py#L8) — `class GrpcServicer(ABC):`
+- [`grox/core/services/registry.py:10`](../source/grox/core/services/registry.py#L10) — `def build(cls) -> "GrpcServicer | None":`
+- [`grox/core/services/registry.py:14`](../source/grox/core/services/registry.py#L14) — `def add_to_server(self, server: grpc.aio.Server) -> None:`
+- [`grox/core/services/registry.py:18`](../source/grox/core/services/registry.py#L18) — `def register_servicer[T: type[GrpcServicer]](cls: T) -> T:`
+- [`grox/core/services/registry.py:28`](../source/grox/core/services/registry.py#L28) — `def registered_servicers() -> list[type[GrpcServicer]]:`
+- [`grox/core/services/service.py:15`](../source/grox/core/services/service.py#L15) — `class GrpcServer:`
+- [`grox/core/services/service.py:16`](../source/grox/core/services/service.py#L16) — `def __init__(self):`
+- [`grox/core/services/service.py:20`](../source/grox/core/services/service.py#L20) — `async def start(self):`
+- [`grox/core/services/service.py:57`](../source/grox/core/services/service.py#L57) — `async def stop(self):`
+- [`grox/core/tasks/disable_rules.py:7`](../source/grox/core/tasks/disable_rules.py#L7) — `class DisableTaskRule(ABC):`
+- [`grox/core/tasks/disable_rules.py:11`](../source/grox/core/tasks/disable_rules.py#L11) — `def should_disable(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/disable_rules.py:15`](../source/grox/core/tasks/disable_rules.py#L15) — `def disable_reason(cls) -> str | None:`
+- [`grox/core/tasks/disable_rules.py:19`](../source/grox/core/tasks/disable_rules.py#L19) — `class DisableTaskForNonProd(DisableTaskRule):`
+- [`grox/core/tasks/disable_rules.py:23`](../source/grox/core/tasks/disable_rules.py#L23) — `def should_disable(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task.py:17`](../source/grox/core/tasks/task.py#L17) — `class TaskResultCategory(str, Enum):`
+- [`grox/core/tasks/task.py:22`](../source/grox/core/tasks/task.py#L22) — `class TaskStopExecution(Exception):`
+- [`grox/core/tasks/task.py:26`](../source/grox/core/tasks/task.py#L26) — `class Task(ABC):`
+- [`grox/core/tasks/task.py:31`](../source/grox/core/tasks/task.py#L31) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/core/tasks/task.py:63`](../source/grox/core/tasks/task.py#L63) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/core/tasks/task.py:67`](../source/grox/core/tasks/task.py#L67) — `def should_skip(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task.py:73`](../source/grox/core/tasks/task.py#L73) — `def _should_skip(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task.py:77`](../source/grox/core/tasks/task.py#L77) — `def should_disable(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task.py:88`](../source/grox/core/tasks/task.py#L88) — `def get_name(cls) -> str:`
+- [`grox/core/tasks/task.py:92`](../source/grox/core/tasks/task.py#L92) — `class TaskWithUser(Task):`
+- [`grox/core/tasks/task.py:94`](../source/grox/core/tasks/task.py#L94) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/core/tasks/task.py:102`](../source/grox/core/tasks/task.py#L102) — `async def _exec_with_user(cls, ctx: TaskContext, user: User) -> None:`
+- [`grox/core/tasks/task.py:106`](../source/grox/core/tasks/task.py#L106) — `class TaskWithPost(Task):`
+- [`grox/core/tasks/task.py:108`](../source/grox/core/tasks/task.py#L108) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/core/tasks/task.py:116`](../source/grox/core/tasks/task.py#L116) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/core/tasks/task_asr.py:18`](../source/grox/core/tasks/task_asr.py#L18) — `def _is_input_error(error: str) -> bool:`
+- [`grox/core/tasks/task_asr.py:22`](../source/grox/core/tasks/task_asr.py#L22) — `def _get_video_url(video: Video) -> tuple[str | None, bool]:`
+- [`grox/core/tasks/task_asr.py:36`](../source/grox/core/tasks/task_asr.py#L36) — `class TaskASRTranscription(TaskWithPost):`
+- [`grox/core/tasks/task_asr.py:38`](../source/grox/core/tasks/task_asr.py#L38) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/core/tasks/task_asr.py:124`](../source/grox/core/tasks/task_asr.py#L124) — `async def _fetch_cached_transcript(media_id: str, post_id: str) -> str | None:`
+- [`grox/core/tasks/task_asr.py:142`](../source/grox/core/tasks/task_asr.py#L142) — `async def _save_transcript(media_id: str, transcript: str, post_id: str) -> None:`
+- [`grox/core/tasks/task_filters.py:12`](../source/grox/core/tasks/task_filters.py#L12) — `class TaskFilter(Task):`
+- [`grox/core/tasks/task_filters.py:14`](../source/grox/core/tasks/task_filters.py#L14) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/core/tasks/task_filters.py:20`](../source/grox/core/tasks/task_filters.py#L20) — `async def _eligible(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task_filters.py:24`](../source/grox/core/tasks/task_filters.py#L24) — `class TaskFilterWithPost(TaskFilter):`
+- [`grox/core/tasks/task_filters.py:27`](../source/grox/core/tasks/task_filters.py#L27) — `async def _eligible(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task_filters.py:34`](../source/grox/core/tasks/task_filters.py#L34) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task_load_post.py:9`](../source/grox/core/tasks/task_load_post.py#L9) — `class TaskLoadPost(TaskWithPost):`
+- [`grox/core/tasks/task_load_post.py:11`](../source/grox/core/tasks/task_load_post.py#L11) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/core/tasks/task_media.py:8`](../source/grox/core/tasks/task_media.py#L8) — `class TaskMediaHydration(TaskWithPost):`
+- [`grox/core/tasks/task_media.py:10`](../source/grox/core/tasks/task_media.py#L10) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/core/tasks/task_rate_limit.py:14`](../source/grox/core/tasks/task_rate_limit.py#L14) — `class TaskRateLimit(Task):`
+- [`grox/core/tasks/task_rate_limit.py:16`](../source/grox/core/tasks/task_rate_limit.py#L16) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/core/tasks/task_rate_limit.py:26`](../source/grox/core/tasks/task_rate_limit.py#L26) — `def _eligible(cls, ctx: TaskContext) -> Awaitable[bool]:`
+- [`grox/core/tasks/task_rate_limit.py:30`](../source/grox/core/tasks/task_rate_limit.py#L30) — `class TaskRateLimitWithPost(TaskRateLimit):`
+- [`grox/core/tasks/task_rate_limit.py:33`](../source/grox/core/tasks/task_rate_limit.py#L33) — `async def _eligible(cls, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task_rate_limit.py:40`](../source/grox/core/tasks/task_rate_limit.py#L40) — `def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> Awaitable[bool]:`
+- [`grox/core/tasks/task_rate_limit.py:44`](../source/grox/core/tasks/task_rate_limit.py#L44) — `class TaskTTLDedupeWithPost(TaskRateLimitWithPost):`
+- [`grox/core/tasks/task_rate_limit.py:50`](../source/grox/core/tasks/task_rate_limit.py#L50) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/core/tasks/task_rate_limit.py:54`](../source/grox/core/tasks/task_rate_limit.py#L54) — `def _dedupe(cls, post_id: str, cache: TTLCache, name: str) -> bool:`
+- [`grox/flows/mm_emb/adaptive_min_fav.py:6`](../source/grox/flows/mm_emb/adaptive_min_fav.py#L6) — `class AdaptiveMinFav:`
+- [`grox/flows/mm_emb/adaptive_min_fav.py:7`](../source/grox/flows/mm_emb/adaptive_min_fav.py#L7) — `def __init__(`
+- [`grox/flows/mm_emb/adaptive_min_fav.py:36`](../source/grox/flows/mm_emb/adaptive_min_fav.py#L36) — `def observe_pass(self) -> None:`
+- [`grox/flows/mm_emb/adaptive_min_fav.py:39`](../source/grox/flows/mm_emb/adaptive_min_fav.py#L39) — `def threshold(self) -> int:`
+- [`grox/flows/mm_emb/adaptive_min_fav.py:43`](../source/grox/flows/mm_emb/adaptive_min_fav.py#L43) — `def _roll_window(self) -> None:`
+- [`grox/flows/mm_emb/backfill_consumer_dedup.py:16`](../source/grox/flows/mm_emb/backfill_consumer_dedup.py#L16) — `class BackfillConsumerDedup:`
+- [`grox/flows/mm_emb/backfill_consumer_dedup.py:17`](../source/grox/flows/mm_emb/backfill_consumer_dedup.py#L17) — `def __init__(`
+- [`grox/flows/mm_emb/backfill_consumer_dedup.py:25`](../source/grox/flows/mm_emb/backfill_consumer_dedup.py#L25) — `async def filter_first_seen(self, payloads: list) -> list:`
+- [`grox/flows/mm_emb/batched_fav_hydrator.py:21`](../source/grox/flows/mm_emb/batched_fav_hydrator.py#L21) — `class BatchedFavHydrator:`
+- [`grox/flows/mm_emb/batched_fav_hydrator.py:22`](../source/grox/flows/mm_emb/batched_fav_hydrator.py#L22) — `def __init__(self) -> None:`
+- [`grox/flows/mm_emb/batched_fav_hydrator.py:26`](../source/grox/flows/mm_emb/batched_fav_hydrator.py#L26) — `async def hydrate(self, payloads: list[MessageQueuePayload]) -> None:`
+- [`grox/flows/mm_emb/batched_fav_hydrator.py:32`](../source/grox/flows/mm_emb/batched_fav_hydrator.py#L32) — `async def _hydrate_chunk(self, payloads: list[MessageQueuePayload]) -> None:`
+- [`grox/flows/mm_emb/batched_fav_hydrator.py:48`](../source/grox/flows/mm_emb/batched_fav_hydrator.py#L48) — `async def _fetch_favs(self, post_ids: list[str]) -> dict[str, int | None] | None:`
+- [`grox/flows/mm_emb/disable_rules.py:6`](../source/grox/flows/mm_emb/disable_rules.py#L6) — `class DisableTaskForNonMmEmbProd(DisableTaskRule):`
+- [`grox/flows/mm_emb/disable_rules.py:10`](../source/grox/flows/mm_emb/disable_rules.py#L10) — `def should_disable(cls, ctx: TaskContext) -> bool:`
+- [`grox/flows/mm_emb/embedder.py:18`](../source/grox/flows/mm_emb/embedder.py#L18) — `class MultimodalPostEmbedderV5:`
+- [`grox/flows/mm_emb/embedder.py:20`](../source/grox/flows/mm_emb/embedder.py#L20) — `def has_video(post: Post) -> bool:`
+- [`grox/flows/mm_emb/embedder.py:27`](../source/grox/flows/mm_emb/embedder.py#L27) — `def __init__(`
+- [`grox/flows/mm_emb/embedder.py:42`](../source/grox/flows/mm_emb/embedder.py#L42) — `def _maybe_truncate(self, embedding: np.ndarray) -> list[float]:`
+- [`grox/flows/mm_emb/embedder.py:54`](../source/grox/flows/mm_emb/embedder.py#L54) — `async def embed(`
+- [`grox/flows/mm_emb/embedder_v82.py:19`](../source/grox/flows/mm_emb/embedder_v82.py#L19) — `class MultimodalPostEmbedderV82:`
+- [`grox/flows/mm_emb/embedder_v82.py:20`](../source/grox/flows/mm_emb/embedder_v82.py#L20) — `def __init__(self) -> None:`
+- [`grox/flows/mm_emb/embedder_v82.py:28`](../source/grox/flows/mm_emb/embedder_v82.py#L28) — `def _renormalize(embedding: np.ndarray) -> list[float]:`
+- [`grox/flows/mm_emb/embedder_v82.py:34`](../source/grox/flows/mm_emb/embedder_v82.py#L34) — `async def _fetch_core_user(self, user: User | None) -> dict[str, Any] | None:`
+- [`grox/flows/mm_emb/embedder_v82.py:45`](../source/grox/flows/mm_emb/embedder_v82.py#L45) — `def _collect_asr(post: Post) -> str | None:`
+- [`grox/flows/mm_emb/embedder_v82.py:55`](../source/grox/flows/mm_emb/embedder_v82.py#L55) — `async def embed(`
+- [`grox/flows/mm_emb/embedder_v8_search.py:23`](../source/grox/flows/mm_emb/embedder_v8_search.py#L23) — `class MultimodalPostEmbedderV8Search:`
+- [`grox/flows/mm_emb/embedder_v8_search.py:26`](../source/grox/flows/mm_emb/embedder_v8_search.py#L26) — `def __init__(self) -> None:`
+- [`grox/flows/mm_emb/embedder_v8_search.py:38`](../source/grox/flows/mm_emb/embedder_v8_search.py#L38) — `def _renormalize(embedding: np.ndarray) -> list[float]:`
+- [`grox/flows/mm_emb/embedder_v8_search.py:44`](../source/grox/flows/mm_emb/embedder_v8_search.py#L44) — `async def _fetch_core_user(self, user: User | None) -> dict[str, Any] | None:`
+- [`grox/flows/mm_emb/embedder_v8_search.py:54`](../source/grox/flows/mm_emb/embedder_v8_search.py#L54) — `async def embed(`
+- [`grox/flows/mm_emb/embedder_v8_search.py:112`](../source/grox/flows/mm_emb/embedder_v8_search.py#L112) — `class MultimodalPostEmbedderV8SearchBackfill(MultimodalPostEmbedderV8Search):`
+- [`grox/flows/mm_emb/generators.py:48`](../source/grox/flows/mm_emb/generators.py#L48) — `class PostEmbeddingV5StreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:52`](../source/grox/flows/mm_emb/generators.py#L52) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:57`](../source/grox/flows/mm_emb/generators.py#L57) — `class PostEmbeddingV5RecoveryStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:61`](../source/grox/flows/mm_emb/generators.py#L61) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:65`](../source/grox/flows/mm_emb/generators.py#L65) — `class KafkaMmBackfillRequestLoader(KafkaLoader):`
+- [`grox/flows/mm_emb/generators.py:66`](../source/grox/flows/mm_emb/generators.py#L66) — `def __init__(self, topic_name: str):`
+- [`grox/flows/mm_emb/generators.py:70`](../source/grox/flows/mm_emb/generators.py#L70) — `def _messages_to_payloads(`
+- [`grox/flows/mm_emb/generators.py:99`](../source/grox/flows/mm_emb/generators.py#L99) — `class PostEmbeddingBackfillStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:103`](../source/grox/flows/mm_emb/generators.py#L103) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:108`](../source/grox/flows/mm_emb/generators.py#L108) — `class PostEmbeddingV5ForReplyStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:112`](../source/grox/flows/mm_emb/generators.py#L112) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:117`](../source/grox/flows/mm_emb/generators.py#L117) — `class PostEmbeddingV82StreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:121`](../source/grox/flows/mm_emb/generators.py#L121) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:126`](../source/grox/flows/mm_emb/generators.py#L126) — `class PostEmbeddingV82RecoveryStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:130`](../source/grox/flows/mm_emb/generators.py#L130) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:135`](../source/grox/flows/mm_emb/generators.py#L135) — `class PostEmbeddingV82ForReplyStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:139`](../source/grox/flows/mm_emb/generators.py#L139) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:144`](../source/grox/flows/mm_emb/generators.py#L144) — `class PostEmbeddingV8SearchStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:148`](../source/grox/flows/mm_emb/generators.py#L148) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/generators.py:153`](../source/grox/flows/mm_emb/generators.py#L153) — `class PostEmbeddingV8SearchForReplyStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/mm_emb/generators.py:157`](../source/grox/flows/mm_emb/generators.py#L157) — `def _get_loader(self):`
+- [`grox/flows/mm_emb/plan_post_embedding_v5.py:16`](../source/grox/flows/mm_emb/plan_post_embedding_v5.py#L16) — `class PlanPostEmbeddingV5(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v5_for_reply.py:14`](../source/grox/flows/mm_emb/plan_post_embedding_v5_for_reply.py#L14) — `class PlanPostEmbeddingV5ForReply(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v82.py:15`](../source/grox/flows/mm_emb/plan_post_embedding_v82.py#L15) — `class PlanPostEmbeddingV82(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v82_for_reply.py:14`](../source/grox/flows/mm_emb/plan_post_embedding_v82_for_reply.py#L14) — `class PlanPostEmbeddingV82ForReply(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v8_search.py:15`](../source/grox/flows/mm_emb/plan_post_embedding_v8_search.py#L15) — `class PlanPostEmbeddingV8Search(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v8_search_backfill.py:18`](../source/grox/flows/mm_emb/plan_post_embedding_v8_search_backfill.py#L18) — `class PlanPostEmbeddingV8SearchBackfill(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v8_search_backfill_batch.py:7`](../source/grox/flows/mm_emb/plan_post_embedding_v8_search_backfill_batch.py#L7) — `class PlanPostEmbeddingV8SearchBackfillBatch(Plan):`
+- [`grox/flows/mm_emb/plan_post_embedding_v8_search_for_reply.py:14`](../source/grox/flows/mm_emb/plan_post_embedding_v8_search_for_reply.py#L14) — `class PlanPostEmbeddingV8SearchForReply(Plan):`
+- [`grox/flows/mm_emb/renderer.py:10`](../source/grox/flows/mm_emb/renderer.py#L10) — `def remove_tco_links(text: str) -> str:`
+- [`grox/flows/mm_emb/renderer.py:14`](../source/grox/flows/mm_emb/renderer.py#L14) — `class V5EmbedPostRenderer:`
+- [`grox/flows/mm_emb/renderer.py:16`](../source/grox/flows/mm_emb/renderer.py#L16) — `def render_for_embedding(`
+- [`grox/flows/mm_emb/renderer.py:49`](../source/grox/flows/mm_emb/renderer.py#L49) — `def _render_single_post(`
+- [`grox/flows/mm_emb/renderer.py:95`](../source/grox/flows/mm_emb/renderer.py#L95) — `def _process_medium(`
+- [`grox/flows/mm_emb/renderer.py:108`](../source/grox/flows/mm_emb/renderer.py#L108) — `def _process_image(`
+- [`grox/flows/mm_emb/renderer.py:122`](../source/grox/flows/mm_emb/renderer.py#L122) — `def _process_video(`
+- [`grox/flows/mm_emb/renderer.py:155`](../source/grox/flows/mm_emb/renderer.py#L155) — `def _process_cardv2(`
+- [`grox/flows/mm_emb/renderer_v82.py:42`](../source/grox/flows/mm_emb/renderer_v82.py#L42) — `def _strip_dangling_media_urls(text: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:46`](../source/grox/flows/mm_emb/renderer_v82.py#L46) — `def _truncate(text: str, limit: int) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:53`](../source/grox/flows/mm_emb/renderer_v82.py#L53) — `def _humanize_followers(n: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:57`](../source/grox/flows/mm_emb/renderer_v82.py#L57) — `def fmt(v: float, s: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:82`](../source/grox/flows/mm_emb/renderer_v82.py#L82) — `def _tier_label(n: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:91`](../source/grox/flows/mm_emb/renderer_v82.py#L91) — `def _count_with_tier(n: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:99`](../source/grox/flows/mm_emb/renderer_v82.py#L99) — `def _format_join_date(msec: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:109`](../source/grox/flows/mm_emb/renderer_v82.py#L109) — `def _humanize_duration(ms: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:117`](../source/grox/flows/mm_emb/renderer_v82.py#L117) — `def _quality_bucket(bitrate: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:127`](../source/grox/flows/mm_emb/renderer_v82.py#L127) — `def _collapse_blank_lines(text: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:140`](../source/grox/flows/mm_emb/renderer_v82.py#L140) — `class V82EmbedPostRenderer:`
+- [`grox/flows/mm_emb/renderer_v82.py:142`](../source/grox/flows/mm_emb/renderer_v82.py#L142) — `def render_for_embedding(`
+- [`grox/flows/mm_emb/renderer_v82.py:187`](../source/grox/flows/mm_emb/renderer_v82.py#L187) — `def _author_block(cls, user: User | None, core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:246`](../source/grox/flows/mm_emb/renderer_v82.py#L246) — `def _verified_label(core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:268`](../source/grox/flows/mm_emb/renderer_v82.py#L268) — `def _account_label(core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:277`](../source/grox/flows/mm_emb/renderer_v82.py#L277) — `def _safety_label(core_user: dict[str, Any] | None, user: User | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:286`](../source/grox/flows/mm_emb/renderer_v82.py#L286) — `def _collect_post_media(`
+- [`grox/flows/mm_emb/renderer_v82.py:317`](../source/grox/flows/mm_emb/renderer_v82.py#L317) — `def _article_block(post: Post) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:323`](../source/grox/flows/mm_emb/renderer_v82.py#L323) — `def _card_block(post: Post) -> str:`
+- [`grox/flows/mm_emb/renderer_v82.py:341`](../source/grox/flows/mm_emb/renderer_v82.py#L341) — `def _quoted_block(cls, post: Post, quoted_core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:44`](../source/grox/flows/mm_emb/renderer_v8_search.py#L44) — `class RenderedMedium:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:53`](../source/grox/flows/mm_emb/renderer_v8_search.py#L53) — `def _strip_dangling_media_urls(text: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:57`](../source/grox/flows/mm_emb/renderer_v8_search.py#L57) — `def _sanitize(text: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:61`](../source/grox/flows/mm_emb/renderer_v8_search.py#L61) — `def _truncate(text: str, limit: int) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:68`](../source/grox/flows/mm_emb/renderer_v8_search.py#L68) — `def _humanize_followers(n: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:72`](../source/grox/flows/mm_emb/renderer_v8_search.py#L72) — `def fmt(v: float, s: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:97`](../source/grox/flows/mm_emb/renderer_v8_search.py#L97) — `def _tier_label(n: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:106`](../source/grox/flows/mm_emb/renderer_v8_search.py#L106) — `def _count_with_tier(n: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:114`](../source/grox/flows/mm_emb/renderer_v8_search.py#L114) — `def _format_join_date(msec: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:124`](../source/grox/flows/mm_emb/renderer_v8_search.py#L124) — `def _humanize_duration(ms: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:132`](../source/grox/flows/mm_emb/renderer_v8_search.py#L132) — `def _quality_bucket(bitrate: int | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:142`](../source/grox/flows/mm_emb/renderer_v8_search.py#L142) — `def _collapse_blank_lines(text: str) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:155`](../source/grox/flows/mm_emb/renderer_v8_search.py#L155) — `class V8SearchEmbedPostRenderer:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:157`](../source/grox/flows/mm_emb/renderer_v8_search.py#L157) — `def render_for_embedding(`
+- [`grox/flows/mm_emb/renderer_v8_search.py:227`](../source/grox/flows/mm_emb/renderer_v8_search.py#L227) — `def _author_block(cls, user: User | None, core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:291`](../source/grox/flows/mm_emb/renderer_v8_search.py#L291) — `def _verified_label(core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:313`](../source/grox/flows/mm_emb/renderer_v8_search.py#L313) — `def _account_label(core_user: dict[str, Any] | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:322`](../source/grox/flows/mm_emb/renderer_v8_search.py#L322) — `def _safety_label(core_user: dict[str, Any] | None, user: User | None) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:331`](../source/grox/flows/mm_emb/renderer_v8_search.py#L331) — `def _collect_media_records(`
+- [`grox/flows/mm_emb/renderer_v8_search.py:381`](../source/grox/flows/mm_emb/renderer_v8_search.py#L381) — `def _apply_frame_budget(`
+- [`grox/flows/mm_emb/renderer_v8_search.py:406`](../source/grox/flows/mm_emb/renderer_v8_search.py#L406) — `def _article_block(post: Post) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:412`](../source/grox/flows/mm_emb/renderer_v8_search.py#L412) — `def _card_block(post: Post) -> str:`
+- [`grox/flows/mm_emb/renderer_v8_search.py:430`](../source/grox/flows/mm_emb/renderer_v8_search.py#L430) — `def _quoted_block(cls, post: Post) -> str:`
+- [`grox/flows/mm_emb/state.py:5`](../source/grox/flows/mm_emb/state.py#L5) — `class MultimodalPostEmbeddingState:`
+- [`grox/flows/mm_emb/task_backfill_fanout.py:33`](../source/grox/flows/mm_emb/task_backfill_fanout.py#L33) — `class BackfillIdBatch(BaseModel):`
+- [`grox/flows/mm_emb/task_backfill_fanout.py:37`](../source/grox/flows/mm_emb/task_backfill_fanout.py#L37) — `class TaskBackfillBatchFanout(Task):`
+- [`grox/flows/mm_emb/task_backfill_fanout.py:39`](../source/grox/flows/mm_emb/task_backfill_fanout.py#L39) — `async def _run_one(cls, payload: MessageQueuePayload) -> None:`
+- [`grox/flows/mm_emb/task_backfill_fanout.py:69`](../source/grox/flows/mm_emb/task_backfill_fanout.py#L69) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/mm_emb/task_backfill_gate.py:24`](../source/grox/flows/mm_emb/task_backfill_gate.py#L24) — `class TaskBackfillFavGate(TaskWithPost):`
+- [`grox/flows/mm_emb/task_backfill_gate.py:26`](../source/grox/flows/mm_emb/task_backfill_gate.py#L26) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_backfill_gate.py:45`](../source/grox/flows/mm_emb/task_backfill_gate.py#L45) — `class TaskBackfillPreloadGate(TaskWithPost):`
+- [`grox/flows/mm_emb/task_backfill_gate.py:47`](../source/grox/flows/mm_emb/task_backfill_gate.py#L47) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_embedding_pub.py:20`](../source/grox/flows/mm_emb/task_embedding_pub.py#L20) — `def _serialize(post: Post, embedding: list[float]) -> bytes:`
+- [`grox/flows/mm_emb/task_embedding_pub.py:26`](../source/grox/flows/mm_emb/task_embedding_pub.py#L26) — `class TaskPublishEmbeddingMultiRegionKafka:`
+- [`grox/flows/mm_emb/task_embedding_pub.py:33`](../source/grox/flows/mm_emb/task_embedding_pub.py#L33) — `async def _publish_to_kafka(cls, post: Post, embedding: list[float]) -> None:`
+- [`grox/flows/mm_emb/task_embedding_pub.py:39`](../source/grox/flows/mm_emb/task_embedding_pub.py#L39) — `async def _get_kafka_producer(cls) -> MultiRegionKafkaProducer:`
+- [`grox/flows/mm_emb/task_embedding_pub.py:51`](../source/grox/flows/mm_emb/task_embedding_pub.py#L51) — `class TaskPublishEmbeddingV5Kafka(TaskPublishEmbeddingMultiRegionKafka):`
+- [`grox/flows/mm_emb/task_embedding_pub.py:55`](../source/grox/flows/mm_emb/task_embedding_pub.py#L55) — `class TaskPublishEmbeddingV5AllKafka(TaskPublishEmbeddingMultiRegionKafka):`
+- [`grox/flows/mm_emb/task_embedding_pub.py:59`](../source/grox/flows/mm_emb/task_embedding_pub.py#L59) — `class TaskPublishEmbeddingV82Kafka(TaskPublishEmbeddingMultiRegionKafka):`
+- [`grox/flows/mm_emb/task_embedding_pub.py:63`](../source/grox/flows/mm_emb/task_embedding_pub.py#L63) — `class TaskPublishEmbeddingV8SearchKafka(TaskPublishEmbeddingMultiRegionKafka):`
+- [`grox/flows/mm_emb/task_filter.py:10`](../source/grox/flows/mm_emb/task_filter.py#L10) — `class TaskPostEmbeddingForReplyFilter(TaskFilterWithPost):`
+- [`grox/flows/mm_emb/task_filter.py:13`](../source/grox/flows/mm_emb/task_filter.py#L13) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:19`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L19) — `class TaskMultimodalPostEmbeddingV5(TaskWithPost):`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:23`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L23) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:59`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L59) — `class TaskMultimodalPostEmbeddingV82(TaskWithPost):`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:63`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L63) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:85`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L85) — `class TaskMultimodalPostEmbeddingV8Search(TaskWithPost):`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:89`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L89) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:113`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L113) — `class TaskMultimodalPostEmbeddingV8SearchBackfill(TaskWithPost):`
+- [`grox/flows/mm_emb/task_multimodal_post_embedding.py:117`](../source/grox/flows/mm_emb/task_multimodal_post_embedding.py#L117) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_rate_limit.py:6`](../source/grox/flows/mm_emb/task_rate_limit.py#L6) — `class TaskRateLimitEmbeddingV5(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_rate_limit.py:11`](../source/grox/flows/mm_emb/task_rate_limit.py#L11) — `class TaskRateLimitEmbeddingV5ForReply(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_rate_limit.py:16`](../source/grox/flows/mm_emb/task_rate_limit.py#L16) — `class TaskRateLimitEmbeddingV82(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_rate_limit.py:21`](../source/grox/flows/mm_emb/task_rate_limit.py#L21) — `class TaskRateLimitEmbeddingV82ForReply(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_rate_limit.py:26`](../source/grox/flows/mm_emb/task_rate_limit.py#L26) — `class TaskRateLimitEmbeddingV8Search(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_rate_limit.py:31`](../source/grox/flows/mm_emb/task_rate_limit.py#L31) — `class TaskRateLimitEmbeddingV8SearchForReply(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_rate_limit.py:36`](../source/grox/flows/mm_emb/task_rate_limit.py#L36) — `class TaskRateLimitEmbeddingV8SearchBackfill(TaskTTLDedupeWithPost):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:26`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L26) — `class TaskWriteMMEmbeddingSinkBase(TaskWithPost):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:33`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L33) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:37`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L37) — `class TaskWriteMMEmbeddingSinkV5(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:41`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L41) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:61`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L61) — `class TaskWriteMMEmbeddingSinkV5SkipKafkaForReplies(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:65`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L65) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:94`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L94) — `class TaskWriteMMEmbeddingSinkV82SkipKafkaForReplies(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:98`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L98) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:127`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L127) — `class TaskWriteMMEmbeddingSinkV82(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:131`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L131) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:151`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L151) — `class TaskWriteMMEmbeddingV5ToAllTopic(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:155`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L155) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:166`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L166) — `class _TaskWriteV8SearchSinkBase(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:170`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L170) — `class TaskWriteV8SearchSinkSkipKafkaForReplies(_TaskWriteV8SearchSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:172`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L172) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:205`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L205) — `class TaskWriteV8SearchSink(_TaskWriteV8SearchSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:207`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L207) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:233`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L233) — `class TaskWriteV8SearchBackfillSink(TaskWriteMMEmbeddingSinkBase):`
+- [`grox/flows/mm_emb/task_write_mm_embedding_sink.py:237`](../source/grox/flows/mm_emb/task_write_mm_embedding_sink.py#L237) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/classifier.py:56`](../source/grox/flows/ptos/classifier.py#L56) — `def _strip_thinking_restrictions(text: str) -> str:`
+- [`grox/flows/ptos/classifier.py:63`](../source/grox/flows/ptos/classifier.py#L63) — `def _fav_bucket(fav_count: int) -> str:`
+- [`grox/flows/ptos/classifier.py:104`](../source/grox/flows/ptos/classifier.py#L104) — `class SafetyPtosCategoryClassifier:`
+- [`grox/flows/ptos/classifier.py:107`](../source/grox/flows/ptos/classifier.py#L107) — `def __init__(`
+- [`grox/flows/ptos/classifier.py:123`](../source/grox/flows/ptos/classifier.py#L123) — `def build_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/ptos/classifier.py:150`](../source/grox/flows/ptos/classifier.py#L150) — `async def classify_post(self, post: Post) -> SafetyPostAnnotations:`
+- [`grox/flows/ptos/classifier.py:167`](../source/grox/flows/ptos/classifier.py#L167) — `async def _to_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/ptos/classifier.py:170`](../source/grox/flows/ptos/classifier.py#L170) — `async def _sample(self, convo: Conversation) -> str:`
+- [`grox/flows/ptos/classifier.py:185`](../source/grox/flows/ptos/classifier.py#L185) — `def _policy_no_violation(reason: str) -> SafetyPolicy:`
+- [`grox/flows/ptos/classifier.py:189`](../source/grox/flows/ptos/classifier.py#L189) — `def _policy_with_type(`
+- [`grox/flows/ptos/classifier.py:197`](../source/grox/flows/ptos/classifier.py#L197) — `class SafetyPtosPolicyCrossValidator:`
+- [`grox/flows/ptos/classifier.py:200`](../source/grox/flows/ptos/classifier.py#L200) — `def __init__(self):`
+- [`grox/flows/ptos/classifier.py:206`](../source/grox/flows/ptos/classifier.py#L206) — `def _parse_policy(self, raw: str) -> SafetyPolicy | None:`
+- [`grox/flows/ptos/classifier.py:215`](../source/grox/flows/ptos/classifier.py#L215) — `def _build_policy_convo(`
+- [`grox/flows/ptos/classifier.py:234`](../source/grox/flows/ptos/classifier.py#L234) — `async def validate(`
+- [`grox/flows/ptos/classifier.py:247`](../source/grox/flows/ptos/classifier.py#L247) — `async def _validate_child_safety(`
+- [`grox/flows/ptos/classifier.py:293`](../source/grox/flows/ptos/classifier.py#L293) — `async def _validate_violent_media(`
+- [`grox/flows/ptos/classifier.py:353`](../source/grox/flows/ptos/classifier.py#L353) — `async def _validate_illegal_and_regulated_behaviors(`
+- [`grox/flows/ptos/classifier.py:406`](../source/grox/flows/ptos/classifier.py#L406) — `class SafetyPtosChildSafetyPolicyClassifier:`
+- [`grox/flows/ptos/classifier.py:409`](../source/grox/flows/ptos/classifier.py#L409) — `def __init__(self, gemma_model_name: str = GEMMA):`
+- [`grox/flows/ptos/classifier.py:412`](../source/grox/flows/ptos/classifier.py#L412) — `def build_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/ptos/classifier.py:436`](../source/grox/flows/ptos/classifier.py#L436) — `def _parse_policy(self, raw: str) -> SafetyPolicy | None:`
+- [`grox/flows/ptos/classifier.py:445`](../source/grox/flows/ptos/classifier.py#L445) — `async def classify_policy(self, post: Post) -> SafetyPolicy:`
+- [`grox/flows/ptos/classifier.py:472`](../source/grox/flows/ptos/classifier.py#L472) — `class SafetyPtosPolicyClassifier:`
+- [`grox/flows/ptos/classifier.py:475`](../source/grox/flows/ptos/classifier.py#L475) — `def __init__(`
+- [`grox/flows/ptos/classifier.py:508`](../source/grox/flows/ptos/classifier.py#L508) — `def _get_policy_prompt(violation: SafetyPtosViolatedPolicy, post: Post) -> str:`
+- [`grox/flows/ptos/classifier.py:528`](../source/grox/flows/ptos/classifier.py#L528) — `def build_convo(`
+- [`grox/flows/ptos/classifier.py:597`](../source/grox/flows/ptos/classifier.py#L597) — `def _include_user_profile(self, category: SafetyPolicyCategory) -> bool:`
+- [`grox/flows/ptos/classifier.py:605`](../source/grox/flows/ptos/classifier.py#L605) — `async def classify_policy_for_violation(`
+- [`grox/flows/ptos/classifier.py:656`](../source/grox/flows/ptos/classifier.py#L656) — `async def _to_convo(`
+- [`grox/flows/ptos/classifier.py:661`](../source/grox/flows/ptos/classifier.py#L661) — `async def _sample_4_3(self, convo: Conversation) -> str:`
+- [`grox/flows/ptos/classifier.py:686`](../source/grox/flows/ptos/classifier.py#L686) — `async def _sample_4_6_internal(self, convo: Conversation) -> str:`
+- [`grox/flows/ptos/classifier.py:711`](../source/grox/flows/ptos/classifier.py#L711) — `async def _sample(self, convo: Conversation, sample_for_gemma: bool = False) -> str:`
+- [`grox/flows/ptos/classifier.py:726`](../source/grox/flows/ptos/classifier.py#L726) — `class SafetyPtosAdultContentCrossValidationJudge:`
+- [`grox/flows/ptos/classifier.py:729`](../source/grox/flows/ptos/classifier.py#L729) — `def __init__(self):`
+- [`grox/flows/ptos/classifier.py:733`](../source/grox/flows/ptos/classifier.py#L733) — `def build_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/ptos/classifier.py:755`](../source/grox/flows/ptos/classifier.py#L755) — `async def judge(self, post: Post) -> SafetyPolicy:`
+- [`grox/flows/ptos/disable_rules.py:6`](../source/grox/flows/ptos/disable_rules.py#L6) — `class DisableTaskForNonPtosProd(DisableTaskRule):`
+- [`grox/flows/ptos/disable_rules.py:10`](../source/grox/flows/ptos/disable_rules.py#L10) — `def should_disable(cls, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/generators.py:44`](../source/grox/flows/ptos/generators.py#L44) — `class MinTractionPostStreamForGroxPtosTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:48`](../source/grox/flows/ptos/generators.py#L48) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:53`](../source/grox/flows/ptos/generators.py#L53) — `class SafetyPtosRecoveryStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:57`](../source/grox/flows/ptos/generators.py#L57) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:62`](../source/grox/flows/ptos/generators.py#L62) — `class SafetyPtosDeluxeStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:66`](../source/grox/flows/ptos/generators.py#L66) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:71`](../source/grox/flows/ptos/generators.py#L71) — `class SafetyPtosBackfillStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:75`](../source/grox/flows/ptos/generators.py#L75) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:80`](../source/grox/flows/ptos/generators.py#L80) — `class SafetyPtosRealtimeWithSignalsStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:84`](../source/grox/flows/ptos/generators.py#L84) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:89`](../source/grox/flows/ptos/generators.py#L89) — `class MinImpressionPostStreamForGroxPtosTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:93`](../source/grox/flows/ptos/generators.py#L93) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:98`](../source/grox/flows/ptos/generators.py#L98) — `class SafetyPtosLiveClusterAnchorsStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:102`](../source/grox/flows/ptos/generators.py#L102) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:107`](../source/grox/flows/ptos/generators.py#L107) — `class SafetyPtosSpecialVideoStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:111`](../source/grox/flows/ptos/generators.py#L111) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:116`](../source/grox/flows/ptos/generators.py#L116) — `class SafetyPtosAdultContentLeadingFramesStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/ptos/generators.py:120`](../source/grox/flows/ptos/generators.py#L120) — `def _get_loader(self):`
+- [`grox/flows/ptos/generators.py:125`](../source/grox/flows/ptos/generators.py#L125) — `class SafetyPtosMediaInjectedAdultInfraredVideoSpamDetectionStreamTaskGenerator(`
+- [`grox/flows/ptos/generators.py:131`](../source/grox/flows/ptos/generators.py#L131) — `def _get_loader(self):`
+- [`grox/flows/ptos/kafka_loader.py:17`](../source/grox/flows/ptos/kafka_loader.py#L17) — `class KafkaLiveClusterAnchorLoader(KafkaLoader):`
+- [`grox/flows/ptos/kafka_loader.py:19`](../source/grox/flows/ptos/kafka_loader.py#L19) — `def _messages_to_payloads(`
+- [`grox/flows/ptos/mode.py:5`](../source/grox/flows/ptos/mode.py#L5) — `class SafetyPtosMode(str, Enum):`
+- [`grox/flows/ptos/mode.py:13`](../source/grox/flows/ptos/mode.py#L13) — `def from_task_type(cls, task_type: str | None) -> "SafetyPtosMode":`
+- [`grox/flows/ptos/mode.py:27`](../source/grox/flows/ptos/mode.py#L27) — `def is_deluxe(self) -> bool:`
+- [`grox/flows/ptos/plan_safety_ptos.py:23`](../source/grox/flows/ptos/plan_safety_ptos.py#L23) — `class PlanSafetyPtos(Plan):`
+- [`grox/flows/ptos/plan_safety_ptos_adult_content_leading_frames.py:24`](../source/grox/flows/ptos/plan_safety_ptos_adult_content_leading_frames.py#L24) — `class PlanSafetyPtosAdultContentLeadingFrames(Plan):`
+- [`grox/flows/ptos/plan_safety_ptos_live_cluster_anchors.py:15`](../source/grox/flows/ptos/plan_safety_ptos_live_cluster_anchors.py#L15) — `class PlanSafetyPtosLiveClusterAnchors(Plan):`
+- [`grox/flows/ptos/plan_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:19`](../source/grox/flows/ptos/plan_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L19) — `class PlanSafetyPtosMediaInjectedAdultInfraredVideoSpamDetection(Plan):`
+- [`grox/flows/ptos/plan_safety_ptos_realtime_with_signals.py:13`](../source/grox/flows/ptos/plan_safety_ptos_realtime_with_signals.py#L13) — `class PlanSafetyPtosWithRealTimeSignals(Plan):`
+- [`grox/flows/ptos/plan_safety_ptos_special_video.py:23`](../source/grox/flows/ptos/plan_safety_ptos_special_video.py#L23) — `class PlanSafetyPtosSpecialVideo(Plan):`
+- [`grox/flows/ptos/prior_nsfw.py:16`](../source/grox/flows/ptos/prior_nsfw.py#L16) — `async def post_is_already_flagged_nsfw(ctx: TaskContext, post: Post) -> bool:`
+- [`grox/flows/ptos/prior_nsfw.py:23`](../source/grox/flows/ptos/prior_nsfw.py#L23) — `async def _fetch(post: Post) -> bool:`
+- [`grox/flows/ptos/prompts.py:15`](../source/grox/flows/ptos/prompts.py#L15) — `def safety_ptos_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:20`](../source/grox/flows/ptos/prompts.py#L20) — `def violent_media_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:25`](../source/grox/flows/ptos/prompts.py#L25) — `def adult_content_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:30`](../source/grox/flows/ptos/prompts.py#L30) — `def spam_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:35`](../source/grox/flows/ptos/prompts.py#L35) — `def illegal_and_regulated_behaviors_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:40`](../source/grox/flows/ptos/prompts.py#L40) — `def hate_or_abuse_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:45`](../source/grox/flows/ptos/prompts.py#L45) — `def violent_speech_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:50`](../source/grox/flows/ptos/prompts.py#L50) — `def suicide_or_self_harm_policy_prompt() -> str:`
+- [`grox/flows/ptos/prompts.py:54`](../source/grox/flows/ptos/prompts.py#L54) — `def child_safety_policy_prompt(post_creation_time: str) -> str:`
+- [`grox/flows/ptos/prompts.py:61`](../source/grox/flows/ptos/prompts.py#L61) — `def media_injected_adult_infrared_video_spam_detection_prompt() -> str:`
+- [`grox/flows/ptos/state.py:11`](../source/grox/flows/ptos/state.py#L11) — `class SafetyPolicyCategory(str, Enum):`
+- [`grox/flows/ptos/state.py:24`](../source/grox/flows/ptos/state.py#L24) — `class SafetyPolicyType(str, Enum):`
+- [`grox/flows/ptos/state.py:74`](../source/grox/flows/ptos/state.py#L74) — `class SafetyPolicy(BaseModel):`
+- [`grox/flows/ptos/state.py:80`](../source/grox/flows/ptos/state.py#L80) — `class SafetyPtosViolatedPolicy(BaseModel):`
+- [`grox/flows/ptos/state.py:87`](../source/grox/flows/ptos/state.py#L87) — `class SafetyPostAnnotations(BaseModel):`
+- [`grox/flows/ptos/state.py:91`](../source/grox/flows/ptos/state.py#L91) — `class SafemodelResult(BaseModel):`
+- [`grox/flows/ptos/state.py:97`](../source/grox/flows/ptos/state.py#L97) — `class LiveClusterAnchorInput(BaseModel):`
+- [`grox/flows/ptos/state.py:102`](../source/grox/flows/ptos/state.py#L102) — `def from_proto_kafka_message(cls, message_value: Any) -> "LiveClusterAnchorInput":`
+- [`grox/flows/ptos/state.py:117`](../source/grox/flows/ptos/state.py#L117) — `class LiveClusterAnchorKafkaVerdict(BaseModel):`
+- [`grox/flows/ptos/state.py:125`](../source/grox/flows/ptos/state.py#L125) — `class SafetyPtosState:`
+- [`grox/flows/ptos/task_filter.py:17`](../source/grox/flows/ptos/task_filter.py#L17) — `class TaskSafetyPtosFilter(TaskFilterWithPost):`
+- [`grox/flows/ptos/task_filter.py:20`](../source/grox/flows/ptos/task_filter.py#L20) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_filter.py:37`](../source/grox/flows/ptos/task_filter.py#L37) — `class TaskSafetyPtosRealtimeWithSignalsFilter(TaskFilterWithPost):`
+- [`grox/flows/ptos/task_filter.py:45`](../source/grox/flows/ptos/task_filter.py#L45) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_ptos_spam_detection.py:22`](../source/grox/flows/ptos/task_ptos_spam_detection.py#L22) — `class TaskPtosSpamDetection(TaskWithPost):`
+- [`grox/flows/ptos/task_ptos_spam_detection.py:31`](../source/grox/flows/ptos/task_ptos_spam_detection.py#L31) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_ptos_spam_detection.py:61`](../source/grox/flows/ptos/task_ptos_spam_detection.py#L61) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/ptos/task_rate_limit.py:11`](../source/grox/flows/ptos/task_rate_limit.py#L11) — `class TaskRateLimitSafetyPtosAnnotationWithPost(TaskTTLDedupeWithPost):`
+- [`grox/flows/ptos/task_rate_limit.py:17`](../source/grox/flows/ptos/task_rate_limit.py#L17) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_rate_limit.py:28`](../source/grox/flows/ptos/task_rate_limit.py#L28) — `class TaskRateLimitSafetyPtosAdultContentLeadingFrames(TaskTTLDedupeWithPost):`
+- [`grox/flows/ptos/task_rate_limit.py:33`](../source/grox/flows/ptos/task_rate_limit.py#L33) — `class TaskRateLimitSafetyPtosMediaInjectedAdultInfraredVideoSpamDetection(`
+- [`grox/flows/ptos/task_rate_limit.py:40`](../source/grox/flows/ptos/task_rate_limit.py#L40) — `class TaskRateLimitSafetyPtosRealtimeWithSignals(TaskTTLDedupeWithPost):`
+- [`grox/flows/ptos/task_rate_limit.py:45`](../source/grox/flows/ptos/task_rate_limit.py#L45) — `class TaskRateLimitSafetyPtosLiveClusterAnchors(TaskTTLDedupeWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:26`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L26) — `class CompareOutcome(str, Enum):`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:33`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L33) — `def is_disagreement(self) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:40`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L40) — `class TaskSafetyPtosAdultContentCrossValidation(TaskWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:44`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L44) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:54`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L54) — `async def _run(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:90`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L90) — `def _compare_outcome(`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:102`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L102) — `async def _cross_validate(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:130`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L130) — `def _apply_soft_verdict(cls, ctx: TaskContext, reason: str) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py:151`](../source/grox/flows/ptos/task_safety_ptos_adult_content_cross_validation.py#L151) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_leading_frames_filter.py:24`](../source/grox/flows/ptos/task_safety_ptos_adult_content_leading_frames_filter.py#L24) — `class TaskSafetyPtosAdultContentLeadingFramesFilter(TaskFilterWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_leading_frames_filter.py:29`](../source/grox/flows/ptos/task_safety_ptos_adult_content_leading_frames_filter.py#L29) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_adult_content_leading_frames_filter.py:86`](../source/grox/flows/ptos/task_safety_ptos_adult_content_leading_frames_filter.py#L86) — `def _skip(cls, post: Post, reason: str) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_category.py:15`](../source/grox/flows/ptos/task_safety_ptos_category.py#L15) — `class TaskSafetyPtosCategoryDetection(TaskWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_category.py:43`](../source/grox/flows/ptos/task_safety_ptos_category.py#L43) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_category.py:82`](../source/grox/flows/ptos/task_safety_ptos_category.py#L82) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:53`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L53) — `class MediaInjectedAdultInfraredVideoSpamVerdict(BaseModel):`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:58`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L58) — `class UnparseableVerdict(ValueError):`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:62`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L62) — `class TaskSafetyPtosMediaInjectedAdultInfraredVideoSpamDetection(TaskWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:66`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L66) — `def llm(cls) -> VisionSampler:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:75`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L75) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:102`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L102) — `async def _run(`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:132`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L132) — `def build_convo(`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:163`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L163) — `def parse_verdict(raw: str) -> MediaInjectedAdultInfraredVideoSpamVerdict:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:175`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L175) — `def apply_verdict(`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py:192`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection.py#L192) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py:19`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py#L19) — `def post_videos(post: Post) -> list[Video]:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py:27`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py#L27) — `class TaskSafetyPtosMediaInjectedAdultInfraredVideoSpamDetectionFilter(`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py:32`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py#L32) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py:50`](../source/grox/flows/ptos/task_safety_ptos_media_injected_adult_infrared_video_spam_detection_filter.py#L50) — `def _skip(cls, post: Post, reason: str) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_min_traction_dedupe_filter.py:21`](../source/grox/flows/ptos/task_safety_ptos_min_traction_dedupe_filter.py#L21) — `class TaskSafetyPtosMinTractionDedupeFilter(TaskFilterWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_min_traction_dedupe_filter.py:34`](../source/grox/flows/ptos/task_safety_ptos_min_traction_dedupe_filter.py#L34) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_policy.py:28`](../source/grox/flows/ptos/task_safety_ptos_policy.py#L28) — `class TaskSafetyPtosPolicyDetection(TaskWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_policy.py:68`](../source/grox/flows/ptos/task_safety_ptos_policy.py#L68) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_policy.py:128`](../source/grox/flows/ptos/task_safety_ptos_policy.py#L128) — `async def _high_fav_adult_recheck(`
+- [`grox/flows/ptos/task_safety_ptos_policy.py:164`](../source/grox/flows/ptos/task_safety_ptos_policy.py#L164) — `def _record_policy_metrics(`
+- [`grox/flows/ptos/task_safety_ptos_policy.py:187`](../source/grox/flows/ptos/task_safety_ptos_policy.py#L187) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:36`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L36) — `class TaskSafetyPtosSafemodelSexNudity(TaskWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:38`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L38) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:53`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L53) — `def _has_adult_content_suspicion(cls, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:63`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L63) — `async def _run(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:144`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L144) — `def _collect_payloads(cls, post: Post) -> list[tuple[str, bytes]]:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:169`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L169) — `def _iter_media(post: Post):`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:178`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L178) — `def _iter_broadcast_videos(post: Post):`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:187`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L187) — `def _sample_uniform(items: list[bytes], k: int) -> list[bytes]:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:195`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L195) — `def _infer_one_sync(kind: str, payload_bytes: bytes) -> tuple[str, float] | None:`
+- [`grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py:273`](../source/grox/flows/ptos/task_safety_ptos_safemodel_sex_nudity.py#L273) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/ptos/task_safety_ptos_special_video_filter.py:13`](../source/grox/flows/ptos/task_safety_ptos_special_video_filter.py#L13) — `class TaskSafetyPtosSpecialVideoFilter(TaskFilterWithPost):`
+- [`grox/flows/ptos/task_safety_ptos_special_video_filter.py:16`](../source/grox/flows/ptos/task_safety_ptos_special_video_filter.py#L16) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_safety_ptos_special_video_filter.py:27`](../source/grox/flows/ptos/task_safety_ptos_special_video_filter.py#L27) — `def _skip_reason(cls, post: Post) -> str | None:`
+- [`grox/flows/ptos/task_special_video_screen.py:13`](../source/grox/flows/ptos/task_special_video_screen.py#L13) — `class TaskSpecialVideoScreen(TaskFilterWithPost):`
+- [`grox/flows/ptos/task_special_video_screen.py:15`](../source/grox/flows/ptos/task_special_video_screen.py#L15) — `def _technique_signals(cls, convo_video: ConvoVideo) -> dict[str, bool]:`
+- [`grox/flows/ptos/task_special_video_screen.py:22`](../source/grox/flows/ptos/task_special_video_screen.py#L22) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:38`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L38) — `def _is_actionable_spam_policy_violation(vp: SafetyPtosViolatedPolicy) -> bool:`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:49`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L49) — `def _has_enforce_decision(annotations: SafetyPostAnnotations | None) -> bool:`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:57`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L57) — `def _to_strato_safety_post_annotations(`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:78`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L78) — `def _build_live_cluster_anchor_verdict(`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:95`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L95) — `def _to_kafka_payload(`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:106`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L106) — `class TaskWriteLiveClusterAnchorVerdictSink(TaskWithPost):`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:111`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L111) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:156`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L156) — `def _require_anchor_input(`
+- [`grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py:179`](../source/grox/flows/ptos/task_write_live_cluster_anchor_verdict_sink.py#L179) — `def _get_producer(cls) -> KafkaProducer:`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:48`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L48) — `class TaskWriteSafetyPostAnnotationsResultSink(Task):`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:66`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L66) — `def _build_found_metadata(post) -> FoundMetadata:`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:78`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L78) — `def _compute_bool_metadata_from_violations(`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:149`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L149) — `def _merge_bool_metadata(`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:162`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L162) — `async def _apply_labels_for_annotation(`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:169`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L169) — `def _get_author_id() -> int:`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:175`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L175) — `async def _is_test_user() -> bool:`
+- [`grox/flows/ptos/task_write_safety_post_annotations_result_sink.py:317`](../source/grox/flows/ptos/task_write_safety_post_annotations_result_sink.py#L317) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:24`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L24) — `class CoordinatedSpamScorer:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:27`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L27) — `def __init__(self):`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:31`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L31) — `async def score(self, post: Post) -> CoordinatedSpamResult:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:44`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L44) — `def _drop_if_newest_reply_not_flagged(`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:57`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L57) — `def _drop_singleton(`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:69`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L69) — `def _thread_posts(post: Post) -> list[Post]:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:73`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L73) — `def _veto_if_newest_reply_author_root_engaged(`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:103`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L103) — `async def _to_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:135`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L135) — `async def _sample(self, convo: Conversation) -> str:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:140`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L140) — `async def _clean_output(self, output: str) -> str:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:154`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L154) — `def _resolve_post_ids(posts: list[Post], raw_values: list) -> list[str]:`
+- [`grox/flows/reply_spam/classifier_coordinated_spam.py:173`](../source/grox/flows/reply_spam/classifier_coordinated_spam.py#L173) — `async def _parse(self, post: Post, output: str) -> CoordinatedSpamResult:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:25`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L25) — `class MultiStepReplySpamScorer:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:28`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L28) — `def __init__(self):`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:32`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L32) — `async def score(self, post: Post) -> MultiStepReplySpamResult:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:45`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L45) — `def _drop_if_newest_reply_not_flagged(`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:58`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L58) — `def _drop_other_author_posts(`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:79`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L79) — `def _drop_singleton(`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:91`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L91) — `def _thread_posts(post: Post) -> list[Post]:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:99`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L99) — `async def _to_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:139`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L139) — `async def _sample(self, convo: Conversation) -> str:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:144`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L144) — `async def _clean_output(self, output: str) -> str:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:158`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L158) — `def _resolve_post_ids(posts: list[Post], raw_values: list) -> list[str]:`
+- [`grox/flows/reply_spam/classifier_multi_step_reply_spam.py:177`](../source/grox/flows/reply_spam/classifier_multi_step_reply_spam.py#L177) — `async def _parse(self, post: Post, output: str) -> MultiStepReplySpamResult:`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:30`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L30) — `class ReplyScorer:`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:33`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L33) — `def __init__(self):`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:44`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L44) — `async def score(self, post: Post) -> ReplyScoreResult:`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:55`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L55) — `async def _to_convo(self, post: Post, non_reasoning: bool = False) -> Conversation:`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:80`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L80) — `async def _sample(self, convo: Conversation, post: Post) -> str:`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:96`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L96) — `async def _clean_output(self, output: str) -> str:`
+- [`grox/flows/reply_spam/classifier_reply_ranking.py:109`](../source/grox/flows/reply_spam/classifier_reply_ranking.py#L109) — `async def _parse(self, output: str) -> ReplyScoreResult:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:25`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L25) — `class SimpleReplyScorer:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:26`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L26) — `def __init__(self):`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:33`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L33) — `async def score(self, post: Post) -> ReplyScoreResult:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:46`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L46) — `async def _to_convo(self, post: Post) -> Conversation:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:57`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L57) — `def _sampler(self, post: Post) -> OaiSampler:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:69`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L69) — `async def _sample(self, convo: Conversation, post: Post) -> str:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:74`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L74) — `async def _clean_output(self, output: str) -> str:`
+- [`grox/flows/reply_spam/classifier_simple_reply_scorer.py:87`](../source/grox/flows/reply_spam/classifier_simple_reply_scorer.py#L87) — `async def _parse(self, output: str) -> ReplyScoreResult:`
+- [`grox/flows/reply_spam/generators.py:17`](../source/grox/flows/reply_spam/generators.py#L17) — `class ReplyRankingTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/reply_spam/generators.py:26`](../source/grox/flows/reply_spam/generators.py#L26) — `def _get_loader(self):`
+- [`grox/flows/reply_spam/generators.py:31`](../source/grox/flows/reply_spam/generators.py#L31) — `class ReplyRankingRecoveryTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/reply_spam/generators.py:39`](../source/grox/flows/reply_spam/generators.py#L39) — `def _get_loader(self):`
+- [`grox/flows/reply_spam/plan_coordinated_spam.py:13`](../source/grox/flows/reply_spam/plan_coordinated_spam.py#L13) — `class PlanCoordinatedSpam(Plan):`
+- [`grox/flows/reply_spam/plan_multi_step_reply_spam.py:12`](../source/grox/flows/reply_spam/plan_multi_step_reply_spam.py#L12) — `class PlanMultiStepReplySpam(Plan):`
+- [`grox/flows/reply_spam/plan_reply_ranking.py:10`](../source/grox/flows/reply_spam/plan_reply_ranking.py#L10) — `class PlanReplyRanking(Plan):`
+- [`grox/flows/reply_spam/plan_spam_comment.py:10`](../source/grox/flows/reply_spam/plan_spam_comment.py#L10) — `class PlanSpamComment(Plan):`
+- [`grox/flows/reply_spam/prompts.py:15`](../source/grox/flows/reply_spam/prompts.py#L15) — `def reply_scoring_system_prompt(large_account_follower_threshold: int) -> str:`
+- [`grox/flows/reply_spam/prompts.py:22`](../source/grox/flows/reply_spam/prompts.py#L22) — `def reply_scoring_system_simple_prompt(large_account_follower_threshold: int) -> str:`
+- [`grox/flows/reply_spam/prompts.py:29`](../source/grox/flows/reply_spam/prompts.py#L29) — `def coordinated_spam_system_prompt() -> str:`
+- [`grox/flows/reply_spam/prompts.py:34`](../source/grox/flows/reply_spam/prompts.py#L34) — `def multi_step_reply_spam_system_prompt() -> str:`
+- [`grox/flows/reply_spam/state_coordinated_spam.py:6`](../source/grox/flows/reply_spam/state_coordinated_spam.py#L6) — `class CoordinatedSpamResult(BaseModel):`
+- [`grox/flows/reply_spam/state_coordinated_spam.py:12`](../source/grox/flows/reply_spam/state_coordinated_spam.py#L12) — `class CoordinatedSpamState:`
+- [`grox/flows/reply_spam/state_multi_step_reply_spam.py:6`](../source/grox/flows/reply_spam/state_multi_step_reply_spam.py#L6) — `class MultiStepReplySpamResult(BaseModel):`
+- [`grox/flows/reply_spam/state_multi_step_reply_spam.py:12`](../source/grox/flows/reply_spam/state_multi_step_reply_spam.py#L12) — `class MultiStepReplySpamState:`
+- [`grox/flows/reply_spam/state_reply_ranking.py:6`](../source/grox/flows/reply_spam/state_reply_ranking.py#L6) — `class ReplyScoreResult(BaseModel):`
+- [`grox/flows/reply_spam/state_reply_ranking.py:12`](../source/grox/flows/reply_spam/state_reply_ranking.py#L12) — `class ReplyRankingState:`
+- [`grox/flows/reply_spam/strato_loader.py:23`](../source/grox/flows/reply_spam/strato_loader.py#L23) — `class ReplyRankingScoreStratoLoader:`
+- [`grox/flows/reply_spam/strato_loader.py:30`](../source/grox/flows/reply_spam/strato_loader.py#L30) — `async def fetch_reply_ranking_score(cls, post_id: str) -> ReplyRankingScore | None:`
+- [`grox/flows/reply_spam/strato_loader.py:34`](../source/grox/flows/reply_spam/strato_loader.py#L34) — `async def publish_reply_ranking_score(`
+- [`grox/flows/reply_spam/task_coordinated_spam.py:13`](../source/grox/flows/reply_spam/task_coordinated_spam.py#L13) — `class TaskCoordinatedSpamDetection(TaskWithPost):`
+- [`grox/flows/reply_spam/task_coordinated_spam.py:17`](../source/grox/flows/reply_spam/task_coordinated_spam.py#L17) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/reply_spam/task_coordinated_spam.py:21`](../source/grox/flows/reply_spam/task_coordinated_spam.py#L21) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/reply_spam/task_coordinated_spam.py:37`](../source/grox/flows/reply_spam/task_coordinated_spam.py#L37) — `def _author_case(post: Post, spam_post_ids: list[str]) -> str:`
+- [`grox/flows/reply_spam/task_filter.py:17`](../source/grox/flows/reply_spam/task_filter.py#L17) — `class TaskSpamFilter(TaskFilterWithPost):`
+- [`grox/flows/reply_spam/task_filter.py:22`](../source/grox/flows/reply_spam/task_filter.py#L22) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/reply_spam/task_filter.py:97`](../source/grox/flows/reply_spam/task_filter.py#L97) — `class TaskCoordinatedSpamFilter(TaskFilterWithPost):`
+- [`grox/flows/reply_spam/task_filter.py:103`](../source/grox/flows/reply_spam/task_filter.py#L103) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/reply_spam/task_filter.py:185`](../source/grox/flows/reply_spam/task_filter.py#L185) — `class TaskReplyRankingFilter(TaskFilterWithPost):`
+- [`grox/flows/reply_spam/task_filter.py:190`](../source/grox/flows/reply_spam/task_filter.py#L190) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:25`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L25) — `class TaskMultiStepReplySpamFilter(TaskFilterWithPost):`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:31`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L31) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:127`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L127) — `class TaskMultiStepReplySpamDetection(TaskWithPost):`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:131`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L131) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:135`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L135) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:151`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L151) — `class TaskWriteMultiStepReplySpamReplyRanking(Task):`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:155`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L155) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/reply_spam/task_multi_step_reply_spam.py:188`](../source/grox/flows/reply_spam/task_multi_step_reply_spam.py#L188) — `async def _mark_spam(cls, post_id: str, author_id: int, reasoning: str) -> None:`
+- [`grox/flows/reply_spam/task_rank_replies.py:12`](../source/grox/flows/reply_spam/task_rank_replies.py#L12) — `class TaskRankReplies(TaskWithPost):`
+- [`grox/flows/reply_spam/task_rank_replies.py:16`](../source/grox/flows/reply_spam/task_rank_replies.py#L16) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/reply_spam/task_rank_replies.py:20`](../source/grox/flows/reply_spam/task_rank_replies.py#L20) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/reply_spam/task_rate_limit.py:6`](../source/grox/flows/reply_spam/task_rate_limit.py#L6) — `class TaskRateLimitCoordinatedSpamAnnotationWithPost(TaskTTLDedupeWithPost):`
+- [`grox/flows/reply_spam/task_spam_detection.py:14`](../source/grox/flows/reply_spam/task_spam_detection.py#L14) — `class TaskSpamDetection(TaskWithPost):`
+- [`grox/flows/reply_spam/task_spam_detection.py:18`](../source/grox/flows/reply_spam/task_spam_detection.py#L18) — `def get_follower_bucket_string(cls, post: Post) -> str:`
+- [`grox/flows/reply_spam/task_spam_detection.py:33`](../source/grox/flows/reply_spam/task_spam_detection.py#L33) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/reply_spam/task_spam_detection.py:38`](../source/grox/flows/reply_spam/task_spam_detection.py#L38) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/reply_spam/task_write.py:36`](../source/grox/flows/reply_spam/task_write.py#L36) — `async def _apply_reply_spam_label(post_id: str, author_id: int | None) -> None:`
+- [`grox/flows/reply_spam/task_write.py:71`](../source/grox/flows/reply_spam/task_write.py#L71) — `class TaskWriteReplyRankingManhattan(Task):`
+- [`grox/flows/reply_spam/task_write.py:75`](../source/grox/flows/reply_spam/task_write.py#L75) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/reply_spam/task_write.py:96`](../source/grox/flows/reply_spam/task_write.py#L96) — `async def _publish_to_reply_ranking_manhattan(`
+- [`grox/flows/reply_spam/task_write.py:146`](../source/grox/flows/reply_spam/task_write.py#L146) — `class TaskWriteCoordinatedSpamReplyRanking(Task):`
+- [`grox/flows/reply_spam/task_write.py:150`](../source/grox/flows/reply_spam/task_write.py#L150) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/reply_spam/task_write.py:183`](../source/grox/flows/reply_spam/task_write.py#L183) — `async def _mark_spam(cls, post_id: str, author_id: int, reasoning: str) -> None:`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:27`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L27) — `def topic_lookup_by_name(topics: list | None) -> dict[str, tuple[int, str]] | None:`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:44`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L44) — `class BangerInitialScreenParsedOutput(BaseModel):`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:54`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L54) — `class BangerInitialScreenGemmaClassifier:`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:57`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L57) — `def __init__(self):`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:62`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L62) — `def model_name(self) -> str:`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:66`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L66) — `def build_convo(post: Post, topics: list | None = None) -> Conversation:`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:88`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L88) — `async def classify(`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:101`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L101) — `async def _sample(self, convo: Conversation) -> str:`
+- [`grox/flows/upa/classifier_banger_initial_screen_gemma.py:106`](../source/grox/flows/upa/classifier_banger_initial_screen_gemma.py#L106) — `def _parse(`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:19`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L19) — `class PostSafetyDeluxeClassifier:`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:22`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L22) — `def __init__(self):`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:27`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L27) — `def model_name(self) -> str:`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:31`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L31) — `def build_convo(post: Post) -> Conversation:`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:48`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L48) — `async def classify(self, post: Post) -> PostSafetyScreenResult:`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:53`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L53) — `async def _sample(self, convo: Conversation) -> str:`
+- [`grox/flows/upa/classifier_post_safety_screen_deluxe.py:58`](../source/grox/flows/upa/classifier_post_safety_screen_deluxe.py#L58) — `def _parse(self, post: Post, output: str) -> PostSafetyScreenResult:`
+- [`grox/flows/upa/generators.py:19`](../source/grox/flows/upa/generators.py#L19) — `class MinTractionPostStreamForGroxTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/upa/generators.py:23`](../source/grox/flows/upa/generators.py#L23) — `def _get_loader(self):`
+- [`grox/flows/upa/generators.py:28`](../source/grox/flows/upa/generators.py#L28) — `class PostStreamRecoveryTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/upa/generators.py:32`](../source/grox/flows/upa/generators.py#L32) — `def _get_loader(self):`
+- [`grox/flows/upa/generators.py:37`](../source/grox/flows/upa/generators.py#L37) — `class PostSafetyStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/upa/generators.py:41`](../source/grox/flows/upa/generators.py#L41) — `def _get_loader(self):`
+- [`grox/flows/upa/generators.py:46`](../source/grox/flows/upa/generators.py#L46) — `class PostPriorityStreamTaskGenerator(StreamTaskGenerator):`
+- [`grox/flows/upa/generators.py:50`](../source/grox/flows/upa/generators.py#L50) — `def _get_loader(self):`
+- [`grox/flows/upa/models.py:6`](../source/grox/flows/upa/models.py#L6) — `class ContentCategoryScore(BaseModel):`
+- [`grox/flows/upa/models.py:13`](../source/grox/flows/upa/models.py#L13) — `class TweetBoolMetadata(BaseModel):`
+- [`grox/flows/upa/plan_initial_banger.py:12`](../source/grox/flows/upa/plan_initial_banger.py#L12) — `class PlanInitialBanger(Plan):`
+- [`grox/flows/upa/plan_post_safety.py:12`](../source/grox/flows/upa/plan_post_safety.py#L12) — `class PlanPostSafety(Plan):`
+- [`grox/flows/upa/prompts.py:14`](../source/grox/flows/upa/prompts.py#L14) — `def banger_mini_vlm_screen_score_gemma_prompt(topics) -> str:`
+- [`grox/flows/upa/prompts.py:21`](../source/grox/flows/upa/prompts.py#L21) — `def post_safety_deluxe_prompt() -> str:`
+- [`grox/flows/upa/state_initial_banger.py:7`](../source/grox/flows/upa/state_initial_banger.py#L7) — `class BangerScreenResult:`
+- [`grox/flows/upa/state_initial_banger.py:18`](../source/grox/flows/upa/state_initial_banger.py#L18) — `class InitialBangerState:`
+- [`grox/flows/upa/state_post_safety.py:8`](../source/grox/flows/upa/state_post_safety.py#L8) — `class PostSafetyScreenResult(BaseModel):`
+- [`grox/flows/upa/state_post_safety.py:13`](../source/grox/flows/upa/state_post_safety.py#L13) — `class PostSafetyState:`
+- [`grox/flows/upa/task_banger_screen.py:20`](../source/grox/flows/upa/task_banger_screen.py#L20) — `class TaskBangerScreen(TaskWithPost):`
+- [`grox/flows/upa/task_banger_screen.py:26`](../source/grox/flows/upa/task_banger_screen.py#L26) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/upa/task_banger_screen.py:31`](../source/grox/flows/upa/task_banger_screen.py#L31) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/upa/task_filter.py:12`](../source/grox/flows/upa/task_filter.py#L12) — `class TaskInitialBangerFilter(TaskFilterWithPost):`
+- [`grox/flows/upa/task_filter.py:15`](../source/grox/flows/upa/task_filter.py#L15) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/upa/task_filter.py:43`](../source/grox/flows/upa/task_filter.py#L43) — `def _get_hardcoded_filter_reason(cls, post: Post) -> str | None:`
+- [`grox/flows/upa/task_filter.py:51`](../source/grox/flows/upa/task_filter.py#L51) — `class TaskPostSafetyDeluxeFilter(TaskFilterWithPost):`
+- [`grox/flows/upa/task_filter.py:54`](../source/grox/flows/upa/task_filter.py#L54) — `async def _eligible_with_post(cls, post: Post, ctx: TaskContext) -> bool:`
+- [`grox/flows/upa/task_filter.py:82`](../source/grox/flows/upa/task_filter.py#L82) — `def _get_hardcoded_filter_reason(cls, post: Post) -> str | None:`
+- [`grox/flows/upa/task_grok_upa_action_with_labels.py:16`](../source/grox/flows/upa/task_grok_upa_action_with_labels.py#L16) — `class TaskGrokUpaActionWithLabels(Task):`
+- [`grox/flows/upa/task_grok_upa_action_with_labels.py:22`](../source/grox/flows/upa/task_grok_upa_action_with_labels.py#L22) — `def _get_tweet_bool_metadata(cls, ctx: TaskContext):`
+- [`grox/flows/upa/task_grok_upa_action_with_labels.py:30`](../source/grox/flows/upa/task_grok_upa_action_with_labels.py#L30) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/upa/task_post_safety_screen_deluxe.py:15`](../source/grox/flows/upa/task_post_safety_screen_deluxe.py#L15) — `class TaskPostSafetyScreenDeluxe(TaskWithPost):`
+- [`grox/flows/upa/task_post_safety_screen_deluxe.py:19`](../source/grox/flows/upa/task_post_safety_screen_deluxe.py#L19) — `async def exec(cls, ctx: TaskContext) -> TaskResultCategory:`
+- [`grox/flows/upa/task_post_safety_screen_deluxe.py:23`](../source/grox/flows/upa/task_post_safety_screen_deluxe.py#L23) — `async def _exec_with_post(cls, ctx: TaskContext, post: Post) -> None:`
+- [`grox/flows/upa/task_rate_limit.py:6`](../source/grox/flows/upa/task_rate_limit.py#L6) — `class TaskRateLimitBangerAnnotationWithPost(TaskTTLDedupeWithPost):`
+- [`grox/flows/upa/task_rate_limit.py:11`](../source/grox/flows/upa/task_rate_limit.py#L11) — `class TaskRateLimitPostSafetyAnnotationWithPost(TaskTTLDedupeWithPost):`
+- [`grox/flows/upa/task_write.py:29`](../source/grox/flows/upa/task_write.py#L29) — `class TaskPublishUnifiedPostAnnotationsManhattan(Task):`
+- [`grox/flows/upa/task_write.py:33`](../source/grox/flows/upa/task_write.py#L33) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/flows/upa/task_write.py:196`](../source/grox/flows/upa/task_write.py#L196) — `class TaskUpsertTweetBoolMetadataToUnifiedPostAnnotation(Task):`
+- [`grox/flows/upa/task_write.py:200`](../source/grox/flows/upa/task_write.py#L200) — `async def _exec(cls, ctx: TaskContext) -> None:`
+- [`grox/libs/blobstore_http/blobstore.py:15`](../source/grox/libs/blobstore_http/blobstore.py#L15) — `class ContentType(Enum):`
+- [`grox/libs/blobstore_http/blobstore.py:36`](../source/grox/libs/blobstore_http/blobstore.py#L36) — `class BlobstoreClientConfig(BaseModel):`
+- [`grox/libs/blobstore_http/blobstore.py:46`](../source/grox/libs/blobstore_http/blobstore.py#L46) — `class _BlobstoreClient:`
+- [`grox/libs/blobstore_http/blobstore.py:50`](../source/grox/libs/blobstore_http/blobstore.py#L50) — `def _build_client(cls, config: BlobstoreClientConfig) -> httpx.AsyncClient:`
+- [`grox/libs/blobstore_http/blobstore.py:63`](../source/grox/libs/blobstore_http/blobstore.py#L63) — `def get(cls, config: BlobstoreClientConfig) -> httpx.AsyncClient:`
+- [`grox/libs/blobstore_http/blobstore.py:70`](../source/grox/libs/blobstore_http/blobstore.py#L70) — `class Blobstore(ABC):`
+- [`grox/libs/blobstore_http/blobstore.py:75`](../source/grox/libs/blobstore_http/blobstore.py#L75) — `def __init__(`
+- [`grox/libs/blobstore_http/blobstore.py:91`](../source/grox/libs/blobstore_http/blobstore.py#L91) — `def _cli(self) -> httpx.AsyncClient:`
+- [`grox/libs/blobstore_http/blobstore.py:94`](../source/grox/libs/blobstore_http/blobstore.py#L94) — `def _get_url(self, key: str) -> str:`
+- [`grox/libs/blobstore_http/blobstore.py:98`](../source/grox/libs/blobstore_http/blobstore.py#L98) — `def _get_headers(`
+- [`grox/libs/blobstore_http/blobstore.py:106`](../source/grox/libs/blobstore_http/blobstore.py#L106) — `async def put(`
+- [`grox/libs/blobstore_http/blobstore.py:132`](../source/grox/libs/blobstore_http/blobstore.py#L132) — `async def get(self, key: str) -> bytes | None:`
+- [`grox/libs/blobstore_http/cdn_downloader.py:14`](../source/grox/libs/blobstore_http/cdn_downloader.py#L14) — `def _count_unavailable(status_code: int) -> None:`
+- [`grox/libs/blobstore_http/cdn_downloader.py:20`](../source/grox/libs/blobstore_http/cdn_downloader.py#L20) — `class CDNDownloader:`
+- [`grox/libs/blobstore_http/cdn_downloader.py:21`](../source/grox/libs/blobstore_http/cdn_downloader.py#L21) — `def __init__(self):`
+- [`grox/libs/blobstore_http/cdn_downloader.py:25`](../source/grox/libs/blobstore_http/cdn_downloader.py#L25) — `def _cli(self) -> httpx.AsyncClient:`
+- [`grox/libs/blobstore_http/cdn_downloader.py:28`](../source/grox/libs/blobstore_http/cdn_downloader.py#L28) — `async def get(self, url: str) -> bytes | None:`
+- [`grox/libs/blobstore_http/cdn_downloader.py:52`](../source/grox/libs/blobstore_http/cdn_downloader.py#L52) — `async def getNonGraceful(self, url: str) -> bytes | None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:15`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L15) — `class CircuitState(Enum):`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:21`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L21) — `class CircuitBreakerOpen(Exception):`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:22`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L22) — `def __init__(self, name: str, remaining_seconds: float):`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:31`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L31) — `class CircuitBreakerConfig:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:41`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L41) — `class CircuitBreakerMetrics:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:48`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L48) — `class CircuitBreaker:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:49`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L49) — `def __init__(self, name: str, config: CircuitBreakerConfig | None = None):`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:60`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L60) — `def get_metrics(self) -> CircuitBreakerMetrics:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:72`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L72) — `def recovery_due(self) -> bool:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:79`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L79) — `async def guard(self):`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:96`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L96) — `async def call(`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:102`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L102) — `async def reset(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:110`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L110) — `def _pre_call_check(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:127`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L127) — `async def _record_success(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:140`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L140) — `async def _record_failure(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:152`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L152) — `def _evaluate_half_open(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:173`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L173) — `def _evaluate_thresholds(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:188`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L188) — `def _open(self, reason: str) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:196`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L196) — `def _transition_to(self, new_state: CircuitState) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:205`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L205) — `def _evict_old(self) -> None:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:210`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L210) — `def _is_excluded_exception(self, exc: BaseException) -> bool:`
+- [`grox/libs/circuit_breaker/circuit_breaker.py:213`](../source/grox/libs/circuit_breaker/circuit_breaker.py#L213) — `def __repr__(self) -> str:`
+- [`grox/libs/embed/embed_http.py:17`](../source/grox/libs/embed/embed_http.py#L17) — `class ChatTemplate:`
+- [`grox/libs/embed/embed_http.py:21`](../source/grox/libs/embed/embed_http.py#L21) — `def __init__(self, system_prompt: str = "Represent the user's input."):`
+- [`grox/libs/embed/embed_http.py:24`](../source/grox/libs/embed/embed_http.py#L24) — `def format(self, user_text: str) -> str:`
+- [`grox/libs/embed/embed_http.py:27`](../source/grox/libs/embed/embed_http.py#L27) — `def format_query(self, query: str) -> str:`
+- [`grox/libs/embed/embed_http.py:30`](../source/grox/libs/embed/embed_http.py#L30) — `def format_document(self, document: str) -> str:`
+- [`grox/libs/embed/embed_http.py:33`](../source/grox/libs/embed/embed_http.py#L33) — `def format_with_image_pads(self, user_text: str, num_images: int) -> str:`
+- [`grox/libs/embed/embed_http.py:40`](../source/grox/libs/embed/embed_http.py#L40) — `def format_raw(self, user_text: str) -> str:`
+- [`grox/libs/embed/embed_http.py:44`](../source/grox/libs/embed/embed_http.py#L44) — `class EmbeddingModelConfig(BaseModel):`
+- [`grox/libs/embed/embed_http.py:51`](../source/grox/libs/embed/embed_http.py#L51) — `class XaiEmbeddingClientHttp:`
+- [`grox/libs/embed/embed_http.py:52`](../source/grox/libs/embed/embed_http.py#L52) — `def __init__(`
+- [`grox/libs/embed/embed_http.py:95`](../source/grox/libs/embed/embed_http.py#L95) — `async def aclose(self) -> None:`
+- [`grox/libs/embed/embed_http.py:98`](../source/grox/libs/embed/embed_http.py#L98) — `async def __aenter__(self) -> "XaiEmbeddingClientHttp":`
+- [`grox/libs/embed/embed_http.py:101`](../source/grox/libs/embed/embed_http.py#L101) — `async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:`
+- [`grox/libs/embed/embed_http.py:104`](../source/grox/libs/embed/embed_http.py#L104) — `async def encode_async(`
+- [`grox/libs/embed/embed_http.py:116`](../source/grox/libs/embed/embed_http.py#L116) — `async def encode_with_embedded_pads_async(`
+- [`grox/libs/embed/embed_http.py:141`](../source/grox/libs/embed/embed_http.py#L141) — `def _image_data_uri(image: bytes) -> str:`
+- [`grox/libs/embed/embed_http.py:145`](../source/grox/libs/embed/embed_http.py#L145) — `async def embed_openai_async(`
+- [`grox/libs/embed/embed_http.py:207`](../source/grox/libs/embed/embed_http.py#L207) — `async def _send_encode_request(`
+- [`grox/libs/grok_sampler/config.py:4`](../source/grox/libs/grok_sampler/config.py#L4) — `class GrokModelConfig(BaseModel):`
+- [`grox/libs/grok_sampler/config.py:16`](../source/grox/libs/grok_sampler/config.py#L16) — `class OaiModelConfig(BaseModel):`
+- [`grox/libs/grok_sampler/config.py:24`](../source/grox/libs/grok_sampler/config.py#L24) — `class EapiModelConfig(BaseModel):`
+- [`grox/libs/grok_sampler/eapi_sampler.py:22`](../source/grox/libs/grok_sampler/eapi_sampler.py#L22) — `def get_loop_id() -> int:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:26`](../source/grox/libs/grok_sampler/eapi_sampler.py#L26) — `def _rpc_request_id(error: Exception) -> str | None:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:39`](../source/grox/libs/grok_sampler/eapi_sampler.py#L39) — `class WebSearchDetails:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:48`](../source/grox/libs/grok_sampler/eapi_sampler.py#L48) — `class SampleDetails:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:53`](../source/grox/libs/grok_sampler/eapi_sampler.py#L53) — `class EapiSampler:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:56`](../source/grox/libs/grok_sampler/eapi_sampler.py#L56) — `def __init__(self, eapi_config: EapiModelConfig):`
+- [`grox/libs/grok_sampler/eapi_sampler.py:83`](../source/grox/libs/grok_sampler/eapi_sampler.py#L83) — `def _get_client(self) -> AsyncClient:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:96`](../source/grox/libs/grok_sampler/eapi_sampler.py#L96) — `def _prompt_len(self, prompt: list[chat_pb2.Message]) -> int:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:97`](../source/grox/libs/grok_sampler/eapi_sampler.py#L97) — `def _len(content: chat_pb2.Content) -> int:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:106`](../source/grox/libs/grok_sampler/eapi_sampler.py#L106) — `def _log_request(self, prompt: list[chat_pb2.Message]):`
+- [`grox/libs/grok_sampler/eapi_sampler.py:107`](../source/grox/libs/grok_sampler/eapi_sampler.py#L107) — `def _to_log_string(content: chat_pb2.Content) -> str:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:123`](../source/grox/libs/grok_sampler/eapi_sampler.py#L123) — `async def _sample_raw(self, prompt: list[chat_pb2.Message], **kwargs):`
+- [`grox/libs/grok_sampler/eapi_sampler.py:172`](../source/grox/libs/grok_sampler/eapi_sampler.py#L172) — `async def sample(self, prompt: list[chat_pb2.Message], **kwargs) -> str:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:176`](../source/grox/libs/grok_sampler/eapi_sampler.py#L176) — `def _extract_details(self, response) -> SampleDetails:`
+- [`grox/libs/grok_sampler/eapi_sampler.py:214`](../source/grox/libs/grok_sampler/eapi_sampler.py#L214) — `async def sample_with_details(`
+- [`grox/libs/grok_sampler/llm.py:39`](../source/grox/libs/grok_sampler/llm.py#L39) — `class LiteLLM(ABC, Generic[T]):`
+- [`grox/libs/grok_sampler/llm.py:40`](../source/grox/libs/grok_sampler/llm.py#L40) — `def __init__(self, model_config: GrokModelConfig):`
+- [`grox/libs/grok_sampler/llm.py:54`](../source/grox/libs/grok_sampler/llm.py#L54) — `def _get_client(self) -> SamplerStub:`
+- [`grox/libs/grok_sampler/llm.py:63`](../source/grox/libs/grok_sampler/llm.py#L63) — `async def _get_sample_request(`
+- [`grox/libs/grok_sampler/llm.py:68`](../source/grox/libs/grok_sampler/llm.py#L68) — `async def _sample_streaming(self, query: T, **kwargs) -> AsyncGenerator[str, None]:`
+- [`grox/libs/grok_sampler/llm.py:130`](../source/grox/libs/grok_sampler/llm.py#L130) — `def _log_request(self, request: SampleTextRequest):`
+- [`grox/libs/grok_sampler/llm.py:131`](../source/grox/libs/grok_sampler/llm.py#L131) — `def _format_request(request: SampleTextRequest) -> str:`
+- [`grox/libs/grok_sampler/llm.py:148`](../source/grox/libs/grok_sampler/llm.py#L148) — `async def _sample_streaming_raw(`
+- [`grox/libs/grok_sampler/llm.py:163`](../source/grox/libs/grok_sampler/llm.py#L163) — `def _prompt_len(self, req: SampleTextRequest) -> int:`
+- [`grox/libs/grok_sampler/llm.py:164`](../source/grox/libs/grok_sampler/llm.py#L164) — `def _len(input: PromptInput) -> int:`
+- [`grox/libs/grok_sampler/llm.py:177`](../source/grox/libs/grok_sampler/llm.py#L177) — `async def sample(self, query: T, **kwargs) -> str:`
+- [`grox/libs/grok_sampler/llm.py:194`](../source/grox/libs/grok_sampler/llm.py#L194) — `async def sample_streaming(self, query: T, **kwargs) -> AsyncGenerator[str, None]:`
+- [`grox/libs/grok_sampler/oai_sampler.py:15`](../source/grox/libs/grok_sampler/oai_sampler.py#L15) — `class OaiSampler:`
+- [`grox/libs/grok_sampler/oai_sampler.py:16`](../source/grox/libs/grok_sampler/oai_sampler.py#L16) — `def __init__(self, config: OaiModelConfig):`
+- [`grox/libs/grok_sampler/oai_sampler.py:27`](../source/grox/libs/grok_sampler/oai_sampler.py#L27) — `async def sample(self, messages: list[dict], **kwargs) -> str:`
+- [`grox/libs/grok_sampler/text_sampler.py:9`](../source/grox/libs/grok_sampler/text_sampler.py#L9) — `class TextSampler(LiteLLM[str]):`
+- [`grox/libs/grok_sampler/text_sampler.py:10`](../source/grox/libs/grok_sampler/text_sampler.py#L10) — `async def _get_sample_request(`
+- [`grox/libs/grok_sampler/vision_sampler.py:9`](../source/grox/libs/grok_sampler/vision_sampler.py#L9) — `class VisionSampler(LiteLLM[list[str | bytes]]):`
+- [`grox/libs/grok_sampler/vision_sampler.py:10`](../source/grox/libs/grok_sampler/vision_sampler.py#L10) — `async def _get_sample_request(`
+- [`grox/libs/grpc_cli/grpc_client.py:13`](../source/grox/libs/grpc_cli/grpc_client.py#L13) — `class GrpcCliConfig(BaseModel):`
+- [`grox/libs/grpc_cli/grpc_client.py:24`](../source/grox/libs/grpc_cli/grpc_client.py#L24) — `def get_loop_id() -> int:`
+- [`grox/libs/grpc_cli/grpc_client.py:28`](../source/grox/libs/grpc_cli/grpc_client.py#L28) — `def maybe_add_port(base_url: str, secured: bool) -> str:`
+- [`grox/libs/grpc_cli/grpc_client.py:36`](../source/grox/libs/grpc_cli/grpc_client.py#L36) — `async def aclosing_grpc(call):`
+- [`grox/libs/grpc_cli/grpc_client.py:43`](../source/grox/libs/grpc_cli/grpc_client.py#L43) — `class GrpcClient:`
+- [`grox/libs/grpc_cli/grpc_client.py:46`](../source/grox/libs/grpc_cli/grpc_client.py#L46) — `def __init__(self, **kwargs):`
+- [`grox/libs/grpc_cli/grpc_client.py:49`](../source/grox/libs/grpc_cli/grpc_client.py#L49) — `def make(self, base_url: str) -> grpc.aio.Channel:`
+- [`grox/libs/grpc_cli/grpc_client.py:60`](../source/grox/libs/grpc_cli/grpc_client.py#L60) — `def _get_client(self, base_url: str, secured: bool) -> grpc.aio.Channel:`
+- [`grox/libs/grpc_cli/grpc_client.py:125`](../source/grox/libs/grpc_cli/grpc_client.py#L125) — `def _get_best_ca_file(self, host_name: str) -> Path:`
+- [`grox/libs/grpc_cli/grpc_client.py:132`](../source/grox/libs/grpc_cli/grpc_client.py#L132) — `def _get_credentials(self, host_name: str) -> grpc.ChannelCredentials:`
+- [`grox/libs/html_render/tweet_render_for_grox.py:14`](../source/grox/libs/html_render/tweet_render_for_grox.py#L14) — `class BrowserPool:`
+- [`grox/libs/html_render/tweet_render_for_grox.py:19`](../source/grox/libs/html_render/tweet_render_for_grox.py#L19) — `def __post_init__(self):`
+- [`grox/libs/html_render/tweet_render_for_grox.py:23`](../source/grox/libs/html_render/tweet_render_for_grox.py#L23) — `class TweetRenderForGrox:`
+- [`grox/libs/html_render/tweet_render_for_grox.py:24`](../source/grox/libs/html_render/tweet_render_for_grox.py#L24) — `def __init__(self, pool_size: int = 2, max_contexts_per_browser: int = 5):`
+- [`grox/libs/html_render/tweet_render_for_grox.py:32`](../source/grox/libs/html_render/tweet_render_for_grox.py#L32) — `async def _initialize_pool(self):`
+- [`grox/libs/html_render/tweet_render_for_grox.py:69`](../source/grox/libs/html_render/tweet_render_for_grox.py#L69) — `async def get_browser_context(self):`
+- [`grox/libs/html_render/tweet_render_for_grox.py:91`](../source/grox/libs/html_render/tweet_render_for_grox.py#L91) — `def get_embed_html(self, tweet_id: str, theme: str = "light") -> str:`
+- [`grox/libs/html_render/tweet_render_for_grox.py:115`](../source/grox/libs/html_render/tweet_render_for_grox.py#L115) — `async def take_screenshot(`
+- [`grox/libs/html_render/tweet_render_for_grox.py:153`](../source/grox/libs/html_render/tweet_render_for_grox.py#L153) — `async def cleanup(self):`
+- [`grox/libs/html_render/tweet_render_for_grox.py:178`](../source/grox/libs/html_render/tweet_render_for_grox.py#L178) — `async def __aenter__(self):`
+- [`grox/libs/html_render/tweet_render_for_grox.py:182`](../source/grox/libs/html_render/tweet_render_for_grox.py#L182) — `async def __aexit__(self, exc_type, exc_val, exc_tb):`
+- [`grox/libs/kafka_cli/config.py:9`](../source/grox/libs/kafka_cli/config.py#L9) — `class KafkaMessage:`
+- [`grox/libs/kafka_cli/config.py:18`](../source/grox/libs/kafka_cli/config.py#L18) — `class KafkaException(Exception):`
+- [`grox/libs/kafka_cli/config.py:22`](../source/grox/libs/kafka_cli/config.py#L22) — `class NonRetryableKafkaException(KafkaException):`
+- [`grox/libs/kafka_cli/config.py:26`](../source/grox/libs/kafka_cli/config.py#L26) — `class RetryableKafkaException(KafkaException):`
+- [`grox/libs/kafka_cli/config.py:30`](../source/grox/libs/kafka_cli/config.py#L30) — `class KafkaSslConfig(BaseModel):`
+- [`grox/libs/kafka_cli/config.py:39`](../source/grox/libs/kafka_cli/config.py#L39) — `class KafkaConfig(BaseModel):`
+- [`grox/libs/kafka_cli/config.py:47`](../source/grox/libs/kafka_cli/config.py#L47) — `class KafkaProducerConfig(KafkaConfig):`
+- [`grox/libs/kafka_cli/config.py:51`](../source/grox/libs/kafka_cli/config.py#L51) — `class KafkaConsumerConfig(KafkaConfig):`
+- [`grox/libs/kafka_cli/consumer.py:21`](../source/grox/libs/kafka_cli/consumer.py#L21) — `class KafkaConsumer:`
+- [`grox/libs/kafka_cli/consumer.py:22`](../source/grox/libs/kafka_cli/consumer.py#L22) — `def __init__(self, config: KafkaConsumerConfig):`
+- [`grox/libs/kafka_cli/consumer.py:28`](../source/grox/libs/kafka_cli/consumer.py#L28) — `def assigned_partitions(self) -> int:`
+- [`grox/libs/kafka_cli/consumer.py:33`](../source/grox/libs/kafka_cli/consumer.py#L33) — `def _auth_mode(self) -> str:`
+- [`grox/libs/kafka_cli/consumer.py:45`](../source/grox/libs/kafka_cli/consumer.py#L45) — `def _create_ssl_context(self) -> ssl.SSLContext:`
+- [`grox/libs/kafka_cli/consumer.py:82`](../source/grox/libs/kafka_cli/consumer.py#L82) — `async def start(self):`
+- [`grox/libs/kafka_cli/consumer.py:163`](../source/grox/libs/kafka_cli/consumer.py#L163) — `async def seek_to_committed(self):`
+- [`grox/libs/kafka_cli/consumer.py:166`](../source/grox/libs/kafka_cli/consumer.py#L166) — `async def get_lag(self) -> dict[int, int]:`
+- [`grox/libs/kafka_cli/consumer.py:188`](../source/grox/libs/kafka_cli/consumer.py#L188) — `async def stop(self):`
+- [`grox/libs/kafka_cli/consumer.py:193`](../source/grox/libs/kafka_cli/consumer.py#L193) — `async def poll(self, num: int) -> list[KafkaMessage]:`
+- [`grox/libs/kafka_cli/consumer.py:239`](../source/grox/libs/kafka_cli/consumer.py#L239) — `async def commit(self, offsets: dict[TopicPartition, tuple[int, str]]):`
+- [`grox/libs/kafka_cli/consumer.py:243`](../source/grox/libs/kafka_cli/consumer.py#L243) — `def consumer(self) -> AIOKafkaConsumer:`
+- [`grox/libs/kafka_cli/mtls.py:8`](../source/grox/libs/kafka_cli/mtls.py#L8) — `def create_mtls_ssl_context() -> ssl.SSLContext:`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:17`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L17) — `class MultiRegionKafkaConsumerConfig(BaseModel):`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:28`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L28) — `def _validate_clusters(self) -> "MultiRegionKafkaConsumerConfig":`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:40`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L40) — `class MultiRegionKafkaConsumer:`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:41`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L41) — `def __init__(self, config: MultiRegionKafkaConsumerConfig):`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:47`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L47) — `async def start(self):`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:70`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L70) — `async def _retry_failed_regions(self, failed: dict[str, list[str]]):`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:86`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L86) — `async def _start_region(self, region: str, brokers: list[str]) -> AIOKafkaConsumer:`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:120`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L120) — `def assigned_partitions(self) -> int:`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:125`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L125) — `async def stop(self):`
+- [`grox/libs/kafka_cli/multi_region_consumer.py:142`](../source/grox/libs/kafka_cli/multi_region_consumer.py#L142) — `async def poll(self, num: int) -> list[KafkaMessage]:`
+- [`grox/libs/kafka_cli/multi_region_producer.py:16`](../source/grox/libs/kafka_cli/multi_region_producer.py#L16) — `class MultiRegionKafkaProducerConfig(BaseModel):`
+- [`grox/libs/kafka_cli/multi_region_producer.py:23`](../source/grox/libs/kafka_cli/multi_region_producer.py#L23) — `def _validate(self) -> "MultiRegionKafkaProducerConfig":`
+- [`grox/libs/kafka_cli/multi_region_producer.py:34`](../source/grox/libs/kafka_cli/multi_region_producer.py#L34) — `class MultiRegionKafkaProducer:`
+- [`grox/libs/kafka_cli/multi_region_producer.py:35`](../source/grox/libs/kafka_cli/multi_region_producer.py#L35) — `def __init__(self, config: MultiRegionKafkaProducerConfig):`
+- [`grox/libs/kafka_cli/multi_region_producer.py:41`](../source/grox/libs/kafka_cli/multi_region_producer.py#L41) — `async def start(self):`
+- [`grox/libs/kafka_cli/multi_region_producer.py:68`](../source/grox/libs/kafka_cli/multi_region_producer.py#L68) — `async def _retry_failed_regions(self, failed: dict[str, list[str]]):`
+- [`grox/libs/kafka_cli/multi_region_producer.py:82`](../source/grox/libs/kafka_cli/multi_region_producer.py#L82) — `async def _start_region(self, region: str, brokers: list[str]) -> None:`
+- [`grox/libs/kafka_cli/multi_region_producer.py:105`](../source/grox/libs/kafka_cli/multi_region_producer.py#L105) — `async def stop(self):`
+- [`grox/libs/kafka_cli/multi_region_producer.py:122`](../source/grox/libs/kafka_cli/multi_region_producer.py#L122) — `def _candidate_regions(self) -> list[str]:`
+- [`grox/libs/kafka_cli/multi_region_producer.py:129`](../source/grox/libs/kafka_cli/multi_region_producer.py#L129) — `async def send(self, id: str, value: bytes):`
+- [`grox/libs/kafka_cli/patched_gssapi.py:6`](../source/grox/libs/kafka_cli/patched_gssapi.py#L6) — `def patch_gssapi_security_context():`
+- [`grox/libs/kafka_cli/patched_gssapi.py:9`](../source/grox/libs/kafka_cli/patched_gssapi.py#L9) — `def new_init(self, *args, **kwargs):`
+- [`grox/libs/kafka_cli/producer.py:16`](../source/grox/libs/kafka_cli/producer.py#L16) — `def _create_mtls_ssl_context() -> ssl.SSLContext:`
+- [`grox/libs/kafka_cli/producer.py:51`](../source/grox/libs/kafka_cli/producer.py#L51) — `class _KafkaProducerClient:`
+- [`grox/libs/kafka_cli/producer.py:55`](../source/grox/libs/kafka_cli/producer.py#L55) — `async def _build_client(cls, config: KafkaProducerConfig) -> AIOKafkaProducer:`
+- [`grox/libs/kafka_cli/producer.py:98`](../source/grox/libs/kafka_cli/producer.py#L98) — `async def get(cls, config: KafkaProducerConfig) -> AIOKafkaProducer:`
+- [`grox/libs/kafka_cli/producer.py:106`](../source/grox/libs/kafka_cli/producer.py#L106) — `class KafkaProducer:`
+- [`grox/libs/kafka_cli/producer.py:110`](../source/grox/libs/kafka_cli/producer.py#L110) — `def __init__(self, config: KafkaProducerConfig):`
+- [`grox/libs/kafka_cli/producer.py:114`](../source/grox/libs/kafka_cli/producer.py#L114) — `async def send(self, id: str, value: bytes):`
+- [`grox/libs/kafka_cli/producer.py:131`](../source/grox/libs/kafka_cli/producer.py#L131) — `class _ScramKafkaProducerClient:`
+- [`grox/libs/kafka_cli/producer.py:135`](../source/grox/libs/kafka_cli/producer.py#L135) — `async def _build_client(cls, config: KafkaProducerConfig) -> AIOKafkaProducer:`
+- [`grox/libs/kafka_cli/producer.py:174`](../source/grox/libs/kafka_cli/producer.py#L174) — `async def get(cls, config: KafkaProducerConfig) -> AIOKafkaProducer:`
+- [`grox/libs/kafka_cli/producer.py:182`](../source/grox/libs/kafka_cli/producer.py#L182) — `class ScramKafkaProducer:`
+- [`grox/libs/kafka_cli/producer.py:186`](../source/grox/libs/kafka_cli/producer.py#L186) — `def __init__(self, config: KafkaProducerConfig):`
+- [`grox/libs/kafka_cli/producer.py:190`](../source/grox/libs/kafka_cli/producer.py#L190) — `async def send(self, id: str, value: bytes):`
+- [`grox/libs/kerberos_cli/kerberos.py:11`](../source/grox/libs/kerberos_cli/kerberos.py#L11) — `class KerberosConfig(BaseModel):`
+- [`grox/libs/kerberos_cli/kerberos.py:19`](../source/grox/libs/kerberos_cli/kerberos.py#L19) — `class KerberosRenewer:`
+- [`grox/libs/kerberos_cli/kerberos.py:20`](../source/grox/libs/kerberos_cli/kerberos.py#L20) — `def __init__(self, keytab_path: str, principal: str, **kwargs):`
+- [`grox/libs/kerberos_cli/kerberos.py:34`](../source/grox/libs/kerberos_cli/kerberos.py#L34) — `async def _kerberos_renewal_loop(self):`
+- [`grox/libs/kerberos_cli/kerberos.py:57`](../source/grox/libs/kerberos_cli/kerberos.py#L57) — `async def _renew_kerberos_ticket(self):`
+- [`grox/libs/kerberos_cli/kerberos.py:85`](../source/grox/libs/kerberos_cli/kerberos.py#L85) — `async def renew(self):`
+- [`grox/libs/kerberos_cli/kerberos.py:88`](../source/grox/libs/kerberos_cli/kerberos.py#L88) — `def start(self):`
+- [`grox/libs/kerberos_cli/kerberos.py:96`](../source/grox/libs/kerberos_cli/kerberos.py#L96) — `def stop(self):`
+- [`grox/libs/video_tools/image.py:17`](../source/grox/libs/video_tools/image.py#L17) — `class ProcessedImage:`
+- [`grox/libs/video_tools/image.py:23`](../source/grox/libs/video_tools/image.py#L23) — `def _resize_and_pad(`
+- [`grox/libs/video_tools/image.py:38`](../source/grox/libs/video_tools/image.py#L38) — `def resize_tile(image_bytes: bytes, tile_size: int) -> bytes:`
+- [`grox/libs/video_tools/image.py:44`](../source/grox/libs/video_tools/image.py#L44) — `def _has_transparency(img: Image.Image) -> bool:`
+- [`grox/libs/video_tools/image.py:52`](../source/grox/libs/video_tools/image.py#L52) — `def _apply_clahe_pil(`
+- [`grox/libs/video_tools/image.py:67`](../source/grox/libs/video_tools/image.py#L67) — `def _boost_saturation(image: Image.Image, factor: float = 1.8) -> Image.Image:`
+- [`grox/libs/video_tools/image.py:71`](../source/grox/libs/video_tools/image.py#L71) — `def _sharpen(image: Image.Image) -> Image.Image:`
+- [`grox/libs/video_tools/image.py:75`](../source/grox/libs/video_tools/image.py#L75) — `def _adaptive_brightness_correction(`
+- [`grox/libs/video_tools/image.py:92`](../source/grox/libs/video_tools/image.py#L92) — `def enhance_image_with_clahe(image_bytes: bytes, tile_size: int | None) -> bytes:`
+- [`grox/libs/video_tools/image.py:104`](../source/grox/libs/video_tools/image.py#L104) — `def process_image_bytes(image_bytes: bytes, tile_size: int) -> ProcessedImage:`
+- [`grox/libs/video_tools/image.py:130`](../source/grox/libs/video_tools/image.py#L130) — `def _img_to_bytes(image: Image.Image, high_quality_jpeg: bool = False) -> bytes:`
+- [`grox/libs/video_tools/image.py:139`](../source/grox/libs/video_tools/image.py#L139) — `def _padded_image(image: Image.Image, high_quality_jpeg: bool = False) -> bytes:`
+- [`grox/libs/video_tools/image.py:152`](../source/grox/libs/video_tools/image.py#L152) — `def pad_image(image_bytes: bytes) -> bytes:`
+- [`grox/libs/video_tools/image.py:186`](../source/grox/libs/video_tools/image.py#L186) — `def _decode_reveal_frame(frame_bytes: bytes) -> np.ndarray | None:`
+- [`grox/libs/video_tools/image.py:201`](../source/grox/libs/video_tools/image.py#L201) — `def _temporal_median(stack_u8: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:208`](../source/grox/libs/video_tools/image.py#L208) — `def _cover_gradient(gray_u8: np.ndarray) -> float:`
+- [`grox/libs/video_tools/image.py:215`](../source/grox/libs/video_tools/image.py#L215) — `def _residual_magnitude(stack: np.ndarray, median: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:225`](../source/grox/libs/video_tools/image.py#L225) — `def _stretch_to_u8(arr: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:233`](../source/grox/libs/video_tools/image.py#L233) — `def _encode_reveal(bgr: np.ndarray) -> bytes | None:`
+- [`grox/libs/video_tools/image.py:240`](../source/grox/libs/video_tools/image.py#L240) — `def _skin_fraction(bgr_u8: np.ndarray) -> float:`
+- [`grox/libs/video_tools/image.py:252`](../source/grox/libs/video_tools/image.py#L252) — `def _to_gray_u8(frame: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:256`](../source/grox/libs/video_tools/image.py#L256) — `def _ecc_working_scale(h: int, w: int) -> float:`
+- [`grox/libs/video_tools/image.py:260`](../source/grox/libs/video_tools/image.py#L260) — `def _ecc_downscale(gray: np.ndarray, scale: float) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:271`](../source/grox/libs/video_tools/image.py#L271) — `def _ecc_align(`
+- [`grox/libs/video_tools/image.py:297`](../source/grox/libs/video_tools/image.py#L297) — `def _is_static(reference_gray: np.ndarray, gray: np.ndarray) -> bool:`
+- [`grox/libs/video_tools/image.py:312`](../source/grox/libs/video_tools/image.py#L312) — `def _warp(frame: np.ndarray, warp: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:322`](../source/grox/libs/video_tools/image.py#L322) — `def _dense_align_residual(`
+- [`grox/libs/video_tools/image.py:329`](../source/grox/libs/video_tools/image.py#L329) — `def flow_gray(frame: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:370`](../source/grox/libs/video_tools/image.py#L370) — `def _weighted_median(`
+- [`grox/libs/video_tools/image.py:382`](../source/grox/libs/video_tools/image.py#L382) — `def _native_chroma(bgr_u8: np.ndarray) -> tuple[float, float] | None:`
+- [`grox/libs/video_tools/image.py:391`](../source/grox/libs/video_tools/image.py#L391) — `def _skin_plausible(overlays: list[np.ndarray]) -> bool:`
+- [`grox/libs/video_tools/image.py:408`](../source/grox/libs/video_tools/image.py#L408) — `def _to_grey(bgr_u8: np.ndarray) -> np.ndarray:`
+- [`grox/libs/video_tools/image.py:412`](../source/grox/libs/video_tools/image.py#L412) — `def build_motion_reveal_images(frame_jpegs: list[bytes]) -> list[bytes]:`
+- [`grox/libs/video_tools/subtitles.py:13`](../source/grox/libs/video_tools/subtitles.py#L13) — `class Subtitle(BaseModel):`
+- [`grox/libs/video_tools/subtitles.py:20`](../source/grox/libs/video_tools/subtitles.py#L20) — `class SubtitleAligner:`
+- [`grox/libs/video_tools/subtitles.py:21`](../source/grox/libs/video_tools/subtitles.py#L21) — `def __init__(self, subtitles: list[str]):`
+- [`grox/libs/video_tools/subtitles.py:24`](../source/grox/libs/video_tools/subtitles.py#L24) — `def align(self, times: list[float], max_time: float | None = None) -> list[str]:`
+- [`grox/libs/video_tools/subtitles.py:41`](../source/grox/libs/video_tools/subtitles.py#L41) — `def _parse_video_subtitle(self, subtitle_data: list[str]) -> list[Subtitle]:`
+- [`grox/libs/video_tools/subtitles.py:79`](../source/grox/libs/video_tools/subtitles.py#L79) — `def _time_to_seconds(self, time_str: str) -> float:`
+- [`grox/libs/video_tools/video_frames.py:26`](../source/grox/libs/video_tools/video_frames.py#L26) — `class VideoFrame(BaseModel):`
+- [`grox/libs/video_tools/video_frames.py:31`](../source/grox/libs/video_tools/video_frames.py#L31) — `class VideoData(BaseModel):`
+- [`grox/libs/video_tools/video_frames.py:38`](../source/grox/libs/video_tools/video_frames.py#L38) — `class VideoFramesExtractor:`
+- [`grox/libs/video_tools/video_frames.py:40`](../source/grox/libs/video_tools/video_frames.py#L40) — `async def extract_frames(`
+- [`grox/libs/video_tools/video_frames.py:64`](../source/grox/libs/video_tools/video_frames.py#L64) — `def _extract_frames(`
+- [`grox/libs/video_tools/video_frames.py:135`](../source/grox/libs/video_tools/video_frames.py#L135) — `def _sample_frames(cls, total_duration: float, max_frames: int) -> list[float]:`
+- [`grox/libs/video_tools/video_frames.py:158`](../source/grox/libs/video_tools/video_frames.py#L158) — `def _extract_frames_at_times(`
+- [`grox/libs/video_tools/video_frames.py:187`](../source/grox/libs/video_tools/video_frames.py#L187) — `def _get_video_time_base(`
+- [`grox/libs/video_tools/video_frames.py:207`](../source/grox/libs/video_tools/video_frames.py#L207) — `def _process_frame(`
+- [`grox/libs/video_tools/video_frames.py:225`](../source/grox/libs/video_tools/video_frames.py#L225) — `def get_video_bytes(cls, frames: list[bytes]) -> bytes | None:`
+- [`grox/libs/wily_cli/config.py:5`](../source/grox/libs/wily_cli/config.py#L5) — `class WilyConfig(BaseModel):`
+- [`grox/libs/wily_cli/http_client.py:13`](../source/grox/libs/wily_cli/http_client.py#L13) — `class WilyHttpClient:`
+- [`grox/libs/wily_cli/http_client.py:14`](../source/grox/libs/wily_cli/http_client.py#L14) — `def __init__(`
+- [`grox/libs/wily_cli/http_client.py:38`](../source/grox/libs/wily_cli/http_client.py#L38) — `def base_url(self) -> str:`
+- [`grox/libs/wily_cli/http_client.py:42`](../source/grox/libs/wily_cli/http_client.py#L42) — `def _encode_lookup_path(wily_path: str) -> str:`
+- [`grox/libs/wily_cli/http_client.py:46`](../source/grox/libs/wily_cli/http_client.py#L46) — `async def _resolve_wilyns(self) -> str:`
+- [`grox/libs/wily_cli/http_client.py:64`](../source/grox/libs/wily_cli/http_client.py#L64) — `async def _resolve(self) -> str:`
+- [`grox/libs/wily_cli/http_client.py:74`](../source/grox/libs/wily_cli/http_client.py#L74) — `async def _build_client(self):`
+- [`grox/libs/wily_cli/http_client.py:81`](../source/grox/libs/wily_cli/http_client.py#L81) — `async def start(self):`
+- [`grox/libs/wily_cli/http_client.py:84`](../source/grox/libs/wily_cli/http_client.py#L84) — `async def close(self):`
+- [`grox/libs/wily_cli/http_client.py:89`](../source/grox/libs/wily_cli/http_client.py#L89) — `async def _request(self, method: str, path: str, **kwargs: Any) -> httpx.Response:`
+- [`grox/libs/wily_cli/http_client.py:111`](../source/grox/libs/wily_cli/http_client.py#L111) — `async def get(self, path: str, **kwargs: Any) -> httpx.Response:`
+- [`grox/libs/wily_cli/http_client.py:114`](../source/grox/libs/wily_cli/http_client.py#L114) — `async def post(self, path: str, **kwargs: Any) -> httpx.Response:`
+- [`grox/libs/wily_cli/http_client.py:117`](../source/grox/libs/wily_cli/http_client.py#L117) — `async def put(self, path: str, **kwargs: Any) -> httpx.Response:`
+- [`grox/libs/wily_cli/http_client.py:120`](../source/grox/libs/wily_cli/http_client.py#L120) — `async def delete(self, path: str, **kwargs: Any) -> httpx.Response:`
+- [`grox/libs/wily_cli/wily_client.py:23`](../source/grox/libs/wily_cli/wily_client.py#L23) — `class Instance:`
+- [`grox/libs/wily_cli/wily_client.py:30`](../source/grox/libs/wily_cli/wily_client.py#L30) — `def __str__(self):`
+- [`grox/libs/wily_cli/wily_client.py:34`](../source/grox/libs/wily_cli/wily_client.py#L34) — `class _WilyClient:`
+- [`grox/libs/wily_cli/wily_client.py:38`](../source/grox/libs/wily_cli/wily_client.py#L38) — `def _build_client(cls, config: WilyConfig) -> httpx.AsyncClient:`
+- [`grox/libs/wily_cli/wily_client.py:53`](../source/grox/libs/wily_cli/wily_client.py#L53) — `def get(cls, config: WilyConfig) -> httpx.AsyncClient:`
+- [`grox/libs/wily_cli/wily_client.py:60`](../source/grox/libs/wily_cli/wily_client.py#L60) — `class WilyNs:`
+- [`grox/libs/wily_cli/wily_client.py:61`](../source/grox/libs/wily_cli/wily_client.py#L61) — `class ClientError(Exception):`
+- [`grox/libs/wily_cli/wily_client.py:64`](../source/grox/libs/wily_cli/wily_client.py#L64) — `def __init__(self, wily_config: WilyConfig, **kwargs: Any) -> None:`
+- [`grox/libs/wily_cli/wily_client.py:70`](../source/grox/libs/wily_cli/wily_client.py#L70) — `def client(self) -> httpx.AsyncClient:`
+- [`grox/libs/wily_cli/wily_client.py:73`](../source/grox/libs/wily_cli/wily_client.py#L73) — `def _ensure_startswith(self, s: str, prefix: str) -> str:`
+- [`grox/libs/wily_cli/wily_client.py:76`](../source/grox/libs/wily_cli/wily_client.py#L76) — `def _entry_to_instance(self, entry: Dict[str, Any]) -> Instance:`
+- [`grox/libs/wily_cli/wily_client.py:85`](../source/grox/libs/wily_cli/wily_client.py#L85) — `def _process_context(self, wily_config: WilyConfig) -> str:`
+- [`grox/libs/wily_cli/wily_client.py:88`](../source/grox/libs/wily_cli/wily_client.py#L88) — `def _make_url(`
+- [`grox/libs/wily_cli/wily_client.py:95`](../source/grox/libs/wily_cli/wily_client.py#L95) — `async def _resolve(`
+- [`grox/libs/wily_cli/wily_client.py:108`](../source/grox/libs/wily_cli/wily_client.py#L108) — `async def resolve(self, wily_path: str, dtab: str = "") -> List[Instance]:`
+- [`grox/libs/wily_cli/wily_client.py:127`](../source/grox/libs/wily_cli/wily_client.py#L127) — `async def close(self):`
+- [`grox/main.py:23`](../source/grox/main.py#L23) — `def init_kerberos_renewer() -> KerberosRenewer | None:`
+- [`grox/main.py:32`](../source/grox/main.py#L32) — `async def serve():`

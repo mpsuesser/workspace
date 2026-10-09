@@ -1,0 +1,781 @@
+# abuse-enforcement-service: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`abuse-enforcement-service/server/src/main.rs:20`](../source/abuse-enforcement-service/server/src/main.rs#L20) — `fn admin_ui_public_dir() -> PathBuf {`
+- [`abuse-enforcement-service/server/src/main.rs:33`](../source/abuse-enforcement-service/server/src/main.rs#L33) — `async fn main() -> anyhow::Result<()> {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:14`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L14) — `const AIS_SERVICE: &str = "com.twitter.agenttools.ais.thriftscala.ActionIntakeService";`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:16`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L16) — `const INTAKE_RESPONSE_TYPE: &str = "com.twitter.agenttools.ais.thriftscala.ActionIntakeResponse";`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:18`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L18) — `const MULTI_RESPONSE_TYPE: &str =`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:22`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L22) — `pub struct AisMetricLabels<'a> {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:30`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L30) — `pub const HTTP: Self = Self {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:39`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L39) — `struct ExceptionMeta {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:46`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L46) — `struct MethodMeta {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:55`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L55) — `pub struct AisClientConfig {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:65`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L65) — `pub fn prod_defaults() -> Self {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:79`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L79) — `pub struct AisClient {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:88`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L88) — `pub fn connect(cfg: &AisClientConfig) -> Result<Self> {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:130`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L130) — `pub async fn intake_action(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:140`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L140) — `pub async fn multi_entity_intake_action(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:148`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L148) — `async fn call_method(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:199`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L199) — `fn resolve_method(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:228`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L228) — `fn record_ais_metrics(method: &str, status: &str, labels: AisMetricLabels<'_>, elapsed: Duration) {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:241`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L241) — `fn normalize_intake_response(decoded: Value) -> Value {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:248`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L248) — `pub async fn call_ais(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:259`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L259) — `pub fn classify_ais_response(entity_id: i64, action_name: &str, resp: Value) -> Result<Value> {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:274`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L274) — `pub fn build_intake_request(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:291`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L291) — `pub fn build_multi_entity_request(`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:309`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L309) — `pub struct MultiEntityCounts {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:315`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L315) — `pub fn from_response(resp: &Value) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:325`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L325) — `pub fn all_ok(self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:329`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L329) — `pub fn all_failed(self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:333`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L333) — `pub fn partial(self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:337`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L337) — `pub fn empty(self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:341`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L341) — `pub fn outcome_label(self) -> &'static str {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:352`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L352) — `fn map_len(v: Option<&Value>) -> usize {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:360`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L360) — `pub fn coerce_intake_request(body: Value) -> Result<Value> {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:380`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L380) — `fn normalize_wraps_thrift_outcome() {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:391`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L391) — `fn coerce_accepts_inner_and_legacy_wrap() {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:405`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L405) — `fn schema_has_intake_and_multi_entity() {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:421`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L421) — `fn encode_suspend_user_smoke() {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:458`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L458) — `fn encode_multi_entity_smoke() {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:501`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L501) — `fn thrift_ais_exception_validation_failed_is_permanent() {`
+- [`abuse-enforcement-service/service-lib/src/ais_client.rs:565`](../source/abuse-enforcement-service/service-lib/src/ais_client.rs#L565) — `fn multi_entity_counts_from_response() {`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:10`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L10) — `pub(crate) const MH_PKEY: &str = "allowlist";`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:12`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L12) — `const MH_SCAN_LIMIT: u32 = 100_000;`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:15`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L15) — `pub struct ManhattanAllowlist {`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:21`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L21) — `pub fn new(client: Arc<NativeManhattanClient>, tenant: Tenant) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:25`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L25) — `fn entity_lkey(entity_type: EntityType, entity_id: i64) -> String {`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:32`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L32) — `pub async fn get(&self, user_id: i64) -> Option<AllowlistRecord> {`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:43`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L43) — `pub async fn add(`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:53`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L53) — `pub async fn remove(&self, user_id: i64) -> Result<bool, Box<dyn std::error::Error>> {`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:57`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L57) — `pub async fn get_entity(`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:83`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L83) — `pub async fn add_entity(`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:105`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L105) — `pub async fn remove_entity(`
+- [`abuse-enforcement-service/service-lib/src/allowlist.rs:122`](../source/abuse-enforcement-service/service-lib/src/allowlist.rs#L122) — `pub async fn list_all(&self) -> Vec<AllowlistRecord> {`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:9`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L9) — `pub struct SecurityAddon;`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:12`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L12) — `fn modify(&self, openapi: &mut utoipa::openapi::OpenApi) {`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:22`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L22) — `pub struct ApiError {`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:27`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L27) — `pub struct DryRunStatus {`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:32`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L32) — `pub struct RateLimitStats {`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:39`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L39) — `pub struct AllowlistDeleteResponse {`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:98`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L98) — `pub struct ApiDoc;`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:105`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L105) — `const EXPECTED_OPERATIONS: &[(&str, &str, bool)] = &[`
+- [`abuse-enforcement-service/service-lib/src/api_doc.rs:128`](../source/abuse-enforcement-service/service-lib/src/api_doc.rs#L128) — `fn openapi_doc_is_well_formed() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:15`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L15) — `pub struct KeyId(pub String);`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:18`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L18) — `pub struct ApiKeys(Arc<HashMap<String, String>>);`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:21`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L21) — `pub fn from_config(cfg: &Config) -> Result<Self> {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:32`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L32) — `pub fn is_empty(&self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:36`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L36) — `pub fn configured_key_ids(&self) -> Vec<String> {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:42`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L42) — `pub fn lookup(&self, presented: &str) -> Option<String> {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:54`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L54) — `pub async fn require_api_key(`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:94`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L94) — `fn extract_bearer(headers: &HeaderMap) -> Option<String> {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:106`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L106) — `fn unauthorized() -> Response {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:118`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L118) — `fn constant_time_eq(a: &[u8], b: &[u8]) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:133`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L133) — `fn mk(rows: &[(&str, &str)]) -> ApiKeys {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:142`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L142) — `fn empty_keys_is_empty() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:147`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L147) — `fn configured_key_ids_lists_names_only_sorted() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:153`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L153) — `fn lookup_matches_owning_key_id() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:161`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L161) — `fn lookup_returns_none_for_unknown_token() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:168`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L168) — `fn constant_time_eq_matches_only_when_equal() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:176`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L176) — `fn from_config_parses_json_map() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:185`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L185) — `fn from_config_drops_empty_token_rows() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:193`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L193) — `fn from_config_treats_blank_and_missing_as_empty() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:203`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L203) — `fn from_config_rejects_malformed_json() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:210`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L210) — `fn extract_bearer_parses_canonical_header() {`
+- [`abuse-enforcement-service/service-lib/src/auth.rs:217`](../source/abuse-enforcement-service/service-lib/src/auth.rs#L217) — `fn extract_bearer_rejects_other_schemes_and_missing() {`
+- [`abuse-enforcement-service/service-lib/src/bin/validate_rules_yaml.rs:5`](../source/abuse-enforcement-service/service-lib/src/bin/validate_rules_yaml.rs#L5) — `fn main() -> ExitCode {`
+- [`abuse-enforcement-service/service-lib/src/config.rs:8`](../source/abuse-enforcement-service/service-lib/src/config.rs#L8) — `pub struct Config {`
+- [`abuse-enforcement-service/service-lib/src/config.rs:227`](../source/abuse-enforcement-service/service-lib/src/config.rs#L227) — `pub fn kafka_group_id(&self) -> String {`
+- [`abuse-enforcement-service/service-lib/src/config.rs:241`](../source/abuse-enforcement-service/service-lib/src/config.rs#L241) — `fn kafka_defaults_preserve_consumer_and_watchdog_behavior() {`
+- [`abuse-enforcement-service/service-lib/src/config.rs:259`](../source/abuse-enforcement-service/service-lib/src/config.rs#L259) — `fn mltraining_producer_defaults_use_mtls() {`
+- [`abuse-enforcement-service/service-lib/src/decision.rs:2`](../source/abuse-enforcement-service/service-lib/src/decision.rs#L2) — `pub enum Decision {`
+- [`abuse-enforcement-service/service-lib/src/decision.rs:9`](../source/abuse-enforcement-service/service-lib/src/decision.rs#L9) — `pub enum ActionSpec {`
+- [`abuse-enforcement-service/service-lib/src/decision.rs:28`](../source/abuse-enforcement-service/service-lib/src/decision.rs#L28) — `pub fn dedup_action_class(&self) -> u8 {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:8`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L8) — `pub(crate) const MH_LKEY: &str = "0";`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:10`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L10) — `pub(crate) const CLASS_NONE: u8 = 0;`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:11`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L11) — `pub(crate) const CLASS_LABEL: u8 = 1;`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:12`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L12) — `pub(crate) const CLASS_CHALLENGE: u8 = 2;`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:13`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L13) — `pub(crate) const CLASS_SUSPEND: u8 = 3;`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:15`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L15) — `pub(crate) fn parse_action_class(name: &str) -> Option<u8> {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:25`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L25) — `pub(crate) enum HeldKind {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:31`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L31) — `pub(crate) struct HeldMeta {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:38`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L38) — `pub(crate) fn held_entry_meta(raw: &[u8]) -> HeldMeta {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:78`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L78) — `fn carried_class(meta: &HeldMeta, now_secs: u64) -> u8 {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:91`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L91) — `fn fencing_class(meta: &HeldMeta, now_secs: u64) -> u8 {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:98`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L98) — `fn fences_write(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:113`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L113) — `fn now_secs() -> u64 {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:120`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L120) — `fn displaced_remaining_secs(displaced: &Option<(Vec<u8>, u64)>, now_secs: u64) -> Option<u64> {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:127`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L127) — `fn hex_encode(bytes: &[u8]) -> String {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:137`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L137) — `fn hex_decode(s: &str) -> Option<Vec<u8>> {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:147`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L147) — `fn claim_nonce() -> u64 {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:158`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L158) — `enum SlotView {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:165`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L165) — `pub enum DedupCheck {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:177`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L177) — `pub struct ManhattanDedupCache {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:185`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L185) — `pub fn new(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:199`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L199) — `fn pkey(entity_type: EntityType, entity_id: i64) -> String {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:206`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L206) — `pub async fn try_insert(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:271`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L271) — `async fn claim(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:309`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L309) — `async fn verify_claim(&self, pkey: &str, nonce: u64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:325`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L325) — `async fn slot_view(&self, pkey: &str) -> SlotView {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:341`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L341) — `fn count_fenced(pkey: &str, op: &str, held_class: u8, writer_class: u8) {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:351`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L351) — `async fn restore_displaced(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:388`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L388) — `pub async fn update(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:413`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L413) — `pub async fn update_skip(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:442`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L442) — `async fn update_with_ttl(&self, pkey: &str, value: &[u8], ttl_secs: u64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:464`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L464) — `pub async fn invalidate(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:505`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L505) — `pub async fn get_with_ttl(`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:537`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L537) — `fn zstd_json(v: serde_json::Value) -> Vec<u8> {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:541`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L541) — `fn held_action_class(raw: &[u8]) -> u8 {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:546`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L546) — `fn held_class_reads_acted_class_field() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:562`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L562) — `fn held_class_legacy_entries() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:578`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L578) — `fn held_meta_distinguishes_placeholders_from_outcomes() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:607`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L607) — `fn bypass_claim_roundtrips_nonce_and_displaced_hold() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:636`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L636) — `fn hex_roundtrip() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:645`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L645) — `fn displaced_remaining_only_for_unexpired_holds() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:654`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L654) — `fn claim_nonces_are_distinct() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:658`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L658) — `fn outcome_meta(class: u8) -> HeldMeta {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:667`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L667) — `fn claim_meta(class: u8, nonce: u64, carry: Option<(u8, u64)>) -> HeldMeta {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:680`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L680) — `fn write_fence_blocks_strictly_stronger_outcomes() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:721`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L721) — `fn write_fence_placeholders_own_never_foreign_by_carry() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:749`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L749) — `fn carried_class_ranks_unexpired_carries_only() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:774`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L774) — `fn parse_action_class_names() {`
+- [`abuse-enforcement-service/service-lib/src/dedup_cache.rs:783`](../source/abuse-enforcement-service/service-lib/src/dedup_cache.rs#L783) — `fn pkey_keeps_user_bare_and_namespaces_others() {`
+- [`abuse-enforcement-service/service-lib/src/entities.rs:4`](../source/abuse-enforcement-service/service-lib/src/entities.rs#L4) — `pub struct StratoResponse<T> {`
+- [`abuse-enforcement-service/service-lib/src/entities.rs:10`](../source/abuse-enforcement-service/service-lib/src/entities.rs#L10) — `pub struct HighPageRankUser {`
+- [`abuse-enforcement-service/service-lib/src/entities.rs:18`](../source/abuse-enforcement-service/service-lib/src/entities.rs#L18) — `pub struct DedupEntry<'a> {`
+- [`abuse-enforcement-service/service-lib/src/entities.rs:29`](../source/abuse-enforcement-service/service-lib/src/entities.rs#L29) — `pub struct DedupEntryOwned {`
+- [`abuse-enforcement-service/service-lib/src/entities.rs:42`](../source/abuse-enforcement-service/service-lib/src/entities.rs#L42) — `fn deserialize_string_or_i64<'de, D>(deserializer: D) -> Result<Option<i64>, D::Error>`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:9`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L9) — `pub enum EntityType {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:16`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L16) — `pub fn as_str(&self) -> &'static str {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:23`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L23) — `pub fn from_path(s: &str) -> Option<Self> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:33`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L33) — `pub struct Facts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:47`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L47) — `pub struct UasClientActivity {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:54`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L54) — `pub struct UasBody {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:68`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L68) — `pub fn parse(raw: &str) -> Option<Self> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:72`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L72) — `pub fn activities(&self) -> impl Iterator<Item = (&'static str, &UasClientActivity)> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:83`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L83) — `pub enum EntityFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:89`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L89) — `pub struct UserFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:97`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L97) — `pub struct PostFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:109`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L109) — `pub fn user_allowlist(&self) -> &AllowlistFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:112`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L112) — `pub fn user(&self) -> &GizmoduckFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:115`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L115) — `pub fn cred(&self) -> &CredFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:118`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L118) — `pub fn user_allowlist_mut(&mut self) -> &mut AllowlistFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:121`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L121) — `pub fn user_mut(&mut self) -> &mut GizmoduckFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:124`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L124) — `pub fn cred_mut(&mut self) -> &mut CredFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:128`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L128) — `fn user_signals(&self) -> &UserFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:134`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L134) — `fn user_signals_mut(&mut self) -> &mut UserFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:143`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L143) — `pub struct RequestedActionFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:153`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L153) — `fn from_proto(a: &xai_abuse_proto::enforcement::RequestedAction) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:166`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L166) — `pub struct ScoreFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:180`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L180) — `pub fn from_score(score: &ScoreResult) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:210`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L210) — `pub fn head_label(score: &ScoreResult) -> &str {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:220`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L220) — `pub struct AllowlistFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:228`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L228) — `pub struct GizmoduckFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:240`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L240) — `pub struct CredFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:248`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L248) — `pub fn resolve_target(score: &ScoreResult) -> (EntityType, i64) {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:265`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L265) — `pub fn to_additional_info_map(&self) -> BTreeMap<String, String> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:296`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L296) — `fn emit_allowlist_block(m: &mut BTreeMap<String, String>, prefix: &str, al: &AllowlistFacts) {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:315`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L315) — `fn parse_allowlist_block(map: &BTreeMap<String, String>, prefix: &str) -> AllowlistFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:327`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L327) — `fn emit_user_signals(m: &mut BTreeMap<String, String>, s: &UserFacts) {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:366`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L366) — `fn emit_post_facts(m: &mut BTreeMap<String, String>, p: &PostFacts) {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:378`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L378) — `pub fn from_additional_info_map(`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:433`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L433) — `fn reconstruct_user_signals(map: &BTreeMap<String, String>) -> UserFacts {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:464`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L464) — `fn fmt_opt_dbg<T: std::fmt::Debug + ?Sized>(v: Option<&T>) -> String {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:468`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L468) — `fn parse_bool(v: Option<&String>) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:472`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L472) — `fn parse_dbg_opt_bool(v: Option<&String>) -> Option<bool> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:480`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L480) — `fn parse_dbg_opt_i64(v: Option<&String>) -> Option<i64> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:485`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L485) — `fn parse_dbg_opt_f64(v: Option<&String>) -> Option<f64> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:490`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L490) — `fn parse_dbg_opt_string(v: Option<&String>) -> Option<String> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:497`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L497) — `fn parse_user_labels(map: &BTreeMap<String, String>) -> Vec<String> {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:512`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L512) — `fn score_with_labels(labels: &[&str]) -> ScoreResult {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:525`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L525) — `fn score_facts_flattens_labels_into_a_vec() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:534`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L534) — `fn score_facts_projects_requested_actions_and_policy_version() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:581`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L581) — `fn score_facts_without_requested_actions_projects_empty() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:588`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L588) — `fn score_facts_pre_requested_actions_json_still_deserializes() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:601`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L601) — `fn score_facts_labels_empty_when_summary_absent() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:611`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L611) — `fn audit_map_omits_gizmoduck_keys_when_user_absent() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:632`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L632) — `fn from_additional_info_map_returns_none_for_legacy_empty_map() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:643`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L643) — `fn from_additional_info_map_reconstructs_user_in_allowlist_skip() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:686`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L686) — `fn from_additional_info_map_ignores_retired_ads_keys() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:714`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L714) — `fn from_additional_info_map_falls_back_to_legacy_has_spam_high_recall_bool() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:743`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L743) — `fn from_additional_info_map_reconstructs_user_not_found_skip() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:774`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L774) — `fn audit_map_round_trips_through_from_additional_info_map() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:830`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L830) — `fn audit_map_format_matches_legacy_debug_strings() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:861`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L861) — `fn resolve_target_defaults_legacy_user_id_to_user_entity() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:870`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L870) — `fn resolve_target_unknown_enum_value_falls_back_to_user() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:880`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L880) — `fn resolve_target_user_with_explicit_entity_id() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:892`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L892) — `fn resolve_target_post_entity() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:904`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L904) — `fn audit_map_emits_entity_keys_and_reconstructs() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:985`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L985) — `fn user_reconstruction_sets_user_id_to_entity_id_not_score_user_id() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:1009`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L1009) — `fn from_additional_info_map_defaults_entity_to_user_for_legacy_entries() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:1022`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L1022) — `fn uas_body_parses_prod_shape() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:1051`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L1051) — `fn uas_body_parse_rejects_garbage() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:1057`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L1057) — `fn uas_body_missing_periods_defaults_empty() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:1067`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L1067) — `fn uas_body_parses_prod_shape_with_day_and_week() {`
+- [`abuse-enforcement-service/service-lib/src/facts.rs:1099`](../source/abuse-enforcement-service/service-lib/src/facts.rs#L1099) — `fn uas_body_parses_year_only_prod_shape() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:9`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L9) — `pub const USER_KINDS: &[&str] = &[`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:17`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L17) — `pub const POST_KINDS: &[&str] = &["post_label", "suspend_author"];`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:19`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L19) — `pub const MAX_REQUESTED_ACTIONS_PER_MESSAGE: usize = 16;`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:22`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L22) — `pub struct GenericActionAllowlist {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:29`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L29) — `pub struct SkippedRequestedAction {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:38`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L38) — `pub struct ResolvedRequestedActions {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:44`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L44) — `pub fn skipped_info_json(&self) -> Option<String> {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:52`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L52) — `fn hardcoded_kinds(entity_type: EntityType) -> &'static [&'static str] {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:59`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L59) — `fn metric_kind(kind: &str) -> &str {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:67`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L67) — `fn sanitize_for_log(s: &str) -> String {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:68`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L68) — `const MAX: usize = 64;`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:80`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L80) — `fn action_to_spec(`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:140`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L140) — `pub fn resolve_requested_actions(`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:225`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L225) — `fn full_user_allowlist() -> GenericActionAllowlist {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:236`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L236) — `fn full_post_allowlist() -> GenericActionAllowlist {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:244`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L244) — `fn req(kind: &str) -> RequestedActionFacts {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:252`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L252) — `fn suspend_req(kind: &str, policy: &str, perm: bool) -> RequestedActionFacts {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:262`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L262) — `fn label_req(kind: &str, labels: &[&str], ttl_msec: i64) -> RequestedActionFacts {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:273`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L273) — `fn user_suspend_maps_to_suspend_user_spec() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:290`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L290) — `fn user_label_maps_to_add_labels_v2_with_ttl() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:307`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L307) — `fn label_ttl_zero_maps_to_no_expiry() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:323`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L323) — `fn user_challenge_kinds_map_to_their_specs() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:345`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L345) — `fn post_label_maps_to_add_post_labels_v2() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:362`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L362) — `fn post_suspend_author_maps_to_suspend_user_spec() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:379`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L379) — `fn post_kinds_on_user_entity_are_refused_even_when_allowlisted() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:395`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L395) — `fn user_kinds_on_post_entity_are_refused_even_when_allowlisted() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:421`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L421) — `fn unknown_kind_is_refused() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:434`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L434) — `fn empty_allowlist_refuses_everything() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:464`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L464) — `fn non_allowlisted_kind_is_refused() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:477`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L477) — `fn non_allowlisted_suspend_policy_is_refused() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:496`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L496) — `fn non_allowlisted_label_is_refused() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:512`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L512) — `fn label_kind_with_no_labels_is_refused() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:523`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L523) — `fn negative_ttl_is_refused() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:539`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L539) — `fn entries_past_the_hardcoded_cap_are_refused_as_one_aggregate() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:561`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L561) — `fn per_entry_refusals_omit_the_count_field() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:573`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L573) — `fn identical_resolved_specs_are_deduplicated() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:602`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L602) — `fn mixed_list_dispatches_allowed_and_skips_refused_in_order() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:634`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L634) — `fn skipped_info_json_none_when_nothing_skipped() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:644`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L644) — `fn metric_kind_collapses_unknown_kinds() {`
+- [`abuse-enforcement-service/service-lib/src/generic_actions.rs:652`](../source/abuse-enforcement-service/service-lib/src/generic_actions.rs#L652) — `fn sanitize_for_log_strips_control_chars_and_truncates() {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:15`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L15) — `const QUERY_FIELDS: &[QueryFields] = &[QueryFields::SAFETY, QueryFields::LABELS];`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:18`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L18) — `pub struct GizmoduckCoreClientConfig {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:27`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L27) — `pub struct GizmoduckCoreClient {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:32`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L32) — `pub async fn connect(cfg: &GizmoduckCoreClientConfig) -> Result<Self> {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:67`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L67) — `pub async fn fetch_user(&self, user_id: i64) -> Result<GizmoduckFacts> {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:152`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L152) — `fn verified_type_name(v: VerifiedType) -> String {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:166`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L166) — `fn spam_high_recall_maps_to_pascal_case() {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck.rs:171`](../source/abuse-enforcement-service/service-lib/src/gizmoduck.rs#L171) — `fn unmapped_ordinals_render_as_unknown_label() {`
+- [`abuse-enforcement-service/service-lib/src/gizmoduck_labels.rs:1`](../source/abuse-enforcement-service/service-lib/src/gizmoduck_labels.rs#L1) — `pub fn label_ordinal_to_name(ordinal: i32) -> String {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:12`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L12) — `const GROWTHBOOK_CONFIG_KEY: &str = "xai_abuse_enforcement_service_config";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:14`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L14) — `const MAX_USER_ENFORCEMENTS_KEY: &str = "max_user_enforcements_per_day";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:16`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L16) — `const MAX_ENFORCEMENTS_KEY: &str = "max_enforcements_per_day";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:18`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L18) — `const MAX_POST_ENFORCEMENTS_KEY: &str = "max_post_enforcements_per_day";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:20`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L20) — `const TOPIC_LABELS_KEY: &str = "topic_labels";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:22`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L22) — `const DEDUP_HEAD_ACTION_CLASS_KEY: &str = "dedup_head_action_class";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:24`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L24) — `const DEFAULT_DEDUP_HEAD_ACTION_CLASS: &[(&str, u8)] = &[`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:35`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L35) — `const GENERIC_ACTIONS_KEY: &str = "generic_actions";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:36`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L36) — `const GENERIC_KINDS_KEY: &str = "kinds";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:37`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L37) — `const GENERIC_SUSPEND_POLICIES_KEY: &str = "suspend_policies";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:38`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L38) — `const GENERIC_LABELS_KEY: &str = "labels";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:40`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L40) — `const KAFKA_KEY: &str = "kafka";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:41`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L41) — `const CONSUMER_KEY: &str = "consumer";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:42`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L42) — `const PRODUCER_KEY: &str = "producer";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:44`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L44) — `const GROWTHBOOK_RULES_USER_KEY: &str = "xai_abuse_enforcement_service_rule_user";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:45`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L45) — `const GROWTHBOOK_RULES_POST_KEY: &str = "xai_abuse_enforcement_service_rule_post";`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:48`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L48) — `pub struct ProducerSpec {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:60`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L60) — `struct EntityCap {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:67`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L67) — `pub struct DynamicConfig {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:75`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L75) — `pub async fn new(`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:119`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L119) — `fn cap_for(&self, entity_type: EntityType) -> &EntityCap {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:126`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L126) — `pub fn bool(&self, key: &str, default: bool) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:130`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L130) — `pub fn is_dry_run(&self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:134`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L134) — `pub async fn try_enforce(&self, entity_type: EntityType) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:144`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L144) — `pub fn rate_limit_stats(&self, entity_type: EntityType) -> Option<(u32, u32, u32)> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:153`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L153) — `pub async fn record_enforcement_report(`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:164`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L164) — `pub async fn reset_rate_limit(&self, entity_type: EntityType) -> Option<u64> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:168`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L168) — `pub fn max_enforcements_per_day(&self, entity_type: EntityType) -> u32 {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:173`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L173) — `pub fn kafka_consumer_topic_labels(&self) -> Option<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:177`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L177) — `pub fn kafka_producers(&self) -> HashMap<String, ProducerSpec> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:181`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L181) — `pub fn enforcement_rules_yaml(&self, entity_type: EntityType) -> Option<String> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:195`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L195) — `pub fn dedup_action_class_for_head(&self, head: &str) -> u8 {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:199`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L199) — `pub fn generic_action_allowlist(`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:206`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L206) — `pub fn config(&self) -> Option<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:212`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L212) — `fn get_path<'a>(config: Option<&'a Value>, path: &[&str]) -> Option<&'a Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:220`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L220) — `fn kafka_consumer_topic_labels_from_config(config: Option<&Value>) -> Option<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:226`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L226) — `fn kafka_producers_from_config(config: Option<&Value>) -> HashMap<String, ProducerSpec> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:243`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L243) — `fn parse_bool(config: Option<&Value>, key: &str, default: bool) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:249`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L249) — `fn string_set(v: Option<&Value>) -> std::collections::HashSet<String> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:261`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L261) — `fn generic_actions_from_config(`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:273`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L273) — `fn dedup_action_class_from_config(config: Option<&Value>, head: &str) -> u8 {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:293`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L293) — `fn pick_u32(config: Option<&Value>, keys: &[&str], default: u32) -> u32 {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:305`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L305) — `fn cfg_without_gb(dry_run_default: bool) -> DynamicConfig {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:323`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L323) — `fn is_dry_run_returns_default_when_no_client() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:329`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L329) — `fn bool_returns_default_when_no_client() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:336`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L336) — `fn dedup_action_class_reads_opted_in_heads() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:377`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L377) — `fn dedup_action_class_baked_default_and_kill_switch() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:415`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L415) — `fn parse_bool_returns_value_when_present() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:424`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L424) — `fn parse_bool_returns_default_when_key_missing() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:431`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L431) — `fn parse_bool_returns_default_when_wrong_type() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:437`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L437) — `fn parse_bool_returns_default_when_config_is_none() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:443`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L443) — `fn pick_u32_prefers_first_key_then_falls_back_then_defaults() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:465`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L465) — `fn generic_actions_parses_per_entity_allowlists() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:494`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L494) — `fn generic_actions_absent_or_partial_config_fails_closed() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:515`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L515) — `fn generic_actions_malformed_values_fail_closed() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:538`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L538) — `fn generic_actions_empty_string_entries_are_dropped() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:555`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L555) — `fn topic_labels_prefers_nested_then_falls_back_to_flat() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:579`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L579) — `fn kafka_producers_from_config_iterates_and_skips_malformed() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:600`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L600) — `fn kafka_producers_from_config_carries_optional_cluster_override() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook.rs:621`](../source/abuse-enforcement-service/service-lib/src/growthbook.rs#L621) — `async fn try_enforce_allows_when_no_counter() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:9`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L9) — `const HTTP_TIMEOUT: Duration = Duration::from_secs(30);`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:12`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L12) — `pub struct GrowthBookWriter {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:20`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L20) — `pub fn new(api_host: &str, api_key: String) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:34`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L34) — `pub async fn get_feature(&self, feature_key: &str) -> Result<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:54`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L54) — `pub async fn get_env_value(&self, feature_key: &str, environment: &str) -> Result<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:59`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L59) — `pub async fn set_env_value(`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:88`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L88) — `pub async fn set_env_field(`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:112`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L112) — `fn parse_env_value(feature: &Value, environment: &str) -> Result<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:139`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L139) — `fn build_env_update_body(feature: &Value, environment: &str, new_value: &Value) -> Result<Value> {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:180`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L180) — `fn sample_feature() -> Value {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:203`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L203) — `fn parse_env_value_decodes_json_string() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:210`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L210) — `fn parse_env_value_errors_on_missing_environment() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:216`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L216) — `fn parse_env_value_errors_on_empty_rules() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:222`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L222) — `fn build_env_update_body_encodes_value_as_json_string() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:238`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L238) — `fn build_env_update_body_preserves_enabled_and_rule_metadata() {`
+- [`abuse-enforcement-service/service-lib/src/growthbook_writer.rs:253`](../source/abuse-enforcement-service/service-lib/src/growthbook_writer.rs#L253) — `fn build_env_update_body_errors_on_missing_environment() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:70`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L70) — `const SERVICE_NAME: &str = env!("CARGO_PKG_NAME");`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:71`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L71) — `const SERVICE_VERSION: &str = env!("CARGO_PKG_VERSION");`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:75`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L75) — `struct TopicEntry {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:85`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L85) — `fn cluster<'a>(&'a self, default: &'a str) -> &'a str {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:89`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L89) — `fn zone<'a>(&'a self, default: &'a str) -> &'a str {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:94`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L94) — `fn override_or_default<'a>(value: Option<&'a str>, default: &'a str) -> &'a str {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:103`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L103) — `enum TopicConfig {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:117`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L117) — `const MAX_RETRIES: u32 = 5;`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:119`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L119) — `struct RetryEntry {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:129`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L129) — `struct EnforcementFailed {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:136`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L136) — `fn eq(&self, other: &Self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:142`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L142) — `fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:147`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L147) — `fn cmp(&self, other: &Self) -> std::cmp::Ordering {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:153`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L153) — `struct EnforcementCtx {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:165`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L165) — `struct ScoreResultProcessor {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:177`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L177) — `fn decision_outcome(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:202`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L202) — `const REQUESTED_ACTIONS_DENIED: &str = "requested_actions_denied";`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:205`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L205) — `enum ExpandedDecision {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:210`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L210) — `fn expand_requested_actions_decision(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:232`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L232) — `async fn run_enforcement_inner(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:514`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L514) — `fn skip_outcome(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:529`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L529) — `fn outcome_holds_full_dedup(status: &str) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:533`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L533) — `async fn write_dedup_outcome(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:582`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L582) — `const DECISIONS_PRODUCER: &str = "decisions";`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:584`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L584) — `const DECISIONS_JSON_PRODUCER: &str = "decisions_json";`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:586`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L586) — `pub(crate) const ADMIN_ACTIONS_PRODUCER: &str = "admin_actions";`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:589`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L589) — `pub struct KafkaProducers {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:594`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L594) — `pub fn get(&self, name: &str) -> Option<&Arc<KafkaProducer>> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:598`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L598) — `pub fn decisions(&self) -> Option<&Arc<KafkaProducer>> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:602`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L602) — `pub fn decisions_json(&self) -> Option<&Arc<KafkaProducer>> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:606`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L606) — `pub fn admin_actions(&self) -> Option<&Arc<KafkaProducer>> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:610`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L610) — `pub async fn flush_all(&self, timeout: Duration) {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:619`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L619) — `pub(crate) fn spawn_publish<M: prost::Message>(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:631`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L631) — `pub(crate) fn spawn_publish_json<M: serde::Serialize>(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:653`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L653) — `fn spawn_send(producer: Arc<KafkaProducer>, sink: &'static str, key: Vec<u8>, bytes: Vec<u8>) {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:668`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L668) — `fn publish_decision_outcome(ctx: &EnforcementCtx, outcome: &abuse_proto::DecisionOutcome) {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:683`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L683) — `async fn run_enforcement(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:693`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L693) — `async fn build_kafka_producers(cfg: &Config, dynamic_config: &DynamicConfig) -> KafkaProducers {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:735`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L735) — `async fn process(&self, score: &abuse_proto::ScoreResult) -> Result<String, EnforcementFailed> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:888`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L888) — `async fn process_batch(&self, messages: &[KafkaMessage]) -> Result<BatchResult> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1012`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1012) — `struct StatsOnlyProcessor {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1019`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1019) — `async fn process_batch(&self, messages: &[KafkaMessage]) -> Result<BatchResult> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1052`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1052) — `pub fn init_runtime_globals() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1063`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1063) — `pub async fn build_state(cfg: Config) -> Result<(Arc<service::AppState>, Config)> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1267`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1267) — `pub fn build_api_router(state: Arc<service::AppState>, api_keys: auth::ApiKeys) -> Router {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1319`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1319) — `pub fn build_docs_router() -> Router {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1328`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1328) — `pub(crate) fn now_millis() -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1335`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1335) — `fn consumer_error_total(watched: &HashSet<String>) -> f64 {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1354`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1354) — `fn health_decision(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1369`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1369) — `struct WatchdogConfig {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1379`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1379) — `async fn kafka_health_watchdog(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1455`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1455) — `const KAFKA_PREFLIGHT_ATTEMPTS: u32 = 3;`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1456`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1456) — `const KAFKA_PREFLIGHT_TIMEOUT: Duration = Duration::from_secs(10);`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1457`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1457) — `const KAFKA_PREFLIGHT_BACKOFF: Duration = Duration::from_secs(2);`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1459`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1459) — `async fn probe_broker_reachability(config: KafkaConsumerConfig, timeout: Duration) -> Result<()> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1493`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1493) — `pub async fn start_kafka_consumers(`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1951`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1951) — `fn topic_consumer_group_id(base_group_id: &str, topic: &str) -> String {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1955`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1955) — `fn is_default_target(target: (&str, &str), default: (&str, &str)) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1959`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1959) — `fn preflight_probe_topic<'a, I>(topics: I, default: (&str, &str)) -> Option<&'a str>`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1970`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1970) — `pub async fn serve(router: Router, cfg: &Config) -> Result<()> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:1981`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L1981) — `pub async fn run() -> Result<()> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2023`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2023) — `async fn ok() -> &'static str {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2027`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2027) — `async fn pass(req: Request<Body>, next: Next) -> Response {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2032`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2032) — `fn same_path_split_across_sub_routers_merges() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2054`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2054) — `fn dynamic_topics_keep_distinct_existing_group_ids() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2068`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2068) — `fn preflight_retry_budget_stays_bounded() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2075`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2075) — `fn parse(json: serde_json::Value) -> HashMap<String, TopicEntry> {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2080`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2080) — `fn topic_entry_without_override_uses_deployment_default() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2106`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2106) — `fn absent_null_and_blank_all_resolve_to_the_default() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2128`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2128) — `fn topic_entry_override_wins_per_field() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2153`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2153) — `fn preflight_probes_first_default_target_topic_only() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2167`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2167) — `fn zone_only_override_is_not_the_default_target() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2187`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2187) — `fn preflight_skipped_when_no_topic_on_default_target() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2195`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2195) — `fn error_flood_signal_counts_default_target_topics_only() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2227`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2227) — `fn override_cluster_and_zone_reach_the_kafka_bootstrap() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2269`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2269) — `fn unresolvable_override_is_an_error_not_a_panic() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2297`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2297) — `fn only_success_holds_full_dedup_window() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2328`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2328) — `fn score_facts_with(requested: Vec<RequestedActionFacts>) -> ScoreFacts {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2334`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2334) — `fn user_allowlist() -> GenericActionAllowlist {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2349`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2349) — `fn expand_allowed_requested_actions_yields_plain_act_decision() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2370`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2370) — `fn expand_denied_requested_actions_yields_skip_with_reason() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2391`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2391) — `fn expand_empty_requested_actions_yields_skip() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2405`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2405) — `fn expand_partial_allowlist_dispatches_allowed_and_reports_skipped() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2443`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2443) — `fn decision_outcome_json_mirror_carries_funnel_fields() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2505`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2505) — `const STALE: Duration = Duration::from_secs(120);`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2506`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2506) — `const STALE_DELETE: Duration = Duration::from_secs(240);`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2507`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2507) — `const ERR_DELETE: Duration = Duration::from_secs(60);`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2508`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2508) — `const Z: Duration = Duration::ZERO;`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2509`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2509) — `const S5: Duration = Duration::from_secs(5);`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2512`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2512) — `fn fresh_consumer_is_ready() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2519`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2519) — `fn stale_under_threshold_is_notready_not_deleted() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2527`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2527) — `fn fully_dead_no_progress_self_deletes_at_stale_window() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2535`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2535) — `fn flapping_node_self_deletes_fast_on_error_window() {`
+- [`abuse-enforcement-service/service-lib/src/lib.rs:2561`](../source/abuse-enforcement-service/service-lib/src/lib.rs#L2561) — `fn brief_error_spike_does_not_evict() {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:9`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L9) — `pub const GLOBAL_BUCKET_USER_ID: i64 = 1;`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:10`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L10) — `pub const GLOBAL_BUCKET_POST_ID: i64 = 10;`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:13`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L13) — `pub struct LimiterConfig {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:24`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L24) — `pub struct LimiterClient {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:32`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L32) — `pub async fn connect(cfg: &LimiterConfig) -> anyhow::Result<Self> {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:68`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L68) — `pub fn with_bucket(&self, bucket_user_id: i64) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:77`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L77) — `async fn increment(&self) -> Option<Response> {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:104`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L104) — `pub async fn increment_count(&self) -> Option<i64> {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:112`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L112) — `pub async fn try_record(&self) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:119`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L119) — `pub async fn record_report(&self) -> Option<serde_json::Value> {`
+- [`abuse-enforcement-service/service-lib/src/limiter.rs:134`](../source/abuse-enforcement-service/service-lib/src/limiter.rs#L134) — `pub async fn stats(&self) -> Option<(u32, u32, u32)> {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:10`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L10) — `pub fn build_tenant(cfg: &Config) -> Tenant {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:18`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L18) — `pub async fn build_client(cfg: &Config) -> Result<Arc<NativeManhattanClient>> {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:41`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L41) — `fn now_secs() -> u64 {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:48`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L48) — `pub fn ttl_nanos_from_secs(ttl_secs: u64) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:52`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L52) — `pub fn remaining_ttl_secs(expires_at_nanos: Option<u64>) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:56`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L56) — `fn ttl_nanos_from_secs_at(now_secs: u64, ttl_secs: u64) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:60`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L60) — `fn remaining_ttl_secs_at(expires_at_nanos: Option<u64>, now_secs: u64) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:75`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L75) — `fn ttl_nanos_is_now_plus_ttl_in_nanos() {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:81`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L81) — `fn remaining_ttl_counts_down_to_expiry() {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:89`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L89) — `fn remaining_ttl_floors_past_due_at_zero() {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:94`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L94) — `fn remaining_ttl_no_expiry_is_negative_one() {`
+- [`abuse-enforcement-service/service-lib/src/manhattan.rs:99`](../source/abuse-enforcement-service/service-lib/src/manhattan.rs#L99) — `fn ttl_roundtrip_preserves_window() {`
+- [`abuse-enforcement-service/service-lib/src/metrics.rs:218`](../source/abuse-enforcement-service/service-lib/src/metrics.rs#L218) — `pub fn observe_user_active_seconds(`
+- [`abuse-enforcement-service/service-lib/src/metrics.rs:254`](../source/abuse-enforcement-service/service-lib/src/metrics.rs#L254) — `pub fn init() {`
+- [`abuse-enforcement-service/service-lib/src/metrics.rs:289`](../source/abuse-enforcement-service/service-lib/src/metrics.rs#L289) — `fn observe_user_active_seconds_records_each_row() {`
+- [`abuse-enforcement-service/service-lib/src/metrics.rs:419`](../source/abuse-enforcement-service/service-lib/src/metrics.rs#L419) — `fn observe_user_active_seconds_skips_bad_json_and_non_finite() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:11`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L11) — `const USER_RULE_FILE_YAML: &str = include_str!("../rules/enforcement_user.yaml");`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:12`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L12) — `const POST_RULE_FILE_YAML: &str = include_str!("../rules/enforcement_post.yaml");`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:16`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L16) — `struct RuleFile {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:23`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L23) — `struct RuleDef {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:32`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L32) — `enum ActionStep {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:51`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L51) — `enum SpecialOutcome {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:59`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L59) — `enum Outcome {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:66`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L66) — `struct CompiledRule {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:73`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L73) — `pub struct CompiledRules {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:80`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L80) — `pub enum RuleCompileError {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:95`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L95) — `pub enum EvalError {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:113`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L113) — `pub fn from_yaml(src: &str) -> Result<Self, RuleCompileError> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:141`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L141) — `pub fn rule_ids(&self) -> impl Iterator<Item = &str> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:145`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L145) — `pub fn entity_type(&self) -> EntityType {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:150`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L150) — `fn step_to_spec(step: &ActionStep) -> ActionSpec {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:170`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L170) — `fn outcome_to_decision(o: &Outcome) -> Decision {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:183`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L183) — `struct ScoreCel<'a> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:192`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L192) — `struct RequestedActionCel<'a> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:202`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L202) — `struct AllowlistCel {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:207`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L207) — `struct UserCel<'a> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:215`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L215) — `struct CredCel<'a> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:223`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L223) — `struct PostCel<'a> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:229`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L229) — `fn project_score(facts: &Facts) -> ScoreCel<'_> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:251`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L251) — `fn project_allowlist(al: &crate::facts::AllowlistFacts) -> AllowlistCel {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:257`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L257) — `fn project_user(user: &GizmoduckFacts) -> UserCel<'_> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:266`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L266) — `fn project_cred(cred: &CredFacts) -> CredCel<'_> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:275`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L275) — `fn project_post(post: &PostFacts) -> PostCel<'_> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:284`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L284) — `pub fn decide_with(rules: &CompiledRules, facts: &Facts) -> Result<Decision, EvalError> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:307`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L307) — `type CredAliasConfig =`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:316`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L316) — `fn parse_cred_aliases(json: &str) -> CredAliasConfig {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:326`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L326) — `fn build_cred_alias(`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:341`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L341) — `fn bind_cred_aliases(ctx: &mut Context<'_>, cred: &CredFacts) -> Result<(), EvalError> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:349`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L349) — `fn bind_facts(ctx: &mut Context<'_>, facts: &Facts) -> Result<(), EvalError> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:378`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L378) — `fn hash_str(s: &str) -> u64 {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:384`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L384) — `fn nonempty(override_yaml: Option<&str>) -> Option<&str> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:390`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L390) — `pub enum RuleSource {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:397`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L397) — `pub struct RuleStatus {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:406`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L406) — `struct CacheEntry {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:411`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L411) — `struct RuleSlot {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:419`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L419) — `fn from_compiled(compiled: Arc<CompiledRules>) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:428`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L428) — `fn from_yaml(yaml: &str, expected: EntityType) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:439`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L439) — `fn last_good_arc(&self) -> Arc<CompiledRules> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:443`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L443) — `fn source_for_fallback(&self, last: &Arc<CompiledRules>) -> RuleSource {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:451`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L451) — `fn compile_and_cache(&self, src: &str, h: u64) -> Result<Arc<CompiledRules>, String> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:487`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L487) — `fn resolve(&self, override_yaml: Option<&str>) -> Arc<CompiledRules> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:506`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L506) — `fn status(&self, override_yaml: Option<&str>) -> RuleStatus {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:556`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L556) — `pub struct RulesCache {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:562`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L562) — `pub fn new() -> Self {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:576`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L576) — `pub fn try_seed(user_yaml: &str, post_yaml: &str) -> Result<Self, String> {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:604`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L604) — `fn slot(&self, entity_type: EntityType) -> &RuleSlot {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:611`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L611) — `pub fn resolve(`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:619`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L619) — `pub fn status(&self, entity_type: EntityType, override_yaml: Option<&str>) -> RuleStatus {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:625`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L625) — `fn default() -> Self {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:638`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L638) — `const MOCK_USER_RULES_YAML: &str = include_str!("fixtures/mock_rules_user.yaml");`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:639`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L639) — `const MOCK_POST_RULES_YAML: &str = include_str!("fixtures/mock_rules_post.yaml");`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:641`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L641) — `fn mock_rules(entity_type: EntityType) -> CompiledRules {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:652`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L652) — `const OVERRIDE_USER_YAML: &str = "for_entity: user\nrules:\n  - id: ovr_rule\n    when: \"true\"\n    then: {kind: skip, reason: t}\n";`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:654`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L654) — `const SEED_USER: &str = "for_entity: user\nrules:\n  - id: seed_user\n    when: \"true\"\n    then: {kind: skip, reason: seed}\n";`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:655`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L655) — `const SEED_POST: &str = "for_entity: post\nrules:\n  - id: seed_post\n    when: \"true\"\n    then: {kind: skip, reason: seed}\n";`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:657`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L657) — `fn minimal_seeded() -> RulesCache {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:662`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L662) — `fn baked_in_defaults_compile() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:710`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L710) — `fn rules_cache_uses_valid_override() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:731`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L731) — `fn rules_cache_none_uses_static_seed() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:740`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L740) — `fn rules_cache_blank_override_uses_static_seed() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:748`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L748) — `fn rules_cache_falls_back_on_bad_yaml() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:758`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L758) — `fn rules_cache_bad_after_good_keeps_last_good() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:775`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L775) — `fn rules_cache_falls_back_on_entity_mismatch() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:786`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L786) — `fn rules_cache_resolve_returns_override_pipeline() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:794`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L794) — `fn rules_cache_try_seed_rejects_entity_mismatch() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:803`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L803) — `fn baked_in_user_allowlist_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:814`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L814) — `fn base_facts() -> Facts {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:833`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L833) — `fn post_facts(author: UserFacts, score_labels: Vec<String>) -> Facts {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:849`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L849) — `fn with_post_allowlisted(mut f: Facts) -> Facts {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:857`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L857) — `fn with_post_labels(mut f: Facts, labels: Vec<String>) -> Facts {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:865`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L865) — `fn safe_author() -> UserFacts {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:875`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L875) — `fn d(f: &Facts) -> Decision {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:879`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L879) — `fn act_one(d: Decision) -> ActionSpec {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:888`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L888) — `fn malformed_or_unknown_then_block_is_rejected() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:909`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L909) — `fn bad_cel_when_expression_is_rejected_at_compile_time() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:924`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L924) — `fn empty_act_all_is_rejected_at_compile_time() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:939`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L939) — `fn cred_alias_config_parses_and_ignores_malformed() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:949`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L949) — `fn cred_alias_exposes_old_and_current_field_names() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:971`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L971) — `fn cred_alias_resolves_in_cel() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:991`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L991) — `fn one_rule_pipeline(yaml: &str) -> CompiledRules {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:996`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L996) — `fn skip_author_credibility_prechecks_flag_gates_an_opted_in_guard_rule() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1027`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1027) — `fn act_arkose_outcome_parses_and_maps_to_arkose_decision() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1043`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1043) — `fn act_captcha_outcome_parses_and_maps_to_captcha_decision() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1059`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1059) — `fn act_add_labels_v2_without_ttl_parses_as_no_expiry() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1082`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1082) — `fn act_all_outcome_parses_into_ordered_multi_action_decision() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1112`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1112) — `fn facts_with_requested_action() -> Facts {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1127`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1127) — `fn act_requested_actions_outcome_parses_and_maps_to_decision() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1151`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1151) — `fn requested_actions_entries_and_policy_version_are_cel_readable() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1182`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1182) — `fn act_requested_actions_is_rejected_inside_act_all() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1189`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1189) — `fn rule_index(ids: &[String], id: &str) -> usize {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1196`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1196) — `fn baked_in_generic_rule_sits_directly_above_each_terminal_rule() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1232`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1232) — `fn baked_in_user_pipeline_routes_requested_actions_to_generic_dispatch() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1248`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1248) — `fn baked_in_user_platform_label_with_empty_list_skips_not_suspends() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1269`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1269) — `fn baked_in_user_guardrails_still_win_over_generic_dispatch() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1286`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1286) — `fn baked_in_user_pipeline_splits_follower_bands_at_the_ceiling() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1311`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1311) — `fn baked_in_user_ceiling_ignores_skip_author_credibility_prechecks() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1323`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1323) — `fn baked_in_post_pipeline_routes_requested_actions_to_generic_dispatch() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1356`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1356) — `fn mock_user_allowlisted_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1363`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1363) — `fn mock_user_allowlist_wins_over_later_rules() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1371`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1371) — `fn mock_user_not_present_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1378`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1378) — `fn mock_cred_is_high_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1385`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1385) — `fn mock_cred_follower_count_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1392`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1392) — `fn mock_cred_score_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1399`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1399) — `fn rule_referencing_unbound_variable_compiles_but_eval_errors() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1409`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1409) — `fn mock_composite_label_yields_label_then_captcha() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1425`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1425) — `fn mock_label_only_yields_single_add_label() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1438`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1438) — `fn mock_catch_all_suspends() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1451`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1451) — `fn mock_post_allowlisted_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1461`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1461) — `fn mock_post_author_cred_skips() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1469`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1469) — `fn mock_post_label_acts_on_post() {`
+- [`abuse-enforcement-service/service-lib/src/rules.rs:1481`](../source/abuse-enforcement-service/service-lib/src/rules.rs#L1481) — `fn mock_post_catch_all_skips() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:29`](../source/abuse-enforcement-service/service-lib/src/service.rs#L29) — `const PLUGIN_ID: &str = env!("CARGO_PKG_NAME");`
+- [`abuse-enforcement-service/service-lib/src/service.rs:31`](../source/abuse-enforcement-service/service-lib/src/service.rs#L31) — `const STUB_BOTMAKER_BOT_ID: i64 = 0;`
+- [`abuse-enforcement-service/service-lib/src/service.rs:33`](../source/abuse-enforcement-service/service-lib/src/service.rs#L33) — `const AIS_TOOL: &str = "RtpPlugin";`
+- [`abuse-enforcement-service/service-lib/src/service.rs:35`](../source/abuse-enforcement-service/service-lib/src/service.rs#L35) — `const ARKOSE_BOUNCE_TAGS: &[&str] = &["FAKE", "FAKE_ARKOSE_LOG_RECAPTCHA_EXPERIMENT"];`
+- [`abuse-enforcement-service/service-lib/src/service.rs:37`](../source/abuse-enforcement-service/service-lib/src/service.rs#L37) — `const CAPTCHA_BOUNCE_TAGS: &[&str] = &[`
+- [`abuse-enforcement-service/service-lib/src/service.rs:43`](../source/abuse-enforcement-service/service-lib/src/service.rs#L43) — `const SPAM_LIVENESS_CHECK_TEMPLATE_ID: &str = "spam_liveness_check";`
+- [`abuse-enforcement-service/service-lib/src/service.rs:45`](../source/abuse-enforcement-service/service-lib/src/service.rs#L45) — `const SPAM_LIVENESS_CHECK_POLICY_TAG: &str = "Spam";`
+- [`abuse-enforcement-service/service-lib/src/service.rs:47`](../source/abuse-enforcement-service/service-lib/src/service.rs#L47) — `fn bounce_actor_json() -> Value {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:65`](../source/abuse-enforcement-service/service-lib/src/service.rs#L65) — `fn with_audit_note(mut additional_info: Vec<String>) -> Vec<String> {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:70`](../source/abuse-enforcement-service/service-lib/src/service.rs#L70) — `fn join_audit_info(mut additional_info: Vec<String>) -> String {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:75`](../source/abuse-enforcement-service/service-lib/src/service.rs#L75) — `fn compute_expires_at_msec(ttl_msec: i64) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:86`](../source/abuse-enforcement-service/service-lib/src/service.rs#L86) — `pub fn publish_admin_action_event(producer: Option<&Arc<KafkaProducer>>, event: &AdminActionEvent) {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:101`](../source/abuse-enforcement-service/service-lib/src/service.rs#L101) — `pub struct AppState {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:116`](../source/abuse-enforcement-service/service-lib/src/service.rs#L116) — `pub struct UserActionResult {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:122`](../source/abuse-enforcement-service/service-lib/src/service.rs#L122) — `pub enum EnforcementAction {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:147`](../source/abuse-enforcement-service/service-lib/src/service.rs#L147) — `pub fn suspend_user(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:161`](../source/abuse-enforcement-service/service-lib/src/service.rs#L161) — `pub fn add_user_label(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:175`](../source/abuse-enforcement-service/service-lib/src/service.rs#L175) — `pub fn add_post_label(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:189`](../source/abuse-enforcement-service/service-lib/src/service.rs#L189) — `pub fn bounce_arkose(user_id: i64, additional_info: Vec<String>) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:196`](../source/abuse-enforcement-service/service-lib/src/service.rs#L196) — `pub fn bounce_captcha(user_id: i64, additional_info: Vec<String>) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:203`](../source/abuse-enforcement-service/service-lib/src/service.rs#L203) — `pub fn spam_liveness_check(user_id: i64, additional_info: Vec<String>) -> Self {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:210`](../source/abuse-enforcement-service/service-lib/src/service.rs#L210) — `pub fn from_spec(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:232`](../source/abuse-enforcement-service/service-lib/src/service.rs#L232) — `fn audit_note(&self) -> &str {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:243`](../source/abuse-enforcement-service/service-lib/src/service.rs#L243) — `fn actor_header(&self) -> Value {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:256`](../source/abuse-enforcement-service/service-lib/src/service.rs#L256) — `pub(crate) fn name(&self) -> &'static str {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:267`](../source/abuse-enforcement-service/service-lib/src/service.rs#L267) — `pub(crate) fn metric_label(&self) -> String {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:279`](../source/abuse-enforcement-service/service-lib/src/service.rs#L279) — `fn entity_id(&self) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:290`](../source/abuse-enforcement-service/service-lib/src/service.rs#L290) — `fn to_json(&self) -> Value {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:408`](../source/abuse-enforcement-service/service-lib/src/service.rs#L408) — `fn bounce_via_selection(user_id: i64, tags: &[&str]) -> Value {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:419`](../source/abuse-enforcement-service/service-lib/src/service.rs#L419) — `fn bounce_via_template(user_id: i64, template_id: &str, policy_tag: &str) -> Value {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:433`](../source/abuse-enforcement-service/service-lib/src/service.rs#L433) — `pub fn record_strato_metrics(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:448`](../source/abuse-enforcement-service/service-lib/src/service.rs#L448) — `pub fn strato_retry_strategy() -> ExponentialBuilder {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:473`](../source/abuse-enforcement-service/service-lib/src/service.rs#L473) — `pub async fn handle_action(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:523`](../source/abuse-enforcement-service/service-lib/src/service.rs#L523) — `pub async fn handle_config(State(state): State<Arc<AppState>>) -> Json<Value> {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:536`](../source/abuse-enforcement-service/service-lib/src/service.rs#L536) — `pub async fn handle_dry_run(State(state): State<Arc<AppState>>) -> Json<Value> {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:545`](../source/abuse-enforcement-service/service-lib/src/service.rs#L545) — `pub async fn enforce_actions(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:643`](../source/abuse-enforcement-service/service-lib/src/service.rs#L643) — `fn partition_contiguous_by_actor_header(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:661`](../source/abuse-enforcement-service/service-lib/src/service.rs#L661) — `async fn enforce_action_group_multi(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:759`](../source/abuse-enforcement-service/service-lib/src/service.rs#L759) — `fn emit_enforcement_metric(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:790`](../source/abuse-enforcement-service/service-lib/src/service.rs#L790) — `pub async fn enforce_action(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:897`](../source/abuse-enforcement-service/service-lib/src/service.rs#L897) — `fn truncate_utf8(s: &str, max_bytes: usize) -> String {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:910`](../source/abuse-enforcement-service/service-lib/src/service.rs#L910) — `pub struct PermanentAisFailure(pub String);`
+- [`abuse-enforcement-service/service-lib/src/service.rs:913`](../source/abuse-enforcement-service/service-lib/src/service.rs#L913) — `fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:920`](../source/abuse-enforcement-service/service-lib/src/service.rs#L920) — `const DETERMINISTIC_AIS_EXCEPTION_CLASSES: &[&str] = &[`
+- [`abuse-enforcement-service/service-lib/src/service.rs:924`](../source/abuse-enforcement-service/service-lib/src/service.rs#L924) — `pub fn classify_ais_failure(action_name: &str, message: &str, resp: &Value) -> anyhow::Error {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:948`](../source/abuse-enforcement-service/service-lib/src/service.rs#L948) — `pub fn parse_ais_response(user_id: i64, resp: &Value) -> UserActionResult {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:971`](../source/abuse-enforcement-service/service-lib/src/service.rs#L971) — `fn rate_limit_entity_type(s: &str) -> Result<crate::facts::EntityType, (StatusCode, Json<Value>)> {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1002`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1002) — `pub async fn handle_rate_limit(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1049`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1049) — `pub async fn handle_rate_limit_increment(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1092`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1092) — `pub async fn handle_rate_limit_reset(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1161`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1161) — `pub async fn handle_dedup_get(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1202`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1202) — `pub async fn handle_dedup_get_entity(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1256`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1256) — `pub async fn handle_config_put(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1335`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1335) — `pub async fn handle_config_patch_field(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1410`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1410) — `pub async fn handle_rules_get(State(state): State<Arc<AppState>>) -> impl IntoResponse {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1441`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1441) — `pub async fn handle_allowlist_put(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1538`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1538) — `pub async fn handle_allowlist_delete(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1594`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1594) — `pub async fn bulk_allowlist_impl(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1696`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1696) — `pub async fn handle_allowlist_bulk(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1759`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1759) — `pub async fn handle_allowlist_list(State(state): State<Arc<AppState>>) -> impl IntoResponse {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1790`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1790) — `pub async fn handle_allowlist_get(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1827`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1827) — `pub async fn handle_allowlist_get_entity(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1879`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1879) — `pub async fn handle_allowlist_put_entity(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:1990`](../source/abuse-enforcement-service/service-lib/src/service.rs#L1990) — `pub async fn handle_allowlist_delete_entity(`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2076`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2076) — `fn truncate_utf8_does_not_split_multibyte_chars() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2087`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2087) — `fn assert_audit_note_appended(info: &[Value], first_caller_entry: &str) {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2099`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2099) — `const POLICY_IN_VIOLATION: &str = "PlatformManipulation";`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2100`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2100) — `const SPAM_HIGH_RECALL_LABEL: &str = "SpamHighRecall";`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2101`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2101) — `const LABEL_EXPIRY_MSEC: i64 = 30 * 24 * 60 * 60 * 1000;`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2104`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2104) — `fn every_action_shape_encodes_against_the_ais_schema() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2162`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2162) — `fn ais_outcome_failure_is_detected_as_permanent() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2180`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2180) — `fn deterministic_ais_exception_is_permanent_but_unknown_classes_retry() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2219`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2219) — `fn suspend_user_serializes_to_ais_shape() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2238`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2238) — `fn add_user_label_serializes_to_ais_shape() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2289`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2289) — `fn add_user_label_without_ttl_emits_empty_safety_label() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2300`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2300) — `fn metric_label_is_joined_labels_for_add_labels_v2_and_empty_otherwise() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2328`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2328) — `fn enforcement_total_accepts_action_name_plus_metric_label_row() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2352`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2352) — `fn kafka_message_latency_accepts_entity_type_row() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2365`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2365) — `fn add_user_label_audit_note_falls_back_to_audit_note_when_info_empty() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2376`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2376) — `fn suspend_user_audit_note_is_just_the_audit_note() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2387`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2387) — `fn from_spec_dispatches_on_action_kind() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2433`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2433) — `fn add_post_label_serializes_to_tweet_safety_shape() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2472`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2472) — `fn add_post_label_without_ttl_emits_empty_safety_label() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2483`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2483) — `fn partition_contiguous_keeps_interleaved_order() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2512`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2512) — `fn partition_contiguous_batches_adjacent_same_actor() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2528`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2528) — `fn actor_header_is_stub_botmaker_for_post_labels_only() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2567`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2567) — `fn bounce_arkose_serializes_to_ais_shape() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2586`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2586) — `fn bounce_captcha_uses_captcha_tag_set() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2596`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2596) — `fn spam_liveness_check_serializes_to_ais_shape() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2619`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2619) — `fn from_spec_builds_spam_liveness_check() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2637`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2637) — `fn bounce_audit_note_falls_back_to_audit_note_when_info_empty() {`
+- [`abuse-enforcement-service/service-lib/src/service.rs:2645`](../source/abuse-enforcement-service/service-lib/src/service.rs#L2645) — `fn audit_note_contains_pkg_version_and_git_stamp() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:13`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L13) — `pub const USER_SNAP_PKEY: &str = "global_rate_limit";`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:14`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L14) — `pub const POST_SNAP_PKEY: &str = "global_rate_limit:post";`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:15`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L15) — `const WINDOW_SECS: u64 = 86_400;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:16`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L16) — `const SNAPSHOT_INTERVAL_SECS: u64 = 60;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:17`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L17) — `const SNAPSHOT_TTL_SECS: u64 = WINDOW_SECS + 3_600;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:18`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L18) — `const SCAN_LIMIT: u32 = 200_000;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:20`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L20) — `fn now_secs() -> u64 {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:27`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L27) — `fn snapshot_lkey(ts_secs: u64, interval: u64) -> String {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:31`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L31) — `fn window_usage(counts: &[i64]) -> Option<(i64, i64)> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:37`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L37) — `fn remaining(cap: i64, used: i64) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:42`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L42) — `trait CounterSource: Send + Sync {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:43`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L43) — `async fn increment(&self) -> Option<i64>;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:48`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L48) — `async fn increment(&self) -> Option<i64> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:54`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L54) — `trait SnapshotStore: Send + Sync {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:55`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L55) — `async fn scan(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:62`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L62) — `async fn put_with_ttl(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:69`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L69) — `async fn delete(&self, pkey: &str, lkey: &str) -> anyhow::Result<()>;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:72`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L72) — `struct ManhattanSnapshotStore {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:79`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L79) — `async fn scan(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:110`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L110) — `async fn put_with_ttl(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:123`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L123) — `async fn delete(&self, pkey: &str, lkey: &str) -> anyhow::Result<()> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:132`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L132) — `struct Cached {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:138`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L138) — `pub struct SlidingWindowLimiter {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:152`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L152) — `pub fn new(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:169`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L169) — `fn from_parts(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:190`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L190) — `pub async fn try_record(&self, cap: i64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:205`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L205) — `pub fn stats(&self, cap: i64) -> (u32, u32, u32) {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:214`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L214) — `pub async fn record_report(&self, cap: i64) -> Option<serde_json::Value> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:228`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L228) — `pub async fn reset(&self) -> Option<u64> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:262`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L262) — `pub fn spawn_background(&self) {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:275`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L275) — `async fn increment_and_rolling(&self) -> Option<i64> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:295`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L295) — `fn rolling_cached(&self) -> i64 {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:301`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L301) — `async fn write_snapshot(&self) {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:319`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L319) — `async fn refresh(&self) {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:385`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L385) — `fn window_usage_monotone_equals_last_minus_first() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:390`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L390) — `fn window_usage_dip_and_recover_adds_no_phantom_usage() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:396`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L396) — `fn window_usage_true_reset_undercounts_never_overcounts() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:401`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L401) — `fn window_usage_oscillation_bounded_by_range() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:406`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L406) — `fn window_usage_matches_old_math_on_monotone_series() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:426`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L426) — `fn window_usage_empty_and_single() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:432`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L432) — `fn remaining_clamps_at_zero() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:439`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L439) — `fn snapshot_lkey_aligns_to_interval() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:445`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L445) — `fn snapshot_lkey_is_fixed_width_and_lexically_ordered() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:454`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L454) — `struct MemStore {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:460`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L460) — `async fn scan(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:481`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L481) — `async fn put_with_ttl(`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:495`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L495) — `async fn delete(&self, pkey: &str, lkey: &str) -> anyhow::Result<()> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:504`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L504) — `struct ScriptedCounter {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:509`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L509) — `fn new(values: impl IntoIterator<Item = i64>) -> Arc<Self> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:518`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L518) — `async fn increment(&self) -> Option<i64> {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:523`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L523) — `const CAP: i64 = 2_000_000;`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:524`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L524) — `const PKEY: &str = "global_rate_limit:post";`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:526`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L526) — `fn pod(counter: Arc<ScriptedCounter>, store: Arc<MemStore>) -> SlidingWindowLimiter {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:530`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L530) — `async fn seed(store: &MemStore, age_secs: u64, value: i64) {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:539`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L539) — `async fn incident_replay_poisoned_series_does_not_wedge_the_cap() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:557`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L557) — `async fn post_reset_observation_keeps_allowing_and_counts_reset() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:584`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L584) — `async fn stale_pod_stops_writing_snapshots() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:613`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L613) — `async fn refresh_does_not_resurrect_stale_high_into_last_count() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:641`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L641) — `async fn true_reset_counts_fresh_after_window_slides() {`
+- [`abuse-enforcement-service/service-lib/src/sliding_window.rs:655`](../source/abuse-enforcement-service/service-lib/src/sliding_window.rs#L655) — `async fn reset_clears_poisoned_series_and_rebaselines() {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:18`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L18) — `pub struct CredClients {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:23`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L23) — `async fn strato_fetch<K, V, T>(`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:60`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L60) — `pub async fn fetch_user_allowlist(`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:93`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L93) — `pub async fn fetch_entity_allowlist(`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:127`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L127) — `pub async fn fetch_user(gd: &GizmoduckCoreClient, user_id: i64) -> Result<GizmoduckFacts> {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:131`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L131) — `pub fn compose_cred(hpr: HighPageRankUser, is_grey_badge: bool) -> CredFacts {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:141`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L141) — `async fn fetch_hpr_column(strato: &Strato, user_id: i64) -> Result<HighPageRankUser> {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:147`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L147) — `async fn fetch_grey_column(strato: &Strato, user_id: i64) -> Result<bool> {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:156`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L156) — `pub async fn fetch_cred(clients: &CredClients, user_id: i64) -> Result<CredFacts> {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:184`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L184) — `pub async fn fetch_uas(uas_strato: &Strato, user_id: i64) -> Option<String> {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:208`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L208) — `pub fn empty_info_map() -> BTreeMap<String, String> {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:218`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L218) — `fn compose_cred_grey_only() {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:232`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L232) — `fn compose_cred_hpr_only() {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:245`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L245) — `fn compose_cred_neither() {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:258`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L258) — `fn compose_cred_missing_hpr_flag_defaults_false() {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:265`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L265) — `fn high_page_rank_user_serde_camel_case() {`
+- [`abuse-enforcement-service/service-lib/src/strato.rs:278`](../source/abuse-enforcement-service/service-lib/src/strato.rs#L278) — `fn grey_badge_envelope_serde() {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:4`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L4) — `const TEST_USER_ID_MASK: i64 = 1 << 11;`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:6`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L6) — `const MINIMUM_TEST_USER_ID: i64 = 1 << 53;`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:15`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L15) — `pub fn is_test_user_id(user_id: i64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:19`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L19) — `fn is_gizmoduck_test_user(user_id: i64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:23`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L23) — `fn is_legacy_test_user(user_id: i64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:28`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L28) — `fn is_in_legacy_test_users_super_sequence(user_id: i64) -> bool {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:38`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L38) — `fn cs_integration_test_user_from_the_incident_is_detected() {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:43`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L43) — `fn legacy_super_sequence_boundaries() {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:53`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L53) — `fn snowflake_test_bit_detected_only_above_minimum() {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:62`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L62) — `fn parrot_ids_load_and_match() {`
+- [`abuse-enforcement-service/service-lib/src/test_user.rs:69`](../source/abuse-enforcement-service/service-lib/src/test_user.rs#L69) — `fn ordinary_user_ids_are_not_test_users() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:5`](../source/abuse-enforcement-service/types/src/allowlist.rs#L5) — `pub struct AllowlistEntry {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:13`](../source/abuse-enforcement-service/types/src/allowlist.rs#L13) — `pub struct AllowlistRecord {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:26`](../source/abuse-enforcement-service/types/src/allowlist.rs#L26) — `pub struct AllowlistAddRequest {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:36`](../source/abuse-enforcement-service/types/src/allowlist.rs#L36) — `pub struct AllowlistBulkRequest {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:44`](../source/abuse-enforcement-service/types/src/allowlist.rs#L44) — `pub struct AllowlistBulkEntry {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:55`](../source/abuse-enforcement-service/types/src/allowlist.rs#L55) — `pub struct BulkResponse {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:66`](../source/abuse-enforcement-service/types/src/allowlist.rs#L66) — `pub struct BulkRowResult {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:79`](../source/abuse-enforcement-service/types/src/allowlist.rs#L79) — `pub const MAX_TTL_SECS: u64 = 90 * 24 * 60 * 60;`
+- [`abuse-enforcement-service/types/src/allowlist.rs:81`](../source/abuse-enforcement-service/types/src/allowlist.rs#L81) — `pub fn parse_ttl(text: &str) -> Option<u64> {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:104`](../source/abuse-enforcement-service/types/src/allowlist.rs#L104) — `pub struct BulkParseResult {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:109`](../source/abuse-enforcement-service/types/src/allowlist.rs#L109) — `pub fn parse_bulk_input(`
+- [`abuse-enforcement-service/types/src/allowlist.rs:214`](../source/abuse-enforcement-service/types/src/allowlist.rs#L214) — `fn parse_ttl_accepts_units() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:223`](../source/abuse-enforcement-service/types/src/allowlist.rs#L223) — `fn parse_ttl_accepts_plain_seconds() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:229`](../source/abuse-enforcement-service/types/src/allowlist.rs#L229) — `fn parse_ttl_is_case_insensitive_and_whitespace_tolerant() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:235`](../source/abuse-enforcement-service/types/src/allowlist.rs#L235) — `fn parse_ttl_rejects_garbage() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:243`](../source/abuse-enforcement-service/types/src/allowlist.rs#L243) — `fn rows(p: &BulkParseResult) -> Vec<(i64, u64, &str)> {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:251`](../source/abuse-enforcement-service/types/src/allowlist.rs#L251) — `fn parse_bulk_input_csv_form() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:262`](../source/abuse-enforcement-service/types/src/allowlist.rs#L262) — `fn parse_bulk_input_whitespace_form_keeps_multi_word_reason() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:269`](../source/abuse-enforcement-service/types/src/allowlist.rs#L269) — `fn parse_bulk_input_skips_blank_and_comment_lines() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:280`](../source/abuse-enforcement-service/types/src/allowlist.rs#L280) — `fn parse_bulk_input_default_ttl_fills_when_missing() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:287`](../source/abuse-enforcement-service/types/src/allowlist.rs#L287) — `fn parse_bulk_input_collects_all_errors_not_just_first() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:301`](../source/abuse-enforcement-service/types/src/allowlist.rs#L301) — `fn parse_bulk_input_enforces_90d_cap() {`
+- [`abuse-enforcement-service/types/src/allowlist.rs:309`](../source/abuse-enforcement-service/types/src/allowlist.rs#L309) — `fn parse_bulk_input_rejects_zero_ttl() {`
+- [`abuse-enforcement-service/types/src/config.rs:6`](../source/abuse-enforcement-service/types/src/config.rs#L6) — `pub struct ConfigPatchRequest {`

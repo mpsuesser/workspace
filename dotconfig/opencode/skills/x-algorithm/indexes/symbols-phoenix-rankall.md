@@ -1,0 +1,373 @@
+# phoenix-rankall: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`phoenix-rankall/build.rs:1`](../source/phoenix-rankall/build.rs#L1) — `fn main() -> Result<(), Box<dyn std::error::Error>> {`
+- [`phoenix-rankall/src/config/mod.rs:9`](../source/phoenix-rankall/src/config/mod.rs#L9) — `pub struct Cli {`
+- [`phoenix-rankall/src/config/mod.rs:95`](../source/phoenix-rankall/src/config/mod.rs#L95) — `pub fn effective_topic(&self) -> &str {`
+- [`phoenix-rankall/src/config/mod.rs:105`](../source/phoenix-rankall/src/config/mod.rs#L105) — `pub enum PipelineKind {`
+- [`phoenix-rankall/src/config/mod.rs:117`](../source/phoenix-rankall/src/config/mod.rs#L117) — `pub fn default_topic(&self) -> &'static str {`
+- [`phoenix-rankall/src/config/mod.rs:127`](../source/phoenix-rankall/src/config/mod.rs#L127) — `pub fn is_implemented(&self) -> bool {`
+- [`phoenix-rankall/src/config/mod.rs:134`](../source/phoenix-rankall/src/config/mod.rs#L134) — `pub fn needs_sid_endpoint(&self) -> bool {`
+- [`phoenix-rankall/src/config/mod.rs:138`](../source/phoenix-rankall/src/config/mod.rs#L138) — `pub fn window_configs(&self) -> Vec<WindowConfig> {`
+- [`phoenix-rankall/src/config/mod.rs:197`](../source/phoenix-rankall/src/config/mod.rs#L197) — `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {`
+- [`phoenix-rankall/src/config/mod.rs:211`](../source/phoenix-rankall/src/config/mod.rs#L211) — `pub struct WindowConfig {`
+- [`phoenix-rankall/src/config/mod.rs:218`](../source/phoenix-rankall/src/config/mod.rs#L218) — `pub fn new(name: impl Into<String>, retention_hours: u64) -> Self {`
+- [`phoenix-rankall/src/config/mod.rs:226`](../source/phoenix-rankall/src/config/mod.rs#L226) — `pub fn bounded(name: impl Into<String>, min_age_hours: u64, retention_hours: u64) -> Self {`
+- [`phoenix-rankall/src/config/mod.rs:235`](../source/phoenix-rankall/src/config/mod.rs#L235) — `pub fn window_name(&self) -> String {`
+- [`phoenix-rankall/src/config/mod.rs:249`](../source/phoenix-rankall/src/config/mod.rs#L249) — `fn window_name_formatting() {`
+- [`phoenix-rankall/src/config/mod.rs:268`](../source/phoenix-rankall/src/config/mod.rs#L268) — `fn main_pipeline_windows() {`
+- [`phoenix-rankall/src/config/mod.rs:284`](../source/phoenix-rankall/src/config/mod.rs#L284) — `fn topic_pipeline_windows() {`
+- [`phoenix-rankall/src/config/mod.rs:294`](../source/phoenix-rankall/src/config/mod.rs#L294) — `fn metadata_pipeline_windows() {`
+- [`phoenix-rankall/src/config/mod.rs:304`](../source/phoenix-rankall/src/config/mod.rs#L304) — `fn default_topics() {`
+- [`phoenix-rankall/src/config/mod.rs:328`](../source/phoenix-rankall/src/config/mod.rs#L328) — `fn sid_tail_windows() {`
+- [`phoenix-rankall/src/config/mod.rs:338`](../source/phoenix-rankall/src/config/mod.rs#L338) — `fn implemented_variants() {`
+- [`phoenix-rankall/src/config/mod.rs:350`](../source/phoenix-rankall/src/config/mod.rs#L350) — `fn sid_default_topic_matches_main() {`
+- [`phoenix-rankall/src/config/mod.rs:358`](../source/phoenix-rankall/src/config/mod.rs#L358) — `fn sid_pipeline_includes_bounded_4to14_windows() {`
+- [`phoenix-rankall/src/config/mod.rs:381`](../source/phoenix-rankall/src/config/mod.rs#L381) — `fn sid_pipeline_includes_nsfw_video_7day_window() {`
+- [`phoenix-rankall/src/config/mod.rs:396`](../source/phoenix-rankall/src/config/mod.rs#L396) — `fn sid_pipeline_includes_imagine_4day_window() {`
+- [`phoenix-rankall/src/consumer/kafka.rs:12`](../source/phoenix-rankall/src/consumer/kafka.rs#L12) — `pub struct KafkaEventConsumer {`
+- [`phoenix-rankall/src/consumer/kafka.rs:19`](../source/phoenix-rankall/src/consumer/kafka.rs#L19) — `pub async fn from_cli(cli: &Cli) -> Result<Self> {`
+- [`phoenix-rankall/src/consumer/kafka.rs:79`](../source/phoenix-rankall/src/consumer/kafka.rs#L79) — `fn extract_metadata(msg: &KafkaMessage) -> xai_kafka::KafkaMessageMetadata {`
+- [`phoenix-rankall/src/consumer/kafka.rs:91`](../source/phoenix-rankall/src/consumer/kafka.rs#L91) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/src/consumer/kafka.rs:105`](../source/phoenix-rankall/src/consumer/kafka.rs#L105) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/consumer/kafka.rs:118`](../source/phoenix-rankall/src/consumer/kafka.rs#L118) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/consumer/kafka.rs:132`](../source/phoenix-rankall/src/consumer/kafka.rs#L132) — `fn extract_metadata_from_message() {`
+- [`phoenix-rankall/src/consumer/mod.rs:7`](../source/phoenix-rankall/src/consumer/mod.rs#L7) — `pub type RawBatch = Vec<Vec<u8>>;`
+- [`phoenix-rankall/src/consumer/mod.rs:10`](../source/phoenix-rankall/src/consumer/mod.rs#L10) — `pub enum ConsumerError {`
+- [`phoenix-rankall/src/consumer/mod.rs:19`](../source/phoenix-rankall/src/consumer/mod.rs#L19) — `pub trait EventConsumer: Send {`
+- [`phoenix-rankall/src/consumer/mod.rs:20`](../source/phoenix-rankall/src/consumer/mod.rs#L20) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError>;`
+- [`phoenix-rankall/src/consumer/mod.rs:22`](../source/phoenix-rankall/src/consumer/mod.rs#L22) — `async fn commit(&mut self) -> Result<(), ConsumerError>;`
+- [`phoenix-rankall/src/consumer/mod.rs:24`](../source/phoenix-rankall/src/consumer/mod.rs#L24) — `async fn close(&mut self) -> Result<(), ConsumerError>;`
+- [`phoenix-rankall/src/main.rs:31`](../source/phoenix-rankall/src/main.rs#L31) — `async fn main() -> Result<()> {`
+- [`phoenix-rankall/src/metrics/mod.rs:7`](../source/phoenix-rankall/src/metrics/mod.rs#L7) — `pub struct PipelineMetrics {`
+- [`phoenix-rankall/src/metrics/mod.rs:32`](../source/phoenix-rankall/src/metrics/mod.rs#L32) — `pub fn new(registry: Registry) -> anyhow::Result<Self> {`
+- [`phoenix-rankall/src/metrics/mod.rs:36`](../source/phoenix-rankall/src/metrics/mod.rs#L36) — `pub fn new_with_pipeline(registry: Registry, pipeline: &str) -> anyhow::Result<Self> {`
+- [`phoenix-rankall/src/metrics/mod.rs:188`](../source/phoenix-rankall/src/metrics/mod.rs#L188) — `pub fn update_processor_stats(&self, label: &str, stats: &ProcessorStats) {`
+- [`phoenix-rankall/src/pipeline/mod.rs:12`](../source/phoenix-rankall/src/pipeline/mod.rs#L12) — `const STATS_LOG_INTERVAL: u64 = 100_000;`
+- [`phoenix-rankall/src/pipeline/mod.rs:14`](../source/phoenix-rankall/src/pipeline/mod.rs#L14) — `pub struct Pipeline {`
+- [`phoenix-rankall/src/pipeline/mod.rs:24`](../source/phoenix-rankall/src/pipeline/mod.rs#L24) — `pub fn new(`
+- [`phoenix-rankall/src/pipeline/mod.rs:40`](../source/phoenix-rankall/src/pipeline/mod.rs#L40) — `pub fn with_commit_strategy(`
+- [`phoenix-rankall/src/pipeline/mod.rs:50`](../source/phoenix-rankall/src/pipeline/mod.rs#L50) — `pub async fn run(mut self, cancel: CancellationToken) -> anyhow::Result<()> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:78`](../source/phoenix-rankall/src/pipeline/mod.rs#L78) — `async fn run_loop(`
+- [`phoenix-rankall/src/pipeline/mod.rs:215`](../source/phoenix-rankall/src/pipeline/mod.rs#L215) — `struct MockConsumer {`
+- [`phoenix-rankall/src/pipeline/mod.rs:223`](../source/phoenix-rankall/src/pipeline/mod.rs#L223) — `fn new(`
+- [`phoenix-rankall/src/pipeline/mod.rs:239`](../source/phoenix-rankall/src/pipeline/mod.rs#L239) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:249`](../source/phoenix-rankall/src/pipeline/mod.rs#L249) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:254`](../source/phoenix-rankall/src/pipeline/mod.rs#L254) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:261`](../source/phoenix-rankall/src/pipeline/mod.rs#L261) — `struct MockProcessor {`
+- [`phoenix-rankall/src/pipeline/mod.rs:267`](../source/phoenix-rankall/src/pipeline/mod.rs#L267) — `fn new(call_count: Arc<AtomicUsize>) -> Self {`
+- [`phoenix-rankall/src/pipeline/mod.rs:276`](../source/phoenix-rankall/src/pipeline/mod.rs#L276) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:289`](../source/phoenix-rankall/src/pipeline/mod.rs#L289) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/pipeline/mod.rs:295`](../source/phoenix-rankall/src/pipeline/mod.rs#L295) — `struct MockStore {`
+- [`phoenix-rankall/src/pipeline/mod.rs:304`](../source/phoenix-rankall/src/pipeline/mod.rs#L304) — `fn new(`
+- [`phoenix-rankall/src/pipeline/mod.rs:319`](../source/phoenix-rankall/src/pipeline/mod.rs#L319) — `fn with_dump_flag(mut self, flag: Arc<AtomicBool>) -> Self {`
+- [`phoenix-rankall/src/pipeline/mod.rs:327`](../source/phoenix-rankall/src/pipeline/mod.rs#L327) — `async fn add_batch(&self, records: Vec<IndexRecord>) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:334`](../source/phoenix-rankall/src/pipeline/mod.rs#L334) — `async fn start(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:339`](../source/phoenix-rankall/src/pipeline/mod.rs#L339) — `async fn stop(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:344`](../source/phoenix-rankall/src/pipeline/mod.rs#L344) — `fn dump_completed_flag(&self) -> Arc<AtomicBool> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:349`](../source/phoenix-rankall/src/pipeline/mod.rs#L349) — `fn make_test_pipeline(`
+- [`phoenix-rankall/src/pipeline/mod.rs:365`](../source/phoenix-rankall/src/pipeline/mod.rs#L365) — `async fn pipeline_processes_all_batches_then_shuts_down() {`
+- [`phoenix-rankall/src/pipeline/mod.rs:399`](../source/phoenix-rankall/src/pipeline/mod.rs#L399) — `async fn commit_after_dump_only_commits_when_flag_set() {`
+- [`phoenix-rankall/src/pipeline/mod.rs:403`](../source/phoenix-rankall/src/pipeline/mod.rs#L403) — `struct SlowConsumer {`
+- [`phoenix-rankall/src/pipeline/mod.rs:410`](../source/phoenix-rankall/src/pipeline/mod.rs#L410) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:418`](../source/phoenix-rankall/src/pipeline/mod.rs#L418) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:422`](../source/phoenix-rankall/src/pipeline/mod.rs#L422) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:460`](../source/phoenix-rankall/src/pipeline/mod.rs#L460) — `async fn interval_commit_fires_without_dump() {`
+- [`phoenix-rankall/src/pipeline/mod.rs:463`](../source/phoenix-rankall/src/pipeline/mod.rs#L463) — `struct TimedConsumer {`
+- [`phoenix-rankall/src/pipeline/mod.rs:470`](../source/phoenix-rankall/src/pipeline/mod.rs#L470) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:477`](../source/phoenix-rankall/src/pipeline/mod.rs#L477) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:481`](../source/phoenix-rankall/src/pipeline/mod.rs#L481) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:512`](../source/phoenix-rankall/src/pipeline/mod.rs#L512) — `async fn no_commits_in_loop_when_dump_only_and_no_notification() {`
+- [`phoenix-rankall/src/pipeline/mod.rs:515`](../source/phoenix-rankall/src/pipeline/mod.rs#L515) — `struct QuickConsumer {`
+- [`phoenix-rankall/src/pipeline/mod.rs:522`](../source/phoenix-rankall/src/pipeline/mod.rs#L522) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:529`](../source/phoenix-rankall/src/pipeline/mod.rs#L529) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:533`](../source/phoenix-rankall/src/pipeline/mod.rs#L533) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:564`](../source/phoenix-rankall/src/pipeline/mod.rs#L564) — `async fn pipeline_respects_cancellation() {`
+- [`phoenix-rankall/src/pipeline/mod.rs:565`](../source/phoenix-rankall/src/pipeline/mod.rs#L565) — `struct InfiniteConsumer {`
+- [`phoenix-rankall/src/pipeline/mod.rs:571`](../source/phoenix-rankall/src/pipeline/mod.rs#L571) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:575`](../source/phoenix-rankall/src/pipeline/mod.rs#L575) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/pipeline/mod.rs:579`](../source/phoenix-rankall/src/pipeline/mod.rs#L579) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:9`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L9) — `pub struct AnalysisProcessor {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:17`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L17) — `pub fn new(score_prefix: String, compact_protocol: bool) -> Self {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:26`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L26) — `fn is_excluded_suggest_type(suggest_type: &Option<String>) -> bool {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:35`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L35) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:142`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L142) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:152`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L152) — `fn make_scored_candidate(`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:190`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L190) — `const PREFIX: &str = "phoenix.HomeExperiment1Lap7.";`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:193`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L193) — `fn process_valid_scored_candidate() {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:231`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L231) — `fn filter_excluded_suggest_type() {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:257`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L257) — `fn filter_no_matching_scores() {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:273`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L273) — `fn skip_missing_required_ids() {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:305`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L305) — `fn handle_corrupt_payload() {`
+- [`phoenix-rankall/src/processor/analysis_processor.rs:315`](../source/phoenix-rankall/src/processor/analysis_processor.rs#L315) — `fn empty_prefix_keeps_all_scores() {`
+- [`phoenix-rankall/src/processor/blacklist.rs:7`](../source/phoenix-rankall/src/processor/blacklist.rs#L7) — `pub struct Blacklist {`
+- [`phoenix-rankall/src/processor/blacklist.rs:13`](../source/phoenix-rankall/src/processor/blacklist.rs#L13) — `pub fn load(data_dir: &Path) -> Self {`
+- [`phoenix-rankall/src/processor/blacklist.rs:32`](../source/phoenix-rankall/src/processor/blacklist.rs#L32) — `pub fn is_blocked(&self, post_id: i64, author_id: i64) -> bool {`
+- [`phoenix-rankall/src/processor/blacklist.rs:36`](../source/phoenix-rankall/src/processor/blacklist.rs#L36) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix-rankall/src/processor/blacklist.rs:41`](../source/phoenix-rankall/src/processor/blacklist.rs#L41) — `fn read_ids(path: &Path) -> HashSet<i64> {`
+- [`phoenix-rankall/src/processor/blacklist.rs:72`](../source/phoenix-rankall/src/processor/blacklist.rs#L72) — `fn load_from_files() {`
+- [`phoenix-rankall/src/processor/blacklist.rs:91`](../source/phoenix-rankall/src/processor/blacklist.rs#L91) — `fn is_blocked_checks_both() {`
+- [`phoenix-rankall/src/processor/blacklist.rs:102`](../source/phoenix-rankall/src/processor/blacklist.rs#L102) — `fn empty_when_files_missing() {`
+- [`phoenix-rankall/src/processor/blacklist.rs:109`](../source/phoenix-rankall/src/processor/blacklist.rs#L109) — `fn skips_invalid_lines() {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:32`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L32) — `pub struct PhoenixRankAllObject {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:40`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L40) — `pub fn new<F1, F2, F3, F100>(`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:62`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L62) — `fn read_from_in_protocol(`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:114`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L114) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:147`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L147) — `pub struct EngagementCount {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:160`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L160) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9>(`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:197`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L197) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<EngagementCount> {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:271`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L271) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:329`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L329) — `pub struct MultiModalEmbeddings {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:335`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L335) — `pub fn new<F1, F2>(mm_emb_v1: F1, mm_emb_v3: F2) -> MultiModalEmbeddings`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:348`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L348) — `fn read_from_in_protocol(`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:396`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L396) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:423`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L423) — `pub struct PhoenixRankAllCandidateFlat {`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:436`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L436) — `pub fn new<F1, F2, F3, F4, F5, F6, F8, F9, F100>(`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:473`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L473) — `fn read_from_in_protocol(`
+- [`phoenix-rankall/src/processor/gen/hydra.rs:549`](../source/phoenix-rankall/src/processor/gen/hydra.rs#L549) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:32`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L32) — `pub struct ScoredCandidate {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:44`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L44) — `pub fn new<F2, F3, F6, F7, F17, F22, F24>(`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:77`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L77) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ScoredCandidate> {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:153`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L153) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:204`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L204) — `pub struct PredictionScore {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:210`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L210) — `pub fn new<F1, F2>(name: F1, score: F2) -> PredictionScore`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:223`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L223) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PredictionScore> {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:255`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L255) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:274`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L274) — `pub struct ServedSearchCandidateList {`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:283`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L283) — `pub fn new<F2, F3, F4, F5>(`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:307`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L307) — `fn read_from_in_protocol(`
+- [`phoenix-rankall/src/processor/gen/scored_candidate.rs:367`](../source/phoenix-rankall/src/processor/gen/scored_candidate.rs#L367) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix-rankall/src/processor/main_processor.rs:7`](../source/phoenix-rankall/src/processor/main_processor.rs#L7) — `pub struct MainProcessor {`
+- [`phoenix-rankall/src/processor/main_processor.rs:13`](../source/phoenix-rankall/src/processor/main_processor.rs#L13) — `fn default() -> Self {`
+- [`phoenix-rankall/src/processor/main_processor.rs:22`](../source/phoenix-rankall/src/processor/main_processor.rs#L22) — `pub fn new() -> Self {`
+- [`phoenix-rankall/src/processor/main_processor.rs:28`](../source/phoenix-rankall/src/processor/main_processor.rs#L28) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/processor/main_processor.rs:68`](../source/phoenix-rankall/src/processor/main_processor.rs#L68) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/processor/main_processor.rs:78`](../source/phoenix-rankall/src/processor/main_processor.rs#L78) — `fn make_thrift_bytes(post_id: i64, author_id: i64, index_name: &str) -> Vec<u8> {`
+- [`phoenix-rankall/src/processor/main_processor.rs:89`](../source/phoenix-rankall/src/processor/main_processor.rs#L89) — `fn process_valid_records() {`
+- [`phoenix-rankall/src/processor/main_processor.rs:118`](../source/phoenix-rankall/src/processor/main_processor.rs#L118) — `fn skip_records_with_zero_ids() {`
+- [`phoenix-rankall/src/processor/main_processor.rs:134`](../source/phoenix-rankall/src/processor/main_processor.rs#L134) — `fn handle_corrupt_payload() {`
+- [`phoenix-rankall/src/processor/main_processor.rs:145`](../source/phoenix-rankall/src/processor/main_processor.rs#L145) — `fn empty_batch_returns_empty() {`
+- [`phoenix-rankall/src/processor/main_processor.rs:153`](../source/phoenix-rankall/src/processor/main_processor.rs#L153) — `fn stats_accumulate_across_batches() {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:7`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L7) — `pub struct MetadataProcessor {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:14`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L14) — `pub fn new(pipeline_type: &str) -> Self {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:24`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L24) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:86`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L86) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:99`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L99) — `fn make_metadata_bytes(`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:132`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L132) — `fn process_valid_metadata() {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:162`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L162) — `fn filters_wrong_index_name() {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:176`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L176) — `fn skips_zero_ids() {`
+- [`phoenix-rankall/src/processor/metadata_processor.rs:189`](../source/phoenix-rankall/src/processor/metadata_processor.rs#L189) — `fn defaults_missing_engagement() {`
+- [`phoenix-rankall/src/processor/mod.rs:17`](../source/phoenix-rankall/src/processor/mod.rs#L17) — `pub enum SkipReason {`
+- [`phoenix-rankall/src/processor/mod.rs:24`](../source/phoenix-rankall/src/processor/mod.rs#L24) — `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {`
+- [`phoenix-rankall/src/processor/mod.rs:34`](../source/phoenix-rankall/src/processor/mod.rs#L34) — `pub struct ProcessorStats {`
+- [`phoenix-rankall/src/processor/mod.rs:43`](../source/phoenix-rankall/src/processor/mod.rs#L43) — `pub fn success_rate(&self) -> f64 {`
+- [`phoenix-rankall/src/processor/mod.rs:51`](../source/phoenix-rankall/src/processor/mod.rs#L51) — `pub trait RecordProcessor: Send + Sync {`
+- [`phoenix-rankall/src/processor/mod.rs:52`](../source/phoenix-rankall/src/processor/mod.rs#L52) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord>;`
+- [`phoenix-rankall/src/processor/mod.rs:54`](../source/phoenix-rankall/src/processor/mod.rs#L54) — `fn stats(&self) -> &ProcessorStats;`
+- [`phoenix-rankall/src/processor/record.rs:3`](../source/phoenix-rankall/src/processor/record.rs#L3) — `pub type PostId = i64;`
+- [`phoenix-rankall/src/processor/record.rs:4`](../source/phoenix-rankall/src/processor/record.rs#L4) — `pub type AuthorId = i64;`
+- [`phoenix-rankall/src/processor/record.rs:7`](../source/phoenix-rankall/src/processor/record.rs#L7) — `pub enum IndexRecord {`
+- [`phoenix-rankall/src/processor/record.rs:53`](../source/phoenix-rankall/src/processor/record.rs#L53) — `pub struct EngagementCounts {`
+- [`phoenix-rankall/src/processor/record.rs:66`](../source/phoenix-rankall/src/processor/record.rs#L66) — `pub fn merge(&self, incoming: &Self) -> Self {`
+- [`phoenix-rankall/src/processor/record.rs:84`](../source/phoenix-rankall/src/processor/record.rs#L84) — `pub fn post_id(&self) -> PostId {`
+- [`phoenix-rankall/src/processor/record.rs:95`](../source/phoenix-rankall/src/processor/record.rs#L95) — `pub fn author_id(&self) -> AuthorId {`
+- [`phoenix-rankall/src/processor/record.rs:106`](../source/phoenix-rankall/src/processor/record.rs#L106) — `pub fn index_name(&self) -> &str {`
+- [`phoenix-rankall/src/processor/record.rs:117`](../source/phoenix-rankall/src/processor/record.rs#L117) — `pub fn merge_with(self, incoming: Self) -> Self {`
+- [`phoenix-rankall/src/processor/record.rs:157`](../source/phoenix-rankall/src/processor/record.rs#L157) — `fn merge_keeps_positive_fav_when_incoming_is_zero() {`
+- [`phoenix-rankall/src/processor/record.rs:170`](../source/phoenix-rankall/src/processor/record.rs#L170) — `fn merge_takes_higher_later_snapshot() {`
+- [`phoenix-rankall/src/processor/record.rs:187`](../source/phoenix-rankall/src/processor/record.rs#L187) — `fn metadata_merge_does_not_reset_engagement() {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:11`](../source/phoenix-rankall/src/processor/sid_processor.rs#L11) — `pub struct SidProcessor {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:21`](../source/phoenix-rankall/src/processor/sid_processor.rs#L21) — `pub fn new(`
+- [`phoenix-rankall/src/processor/sid_processor.rs:38`](../source/phoenix-rankall/src/processor/sid_processor.rs#L38) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:102`](../source/phoenix-rankall/src/processor/sid_processor.rs#L102) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:114`](../source/phoenix-rankall/src/processor/sid_processor.rs#L114) — `fn make_thrift_bytes(post_id: i64, author_id: i64, index_name: &str) -> Vec<u8> {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:124`](../source/phoenix-rankall/src/processor/sid_processor.rs#L124) — `const TEST_FILTERS: [&str; 4] = ["1fav", "video", "nsfw_video", "evergreen_video"];`
+- [`phoenix-rankall/src/processor/sid_processor.rs:126`](../source/phoenix-rankall/src/processor/sid_processor.rs#L126) — `fn make_processor() -> SidProcessor {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:139`](../source/phoenix-rankall/src/processor/sid_processor.rs#L139) — `async fn process_in_blocking<F>(f: F) -> Vec<IndexRecord>`
+- [`phoenix-rankall/src/processor/sid_processor.rs:147`](../source/phoenix-rankall/src/processor/sid_processor.rs#L147) — `async fn filters_records_by_index_name() {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:172`](../source/phoenix-rankall/src/processor/sid_processor.rs#L172) — `async fn invalid_records_dropped_before_filter() {`
+- [`phoenix-rankall/src/processor/sid_processor.rs:184`](../source/phoenix-rankall/src/processor/sid_processor.rs#L184) — `async fn rpc_failure_yields_empty_post_sid_not_drop() {`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:10`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L10) — `pub const TAIL_INDEX_NAME: &str = "tail";`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:12`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L12) — `pub struct SidTailProcessor {`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:23`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L23) — `pub fn new(`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:42`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L42) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:124`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L124) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:139`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L139) — `fn make_bytes(`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:173`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L173) — `fn make_processor(max_followers: i64, min_fav: i64) -> SidTailProcessor {`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:191`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L191) — `async fn process_in_blocking<F>(f: F) -> Vec<IndexRecord>`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:199`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L199) — `async fn keeps_tail_metadata_rows() {`
+- [`phoenix-rankall/src/processor/sid_tail_processor.rs:220`](../source/phoenix-rankall/src/processor/sid_tail_processor.rs#L220) — `async fn min_fav_filter() {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:8`](../source/phoenix-rankall/src/processor/thrift_types.rs#L8) — `pub fn deserialize_binary<T: TSerializable>(data: &[u8]) -> anyhow::Result<T> {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:19`](../source/phoenix-rankall/src/processor/thrift_types.rs#L19) — `pub fn deserialize_compact<T: TSerializable>(data: &[u8]) -> anyhow::Result<T> {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:30`](../source/phoenix-rankall/src/processor/thrift_types.rs#L30) — `pub fn serialize_binary<T: TSerializable>(value: &T) -> anyhow::Result<Vec<u8>> {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:45`](../source/phoenix-rankall/src/processor/thrift_types.rs#L45) — `fn phoenix_rank_all_object_roundtrip() {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:63`](../source/phoenix-rankall/src/processor/thrift_types.rs#L63) — `fn phoenix_rank_all_object_with_topics() {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:80`](../source/phoenix-rankall/src/processor/thrift_types.rs#L80) — `fn candidate_flat_roundtrip() {`
+- [`phoenix-rankall/src/processor/thrift_types.rs:123`](../source/phoenix-rankall/src/processor/thrift_types.rs#L123) — `fn scored_candidate_roundtrip() {`
+- [`phoenix-rankall/src/processor/topic_names.rs:122`](../source/phoenix-rankall/src/processor/topic_names.rs#L122) — `pub fn topic_ids_to_names(topic_ids: &[i64]) -> Vec<String> {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:8`](../source/phoenix-rankall/src/processor/topic_processor.rs#L8) — `pub struct TopicProcessor {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:16`](../source/phoenix-rankall/src/processor/topic_processor.rs#L16) — `pub fn new(blacklist: Blacklist) -> Self {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:27`](../source/phoenix-rankall/src/processor/topic_processor.rs#L27) — `fn process_batch(&mut self, raw: &[Vec<u8>]) -> Vec<IndexRecord> {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:81`](../source/phoenix-rankall/src/processor/topic_processor.rs#L81) — `fn stats(&self) -> &ProcessorStats {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:91`](../source/phoenix-rankall/src/processor/topic_processor.rs#L91) — `fn make_thrift_bytes(`
+- [`phoenix-rankall/src/processor/topic_processor.rs:107`](../source/phoenix-rankall/src/processor/topic_processor.rs#L107) — `fn process_valid_with_topics() {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:137`](../source/phoenix-rankall/src/processor/topic_processor.rs#L137) — `fn process_without_topics_defaults_to_empty() {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:155`](../source/phoenix-rankall/src/processor/topic_processor.rs#L155) — `fn blacklist_filters_blocked_posts() {`
+- [`phoenix-rankall/src/processor/topic_processor.rs:172`](../source/phoenix-rankall/src/processor/topic_processor.rs#L172) — `fn blacklist_filters_blocked_authors() {`
+- [`phoenix-rankall/src/sid/backfill.rs:12`](../source/phoenix-rankall/src/sid/backfill.rs#L12) — `pub struct BackfillConfig {`
+- [`phoenix-rankall/src/sid/backfill.rs:20`](../source/phoenix-rankall/src/sid/backfill.rs#L20) — `fn default() -> Self {`
+- [`phoenix-rankall/src/sid/backfill.rs:30`](../source/phoenix-rankall/src/sid/backfill.rs#L30) — `pub fn spawn_backfill_loop(`
+- [`phoenix-rankall/src/sid/backfill.rs:42`](../source/phoenix-rankall/src/sid/backfill.rs#L42) — `pub async fn run_backfill_loop(`
+- [`phoenix-rankall/src/sid/client.rs:18`](../source/phoenix-rankall/src/sid/client.rs#L18) — `pub struct SidClient {`
+- [`phoenix-rankall/src/sid/client.rs:26`](../source/phoenix-rankall/src/sid/client.rs#L26) — `pub fn new(`
+- [`phoenix-rankall/src/sid/client.rs:64`](../source/phoenix-rankall/src/sid/client.rs#L64) — `pub async fn lookup_sids(`
+- [`phoenix-rankall/src/sid/client.rs:163`](../source/phoenix-rankall/src/sid/client.rs#L163) — `fn snowflake_at_ms(ms: i64) -> i64 {`
+- [`phoenix-rankall/src/sid/client.rs:168`](../source/phoenix-rankall/src/sid/client.rs#L168) — `fn rejects_https_endpoint() {`
+- [`phoenix-rankall/src/sid/client.rs:183`](../source/phoenix-rankall/src/sid/client.rs#L183) — `async fn accepts_bare_and_http_endpoints() {`
+- [`phoenix-rankall/src/sid/client.rs:191`](../source/phoenix-rankall/src/sid/client.rs#L191) — `async fn empty_batch_short_circuits() {`
+- [`phoenix-rankall/src/sid/client.rs:204`](../source/phoenix-rankall/src/sid/client.rs#L204) — `async fn freshness_gate_filters_young_posts_without_rpc() {`
+- [`phoenix-rankall/src/sid/client.rs:234`](../source/phoenix-rankall/src/sid/client.rs#L234) — `async fn invalid_post_ids_dropped_before_rpc() {`
+- [`phoenix-rankall/src/sid/metrics.rs:3`](../source/phoenix-rankall/src/sid/metrics.rs#L3) — `pub const STATUS_TOO_FRESH: &str = "too_fresh";`
+- [`phoenix-rankall/src/sid/metrics.rs:4`](../source/phoenix-rankall/src/sid/metrics.rs#L4) — `pub const STATUS_HIT: &str = "hit";`
+- [`phoenix-rankall/src/sid/metrics.rs:5`](../source/phoenix-rankall/src/sid/metrics.rs#L5) — `pub const STATUS_MISS: &str = "miss";`
+- [`phoenix-rankall/src/sid/metrics.rs:6`](../source/phoenix-rankall/src/sid/metrics.rs#L6) — `pub const STATUS_ERROR: &str = "error";`
+- [`phoenix-rankall/src/sid/metrics.rs:8`](../source/phoenix-rankall/src/sid/metrics.rs#L8) — `pub const BACKFILL_RESOLVED: &str = "resolved";`
+- [`phoenix-rankall/src/sid/metrics.rs:9`](../source/phoenix-rankall/src/sid/metrics.rs#L9) — `pub const BACKFILL_STILL_MISSING: &str = "still_missing";`
+- [`phoenix-rankall/src/sid/metrics.rs:11`](../source/phoenix-rankall/src/sid/metrics.rs#L11) — `pub const LATENCY_SUCCESS: &str = "success";`
+- [`phoenix-rankall/src/sid/metrics.rs:12`](../source/phoenix-rankall/src/sid/metrics.rs#L12) — `pub const LATENCY_ERROR: &str = "error";`
+- [`phoenix-rankall/src/sid/metrics.rs:15`](../source/phoenix-rankall/src/sid/metrics.rs#L15) — `pub struct SidMetrics {`
+- [`phoenix-rankall/src/sid/metrics.rs:23`](../source/phoenix-rankall/src/sid/metrics.rs#L23) — `pub fn new(registry: &Registry) -> anyhow::Result<Self> {`
+- [`phoenix-rankall/src/sid/metrics.rs:66`](../source/phoenix-rankall/src/sid/metrics.rs#L66) — `pub fn for_tests() -> Self {`
+- [`phoenix-rankall/src/sid/mod.rs:9`](../source/phoenix-rankall/src/sid/mod.rs#L9) — `const TWITTER_EPOCH_MS: i64 = 1288834974657;`
+- [`phoenix-rankall/src/sid/mod.rs:11`](../source/phoenix-rankall/src/sid/mod.rs#L11) — `pub fn post_age_seconds(post_id: i64, now_ms: i64) -> f64 {`
+- [`phoenix-rankall/src/sid/mod.rs:25`](../source/phoenix-rankall/src/sid/mod.rs#L25) — `fn post_age_sane() {`
+- [`phoenix-rankall/src/sid/mod.rs:34`](../source/phoenix-rankall/src/sid/mod.rs#L34) — `fn post_age_zero_for_invalid_post_id() {`
+- [`phoenix-rankall/src/sid/mod.rs:40`](../source/phoenix-rankall/src/sid/mod.rs#L40) — `fn post_age_zero_for_future_post() {`
+- [`phoenix-rankall/src/store/analysis.rs:18`](../source/phoenix-rankall/src/store/analysis.rs#L18) — `const RETENTION_DAYS: i64 = 7;`
+- [`phoenix-rankall/src/store/analysis.rs:19`](../source/phoenix-rankall/src/store/analysis.rs#L19) — `const DEFAULT_DUMP_EVERY: usize = 100_000;`
+- [`phoenix-rankall/src/store/analysis.rs:20`](../source/phoenix-rankall/src/store/analysis.rs#L20) — `const FILE_PREFIX: &str = "home_mixer_phoenix_scored_candidates";`
+- [`phoenix-rankall/src/store/analysis.rs:22`](../source/phoenix-rankall/src/store/analysis.rs#L22) — `pub struct AnalysisDumpStore {`
+- [`phoenix-rankall/src/store/analysis.rs:30`](../source/phoenix-rankall/src/store/analysis.rs#L30) — `pub fn new(output_dir: PathBuf, dump_every: Option<usize>) -> Self {`
+- [`phoenix-rankall/src/store/analysis.rs:40`](../source/phoenix-rankall/src/store/analysis.rs#L40) — `fn cleanup_old_dirs(&self) {`
+- [`phoenix-rankall/src/store/analysis.rs:67`](../source/phoenix-rankall/src/store/analysis.rs#L67) — `fn dump_records(output_dir: &Path, records: &[IndexRecord]) -> anyhow::Result<()> {`
+- [`phoenix-rankall/src/store/analysis.rs:159`](../source/phoenix-rankall/src/store/analysis.rs#L159) — `async fn add_batch(&self, records: Vec<IndexRecord>) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/analysis.rs:181`](../source/phoenix-rankall/src/store/analysis.rs#L181) — `async fn start(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/analysis.rs:187`](../source/phoenix-rankall/src/store/analysis.rs#L187) — `async fn stop(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/analysis.rs:205`](../source/phoenix-rankall/src/store/analysis.rs#L205) — `fn dump_completed_flag(&self) -> Arc<AtomicBool> {`
+- [`phoenix-rankall/src/store/analysis.rs:215`](../source/phoenix-rankall/src/store/analysis.rs#L215) — `fn make_analysis_record(post_id: i64, scores: Vec<(&str, f64)>) -> IndexRecord {`
+- [`phoenix-rankall/src/store/analysis.rs:229`](../source/phoenix-rankall/src/store/analysis.rs#L229) — `async fn dump_when_buffer_full() {`
+- [`phoenix-rankall/src/store/analysis.rs:252`](../source/phoenix-rankall/src/store/analysis.rs#L252) — `async fn stop_flushes_remaining() {`
+- [`phoenix-rankall/src/store/analysis.rs:279`](../source/phoenix-rankall/src/store/analysis.rs#L279) — `async fn dynamic_score_columns() {`
+- [`phoenix-rankall/src/store/base.rs:23`](../source/phoenix-rankall/src/store/base.rs#L23) — `enum StoredValue {`
+- [`phoenix-rankall/src/store/base.rs:30`](../source/phoenix-rankall/src/store/base.rs#L30) — `fn from_record(record: IndexRecord) -> (i64, Self) {`
+- [`phoenix-rankall/src/store/base.rs:51`](../source/phoenix-rankall/src/store/base.rs#L51) — `fn merge(existing: Self, incoming: Self) -> Self {`
+- [`phoenix-rankall/src/store/base.rs:60`](../source/phoenix-rankall/src/store/base.rs#L60) — `fn author_id(&self) -> i64 {`
+- [`phoenix-rankall/src/store/base.rs:68`](../source/phoenix-rankall/src/store/base.rs#L68) — `fn post_sid(&self) -> Option<&[i32]> {`
+- [`phoenix-rankall/src/store/base.rs:75`](../source/phoenix-rankall/src/store/base.rs#L75) — `fn sid_is_missing(&self) -> bool {`
+- [`phoenix-rankall/src/store/base.rs:83`](../source/phoenix-rankall/src/store/base.rs#L83) — `type WindowData = HashMap<PostId, StoredValue>;`
+- [`phoenix-rankall/src/store/base.rs:85`](../source/phoenix-rankall/src/store/base.rs#L85) — `fn upsert_stored(map: &mut WindowData, post_id: PostId, incoming: StoredValue) {`
+- [`phoenix-rankall/src/store/base.rs:93`](../source/phoenix-rankall/src/store/base.rs#L93) — `type BufferMap = HashMap<String, WindowData>;`
+- [`phoenix-rankall/src/store/base.rs:95`](../source/phoenix-rankall/src/store/base.rs#L95) — `struct SharedState {`
+- [`phoenix-rankall/src/store/base.rs:100`](../source/phoenix-rankall/src/store/base.rs#L100) — `pub struct BaseSnapshotStore {`
+- [`phoenix-rankall/src/store/base.rs:110`](../source/phoenix-rankall/src/store/base.rs#L110) — `const PREFLOOR_SLACK_SECS: f64 = 6.0 * 3600.0;`
+- [`phoenix-rankall/src/store/base.rs:113`](../source/phoenix-rankall/src/store/base.rs#L113) — `pub fn new(config: StoreConfig, router: WindowRouter, metrics: Arc<PipelineMetrics>) -> Self {`
+- [`phoenix-rankall/src/store/base.rs:130`](../source/phoenix-rankall/src/store/base.rs#L130) — `async fn load_existing_data(&self) -> anyhow::Result<()> {`
+- [`phoenix-rankall/src/store/base.rs:245`](../source/phoenix-rankall/src/store/base.rs#L245) — `pub async fn get_missing_sid_post_ids(&self, max_age_hours: f64) -> Vec<PostId> {`
+- [`phoenix-rankall/src/store/base.rs:287`](../source/phoenix-rankall/src/store/base.rs#L287) — `pub async fn update_sids(`
+- [`phoenix-rankall/src/store/base.rs:322`](../source/phoenix-rankall/src/store/base.rs#L322) — `async fn dump_all_windows(&self) -> anyhow::Result<()> {`
+- [`phoenix-rankall/src/store/base.rs:448`](../source/phoenix-rankall/src/store/base.rs#L448) — `async fn add_batch(&self, records: Vec<IndexRecord>) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/base.rs:464`](../source/phoenix-rankall/src/store/base.rs#L464) — `async fn start(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/base.rs:658`](../source/phoenix-rankall/src/store/base.rs#L658) — `async fn stop(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/base.rs:674`](../source/phoenix-rankall/src/store/base.rs#L674) — `fn dump_completed_flag(&self) -> Arc<AtomicBool> {`
+- [`phoenix-rankall/src/store/base.rs:680`](../source/phoenix-rankall/src/store/base.rs#L680) — `fn is_sid_pipeline(pipeline: &str) -> bool {`
+- [`phoenix-rankall/src/store/base.rs:684`](../source/phoenix-rankall/src/store/base.rs#L684) — `fn stored_to_batch(`
+- [`phoenix-rankall/src/store/base.rs:702`](../source/phoenix-rankall/src/store/base.rs#L702) — `fn stored_to_core_batch(entries: &[(i64, &StoredValue)]) -> anyhow::Result<RecordBatch> {`
+- [`phoenix-rankall/src/store/base.rs:721`](../source/phoenix-rankall/src/store/base.rs#L721) — `fn stored_to_sid_batch(`
+- [`phoenix-rankall/src/store/base.rs:777`](../source/phoenix-rankall/src/store/base.rs#L777) — `fn stored_to_topic_batch(entries: &[(i64, &StoredValue)]) -> anyhow::Result<RecordBatch> {`
+- [`phoenix-rankall/src/store/base.rs:845`](../source/phoenix-rankall/src/store/base.rs#L845) — `fn stored_to_metadata_batch(entries: &[(i64, &StoredValue)]) -> anyhow::Result<RecordBatch> {`
+- [`phoenix-rankall/src/store/base.rs:965`](../source/phoenix-rankall/src/store/base.rs#L965) — `fn load_post_ids_from_batch(batch: &RecordBatch, target: &mut WindowData, pipeline: &str) {`
+- [`phoenix-rankall/src/store/base.rs:1076`](../source/phoenix-rankall/src/store/base.rs#L1076) — `fn empty_batch_for_window(window_name: &str, pipeline: &str) -> RecordBatch {`
+- [`phoenix-rankall/src/store/base.rs:1088`](../source/phoenix-rankall/src/store/base.rs#L1088) — `fn empty_sid_batch() -> RecordBatch {`
+- [`phoenix-rankall/src/store/base.rs:1110`](../source/phoenix-rankall/src/store/base.rs#L1110) — `fn empty_core_batch() -> RecordBatch {`
+- [`phoenix-rankall/src/store/base.rs:1125`](../source/phoenix-rankall/src/store/base.rs#L1125) — `fn empty_topic_batch() -> RecordBatch {`
+- [`phoenix-rankall/src/store/base.rs:1153`](../source/phoenix-rankall/src/store/base.rs#L1153) — `fn empty_metadata_batch() -> RecordBatch {`
+- [`phoenix-rankall/src/store/base.rs:1195`](../source/phoenix-rankall/src/store/base.rs#L1195) — `pub fn prefix_window_router() -> WindowRouter {`
+- [`phoenix-rankall/src/store/base.rs:1206`](../source/phoenix-rankall/src/store/base.rs#L1206) — `pub fn metadata_window_router() -> WindowRouter {`
+- [`phoenix-rankall/src/store/base.rs:1212`](../source/phoenix-rankall/src/store/base.rs#L1212) — `pub fn sid_window_router() -> WindowRouter {`
+- [`phoenix-rankall/src/store/base.rs:1223`](../source/phoenix-rankall/src/store/base.rs#L1223) — `pub fn topic_window_router() -> WindowRouter {`
+- [`phoenix-rankall/src/store/base.rs:1248`](../source/phoenix-rankall/src/store/base.rs#L1248) — `fn make_metrics() -> Arc<PipelineMetrics> {`
+- [`phoenix-rankall/src/store/base.rs:1252`](../source/phoenix-rankall/src/store/base.rs#L1252) — `fn make_core_record(post_id: i64, author_id: i64, index_name: &str) -> IndexRecord {`
+- [`phoenix-rankall/src/store/base.rs:1260`](../source/phoenix-rankall/src/store/base.rs#L1260) — `fn make_metadata_record(post_id: i64, author_id: i64, fav_count: i64) -> IndexRecord {`
+- [`phoenix-rankall/src/store/base.rs:1276`](../source/phoenix-rankall/src/store/base.rs#L1276) — `fn prefix_router_routes_to_matching_windows() {`
+- [`phoenix-rankall/src/store/base.rs:1289`](../source/phoenix-rankall/src/store/base.rs#L1289) — `fn prefix_router_returns_empty_for_unknown_index() {`
+- [`phoenix-rankall/src/store/base.rs:1298`](../source/phoenix-rankall/src/store/base.rs#L1298) — `fn metadata_router_routes_to_all_windows() {`
+- [`phoenix-rankall/src/store/base.rs:1318`](../source/phoenix-rankall/src/store/base.rs#L1318) — `fn topic_router_explicit_mapping() {`
+- [`phoenix-rankall/src/store/base.rs:1333`](../source/phoenix-rankall/src/store/base.rs#L1333) — `fn stored_to_core_batch_roundtrip() {`
+- [`phoenix-rankall/src/store/base.rs:1356`](../source/phoenix-rankall/src/store/base.rs#L1356) — `async fn store_add_and_dump() {`
+- [`phoenix-rankall/src/store/base.rs:1390`](../source/phoenix-rankall/src/store/base.rs#L1390) — `async fn metadata_keeps_fav_when_later_event_has_zero_engagement() {`
+- [`phoenix-rankall/src/store/base.rs:1430`](../source/phoenix-rankall/src/store/base.rs#L1430) — `async fn metadata_reload_preserves_fav() {`
+- [`phoenix-rankall/src/store/base.rs:1495`](../source/phoenix-rankall/src/store/base.rs#L1495) — `async fn store_retention_filters_old_records() {`
+- [`phoenix-rankall/src/store/base.rs:1531`](../source/phoenix-rankall/src/store/base.rs#L1531) — `async fn store_loads_existing_data() {`
+- [`phoenix-rankall/src/store/base.rs:1571`](../source/phoenix-rankall/src/store/base.rs#L1571) — `async fn rare_event_arrives_to_previously_empty_window() {`
+- [`phoenix-rankall/src/store/base.rs:1640`](../source/phoenix-rankall/src/store/base.rs#L1640) — `async fn rare_events_accumulate_across_dumps() {`
+- [`phoenix-rankall/src/store/base.rs:1688`](../source/phoenix-rankall/src/store/base.rs#L1688) — `fn make_sid_record(post_id: i64, author_id: i64, post_sid: Vec<i32>) -> IndexRecord {`
+- [`phoenix-rankall/src/store/base.rs:1697`](../source/phoenix-rankall/src/store/base.rs#L1697) — `fn make_sid_store(dir: &TempDir) -> BaseSnapshotStore {`
+- [`phoenix-rankall/src/store/base.rs:1713`](../source/phoenix-rankall/src/store/base.rs#L1713) — `fn sid_router_routes_only_matching_index_name() {`
+- [`phoenix-rankall/src/store/base.rs:1725`](../source/phoenix-rankall/src/store/base.rs#L1725) — `async fn sid_get_missing_returns_only_empty_post_sid_rows() {`
+- [`phoenix-rankall/src/store/base.rs:1742`](../source/phoenix-rankall/src/store/base.rs#L1742) — `async fn sid_get_missing_filters_by_age() {`
+- [`phoenix-rankall/src/store/base.rs:1760`](../source/phoenix-rankall/src/store/base.rs#L1760) — `async fn sid_update_sids_patches_pending_and_main() {`
+- [`phoenix-rankall/src/store/base.rs:1781`](../source/phoenix-rankall/src/store/base.rs#L1781) — `async fn sid_update_sids_skips_unknown_post_ids_silently() {`
+- [`phoenix-rankall/src/store/base.rs:1795`](../source/phoenix-rankall/src/store/base.rs#L1795) — `fn sid_writer_emits_sentinel_for_missing_rows() {`
+- [`phoenix-rankall/src/store/base.rs:1845`](../source/phoenix-rankall/src/store/base.rs#L1845) — `async fn sid_get_missing_recognizes_sentinel_rows() {`
+- [`phoenix-rankall/src/store/base.rs:1862`](../source/phoenix-rankall/src/store/base.rs#L1862) — `async fn sid_parquet_roundtrip_preserves_sentinel_and_codes() {`
+- [`phoenix-rankall/src/store/mod.rs:14`](../source/phoenix-rankall/src/store/mod.rs#L14) — `pub enum StoreError {`
+- [`phoenix-rankall/src/store/mod.rs:22`](../source/phoenix-rankall/src/store/mod.rs#L22) — `pub type WindowRouter = Box<dyn Fn(&IndexRecord, &[WindowConfig]) -> Vec<String> + Send + Sync>;`
+- [`phoenix-rankall/src/store/mod.rs:25`](../source/phoenix-rankall/src/store/mod.rs#L25) — `pub struct StoreConfig {`
+- [`phoenix-rankall/src/store/mod.rs:35`](../source/phoenix-rankall/src/store/mod.rs#L35) — `pub trait SnapshotStore: Send + Sync {`
+- [`phoenix-rankall/src/store/mod.rs:36`](../source/phoenix-rankall/src/store/mod.rs#L36) — `async fn add_batch(&self, records: Vec<IndexRecord>) -> Result<(), StoreError>;`
+- [`phoenix-rankall/src/store/mod.rs:38`](../source/phoenix-rankall/src/store/mod.rs#L38) — `async fn start(&self) -> Result<(), StoreError>;`
+- [`phoenix-rankall/src/store/mod.rs:40`](../source/phoenix-rankall/src/store/mod.rs#L40) — `async fn stop(&self) -> Result<(), StoreError>;`
+- [`phoenix-rankall/src/store/mod.rs:42`](../source/phoenix-rankall/src/store/mod.rs#L42) — `fn dump_completed_flag(&self) -> Arc<AtomicBool>;`
+- [`phoenix-rankall/src/store/mod.rs:47`](../source/phoenix-rankall/src/store/mod.rs#L47) — `async fn add_batch(&self, records: Vec<IndexRecord>) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/mod.rs:50`](../source/phoenix-rankall/src/store/mod.rs#L50) — `async fn start(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/mod.rs:53`](../source/phoenix-rankall/src/store/mod.rs#L53) — `async fn stop(&self) -> Result<(), StoreError> {`
+- [`phoenix-rankall/src/store/mod.rs:56`](../source/phoenix-rankall/src/store/mod.rs#L56) — `fn dump_completed_flag(&self) -> Arc<AtomicBool> {`
+- [`phoenix-rankall/src/store/snowflake.rs:1`](../source/phoenix-rankall/src/store/snowflake.rs#L1) — `const TWITTER_EPOCH_MS: i64 = 1288834974657;`
+- [`phoenix-rankall/src/store/snowflake.rs:3`](../source/phoenix-rankall/src/store/snowflake.rs#L3) — `pub fn snowflake_to_timestamp_secs(snowflake_id: i64) -> f64 {`
+- [`phoenix-rankall/src/store/snowflake.rs:7`](../source/phoenix-rankall/src/store/snowflake.rs#L7) — `pub fn timestamp_secs_to_snowflake(timestamp_secs: f64) -> i64 {`
+- [`phoenix-rankall/src/store/snowflake.rs:16`](../source/phoenix-rankall/src/store/snowflake.rs#L16) — `fn roundtrip() {`
+- [`phoenix-rankall/src/store/snowflake.rs:24`](../source/phoenix-rankall/src/store/snowflake.rs#L24) — `fn snowflake_ordering() {`
+- [`phoenix-rankall/src/store/writer.rs:9`](../source/phoenix-rankall/src/store/writer.rs#L9) — `pub fn atomic_write_parquet(`
+- [`phoenix-rankall/src/store/writer.rs:51`](../source/phoenix-rankall/src/store/writer.rs#L51) — `fn cleanup_old_versions(output_dir: &Path, window_name: &str, keep: usize) {`
+- [`phoenix-rankall/src/store/writer.rs:83`](../source/phoenix-rankall/src/store/writer.rs#L83) — `pub fn find_latest_versioned_file(output_dir: &Path, window_name: &str) -> Option<PathBuf> {`
+- [`phoenix-rankall/src/store/writer.rs:102`](../source/phoenix-rankall/src/store/writer.rs#L102) — `pub fn read_parquet_file(path: &Path) -> anyhow::Result<Vec<RecordBatch>> {`
+- [`phoenix-rankall/src/store/writer.rs:119`](../source/phoenix-rankall/src/store/writer.rs#L119) — `fn make_test_batch(post_ids: &[i64], author_ids: &[i64]) -> RecordBatch {`
+- [`phoenix-rankall/src/store/writer.rs:135`](../source/phoenix-rankall/src/store/writer.rs#L135) — `fn write_and_read_back() {`
+- [`phoenix-rankall/src/store/writer.rs:160`](../source/phoenix-rankall/src/store/writer.rs#L160) — `fn symlink_swap_updates_to_latest() {`
+- [`phoenix-rankall/src/store/writer.rs:177`](../source/phoenix-rankall/src/store/writer.rs#L177) — `fn cleanup_keeps_only_n_versions() {`
+- [`phoenix-rankall/src/store/writer.rs:201`](../source/phoenix-rankall/src/store/writer.rs#L201) — `fn find_latest_versioned() {`
+- [`phoenix-rankall/src/store/writer.rs:217`](../source/phoenix-rankall/src/store/writer.rs#L217) — `fn find_latest_versioned_returns_none_when_empty() {`
+- [`phoenix-rankall/tests/integration_test.rs:22`](../source/phoenix-rankall/tests/integration_test.rs#L22) — `struct MockConsumer {`
+- [`phoenix-rankall/tests/integration_test.rs:28`](../source/phoenix-rankall/tests/integration_test.rs#L28) — `fn new(batches: Vec<RawBatch>) -> Self {`
+- [`phoenix-rankall/tests/integration_test.rs:35`](../source/phoenix-rankall/tests/integration_test.rs#L35) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/tests/integration_test.rs:45`](../source/phoenix-rankall/tests/integration_test.rs#L45) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/tests/integration_test.rs:49`](../source/phoenix-rankall/tests/integration_test.rs#L49) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/tests/integration_test.rs:54`](../source/phoenix-rankall/tests/integration_test.rs#L54) — `fn recent_snowflake() -> i64 {`
+- [`phoenix-rankall/tests/integration_test.rs:59`](../source/phoenix-rankall/tests/integration_test.rs#L59) — `fn make_core_thrift(post_id: i64, author_id: i64, index_name: &str) -> Vec<u8> {`
+- [`phoenix-rankall/tests/integration_test.rs:69`](../source/phoenix-rankall/tests/integration_test.rs#L69) — `fn make_metadata_thrift(post_id: i64, author_id: i64, fav_count: i64) -> Vec<u8> {`
+- [`phoenix-rankall/tests/integration_test.rs:97`](../source/phoenix-rankall/tests/integration_test.rs#L97) — `async fn main_pipeline_end_to_end() {`
+- [`phoenix-rankall/tests/integration_test.rs:152`](../source/phoenix-rankall/tests/integration_test.rs#L152) — `async fn metadata_pipeline_end_to_end() {`
+- [`phoenix-rankall/tests/integration_test.rs:212`](../source/phoenix-rankall/tests/integration_test.rs#L212) — `async fn pipeline_shutdown_flushes_data() {`
+- [`phoenix-rankall/tests/integration_test.rs:216`](../source/phoenix-rankall/tests/integration_test.rs#L216) — `struct OneShot {`
+- [`phoenix-rankall/tests/integration_test.rs:222`](../source/phoenix-rankall/tests/integration_test.rs#L222) — `async fn poll_batch(&mut self) -> Result<RawBatch, ConsumerError> {`
+- [`phoenix-rankall/tests/integration_test.rs:230`](../source/phoenix-rankall/tests/integration_test.rs#L230) — `async fn commit(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/tests/integration_test.rs:233`](../source/phoenix-rankall/tests/integration_test.rs#L233) — `async fn close(&mut self) -> Result<(), ConsumerError> {`
+- [`phoenix-rankall/tests/integration_test.rs:283`](../source/phoenix-rankall/tests/integration_test.rs#L283) — `async fn bounded_window_young_records_survive_restart() {`
+- [`phoenix-rankall/thrift/hydra.thrift:4`](../source/phoenix-rankall/thrift/hydra.thrift#L4) — `struct PhoenixRankAllObject {`
+- [`phoenix-rankall/thrift/hydra.thrift:11`](../source/phoenix-rankall/thrift/hydra.thrift#L11) — `struct EngagementCount {`
+- [`phoenix-rankall/thrift/hydra.thrift:23`](../source/phoenix-rankall/thrift/hydra.thrift#L23) — `struct MultiModalEmbeddings {`
+- [`phoenix-rankall/thrift/hydra.thrift:28`](../source/phoenix-rankall/thrift/hydra.thrift#L28) — `struct PhoenixRankAllCandidateFlat {`
+- [`phoenix-rankall/thrift/scored_candidate.thrift:3`](../source/phoenix-rankall/thrift/scored_candidate.thrift#L3) — `struct ScoredCandidate {`
+- [`phoenix-rankall/thrift/scored_candidate.thrift:14`](../source/phoenix-rankall/thrift/scored_candidate.thrift#L14) — `struct PredictionScore {`
+- [`phoenix-rankall/thrift/scored_candidate.thrift:19`](../source/phoenix-rankall/thrift/scored_candidate.thrift#L19) — `struct ServedSearchCandidateList {`

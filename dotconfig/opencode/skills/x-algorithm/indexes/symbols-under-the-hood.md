@@ -1,0 +1,313 @@
+# under-the-hood: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`under-the-hood/scalding/AccountLabelEvents.scala:6`](../source/under-the-hood/scalding/AccountLabelEvents.scala#L6) — `object AccountLabelEvents {`
+- [`under-the-hood/scalding/AccountLabelEvents.scala:9`](../source/under-the-hood/scalding/AccountLabelEvents.scala#L9) — `type Event = (Long, Long, Boolean)`
+- [`under-the-hood/scalding/GizmoduckLabelDiff.scala:9`](../source/under-the-hood/scalding/GizmoduckLabelDiff.scala#L9) — `object GizmoduckLabelDiff {`
+- [`under-the-hood/scalding/GizmoduckLabelDiff.scala:11`](../source/under-the-hood/scalding/GizmoduckLabelDiff.scala#L11) — `def labelApplyAndExpireTimes(json: String): Option[Map[String, (Long, Long)]] =`
+- [`under-the-hood/scalding/GizmoduckSafetyFlags.scala:6`](../source/under-the-hood/scalding/GizmoduckSafetyFlags.scala#L6) — `object GizmoduckSafetyFlags {`
+- [`under-the-hood/scalding/GizmoduckSafetyFlags.scala:14`](../source/under-the-hood/scalding/GizmoduckSafetyFlags.scala#L14) — `type FlagDiff = (Long, Boolean, Boolean)`
+- [`under-the-hood/scalding/GizmoduckSafetyFlags.scala:26`](../source/under-the-hood/scalding/GizmoduckSafetyFlags.scala#L26) — `private def parseBool(s: String): Option[Boolean] =`
+- [`under-the-hood/scalding/TakedownDeltas.scala:11`](../source/under-the-hood/scalding/TakedownDeltas.scala#L11) — `sealed trait TakedownObservation {`
+- [`under-the-hood/scalding/TakedownDeltas.scala:12`](../source/under-the-hood/scalding/TakedownDeltas.scala#L12) — `def userId: Long`
+- [`under-the-hood/scalding/TakedownDeltas.scala:13`](../source/under-the-hood/scalding/TakedownDeltas.scala#L13) — `def tweetId: Long`
+- [`under-the-hood/scalding/TakedownDeltas.scala:14`](../source/under-the-hood/scalding/TakedownDeltas.scala#L14) — `def eventMs: Long`
+- [`under-the-hood/scalding/TakedownDeltas.scala:15`](../source/under-the-hood/scalding/TakedownDeltas.scala#L15) — `def toTsvRow: TakedownObservation.TsvRow`
+- [`under-the-hood/scalding/TakedownDeltas.scala:18`](../source/under-the-hood/scalding/TakedownDeltas.scala#L18) — `case class TakedownDelta(`
+- [`under-the-hood/scalding/TakedownDeltas.scala:26`](../source/under-the-hood/scalding/TakedownDeltas.scala#L26) — `def toTsvRow: TakedownObservation.TsvRow =`
+- [`under-the-hood/scalding/TakedownDeltas.scala:37`](../source/under-the-hood/scalding/TakedownDeltas.scala#L37) — `case class TakedownState(userId: Long, tweetId: Long, eventMs: Long, reasons: Set[Reason])`
+- [`under-the-hood/scalding/TakedownDeltas.scala:39`](../source/under-the-hood/scalding/TakedownDeltas.scala#L39) — `def toTsvRow: TakedownObservation.TsvRow =`
+- [`under-the-hood/scalding/TakedownDeltas.scala:50`](../source/under-the-hood/scalding/TakedownDeltas.scala#L50) — `object TakedownObservation {`
+- [`under-the-hood/scalding/TakedownDeltas.scala:51`](../source/under-the-hood/scalding/TakedownDeltas.scala#L51) — `type TsvRow = (Long, Long, Long, Int, String, Boolean, Long)`
+- [`under-the-hood/scalding/TakedownDeltas.scala:53`](../source/under-the-hood/scalding/TakedownDeltas.scala#L53) — `def fromTsvRow(row: TsvRow): Option[TakedownObservation] = {`
+- [`under-the-hood/scalding/TakedownDeltas.scala:73`](../source/under-the-hood/scalding/TakedownDeltas.scala#L73) — `object TakedownDeltas {`
+- [`under-the-hood/scalding/TakedownDeltas.scala:137`](../source/under-the-hood/scalding/TakedownDeltas.scala#L137) — `object TakedownStates {`
+- [`under-the-hood/scalding/TakedownDeltas.scala:156`](../source/under-the-hood/scalding/TakedownDeltas.scala#L156) — `type TsvRow = (Long, Long, Long, String)`
+- [`under-the-hood/scalding/TakedownDeltas.scala:158`](../source/under-the-hood/scalding/TakedownDeltas.scala#L158) — `def toTsvRow(st: TakedownState): TsvRow =`
+- [`under-the-hood/scalding/TakedownDeltas.scala:165`](../source/under-the-hood/scalding/TakedownDeltas.scala#L165) — `def fromTsvRow(row: TsvRow): TakedownState = {`
+- [`under-the-hood/scalding/TakedownLabels.scala:5`](../source/under-the-hood/scalding/TakedownLabels.scala#L5) — `object TakedownLabels {`
+- [`under-the-hood/scalding/TakedownLabels.scala:10`](../source/under-the-hood/scalding/TakedownLabels.scala#L10) — `sealed abstract class ReasonType(val name: String, val order: Int, val countryScoped: Boolean)`
+- [`under-the-hood/scalding/TakedownLabels.scala:11`](../source/under-the-hood/scalding/TakedownLabels.scala#L11) — `object ReasonType {`
+- [`under-the-hood/scalding/TakedownLabels.scala:12`](../source/under-the-hood/scalding/TakedownLabels.scala#L12) — `case object LegalRequest extends ReasonType("LegalRequest", 1, true)`
+- [`under-the-hood/scalding/TakedownLabels.scala:13`](../source/under-the-hood/scalding/TakedownLabels.scala#L13) — `case object BystanderReport extends ReasonType("BystanderReport", 2, true)`
+- [`under-the-hood/scalding/TakedownLabels.scala:14`](../source/under-the-hood/scalding/TakedownLabels.scala#L14) — `case object UnspecifiedReason extends ReasonType("UnspecifiedReason", 3, true)`
+- [`under-the-hood/scalding/TakedownLabels.scala:15`](../source/under-the-hood/scalding/TakedownLabels.scala#L15) — `case object Dmca extends ReasonType("Dmca", 4, false)`
+- [`under-the-hood/scalding/TakedownLabels.scala:16`](../source/under-the-hood/scalding/TakedownLabels.scala#L16) — `case object DmcaMedia extends ReasonType("is_dmca", 5, false)`
+- [`under-the-hood/scalding/TakedownLabels.scala:21`](../source/under-the-hood/scalding/TakedownLabels.scala#L21) — `def fromName(name: String): Option[ReasonType] = byName.get(name)`
+- [`under-the-hood/scalding/TakedownLabels.scala:23`](../source/under-the-hood/scalding/TakedownLabels.scala#L23) — `def fromAccountEventName(name: String): Option[ReasonType] =`
+- [`under-the-hood/scalding/TakedownLabels.scala:32`](../source/under-the-hood/scalding/TakedownLabels.scala#L32) — `case class Reason(reasonType: ReasonType, countryCode: Option[String]) {`
+- [`under-the-hood/scalding/TakedownLabels.scala:33`](../source/under-the-hood/scalding/TakedownLabels.scala#L33) — `def sortKey: (Int, String) = (reasonType.order, countryCode.getOrElse(""))`
+- [`under-the-hood/scalding/TakedownLabels.scala:39`](../source/under-the-hood/scalding/TakedownLabels.scala#L39) — `def normalizeCountryCode(cc: String): String = cc.trim.toLowerCase`
+- [`under-the-hood/scalding/TakedownLabels.scala:41`](../source/under-the-hood/scalding/TakedownLabels.scala#L41) — `def fromWithholdingArm(arm: TakedownReason): Option[Reason] =`
+- [`under-the-hood/scalding/TakedownLabels.scala:51`](../source/under-the-hood/scalding/TakedownLabels.scala#L51) — `def unspecified(countryCode: String): Reason =`
+- [`under-the-hood/scalding/TakedownLabels.scala:54`](../source/under-the-hood/scalding/TakedownLabels.scala#L54) — `private def scoped(t: ReasonType, cc: String): Reason = Reason(t, Some(normalizeCountryCode(cc)))`
+- [`under-the-hood/scalding/TakedownLabels.scala:59`](../source/under-the-hood/scalding/TakedownLabels.scala#L59) — `def label(reasonType: ReasonType, countryCodes: Iterable[String]): String = {`
+- [`under-the-hood/scalding/TakedownLabels.scala:65`](../source/under-the-hood/scalding/TakedownLabels.scala#L65) — `def parseLabel(label: String): Option[(ReasonType, Seq[String])] =`
+- [`under-the-hood/scalding/TakedownLabels.scala:77`](../source/under-the-hood/scalding/TakedownLabels.scala#L77) — `def splitForServing(label: String): (String, Option[Seq[String]]) =`
+- [`under-the-hood/scalding/TakedownLabels.scala:83`](../source/under-the-hood/scalding/TakedownLabels.scala#L83) — `def rollupLabel(label: String): String = parseLabel(label).fold(label)(_._1.name)`
+- [`under-the-hood/scalding/TakedownLabels.scala:85`](../source/under-the-hood/scalding/TakedownLabels.scala#L85) — `def encodeReason(r: Reason): String =`
+- [`under-the-hood/scalding/TakedownLabels.scala:88`](../source/under-the-hood/scalding/TakedownLabels.scala#L88) — `def decodeReason(encoded: String): Option[Reason] =`
+- [`under-the-hood/scalding/TakedownLabels.scala:98`](../source/under-the-hood/scalding/TakedownLabels.scala#L98) — `def encodeReasons(reasons: Seq[Reason]): String = reasons.map(encodeReason).mkString(";")`
+- [`under-the-hood/scalding/TakedownLabels.scala:100`](../source/under-the-hood/scalding/TakedownLabels.scala#L100) — `def decodeReasons(encoded: String): Seq[Reason] =`
+- [`under-the-hood/scalding/TakedownReplay.scala:6`](../source/under-the-hood/scalding/TakedownReplay.scala#L6) — `object TakedownReplay {`
+- [`under-the-hood/scalding/TakedownReplay.scala:8`](../source/under-the-hood/scalding/TakedownReplay.scala#L8) — `type State = (Long, Seq[Reason])`
+- [`under-the-hood/scalding/TakedownReplay.scala:10`](../source/under-the-hood/scalding/TakedownReplay.scala#L10) — `case class PostLabel(`
+- [`under-the-hood/scalding/TakedownReplay.scala:43`](../source/under-the-hood/scalding/TakedownReplay.scala#L43) — `private def countries(state: Seq[Reason], t: ReasonType): Seq[String] =`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:11`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L11) — `object UnderTheHoodCommon {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:16`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L16) — `def snowflakeCreatedMs(id: Long): Long = (id >> 22) + TwitterEpochMs`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:18`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L18) — `private def utcCal(atMsec: Long): Calendar = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:24`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L24) — `def yyyymm(atMsec: Long): Int = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:29`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L29) — `def yyyymmdd(atMsec: Long): Int = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:36`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L36) — `def dayOfMonth(yyyymmdd: Int): Int = yyyymmdd % 100`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:38`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L38) — `def monthBucket(yyyymmdd: Int): Int = yyyymmdd / 100`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:40`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L40) — `def yyyymmddToMs(d: Int): Long = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:51`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L51) — `def followerClass(followers: Long): String =`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:57`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L57) — `def monthCoverageYyyymmdd(`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:75`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L75) — `def inclusiveDayCount(firstYyyymmdd: Int, lastYyyymmdd: Int): Int = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:84`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L84) — `def calendarDaysBetween(startYyyymmdd: Int, endYyyymmdd: Int): Int = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:89`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L89) — `def addCalendarDays(yyyymmddDay: Int, days: Int): Int = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:96`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L96) — `def finalThroughDay(completeThroughDay: Int, asOfDay: Int, postObservationDays: Int): Int =`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:99`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L99) — `def latestAsOfPostLabelRows(`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:103`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L103) — `def asOf(r: UthDailyPostLabel): Int = r.asOfYyyymmdd.getOrElse(Int.MinValue)`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:124`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L124) — `def parseUserIds(args: Args): Set[Long] = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:135`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L135) — `def preferredInt(args: Args, preferred: String, deprecated: String, default: Int): Int = {`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:147`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L147) — `def inScope(testUserIds: Set[Long], userId: Long): Boolean =`
+- [`under-the-hood/scalding/UnderTheHoodCommon.scala:150`](../source/under-the-hood/scalding/UnderTheHoodCommon.scala#L150) — `def applyReducers[K, V](g: Grouped[K, V], reducers: Int): Grouped[K, V] =`
+- [`under-the-hood/scalding/UnderTheHoodDates.scala:10`](../source/under-the-hood/scalding/UnderTheHoodDates.scala#L10) — `object UnderTheHoodDates {`
+- [`under-the-hood/scalding/UnderTheHoodDates.scala:12`](../source/under-the-hood/scalding/UnderTheHoodDates.scala#L12) — `def resolve(args: Args): DateRange = {`
+- [`under-the-hood/scalding/UnderTheHoodDates.scala:27`](../source/under-the-hood/scalding/UnderTheHoodDates.scala#L27) — `def monthRange(ym: String): DateRange = {`
+- [`under-the-hood/scalding/UnderTheHoodDates.scala:40`](../source/under-the-hood/scalding/UnderTheHoodDates.scala#L40) — `private def utcCal(): Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:22`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L22) — `class UthDailyAccountLabelsApp {`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:28`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L28) — `def runOnDateRange(dateRange: DateRange, config: UthDailyAccountLabelsConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:118`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L118) — `private def loadSeed(`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:128`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L128) — `object UthDailyAccountLabelsApp {`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:130`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L130) — `type Event = AccountLabelEvents.Event`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:189`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L189) — `case class UthDailyAccountLabelsConfig(`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:198`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L198) — `object UthDailyAccountLabelsConfig {`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:206`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L206) — `def fromArgs(args: Args): UthDailyAccountLabelsConfig = {`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:225`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L225) — `object UthDailyAccountLabelsAdhoc extends UthDailyAccountLabelsApp with TwitterExecutionApp {`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:226`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L226) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:231`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L231) — `object UthDailyAccountLabelsProd`
+- [`under-the-hood/scalding/UthDailyAccountLabelsJob.scala:235`](../source/under-the-hood/scalding/UthDailyAccountLabelsJob.scala#L235) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:23`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L23) — `class UthDailyPostTakedownLabelsApp {`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:29`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L29) — `def runOnDateRange(`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:63`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L63) — `def tweetEventsDir(day: Int): String = s"$basePath/$TweetEventsDir/$day"`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:88`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L88) — `def tweetEventStates: TypedPipe[TakedownObservation] =`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:117`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L117) — `def observations: TypedPipe[TakedownObservation] =`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:182`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L182) — `object UthDailyPostTakedownLabelsApp {`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:187`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L187) — `type PostTsvRow = (Int, Long, Long, Int, String, Int, Int, Long, Boolean)`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:231`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L231) — `case class UthDailyPostTakedownLabelsConfig(`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:239`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L239) — `object UthDailyPostTakedownLabelsConfig {`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:240`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L240) — `def fromArgs(args: Args): UthDailyPostTakedownLabelsConfig =`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:259`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L259) — `object UthDailyPostTakedownLabelsAdhoc`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:262`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L262) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:267`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L267) — `object UthDailyPostTakedownLabelsProd`
+- [`under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala:271`](../source/under-the-hood/scalding/UthDailyPostTakedownLabelsJob.scala#L271) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/UthDailyPostsBackfillJob.scala:20`](../source/under-the-hood/scalding/UthDailyPostsBackfillJob.scala#L20) — `class UthDailyPostsBackfillApp {`
+- [`under-the-hood/scalding/UthDailyPostsBackfillJob.scala:26`](../source/under-the-hood/scalding/UthDailyPostsBackfillJob.scala#L26) — `def runOnDateRange(dateRange: DateRange, config: UthDailyPostsConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/UthDailyPostsBackfillJob.scala:179`](../source/under-the-hood/scalding/UthDailyPostsBackfillJob.scala#L179) — `object UthDailyPostsBackfillApp {`
+- [`under-the-hood/scalding/UthDailyPostsBackfillJob.scala:314`](../source/under-the-hood/scalding/UthDailyPostsBackfillJob.scala#L314) — `object UthDailyPostsBackfillAdhoc extends UthDailyPostsBackfillApp with TwitterExecutionApp {`
+- [`under-the-hood/scalding/UthDailyPostsBackfillJob.scala:315`](../source/under-the-hood/scalding/UthDailyPostsBackfillJob.scala#L315) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:27`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L27) — `class UthDailyPostsApp {`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:33`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L33) — `def runOnDateRange(dateRange: DateRange, config: UthDailyPostsConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:175`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L175) — `object UthDailyPostsApp {`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:178`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L178) — `type LabelRow = (Long, (String, Long, Boolean, Long))`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:183`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L183) — `private def tweetFlags(t: UnhydratedFlatTweet): Map[String, Boolean] =`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:398`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L398) — `case class UthDailyPostsConfig(`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:409`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L409) — `object UthDailyPostsConfig {`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:417`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L417) — `def fromArgs(args: Args): UthDailyPostsConfig =`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:443`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L443) — `object UthDailyPostsAdhoc extends UthDailyPostsApp with TwitterExecutionApp {`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:444`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L444) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:449`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L449) — `object UthDailyPostsProd extends UthDailyPostsApp with TwitterScheduledExecutionApp {`
+- [`under-the-hood/scalding/UthDailyPostsJob.scala:451`](../source/under-the-hood/scalding/UthDailyPostsJob.scala#L451) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/UthMhInjections.scala:10`](../source/under-the-hood/scalding/UthMhInjections.scala#L10) — `object UthMhInjections {`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:37`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L37) — `class UthPctdAccountTakedownEventsApp {`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:42`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L42) — `def runOnDateRange(`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:117`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L117) — `object UthPctdAccountTakedownEventsApp {`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:120`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L120) — `type Delta = (Long, Boolean, String)`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:127`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L127) — `private def inScope(testUserIds: Set[Long], userId: Long): Boolean =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:137`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L137) — `private def higherPriority(a: ReasonType, b: ReasonType): ReasonType =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:158`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L158) — `private def countryOf(reason: TakedownLabels.Reason): String =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:176`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L176) — `case class TakedownDiff(`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:210`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L210) — `def arms(v: Option[String]) = v.toSeq.flatMap(parseTakedownsToString).distinct`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:213`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L213) — `def arms(json: Option[String]) =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:223`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L223) — `type ArmEvent = (Long, Int, String)`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:244`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L244) — `private def armRank(arm: String): Int =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:268`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L268) — `case class KeyResolution(`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:276`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L276) — `def withheldAt(dayStartMs: Long): Boolean =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:282`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L282) — `def armAt(dayStartMs: Long): Option[String] = {`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:283`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L283) — `def pick(events: Seq[ArmEvent], latest: Boolean): Option[String] =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:300`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L300) — `def reasonAt(dayStartMs: Long): Option[ReasonType] =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:303`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L303) — `def reportedOverRange(dayStarts: Seq[Long]): String =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:360`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L360) — `private def armsTsv(arms: Seq[(String, String)]): String =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:404`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L404) — `case class UthPctdAccountTakedownEventsConfig(`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:411`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L411) — `object UthPctdAccountTakedownEventsConfig {`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:412`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L412) — `def fromArgs(args: Args): UthPctdAccountTakedownEventsConfig =`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:428`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L428) — `object UthPctdAccountTakedownEventsAdhoc`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:431`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L431) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:439`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L439) — `object UthPctdAccountTakedownEventsProd`
+- [`under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala:443`](../source/under-the-hood/scalding/UthPctdAccountTakedownEventsJob.scala#L443) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:28`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L28) — `class UthReferenceMonthMhPublisherApp {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:34`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L34) — `def runOnDateRange(dateRange: DateRange, config: UthReferenceMhConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:50`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L50) — `def readFromFloor[T](firstDay: Option[Int], read: DateRange => TypedPipe[T]): TypedPipe[T] =`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:110`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L110) — `private def loadFollowers(`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:134`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L134) — `object UthReferenceMonthMhPublisherApp {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:140`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L140) — `private def followerEnum(name: String): UthFollowerClass = name match {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:155`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L155) — `private case class RateSketch(n: Long, sum: Double, tree: Option[QTree[Double]])`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:157`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L157) — `private object RateSketch {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:160`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L160) — `def one(rate: Double): RateSketch =`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:172`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L172) — `def toStats(s: RateSketch): UthRateStats = {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:175`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L175) — `def quantile(p: Double): Double =`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:196`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L196) — `private def cohortRow(`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:244`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L244) — `def inWindow(day: Int): Boolean =`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:353`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L353) — `def cohorts(`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:463`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L463) — `private def sumByKey[K: Ordering](pipe: TypedPipe[(K, Long)], reducers: Int) = {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:468`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L468) — `private def listByKey[K: Ordering, V](pipe: TypedPipe[(K, V)], reducers: Int) = {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:474`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L474) — `case class UthReferenceMhConfig(`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:486`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L486) — `object UthReferenceMhConfig {`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:487`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L487) — `def fromArgs(args: Args): UthReferenceMhConfig =`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:508`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L508) — `object UthReferenceMonthMhPublisherAdhoc`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:511`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L511) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:516`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L516) — `object UthReferenceMonthMhPublisherProd`
+- [`under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala:520`](../source/under-the-hood/scalding/UthReferenceMonthMhPublisherJob.scala#L520) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:21`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L21) — `class UthUserMonthMhPublisherApp {`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:27`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L27) — `def runOnDateRange(dateRange: DateRange, config: UthUserMonthMhConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:36`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L36) — `def readFromFloor[T](firstDay: Option[Int], read: DateRange => TypedPipe[T]): TypedPipe[T] =`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:107`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L107) — `object UthUserMonthMhPublisherApp {`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:163`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L163) — `private def toMhValue(row: UthUserMonthAggregateRow): UthUserMonthAggregate =`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:224`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L224) — `def inWindow(day: Int): Boolean = day >= lookbackStartYyyymmdd && day <= asOfDay`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:341`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L341) — `private def groupToList[K: Ordering, V](`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:350`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L350) — `case class UthUserMonthMhConfig(`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:363`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L363) — `object UthUserMonthMhConfig {`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:381`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L381) — `def fromArgs(args: Args): UthUserMonthMhConfig =`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:403`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L403) — `object UthUserMonthMhPublisherAdhoc extends UthUserMonthMhPublisherApp with TwitterExecutionApp {`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:404`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L404) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:409`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L409) — `object UthUserMonthMhPublisherProd`
+- [`under-the-hood/scalding/UthUserMonthMhPublisherJob.scala:413`](../source/under-the-hood/scalding/UthUserMonthMhPublisherJob.scala#L413) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:26`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L26) — `class UnderTheHoodAccountLabelsApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:31`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L31) — `def runOnDateRange(dateRange: DateRange, config: UnderTheHoodAccountConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:98`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L98) — `object UnderTheHoodAccountLabelsApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:101`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L101) — `type Event = AccountLabelEvents.Event`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:146`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L146) — `case class UnderTheHoodAccountConfig(`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:154`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L154) — `object UnderTheHoodAccountConfig {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:155`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L155) — `def fromArgs(args: Args): UnderTheHoodAccountConfig =`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:167`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L167) — `object UnderTheHoodAccountLabelsAdhoc`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:170`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L170) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:175`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L175) — `object UnderTheHoodAccountLabelsProd`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala:180`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodAccountLabelsJob.scala#L180) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:27`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L27) — `class UnderTheHoodPostLabelsApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:32`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L32) — `def runOnDateRange(dateRange: DateRange, config: UnderTheHoodPostConfig): Execution[Unit] = {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:82`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L82) — `object UnderTheHoodPostLabelsApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:156`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L156) — `def restrictToPosts[V](p: TypedPipe[(Long, V)]): TypedPipe[(Long, V)] =`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:194`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L194) — `case class UnderTheHoodPostConfig(`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:201`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L201) — `object UnderTheHoodPostConfig {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:202`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L202) — `def fromArgs(args: Args): UnderTheHoodPostConfig =`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:213`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L213) — `object UnderTheHoodPostLabelsAdhoc extends UnderTheHoodPostLabelsApp with TwitterExecutionApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:214`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L214) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:219`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L219) — `object UnderTheHoodPostLabelsProd`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala:224`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UnderTheHoodPostLabelsJob.scala#L224) — `override def scheduledJob: Execution[Unit] = {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:19`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L19) — `class UthFilterTweetSafetyLabelsByDateApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:24`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L24) — `def runOnDateRange(`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:71`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L71) — `object UthFilterTweetSafetyLabelsByDateApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:91`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L91) — `case class UthFilterTweetSafetyLabelsByDateConfig(`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:98`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L98) — `object UthFilterTweetSafetyLabelsByDateConfig {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:99`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L99) — `def fromArgs(args: Args): UthFilterTweetSafetyLabelsByDateConfig =`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:115`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L115) — `object UthFilterTweetSafetyLabelsByDateAdhoc`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala:118`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthFilterTweetSafetyLabelsByDateJob.scala#L118) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:26`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L26) — `class UthGizmoduckSafetyFlagDailyBackfillApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:33`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L33) — `def runOnDateRange(`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:162`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L162) — `object UthGizmoduckSafetyFlagDailyBackfillApp {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:187`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L187) — `type PresenceDiff = (Long, Option[Long], Option[Long])`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:289`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L289) — `case class UthGizmoduckSafetyFlagDailyBackfillConfig(`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:300`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L300) — `object UthGizmoduckSafetyFlagDailyBackfillConfig {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:307`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L307) — `def fromArgs(args: Args): UthGizmoduckSafetyFlagDailyBackfillConfig = {`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:342`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L342) — `object UthGizmoduckSafetyFlagDailyBackfillAdhoc`
+- [`under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala:345`](../source/under-the-hood/scalding/legacy_experimental_adhoc/UthGizmoduckSafetyFlagDailyBackfillJob.scala#L345) — `override def job: Execution[Unit] = Execution.withArgs { args =>`
+- [`under-the-hood/strato/columns/mh/referenceMonthAggregates.strato:3`](../source/under-the-hood/strato/columns/mh/referenceMonthAggregates.strato#L3) — `type Key = Int`
+- [`under-the-hood/strato/columns/mh/referenceMonthAggregates.strato:4`](../source/under-the-hood/strato/columns/mh/referenceMonthAggregates.strato#L4) — `type Value = com.twitter.visibility.under_the_hood.UthReferenceMonthAggregate`
+- [`under-the-hood/strato/columns/mh/userMonthAggregates.strato:3`](../source/under-the-hood/strato/columns/mh/userMonthAggregates.strato#L3) — `type Key = com.twitter.visibility.under_the_hood.UthUserMonthKey`
+- [`under-the-hood/strato/columns/mh/userMonthAggregates.strato:4`](../source/under-the-hood/strato/columns/mh/userMonthAggregates.strato#L4) — `type Value = com.twitter.visibility.under_the_hood.UthUserMonthAggregate`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:5`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L5) — `type Key = Long`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:6`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L6) — `type View = Unit`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:7`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L7) — `type Value = com.twitter.strato.graphql.UnderTheHoodReport`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:9`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L9) — `type UthUserMonthAggregate = com.twitter.visibility.under_the_hood.UthUserMonthAggregate`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:10`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L10) — `type UthDayCarriedRemoved = com.twitter.visibility.under_the_hood.UthDayCarriedRemoved`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:11`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L11) — `type UthDayCount = com.twitter.visibility.under_the_hood.UthDayCount`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:12`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L12) — `type UthUserMonthKey = com.twitter.visibility.under_the_hood.UthUserMonthKey`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:13`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L13) — `type UthDaysIncluded = com.twitter.visibility.under_the_hood.UthDaysIncluded`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:14`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L14) — `type User = com.twitter.gizmoduck.User`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:44`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L44) — `def pad2(n: Int): String =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:47`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L47) — `def isLeapYear(year: Int): Boolean =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:50`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L50) — `def daysInMonth(year: Int, month: Int): Int = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:60`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L60) — `def monthBucketBefore(monthBucket: Int): Int = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:70`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L70) — `def calendarMonthBefore(now: Time.T): Int =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:73`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L73) — `def periodStartDate(monthBucket: Int): String = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:79`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L79) — `def periodEndDate(monthBucket: Int): String = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:85`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L85) — `def monthPublishCalendarReady(monthBucket: Int, now: Time.T): Boolean = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:90`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L90) — `def reportMonthBucket(now: Time.T, maxMonthBucket: Int): Int = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:105`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L105) — `def reportPeriodLabel(monthBucket: Int): String = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:111`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L111) — `def calendarDaysInMonthBucket(monthBucket: Int): Int = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:117`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L117) — `def daysInPeriod(monthBucket: Int, daysIncluded: Option[UthDaysIncluded]): Int =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:131`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L131) — `def lastDayOfMonthBucket(monthBucket: Int): Int = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:137`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L137) — `def monthObservationComplete(monthBucket: Int, daysIncluded: Option[UthDaysIncluded]): Boolean =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:142`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L142) — `def generatedAtMillis(daysIncluded: Option[UthDaysIncluded], fallbackMs: Long): Long =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:152`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L152) — `def formatGeneratedAtIso(ms: Long): String =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:155`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L155) — `def sumCarried(days: Option[Seq[UthDayCarriedRemoved]]): Long =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:160`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L160) — `def sumDayCounts(days: Option[Seq[UthDayCount]]): Long =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:165`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L165) — `def formatPercentage(numerator: Long, denominator: Long): String = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:180`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L180) — `def postLabelRow(`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:216`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L216) — `def accountLabelRow(`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:252`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L252) — `def buildReportJson(`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:338`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L338) — `def userWithQueryFields(`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:349`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L349) — `def meetsAccountAgeMinimum(user: User, now: Time.T): Boolean = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:353`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L353) — `def isSuspended(user: User): Boolean =`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:356`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L356) — `def monthMetaKey(monthBucket: Int): UthUserMonthKey = {`
+- [`under-the-hood/strato/columns/underTheHoodReport.User.strato:361`](../source/under-the-hood/strato/columns/underTheHoodReport.User.strato#L361) — `def monthDataReady(`
+- [`under-the-hood/strato/columns/underTheHoodReport.strato:4`](../source/under-the-hood/strato/columns/underTheHoodReport.strato#L4) — `type Key = Unit`
+- [`under-the-hood/strato/columns/underTheHoodReport.strato:5`](../source/under-the-hood/strato/columns/underTheHoodReport.strato#L5) — `type View = Unit`
+- [`under-the-hood/strato/columns/underTheHoodReport.strato:6`](../source/under-the-hood/strato/columns/underTheHoodReport.strato#L6) — `type Value = com.twitter.strato.graphql.UnderTheHoodReport`
+- [`under-the-hood/strato/graphql/under_the_hood.thrift:2`](../source/under-the-hood/strato/graphql/under_the_hood.thrift#L2) — `struct UnderTheHoodReportInfo {`
+- [`under-the-hood/strato/graphql/under_the_hood.thrift:9`](../source/under-the-hood/strato/graphql/under_the_hood.thrift#L9) — `struct UnderTheHoodReport {`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:252`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L252) — `def upperCodes(countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:255`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L255) — `def takedownCopyKey(label: String, countryCodes: Seq[String]): Option[String] =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:270`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L270) — `def fillCountries(text: String, countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:273`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L273) — `def takedownLabelName(label: String, countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:280`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L280) — `def postTakedownInfo(`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:288`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L288) — `def accountTakedownInfo(`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:296`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L296) — `def isPostTakedownLabel(label: String, countryCodes: Seq[String]): Boolean =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:302`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L302) — `def isAccountTakedownLabel(label: String, countryCodes: Seq[String]): Boolean =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:308`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L308) — `def postTakedownAbout(label: String, countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:314`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L314) — `def postTakedownEffect(label: String, countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:320`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L320) — `def accountTakedownAbout(label: String, countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:326`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L326) — `def accountTakedownEffect(label: String, countryCodes: Seq[String]): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:334`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L334) — `def normalizeLabel(code: String): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:337`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L337) — `def resolvePostKey(code: String): Option[String] = {`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:350`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L350) — `def resolveAccountKey(code: String): Option[String] =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:353`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L353) — `def isPostLabel(code: String): Boolean =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:359`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L359) — `def isAccountLabel(code: String): Boolean =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:365`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L365) — `def postLabelName(code: String): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:371`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L371) — `def accountLabelName(code: String): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:377`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L377) — `def postLabelAbout(code: String): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:387`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L387) — `def accountLabelAbout(code: String): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:397`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L397) — `def postLabelEffect(code: String): String =`
+- [`under-the-hood/strato/lib/underTheHoodLabels.strato:407`](../source/under-the-hood/strato/lib/underTheHoodLabels.strato#L407) — `def accountLabelEffect(code: String): String =`
+- [`under-the-hood/thrift/uth_serving.thrift:5`](../source/under-the-hood/thrift/uth_serving.thrift#L5) — `struct UthDayCount {`
+- [`under-the-hood/thrift/uth_serving.thrift:10`](../source/under-the-hood/thrift/uth_serving.thrift#L10) — `struct UthDayCarriedRemoved {`
+- [`under-the-hood/thrift/uth_serving.thrift:16`](../source/under-the-hood/thrift/uth_serving.thrift#L16) — `struct UthDaysIncluded {`
+- [`under-the-hood/thrift/uth_serving.thrift:25`](../source/under-the-hood/thrift/uth_serving.thrift#L25) — `struct UthRateStats {`
+- [`under-the-hood/thrift/uth_serving.thrift:37`](../source/under-the-hood/thrift/uth_serving.thrift#L37) — `enum UthBrandSafetyCategory {`
+- [`under-the-hood/thrift/uth_serving.thrift:44`](../source/under-the-hood/thrift/uth_serving.thrift#L44) — `enum UthFollowerClass {`
+- [`under-the-hood/thrift/uth_serving.thrift:53`](../source/under-the-hood/thrift/uth_serving.thrift#L53) — `struct UthPostLabelAggregate {`
+- [`under-the-hood/thrift/uth_serving.thrift:59`](../source/under-the-hood/thrift/uth_serving.thrift#L59) — `struct UthAccountLabelAggregate {`
+- [`under-the-hood/thrift/uth_serving.thrift:66`](../source/under-the-hood/thrift/uth_serving.thrift#L66) — `struct UthBrandSafetyAggregate {`
+- [`under-the-hood/thrift/uth_serving.thrift:72`](../source/under-the-hood/thrift/uth_serving.thrift#L72) — `struct UthUserMonthAggregate {`
+- [`under-the-hood/thrift/uth_serving.thrift:82`](../source/under-the-hood/thrift/uth_serving.thrift#L82) — `struct UthUserMonthKey {`
+- [`under-the-hood/thrift/uth_serving.thrift:88`](../source/under-the-hood/thrift/uth_serving.thrift#L88) — `struct UthLabeledRateStats {`
+- [`under-the-hood/thrift/uth_serving.thrift:94`](../source/under-the-hood/thrift/uth_serving.thrift#L94) — `struct UthBrandSafetyRateStats {`
+- [`under-the-hood/thrift/uth_serving.thrift:99`](../source/under-the-hood/thrift/uth_serving.thrift#L99) — `struct UthReferenceCohortStats {`
+- [`under-the-hood/thrift/uth_serving.thrift:111`](../source/under-the-hood/thrift/uth_serving.thrift#L111) — `struct UthReferenceMonthAggregate {`
+- [`under-the-hood/thrift/uth_serving.thrift:118`](../source/under-the-hood/thrift/uth_serving.thrift#L118) — `struct UthDailyEligiblePost {`
+- [`under-the-hood/thrift/uth_serving.thrift:124`](../source/under-the-hood/thrift/uth_serving.thrift#L124) — `struct UthDailyPostLabel {`
+- [`under-the-hood/thrift/uth_serving.thrift:136`](../source/under-the-hood/thrift/uth_serving.thrift#L136) — `struct UthDailyAccountLabel {`
+- [`under-the-hood/thrift/uth_serving.thrift:143`](../source/under-the-hood/thrift/uth_serving.thrift#L143) — `struct UthUserMonthAggregateRow {`

@@ -1,0 +1,1922 @@
+# thunder: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`thunder/args.rs:5`](../source/thunder/args.rs#L5) — `pub struct Args {`
+- [`thunder/config.rs:1`](../source/thunder/config.rs#L1) — `pub const MAX_POSTS_TO_RETURN: usize = 1200;`
+- [`thunder/config.rs:2`](../source/thunder/config.rs#L2) — `pub const MAX_VIDEOS_TO_RETURN: usize = 600;`
+- [`thunder/config.rs:3`](../source/thunder/config.rs#L3) — `pub const MAX_INPUT_LIST_SIZE: usize = 10000;`
+- [`thunder/config.rs:5`](../source/thunder/config.rs#L5) — `pub const MAX_REPLY_POSTS_PER_AUTHOR: usize = 30;`
+- [`thunder/config.rs:6`](../source/thunder/config.rs#L6) — `pub const MAX_ORIGINAL_POSTS_PER_AUTHOR: usize = 50;`
+- [`thunder/config.rs:7`](../source/thunder/config.rs#L7) — `pub const MAX_VIDEO_POSTS_PER_AUTHOR: usize = 100;`
+- [`thunder/config.rs:8`](../source/thunder/config.rs#L8) — `pub const MAX_TINY_POSTS_PER_USER_SCAN: usize = 500;`
+- [`thunder/config.rs:10`](../source/thunder/config.rs#L10) — `pub const DELETE_EVENT_KEY: i64 = 0;`
+- [`thunder/config.rs:12`](../source/thunder/config.rs#L12) — `pub const MAX_POSTING_LIST_SIZE: usize = 5000;`
+- [`thunder/config.rs:14`](../source/thunder/config.rs#L14) — `pub const TRIM_FRACTION: usize = 5;`
+- [`thunder/deserializer.rs:7`](../source/thunder/deserializer.rs#L7) — `pub fn deserialize_tweet_event(payload: &[u8]) -> Result<TweetEvent> {`
+- [`thunder/deserializer.rs:14`](../source/thunder/deserializer.rs#L14) — `pub fn deserialize_event(payload: &[u8]) -> Result<Event> {`
+- [`thunder/deserializer.rs:21`](../source/thunder/deserializer.rs#L21) — `pub fn deserialize_tweet_event_v2(payload: &[u8]) -> Result<InNetworkEvent> {`
+- [`thunder/kafka/tweet_events_listener.rs:27`](../source/thunder/kafka/tweet_events_listener.rs#L27) — `async fn monitor_partition_lag(`
+- [`thunder/kafka/tweet_events_listener.rs:55`](../source/thunder/kafka/tweet_events_listener.rs#L55) — `fn is_eligible_video(tweet: &Tweet) -> bool {`
+- [`thunder/kafka/tweet_events_listener.rs:76`](../source/thunder/kafka/tweet_events_listener.rs#L76) — `pub fn start_partition_lag_monitor(`
+- [`thunder/kafka/tweet_events_listener.rs:90`](../source/thunder/kafka/tweet_events_listener.rs#L90) — `pub async fn start_tweet_event_processing(`
+- [`thunder/kafka/tweet_events_listener.rs:123`](../source/thunder/kafka/tweet_events_listener.rs#L123) — `fn spawn_processing_threads(`
+- [`thunder/kafka/tweet_events_listener.rs:189`](../source/thunder/kafka/tweet_events_listener.rs#L189) — `async fn process_message_batch(`
+- [`thunder/kafka/tweet_events_listener.rs:340`](../source/thunder/kafka/tweet_events_listener.rs#L340) — `async fn process_tweet_events(`
+- [`thunder/kafka/tweet_events_listener_v2.rs:21`](../source/thunder/kafka/tweet_events_listener_v2.rs#L21) — `pub async fn start_tweet_event_processing_v2(`
+- [`thunder/kafka/tweet_events_listener_v2.rs:42`](../source/thunder/kafka/tweet_events_listener_v2.rs#L42) — `fn spawn_processing_threads_v2(`
+- [`thunder/kafka/tweet_events_listener_v2.rs:113`](../source/thunder/kafka/tweet_events_listener_v2.rs#L113) — `fn deserialize_batch(`
+- [`thunder/kafka/tweet_events_listener_v2.rs:163`](../source/thunder/kafka/tweet_events_listener_v2.rs#L163) — `async fn process_tweet_events_v2(`
+- [`thunder/kafka/utils.rs:8`](../source/thunder/kafka/utils.rs#L8) — `pub async fn create_kafka_consumer(`
+- [`thunder/kafka/utils.rs:20`](../source/thunder/kafka/utils.rs#L20) — `pub fn deserialize_kafka_messages<T, F>(`
+- [`thunder/kafka_utils.rs:15`](../source/thunder/kafka_utils.rs#L15) — `const TWEET_EVENT_TOPIC: &str = "tweet_events";`
+- [`thunder/kafka_utils.rs:16`](../source/thunder/kafka_utils.rs#L16) — `const TWEET_EVENT_DEST: &str = "kafka.tweet-events.example.invalid";`
+- [`thunder/kafka_utils.rs:18`](../source/thunder/kafka_utils.rs#L18) — `const IN_NETWORK_EVENTS_CLUSTER: &str = "phoenix";`
+- [`thunder/kafka_utils.rs:19`](../source/thunder/kafka_utils.rs#L19) — `const IN_NETWORK_EVENTS_DEST: &str = "kafka.phoenix-bootstrap.example.invalid";`
+- [`thunder/kafka_utils.rs:20`](../source/thunder/kafka_utils.rs#L20) — `const IN_NETWORK_EVENTS_TOPIC: &str = "innetwork_post";`
+- [`thunder/kafka_utils.rs:23`](../source/thunder/kafka_utils.rs#L23) — `enum InNetworkEventsConsumerAuth<'a> {`
+- [`thunder/kafka_utils.rs:31`](../source/thunder/kafka_utils.rs#L31) — `fn in_network_events_consumer_auth(args: &args::Args) -> InNetworkEventsConsumerAuth<'_> {`
+- [`thunder/kafka_utils.rs:41`](../source/thunder/kafka_utils.rs#L41) — `pub async fn start_kafka(`
+- [`thunder/kafka_utils.rs:146`](../source/thunder/kafka_utils.rs#L146) — `fn capi_serving_consumer_uses_phoenix_mtls_in_explicit_zone() {`
+- [`thunder/kafka_utils.rs:165`](../source/thunder/kafka_utils.rs#L165) — `fn legacy_serving_consumer_retains_scram_without_mtls_zone() {`
+- [`thunder/main.rs:18`](../source/thunder/main.rs#L18) — `async fn main() -> Result<()> {`
+- [`thunder/main.rs:130`](../source/thunder/main.rs#L130) — `fn record_s2s_client_cert_resolution() {`
+- [`thunder/metrics.rs:223`](../source/thunder/metrics.rs#L223) — `pub struct Timer {`
+- [`thunder/metrics.rs:229`](../source/thunder/metrics.rs#L229) — `pub fn new(histogram: Histogram) -> Self {`
+- [`thunder/metrics.rs:238`](../source/thunder/metrics.rs#L238) — `fn drop(&mut self) {`
+- [`thunder/o2/mod.rs:14`](../source/thunder/o2/mod.rs#L14) — `pub struct O2Client {`
+- [`thunder/o2/mod.rs:21`](../source/thunder/o2/mod.rs#L21) — `pub fn from_env(bucket: &str, prefix: &str) -> Result<Self> {`
+- [`thunder/o2/mod.rs:38`](../source/thunder/o2/mod.rs#L38) — `pub fn new(`
+- [`thunder/o2/mod.rs:71`](../source/thunder/o2/mod.rs#L71) — `fn full_path(&self, key: &str) -> ObjectPath {`
+- [`thunder/o2/mod.rs:80`](../source/thunder/o2/mod.rs#L80) — `pub fn bucket(&self) -> &str {`
+- [`thunder/o2/mod.rs:84`](../source/thunder/o2/mod.rs#L84) — `pub fn prefix(&self) -> &str {`
+- [`thunder/o2/mod.rs:88`](../source/thunder/o2/mod.rs#L88) — `pub async fn put(&self, key: &str, data: Bytes) -> Result<()> {`
+- [`thunder/o2/mod.rs:97`](../source/thunder/o2/mod.rs#L97) — `pub async fn get(&self, key: &str) -> Result<Bytes> {`
+- [`thunder/o2/mod.rs:111`](../source/thunder/o2/mod.rs#L111) — `pub async fn exists(&self, key: &str) -> Result<bool> {`
+- [`thunder/o2/mod.rs:120`](../source/thunder/o2/mod.rs#L120) — `pub async fn delete(&self, key: &str) -> Result<()> {`
+- [`thunder/o2/mod.rs:129`](../source/thunder/o2/mod.rs#L129) — `pub async fn list(&self, key_prefix: &str) -> Result<Vec<String>> {`
+- [`thunder/o2/mod.rs:158`](../source/thunder/o2/mod.rs#L158) — `pub async fn head(&self, key: &str) -> Result<ObjectMeta> {`
+- [`thunder/o2/mod.rs:173`](../source/thunder/o2/mod.rs#L173) — `pub struct ObjectMeta {`
+- [`thunder/posts/post_store.rs:22`](../source/thunder/posts/post_store.rs#L22) — `pub struct TinyPost {`
+- [`thunder/posts/post_store.rs:28`](../source/thunder/posts/post_store.rs#L28) — `pub fn new(post_id: i64, created_at: i64) -> Self {`
+- [`thunder/posts/post_store.rs:37`](../source/thunder/posts/post_store.rs#L37) — `pub struct CompactPost {`
+- [`thunder/posts/post_store.rs:52`](../source/thunder/posts/post_store.rs#L52) — `fn from(p: LightPost) -> Self {`
+- [`thunder/posts/post_store.rs:70`](../source/thunder/posts/post_store.rs#L70) — `fn from(p: CompactPost) -> Self {`
+- [`thunder/posts/post_store.rs:89`](../source/thunder/posts/post_store.rs#L89) — `pub struct PostStore {`
+- [`thunder/posts/post_store.rs:100`](../source/thunder/posts/post_store.rs#L100) — `pub fn new(retention_seconds: u64, request_timeout_ms: u64) -> Self {`
+- [`thunder/posts/post_store.rs:112`](../source/thunder/posts/post_store.rs#L112) — `pub fn mark_as_deleted(&self, posts: Vec<TweetDeleteEvent>) {`
+- [`thunder/posts/post_store.rs:128`](../source/thunder/posts/post_store.rs#L128) — `pub fn insert_posts(&self, mut posts: Vec<LightPost>) {`
+- [`thunder/posts/post_store.rs:143`](../source/thunder/posts/post_store.rs#L143) — `pub async fn finalize_init(&self) -> Result<()> {`
+- [`thunder/posts/post_store.rs:157`](../source/thunder/posts/post_store.rs#L157) — `fn insert_posts_internal(&self, posts: Vec<LightPost>) {`
+- [`thunder/posts/post_store.rs:230`](../source/thunder/posts/post_store.rs#L230) — `pub fn get_videos_by_users(`
+- [`thunder/posts/post_store.rs:251`](../source/thunder/posts/post_store.rs#L251) — `pub fn get_all_posts_by_users(`
+- [`thunder/posts/post_store.rs:286`](../source/thunder/posts/post_store.rs#L286) — `pub fn get_posts_from_map(`
+- [`thunder/posts/post_store.rs:377`](../source/thunder/posts/post_store.rs#L377) — `pub fn start_stats_logger(self: Arc<Self>) {`
+- [`thunder/posts/post_store.rs:477`](../source/thunder/posts/post_store.rs#L477) — `pub fn start_auto_trim(self: Arc<Self>, interval_minutes: u64) {`
+- [`thunder/posts/post_store.rs:499`](../source/thunder/posts/post_store.rs#L499) — `pub async fn trim_old_posts(&self, trim_iter: usize) -> usize {`
+- [`thunder/posts/post_store.rs:606`](../source/thunder/posts/post_store.rs#L606) — `pub async fn sort_all_user_posts(&self) {`
+- [`thunder/posts/post_store.rs:635`](../source/thunder/posts/post_store.rs#L635) — `pub fn clear(&self) {`
+- [`thunder/posts/post_store.rs:645`](../source/thunder/posts/post_store.rs#L645) — `fn default() -> Self {`
+- [`thunder/posts/post_store.rs:655`](../source/thunder/posts/post_store.rs#L655) — `fn test_post_store_basic_operations() {`
+- [`thunder/posts/post_store.rs:689`](../source/thunder/posts/post_store.rs#L689) — `fn test_exclude_tweet_ids_filtering() {`
+- [`thunder/posts/post_store.rs:756`](../source/thunder/posts/post_store.rs#L756) — `fn test_reply_and_retweet_filtering() {`
+- [`thunder/schema/events.rs:31`](../source/thunder/schema/events.rs#L31) — `pub struct MigrationMode(pub i32);`
+- [`thunder/schema/events.rs:34`](../source/thunder/schema/events.rs#L34) — `pub const OFF: MigrationMode = MigrationMode(0);`
+- [`thunder/schema/events.rs:35`](../source/thunder/schema/events.rs#L35) — `pub const DARK: MigrationMode = MigrationMode(1);`
+- [`thunder/schema/events.rs:36`](../source/thunder/schema/events.rs#L36) — `pub const LIGHT: MigrationMode = MigrationMode(2);`
+- [`thunder/schema/events.rs:37`](../source/thunder/schema/events.rs#L37) — `pub const DARK_WRITE: MigrationMode = MigrationMode(3);`
+- [`thunder/schema/events.rs:38`](../source/thunder/schema/events.rs#L38) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/events.rs:48`](../source/thunder/schema/events.rs#L48) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:51`](../source/thunder/schema/events.rs#L51) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MigrationMode> {`
+- [`thunder/schema/events.rs:58`](../source/thunder/schema/events.rs#L58) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/events.rs:70`](../source/thunder/schema/events.rs#L70) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/events.rs:76`](../source/thunder/schema/events.rs#L76) — `fn from(e: MigrationMode) -> i32 {`
+- [`thunder/schema/events.rs:82`](../source/thunder/schema/events.rs#L82) — `fn from(e: &MigrationMode) -> i32 {`
+- [`thunder/schema/events.rs:88`](../source/thunder/schema/events.rs#L88) — `pub struct UserIdentifierType(pub i32);`
+- [`thunder/schema/events.rs:91`](../source/thunder/schema/events.rs#L91) — `pub const EMAIL: UserIdentifierType = UserIdentifierType(1);`
+- [`thunder/schema/events.rs:92`](../source/thunder/schema/events.rs#L92) — `pub const PHONE_NUMBER: UserIdentifierType = UserIdentifierType(2);`
+- [`thunder/schema/events.rs:93`](../source/thunder/schema/events.rs#L93) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/events.rs:101`](../source/thunder/schema/events.rs#L101) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:104`](../source/thunder/schema/events.rs#L104) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UserIdentifierType> {`
+- [`thunder/schema/events.rs:111`](../source/thunder/schema/events.rs#L111) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/events.rs:121`](../source/thunder/schema/events.rs#L121) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/events.rs:127`](../source/thunder/schema/events.rs#L127) — `fn from(e: UserIdentifierType) -> i32 {`
+- [`thunder/schema/events.rs:133`](../source/thunder/schema/events.rs#L133) — `fn from(e: &UserIdentifierType) -> i32 {`
+- [`thunder/schema/events.rs:139`](../source/thunder/schema/events.rs#L139) — `pub struct RemediateFavoriteGraphType(pub i32);`
+- [`thunder/schema/events.rs:142`](../source/thunder/schema/events.rs#L142) — `pub const FAVORITE: RemediateFavoriteGraphType = RemediateFavoriteGraphType(0);`
+- [`thunder/schema/events.rs:143`](../source/thunder/schema/events.rs#L143) — `pub const UNFAVORITE: RemediateFavoriteGraphType = RemediateFavoriteGraphType(1);`
+- [`thunder/schema/events.rs:144`](../source/thunder/schema/events.rs#L144) — `pub const SELF_FAVORITE: RemediateFavoriteGraphType = RemediateFavoriteGraphType(2);`
+- [`thunder/schema/events.rs:145`](../source/thunder/schema/events.rs#L145) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/events.rs:154`](../source/thunder/schema/events.rs#L154) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:157`](../source/thunder/schema/events.rs#L157) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<RemediateFavoriteGraphType> {`
+- [`thunder/schema/events.rs:164`](../source/thunder/schema/events.rs#L164) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/events.rs:175`](../source/thunder/schema/events.rs#L175) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/events.rs:181`](../source/thunder/schema/events.rs#L181) — `fn from(e: RemediateFavoriteGraphType) -> i32 {`
+- [`thunder/schema/events.rs:187`](../source/thunder/schema/events.rs#L187) — `fn from(e: &RemediateFavoriteGraphType) -> i32 {`
+- [`thunder/schema/events.rs:194`](../source/thunder/schema/events.rs#L194) — `pub struct FollowEvent {`
+- [`thunder/schema/events.rs:201`](../source/thunder/schema/events.rs#L201) — `pub fn new<F1, F2, F3>(user_id: F1, target_id: F2, event_time_ms: F3) -> FollowEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:211`](../source/thunder/schema/events.rs#L211) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FollowEvent> {`
+- [`thunder/schema/events.rs:249`](../source/thunder/schema/events.rs#L249) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:274`](../source/thunder/schema/events.rs#L274) — `pub struct BatchFollowEvent {`
+- [`thunder/schema/events.rs:281`](../source/thunder/schema/events.rs#L281) — `pub fn new(user_id: i64, event_time_ms: i64, target_ids: Vec<i64>) -> BatchFollowEvent {`
+- [`thunder/schema/events.rs:291`](../source/thunder/schema/events.rs#L291) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BatchFollowEvent> {`
+- [`thunder/schema/events.rs:338`](../source/thunder/schema/events.rs#L338) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:361`](../source/thunder/schema/events.rs#L361) — `pub struct UnfollowEvent {`
+- [`thunder/schema/events.rs:368`](../source/thunder/schema/events.rs#L368) — `pub fn new<F1, F2, F3>(user_id: F1, target_id: F2, event_time_ms: F3) -> UnfollowEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:378`](../source/thunder/schema/events.rs#L378) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UnfollowEvent> {`
+- [`thunder/schema/events.rs:416`](../source/thunder/schema/events.rs#L416) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:441`](../source/thunder/schema/events.rs#L441) — `pub struct FollowRetweetsEvent {`
+- [`thunder/schema/events.rs:448`](../source/thunder/schema/events.rs#L448) — `pub fn new<F1, F2, F3>(user_id: F1, target_id: F2, event_time_ms: F3) -> FollowRetweetsEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:458`](../source/thunder/schema/events.rs#L458) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FollowRetweetsEvent> {`
+- [`thunder/schema/events.rs:496`](../source/thunder/schema/events.rs#L496) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:521`](../source/thunder/schema/events.rs#L521) — `pub struct UnfollowRetweetsEvent {`
+- [`thunder/schema/events.rs:528`](../source/thunder/schema/events.rs#L528) — `pub fn new<F1, F2, F3>(user_id: F1, target_id: F2, event_time_ms: F3) -> UnfollowRetweetsEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:538`](../source/thunder/schema/events.rs#L538) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UnfollowRetweetsEvent> {`
+- [`thunder/schema/events.rs:576`](../source/thunder/schema/events.rs#L576) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:601`](../source/thunder/schema/events.rs#L601) — `pub struct FavoriteEvent {`
+- [`thunder/schema/events.rs:617`](../source/thunder/schema/events.rs#L617) — `pub fn new<F1, F2, F3, F4, F5, F6, F8, F11, F12, F15, F16, F100>(user_id: F1, tweet_id: F2, tweet_user_id: F3, event_time_ms: F4, retweet_id: F5, user: F6, tweet_user: F8, tweet: F11, is_soft_user: F12, in_reply_to_tweet_id: F15, quoted_tweet_id: F16, migration_mode: F100) -> FavoriteEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<user::User>>, F8: Into<Option<user::User>>, F11: Into<Option<tweet::Tweet>>, F12: Into<Option<bool>>, F15: Into<Option<i64>>, F16: Into<Option<i64>>, F100: Into<Option<MigrationMode>> {`
+- [`thunder/schema/events.rs:636`](../source/thunder/schema/events.rs#L636) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FavoriteEvent> {`
+- [`thunder/schema/events.rs:728`](../source/thunder/schema/events.rs#L728) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:798`](../source/thunder/schema/events.rs#L798) — `pub struct UnfavoriteEvent {`
+- [`thunder/schema/events.rs:814`](../source/thunder/schema/events.rs#L814) — `pub fn new<F1, F2, F3, F4, F5, F6, F8, F10, F11, F13, F14, F100>(user_id: F1, tweet_id: F2, tweet_user_id: F3, event_time_ms: F4, retweet_id: F5, user: F6, tweet_user: F8, tweet: F10, is_soft_user: F11, in_reply_to_tweet_id: F13, quoted_tweet_id: F14, migration_mode: F100) -> UnfavoriteEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<user::User>>, F8: Into<Option<user::User>>, F10: Into<Option<tweet::Tweet>>, F11: Into<Option<bool>>, F13: Into<Option<i64>>, F14: Into<Option<i64>>, F100: Into<Option<MigrationMode>> {`
+- [`thunder/schema/events.rs:833`](../source/thunder/schema/events.rs#L833) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UnfavoriteEvent> {`
+- [`thunder/schema/events.rs:925`](../source/thunder/schema/events.rs#L925) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:995`](../source/thunder/schema/events.rs#L995) — `pub struct FavoriteArchivalEvent {`
+- [`thunder/schema/events.rs:1005`](../source/thunder/schema/events.rs#L1005) — `pub fn new<F4, F5, F6>(favoriter_id: i64, tweet_id: i64, timestamp_ms: i64, is_archiving_action: F4, source_tweet_id: F5, tweet_user_id: F6) -> FavoriteArchivalEvent where F4: Into<Option<bool>>, F5: Into<Option<i64>>, F6: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1018`](../source/thunder/schema/events.rs#L1018) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FavoriteArchivalEvent> {`
+- [`thunder/schema/events.rs:1077`](../source/thunder/schema/events.rs#L1077) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1111`](../source/thunder/schema/events.rs#L1111) — `pub struct ClearCachesEvent {`
+- [`thunder/schema/events.rs:1115`](../source/thunder/schema/events.rs#L1115) — `pub fn new() -> ClearCachesEvent {`
+- [`thunder/schema/events.rs:1121`](../source/thunder/schema/events.rs#L1121) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ClearCachesEvent> {`
+- [`thunder/schema/events.rs:1135`](../source/thunder/schema/events.rs#L1135) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1145`](../source/thunder/schema/events.rs#L1145) — `pub struct ClearUnreadCountCachesEvent {`
+- [`thunder/schema/events.rs:1149`](../source/thunder/schema/events.rs#L1149) — `pub fn new() -> ClearUnreadCountCachesEvent {`
+- [`thunder/schema/events.rs:1155`](../source/thunder/schema/events.rs#L1155) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ClearUnreadCountCachesEvent> {`
+- [`thunder/schema/events.rs:1169`](../source/thunder/schema/events.rs#L1169) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1179`](../source/thunder/schema/events.rs#L1179) — `pub struct DeleteUserEvent {`
+- [`thunder/schema/events.rs:1184`](../source/thunder/schema/events.rs#L1184) — `pub fn new<F1>(user_id: F1) -> DeleteUserEvent where F1: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1192`](../source/thunder/schema/events.rs#L1192) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeleteUserEvent> {`
+- [`thunder/schema/events.rs:1218`](../source/thunder/schema/events.rs#L1218) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1233`](../source/thunder/schema/events.rs#L1233) — `pub struct ClearUserCachesEvent {`
+- [`thunder/schema/events.rs:1238`](../source/thunder/schema/events.rs#L1238) — `pub fn new<F1>(user_id: F1) -> ClearUserCachesEvent where F1: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1246`](../source/thunder/schema/events.rs#L1246) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ClearUserCachesEvent> {`
+- [`thunder/schema/events.rs:1272`](../source/thunder/schema/events.rs#L1272) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1287`](../source/thunder/schema/events.rs#L1287) — `pub struct Retweet {`
+- [`thunder/schema/events.rs:1294`](../source/thunder/schema/events.rs#L1294) — `pub fn new<F1, F2, F3>(source_user_id: F1, source_tweet_id: F2, parent_tweet_id: F3) -> Retweet where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1304`](../source/thunder/schema/events.rs#L1304) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Retweet> {`
+- [`thunder/schema/events.rs:1342`](../source/thunder/schema/events.rs#L1342) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1367`](../source/thunder/schema/events.rs#L1367) — `pub struct Quote {`
+- [`thunder/schema/events.rs:1373`](../source/thunder/schema/events.rs#L1373) — `pub fn new<F1, F2>(quoted_user_id: F1, quoted_tweet_id: F2) -> Quote where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1382`](../source/thunder/schema/events.rs#L1382) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Quote> {`
+- [`thunder/schema/events.rs:1414`](../source/thunder/schema/events.rs#L1414) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1434`](../source/thunder/schema/events.rs#L1434) — `pub struct Reply {`
+- [`thunder/schema/events.rs:1440`](../source/thunder/schema/events.rs#L1440) — `pub fn new<F1, F2>(in_reply_to_user_id: F1, in_reply_to_tweet_id: F2) -> Reply where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1449`](../source/thunder/schema/events.rs#L1449) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Reply> {`
+- [`thunder/schema/events.rs:1481`](../source/thunder/schema/events.rs#L1481) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1501`](../source/thunder/schema/events.rs#L1501) — `pub struct FullTweet {`
+- [`thunder/schema/events.rs:1521`](../source/thunder/schema/events.rs#L1521) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F17>(user_id: F1, tweet_id: F2, conversation_id: F3, reply: F4, retweet: F5, mentioned_user_ids: F6, is_nullcasted: F7, narrowcast_geos: F8, has_media: F9, created_at_ms: F10, directed_at_user_id: F11, quote: F12, media_tags: F13, text: F14, community_ids: F15, trusted_friends_control: F17) -> FullTweet where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<Reply>>, F5: Into<Option<Retweet>>, F6: Into<Option<BTreeSet<i64>>>, F7: Into<Option<bool>>, F8: Into<Option<BTreeSet<String>>>, F9: Into<Option<bool>>, F10: Into<Option<i64>>, F11: Into<Option<i64>>, F12: Into<Option<Quote>>, F13: Into<Option<tweet::TweetMediaTags>>, F14: Into<Option<String>>, F15: Into<Option<Vec<i64>>>, F17: Into<Option<tweet::TrustedFriendsControl>> {`
+- [`thunder/schema/events.rs:1544`](../source/thunder/schema/events.rs#L1544) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FullTweet> {`
+- [`thunder/schema/events.rs:1678`](../source/thunder/schema/events.rs#L1678) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1780`](../source/thunder/schema/events.rs#L1780) — `pub struct FullTweetCreateEvent {`
+- [`thunder/schema/events.rs:1789`](../source/thunder/schema/events.rs#L1789) — `pub fn new<F1, F2, F4, F5, F7>(tweet: F1, event_time_ms: F2, sync_delivery: F4, fanoutservice_fanout: F5, hydrated_tweet: F7) -> FullTweetCreateEvent where F1: Into<Option<FullTweet>>, F2: Into<Option<i64>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F7: Into<Option<tweet::Tweet>> {`
+- [`thunder/schema/events.rs:1801`](../source/thunder/schema/events.rs#L1801) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FullTweetCreateEvent> {`
+- [`thunder/schema/events.rs:1851`](../source/thunder/schema/events.rs#L1851) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1886`](../source/thunder/schema/events.rs#L1886) — `pub struct FullTweetRestoreEvent {`
+- [`thunder/schema/events.rs:1892`](../source/thunder/schema/events.rs#L1892) — `pub fn new<F1, F2>(tweet: F1, delete_time_ms: F2) -> FullTweetRestoreEvent where F1: Into<Option<FullTweet>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:1901`](../source/thunder/schema/events.rs#L1901) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FullTweetRestoreEvent> {`
+- [`thunder/schema/events.rs:1933`](../source/thunder/schema/events.rs#L1933) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:1953`](../source/thunder/schema/events.rs#L1953) — `pub struct FullTweetDeleteEvent {`
+- [`thunder/schema/events.rs:1961`](../source/thunder/schema/events.rs#L1961) — `pub fn new<F1, F2, F3, F4>(tweet: F1, event_time_ms: F2, is_user_erasure: F3, is_bounce_delete: F4) -> FullTweetDeleteEvent where F1: Into<Option<FullTweet>>, F2: Into<Option<i64>>, F3: Into<Option<bool>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/events.rs:1972`](../source/thunder/schema/events.rs#L1972) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FullTweetDeleteEvent> {`
+- [`thunder/schema/events.rs:2016`](../source/thunder/schema/events.rs#L2016) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2046`](../source/thunder/schema/events.rs#L2046) — `pub struct AddListMemberEvent {`
+- [`thunder/schema/events.rs:2055`](../source/thunder/schema/events.rs#L2055) — `pub fn new<F1, F2, F3, F4, F5>(list_id: F1, target_id: F2, list_owner_id: F3, event_time_ms: F4, private_list: F5) -> AddListMemberEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<bool>> {`
+- [`thunder/schema/events.rs:2067`](../source/thunder/schema/events.rs#L2067) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AddListMemberEvent> {`
+- [`thunder/schema/events.rs:2117`](../source/thunder/schema/events.rs#L2117) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2152`](../source/thunder/schema/events.rs#L2152) — `pub struct RemoveListMemberEvent {`
+- [`thunder/schema/events.rs:2160`](../source/thunder/schema/events.rs#L2160) — `pub fn new<F1, F2, F3, F4>(list_id: F1, target_id: F2, list_owner_id: F3, event_time_ms: F4) -> RemoveListMemberEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:2171`](../source/thunder/schema/events.rs#L2171) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<RemoveListMemberEvent> {`
+- [`thunder/schema/events.rs:2215`](../source/thunder/schema/events.rs#L2215) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2245`](../source/thunder/schema/events.rs#L2245) — `pub struct CreateListEvent {`
+- [`thunder/schema/events.rs:2253`](../source/thunder/schema/events.rs#L2253) — `pub fn new<F1, F2, F3, F4>(list_id: F1, list_owner_id: F2, event_time_ms: F3, private_list: F4) -> CreateListEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/events.rs:2264`](../source/thunder/schema/events.rs#L2264) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CreateListEvent> {`
+- [`thunder/schema/events.rs:2308`](../source/thunder/schema/events.rs#L2308) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2338`](../source/thunder/schema/events.rs#L2338) — `pub struct DeleteListEvent {`
+- [`thunder/schema/events.rs:2346`](../source/thunder/schema/events.rs#L2346) — `pub fn new<F1, F2, F3, F4>(list_id: F1, list_owner_id: F2, event_time_ms: F3, private_list: F4) -> DeleteListEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/events.rs:2357`](../source/thunder/schema/events.rs#L2357) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeleteListEvent> {`
+- [`thunder/schema/events.rs:2401`](../source/thunder/schema/events.rs#L2401) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2431`](../source/thunder/schema/events.rs#L2431) — `pub struct ListPrivacyChangeEvent {`
+- [`thunder/schema/events.rs:2439`](../source/thunder/schema/events.rs#L2439) — `pub fn new<F1, F2, F3, F4>(list_id: F1, list_owner_id: F2, private_list: F3, event_time_ms: F4) -> ListPrivacyChangeEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<bool>>, F4: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:2450`](../source/thunder/schema/events.rs#L2450) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ListPrivacyChangeEvent> {`
+- [`thunder/schema/events.rs:2494`](../source/thunder/schema/events.rs#L2494) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2524`](../source/thunder/schema/events.rs#L2524) — `pub struct CreateUserEvent {`
+- [`thunder/schema/events.rs:2530`](../source/thunder/schema/events.rs#L2530) — `pub fn new<F1, F2>(user_id: F1, event_time_ms: F2) -> CreateUserEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:2539`](../source/thunder/schema/events.rs#L2539) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CreateUserEvent> {`
+- [`thunder/schema/events.rs:2571`](../source/thunder/schema/events.rs#L2571) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2591`](../source/thunder/schema/events.rs#L2591) — `pub struct UserIdentifierConfirmedEvent {`
+- [`thunder/schema/events.rs:2599`](../source/thunder/schema/events.rs#L2599) — `pub fn new<F1, F2, F3, F4>(user_id: F1, identifier: F2, event_time_ms: F3, identifier_type: F4) -> UserIdentifierConfirmedEvent where F1: Into<Option<i64>>, F2: Into<Option<String>>, F3: Into<Option<i64>>, F4: Into<Option<UserIdentifierType>> {`
+- [`thunder/schema/events.rs:2610`](../source/thunder/schema/events.rs#L2610) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UserIdentifierConfirmedEvent> {`
+- [`thunder/schema/events.rs:2654`](../source/thunder/schema/events.rs#L2654) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2684`](../source/thunder/schema/events.rs#L2684) — `pub struct ReportTweetEvent {`
+- [`thunder/schema/events.rs:2691`](../source/thunder/schema/events.rs#L2691) — `pub fn new<F1, F2, F3>(user_id: F1, tweet_id: F2, event_time_ms: F3) -> ReportTweetEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:2701`](../source/thunder/schema/events.rs#L2701) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ReportTweetEvent> {`
+- [`thunder/schema/events.rs:2739`](../source/thunder/schema/events.rs#L2739) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2764`](../source/thunder/schema/events.rs#L2764) — `pub struct DismissTweetEvent {`
+- [`thunder/schema/events.rs:2770`](../source/thunder/schema/events.rs#L2770) — `pub fn new<F1, F2>(user_id: F1, tweet_id: F2) -> DismissTweetEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:2779`](../source/thunder/schema/events.rs#L2779) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DismissTweetEvent> {`
+- [`thunder/schema/events.rs:2811`](../source/thunder/schema/events.rs#L2811) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2831`](../source/thunder/schema/events.rs#L2831) — `pub struct FeedbackEvent {`
+- [`thunder/schema/events.rs:2838`](../source/thunder/schema/events.rs#L2838) — `pub fn new<F9, F10>(user_id: i64, ttl_ms: F9, feedback_text: F10) -> FeedbackEvent where F9: Into<Option<i64>>, F10: Into<Option<String>> {`
+- [`thunder/schema/events.rs:2848`](../source/thunder/schema/events.rs#L2848) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FeedbackEvent> {`
+- [`thunder/schema/events.rs:2887`](../source/thunder/schema/events.rs#L2887) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:2910`](../source/thunder/schema/events.rs#L2910) — `pub struct GenericEvent {`
+- [`thunder/schema/events.rs:2919`](../source/thunder/schema/events.rs#L2919) — `pub fn new(subject_id: i64, object_id: i64, indirect_object_key: i64, is_deleted: bool, event_time_ms: i64) -> GenericEvent {`
+- [`thunder/schema/events.rs:2931`](../source/thunder/schema/events.rs#L2931) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<GenericEvent> {`
+- [`thunder/schema/events.rs:2986`](../source/thunder/schema/events.rs#L2986) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3011`](../source/thunder/schema/events.rs#L3011) — `pub struct UnmentionFromConversationEvent {`
+- [`thunder/schema/events.rs:3018`](../source/thunder/schema/events.rs#L3018) — `pub fn new(user_id: i64, conversation_id: i64, event_time_ms: i64) -> UnmentionFromConversationEvent {`
+- [`thunder/schema/events.rs:3028`](../source/thunder/schema/events.rs#L3028) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UnmentionFromConversationEvent> {`
+- [`thunder/schema/events.rs:3069`](../source/thunder/schema/events.rs#L3069) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3088`](../source/thunder/schema/events.rs#L3088) — `pub struct UndoUnmentionFromConversationEvent {`
+- [`thunder/schema/events.rs:3095`](../source/thunder/schema/events.rs#L3095) — `pub fn new(user_id: i64, conversation_id: i64, event_time_ms: i64) -> UndoUnmentionFromConversationEvent {`
+- [`thunder/schema/events.rs:3105`](../source/thunder/schema/events.rs#L3105) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UndoUnmentionFromConversationEvent> {`
+- [`thunder/schema/events.rs:3146`](../source/thunder/schema/events.rs#L3146) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3165`](../source/thunder/schema/events.rs#L3165) — `pub struct MuteConversationEvent {`
+- [`thunder/schema/events.rs:3172`](../source/thunder/schema/events.rs#L3172) — `pub fn new(user_id: i64, conversation_id: i64, event_time_ms: i64) -> MuteConversationEvent {`
+- [`thunder/schema/events.rs:3182`](../source/thunder/schema/events.rs#L3182) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MuteConversationEvent> {`
+- [`thunder/schema/events.rs:3223`](../source/thunder/schema/events.rs#L3223) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3242`](../source/thunder/schema/events.rs#L3242) — `pub struct UnmuteConversationEvent {`
+- [`thunder/schema/events.rs:3249`](../source/thunder/schema/events.rs#L3249) — `pub fn new(user_id: i64, conversation_id: i64, event_time_ms: i64) -> UnmuteConversationEvent {`
+- [`thunder/schema/events.rs:3259`](../source/thunder/schema/events.rs#L3259) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UnmuteConversationEvent> {`
+- [`thunder/schema/events.rs:3300`](../source/thunder/schema/events.rs#L3300) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3319`](../source/thunder/schema/events.rs#L3319) — `pub struct DeferredFavoriteEvent {`
+- [`thunder/schema/events.rs:3324`](../source/thunder/schema/events.rs#L3324) — `pub fn new(favorite_event: FavoriteEvent) -> DeferredFavoriteEvent {`
+- [`thunder/schema/events.rs:3332`](../source/thunder/schema/events.rs#L3332) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeferredFavoriteEvent> {`
+- [`thunder/schema/events.rs:3359`](../source/thunder/schema/events.rs#L3359) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3372`](../source/thunder/schema/events.rs#L3372) — `pub struct DeferredUnfavoriteEvent {`
+- [`thunder/schema/events.rs:3377`](../source/thunder/schema/events.rs#L3377) — `pub fn new(unfavorite_event: UnfavoriteEvent) -> DeferredUnfavoriteEvent {`
+- [`thunder/schema/events.rs:3385`](../source/thunder/schema/events.rs#L3385) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeferredUnfavoriteEvent> {`
+- [`thunder/schema/events.rs:3412`](../source/thunder/schema/events.rs#L3412) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3425`](../source/thunder/schema/events.rs#L3425) — `pub struct RemediateFavoriteGraphEvent {`
+- [`thunder/schema/events.rs:3434`](../source/thunder/schema/events.rs#L3434) — `pub fn new(user_id: i64, tweet_id: i64, tweet_user_id: i64, event_time_ms: i64, remediation_type: RemediateFavoriteGraphType) -> RemediateFavoriteGraphEvent {`
+- [`thunder/schema/events.rs:3446`](../source/thunder/schema/events.rs#L3446) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<RemediateFavoriteGraphEvent> {`
+- [`thunder/schema/events.rs:3501`](../source/thunder/schema/events.rs#L3501) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3526`](../source/thunder/schema/events.rs#L3526) — `pub struct BookmarkEvent {`
+- [`thunder/schema/events.rs:3540`](../source/thunder/schema/events.rs#L3540) — `pub fn new<F1, F2, F3, F4, F5, F6, F8, F11, F15, F16>(user_id: F1, tweet_id: F2, tweet_user_id: F3, event_time_ms: F4, retweet_id: F5, user: F6, tweet_user: F8, tweet: F11, in_reply_to_tweet_id: F15, quoted_tweet_id: F16) -> BookmarkEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<user::User>>, F8: Into<Option<user::User>>, F11: Into<Option<tweet::Tweet>>, F15: Into<Option<i64>>, F16: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:3557`](../source/thunder/schema/events.rs#L3557) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BookmarkEvent> {`
+- [`thunder/schema/events.rs:3637`](../source/thunder/schema/events.rs#L3637) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3697`](../source/thunder/schema/events.rs#L3697) — `pub struct UnbookmarkEvent {`
+- [`thunder/schema/events.rs:3711`](../source/thunder/schema/events.rs#L3711) — `pub fn new<F1, F2, F3, F4, F5, F6, F8, F10, F13, F14>(user_id: F1, tweet_id: F2, tweet_user_id: F3, event_time_ms: F4, retweet_id: F5, user: F6, tweet_user: F8, tweet: F10, in_reply_to_tweet_id: F13, quoted_tweet_id: F14) -> UnbookmarkEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<user::User>>, F8: Into<Option<user::User>>, F10: Into<Option<tweet::Tweet>>, F13: Into<Option<i64>>, F14: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:3728`](../source/thunder/schema/events.rs#L3728) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UnbookmarkEvent> {`
+- [`thunder/schema/events.rs:3808`](../source/thunder/schema/events.rs#L3808) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3868`](../source/thunder/schema/events.rs#L3868) — `pub struct DeferredBookmarkEvent {`
+- [`thunder/schema/events.rs:3873`](../source/thunder/schema/events.rs#L3873) — `pub fn new(bookmark_event: BookmarkEvent) -> DeferredBookmarkEvent {`
+- [`thunder/schema/events.rs:3881`](../source/thunder/schema/events.rs#L3881) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeferredBookmarkEvent> {`
+- [`thunder/schema/events.rs:3908`](../source/thunder/schema/events.rs#L3908) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3921`](../source/thunder/schema/events.rs#L3921) — `pub struct DeferredUnbookmarkEvent {`
+- [`thunder/schema/events.rs:3926`](../source/thunder/schema/events.rs#L3926) — `pub fn new(unbookmark_event: UnbookmarkEvent) -> DeferredUnbookmarkEvent {`
+- [`thunder/schema/events.rs:3934`](../source/thunder/schema/events.rs#L3934) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeferredUnbookmarkEvent> {`
+- [`thunder/schema/events.rs:3961`](../source/thunder/schema/events.rs#L3961) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:3974`](../source/thunder/schema/events.rs#L3974) — `pub struct DeleteAllBookmarksEvent {`
+- [`thunder/schema/events.rs:3979`](../source/thunder/schema/events.rs#L3979) — `pub fn new<F1>(user_id: F1) -> DeleteAllBookmarksEvent where F1: Into<Option<i64>> {`
+- [`thunder/schema/events.rs:3987`](../source/thunder/schema/events.rs#L3987) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeleteAllBookmarksEvent> {`
+- [`thunder/schema/events.rs:4013`](../source/thunder/schema/events.rs#L4013) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:4028`](../source/thunder/schema/events.rs#L4028) — `pub struct DropTweetsFromTimelineEvent {`
+- [`thunder/schema/events.rs:4033`](../source/thunder/schema/events.rs#L4033) — `pub fn new<F1>(tweet_ids: F1) -> DropTweetsFromTimelineEvent where F1: Into<Option<Vec<i64>>> {`
+- [`thunder/schema/events.rs:4041`](../source/thunder/schema/events.rs#L4041) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DropTweetsFromTimelineEvent> {`
+- [`thunder/schema/events.rs:4073`](../source/thunder/schema/events.rs#L4073) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/events.rs:4092`](../source/thunder/schema/events.rs#L4092) — `pub enum Event {`
+- [`thunder/schema/events.rs:4137`](../source/thunder/schema/events.rs#L4137) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Event> {`
+- [`thunder/schema/events.rs:4465`](../source/thunder/schema/events.rs#L4465) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_common.rs:28`](../source/thunder/schema/media_common.rs#L28) — `pub struct MediaCategory(pub i32);`
+- [`thunder/schema/media_common.rs:31`](../source/thunder/schema/media_common.rs#L31) — `pub const AVATAR_IMAGE: MediaCategory = MediaCategory(0);`
+- [`thunder/schema/media_common.rs:32`](../source/thunder/schema/media_common.rs#L32) — `pub const BANNER_IMAGE: MediaCategory = MediaCategory(1);`
+- [`thunder/schema/media_common.rs:33`](../source/thunder/schema/media_common.rs#L33) — `pub const BACKGROUND_IMAGE: MediaCategory = MediaCategory(2);`
+- [`thunder/schema/media_common.rs:34`](../source/thunder/schema/media_common.rs#L34) — `pub const TWEET_IMAGE: MediaCategory = MediaCategory(3);`
+- [`thunder/schema/media_common.rs:35`](../source/thunder/schema/media_common.rs#L35) — `pub const CARD_IMAGE: MediaCategory = MediaCategory(4);`
+- [`thunder/schema/media_common.rs:36`](../source/thunder/schema/media_common.rs#L36) — `pub const DM_IMAGE: MediaCategory = MediaCategory(5);`
+- [`thunder/schema/media_common.rs:37`](../source/thunder/schema/media_common.rs#L37) — `pub const PREVIEW_IMAGE: MediaCategory = MediaCategory(6);`
+- [`thunder/schema/media_common.rs:38`](../source/thunder/schema/media_common.rs#L38) — `pub const TWEET_VIDEO: MediaCategory = MediaCategory(7);`
+- [`thunder/schema/media_common.rs:39`](../source/thunder/schema/media_common.rs#L39) — `pub const APP_IMAGE: MediaCategory = MediaCategory(9);`
+- [`thunder/schema/media_common.rs:40`](../source/thunder/schema/media_common.rs#L40) — `pub const SUPPORT_IMAGE: MediaCategory = MediaCategory(10);`
+- [`thunder/schema/media_common.rs:41`](../source/thunder/schema/media_common.rs#L41) — `pub const DM_GROUP_IMAGE: MediaCategory = MediaCategory(12);`
+- [`thunder/schema/media_common.rs:42`](../source/thunder/schema/media_common.rs#L42) — `pub const AMPLIFY_VIDEO: MediaCategory = MediaCategory(13);`
+- [`thunder/schema/media_common.rs:43`](../source/thunder/schema/media_common.rs#L43) — `pub const PERISCOPE_VIDEO: MediaCategory = MediaCategory(15);`
+- [`thunder/schema/media_common.rs:44`](../source/thunder/schema/media_common.rs#L44) — `pub const TWEET_GIF: MediaCategory = MediaCategory(16);`
+- [`thunder/schema/media_common.rs:45`](../source/thunder/schema/media_common.rs#L45) — `pub const DM_GIF: MediaCategory = MediaCategory(17);`
+- [`thunder/schema/media_common.rs:46`](../source/thunder/schema/media_common.rs#L46) — `pub const DM_VIDEO: MediaCategory = MediaCategory(18);`
+- [`thunder/schema/media_common.rs:47`](../source/thunder/schema/media_common.rs#L47) — `pub const AD_IMAGE: MediaCategory = MediaCategory(19);`
+- [`thunder/schema/media_common.rs:48`](../source/thunder/schema/media_common.rs#L48) — `pub const PERISCOPE_AVATAR_IMAGE: MediaCategory = MediaCategory(20);`
+- [`thunder/schema/media_common.rs:49`](../source/thunder/schema/media_common.rs#L49) — `pub const LIVE_EVENT_IMAGE: MediaCategory = MediaCategory(23);`
+- [`thunder/schema/media_common.rs:50`](../source/thunder/schema/media_common.rs#L50) — `pub const B2C_PROFILE_IMAGE: MediaCategory = MediaCategory(24);`
+- [`thunder/schema/media_common.rs:51`](../source/thunder/schema/media_common.rs#L51) — `pub const TWITPIC: MediaCategory = MediaCategory(25);`
+- [`thunder/schema/media_common.rs:52`](../source/thunder/schema/media_common.rs#L52) — `pub const TWITTER_BROADCAST: MediaCategory = MediaCategory(26);`
+- [`thunder/schema/media_common.rs:53`](../source/thunder/schema/media_common.rs#L53) — `pub const NEWS_IMAGE: MediaCategory = MediaCategory(27);`
+- [`thunder/schema/media_common.rs:54`](../source/thunder/schema/media_common.rs#L54) — `pub const PERISCOPE_BROADCAST: MediaCategory = MediaCategory(28);`
+- [`thunder/schema/media_common.rs:55`](../source/thunder/schema/media_common.rs#L55) — `pub const SUBTITLES: MediaCategory = MediaCategory(29);`
+- [`thunder/schema/media_common.rs:56`](../source/thunder/schema/media_common.rs#L56) — `pub const SEMANTIC_CORE_IMAGE: MediaCategory = MediaCategory(30);`
+- [`thunder/schema/media_common.rs:57`](../source/thunder/schema/media_common.rs#L57) — `pub const VIDEO_SLICE: MediaCategory = MediaCategory(31);`
+- [`thunder/schema/media_common.rs:58`](../source/thunder/schema/media_common.rs#L58) — `pub const LIST_BANNER_IMAGE: MediaCategory = MediaCategory(32);`
+- [`thunder/schema/media_common.rs:59`](../source/thunder/schema/media_common.rs#L59) — `pub const COMMERCE_PRODUCT_IMAGE: MediaCategory = MediaCategory(33);`
+- [`thunder/schema/media_common.rs:60`](../source/thunder/schema/media_common.rs#L60) — `pub const COMMUNITY_BANNER_IMAGE: MediaCategory = MediaCategory(34);`
+- [`thunder/schema/media_common.rs:61`](../source/thunder/schema/media_common.rs#L61) — `pub const MODEL_3D: MediaCategory = MediaCategory(35);`
+- [`thunder/schema/media_common.rs:62`](../source/thunder/schema/media_common.rs#L62) — `pub const INTEGRATION_TEST_IMAGE: MediaCategory = MediaCategory(36);`
+- [`thunder/schema/media_common.rs:63`](../source/thunder/schema/media_common.rs#L63) — `pub const PLAYABLE_MEDIA: MediaCategory = MediaCategory(37);`
+- [`thunder/schema/media_common.rs:64`](../source/thunder/schema/media_common.rs#L64) — `pub const CUSTOMTIMELINE_BANNER_IMAGE: MediaCategory = MediaCategory(38);`
+- [`thunder/schema/media_common.rs:65`](../source/thunder/schema/media_common.rs#L65) — `pub const CUSTOMTIMELINE_ICON_IMAGE: MediaCategory = MediaCategory(39);`
+- [`thunder/schema/media_common.rs:66`](../source/thunder/schema/media_common.rs#L66) — `pub const CUSTOMTIMELINE_ITEM_IMAGE: MediaCategory = MediaCategory(40);`
+- [`thunder/schema/media_common.rs:67`](../source/thunder/schema/media_common.rs#L67) — `pub const COMPANY_LOGO_IMAGE: MediaCategory = MediaCategory(41);`
+- [`thunder/schema/media_common.rs:68`](../source/thunder/schema/media_common.rs#L68) — `pub const GROK_GENERATED_IMAGE: MediaCategory = MediaCategory(42);`
+- [`thunder/schema/media_common.rs:69`](../source/thunder/schema/media_common.rs#L69) — `pub const RESERVED_43: MediaCategory = MediaCategory(43);`
+- [`thunder/schema/media_common.rs:70`](../source/thunder/schema/media_common.rs#L70) — `pub const RESERVED_44: MediaCategory = MediaCategory(44);`
+- [`thunder/schema/media_common.rs:71`](../source/thunder/schema/media_common.rs#L71) — `pub const RESERVED_45: MediaCategory = MediaCategory(45);`
+- [`thunder/schema/media_common.rs:72`](../source/thunder/schema/media_common.rs#L72) — `pub const RESERVED_46: MediaCategory = MediaCategory(46);`
+- [`thunder/schema/media_common.rs:73`](../source/thunder/schema/media_common.rs#L73) — `pub const RESERVED_47: MediaCategory = MediaCategory(47);`
+- [`thunder/schema/media_common.rs:74`](../source/thunder/schema/media_common.rs#L74) — `pub const RESERVED_48: MediaCategory = MediaCategory(48);`
+- [`thunder/schema/media_common.rs:75`](../source/thunder/schema/media_common.rs#L75) — `pub const RESERVED_49: MediaCategory = MediaCategory(49);`
+- [`thunder/schema/media_common.rs:76`](../source/thunder/schema/media_common.rs#L76) — `pub const RESERVED_50: MediaCategory = MediaCategory(50);`
+- [`thunder/schema/media_common.rs:77`](../source/thunder/schema/media_common.rs#L77) — `pub const RESERVED_51: MediaCategory = MediaCategory(51);`
+- [`thunder/schema/media_common.rs:78`](../source/thunder/schema/media_common.rs#L78) — `pub const RESERVED_52: MediaCategory = MediaCategory(52);`
+- [`thunder/schema/media_common.rs:79`](../source/thunder/schema/media_common.rs#L79) — `pub const RESERVED_53: MediaCategory = MediaCategory(53);`
+- [`thunder/schema/media_common.rs:80`](../source/thunder/schema/media_common.rs#L80) — `pub const RESERVED_54: MediaCategory = MediaCategory(54);`
+- [`thunder/schema/media_common.rs:81`](../source/thunder/schema/media_common.rs#L81) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/media_common.rs:137`](../source/thunder/schema/media_common.rs#L137) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_common.rs:140`](../source/thunder/schema/media_common.rs#L140) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaCategory> {`
+- [`thunder/schema/media_common.rs:147`](../source/thunder/schema/media_common.rs#L147) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/media_common.rs:205`](../source/thunder/schema/media_common.rs#L205) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/media_common.rs:211`](../source/thunder/schema/media_common.rs#L211) — `fn from(e: MediaCategory) -> i32 {`
+- [`thunder/schema/media_common.rs:217`](../source/thunder/schema/media_common.rs#L217) — `fn from(e: &MediaCategory) -> i32 {`
+- [`thunder/schema/media_common.rs:222`](../source/thunder/schema/media_common.rs#L222) — `pub type MediaId = i64;`
+- [`thunder/schema/media_common.rs:226`](../source/thunder/schema/media_common.rs#L226) — `pub struct MediaKey {`
+- [`thunder/schema/media_common.rs:232`](../source/thunder/schema/media_common.rs#L232) — `pub fn new<F1, F2>(media_category: F1, media_id: F2) -> MediaKey where F1: Into<Option<MediaCategory>>, F2: Into<Option<MediaId>> {`
+- [`thunder/schema/media_common.rs:241`](../source/thunder/schema/media_common.rs#L241) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaKey> {`
+- [`thunder/schema/media_common.rs:273`](../source/thunder/schema/media_common.rs#L273) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_common.rs:293`](../source/thunder/schema/media_common.rs#L293) — `pub struct ProductKey {`
+- [`thunder/schema/media_common.rs:299`](../source/thunder/schema/media_common.rs#L299) — `pub fn new<F1, F2>(entity_id: F1, media_key: F2) -> ProductKey where F1: Into<Option<String>>, F2: Into<Option<MediaKey>> {`
+- [`thunder/schema/media_common.rs:308`](../source/thunder/schema/media_common.rs#L308) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProductKey> {`
+- [`thunder/schema/media_common.rs:340`](../source/thunder/schema/media_common.rs#L340) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_common.rs:360`](../source/thunder/schema/media_common.rs#L360) — `pub struct OwnershipInfo {`
+- [`thunder/schema/media_common.rs:371`](../source/thunder/schema/media_common.rs#L371) — `pub fn new<F1, F2, F3, F4, F5, F6, F7>(user_id: F1, tweet_id: F2, dm_id: F3, entity_id: F4, attributable_user_id: F5, fleet_id: F6, twitter_article_id: F7) -> OwnershipInfo where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<String>>, F5: Into<Option<i64>>, F6: Into<Option<String>>, F7: Into<Option<i64>> {`
+- [`thunder/schema/media_common.rs:385`](../source/thunder/schema/media_common.rs#L385) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<OwnershipInfo> {`
+- [`thunder/schema/media_common.rs:447`](../source/thunder/schema/media_common.rs#L447) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_common.rs:492`](../source/thunder/schema/media_common.rs#L492) — `pub struct Context {`
+- [`thunder/schema/media_common.rs:497`](../source/thunder/schema/media_common.rs#L497) — `pub fn new<F1>(values: F1) -> Context where F1: Into<Option<BTreeMap<String, String>>> {`
+- [`thunder/schema/media_common.rs:505`](../source/thunder/schema/media_common.rs#L505) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Context> {`
+- [`thunder/schema/media_common.rs:538`](../source/thunder/schema/media_common.rs#L538) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_common.rs:558`](../source/thunder/schema/media_common.rs#L558) — `pub struct UploadSourceInfo {`
+- [`thunder/schema/media_common.rs:563`](../source/thunder/schema/media_common.rs#L563) — `pub fn new<F1>(url: F1) -> UploadSourceInfo where F1: Into<Option<String>> {`
+- [`thunder/schema/media_common.rs:571`](../source/thunder/schema/media_common.rs#L571) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UploadSourceInfo> {`
+- [`thunder/schema/media_common.rs:597`](../source/thunder/schema/media_common.rs#L597) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_entity.rs:32`](../source/thunder/schema/media_entity.rs#L32) — `pub struct ColorValue {`
+- [`thunder/schema/media_entity.rs:39`](../source/thunder/schema/media_entity.rs#L39) — `pub fn new<F1, F2, F3>(red: F1, green: F2, blue: F3) -> ColorValue where F1: Into<Option<i8>>, F2: Into<Option<i8>>, F3: Into<Option<i8>> {`
+- [`thunder/schema/media_entity.rs:49`](../source/thunder/schema/media_entity.rs#L49) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ColorValue> {`
+- [`thunder/schema/media_entity.rs:87`](../source/thunder/schema/media_entity.rs#L87) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/media_entity.rs:112`](../source/thunder/schema/media_entity.rs#L112) — `pub struct MediaEntity {`
+- [`thunder/schema/media_entity.rs:132`](../source/thunder/schema/media_entity.rs#L132) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F21>(from_index: F1, to_index: F2, url: F3, display_url: F4, media_url: F5, media_url_https: F6, expanded_url: F7, media_id: F8, nsfw: F9, sizes: F10, media_path: F11, is_protected: F12, source_status_id: F13, source_user_id: F14, media_info: F15, media_key: F21) -> MediaEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>>, F4: Into<Option<String>>, F5: Into<Option<String>>, F6: Into<Option<String>>, F7: Into<Option<String>>, F8: Into<Option<media_common::MediaId>>, F9: Into<Option<bool>>, F10: Into<Option<BTreeSet<tweet_media::MediaSize>>>, F11: Into<Option<String>>, F12: Into<Option<bool>>, F13: Into<Option<i64>>, F14: Into<Option<i64>>, F15: Into<Option<tweet_media::MediaInfo>>, F21: Into<Option<media_common::MediaKey>> {`
+- [`thunder/schema/media_entity.rs:155`](../source/thunder/schema/media_entity.rs#L155) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaEntity> {`
+- [`thunder/schema/media_entity.rs:277`](../source/thunder/schema/media_entity.rs#L277) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:30`](../source/thunder/schema/tweet.rs#L30) — `pub struct PlaceType(pub i32);`
+- [`thunder/schema/tweet.rs:33`](../source/thunder/schema/tweet.rs#L33) — `pub const UNKNOWN: PlaceType = PlaceType(0);`
+- [`thunder/schema/tweet.rs:34`](../source/thunder/schema/tweet.rs#L34) — `pub const COUNTRY: PlaceType = PlaceType(1);`
+- [`thunder/schema/tweet.rs:35`](../source/thunder/schema/tweet.rs#L35) — `pub const ADMIN: PlaceType = PlaceType(2);`
+- [`thunder/schema/tweet.rs:36`](../source/thunder/schema/tweet.rs#L36) — `pub const CITY: PlaceType = PlaceType(3);`
+- [`thunder/schema/tweet.rs:37`](../source/thunder/schema/tweet.rs#L37) — `pub const NEIGHBORHOOD: PlaceType = PlaceType(4);`
+- [`thunder/schema/tweet.rs:38`](../source/thunder/schema/tweet.rs#L38) — `pub const POI: PlaceType = PlaceType(5);`
+- [`thunder/schema/tweet.rs:39`](../source/thunder/schema/tweet.rs#L39) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:51`](../source/thunder/schema/tweet.rs#L51) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:54`](../source/thunder/schema/tweet.rs#L54) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PlaceType> {`
+- [`thunder/schema/tweet.rs:61`](../source/thunder/schema/tweet.rs#L61) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:75`](../source/thunder/schema/tweet.rs#L75) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:81`](../source/thunder/schema/tweet.rs#L81) — `fn from(e: PlaceType) -> i32 {`
+- [`thunder/schema/tweet.rs:87`](../source/thunder/schema/tweet.rs#L87) — `fn from(e: &PlaceType) -> i32 {`
+- [`thunder/schema/tweet.rs:93`](../source/thunder/schema/tweet.rs#L93) — `pub struct PlaceNameType(pub i32);`
+- [`thunder/schema/tweet.rs:96`](../source/thunder/schema/tweet.rs#L96) — `pub const NORMAL: PlaceNameType = PlaceNameType(0);`
+- [`thunder/schema/tweet.rs:97`](../source/thunder/schema/tweet.rs#L97) — `pub const ABBREVIATION: PlaceNameType = PlaceNameType(1);`
+- [`thunder/schema/tweet.rs:98`](../source/thunder/schema/tweet.rs#L98) — `pub const SYNONYM: PlaceNameType = PlaceNameType(2);`
+- [`thunder/schema/tweet.rs:99`](../source/thunder/schema/tweet.rs#L99) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:108`](../source/thunder/schema/tweet.rs#L108) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:111`](../source/thunder/schema/tweet.rs#L111) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PlaceNameType> {`
+- [`thunder/schema/tweet.rs:118`](../source/thunder/schema/tweet.rs#L118) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:129`](../source/thunder/schema/tweet.rs#L129) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:135`](../source/thunder/schema/tweet.rs#L135) — `fn from(e: PlaceNameType) -> i32 {`
+- [`thunder/schema/tweet.rs:141`](../source/thunder/schema/tweet.rs#L141) — `fn from(e: &PlaceNameType) -> i32 {`
+- [`thunder/schema/tweet.rs:147`](../source/thunder/schema/tweet.rs#L147) — `pub struct MediaTagType(pub i32);`
+- [`thunder/schema/tweet.rs:150`](../source/thunder/schema/tweet.rs#L150) — `pub const USER: MediaTagType = MediaTagType(0);`
+- [`thunder/schema/tweet.rs:151`](../source/thunder/schema/tweet.rs#L151) — `pub const RESERVED_1: MediaTagType = MediaTagType(1);`
+- [`thunder/schema/tweet.rs:152`](../source/thunder/schema/tweet.rs#L152) — `pub const RESERVED_2: MediaTagType = MediaTagType(2);`
+- [`thunder/schema/tweet.rs:153`](../source/thunder/schema/tweet.rs#L153) — `pub const RESERVED_3: MediaTagType = MediaTagType(3);`
+- [`thunder/schema/tweet.rs:154`](../source/thunder/schema/tweet.rs#L154) — `pub const RESERVED_4: MediaTagType = MediaTagType(4);`
+- [`thunder/schema/tweet.rs:155`](../source/thunder/schema/tweet.rs#L155) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:166`](../source/thunder/schema/tweet.rs#L166) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:169`](../source/thunder/schema/tweet.rs#L169) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaTagType> {`
+- [`thunder/schema/tweet.rs:176`](../source/thunder/schema/tweet.rs#L176) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:189`](../source/thunder/schema/tweet.rs#L189) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:195`](../source/thunder/schema/tweet.rs#L195) — `fn from(e: MediaTagType) -> i32 {`
+- [`thunder/schema/tweet.rs:201`](../source/thunder/schema/tweet.rs#L201) — `fn from(e: &MediaTagType) -> i32 {`
+- [`thunder/schema/tweet.rs:207`](../source/thunder/schema/tweet.rs#L207) — `pub struct SuggestType(pub i32);`
+- [`thunder/schema/tweet.rs:210`](../source/thunder/schema/tweet.rs#L210) — `pub const WTF_CARD: SuggestType = SuggestType(0);`
+- [`thunder/schema/tweet.rs:211`](../source/thunder/schema/tweet.rs#L211) — `pub const WORLD_CUP: SuggestType = SuggestType(1);`
+- [`thunder/schema/tweet.rs:212`](../source/thunder/schema/tweet.rs#L212) — `pub const WTD_CARD: SuggestType = SuggestType(2);`
+- [`thunder/schema/tweet.rs:213`](../source/thunder/schema/tweet.rs#L213) — `pub const NEWS_CARD: SuggestType = SuggestType(3);`
+- [`thunder/schema/tweet.rs:214`](../source/thunder/schema/tweet.rs#L214) — `pub const RESERVED_4: SuggestType = SuggestType(4);`
+- [`thunder/schema/tweet.rs:215`](../source/thunder/schema/tweet.rs#L215) — `pub const RESERVED_5: SuggestType = SuggestType(5);`
+- [`thunder/schema/tweet.rs:216`](../source/thunder/schema/tweet.rs#L216) — `pub const RESERVED_6: SuggestType = SuggestType(6);`
+- [`thunder/schema/tweet.rs:217`](../source/thunder/schema/tweet.rs#L217) — `pub const RESERVED_7: SuggestType = SuggestType(7);`
+- [`thunder/schema/tweet.rs:218`](../source/thunder/schema/tweet.rs#L218) — `pub const RESERVED_8: SuggestType = SuggestType(8);`
+- [`thunder/schema/tweet.rs:219`](../source/thunder/schema/tweet.rs#L219) — `pub const RESERVED_9: SuggestType = SuggestType(9);`
+- [`thunder/schema/tweet.rs:220`](../source/thunder/schema/tweet.rs#L220) — `pub const RESERVED_10: SuggestType = SuggestType(10);`
+- [`thunder/schema/tweet.rs:221`](../source/thunder/schema/tweet.rs#L221) — `pub const RESERVED_11: SuggestType = SuggestType(11);`
+- [`thunder/schema/tweet.rs:222`](../source/thunder/schema/tweet.rs#L222) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:240`](../source/thunder/schema/tweet.rs#L240) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:243`](../source/thunder/schema/tweet.rs#L243) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SuggestType> {`
+- [`thunder/schema/tweet.rs:250`](../source/thunder/schema/tweet.rs#L250) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:270`](../source/thunder/schema/tweet.rs#L270) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:276`](../source/thunder/schema/tweet.rs#L276) — `fn from(e: SuggestType) -> i32 {`
+- [`thunder/schema/tweet.rs:282`](../source/thunder/schema/tweet.rs#L282) — `fn from(e: &SuggestType) -> i32 {`
+- [`thunder/schema/tweet.rs:288`](../source/thunder/schema/tweet.rs#L288) — `pub struct TwitterSuggestsVisibilityType(pub i32);`
+- [`thunder/schema/tweet.rs:291`](../source/thunder/schema/tweet.rs#L291) — `pub const PUBLIC: TwitterSuggestsVisibilityType = TwitterSuggestsVisibilityType(1);`
+- [`thunder/schema/tweet.rs:292`](../source/thunder/schema/tweet.rs#L292) — `pub const RESTRICTED: TwitterSuggestsVisibilityType = TwitterSuggestsVisibilityType(2);`
+- [`thunder/schema/tweet.rs:293`](../source/thunder/schema/tweet.rs#L293) — `pub const PRIVATE: TwitterSuggestsVisibilityType = TwitterSuggestsVisibilityType(3);`
+- [`thunder/schema/tweet.rs:294`](../source/thunder/schema/tweet.rs#L294) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:303`](../source/thunder/schema/tweet.rs#L303) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:306`](../source/thunder/schema/tweet.rs#L306) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TwitterSuggestsVisibilityType> {`
+- [`thunder/schema/tweet.rs:313`](../source/thunder/schema/tweet.rs#L313) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:324`](../source/thunder/schema/tweet.rs#L324) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:330`](../source/thunder/schema/tweet.rs#L330) — `fn from(e: TwitterSuggestsVisibilityType) -> i32 {`
+- [`thunder/schema/tweet.rs:336`](../source/thunder/schema/tweet.rs#L336) — `fn from(e: &TwitterSuggestsVisibilityType) -> i32 {`
+- [`thunder/schema/tweet.rs:342`](../source/thunder/schema/tweet.rs#L342) — `pub struct SpamSignalType(pub i32);`
+- [`thunder/schema/tweet.rs:345`](../source/thunder/schema/tweet.rs#L345) — `pub const MENTION: SpamSignalType = SpamSignalType(1);`
+- [`thunder/schema/tweet.rs:346`](../source/thunder/schema/tweet.rs#L346) — `pub const SEARCH: SpamSignalType = SpamSignalType(2);`
+- [`thunder/schema/tweet.rs:347`](../source/thunder/schema/tweet.rs#L347) — `pub const STREAMING: SpamSignalType = SpamSignalType(4);`
+- [`thunder/schema/tweet.rs:348`](../source/thunder/schema/tweet.rs#L348) — `pub const RESERVED_VALUE_8: SpamSignalType = SpamSignalType(8);`
+- [`thunder/schema/tweet.rs:349`](../source/thunder/schema/tweet.rs#L349) — `pub const RESERVED_VALUE_9: SpamSignalType = SpamSignalType(9);`
+- [`thunder/schema/tweet.rs:350`](../source/thunder/schema/tweet.rs#L350) — `pub const RESERVED_VALUE_10: SpamSignalType = SpamSignalType(10);`
+- [`thunder/schema/tweet.rs:351`](../source/thunder/schema/tweet.rs#L351) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:363`](../source/thunder/schema/tweet.rs#L363) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:366`](../source/thunder/schema/tweet.rs#L366) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SpamSignalType> {`
+- [`thunder/schema/tweet.rs:373`](../source/thunder/schema/tweet.rs#L373) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:387`](../source/thunder/schema/tweet.rs#L387) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:393`](../source/thunder/schema/tweet.rs#L393) — `fn from(e: SpamSignalType) -> i32 {`
+- [`thunder/schema/tweet.rs:399`](../source/thunder/schema/tweet.rs#L399) — `fn from(e: &SpamSignalType) -> i32 {`
+- [`thunder/schema/tweet.rs:405`](../source/thunder/schema/tweet.rs#L405) — `pub struct TweetCreateContextKey(pub i32);`
+- [`thunder/schema/tweet.rs:408`](../source/thunder/schema/tweet.rs#L408) — `pub const PERISCOPE_IS_LIVE: TweetCreateContextKey = TweetCreateContextKey(0);`
+- [`thunder/schema/tweet.rs:409`](../source/thunder/schema/tweet.rs#L409) — `pub const PERISCOPE_CREATOR_ID: TweetCreateContextKey = TweetCreateContextKey(1);`
+- [`thunder/schema/tweet.rs:410`](../source/thunder/schema/tweet.rs#L410) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:418`](../source/thunder/schema/tweet.rs#L418) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:421`](../source/thunder/schema/tweet.rs#L421) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetCreateContextKey> {`
+- [`thunder/schema/tweet.rs:428`](../source/thunder/schema/tweet.rs#L428) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:438`](../source/thunder/schema/tweet.rs#L438) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:444`](../source/thunder/schema/tweet.rs#L444) — `fn from(e: TweetCreateContextKey) -> i32 {`
+- [`thunder/schema/tweet.rs:450`](../source/thunder/schema/tweet.rs#L450) — `fn from(e: &TweetCreateContextKey) -> i32 {`
+- [`thunder/schema/tweet.rs:456`](../source/thunder/schema/tweet.rs#L456) — `pub struct ComposerSource(pub i32);`
+- [`thunder/schema/tweet.rs:459`](../source/thunder/schema/tweet.rs#L459) — `pub const STANDARD: ComposerSource = ComposerSource(1);`
+- [`thunder/schema/tweet.rs:460`](../source/thunder/schema/tweet.rs#L460) — `pub const CAMERA: ComposerSource = ComposerSource(2);`
+- [`thunder/schema/tweet.rs:461`](../source/thunder/schema/tweet.rs#L461) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:469`](../source/thunder/schema/tweet.rs#L469) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:472`](../source/thunder/schema/tweet.rs#L472) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ComposerSource> {`
+- [`thunder/schema/tweet.rs:479`](../source/thunder/schema/tweet.rs#L479) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:489`](../source/thunder/schema/tweet.rs#L489) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:495`](../source/thunder/schema/tweet.rs#L495) — `fn from(e: ComposerSource) -> i32 {`
+- [`thunder/schema/tweet.rs:501`](../source/thunder/schema/tweet.rs#L501) — `fn from(e: &ComposerSource) -> i32 {`
+- [`thunder/schema/tweet.rs:507`](../source/thunder/schema/tweet.rs#L507) — `pub struct CollabInvitationStatus(pub i32);`
+- [`thunder/schema/tweet.rs:510`](../source/thunder/schema/tweet.rs#L510) — `pub const PENDING: CollabInvitationStatus = CollabInvitationStatus(0);`
+- [`thunder/schema/tweet.rs:511`](../source/thunder/schema/tweet.rs#L511) — `pub const ACCEPTED: CollabInvitationStatus = CollabInvitationStatus(1);`
+- [`thunder/schema/tweet.rs:512`](../source/thunder/schema/tweet.rs#L512) — `pub const REJECTED: CollabInvitationStatus = CollabInvitationStatus(2);`
+- [`thunder/schema/tweet.rs:513`](../source/thunder/schema/tweet.rs#L513) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:522`](../source/thunder/schema/tweet.rs#L522) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:525`](../source/thunder/schema/tweet.rs#L525) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CollabInvitationStatus> {`
+- [`thunder/schema/tweet.rs:532`](../source/thunder/schema/tweet.rs#L532) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:543`](../source/thunder/schema/tweet.rs#L543) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:549`](../source/thunder/schema/tweet.rs#L549) — `fn from(e: CollabInvitationStatus) -> i32 {`
+- [`thunder/schema/tweet.rs:555`](../source/thunder/schema/tweet.rs#L555) — `fn from(e: &CollabInvitationStatus) -> i32 {`
+- [`thunder/schema/tweet.rs:561`](../source/thunder/schema/tweet.rs#L561) — `pub struct DisallowedReply(pub i32);`
+- [`thunder/schema/tweet.rs:564`](../source/thunder/schema/tweet.rs#L564) — `pub const LINKS: DisallowedReply = DisallowedReply(0);`
+- [`thunder/schema/tweet.rs:565`](../source/thunder/schema/tweet.rs#L565) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet.rs:572`](../source/thunder/schema/tweet.rs#L572) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:575`](../source/thunder/schema/tweet.rs#L575) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DisallowedReply> {`
+- [`thunder/schema/tweet.rs:582`](../source/thunder/schema/tweet.rs#L582) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet.rs:591`](../source/thunder/schema/tweet.rs#L591) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet.rs:597`](../source/thunder/schema/tweet.rs#L597) — `fn from(e: DisallowedReply) -> i32 {`
+- [`thunder/schema/tweet.rs:603`](../source/thunder/schema/tweet.rs#L603) — `fn from(e: &DisallowedReply) -> i32 {`
+- [`thunder/schema/tweet.rs:610`](../source/thunder/schema/tweet.rs#L610) — `pub struct Reply {`
+- [`thunder/schema/tweet.rs:616`](../source/thunder/schema/tweet.rs#L616) — `pub fn new<F1, F2>(in_reply_to_status_id: F1, in_reply_to_user_id: F2) -> Reply where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:625`](../source/thunder/schema/tweet.rs#L625) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Reply> {`
+- [`thunder/schema/tweet.rs:657`](../source/thunder/schema/tweet.rs#L657) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:677`](../source/thunder/schema/tweet.rs#L677) — `pub struct DirectedAtUser {`
+- [`thunder/schema/tweet.rs:683`](../source/thunder/schema/tweet.rs#L683) — `pub fn new<F1, F2>(user_id: F1, screen_name: F2) -> DirectedAtUser where F1: Into<Option<i64>>, F2: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:692`](../source/thunder/schema/tweet.rs#L692) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DirectedAtUser> {`
+- [`thunder/schema/tweet.rs:724`](../source/thunder/schema/tweet.rs#L724) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:744`](../source/thunder/schema/tweet.rs#L744) — `pub struct Share {`
+- [`thunder/schema/tweet.rs:751`](../source/thunder/schema/tweet.rs#L751) — `pub fn new<F1, F2, F3>(source_status_id: F1, source_user_id: F2, parent_status_id: F3) -> Share where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:761`](../source/thunder/schema/tweet.rs#L761) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Share> {`
+- [`thunder/schema/tweet.rs:799`](../source/thunder/schema/tweet.rs#L799) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:824`](../source/thunder/schema/tweet.rs#L824) — `pub struct ShortenedUrl {`
+- [`thunder/schema/tweet.rs:831`](../source/thunder/schema/tweet.rs#L831) — `pub fn new<F1, F2, F3>(short_url: F1, long_url: F2, display_text: F3) -> ShortenedUrl where F1: Into<Option<String>>, F2: Into<Option<String>>, F3: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:841`](../source/thunder/schema/tweet.rs#L841) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ShortenedUrl> {`
+- [`thunder/schema/tweet.rs:879`](../source/thunder/schema/tweet.rs#L879) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:904`](../source/thunder/schema/tweet.rs#L904) — `pub struct QuotedTweet {`
+- [`thunder/schema/tweet.rs:910`](../source/thunder/schema/tweet.rs#L910) — `pub fn new<F1, F2>(tweet_id: F1, user_id: F2) -> QuotedTweet where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:919`](../source/thunder/schema/tweet.rs#L919) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<QuotedTweet> {`
+- [`thunder/schema/tweet.rs:951`](../source/thunder/schema/tweet.rs#L951) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:971`](../source/thunder/schema/tweet.rs#L971) — `pub struct Contributor {`
+- [`thunder/schema/tweet.rs:977`](../source/thunder/schema/tweet.rs#L977) — `pub fn new<F1, F2>(user_id: F1, screen_name: F2) -> Contributor where F1: Into<Option<i64>>, F2: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:986`](../source/thunder/schema/tweet.rs#L986) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Contributor> {`
+- [`thunder/schema/tweet.rs:1018`](../source/thunder/schema/tweet.rs#L1018) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1038`](../source/thunder/schema/tweet.rs#L1038) — `pub struct GeoCoordinates {`
+- [`thunder/schema/tweet.rs:1046`](../source/thunder/schema/tweet.rs#L1046) — `pub fn new<F1, F2, F3, F4>(latitude: F1, longitude: F2, geo_precision: F3, display: F4) -> GeoCoordinates where F1: Into<Option<OrderedFloat<f64>>>, F2: Into<Option<OrderedFloat<f64>>>, F3: Into<Option<i32>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:1057`](../source/thunder/schema/tweet.rs#L1057) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<GeoCoordinates> {`
+- [`thunder/schema/tweet.rs:1101`](../source/thunder/schema/tweet.rs#L1101) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1131`](../source/thunder/schema/tweet.rs#L1131) — `pub struct PlaceName {`
+- [`thunder/schema/tweet.rs:1139`](../source/thunder/schema/tweet.rs#L1139) — `pub fn new<F1, F2, F3, F4>(name: F1, language: F2, type_: F3, preferred: F4) -> PlaceName where F1: Into<Option<String>>, F2: Into<Option<String>>, F3: Into<Option<PlaceNameType>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:1150`](../source/thunder/schema/tweet.rs#L1150) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PlaceName> {`
+- [`thunder/schema/tweet.rs:1194`](../source/thunder/schema/tweet.rs#L1194) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1224`](../source/thunder/schema/tweet.rs#L1224) — `pub struct NarrowcastPlace {`
+- [`thunder/schema/tweet.rs:1229`](../source/thunder/schema/tweet.rs#L1229) — `pub fn new<F1>(id: F1) -> NarrowcastPlace where F1: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:1237`](../source/thunder/schema/tweet.rs#L1237) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<NarrowcastPlace> {`
+- [`thunder/schema/tweet.rs:1263`](../source/thunder/schema/tweet.rs#L1263) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1278`](../source/thunder/schema/tweet.rs#L1278) — `pub struct AdvertisingDisclosure {`
+- [`thunder/schema/tweet.rs:1283`](../source/thunder/schema/tweet.rs#L1283) — `pub fn new<F1>(is_paid_promotion: F1) -> AdvertisingDisclosure where F1: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:1291`](../source/thunder/schema/tweet.rs#L1291) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AdvertisingDisclosure> {`
+- [`thunder/schema/tweet.rs:1317`](../source/thunder/schema/tweet.rs#L1317) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1332`](../source/thunder/schema/tweet.rs#L1332) — `pub struct ContentDisclosure {`
+- [`thunder/schema/tweet.rs:1337`](../source/thunder/schema/tweet.rs#L1337) — `pub fn new<F1>(advertising_disclosure: F1) -> ContentDisclosure where F1: Into<Option<AdvertisingDisclosure>> {`
+- [`thunder/schema/tweet.rs:1345`](../source/thunder/schema/tweet.rs#L1345) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ContentDisclosure> {`
+- [`thunder/schema/tweet.rs:1371`](../source/thunder/schema/tweet.rs#L1371) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1386`](../source/thunder/schema/tweet.rs#L1386) — `pub struct Place {`
+- [`thunder/schema/tweet.rs:1401`](../source/thunder/schema/tweet.rs#L1401) — `pub fn new<F1, F2, F3, F4, F5, F7, F9, F10, F11, F12, F13>(id: F1, type_: F2, full_name: F3, name: F4, attributes: F5, names: F7, country_code: F9, country_name: F10, bounding_box: F11, containers: F12, centroid: F13) -> Place where F1: Into<Option<String>>, F2: Into<Option<PlaceType>>, F3: Into<Option<String>>, F4: Into<Option<String>>, F5: Into<Option<BTreeMap<String, String>>>, F7: Into<Option<BTreeSet<PlaceName>>>, F9: Into<Option<String>>, F10: Into<Option<String>>, F11: Into<Option<Vec<GeoCoordinates>>>, F12: Into<Option<BTreeSet<String>>>, F13: Into<Option<GeoCoordinates>> {`
+- [`thunder/schema/tweet.rs:1419`](../source/thunder/schema/tweet.rs#L1419) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Place> {`
+- [`thunder/schema/tweet.rs:1530`](../source/thunder/schema/tweet.rs#L1530) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1612`](../source/thunder/schema/tweet.rs#L1612) — `pub struct UrlEntity {`
+- [`thunder/schema/tweet.rs:1622`](../source/thunder/schema/tweet.rs#L1622) — `pub fn new<F1, F2, F3, F4, F5, F6>(from_index: F1, to_index: F2, url: F3, expanded: F4, display: F5, click_count: F6) -> UrlEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>>, F4: Into<Option<String>>, F5: Into<Option<String>>, F6: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:1635`](../source/thunder/schema/tweet.rs#L1635) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UrlEntity> {`
+- [`thunder/schema/tweet.rs:1691`](../source/thunder/schema/tweet.rs#L1691) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1731`](../source/thunder/schema/tweet.rs#L1731) — `pub struct MentionEntity {`
+- [`thunder/schema/tweet.rs:1741`](../source/thunder/schema/tweet.rs#L1741) — `pub fn new<F1, F2, F3, F4, F5, F6>(from_index: F1, to_index: F2, screen_name: F3, user_id: F4, name: F5, is_unmentioned: F6) -> MentionEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>>, F4: Into<Option<i64>>, F5: Into<Option<String>>, F6: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:1754`](../source/thunder/schema/tweet.rs#L1754) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MentionEntity> {`
+- [`thunder/schema/tweet.rs:1810`](../source/thunder/schema/tweet.rs#L1810) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1850`](../source/thunder/schema/tweet.rs#L1850) — `pub struct BlockingUnmentions {`
+- [`thunder/schema/tweet.rs:1855`](../source/thunder/schema/tweet.rs#L1855) — `pub fn new<F1>(unmentioned_user_ids: F1) -> BlockingUnmentions where F1: Into<Option<Vec<i64>>> {`
+- [`thunder/schema/tweet.rs:1863`](../source/thunder/schema/tweet.rs#L1863) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BlockingUnmentions> {`
+- [`thunder/schema/tweet.rs:1895`](../source/thunder/schema/tweet.rs#L1895) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1914`](../source/thunder/schema/tweet.rs#L1914) — `pub struct SettingsUnmentions {`
+- [`thunder/schema/tweet.rs:1919`](../source/thunder/schema/tweet.rs#L1919) — `pub fn new<F1>(unmentioned_user_ids: F1) -> SettingsUnmentions where F1: Into<Option<Vec<i64>>> {`
+- [`thunder/schema/tweet.rs:1927`](../source/thunder/schema/tweet.rs#L1927) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SettingsUnmentions> {`
+- [`thunder/schema/tweet.rs:1959`](../source/thunder/schema/tweet.rs#L1959) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:1978`](../source/thunder/schema/tweet.rs#L1978) — `pub struct HashtagEntity {`
+- [`thunder/schema/tweet.rs:1985`](../source/thunder/schema/tweet.rs#L1985) — `pub fn new<F1, F2, F3>(from_index: F1, to_index: F2, text: F3) -> HashtagEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:1995`](../source/thunder/schema/tweet.rs#L1995) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<HashtagEntity> {`
+- [`thunder/schema/tweet.rs:2033`](../source/thunder/schema/tweet.rs#L2033) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2058`](../source/thunder/schema/tweet.rs#L2058) — `pub struct CashtagEntity {`
+- [`thunder/schema/tweet.rs:2065`](../source/thunder/schema/tweet.rs#L2065) — `pub fn new<F1, F2, F3>(from_index: F1, to_index: F2, text: F3) -> CashtagEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:2075`](../source/thunder/schema/tweet.rs#L2075) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CashtagEntity> {`
+- [`thunder/schema/tweet.rs:2113`](../source/thunder/schema/tweet.rs#L2113) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2138`](../source/thunder/schema/tweet.rs#L2138) — `pub struct TimestampEntity {`
+- [`thunder/schema/tweet.rs:2146`](../source/thunder/schema/tweet.rs#L2146) — `pub fn new<F1, F2, F3, F4>(from_index: F1, to_index: F2, text: F3, seconds: F4) -> TimestampEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>>, F4: Into<Option<i32>> {`
+- [`thunder/schema/tweet.rs:2157`](../source/thunder/schema/tweet.rs#L2157) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TimestampEntity> {`
+- [`thunder/schema/tweet.rs:2201`](../source/thunder/schema/tweet.rs#L2201) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2231`](../source/thunder/schema/tweet.rs#L2231) — `pub struct MediaTag {`
+- [`thunder/schema/tweet.rs:2239`](../source/thunder/schema/tweet.rs#L2239) — `pub fn new<F1, F2, F3, F4>(tag_type: F1, user_id: F2, screen_name: F3, name: F4) -> MediaTag where F1: Into<Option<MediaTagType>>, F2: Into<Option<i64>>, F3: Into<Option<String>>, F4: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:2250`](../source/thunder/schema/tweet.rs#L2250) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaTag> {`
+- [`thunder/schema/tweet.rs:2294`](../source/thunder/schema/tweet.rs#L2294) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2324`](../source/thunder/schema/tweet.rs#L2324) — `pub struct TweetMediaTags {`
+- [`thunder/schema/tweet.rs:2328`](../source/thunder/schema/tweet.rs#L2328) — `pub fn new() -> TweetMediaTags {`
+- [`thunder/schema/tweet.rs:2334`](../source/thunder/schema/tweet.rs#L2334) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetMediaTags> {`
+- [`thunder/schema/tweet.rs:2348`](../source/thunder/schema/tweet.rs#L2348) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2358`](../source/thunder/schema/tweet.rs#L2358) — `pub struct UserMention {`
+- [`thunder/schema/tweet.rs:2365`](../source/thunder/schema/tweet.rs#L2365) — `pub fn new<F1, F2, F3>(user_id: F1, screen_name: F2, name: F3) -> UserMention where F1: Into<Option<i64>>, F2: Into<Option<String>>, F3: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:2375`](../source/thunder/schema/tweet.rs#L2375) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UserMention> {`
+- [`thunder/schema/tweet.rs:2413`](../source/thunder/schema/tweet.rs#L2413) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2438`](../source/thunder/schema/tweet.rs#L2438) — `pub struct ReplyAddresses {`
+- [`thunder/schema/tweet.rs:2443`](../source/thunder/schema/tweet.rs#L2443) — `pub fn new<F1>(users: F1) -> ReplyAddresses where F1: Into<Option<Vec<UserMention>>> {`
+- [`thunder/schema/tweet.rs:2451`](../source/thunder/schema/tweet.rs#L2451) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ReplyAddresses> {`
+- [`thunder/schema/tweet.rs:2483`](../source/thunder/schema/tweet.rs#L2483) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2502`](../source/thunder/schema/tweet.rs#L2502) — `pub struct SchedulingInfo {`
+- [`thunder/schema/tweet.rs:2507`](../source/thunder/schema/tweet.rs#L2507) — `pub fn new<F1>(scheduled_tweet_id: F1) -> SchedulingInfo where F1: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:2515`](../source/thunder/schema/tweet.rs#L2515) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SchedulingInfo> {`
+- [`thunder/schema/tweet.rs:2541`](../source/thunder/schema/tweet.rs#L2541) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2556`](../source/thunder/schema/tweet.rs#L2556) — `pub struct TwitterSuggestInfo {`
+- [`thunder/schema/tweet.rs:2564`](../source/thunder/schema/tweet.rs#L2564) — `pub fn new<F1, F2, F3, F4>(suggest_type: F1, visibility_type: F2, personalized_for_user_id: F3, display_timestamp_secs: F4) -> TwitterSuggestInfo where F1: Into<Option<SuggestType>>, F2: Into<Option<TwitterSuggestsVisibilityType>>, F3: Into<Option<i64>>, F4: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:2575`](../source/thunder/schema/tweet.rs#L2575) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TwitterSuggestInfo> {`
+- [`thunder/schema/tweet.rs:2619`](../source/thunder/schema/tweet.rs#L2619) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2649`](../source/thunder/schema/tweet.rs#L2649) — `pub struct DeviceSource {`
+- [`thunder/schema/tweet.rs:2660`](../source/thunder/schema/tweet.rs#L2660) — `pub fn new<F2, F3, F4, F5, F6, F7>(id: i64, parameter: F2, internal_name: F3, name: F4, url: F5, display: F6, client_app_id: F7) -> DeviceSource where F2: Into<Option<String>>, F3: Into<Option<String>>, F4: Into<Option<String>>, F5: Into<Option<String>>, F6: Into<Option<String>>, F7: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:2674`](../source/thunder/schema/tweet.rs#L2674) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeviceSource> {`
+- [`thunder/schema/tweet.rs:2737`](../source/thunder/schema/tweet.rs#L2737) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2780`](../source/thunder/schema/tweet.rs#L2780) — `pub struct Narrowcast {`
+- [`thunder/schema/tweet.rs:2785`](../source/thunder/schema/tweet.rs#L2785) — `pub fn new<F2>(location: F2) -> Narrowcast where F2: Into<Option<Vec<String>>> {`
+- [`thunder/schema/tweet.rs:2793`](../source/thunder/schema/tweet.rs#L2793) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Narrowcast> {`
+- [`thunder/schema/tweet.rs:2825`](../source/thunder/schema/tweet.rs#L2825) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2844`](../source/thunder/schema/tweet.rs#L2844) — `pub struct StatusCounts {`
+- [`thunder/schema/tweet.rs:2855`](../source/thunder/schema/tweet.rs#L2855) — `pub fn new<F1, F2, F3, F4, F5, F6, F7>(retweet_count: F1, reply_count: F2, favorite_count: F3, unique_users_impressed_count: F4, descendent_reply_count: F5, quote_count: F6, bookmark_count: F7) -> StatusCounts where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<i64>>, F7: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:2869`](../source/thunder/schema/tweet.rs#L2869) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<StatusCounts> {`
+- [`thunder/schema/tweet.rs:2931`](../source/thunder/schema/tweet.rs#L2931) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:2976`](../source/thunder/schema/tweet.rs#L2976) — `pub struct StatusPerspective {`
+- [`thunder/schema/tweet.rs:2987`](../source/thunder/schema/tweet.rs#L2987) — `pub fn new<F1, F2, F3, F4, F5, F6, F7>(user_id: F1, favorited: F2, retweeted: F3, retweet_id: F4, reported: F5, bookmarked: F6, downvoted: F7) -> StatusPerspective where F1: Into<Option<i64>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<i64>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:3001`](../source/thunder/schema/tweet.rs#L3001) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<StatusPerspective> {`
+- [`thunder/schema/tweet.rs:3063`](../source/thunder/schema/tweet.rs#L3063) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3108`](../source/thunder/schema/tweet.rs#L3108) — `pub struct Language {`
+- [`thunder/schema/tweet.rs:3115`](../source/thunder/schema/tweet.rs#L3115) — `pub fn new<F2, F3>(language: String, right_to_left: F2, confidence: F3) -> Language where F2: Into<Option<bool>>, F3: Into<Option<OrderedFloat<f64>>> {`
+- [`thunder/schema/tweet.rs:3125`](../source/thunder/schema/tweet.rs#L3125) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Language> {`
+- [`thunder/schema/tweet.rs:3164`](../source/thunder/schema/tweet.rs#L3164) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3187`](../source/thunder/schema/tweet.rs#L3187) — `pub struct SupplementalLanguage {`
+- [`thunder/schema/tweet.rs:3192`](../source/thunder/schema/tweet.rs#L3192) — `pub fn new(language: String) -> SupplementalLanguage {`
+- [`thunder/schema/tweet.rs:3200`](../source/thunder/schema/tweet.rs#L3200) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SupplementalLanguage> {`
+- [`thunder/schema/tweet.rs:3227`](../source/thunder/schema/tweet.rs#L3227) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3240`](../source/thunder/schema/tweet.rs#L3240) — `pub struct SpamLabel {`
+- [`thunder/schema/tweet.rs:3245`](../source/thunder/schema/tweet.rs#L3245) — `pub fn new<F1>(spam: F1) -> SpamLabel where F1: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:3253`](../source/thunder/schema/tweet.rs#L3253) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SpamLabel> {`
+- [`thunder/schema/tweet.rs:3279`](../source/thunder/schema/tweet.rs#L3279) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3294`](../source/thunder/schema/tweet.rs#L3294) — `pub struct CardBindingValues {`
+- [`thunder/schema/tweet.rs:3298`](../source/thunder/schema/tweet.rs#L3298) — `pub fn new() -> CardBindingValues {`
+- [`thunder/schema/tweet.rs:3304`](../source/thunder/schema/tweet.rs#L3304) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CardBindingValues> {`
+- [`thunder/schema/tweet.rs:3318`](../source/thunder/schema/tweet.rs#L3318) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3328`](../source/thunder/schema/tweet.rs#L3328) — `pub struct CardReference {`
+- [`thunder/schema/tweet.rs:3333`](../source/thunder/schema/tweet.rs#L3333) — `pub fn new<F1>(card_uri: F1) -> CardReference where F1: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:3341`](../source/thunder/schema/tweet.rs#L3341) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CardReference> {`
+- [`thunder/schema/tweet.rs:3367`](../source/thunder/schema/tweet.rs#L3367) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3382`](../source/thunder/schema/tweet.rs#L3382) — `pub struct TweetPivot {`
+- [`thunder/schema/tweet.rs:3386`](../source/thunder/schema/tweet.rs#L3386) — `pub fn new() -> TweetPivot {`
+- [`thunder/schema/tweet.rs:3392`](../source/thunder/schema/tweet.rs#L3392) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetPivot> {`
+- [`thunder/schema/tweet.rs:3406`](../source/thunder/schema/tweet.rs#L3406) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3416`](../source/thunder/schema/tweet.rs#L3416) — `pub struct TweetPivots {`
+- [`thunder/schema/tweet.rs:3421`](../source/thunder/schema/tweet.rs#L3421) — `pub fn new(tweet_pivots: Vec<TweetPivot>) -> TweetPivots {`
+- [`thunder/schema/tweet.rs:3429`](../source/thunder/schema/tweet.rs#L3429) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetPivots> {`
+- [`thunder/schema/tweet.rs:3462`](../source/thunder/schema/tweet.rs#L3462) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3479`](../source/thunder/schema/tweet.rs#L3479) — `pub struct EscherbirdEntityAnnotations {`
+- [`thunder/schema/tweet.rs:3483`](../source/thunder/schema/tweet.rs#L3483) — `pub fn new() -> EscherbirdEntityAnnotations {`
+- [`thunder/schema/tweet.rs:3489`](../source/thunder/schema/tweet.rs#L3489) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<EscherbirdEntityAnnotations> {`
+- [`thunder/schema/tweet.rs:3503`](../source/thunder/schema/tweet.rs#L3503) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3513`](../source/thunder/schema/tweet.rs#L3513) — `pub struct TextRange {`
+- [`thunder/schema/tweet.rs:3519`](../source/thunder/schema/tweet.rs#L3519) — `pub fn new(from_index: i32, to_index: i32) -> TextRange {`
+- [`thunder/schema/tweet.rs:3528`](../source/thunder/schema/tweet.rs#L3528) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TextRange> {`
+- [`thunder/schema/tweet.rs:3562`](../source/thunder/schema/tweet.rs#L3562) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3578`](../source/thunder/schema/tweet.rs#L3578) — `pub struct TweetCoreData {`
+- [`thunder/schema/tweet.rs:3588`](../source/thunder/schema/tweet.rs#L3588) — `pub fn new<F1, F4, F5, F7, F11, F14>(user_id: F1, created_at_secs: F4, reply: F5, share: F7, nullcast: F11, conversation_id: F14) -> TweetCoreData where F1: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<Reply>>, F7: Into<Option<Share>>, F11: Into<Option<bool>>, F14: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:3601`](../source/thunder/schema/tweet.rs#L3601) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetCoreData> {`
+- [`thunder/schema/tweet.rs:3657`](../source/thunder/schema/tweet.rs#L3657) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3697`](../source/thunder/schema/tweet.rs#L3697) — `pub struct PureCoreData {`
+- [`thunder/schema/tweet.rs:3708`](../source/thunder/schema/tweet.rs#L3708) — `pub fn new<F1, F2, F3, F4, F5, F7, F9>(user_id: F1, text: F2, created_via: F3, created_at_secs: F4, reply: F5, share: F7, conversation_id: F9) -> PureCoreData where F1: Into<Option<i64>>, F2: Into<Option<String>>, F3: Into<Option<String>>, F4: Into<Option<i64>>, F5: Into<Option<Reply>>, F7: Into<Option<Share>>, F9: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:3722`](../source/thunder/schema/tweet.rs#L3722) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PureCoreData> {`
+- [`thunder/schema/tweet.rs:3784`](../source/thunder/schema/tweet.rs#L3784) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3829`](../source/thunder/schema/tweet.rs#L3829) — `pub struct Communities {`
+- [`thunder/schema/tweet.rs:3835`](../source/thunder/schema/tweet.rs#L3835) — `pub fn new<F2>(community_ids: Vec<i64>, community_post_channel_id: F2) -> Communities where F2: Into<Option<String>> {`
+- [`thunder/schema/tweet.rs:3844`](../source/thunder/schema/tweet.rs#L3844) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Communities> {`
+- [`thunder/schema/tweet.rs:3883`](../source/thunder/schema/tweet.rs#L3883) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:3905`](../source/thunder/schema/tweet.rs#L3905) — `pub struct ExtendedTweetMetadata {`
+- [`thunder/schema/tweet.rs:3915`](../source/thunder/schema/tweet.rs#L3915) — `pub fn new<F1, F3, F4, F5, F6>(unused1: F1, api_compatible_truncation_index: i32, unused3: F3, unused4: F4, unused5: F5, unused6: F6) -> ExtendedTweetMetadata where F1: Into<Option<i32>>, F3: Into<Option<i32>>, F4: Into<Option<bool>>, F5: Into<Option<TextRange>>, F6: Into<Option<TextRange>> {`
+- [`thunder/schema/tweet.rs:3928`](../source/thunder/schema/tweet.rs#L3928) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ExtendedTweetMetadata> {`
+- [`thunder/schema/tweet.rs:3985`](../source/thunder/schema/tweet.rs#L3985) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4023`](../source/thunder/schema/tweet.rs#L4023) — `pub struct DirectedAtUserMetadata {`
+- [`thunder/schema/tweet.rs:4028`](../source/thunder/schema/tweet.rs#L4028) — `pub fn new<F1>(user_id: F1) -> DirectedAtUserMetadata where F1: Into<Option<i64>> {`
+- [`thunder/schema/tweet.rs:4036`](../source/thunder/schema/tweet.rs#L4036) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DirectedAtUserMetadata> {`
+- [`thunder/schema/tweet.rs:4062`](../source/thunder/schema/tweet.rs#L4062) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4077`](../source/thunder/schema/tweet.rs#L4077) — `pub struct SelfThreadMetadata {`
+- [`thunder/schema/tweet.rs:4083`](../source/thunder/schema/tweet.rs#L4083) — `pub fn new<F2>(id: i64, is_leaf: F2) -> SelfThreadMetadata where F2: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4092`](../source/thunder/schema/tweet.rs#L4092) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SelfThreadMetadata> {`
+- [`thunder/schema/tweet.rs:4125`](../source/thunder/schema/tweet.rs#L4125) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4143`](../source/thunder/schema/tweet.rs#L4143) — `pub struct ConversationControlByInvitation {`
+- [`thunder/schema/tweet.rs:4150`](../source/thunder/schema/tweet.rs#L4150) — `pub fn new<F3>(invited_user_ids: Vec<i64>, conversation_tweet_author_id: i64, invite_via_mention: F3) -> ConversationControlByInvitation where F3: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4160`](../source/thunder/schema/tweet.rs#L4160) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlByInvitation> {`
+- [`thunder/schema/tweet.rs:4206`](../source/thunder/schema/tweet.rs#L4206) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4231`](../source/thunder/schema/tweet.rs#L4231) — `pub struct ConversationControlCommunity {`
+- [`thunder/schema/tweet.rs:4238`](../source/thunder/schema/tweet.rs#L4238) — `pub fn new<F3>(invited_user_ids: Vec<i64>, conversation_tweet_author_id: i64, invite_via_mention: F3) -> ConversationControlCommunity where F3: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4248`](../source/thunder/schema/tweet.rs#L4248) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlCommunity> {`
+- [`thunder/schema/tweet.rs:4294`](../source/thunder/schema/tweet.rs#L4294) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4319`](../source/thunder/schema/tweet.rs#L4319) — `pub struct ConversationControlFollowers {`
+- [`thunder/schema/tweet.rs:4326`](../source/thunder/schema/tweet.rs#L4326) — `pub fn new<F3>(invited_user_ids: Vec<i64>, conversation_tweet_author_id: i64, invite_via_mention: F3) -> ConversationControlFollowers where F3: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4336`](../source/thunder/schema/tweet.rs#L4336) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlFollowers> {`
+- [`thunder/schema/tweet.rs:4382`](../source/thunder/schema/tweet.rs#L4382) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4407`](../source/thunder/schema/tweet.rs#L4407) — `pub struct ConversationControlSubscribers {`
+- [`thunder/schema/tweet.rs:4414`](../source/thunder/schema/tweet.rs#L4414) — `pub fn new<F3>(invited_user_ids: Vec<i64>, conversation_tweet_author_id: i64, invite_via_mention: F3) -> ConversationControlSubscribers where F3: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4424`](../source/thunder/schema/tweet.rs#L4424) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlSubscribers> {`
+- [`thunder/schema/tweet.rs:4470`](../source/thunder/schema/tweet.rs#L4470) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4495`](../source/thunder/schema/tweet.rs#L4495) — `pub struct ConversationControlVerified {`
+- [`thunder/schema/tweet.rs:4502`](../source/thunder/schema/tweet.rs#L4502) — `pub fn new<F3>(invited_user_ids: Vec<i64>, conversation_tweet_author_id: i64, invite_via_mention: F3) -> ConversationControlVerified where F3: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4512`](../source/thunder/schema/tweet.rs#L4512) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlVerified> {`
+- [`thunder/schema/tweet.rs:4558`](../source/thunder/schema/tweet.rs#L4558) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4583`](../source/thunder/schema/tweet.rs#L4583) — `pub struct ConversationControlLocal {`
+- [`thunder/schema/tweet.rs:4590`](../source/thunder/schema/tweet.rs#L4590) — `pub fn new<F3>(invited_user_ids: Vec<i64>, conversation_tweet_author_id: i64, invite_via_mention: F3) -> ConversationControlLocal where F3: Into<Option<bool>> {`
+- [`thunder/schema/tweet.rs:4600`](../source/thunder/schema/tweet.rs#L4600) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlLocal> {`
+- [`thunder/schema/tweet.rs:4646`](../source/thunder/schema/tweet.rs#L4646) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4671`](../source/thunder/schema/tweet.rs#L4671) — `pub struct ConversationControlPremium {`
+- [`thunder/schema/tweet.rs:4676`](../source/thunder/schema/tweet.rs#L4676) — `pub fn new(conversation_tweet_author_id: i64) -> ConversationControlPremium {`
+- [`thunder/schema/tweet.rs:4684`](../source/thunder/schema/tweet.rs#L4684) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControlPremium> {`
+- [`thunder/schema/tweet.rs:4711`](../source/thunder/schema/tweet.rs#L4711) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4724`](../source/thunder/schema/tweet.rs#L4724) — `pub enum ConversationControl {`
+- [`thunder/schema/tweet.rs:4735`](../source/thunder/schema/tweet.rs#L4735) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConversationControl> {`
+- [`thunder/schema/tweet.rs:4825`](../source/thunder/schema/tweet.rs#L4825) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4872`](../source/thunder/schema/tweet.rs#L4872) — `pub struct ExclusiveTweetControl {`
+- [`thunder/schema/tweet.rs:4877`](../source/thunder/schema/tweet.rs#L4877) — `pub fn new(conversation_author_id: i64) -> ExclusiveTweetControl {`
+- [`thunder/schema/tweet.rs:4885`](../source/thunder/schema/tweet.rs#L4885) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ExclusiveTweetControl> {`
+- [`thunder/schema/tweet.rs:4912`](../source/thunder/schema/tweet.rs#L4912) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4925`](../source/thunder/schema/tweet.rs#L4925) — `pub struct PremiumTweetControl {`
+- [`thunder/schema/tweet.rs:4930`](../source/thunder/schema/tweet.rs#L4930) — `pub fn new(conversation_author_id: i64) -> PremiumTweetControl {`
+- [`thunder/schema/tweet.rs:4938`](../source/thunder/schema/tweet.rs#L4938) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PremiumTweetControl> {`
+- [`thunder/schema/tweet.rs:4965`](../source/thunder/schema/tweet.rs#L4965) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:4978`](../source/thunder/schema/tweet.rs#L4978) — `pub struct TrustedFriendsControl {`
+- [`thunder/schema/tweet.rs:4983`](../source/thunder/schema/tweet.rs#L4983) — `pub fn new(trusted_friends_list_id: i64) -> TrustedFriendsControl {`
+- [`thunder/schema/tweet.rs:4991`](../source/thunder/schema/tweet.rs#L4991) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TrustedFriendsControl> {`
+- [`thunder/schema/tweet.rs:5018`](../source/thunder/schema/tweet.rs#L5018) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:5031`](../source/thunder/schema/tweet.rs#L5031) — `pub struct InvitedCollaborator {`
+- [`thunder/schema/tweet.rs:5037`](../source/thunder/schema/tweet.rs#L5037) — `pub fn new(collaborator_user_id: i64, collab_invitation_status: CollabInvitationStatus) -> InvitedCollaborator {`
+- [`thunder/schema/tweet.rs:5046`](../source/thunder/schema/tweet.rs#L5046) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<InvitedCollaborator> {`
+- [`thunder/schema/tweet.rs:5080`](../source/thunder/schema/tweet.rs#L5080) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:5096`](../source/thunder/schema/tweet.rs#L5096) — `pub struct CollabInvitation {`
+- [`thunder/schema/tweet.rs:5101`](../source/thunder/schema/tweet.rs#L5101) — `pub fn new(invited_collaborators: Vec<InvitedCollaborator>) -> CollabInvitation {`
+- [`thunder/schema/tweet.rs:5109`](../source/thunder/schema/tweet.rs#L5109) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CollabInvitation> {`
+- [`thunder/schema/tweet.rs:5142`](../source/thunder/schema/tweet.rs#L5142) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:5159`](../source/thunder/schema/tweet.rs#L5159) — `pub struct CollabTweet {`
+- [`thunder/schema/tweet.rs:5164`](../source/thunder/schema/tweet.rs#L5164) — `pub fn new(collaborator_user_ids: Vec<i64>) -> CollabTweet {`
+- [`thunder/schema/tweet.rs:5172`](../source/thunder/schema/tweet.rs#L5172) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CollabTweet> {`
+- [`thunder/schema/tweet.rs:5205`](../source/thunder/schema/tweet.rs#L5205) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:5222`](../source/thunder/schema/tweet.rs#L5222) — `pub enum CollabControl {`
+- [`thunder/schema/tweet.rs:5228`](../source/thunder/schema/tweet.rs#L5228) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CollabControl> {`
+- [`thunder/schema/tweet.rs:5283`](../source/thunder/schema/tweet.rs#L5283) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:5305`](../source/thunder/schema/tweet.rs#L5305) — `pub struct DisallowedReplyControl {`
+- [`thunder/schema/tweet.rs:5310`](../source/thunder/schema/tweet.rs#L5310) — `pub fn new(control: DisallowedReply) -> DisallowedReplyControl {`
+- [`thunder/schema/tweet.rs:5318`](../source/thunder/schema/tweet.rs#L5318) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DisallowedReplyControl> {`
+- [`thunder/schema/tweet.rs:5345`](../source/thunder/schema/tweet.rs#L5345) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet.rs:5358`](../source/thunder/schema/tweet.rs#L5358) — `pub struct Tweet {`
+- [`thunder/schema/tweet.rs:5367`](../source/thunder/schema/tweet.rs#L5367) — `pub fn new<F1, F2, F7, F11, F18>(id: F1, core_data: F2, media: F7, quoted_tweet: F11, language: F18) -> Tweet where F1: Into<Option<i64>>, F2: Into<Option<TweetCoreData>>, F7: Into<Option<Vec<media_entity::MediaEntity>>>, F11: Into<Option<QuotedTweet>>, F18: Into<Option<Language>> {`
+- [`thunder/schema/tweet.rs:5379`](../source/thunder/schema/tweet.rs#L5379) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Tweet> {`
+- [`thunder/schema/tweet.rs:5435`](../source/thunder/schema/tweet.rs#L5435) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:31`](../source/thunder/schema/tweet_events.rs#L31) — `pub struct SafetyType(pub i32);`
+- [`thunder/schema/tweet_events.rs:34`](../source/thunder/schema/tweet_events.rs#L34) — `pub const PRIVATE: SafetyType = SafetyType(0);`
+- [`thunder/schema/tweet_events.rs:35`](../source/thunder/schema/tweet_events.rs#L35) — `pub const RESTRICTED: SafetyType = SafetyType(1);`
+- [`thunder/schema/tweet_events.rs:36`](../source/thunder/schema/tweet_events.rs#L36) — `pub const PUBLIC: SafetyType = SafetyType(2);`
+- [`thunder/schema/tweet_events.rs:37`](../source/thunder/schema/tweet_events.rs#L37) — `pub const RESERVED0: SafetyType = SafetyType(3);`
+- [`thunder/schema/tweet_events.rs:38`](../source/thunder/schema/tweet_events.rs#L38) — `pub const RESERVED1: SafetyType = SafetyType(4);`
+- [`thunder/schema/tweet_events.rs:39`](../source/thunder/schema/tweet_events.rs#L39) — `pub const RESERVED2: SafetyType = SafetyType(5);`
+- [`thunder/schema/tweet_events.rs:40`](../source/thunder/schema/tweet_events.rs#L40) — `pub const RESERVED3: SafetyType = SafetyType(6);`
+- [`thunder/schema/tweet_events.rs:41`](../source/thunder/schema/tweet_events.rs#L41) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet_events.rs:54`](../source/thunder/schema/tweet_events.rs#L54) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:57`](../source/thunder/schema/tweet_events.rs#L57) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SafetyType> {`
+- [`thunder/schema/tweet_events.rs:64`](../source/thunder/schema/tweet_events.rs#L64) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet_events.rs:79`](../source/thunder/schema/tweet_events.rs#L79) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet_events.rs:85`](../source/thunder/schema/tweet_events.rs#L85) — `fn from(e: SafetyType) -> i32 {`
+- [`thunder/schema/tweet_events.rs:91`](../source/thunder/schema/tweet_events.rs#L91) — `fn from(e: &SafetyType) -> i32 {`
+- [`thunder/schema/tweet_events.rs:98`](../source/thunder/schema/tweet_events.rs#L98) — `pub struct TweetCreateEvent {`
+- [`thunder/schema/tweet_events.rs:111`](../source/thunder/schema/tweet_events.rs#L111) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F10>(tweet: F1, user: F2, source_tweet: F3, source_user: F4, retweet_parent_user_id: F5, quoted_tweet: F6, quoted_user: F7, additional_context: F8, quoter_has_already_quoted_tweet: F10) -> TweetCreateEvent where F1: Into<Option<tweet::Tweet>>, F2: Into<Option<user::User>>, F3: Into<Option<tweet::Tweet>>, F4: Into<Option<user::User>>, F5: Into<Option<i64>>, F6: Into<Option<tweet::Tweet>>, F7: Into<Option<user::User>>, F8: Into<Option<BTreeMap<tweet::TweetCreateContextKey, String>>>, F10: Into<Option<bool>> {`
+- [`thunder/schema/tweet_events.rs:127`](../source/thunder/schema/tweet_events.rs#L127) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetCreateEvent> {`
+- [`thunder/schema/tweet_events.rs:208`](../source/thunder/schema/tweet_events.rs#L208) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:268`](../source/thunder/schema/tweet_events.rs#L268) — `pub struct TweetDeleteEvent {`
+- [`thunder/schema/tweet_events.rs:277`](../source/thunder/schema/tweet_events.rs#L277) — `pub fn new<F1, F2, F3, F5, F6>(tweet: F1, user: F2, is_user_erasure: F3, by_user_id: F5, is_admin_delete: F6) -> TweetDeleteEvent where F1: Into<Option<tweet::Tweet>>, F2: Into<Option<user::User>>, F3: Into<Option<bool>>, F5: Into<Option<i64>>, F6: Into<Option<bool>> {`
+- [`thunder/schema/tweet_events.rs:289`](../source/thunder/schema/tweet_events.rs#L289) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetDeleteEvent> {`
+- [`thunder/schema/tweet_events.rs:339`](../source/thunder/schema/tweet_events.rs#L339) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:374`](../source/thunder/schema/tweet_events.rs#L374) — `pub struct TweetUndeleteEvent {`
+- [`thunder/schema/tweet_events.rs:386`](../source/thunder/schema/tweet_events.rs#L386) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8>(tweet: F1, user: F2, source_tweet: F3, source_user: F4, retweet_parent_user_id: F5, quoted_tweet: F6, quoted_user: F7, deleted_at_msec: F8) -> TweetUndeleteEvent where F1: Into<Option<tweet::Tweet>>, F2: Into<Option<user::User>>, F3: Into<Option<tweet::Tweet>>, F4: Into<Option<user::User>>, F5: Into<Option<i64>>, F6: Into<Option<tweet::Tweet>>, F7: Into<Option<user::User>>, F8: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:401`](../source/thunder/schema/tweet_events.rs#L401) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetUndeleteEvent> {`
+- [`thunder/schema/tweet_events.rs:469`](../source/thunder/schema/tweet_events.rs#L469) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:519`](../source/thunder/schema/tweet_events.rs#L519) — `pub struct TweetScrubGeoEvent {`
+- [`thunder/schema/tweet_events.rs:525`](../source/thunder/schema/tweet_events.rs#L525) — `pub fn new<F1, F2>(tweet_id: F1, user_id: F2) -> TweetScrubGeoEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:534`](../source/thunder/schema/tweet_events.rs#L534) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetScrubGeoEvent> {`
+- [`thunder/schema/tweet_events.rs:566`](../source/thunder/schema/tweet_events.rs#L566) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:586`](../source/thunder/schema/tweet_events.rs#L586) — `pub struct UserScrubGeoEvent {`
+- [`thunder/schema/tweet_events.rs:592`](../source/thunder/schema/tweet_events.rs#L592) — `pub fn new<F1, F2>(user_id: F1, max_tweet_id: F2) -> UserScrubGeoEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:601`](../source/thunder/schema/tweet_events.rs#L601) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UserScrubGeoEvent> {`
+- [`thunder/schema/tweet_events.rs:633`](../source/thunder/schema/tweet_events.rs#L633) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:653`](../source/thunder/schema/tweet_events.rs#L653) — `pub struct TweetTakedownEvent {`
+- [`thunder/schema/tweet_events.rs:660`](../source/thunder/schema/tweet_events.rs#L660) — `pub fn new<F1, F2, F3>(tweet_id: F1, user_id: F2, takedown_country_codes: F3) -> TweetTakedownEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<Vec<String>>> {`
+- [`thunder/schema/tweet_events.rs:670`](../source/thunder/schema/tweet_events.rs#L670) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetTakedownEvent> {`
+- [`thunder/schema/tweet_events.rs:714`](../source/thunder/schema/tweet_events.rs#L714) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:743`](../source/thunder/schema/tweet_events.rs#L743) — `pub struct AdditionalFieldUpdateEvent {`
+- [`thunder/schema/tweet_events.rs:749`](../source/thunder/schema/tweet_events.rs#L749) — `pub fn new<F1, F2>(updated_fields: F1, user_id: F2) -> AdditionalFieldUpdateEvent where F1: Into<Option<tweet::Tweet>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:758`](../source/thunder/schema/tweet_events.rs#L758) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AdditionalFieldUpdateEvent> {`
+- [`thunder/schema/tweet_events.rs:790`](../source/thunder/schema/tweet_events.rs#L790) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:810`](../source/thunder/schema/tweet_events.rs#L810) — `pub struct AdditionalFieldDeleteEvent {`
+- [`thunder/schema/tweet_events.rs:816`](../source/thunder/schema/tweet_events.rs#L816) — `pub fn new<F1, F2>(deleted_fields: F1, user_id: F2) -> AdditionalFieldDeleteEvent where F1: Into<Option<BTreeMap<i64, Vec<i16>>>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:825`](../source/thunder/schema/tweet_events.rs#L825) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AdditionalFieldDeleteEvent> {`
+- [`thunder/schema/tweet_events.rs:870`](../source/thunder/schema/tweet_events.rs#L870) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:899`](../source/thunder/schema/tweet_events.rs#L899) — `pub struct TweetMediaTagEvent {`
+- [`thunder/schema/tweet_events.rs:907`](../source/thunder/schema/tweet_events.rs#L907) — `pub fn new<F1, F2, F3, F4>(tweet_id: F1, user_id: F2, tagged_user_ids: F3, timestamp_ms: F4) -> TweetMediaTagEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<BTreeSet<i64>>>, F4: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:918`](../source/thunder/schema/tweet_events.rs#L918) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetMediaTagEvent> {`
+- [`thunder/schema/tweet_events.rs:968`](../source/thunder/schema/tweet_events.rs#L968) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1002`](../source/thunder/schema/tweet_events.rs#L1002) — `pub struct TweetPossiblySensitiveUpdateEvent {`
+- [`thunder/schema/tweet_events.rs:1010`](../source/thunder/schema/tweet_events.rs#L1010) — `pub fn new<F1, F2, F3, F4>(tweet_id: F1, user_id: F2, nsfw_admin: F3, nsfw_user: F4) -> TweetPossiblySensitiveUpdateEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<bool>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/tweet_events.rs:1021`](../source/thunder/schema/tweet_events.rs#L1021) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetPossiblySensitiveUpdateEvent> {`
+- [`thunder/schema/tweet_events.rs:1065`](../source/thunder/schema/tweet_events.rs#L1065) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1095`](../source/thunder/schema/tweet_events.rs#L1095) — `pub struct QuotedTweetDeleteEvent {`
+- [`thunder/schema/tweet_events.rs:1103`](../source/thunder/schema/tweet_events.rs#L1103) — `pub fn new<F1, F2, F3, F4>(quoting_tweet_id: F1, quoting_user_id: F2, quoted_tweet_id: F3, quoted_user_id: F4) -> QuotedTweetDeleteEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>> {`
+- [`thunder/schema/tweet_events.rs:1114`](../source/thunder/schema/tweet_events.rs#L1114) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<QuotedTweetDeleteEvent> {`
+- [`thunder/schema/tweet_events.rs:1158`](../source/thunder/schema/tweet_events.rs#L1158) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1188`](../source/thunder/schema/tweet_events.rs#L1188) — `pub struct QuotedTweetTakedownEvent {`
+- [`thunder/schema/tweet_events.rs:1197`](../source/thunder/schema/tweet_events.rs#L1197) — `pub fn new<F1, F2, F3, F4, F5>(quoting_tweet_id: F1, quoting_user_id: F2, quoted_tweet_id: F3, quoted_user_id: F4, takedown_country_codes: F5) -> QuotedTweetTakedownEvent where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<Vec<String>>> {`
+- [`thunder/schema/tweet_events.rs:1209`](../source/thunder/schema/tweet_events.rs#L1209) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<QuotedTweetTakedownEvent> {`
+- [`thunder/schema/tweet_events.rs:1265`](../source/thunder/schema/tweet_events.rs#L1265) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1304`](../source/thunder/schema/tweet_events.rs#L1304) — `pub enum TweetEventData {`
+- [`thunder/schema/tweet_events.rs:1319`](../source/thunder/schema/tweet_events.rs#L1319) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetEventData> {`
+- [`thunder/schema/tweet_events.rs:1437`](../source/thunder/schema/tweet_events.rs#L1437) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1504`](../source/thunder/schema/tweet_events.rs#L1504) — `pub struct Checksum {`
+- [`thunder/schema/tweet_events.rs:1509`](../source/thunder/schema/tweet_events.rs#L1509) — `pub fn new<F1>(checksum: F1) -> Checksum where F1: Into<Option<i32>> {`
+- [`thunder/schema/tweet_events.rs:1517`](../source/thunder/schema/tweet_events.rs#L1517) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Checksum> {`
+- [`thunder/schema/tweet_events.rs:1543`](../source/thunder/schema/tweet_events.rs#L1543) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1558`](../source/thunder/schema/tweet_events.rs#L1558) — `pub struct TweetEventFlags {`
+- [`thunder/schema/tweet_events.rs:1566`](../source/thunder/schema/tweet_events.rs#L1566) — `pub fn new<F1, F2, F3, F4>(unused1: F1, timestamp_ms: F2, safety_type: F3, unused4: F4) -> TweetEventFlags where F1: Into<Option<Vec<String>>>, F2: Into<Option<i64>>, F3: Into<Option<SafetyType>>, F4: Into<Option<Checksum>> {`
+- [`thunder/schema/tweet_events.rs:1577`](../source/thunder/schema/tweet_events.rs#L1577) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetEventFlags> {`
+- [`thunder/schema/tweet_events.rs:1627`](../source/thunder/schema/tweet_events.rs#L1627) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_events.rs:1661`](../source/thunder/schema/tweet_events.rs#L1661) — `pub struct TweetEvent {`
+- [`thunder/schema/tweet_events.rs:1667`](../source/thunder/schema/tweet_events.rs#L1667) — `pub fn new<F1, F2>(data: F1, flags: F2) -> TweetEvent where F1: Into<Option<TweetEventData>>, F2: Into<Option<TweetEventFlags>> {`
+- [`thunder/schema/tweet_events.rs:1676`](../source/thunder/schema/tweet_events.rs#L1676) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetEvent> {`
+- [`thunder/schema/tweet_events.rs:1708`](../source/thunder/schema/tweet_events.rs#L1708) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:28`](../source/thunder/schema/tweet_media.rs#L28) — `pub struct MediaSizeType(pub i32);`
+- [`thunder/schema/tweet_media.rs:31`](../source/thunder/schema/tweet_media.rs#L31) — `pub const ORIG: MediaSizeType = MediaSizeType(0);`
+- [`thunder/schema/tweet_media.rs:32`](../source/thunder/schema/tweet_media.rs#L32) — `pub const LARGE: MediaSizeType = MediaSizeType(1);`
+- [`thunder/schema/tweet_media.rs:33`](../source/thunder/schema/tweet_media.rs#L33) — `pub const MEDIUM: MediaSizeType = MediaSizeType(2);`
+- [`thunder/schema/tweet_media.rs:34`](../source/thunder/schema/tweet_media.rs#L34) — `pub const SMALL: MediaSizeType = MediaSizeType(3);`
+- [`thunder/schema/tweet_media.rs:35`](../source/thunder/schema/tweet_media.rs#L35) — `pub const THUMB: MediaSizeType = MediaSizeType(4);`
+- [`thunder/schema/tweet_media.rs:36`](../source/thunder/schema/tweet_media.rs#L36) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet_media.rs:47`](../source/thunder/schema/tweet_media.rs#L47) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:50`](../source/thunder/schema/tweet_media.rs#L50) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaSizeType> {`
+- [`thunder/schema/tweet_media.rs:57`](../source/thunder/schema/tweet_media.rs#L57) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet_media.rs:70`](../source/thunder/schema/tweet_media.rs#L70) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet_media.rs:76`](../source/thunder/schema/tweet_media.rs#L76) — `fn from(e: MediaSizeType) -> i32 {`
+- [`thunder/schema/tweet_media.rs:82`](../source/thunder/schema/tweet_media.rs#L82) — `fn from(e: &MediaSizeType) -> i32 {`
+- [`thunder/schema/tweet_media.rs:88`](../source/thunder/schema/tweet_media.rs#L88) — `pub struct MediaResizeMethod(pub i32);`
+- [`thunder/schema/tweet_media.rs:91`](../source/thunder/schema/tweet_media.rs#L91) — `pub const FIT: MediaResizeMethod = MediaResizeMethod(0);`
+- [`thunder/schema/tweet_media.rs:92`](../source/thunder/schema/tweet_media.rs#L92) — `pub const CROP: MediaResizeMethod = MediaResizeMethod(1);`
+- [`thunder/schema/tweet_media.rs:93`](../source/thunder/schema/tweet_media.rs#L93) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet_media.rs:101`](../source/thunder/schema/tweet_media.rs#L101) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:104`](../source/thunder/schema/tweet_media.rs#L104) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaResizeMethod> {`
+- [`thunder/schema/tweet_media.rs:111`](../source/thunder/schema/tweet_media.rs#L111) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet_media.rs:121`](../source/thunder/schema/tweet_media.rs#L121) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet_media.rs:127`](../source/thunder/schema/tweet_media.rs#L127) — `fn from(e: MediaResizeMethod) -> i32 {`
+- [`thunder/schema/tweet_media.rs:133`](../source/thunder/schema/tweet_media.rs#L133) — `fn from(e: &MediaResizeMethod) -> i32 {`
+- [`thunder/schema/tweet_media.rs:139`](../source/thunder/schema/tweet_media.rs#L139) — `pub struct MediaContentType(pub i32);`
+- [`thunder/schema/tweet_media.rs:142`](../source/thunder/schema/tweet_media.rs#L142) — `pub const IMAGE_GIF: MediaContentType = MediaContentType(0);`
+- [`thunder/schema/tweet_media.rs:143`](../source/thunder/schema/tweet_media.rs#L143) — `pub const IMAGE_JPEG: MediaContentType = MediaContentType(1);`
+- [`thunder/schema/tweet_media.rs:144`](../source/thunder/schema/tweet_media.rs#L144) — `pub const IMAGE_PNG: MediaContentType = MediaContentType(2);`
+- [`thunder/schema/tweet_media.rs:145`](../source/thunder/schema/tweet_media.rs#L145) — `pub const VIDEO_MP4: MediaContentType = MediaContentType(3);`
+- [`thunder/schema/tweet_media.rs:146`](../source/thunder/schema/tweet_media.rs#L146) — `pub const VIDEO_GENERIC: MediaContentType = MediaContentType(4);`
+- [`thunder/schema/tweet_media.rs:147`](../source/thunder/schema/tweet_media.rs#L147) — `pub const RESERVED_5: MediaContentType = MediaContentType(5);`
+- [`thunder/schema/tweet_media.rs:148`](../source/thunder/schema/tweet_media.rs#L148) — `pub const RESERVED_6: MediaContentType = MediaContentType(6);`
+- [`thunder/schema/tweet_media.rs:149`](../source/thunder/schema/tweet_media.rs#L149) — `pub const RESERVED_7: MediaContentType = MediaContentType(7);`
+- [`thunder/schema/tweet_media.rs:150`](../source/thunder/schema/tweet_media.rs#L150) — `pub const RESERVED_8: MediaContentType = MediaContentType(8);`
+- [`thunder/schema/tweet_media.rs:151`](../source/thunder/schema/tweet_media.rs#L151) — `pub const RESERVED_9: MediaContentType = MediaContentType(9);`
+- [`thunder/schema/tweet_media.rs:152`](../source/thunder/schema/tweet_media.rs#L152) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/tweet_media.rs:168`](../source/thunder/schema/tweet_media.rs#L168) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:171`](../source/thunder/schema/tweet_media.rs#L171) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaContentType> {`
+- [`thunder/schema/tweet_media.rs:178`](../source/thunder/schema/tweet_media.rs#L178) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/tweet_media.rs:196`](../source/thunder/schema/tweet_media.rs#L196) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/tweet_media.rs:202`](../source/thunder/schema/tweet_media.rs#L202) — `fn from(e: MediaContentType) -> i32 {`
+- [`thunder/schema/tweet_media.rs:208`](../source/thunder/schema/tweet_media.rs#L208) — `fn from(e: &MediaContentType) -> i32 {`
+- [`thunder/schema/tweet_media.rs:215`](../source/thunder/schema/tweet_media.rs#L215) — `pub struct MediaSize {`
+- [`thunder/schema/tweet_media.rs:224`](../source/thunder/schema/tweet_media.rs#L224) — `pub fn new<F1, F2, F3, F4, F5>(size_type: F1, resize_method: F2, deprecated_content_type: F3, width: F4, height: F5) -> MediaSize where F1: Into<Option<MediaSizeType>>, F2: Into<Option<MediaResizeMethod>>, F3: Into<Option<MediaContentType>>, F4: Into<Option<i32>>, F5: Into<Option<i32>> {`
+- [`thunder/schema/tweet_media.rs:236`](../source/thunder/schema/tweet_media.rs#L236) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaSize> {`
+- [`thunder/schema/tweet_media.rs:286`](../source/thunder/schema/tweet_media.rs#L286) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:321`](../source/thunder/schema/tweet_media.rs#L321) — `pub struct AspectRatio {`
+- [`thunder/schema/tweet_media.rs:327`](../source/thunder/schema/tweet_media.rs#L327) — `pub fn new<F1, F2>(numerator: F1, denominator: F2) -> AspectRatio where F1: Into<Option<i16>>, F2: Into<Option<i16>> {`
+- [`thunder/schema/tweet_media.rs:336`](../source/thunder/schema/tweet_media.rs#L336) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AspectRatio> {`
+- [`thunder/schema/tweet_media.rs:368`](../source/thunder/schema/tweet_media.rs#L368) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:388`](../source/thunder/schema/tweet_media.rs#L388) — `pub struct VideoVariant {`
+- [`thunder/schema/tweet_media.rs:395`](../source/thunder/schema/tweet_media.rs#L395) — `pub fn new<F1, F2, F3>(url: F1, content_type: F2, bit_rate: F3) -> VideoVariant where F1: Into<Option<String>>, F2: Into<Option<String>>, F3: Into<Option<i32>> {`
+- [`thunder/schema/tweet_media.rs:405`](../source/thunder/schema/tweet_media.rs#L405) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<VideoVariant> {`
+- [`thunder/schema/tweet_media.rs:443`](../source/thunder/schema/tweet_media.rs#L443) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:468`](../source/thunder/schema/tweet_media.rs#L468) — `pub struct Model3dAsset {`
+- [`thunder/schema/tweet_media.rs:474`](../source/thunder/schema/tweet_media.rs#L474) — `pub fn new<F1, F2>(url: F1, content_type: F2) -> Model3dAsset where F1: Into<Option<String>>, F2: Into<Option<String>> {`
+- [`thunder/schema/tweet_media.rs:483`](../source/thunder/schema/tweet_media.rs#L483) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Model3dAsset> {`
+- [`thunder/schema/tweet_media.rs:515`](../source/thunder/schema/tweet_media.rs#L515) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:535`](../source/thunder/schema/tweet_media.rs#L535) — `pub struct ImageInfo {`
+- [`thunder/schema/tweet_media.rs:540`](../source/thunder/schema/tweet_media.rs#L540) — `pub fn new<F1>(unused: F1) -> ImageInfo where F1: Into<Option<String>> {`
+- [`thunder/schema/tweet_media.rs:548`](../source/thunder/schema/tweet_media.rs#L548) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ImageInfo> {`
+- [`thunder/schema/tweet_media.rs:574`](../source/thunder/schema/tweet_media.rs#L574) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:589`](../source/thunder/schema/tweet_media.rs#L589) — `pub struct AnimatedGifInfo {`
+- [`thunder/schema/tweet_media.rs:595`](../source/thunder/schema/tweet_media.rs#L595) — `pub fn new<F1, F2>(aspect_ratio: F1, variants: F2) -> AnimatedGifInfo where F1: Into<Option<AspectRatio>>, F2: Into<Option<BTreeSet<VideoVariant>>> {`
+- [`thunder/schema/tweet_media.rs:604`](../source/thunder/schema/tweet_media.rs#L604) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AnimatedGifInfo> {`
+- [`thunder/schema/tweet_media.rs:642`](../source/thunder/schema/tweet_media.rs#L642) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:666`](../source/thunder/schema/tweet_media.rs#L666) — `pub struct VideoInfo {`
+- [`thunder/schema/tweet_media.rs:673`](../source/thunder/schema/tweet_media.rs#L673) — `pub fn new<F1, F2, F3>(duration_millis: F1, aspect_ratio: F2, variants: F3) -> VideoInfo where F1: Into<Option<i32>>, F2: Into<Option<AspectRatio>>, F3: Into<Option<BTreeSet<VideoVariant>>> {`
+- [`thunder/schema/tweet_media.rs:683`](../source/thunder/schema/tweet_media.rs#L683) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<VideoInfo> {`
+- [`thunder/schema/tweet_media.rs:727`](../source/thunder/schema/tweet_media.rs#L727) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:756`](../source/thunder/schema/tweet_media.rs#L756) — `pub struct Model3dInfo {`
+- [`thunder/schema/tweet_media.rs:762`](../source/thunder/schema/tweet_media.rs#L762) — `pub fn new<F1, F2>(unused: F1, assets: F2) -> Model3dInfo where F1: Into<Option<String>>, F2: Into<Option<BTreeSet<Model3dAsset>>> {`
+- [`thunder/schema/tweet_media.rs:771`](../source/thunder/schema/tweet_media.rs#L771) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Model3dInfo> {`
+- [`thunder/schema/tweet_media.rs:809`](../source/thunder/schema/tweet_media.rs#L809) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/tweet_media.rs:833`](../source/thunder/schema/tweet_media.rs#L833) — `pub enum MediaInfo {`
+- [`thunder/schema/tweet_media.rs:841`](../source/thunder/schema/tweet_media.rs#L841) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaInfo> {`
+- [`thunder/schema/tweet_media.rs:910`](../source/thunder/schema/tweet_media.rs#L910) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:28`](../source/thunder/schema/user.rs#L28) — `pub struct ProfileType(pub i32);`
+- [`thunder/schema/user.rs:31`](../source/thunder/schema/user.rs#L31) — `pub const DEFAULT: ProfileType = ProfileType(0);`
+- [`thunder/schema/user.rs:32`](../source/thunder/schema/user.rs#L32) — `pub const THEME: ProfileType = ProfileType(1);`
+- [`thunder/schema/user.rs:33`](../source/thunder/schema/user.rs#L33) — `pub const CUSTOM: ProfileType = ProfileType(2);`
+- [`thunder/schema/user.rs:34`](../source/thunder/schema/user.rs#L34) — `pub const DEFAULT_WITHOUT_BACKGROUND: ProfileType = ProfileType(3);`
+- [`thunder/schema/user.rs:35`](../source/thunder/schema/user.rs#L35) — `pub const CUSTOM_WITHOUT_THEME: ProfileType = ProfileType(4);`
+- [`thunder/schema/user.rs:36`](../source/thunder/schema/user.rs#L36) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:47`](../source/thunder/schema/user.rs#L47) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:50`](../source/thunder/schema/user.rs#L50) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileType> {`
+- [`thunder/schema/user.rs:57`](../source/thunder/schema/user.rs#L57) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:70`](../source/thunder/schema/user.rs#L70) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:76`](../source/thunder/schema/user.rs#L76) — `fn from(e: ProfileType) -> i32 {`
+- [`thunder/schema/user.rs:82`](../source/thunder/schema/user.rs#L82) — `fn from(e: &ProfileType) -> i32 {`
+- [`thunder/schema/user.rs:88`](../source/thunder/schema/user.rs#L88) — `pub struct BackgroundPosition(pub i32);`
+- [`thunder/schema/user.rs:91`](../source/thunder/schema/user.rs#L91) — `pub const LEFT: BackgroundPosition = BackgroundPosition(0);`
+- [`thunder/schema/user.rs:92`](../source/thunder/schema/user.rs#L92) — `pub const CENTER: BackgroundPosition = BackgroundPosition(1);`
+- [`thunder/schema/user.rs:93`](../source/thunder/schema/user.rs#L93) — `pub const RIGHT: BackgroundPosition = BackgroundPosition(2);`
+- [`thunder/schema/user.rs:94`](../source/thunder/schema/user.rs#L94) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:103`](../source/thunder/schema/user.rs#L103) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:106`](../source/thunder/schema/user.rs#L106) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BackgroundPosition> {`
+- [`thunder/schema/user.rs:113`](../source/thunder/schema/user.rs#L113) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:124`](../source/thunder/schema/user.rs#L124) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:130`](../source/thunder/schema/user.rs#L130) — `fn from(e: BackgroundPosition) -> i32 {`
+- [`thunder/schema/user.rs:136`](../source/thunder/schema/user.rs#L136) — `fn from(e: &BackgroundPosition) -> i32 {`
+- [`thunder/schema/user.rs:142`](../source/thunder/schema/user.rs#L142) — `pub struct BusinessProfileState(pub i32);`
+- [`thunder/schema/user.rs:145`](../source/thunder/schema/user.rs#L145) — `pub const NONE: BusinessProfileState = BusinessProfileState(0);`
+- [`thunder/schema/user.rs:146`](../source/thunder/schema/user.rs#L146) — `pub const ENABLED: BusinessProfileState = BusinessProfileState(1);`
+- [`thunder/schema/user.rs:147`](../source/thunder/schema/user.rs#L147) — `pub const DISABLED: BusinessProfileState = BusinessProfileState(2);`
+- [`thunder/schema/user.rs:148`](../source/thunder/schema/user.rs#L148) — `pub const RESERVED_1: BusinessProfileState = BusinessProfileState(3);`
+- [`thunder/schema/user.rs:149`](../source/thunder/schema/user.rs#L149) — `pub const RESERVED_2: BusinessProfileState = BusinessProfileState(4);`
+- [`thunder/schema/user.rs:150`](../source/thunder/schema/user.rs#L150) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:161`](../source/thunder/schema/user.rs#L161) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:164`](../source/thunder/schema/user.rs#L164) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BusinessProfileState> {`
+- [`thunder/schema/user.rs:171`](../source/thunder/schema/user.rs#L171) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:184`](../source/thunder/schema/user.rs#L184) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:190`](../source/thunder/schema/user.rs#L190) — `fn from(e: BusinessProfileState) -> i32 {`
+- [`thunder/schema/user.rs:196`](../source/thunder/schema/user.rs#L196) — `fn from(e: &BusinessProfileState) -> i32 {`
+- [`thunder/schema/user.rs:202`](../source/thunder/schema/user.rs#L202) — `pub struct TranslatorType(pub i32);`
+- [`thunder/schema/user.rs:205`](../source/thunder/schema/user.rs#L205) — `pub const NONE: TranslatorType = TranslatorType(0);`
+- [`thunder/schema/user.rs:206`](../source/thunder/schema/user.rs#L206) — `pub const REGULAR: TranslatorType = TranslatorType(1);`
+- [`thunder/schema/user.rs:207`](../source/thunder/schema/user.rs#L207) — `pub const BADGED: TranslatorType = TranslatorType(2);`
+- [`thunder/schema/user.rs:208`](../source/thunder/schema/user.rs#L208) — `pub const MODERATOR: TranslatorType = TranslatorType(3);`
+- [`thunder/schema/user.rs:209`](../source/thunder/schema/user.rs#L209) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:219`](../source/thunder/schema/user.rs#L219) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:222`](../source/thunder/schema/user.rs#L222) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TranslatorType> {`
+- [`thunder/schema/user.rs:229`](../source/thunder/schema/user.rs#L229) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:241`](../source/thunder/schema/user.rs#L241) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:247`](../source/thunder/schema/user.rs#L247) — `fn from(e: TranslatorType) -> i32 {`
+- [`thunder/schema/user.rs:253`](../source/thunder/schema/user.rs#L253) — `fn from(e: &TranslatorType) -> i32 {`
+- [`thunder/schema/user.rs:259`](../source/thunder/schema/user.rs#L259) — `pub struct CustomerServiceState(pub i32);`
+- [`thunder/schema/user.rs:262`](../source/thunder/schema/user.rs#L262) — `pub const NONE: CustomerServiceState = CustomerServiceState(0);`
+- [`thunder/schema/user.rs:263`](../source/thunder/schema/user.rs#L263) — `pub const ENABLED: CustomerServiceState = CustomerServiceState(1);`
+- [`thunder/schema/user.rs:264`](../source/thunder/schema/user.rs#L264) — `pub const DISABLED: CustomerServiceState = CustomerServiceState(2);`
+- [`thunder/schema/user.rs:265`](../source/thunder/schema/user.rs#L265) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:274`](../source/thunder/schema/user.rs#L274) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:277`](../source/thunder/schema/user.rs#L277) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CustomerServiceState> {`
+- [`thunder/schema/user.rs:284`](../source/thunder/schema/user.rs#L284) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:295`](../source/thunder/schema/user.rs#L295) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:301`](../source/thunder/schema/user.rs#L301) — `fn from(e: CustomerServiceState) -> i32 {`
+- [`thunder/schema/user.rs:307`](../source/thunder/schema/user.rs#L307) — `fn from(e: &CustomerServiceState) -> i32 {`
+- [`thunder/schema/user.rs:313`](../source/thunder/schema/user.rs#L313) — `pub struct MentionFilter(pub i32);`
+- [`thunder/schema/user.rs:316`](../source/thunder/schema/user.rs#L316) — `pub const UNFILTERED: MentionFilter = MentionFilter(0);`
+- [`thunder/schema/user.rs:317`](../source/thunder/schema/user.rs#L317) — `pub const FILTERED: MentionFilter = MentionFilter(1);`
+- [`thunder/schema/user.rs:318`](../source/thunder/schema/user.rs#L318) — `pub const VERIFIED: MentionFilter = MentionFilter(2);`
+- [`thunder/schema/user.rs:319`](../source/thunder/schema/user.rs#L319) — `pub const FOLLOWING: MentionFilter = MentionFilter(3);`
+- [`thunder/schema/user.rs:320`](../source/thunder/schema/user.rs#L320) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:330`](../source/thunder/schema/user.rs#L330) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:333`](../source/thunder/schema/user.rs#L333) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MentionFilter> {`
+- [`thunder/schema/user.rs:340`](../source/thunder/schema/user.rs#L340) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:352`](../source/thunder/schema/user.rs#L352) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:358`](../source/thunder/schema/user.rs#L358) — `fn from(e: MentionFilter) -> i32 {`
+- [`thunder/schema/user.rs:364`](../source/thunder/schema/user.rs#L364) — `fn from(e: &MentionFilter) -> i32 {`
+- [`thunder/schema/user.rs:370`](../source/thunder/schema/user.rs#L370) — `pub struct NotificationsFilterQuality(pub i32);`
+- [`thunder/schema/user.rs:373`](../source/thunder/schema/user.rs#L373) — `pub const UNFILTERED: NotificationsFilterQuality = NotificationsFilterQuality(0);`
+- [`thunder/schema/user.rs:374`](../source/thunder/schema/user.rs#L374) — `pub const FILTERED: NotificationsFilterQuality = NotificationsFilterQuality(1);`
+- [`thunder/schema/user.rs:375`](../source/thunder/schema/user.rs#L375) — `pub const RESERVED_2: NotificationsFilterQuality = NotificationsFilterQuality(2);`
+- [`thunder/schema/user.rs:376`](../source/thunder/schema/user.rs#L376) — `pub const RESERVED_3: NotificationsFilterQuality = NotificationsFilterQuality(3);`
+- [`thunder/schema/user.rs:377`](../source/thunder/schema/user.rs#L377) — `pub const RESERVED_4: NotificationsFilterQuality = NotificationsFilterQuality(4);`
+- [`thunder/schema/user.rs:378`](../source/thunder/schema/user.rs#L378) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:389`](../source/thunder/schema/user.rs#L389) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:392`](../source/thunder/schema/user.rs#L392) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<NotificationsFilterQuality> {`
+- [`thunder/schema/user.rs:399`](../source/thunder/schema/user.rs#L399) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:412`](../source/thunder/schema/user.rs#L412) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:418`](../source/thunder/schema/user.rs#L418) — `fn from(e: NotificationsFilterQuality) -> i32 {`
+- [`thunder/schema/user.rs:424`](../source/thunder/schema/user.rs#L424) — `fn from(e: &NotificationsFilterQuality) -> i32 {`
+- [`thunder/schema/user.rs:430`](../source/thunder/schema/user.rs#L430) — `pub struct NotificationsAbuseFilterQuality(pub i32);`
+- [`thunder/schema/user.rs:433`](../source/thunder/schema/user.rs#L433) — `pub const UNFILTERED: NotificationsAbuseFilterQuality = NotificationsAbuseFilterQuality(0);`
+- [`thunder/schema/user.rs:434`](../source/thunder/schema/user.rs#L434) — `pub const FILTERED: NotificationsAbuseFilterQuality = NotificationsAbuseFilterQuality(1);`
+- [`thunder/schema/user.rs:435`](../source/thunder/schema/user.rs#L435) — `pub const RESERVED_2: NotificationsAbuseFilterQuality = NotificationsAbuseFilterQuality(2);`
+- [`thunder/schema/user.rs:436`](../source/thunder/schema/user.rs#L436) — `pub const RESERVED_3: NotificationsAbuseFilterQuality = NotificationsAbuseFilterQuality(3);`
+- [`thunder/schema/user.rs:437`](../source/thunder/schema/user.rs#L437) — `pub const RESERVED_4: NotificationsAbuseFilterQuality = NotificationsAbuseFilterQuality(4);`
+- [`thunder/schema/user.rs:438`](../source/thunder/schema/user.rs#L438) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:449`](../source/thunder/schema/user.rs#L449) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:452`](../source/thunder/schema/user.rs#L452) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<NotificationsAbuseFilterQuality> {`
+- [`thunder/schema/user.rs:459`](../source/thunder/schema/user.rs#L459) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:472`](../source/thunder/schema/user.rs#L472) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:478`](../source/thunder/schema/user.rs#L478) — `fn from(e: NotificationsAbuseFilterQuality) -> i32 {`
+- [`thunder/schema/user.rs:484`](../source/thunder/schema/user.rs#L484) — `fn from(e: &NotificationsAbuseFilterQuality) -> i32 {`
+- [`thunder/schema/user.rs:490`](../source/thunder/schema/user.rs#L490) — `pub struct AllowMediaTagging(pub i32);`
+- [`thunder/schema/user.rs:493`](../source/thunder/schema/user.rs#L493) — `pub const DEFAULT_VALUE: AllowMediaTagging = AllowMediaTagging(1);`
+- [`thunder/schema/user.rs:494`](../source/thunder/schema/user.rs#L494) — `pub const ALL: AllowMediaTagging = AllowMediaTagging(2);`
+- [`thunder/schema/user.rs:495`](../source/thunder/schema/user.rs#L495) — `pub const FOLLOWING: AllowMediaTagging = AllowMediaTagging(3);`
+- [`thunder/schema/user.rs:496`](../source/thunder/schema/user.rs#L496) — `pub const NONE: AllowMediaTagging = AllowMediaTagging(4);`
+- [`thunder/schema/user.rs:497`](../source/thunder/schema/user.rs#L497) — `pub const RESERVED_1: AllowMediaTagging = AllowMediaTagging(5);`
+- [`thunder/schema/user.rs:498`](../source/thunder/schema/user.rs#L498) — `pub const RESERVED_2: AllowMediaTagging = AllowMediaTagging(6);`
+- [`thunder/schema/user.rs:499`](../source/thunder/schema/user.rs#L499) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:511`](../source/thunder/schema/user.rs#L511) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:514`](../source/thunder/schema/user.rs#L514) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AllowMediaTagging> {`
+- [`thunder/schema/user.rs:521`](../source/thunder/schema/user.rs#L521) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:535`](../source/thunder/schema/user.rs#L535) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:541`](../source/thunder/schema/user.rs#L541) — `fn from(e: AllowMediaTagging) -> i32 {`
+- [`thunder/schema/user.rs:547`](../source/thunder/schema/user.rs#L547) — `fn from(e: &AllowMediaTagging) -> i32 {`
+- [`thunder/schema/user.rs:553`](../source/thunder/schema/user.rs#L553) — `pub struct PersonaMediaGenAccess(pub i32);`
+- [`thunder/schema/user.rs:556`](../source/thunder/schema/user.rs#L556) — `pub const ALL: PersonaMediaGenAccess = PersonaMediaGenAccess(1);`
+- [`thunder/schema/user.rs:557`](../source/thunder/schema/user.rs#L557) — `pub const FOLLOWING: PersonaMediaGenAccess = PersonaMediaGenAccess(2);`
+- [`thunder/schema/user.rs:558`](../source/thunder/schema/user.rs#L558) — `pub const NONE: PersonaMediaGenAccess = PersonaMediaGenAccess(3);`
+- [`thunder/schema/user.rs:559`](../source/thunder/schema/user.rs#L559) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:568`](../source/thunder/schema/user.rs#L568) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:571`](../source/thunder/schema/user.rs#L571) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PersonaMediaGenAccess> {`
+- [`thunder/schema/user.rs:578`](../source/thunder/schema/user.rs#L578) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:589`](../source/thunder/schema/user.rs#L589) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:595`](../source/thunder/schema/user.rs#L595) — `fn from(e: PersonaMediaGenAccess) -> i32 {`
+- [`thunder/schema/user.rs:601`](../source/thunder/schema/user.rs#L601) — `fn from(e: &PersonaMediaGenAccess) -> i32 {`
+- [`thunder/schema/user.rs:607`](../source/thunder/schema/user.rs#L607) — `pub struct AllowDmsFrom(pub i32);`
+- [`thunder/schema/user.rs:610`](../source/thunder/schema/user.rs#L610) — `pub const FOLLOWING: AllowDmsFrom = AllowDmsFrom(0);`
+- [`thunder/schema/user.rs:611`](../source/thunder/schema/user.rs#L611) — `pub const ANYONE: AllowDmsFrom = AllowDmsFrom(1);`
+- [`thunder/schema/user.rs:612`](../source/thunder/schema/user.rs#L612) — `pub const VERIFIED: AllowDmsFrom = AllowDmsFrom(2);`
+- [`thunder/schema/user.rs:613`](../source/thunder/schema/user.rs#L613) — `pub const RESERVED_3: AllowDmsFrom = AllowDmsFrom(3);`
+- [`thunder/schema/user.rs:614`](../source/thunder/schema/user.rs#L614) — `pub const RESERVED_4: AllowDmsFrom = AllowDmsFrom(4);`
+- [`thunder/schema/user.rs:615`](../source/thunder/schema/user.rs#L615) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:626`](../source/thunder/schema/user.rs#L626) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:629`](../source/thunder/schema/user.rs#L629) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AllowDmsFrom> {`
+- [`thunder/schema/user.rs:636`](../source/thunder/schema/user.rs#L636) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:649`](../source/thunder/schema/user.rs#L649) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:655`](../source/thunder/schema/user.rs#L655) — `fn from(e: AllowDmsFrom) -> i32 {`
+- [`thunder/schema/user.rs:661`](../source/thunder/schema/user.rs#L661) — `fn from(e: &AllowDmsFrom) -> i32 {`
+- [`thunder/schema/user.rs:667`](../source/thunder/schema/user.rs#L667) — `pub struct AllowDmGroupsFrom(pub i32);`
+- [`thunder/schema/user.rs:670`](../source/thunder/schema/user.rs#L670) — `pub const FOLLOWING: AllowDmGroupsFrom = AllowDmGroupsFrom(0);`
+- [`thunder/schema/user.rs:671`](../source/thunder/schema/user.rs#L671) — `pub const VIT_FOLLOWING: AllowDmGroupsFrom = AllowDmGroupsFrom(1);`
+- [`thunder/schema/user.rs:672`](../source/thunder/schema/user.rs#L672) — `pub const NOBODY: AllowDmGroupsFrom = AllowDmGroupsFrom(2);`
+- [`thunder/schema/user.rs:673`](../source/thunder/schema/user.rs#L673) — `pub const RESERVED_3: AllowDmGroupsFrom = AllowDmGroupsFrom(3);`
+- [`thunder/schema/user.rs:674`](../source/thunder/schema/user.rs#L674) — `pub const RESERVED_4: AllowDmGroupsFrom = AllowDmGroupsFrom(4);`
+- [`thunder/schema/user.rs:675`](../source/thunder/schema/user.rs#L675) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:686`](../source/thunder/schema/user.rs#L686) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:689`](../source/thunder/schema/user.rs#L689) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AllowDmGroupsFrom> {`
+- [`thunder/schema/user.rs:696`](../source/thunder/schema/user.rs#L696) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:709`](../source/thunder/schema/user.rs#L709) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:715`](../source/thunder/schema/user.rs#L715) — `fn from(e: AllowDmGroupsFrom) -> i32 {`
+- [`thunder/schema/user.rs:721`](../source/thunder/schema/user.rs#L721) — `fn from(e: &AllowDmGroupsFrom) -> i32 {`
+- [`thunder/schema/user.rs:727`](../source/thunder/schema/user.rs#L727) — `pub struct AbuseFilter(pub i32);`
+- [`thunder/schema/user.rs:730`](../source/thunder/schema/user.rs#L730) — `pub const UNFILTERED: AbuseFilter = AbuseFilter(0);`
+- [`thunder/schema/user.rs:731`](../source/thunder/schema/user.rs#L731) — `pub const SUPPRESSED: AbuseFilter = AbuseFilter(1);`
+- [`thunder/schema/user.rs:732`](../source/thunder/schema/user.rs#L732) — `pub const RESERVED_2: AbuseFilter = AbuseFilter(2);`
+- [`thunder/schema/user.rs:733`](../source/thunder/schema/user.rs#L733) — `pub const RESERVED_3: AbuseFilter = AbuseFilter(3);`
+- [`thunder/schema/user.rs:734`](../source/thunder/schema/user.rs#L734) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:744`](../source/thunder/schema/user.rs#L744) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:747`](../source/thunder/schema/user.rs#L747) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AbuseFilter> {`
+- [`thunder/schema/user.rs:754`](../source/thunder/schema/user.rs#L754) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:766`](../source/thunder/schema/user.rs#L766) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:772`](../source/thunder/schema/user.rs#L772) — `fn from(e: AbuseFilter) -> i32 {`
+- [`thunder/schema/user.rs:778`](../source/thunder/schema/user.rs#L778) — `fn from(e: &AbuseFilter) -> i32 {`
+- [`thunder/schema/user.rs:784`](../source/thunder/schema/user.rs#L784) — `pub struct AllowContributorRequest(pub i32);`
+- [`thunder/schema/user.rs:787`](../source/thunder/schema/user.rs#L787) — `pub const DEFAULT_VALUE: AllowContributorRequest = AllowContributorRequest(0);`
+- [`thunder/schema/user.rs:788`](../source/thunder/schema/user.rs#L788) — `pub const ALL: AllowContributorRequest = AllowContributorRequest(1);`
+- [`thunder/schema/user.rs:789`](../source/thunder/schema/user.rs#L789) — `pub const FOLLOWING: AllowContributorRequest = AllowContributorRequest(2);`
+- [`thunder/schema/user.rs:790`](../source/thunder/schema/user.rs#L790) — `pub const NONE: AllowContributorRequest = AllowContributorRequest(3);`
+- [`thunder/schema/user.rs:791`](../source/thunder/schema/user.rs#L791) — `pub const RESERVED_4: AllowContributorRequest = AllowContributorRequest(4);`
+- [`thunder/schema/user.rs:792`](../source/thunder/schema/user.rs#L792) — `pub const RESERVED_5: AllowContributorRequest = AllowContributorRequest(5);`
+- [`thunder/schema/user.rs:793`](../source/thunder/schema/user.rs#L793) — `pub const RESERVED_6: AllowContributorRequest = AllowContributorRequest(6);`
+- [`thunder/schema/user.rs:794`](../source/thunder/schema/user.rs#L794) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:807`](../source/thunder/schema/user.rs#L807) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:810`](../source/thunder/schema/user.rs#L810) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AllowContributorRequest> {`
+- [`thunder/schema/user.rs:817`](../source/thunder/schema/user.rs#L817) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:832`](../source/thunder/schema/user.rs#L832) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:838`](../source/thunder/schema/user.rs#L838) — `fn from(e: AllowContributorRequest) -> i32 {`
+- [`thunder/schema/user.rs:844`](../source/thunder/schema/user.rs#L844) — `fn from(e: &AllowContributorRequest) -> i32 {`
+- [`thunder/schema/user.rs:850`](../source/thunder/schema/user.rs#L850) — `pub struct AnalyticsType(pub i32);`
+- [`thunder/schema/user.rs:853`](../source/thunder/schema/user.rs#L853) — `pub const DISABLED: AnalyticsType = AnalyticsType(0);`
+- [`thunder/schema/user.rs:854`](../source/thunder/schema/user.rs#L854) — `pub const ENABLED: AnalyticsType = AnalyticsType(1);`
+- [`thunder/schema/user.rs:855`](../source/thunder/schema/user.rs#L855) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:863`](../source/thunder/schema/user.rs#L863) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:866`](../source/thunder/schema/user.rs#L866) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AnalyticsType> {`
+- [`thunder/schema/user.rs:873`](../source/thunder/schema/user.rs#L873) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:883`](../source/thunder/schema/user.rs#L883) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:889`](../source/thunder/schema/user.rs#L889) — `fn from(e: AnalyticsType) -> i32 {`
+- [`thunder/schema/user.rs:895`](../source/thunder/schema/user.rs#L895) — `fn from(e: &AnalyticsType) -> i32 {`
+- [`thunder/schema/user.rs:901`](../source/thunder/schema/user.rs#L901) — `pub struct DmReceiptSetting(pub i32);`
+- [`thunder/schema/user.rs:904`](../source/thunder/schema/user.rs#L904) — `pub const ALL_ENABLED: DmReceiptSetting = DmReceiptSetting(0);`
+- [`thunder/schema/user.rs:905`](../source/thunder/schema/user.rs#L905) — `pub const ALL_DISABLED: DmReceiptSetting = DmReceiptSetting(1);`
+- [`thunder/schema/user.rs:906`](../source/thunder/schema/user.rs#L906) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:914`](../source/thunder/schema/user.rs#L914) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:917`](../source/thunder/schema/user.rs#L917) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DmReceiptSetting> {`
+- [`thunder/schema/user.rs:924`](../source/thunder/schema/user.rs#L924) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:934`](../source/thunder/schema/user.rs#L934) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:940`](../source/thunder/schema/user.rs#L940) — `fn from(e: DmReceiptSetting) -> i32 {`
+- [`thunder/schema/user.rs:946`](../source/thunder/schema/user.rs#L946) — `fn from(e: &DmReceiptSetting) -> i32 {`
+- [`thunder/schema/user.rs:952`](../source/thunder/schema/user.rs#L952) — `pub struct DmQualityFilterSetting(pub i32);`
+- [`thunder/schema/user.rs:955`](../source/thunder/schema/user.rs#L955) — `pub const ENABLED: DmQualityFilterSetting = DmQualityFilterSetting(0);`
+- [`thunder/schema/user.rs:956`](../source/thunder/schema/user.rs#L956) — `pub const DISABLED: DmQualityFilterSetting = DmQualityFilterSetting(1);`
+- [`thunder/schema/user.rs:957`](../source/thunder/schema/user.rs#L957) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:965`](../source/thunder/schema/user.rs#L965) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:968`](../source/thunder/schema/user.rs#L968) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DmQualityFilterSetting> {`
+- [`thunder/schema/user.rs:975`](../source/thunder/schema/user.rs#L975) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:985`](../source/thunder/schema/user.rs#L985) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:991`](../source/thunder/schema/user.rs#L991) — `fn from(e: DmQualityFilterSetting) -> i32 {`
+- [`thunder/schema/user.rs:997`](../source/thunder/schema/user.rs#L997) — `fn from(e: &DmQualityFilterSetting) -> i32 {`
+- [`thunder/schema/user.rs:1003`](../source/thunder/schema/user.rs#L1003) — `pub struct SmartBlockState(pub i32);`
+- [`thunder/schema/user.rs:1006`](../source/thunder/schema/user.rs#L1006) — `pub const DISABLED: SmartBlockState = SmartBlockState(0);`
+- [`thunder/schema/user.rs:1007`](../source/thunder/schema/user.rs#L1007) — `pub const SELECTED: SmartBlockState = SmartBlockState(1);`
+- [`thunder/schema/user.rs:1008`](../source/thunder/schema/user.rs#L1008) — `pub const FULL: SmartBlockState = SmartBlockState(2);`
+- [`thunder/schema/user.rs:1009`](../source/thunder/schema/user.rs#L1009) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1018`](../source/thunder/schema/user.rs#L1018) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1021`](../source/thunder/schema/user.rs#L1021) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SmartBlockState> {`
+- [`thunder/schema/user.rs:1028`](../source/thunder/schema/user.rs#L1028) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1039`](../source/thunder/schema/user.rs#L1039) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1045`](../source/thunder/schema/user.rs#L1045) — `fn from(e: SmartBlockState) -> i32 {`
+- [`thunder/schema/user.rs:1051`](../source/thunder/schema/user.rs#L1051) — `fn from(e: &SmartBlockState) -> i32 {`
+- [`thunder/schema/user.rs:1057`](../source/thunder/schema/user.rs#L1057) — `pub struct PCFLabel(pub i32);`
+- [`thunder/schema/user.rs:1060`](../source/thunder/schema/user.rs#L1060) — `pub const NONE: PCFLabel = PCFLabel(0);`
+- [`thunder/schema/user.rs:1061`](../source/thunder/schema/user.rs#L1061) — `pub const PARODY: PCFLabel = PCFLabel(1);`
+- [`thunder/schema/user.rs:1062`](../source/thunder/schema/user.rs#L1062) — `pub const COMMENTARY: PCFLabel = PCFLabel(2);`
+- [`thunder/schema/user.rs:1063`](../source/thunder/schema/user.rs#L1063) — `pub const FAN: PCFLabel = PCFLabel(3);`
+- [`thunder/schema/user.rs:1064`](../source/thunder/schema/user.rs#L1064) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1074`](../source/thunder/schema/user.rs#L1074) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1077`](../source/thunder/schema/user.rs#L1077) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PCFLabel> {`
+- [`thunder/schema/user.rs:1084`](../source/thunder/schema/user.rs#L1084) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1096`](../source/thunder/schema/user.rs#L1096) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1102`](../source/thunder/schema/user.rs#L1102) — `fn from(e: PCFLabel) -> i32 {`
+- [`thunder/schema/user.rs:1108`](../source/thunder/schema/user.rs#L1108) — `fn from(e: &PCFLabel) -> i32 {`
+- [`thunder/schema/user.rs:1114`](../source/thunder/schema/user.rs#L1114) — `pub struct InferredLocationResolution(pub i32);`
+- [`thunder/schema/user.rs:1117`](../source/thunder/schema/user.rs#L1117) — `pub const REGION: InferredLocationResolution = InferredLocationResolution(0);`
+- [`thunder/schema/user.rs:1118`](../source/thunder/schema/user.rs#L1118) — `pub const COUNTRY: InferredLocationResolution = InferredLocationResolution(1);`
+- [`thunder/schema/user.rs:1119`](../source/thunder/schema/user.rs#L1119) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1127`](../source/thunder/schema/user.rs#L1127) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1130`](../source/thunder/schema/user.rs#L1130) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<InferredLocationResolution> {`
+- [`thunder/schema/user.rs:1137`](../source/thunder/schema/user.rs#L1137) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1147`](../source/thunder/schema/user.rs#L1147) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1153`](../source/thunder/schema/user.rs#L1153) — `fn from(e: InferredLocationResolution) -> i32 {`
+- [`thunder/schema/user.rs:1159`](../source/thunder/schema/user.rs#L1159) — `fn from(e: &InferredLocationResolution) -> i32 {`
+- [`thunder/schema/user.rs:1165`](../source/thunder/schema/user.rs#L1165) — `pub struct GazeboFormStatus(pub i32);`
+- [`thunder/schema/user.rs:1168`](../source/thunder/schema/user.rs#L1168) — `pub const IN_PROGRESS: GazeboFormStatus = GazeboFormStatus(0);`
+- [`thunder/schema/user.rs:1169`](../source/thunder/schema/user.rs#L1169) — `pub const DISMISSED: GazeboFormStatus = GazeboFormStatus(1);`
+- [`thunder/schema/user.rs:1170`](../source/thunder/schema/user.rs#L1170) — `pub const COMPLETED: GazeboFormStatus = GazeboFormStatus(2);`
+- [`thunder/schema/user.rs:1171`](../source/thunder/schema/user.rs#L1171) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1180`](../source/thunder/schema/user.rs#L1180) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1183`](../source/thunder/schema/user.rs#L1183) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<GazeboFormStatus> {`
+- [`thunder/schema/user.rs:1190`](../source/thunder/schema/user.rs#L1190) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1201`](../source/thunder/schema/user.rs#L1201) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1207`](../source/thunder/schema/user.rs#L1207) — `fn from(e: GazeboFormStatus) -> i32 {`
+- [`thunder/schema/user.rs:1213`](../source/thunder/schema/user.rs#L1213) — `fn from(e: &GazeboFormStatus) -> i32 {`
+- [`thunder/schema/user.rs:1219`](../source/thunder/schema/user.rs#L1219) — `pub struct EmailSettingState(pub i32);`
+- [`thunder/schema/user.rs:1222`](../source/thunder/schema/user.rs#L1222) — `pub const NONE: EmailSettingState = EmailSettingState(0);`
+- [`thunder/schema/user.rs:1223`](../source/thunder/schema/user.rs#L1223) — `pub const ALL: EmailSettingState = EmailSettingState(1);`
+- [`thunder/schema/user.rs:1224`](../source/thunder/schema/user.rs#L1224) — `pub const FOLLOWINGS: EmailSettingState = EmailSettingState(2);`
+- [`thunder/schema/user.rs:1225`](../source/thunder/schema/user.rs#L1225) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1234`](../source/thunder/schema/user.rs#L1234) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1237`](../source/thunder/schema/user.rs#L1237) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<EmailSettingState> {`
+- [`thunder/schema/user.rs:1244`](../source/thunder/schema/user.rs#L1244) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1255`](../source/thunder/schema/user.rs#L1255) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1261`](../source/thunder/schema/user.rs#L1261) — `fn from(e: EmailSettingState) -> i32 {`
+- [`thunder/schema/user.rs:1267`](../source/thunder/schema/user.rs#L1267) — `fn from(e: &EmailSettingState) -> i32 {`
+- [`thunder/schema/user.rs:1273`](../source/thunder/schema/user.rs#L1273) — `pub struct EmailConfirmedState(pub i32);`
+- [`thunder/schema/user.rs:1276`](../source/thunder/schema/user.rs#L1276) — `pub const GRANDFATHERED: EmailConfirmedState = EmailConfirmedState(0);`
+- [`thunder/schema/user.rs:1277`](../source/thunder/schema/user.rs#L1277) — `pub const EXCUSED: EmailConfirmedState = EmailConfirmedState(1);`
+- [`thunder/schema/user.rs:1278`](../source/thunder/schema/user.rs#L1278) — `pub const UNCONFIRMED: EmailConfirmedState = EmailConfirmedState(2);`
+- [`thunder/schema/user.rs:1279`](../source/thunder/schema/user.rs#L1279) — `pub const CONFIRMED: EmailConfirmedState = EmailConfirmedState(3);`
+- [`thunder/schema/user.rs:1280`](../source/thunder/schema/user.rs#L1280) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1290`](../source/thunder/schema/user.rs#L1290) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1293`](../source/thunder/schema/user.rs#L1293) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<EmailConfirmedState> {`
+- [`thunder/schema/user.rs:1300`](../source/thunder/schema/user.rs#L1300) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1312`](../source/thunder/schema/user.rs#L1312) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1318`](../source/thunder/schema/user.rs#L1318) — `fn from(e: EmailConfirmedState) -> i32 {`
+- [`thunder/schema/user.rs:1324`](../source/thunder/schema/user.rs#L1324) — `fn from(e: &EmailConfirmedState) -> i32 {`
+- [`thunder/schema/user.rs:1330`](../source/thunder/schema/user.rs#L1330) — `pub struct DigestSchedule(pub i32);`
+- [`thunder/schema/user.rs:1333`](../source/thunder/schema/user.rs#L1333) — `pub const NONE: DigestSchedule = DigestSchedule(0);`
+- [`thunder/schema/user.rs:1334`](../source/thunder/schema/user.rs#L1334) — `pub const DAILY: DigestSchedule = DigestSchedule(1);`
+- [`thunder/schema/user.rs:1335`](../source/thunder/schema/user.rs#L1335) — `pub const TWO_DAYS: DigestSchedule = DigestSchedule(2);`
+- [`thunder/schema/user.rs:1336`](../source/thunder/schema/user.rs#L1336) — `pub const WEEKLY: DigestSchedule = DigestSchedule(3);`
+- [`thunder/schema/user.rs:1337`](../source/thunder/schema/user.rs#L1337) — `pub const PERIODICALLY: DigestSchedule = DigestSchedule(4);`
+- [`thunder/schema/user.rs:1338`](../source/thunder/schema/user.rs#L1338) — `pub const RESERVED_5: DigestSchedule = DigestSchedule(5);`
+- [`thunder/schema/user.rs:1339`](../source/thunder/schema/user.rs#L1339) — `pub const RESERVED_6: DigestSchedule = DigestSchedule(6);`
+- [`thunder/schema/user.rs:1340`](../source/thunder/schema/user.rs#L1340) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1353`](../source/thunder/schema/user.rs#L1353) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1356`](../source/thunder/schema/user.rs#L1356) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DigestSchedule> {`
+- [`thunder/schema/user.rs:1363`](../source/thunder/schema/user.rs#L1363) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1378`](../source/thunder/schema/user.rs#L1378) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1384`](../source/thunder/schema/user.rs#L1384) — `fn from(e: DigestSchedule) -> i32 {`
+- [`thunder/schema/user.rs:1390`](../source/thunder/schema/user.rs#L1390) — `fn from(e: &DigestSchedule) -> i32 {`
+- [`thunder/schema/user.rs:1396`](../source/thunder/schema/user.rs#L1396) — `pub struct FrictionlessFollowerState(pub i32);`
+- [`thunder/schema/user.rs:1399`](../source/thunder/schema/user.rs#L1399) — `pub const NORMAL: FrictionlessFollowerState = FrictionlessFollowerState(0);`
+- [`thunder/schema/user.rs:1400`](../source/thunder/schema/user.rs#L1400) — `pub const FRICTIONLESS: FrictionlessFollowerState = FrictionlessFollowerState(1);`
+- [`thunder/schema/user.rs:1401`](../source/thunder/schema/user.rs#L1401) — `pub const CONVERTED: FrictionlessFollowerState = FrictionlessFollowerState(2);`
+- [`thunder/schema/user.rs:1402`](../source/thunder/schema/user.rs#L1402) — `pub const MERGED: FrictionlessFollowerState = FrictionlessFollowerState(3);`
+- [`thunder/schema/user.rs:1403`](../source/thunder/schema/user.rs#L1403) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1413`](../source/thunder/schema/user.rs#L1413) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1416`](../source/thunder/schema/user.rs#L1416) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FrictionlessFollowerState> {`
+- [`thunder/schema/user.rs:1423`](../source/thunder/schema/user.rs#L1423) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1435`](../source/thunder/schema/user.rs#L1435) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1441`](../source/thunder/schema/user.rs#L1441) — `fn from(e: FrictionlessFollowerState) -> i32 {`
+- [`thunder/schema/user.rs:1447`](../source/thunder/schema/user.rs#L1447) — `fn from(e: &FrictionlessFollowerState) -> i32 {`
+- [`thunder/schema/user.rs:1453`](../source/thunder/schema/user.rs#L1453) — `pub struct FrictionlessFollowerType(pub i32);`
+- [`thunder/schema/user.rs:1456`](../source/thunder/schema/user.rs#L1456) — `pub const SMS: FrictionlessFollowerType = FrictionlessFollowerType(0);`
+- [`thunder/schema/user.rs:1457`](../source/thunder/schema/user.rs#L1457) — `pub const EMAIL: FrictionlessFollowerType = FrictionlessFollowerType(1);`
+- [`thunder/schema/user.rs:1458`](../source/thunder/schema/user.rs#L1458) — `pub const SDK: FrictionlessFollowerType = FrictionlessFollowerType(2);`
+- [`thunder/schema/user.rs:1459`](../source/thunder/schema/user.rs#L1459) — `pub const RESERVED_3: FrictionlessFollowerType = FrictionlessFollowerType(3);`
+- [`thunder/schema/user.rs:1460`](../source/thunder/schema/user.rs#L1460) — `pub const RESERVED_4: FrictionlessFollowerType = FrictionlessFollowerType(4);`
+- [`thunder/schema/user.rs:1461`](../source/thunder/schema/user.rs#L1461) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1472`](../source/thunder/schema/user.rs#L1472) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1475`](../source/thunder/schema/user.rs#L1475) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FrictionlessFollowerType> {`
+- [`thunder/schema/user.rs:1482`](../source/thunder/schema/user.rs#L1482) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1495`](../source/thunder/schema/user.rs#L1495) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1501`](../source/thunder/schema/user.rs#L1501) — `fn from(e: FrictionlessFollowerType) -> i32 {`
+- [`thunder/schema/user.rs:1507`](../source/thunder/schema/user.rs#L1507) — `fn from(e: &FrictionlessFollowerType) -> i32 {`
+- [`thunder/schema/user.rs:1513`](../source/thunder/schema/user.rs#L1513) — `pub struct AccessPolicy(pub i32);`
+- [`thunder/schema/user.rs:1516`](../source/thunder/schema/user.rs#L1516) — `pub const NORMAL: AccessPolicy = AccessPolicy(0);`
+- [`thunder/schema/user.rs:1517`](../source/thunder/schema/user.rs#L1517) — `pub const BOUNCE_ALL: AccessPolicy = AccessPolicy(1);`
+- [`thunder/schema/user.rs:1518`](../source/thunder/schema/user.rs#L1518) — `pub const BOUNCE_ALL_WRITES_AND_NPCI: AccessPolicy = AccessPolicy(2);`
+- [`thunder/schema/user.rs:1519`](../source/thunder/schema/user.rs#L1519) — `pub const BOUNCE_ALL_PUBLIC_WRITES: AccessPolicy = AccessPolicy(3);`
+- [`thunder/schema/user.rs:1520`](../source/thunder/schema/user.rs#L1520) — `pub const BOUNCE_ON_UNSUSPENSION: AccessPolicy = AccessPolicy(4);`
+- [`thunder/schema/user.rs:1521`](../source/thunder/schema/user.rs#L1521) — `pub const RESERVED_5: AccessPolicy = AccessPolicy(5);`
+- [`thunder/schema/user.rs:1522`](../source/thunder/schema/user.rs#L1522) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1534`](../source/thunder/schema/user.rs#L1534) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1537`](../source/thunder/schema/user.rs#L1537) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AccessPolicy> {`
+- [`thunder/schema/user.rs:1544`](../source/thunder/schema/user.rs#L1544) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1558`](../source/thunder/schema/user.rs#L1558) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1564`](../source/thunder/schema/user.rs#L1564) — `fn from(e: AccessPolicy) -> i32 {`
+- [`thunder/schema/user.rs:1570`](../source/thunder/schema/user.rs#L1570) — `fn from(e: &AccessPolicy) -> i32 {`
+- [`thunder/schema/user.rs:1576`](../source/thunder/schema/user.rs#L1576) — `pub struct SignupCategory(pub i32);`
+- [`thunder/schema/user.rs:1579`](../source/thunder/schema/user.rs#L1579) — `pub const GRANDFATHERED: SignupCategory = SignupCategory(0);`
+- [`thunder/schema/user.rs:1580`](../source/thunder/schema/user.rs#L1580) — `pub const API_PHONE: SignupCategory = SignupCategory(1);`
+- [`thunder/schema/user.rs:1581`](../source/thunder/schema/user.rs#L1581) — `pub const WEB_PHONE: SignupCategory = SignupCategory(2);`
+- [`thunder/schema/user.rs:1582`](../source/thunder/schema/user.rs#L1582) — `pub const WEB_EMAIL: SignupCategory = SignupCategory(3);`
+- [`thunder/schema/user.rs:1583`](../source/thunder/schema/user.rs#L1583) — `pub const API_EMAIL: SignupCategory = SignupCategory(4);`
+- [`thunder/schema/user.rs:1584`](../source/thunder/schema/user.rs#L1584) — `pub const CONVERSION: SignupCategory = SignupCategory(5);`
+- [`thunder/schema/user.rs:1585`](../source/thunder/schema/user.rs#L1585) — `pub const RESERVED_2: SignupCategory = SignupCategory(6);`
+- [`thunder/schema/user.rs:1586`](../source/thunder/schema/user.rs#L1586) — `pub const RESERVED_3: SignupCategory = SignupCategory(7);`
+- [`thunder/schema/user.rs:1587`](../source/thunder/schema/user.rs#L1587) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1601`](../source/thunder/schema/user.rs#L1601) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1604`](../source/thunder/schema/user.rs#L1604) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SignupCategory> {`
+- [`thunder/schema/user.rs:1611`](../source/thunder/schema/user.rs#L1611) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1627`](../source/thunder/schema/user.rs#L1627) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1633`](../source/thunder/schema/user.rs#L1633) — `fn from(e: SignupCategory) -> i32 {`
+- [`thunder/schema/user.rs:1639`](../source/thunder/schema/user.rs#L1639) — `fn from(e: &SignupCategory) -> i32 {`
+- [`thunder/schema/user.rs:1645`](../source/thunder/schema/user.rs#L1645) — `pub struct SignupTrustLevel(pub i32);`
+- [`thunder/schema/user.rs:1648`](../source/thunder/schema/user.rs#L1648) — `pub const UNKNOWN: SignupTrustLevel = SignupTrustLevel(0);`
+- [`thunder/schema/user.rs:1649`](../source/thunder/schema/user.rs#L1649) — `pub const FULL: SignupTrustLevel = SignupTrustLevel(1);`
+- [`thunder/schema/user.rs:1650`](../source/thunder/schema/user.rs#L1650) — `pub const HIGH: SignupTrustLevel = SignupTrustLevel(2);`
+- [`thunder/schema/user.rs:1651`](../source/thunder/schema/user.rs#L1651) — `pub const MEDIUM: SignupTrustLevel = SignupTrustLevel(3);`
+- [`thunder/schema/user.rs:1652`](../source/thunder/schema/user.rs#L1652) — `pub const RESERVED_1: SignupTrustLevel = SignupTrustLevel(4);`
+- [`thunder/schema/user.rs:1653`](../source/thunder/schema/user.rs#L1653) — `pub const RESERVED_2: SignupTrustLevel = SignupTrustLevel(5);`
+- [`thunder/schema/user.rs:1654`](../source/thunder/schema/user.rs#L1654) — `pub const RESERVED_3: SignupTrustLevel = SignupTrustLevel(6);`
+- [`thunder/schema/user.rs:1655`](../source/thunder/schema/user.rs#L1655) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1668`](../source/thunder/schema/user.rs#L1668) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1671`](../source/thunder/schema/user.rs#L1671) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SignupTrustLevel> {`
+- [`thunder/schema/user.rs:1678`](../source/thunder/schema/user.rs#L1678) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1693`](../source/thunder/schema/user.rs#L1693) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1699`](../source/thunder/schema/user.rs#L1699) — `fn from(e: SignupTrustLevel) -> i32 {`
+- [`thunder/schema/user.rs:1705`](../source/thunder/schema/user.rs#L1705) — `fn from(e: &SignupTrustLevel) -> i32 {`
+- [`thunder/schema/user.rs:1711`](../source/thunder/schema/user.rs#L1711) — `pub struct UniversalQualityFiltering(pub i32);`
+- [`thunder/schema/user.rs:1714`](../source/thunder/schema/user.rs#L1714) — `pub const ENABLED: UniversalQualityFiltering = UniversalQualityFiltering(0);`
+- [`thunder/schema/user.rs:1715`](../source/thunder/schema/user.rs#L1715) — `pub const DISABLED: UniversalQualityFiltering = UniversalQualityFiltering(1);`
+- [`thunder/schema/user.rs:1716`](../source/thunder/schema/user.rs#L1716) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1724`](../source/thunder/schema/user.rs#L1724) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1727`](../source/thunder/schema/user.rs#L1727) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UniversalQualityFiltering> {`
+- [`thunder/schema/user.rs:1734`](../source/thunder/schema/user.rs#L1734) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1744`](../source/thunder/schema/user.rs#L1744) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1750`](../source/thunder/schema/user.rs#L1750) — `fn from(e: UniversalQualityFiltering) -> i32 {`
+- [`thunder/schema/user.rs:1756`](../source/thunder/schema/user.rs#L1756) — `fn from(e: &UniversalQualityFiltering) -> i32 {`
+- [`thunder/schema/user.rs:1762`](../source/thunder/schema/user.rs#L1762) — `pub struct ConsentFlow(pub i32);`
+- [`thunder/schema/user.rs:1765`](../source/thunder/schema/user.rs#L1765) — `pub const UNKNOWN: ConsentFlow = ConsentFlow(0);`
+- [`thunder/schema/user.rs:1766`](../source/thunder/schema/user.rs#L1766) — `pub const SIGNUP: ConsentFlow = ConsentFlow(1);`
+- [`thunder/schema/user.rs:1767`](../source/thunder/schema/user.rs#L1767) — `pub const EXISTING_USER: ConsentFlow = ConsentFlow(2);`
+- [`thunder/schema/user.rs:1768`](../source/thunder/schema/user.rs#L1768) — `pub const COUNTRY_CHANGE: ConsentFlow = ConsentFlow(3);`
+- [`thunder/schema/user.rs:1769`](../source/thunder/schema/user.rs#L1769) — `pub const BIRTHDATE_CHANGE: ConsentFlow = ConsentFlow(4);`
+- [`thunder/schema/user.rs:1770`](../source/thunder/schema/user.rs#L1770) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1781`](../source/thunder/schema/user.rs#L1781) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1784`](../source/thunder/schema/user.rs#L1784) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConsentFlow> {`
+- [`thunder/schema/user.rs:1791`](../source/thunder/schema/user.rs#L1791) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1804`](../source/thunder/schema/user.rs#L1804) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1810`](../source/thunder/schema/user.rs#L1810) — `fn from(e: ConsentFlow) -> i32 {`
+- [`thunder/schema/user.rs:1816`](../source/thunder/schema/user.rs#L1816) — `fn from(e: &ConsentFlow) -> i32 {`
+- [`thunder/schema/user.rs:1822`](../source/thunder/schema/user.rs#L1822) — `pub struct ConsentResponseValue(pub i32);`
+- [`thunder/schema/user.rs:1825`](../source/thunder/schema/user.rs#L1825) — `pub const DECLINE: ConsentResponseValue = ConsentResponseValue(0);`
+- [`thunder/schema/user.rs:1826`](../source/thunder/schema/user.rs#L1826) — `pub const ACCEPT: ConsentResponseValue = ConsentResponseValue(1);`
+- [`thunder/schema/user.rs:1827`](../source/thunder/schema/user.rs#L1827) — `pub const DECLINE_PARENTAL: ConsentResponseValue = ConsentResponseValue(2);`
+- [`thunder/schema/user.rs:1828`](../source/thunder/schema/user.rs#L1828) — `pub const ACCEPT_PARENTAL: ConsentResponseValue = ConsentResponseValue(3);`
+- [`thunder/schema/user.rs:1829`](../source/thunder/schema/user.rs#L1829) — `pub const DECLINE_AGENT: ConsentResponseValue = ConsentResponseValue(4);`
+- [`thunder/schema/user.rs:1830`](../source/thunder/schema/user.rs#L1830) — `pub const ACCEPT_SYSTEM: ConsentResponseValue = ConsentResponseValue(5);`
+- [`thunder/schema/user.rs:1831`](../source/thunder/schema/user.rs#L1831) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1843`](../source/thunder/schema/user.rs#L1843) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1846`](../source/thunder/schema/user.rs#L1846) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConsentResponseValue> {`
+- [`thunder/schema/user.rs:1853`](../source/thunder/schema/user.rs#L1853) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1867`](../source/thunder/schema/user.rs#L1867) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1873`](../source/thunder/schema/user.rs#L1873) — `fn from(e: ConsentResponseValue) -> i32 {`
+- [`thunder/schema/user.rs:1879`](../source/thunder/schema/user.rs#L1879) — `fn from(e: &ConsentResponseValue) -> i32 {`
+- [`thunder/schema/user.rs:1885`](../source/thunder/schema/user.rs#L1885) — `pub struct DerivedConsentIndicator(pub i32);`
+- [`thunder/schema/user.rs:1888`](../source/thunder/schema/user.rs#L1888) — `pub const NONE: DerivedConsentIndicator = DerivedConsentIndicator(0);`
+- [`thunder/schema/user.rs:1889`](../source/thunder/schema/user.rs#L1889) — `pub const NO_BIRTHDATE: DerivedConsentIndicator = DerivedConsentIndicator(1);`
+- [`thunder/schema/user.rs:1890`](../source/thunder/schema/user.rs#L1890) — `pub const UNDERAGE_WHEN_CREATED: DerivedConsentIndicator = DerivedConsentIndicator(2);`
+- [`thunder/schema/user.rs:1891`](../source/thunder/schema/user.rs#L1891) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1900`](../source/thunder/schema/user.rs#L1900) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1903`](../source/thunder/schema/user.rs#L1903) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DerivedConsentIndicator> {`
+- [`thunder/schema/user.rs:1910`](../source/thunder/schema/user.rs#L1910) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1921`](../source/thunder/schema/user.rs#L1921) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1927`](../source/thunder/schema/user.rs#L1927) — `fn from(e: DerivedConsentIndicator) -> i32 {`
+- [`thunder/schema/user.rs:1933`](../source/thunder/schema/user.rs#L1933) — `fn from(e: &DerivedConsentIndicator) -> i32 {`
+- [`thunder/schema/user.rs:1939`](../source/thunder/schema/user.rs#L1939) — `pub struct U13RemediationReason(pub i32);`
+- [`thunder/schema/user.rs:1942`](../source/thunder/schema/user.rs#L1942) — `pub const UNDER_GLOBAL_MINIMUM_AGE: U13RemediationReason = U13RemediationReason(0);`
+- [`thunder/schema/user.rs:1943`](../source/thunder/schema/user.rs#L1943) — `pub const PARENTAL_ATTEST: U13RemediationReason = U13RemediationReason(1);`
+- [`thunder/schema/user.rs:1944`](../source/thunder/schema/user.rs#L1944) — `pub const INCORRECT_BIRTHDATE: U13RemediationReason = U13RemediationReason(2);`
+- [`thunder/schema/user.rs:1945`](../source/thunder/schema/user.rs#L1945) — `pub const BUSINESS_ACCOUNT: U13RemediationReason = U13RemediationReason(3);`
+- [`thunder/schema/user.rs:1946`](../source/thunder/schema/user.rs#L1946) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:1956`](../source/thunder/schema/user.rs#L1956) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:1959`](../source/thunder/schema/user.rs#L1959) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<U13RemediationReason> {`
+- [`thunder/schema/user.rs:1966`](../source/thunder/schema/user.rs#L1966) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:1978`](../source/thunder/schema/user.rs#L1978) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:1984`](../source/thunder/schema/user.rs#L1984) — `fn from(e: U13RemediationReason) -> i32 {`
+- [`thunder/schema/user.rs:1990`](../source/thunder/schema/user.rs#L1990) — `fn from(e: &U13RemediationReason) -> i32 {`
+- [`thunder/schema/user.rs:1996`](../source/thunder/schema/user.rs#L1996) — `pub struct U13RemediationState(pub i32);`
+- [`thunder/schema/user.rs:1999`](../source/thunder/schema/user.rs#L1999) — `pub const REQUESTED: U13RemediationState = U13RemediationState(0);`
+- [`thunder/schema/user.rs:2000`](../source/thunder/schema/user.rs#L2000) — `pub const CONFIRMED: U13RemediationState = U13RemediationState(1);`
+- [`thunder/schema/user.rs:2001`](../source/thunder/schema/user.rs#L2001) — `pub const REJECTED: U13RemediationState = U13RemediationState(2);`
+- [`thunder/schema/user.rs:2002`](../source/thunder/schema/user.rs#L2002) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2011`](../source/thunder/schema/user.rs#L2011) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2014`](../source/thunder/schema/user.rs#L2014) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<U13RemediationState> {`
+- [`thunder/schema/user.rs:2021`](../source/thunder/schema/user.rs#L2021) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2032`](../source/thunder/schema/user.rs#L2032) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2038`](../source/thunder/schema/user.rs#L2038) — `fn from(e: U13RemediationState) -> i32 {`
+- [`thunder/schema/user.rs:2044`](../source/thunder/schema/user.rs#L2044) — `fn from(e: &U13RemediationState) -> i32 {`
+- [`thunder/schema/user.rs:2050`](../source/thunder/schema/user.rs#L2050) — `pub struct U13RestorationStatus(pub i32);`
+- [`thunder/schema/user.rs:2053`](../source/thunder/schema/user.rs#L2053) — `pub const STARTED: U13RestorationStatus = U13RestorationStatus(0);`
+- [`thunder/schema/user.rs:2054`](../source/thunder/schema/user.rs#L2054) — `pub const IN_PROGRESS: U13RestorationStatus = U13RestorationStatus(1);`
+- [`thunder/schema/user.rs:2055`](../source/thunder/schema/user.rs#L2055) — `pub const COMPLETED: U13RestorationStatus = U13RestorationStatus(2);`
+- [`thunder/schema/user.rs:2056`](../source/thunder/schema/user.rs#L2056) — `pub const APPEAL_IN_PROGRESS: U13RestorationStatus = U13RestorationStatus(3);`
+- [`thunder/schema/user.rs:2057`](../source/thunder/schema/user.rs#L2057) — `pub const APPEAL_DENIED: U13RestorationStatus = U13RestorationStatus(4);`
+- [`thunder/schema/user.rs:2058`](../source/thunder/schema/user.rs#L2058) — `pub const APPEAL_SUCCEEDED: U13RestorationStatus = U13RestorationStatus(5);`
+- [`thunder/schema/user.rs:2059`](../source/thunder/schema/user.rs#L2059) — `pub const APPEAL_COMPLETED: U13RestorationStatus = U13RestorationStatus(6);`
+- [`thunder/schema/user.rs:2060`](../source/thunder/schema/user.rs#L2060) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2073`](../source/thunder/schema/user.rs#L2073) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2076`](../source/thunder/schema/user.rs#L2076) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<U13RestorationStatus> {`
+- [`thunder/schema/user.rs:2083`](../source/thunder/schema/user.rs#L2083) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2098`](../source/thunder/schema/user.rs#L2098) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2104`](../source/thunder/schema/user.rs#L2104) — `fn from(e: U13RestorationStatus) -> i32 {`
+- [`thunder/schema/user.rs:2110`](../source/thunder/schema/user.rs#L2110) — `fn from(e: &U13RestorationStatus) -> i32 {`
+- [`thunder/schema/user.rs:2116`](../source/thunder/schema/user.rs#L2116) — `pub struct DeactivationTimespan(pub i32);`
+- [`thunder/schema/user.rs:2119`](../source/thunder/schema/user.rs#L2119) — `pub const RETAIN_30_DAYS: DeactivationTimespan = DeactivationTimespan(0);`
+- [`thunder/schema/user.rs:2120`](../source/thunder/schema/user.rs#L2120) — `pub const RETAIN_1_YEAR: DeactivationTimespan = DeactivationTimespan(1);`
+- [`thunder/schema/user.rs:2121`](../source/thunder/schema/user.rs#L2121) — `pub const RETAIN_1_DAY: DeactivationTimespan = DeactivationTimespan(2);`
+- [`thunder/schema/user.rs:2122`](../source/thunder/schema/user.rs#L2122) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2131`](../source/thunder/schema/user.rs#L2131) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2134`](../source/thunder/schema/user.rs#L2134) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DeactivationTimespan> {`
+- [`thunder/schema/user.rs:2141`](../source/thunder/schema/user.rs#L2141) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2152`](../source/thunder/schema/user.rs#L2152) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2158`](../source/thunder/schema/user.rs#L2158) — `fn from(e: DeactivationTimespan) -> i32 {`
+- [`thunder/schema/user.rs:2164`](../source/thunder/schema/user.rs#L2164) — `fn from(e: &DeactivationTimespan) -> i32 {`
+- [`thunder/schema/user.rs:2170`](../source/thunder/schema/user.rs#L2170) — `pub struct CompromisedState(pub i32);`
+- [`thunder/schema/user.rs:2173`](../source/thunder/schema/user.rs#L2173) — `pub const NOT_COMPROMISED: CompromisedState = CompromisedState(0);`
+- [`thunder/schema/user.rs:2174`](../source/thunder/schema/user.rs#L2174) — `pub const RECENTLY_COMPROMISED: CompromisedState = CompromisedState(1);`
+- [`thunder/schema/user.rs:2175`](../source/thunder/schema/user.rs#L2175) — `pub const ARCHIVED: CompromisedState = CompromisedState(2);`
+- [`thunder/schema/user.rs:2176`](../source/thunder/schema/user.rs#L2176) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2185`](../source/thunder/schema/user.rs#L2185) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2188`](../source/thunder/schema/user.rs#L2188) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CompromisedState> {`
+- [`thunder/schema/user.rs:2195`](../source/thunder/schema/user.rs#L2195) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2206`](../source/thunder/schema/user.rs#L2206) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2212`](../source/thunder/schema/user.rs#L2212) — `fn from(e: CompromisedState) -> i32 {`
+- [`thunder/schema/user.rs:2218`](../source/thunder/schema/user.rs#L2218) — `fn from(e: &CompromisedState) -> i32 {`
+- [`thunder/schema/user.rs:2224`](../source/thunder/schema/user.rs#L2224) — `pub struct VerifiedType(pub i32);`
+- [`thunder/schema/user.rs:2227`](../source/thunder/schema/user.rs#L2227) — `pub const USER: VerifiedType = VerifiedType(1);`
+- [`thunder/schema/user.rs:2228`](../source/thunder/schema/user.rs#L2228) — `pub const NOTABLE: VerifiedType = VerifiedType(2);`
+- [`thunder/schema/user.rs:2229`](../source/thunder/schema/user.rs#L2229) — `pub const BUSINESS: VerifiedType = VerifiedType(3);`
+- [`thunder/schema/user.rs:2230`](../source/thunder/schema/user.rs#L2230) — `pub const GOVERNMENT: VerifiedType = VerifiedType(4);`
+- [`thunder/schema/user.rs:2231`](../source/thunder/schema/user.rs#L2231) — `pub const RESERVED_4: VerifiedType = VerifiedType(5);`
+- [`thunder/schema/user.rs:2232`](../source/thunder/schema/user.rs#L2232) — `pub const RESERVED_5: VerifiedType = VerifiedType(6);`
+- [`thunder/schema/user.rs:2233`](../source/thunder/schema/user.rs#L2233) — `pub const RESERVED_6: VerifiedType = VerifiedType(7);`
+- [`thunder/schema/user.rs:2234`](../source/thunder/schema/user.rs#L2234) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2247`](../source/thunder/schema/user.rs#L2247) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2250`](../source/thunder/schema/user.rs#L2250) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<VerifiedType> {`
+- [`thunder/schema/user.rs:2257`](../source/thunder/schema/user.rs#L2257) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2272`](../source/thunder/schema/user.rs#L2272) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2278`](../source/thunder/schema/user.rs#L2278) — `fn from(e: VerifiedType) -> i32 {`
+- [`thunder/schema/user.rs:2284`](../source/thunder/schema/user.rs#L2284) — `fn from(e: &VerifiedType) -> i32 {`
+- [`thunder/schema/user.rs:2290`](../source/thunder/schema/user.rs#L2290) — `pub struct BlueCheckmarkHiddenReason(pub i32);`
+- [`thunder/schema/user.rs:2293`](../source/thunder/schema/user.rs#L2293) — `pub const MANUALLY_HIDDEN: BlueCheckmarkHiddenReason = BlueCheckmarkHiddenReason(1);`
+- [`thunder/schema/user.rs:2294`](../source/thunder/schema/user.rs#L2294) — `pub const UNDER_REVIEW: BlueCheckmarkHiddenReason = BlueCheckmarkHiddenReason(2);`
+- [`thunder/schema/user.rs:2295`](../source/thunder/schema/user.rs#L2295) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2303`](../source/thunder/schema/user.rs#L2303) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2306`](../source/thunder/schema/user.rs#L2306) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BlueCheckmarkHiddenReason> {`
+- [`thunder/schema/user.rs:2313`](../source/thunder/schema/user.rs#L2313) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2323`](../source/thunder/schema/user.rs#L2323) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2329`](../source/thunder/schema/user.rs#L2329) — `fn from(e: BlueCheckmarkHiddenReason) -> i32 {`
+- [`thunder/schema/user.rs:2335`](../source/thunder/schema/user.rs#L2335) — `fn from(e: &BlueCheckmarkHiddenReason) -> i32 {`
+- [`thunder/schema/user.rs:2341`](../source/thunder/schema/user.rs#L2341) — `pub struct SubscriptionLevel(pub i32);`
+- [`thunder/schema/user.rs:2344`](../source/thunder/schema/user.rs#L2344) — `pub const BASIC: SubscriptionLevel = SubscriptionLevel(1);`
+- [`thunder/schema/user.rs:2345`](../source/thunder/schema/user.rs#L2345) — `pub const PREMIUM: SubscriptionLevel = SubscriptionLevel(2);`
+- [`thunder/schema/user.rs:2346`](../source/thunder/schema/user.rs#L2346) — `pub const PREMIUM_PLUS: SubscriptionLevel = SubscriptionLevel(3);`
+- [`thunder/schema/user.rs:2347`](../source/thunder/schema/user.rs#L2347) — `pub const RESERVED_4: SubscriptionLevel = SubscriptionLevel(4);`
+- [`thunder/schema/user.rs:2348`](../source/thunder/schema/user.rs#L2348) — `pub const RESERVED_5: SubscriptionLevel = SubscriptionLevel(5);`
+- [`thunder/schema/user.rs:2349`](../source/thunder/schema/user.rs#L2349) — `pub const RESERVED_6: SubscriptionLevel = SubscriptionLevel(6);`
+- [`thunder/schema/user.rs:2350`](../source/thunder/schema/user.rs#L2350) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2362`](../source/thunder/schema/user.rs#L2362) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2365`](../source/thunder/schema/user.rs#L2365) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SubscriptionLevel> {`
+- [`thunder/schema/user.rs:2372`](../source/thunder/schema/user.rs#L2372) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2386`](../source/thunder/schema/user.rs#L2386) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2392`](../source/thunder/schema/user.rs#L2392) — `fn from(e: SubscriptionLevel) -> i32 {`
+- [`thunder/schema/user.rs:2398`](../source/thunder/schema/user.rs#L2398) — `fn from(e: &SubscriptionLevel) -> i32 {`
+- [`thunder/schema/user.rs:2404`](../source/thunder/schema/user.rs#L2404) — `pub struct SignupCreationSource(pub i32);`
+- [`thunder/schema/user.rs:2407`](../source/thunder/schema/user.rs#L2407) — `pub const OCF: SignupCreationSource = SignupCreationSource(1);`
+- [`thunder/schema/user.rs:2408`](../source/thunder/schema/user.rs#L2408) — `pub const ONBOARD: SignupCreationSource = SignupCreationSource(2);`
+- [`thunder/schema/user.rs:2409`](../source/thunder/schema/user.rs#L2409) — `pub const MARCH_MADNESS: SignupCreationSource = SignupCreationSource(3);`
+- [`thunder/schema/user.rs:2410`](../source/thunder/schema/user.rs#L2410) — `pub const RESERVED_4: SignupCreationSource = SignupCreationSource(4);`
+- [`thunder/schema/user.rs:2411`](../source/thunder/schema/user.rs#L2411) — `pub const RESERVED_5: SignupCreationSource = SignupCreationSource(5);`
+- [`thunder/schema/user.rs:2412`](../source/thunder/schema/user.rs#L2412) — `pub const RESERVED_6: SignupCreationSource = SignupCreationSource(6);`
+- [`thunder/schema/user.rs:2413`](../source/thunder/schema/user.rs#L2413) — `pub const RESERVED_7: SignupCreationSource = SignupCreationSource(7);`
+- [`thunder/schema/user.rs:2414`](../source/thunder/schema/user.rs#L2414) — `pub const RESERVED_8: SignupCreationSource = SignupCreationSource(8);`
+- [`thunder/schema/user.rs:2415`](../source/thunder/schema/user.rs#L2415) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2429`](../source/thunder/schema/user.rs#L2429) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2432`](../source/thunder/schema/user.rs#L2432) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SignupCreationSource> {`
+- [`thunder/schema/user.rs:2439`](../source/thunder/schema/user.rs#L2439) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2455`](../source/thunder/schema/user.rs#L2455) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2461`](../source/thunder/schema/user.rs#L2461) — `fn from(e: SignupCreationSource) -> i32 {`
+- [`thunder/schema/user.rs:2467`](../source/thunder/schema/user.rs#L2467) — `fn from(e: &SignupCreationSource) -> i32 {`
+- [`thunder/schema/user.rs:2473`](../source/thunder/schema/user.rs#L2473) — `pub struct ContributorAccessLevel(pub i32);`
+- [`thunder/schema/user.rs:2476`](../source/thunder/schema/user.rs#L2476) — `pub const PARTIAL: ContributorAccessLevel = ContributorAccessLevel(0);`
+- [`thunder/schema/user.rs:2477`](../source/thunder/schema/user.rs#L2477) — `pub const FULL: ContributorAccessLevel = ContributorAccessLevel(1);`
+- [`thunder/schema/user.rs:2478`](../source/thunder/schema/user.rs#L2478) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2486`](../source/thunder/schema/user.rs#L2486) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2489`](../source/thunder/schema/user.rs#L2489) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ContributorAccessLevel> {`
+- [`thunder/schema/user.rs:2496`](../source/thunder/schema/user.rs#L2496) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2506`](../source/thunder/schema/user.rs#L2506) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2512`](../source/thunder/schema/user.rs#L2512) — `fn from(e: ContributorAccessLevel) -> i32 {`
+- [`thunder/schema/user.rs:2518`](../source/thunder/schema/user.rs#L2518) — `fn from(e: &ContributorAccessLevel) -> i32 {`
+- [`thunder/schema/user.rs:2524`](../source/thunder/schema/user.rs#L2524) — `pub struct FacebookConnectionType(pub i32);`
+- [`thunder/schema/user.rs:2527`](../source/thunder/schema/user.rs#L2527) — `pub const PROFILE: FacebookConnectionType = FacebookConnectionType(0);`
+- [`thunder/schema/user.rs:2528`](../source/thunder/schema/user.rs#L2528) — `pub const PAGE: FacebookConnectionType = FacebookConnectionType(1);`
+- [`thunder/schema/user.rs:2529`](../source/thunder/schema/user.rs#L2529) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2537`](../source/thunder/schema/user.rs#L2537) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2540`](../source/thunder/schema/user.rs#L2540) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FacebookConnectionType> {`
+- [`thunder/schema/user.rs:2547`](../source/thunder/schema/user.rs#L2547) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2557`](../source/thunder/schema/user.rs#L2557) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2563`](../source/thunder/schema/user.rs#L2563) — `fn from(e: FacebookConnectionType) -> i32 {`
+- [`thunder/schema/user.rs:2569`](../source/thunder/schema/user.rs#L2569) — `fn from(e: &FacebookConnectionType) -> i32 {`
+- [`thunder/schema/user.rs:2575`](../source/thunder/schema/user.rs#L2575) — `pub struct PeriscopeUserType(pub i32);`
+- [`thunder/schema/user.rs:2578`](../source/thunder/schema/user.rs#L2578) — `pub const NORMAL: PeriscopeUserType = PeriscopeUserType(0);`
+- [`thunder/schema/user.rs:2579`](../source/thunder/schema/user.rs#L2579) — `pub const SHELL: PeriscopeUserType = PeriscopeUserType(1);`
+- [`thunder/schema/user.rs:2580`](../source/thunder/schema/user.rs#L2580) — `pub const THIRD_PARTY_AUTH: PeriscopeUserType = PeriscopeUserType(2);`
+- [`thunder/schema/user.rs:2581`](../source/thunder/schema/user.rs#L2581) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2590`](../source/thunder/schema/user.rs#L2590) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2593`](../source/thunder/schema/user.rs#L2593) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PeriscopeUserType> {`
+- [`thunder/schema/user.rs:2600`](../source/thunder/schema/user.rs#L2600) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2611`](../source/thunder/schema/user.rs#L2611) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2617`](../source/thunder/schema/user.rs#L2617) — `fn from(e: PeriscopeUserType) -> i32 {`
+- [`thunder/schema/user.rs:2623`](../source/thunder/schema/user.rs#L2623) — `fn from(e: &PeriscopeUserType) -> i32 {`
+- [`thunder/schema/user.rs:2629`](../source/thunder/schema/user.rs#L2629) — `pub struct MuteSurface(pub i32);`
+- [`thunder/schema/user.rs:2632`](../source/thunder/schema/user.rs#L2632) — `pub const NOTIFICATIONS: MuteSurface = MuteSurface(0);`
+- [`thunder/schema/user.rs:2633`](../source/thunder/schema/user.rs#L2633) — `pub const HOME_TIMELINE: MuteSurface = MuteSurface(1);`
+- [`thunder/schema/user.rs:2634`](../source/thunder/schema/user.rs#L2634) — `pub const TWEET_REPLIES: MuteSurface = MuteSurface(2);`
+- [`thunder/schema/user.rs:2635`](../source/thunder/schema/user.rs#L2635) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2644`](../source/thunder/schema/user.rs#L2644) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2647`](../source/thunder/schema/user.rs#L2647) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MuteSurface> {`
+- [`thunder/schema/user.rs:2654`](../source/thunder/schema/user.rs#L2654) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2665`](../source/thunder/schema/user.rs#L2665) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2671`](../source/thunder/schema/user.rs#L2671) — `fn from(e: MuteSurface) -> i32 {`
+- [`thunder/schema/user.rs:2677`](../source/thunder/schema/user.rs#L2677) — `fn from(e: &MuteSurface) -> i32 {`
+- [`thunder/schema/user.rs:2683`](../source/thunder/schema/user.rs#L2683) — `pub struct MuteOption(pub i32);`
+- [`thunder/schema/user.rs:2686`](../source/thunder/schema/user.rs#L2686) — `pub const MUTE_BASED_ON_PROFILE: MuteOption = MuteOption(0);`
+- [`thunder/schema/user.rs:2687`](../source/thunder/schema/user.rs#L2687) — `pub const EXCLUDE_FOLLOWING_ACCOUNTS: MuteOption = MuteOption(1);`
+- [`thunder/schema/user.rs:2688`](../source/thunder/schema/user.rs#L2688) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2696`](../source/thunder/schema/user.rs#L2696) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2699`](../source/thunder/schema/user.rs#L2699) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MuteOption> {`
+- [`thunder/schema/user.rs:2706`](../source/thunder/schema/user.rs#L2706) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2716`](../source/thunder/schema/user.rs#L2716) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2722`](../source/thunder/schema/user.rs#L2722) — `fn from(e: MuteOption) -> i32 {`
+- [`thunder/schema/user.rs:2728`](../source/thunder/schema/user.rs#L2728) — `fn from(e: &MuteOption) -> i32 {`
+- [`thunder/schema/user.rs:2734`](../source/thunder/schema/user.rs#L2734) — `pub struct MessagingDeviceType(pub i32);`
+- [`thunder/schema/user.rs:2737`](../source/thunder/schema/user.rs#L2737) — `pub const MESSAGING: MessagingDeviceType = MessagingDeviceType(0);`
+- [`thunder/schema/user.rs:2738`](../source/thunder/schema/user.rs#L2738) — `pub const EMAIL: MessagingDeviceType = MessagingDeviceType(1);`
+- [`thunder/schema/user.rs:2739`](../source/thunder/schema/user.rs#L2739) — `pub const KEITAI_MAIL: MessagingDeviceType = MessagingDeviceType(2);`
+- [`thunder/schema/user.rs:2740`](../source/thunder/schema/user.rs#L2740) — `pub const PUSH: MessagingDeviceType = MessagingDeviceType(3);`
+- [`thunder/schema/user.rs:2741`](../source/thunder/schema/user.rs#L2741) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2751`](../source/thunder/schema/user.rs#L2751) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2754`](../source/thunder/schema/user.rs#L2754) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MessagingDeviceType> {`
+- [`thunder/schema/user.rs:2761`](../source/thunder/schema/user.rs#L2761) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2773`](../source/thunder/schema/user.rs#L2773) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2779`](../source/thunder/schema/user.rs#L2779) — `fn from(e: MessagingDeviceType) -> i32 {`
+- [`thunder/schema/user.rs:2785`](../source/thunder/schema/user.rs#L2785) — `fn from(e: &MessagingDeviceType) -> i32 {`
+- [`thunder/schema/user.rs:2791`](../source/thunder/schema/user.rs#L2791) — `pub struct AppPushDeviceType(pub i32);`
+- [`thunder/schema/user.rs:2794`](../source/thunder/schema/user.rs#L2794) — `pub const PUSH: AppPushDeviceType = AppPushDeviceType(0);`
+- [`thunder/schema/user.rs:2795`](../source/thunder/schema/user.rs#L2795) — `pub const VOIP_PUSH: AppPushDeviceType = AppPushDeviceType(1);`
+- [`thunder/schema/user.rs:2796`](../source/thunder/schema/user.rs#L2796) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2804`](../source/thunder/schema/user.rs#L2804) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2807`](../source/thunder/schema/user.rs#L2807) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AppPushDeviceType> {`
+- [`thunder/schema/user.rs:2814`](../source/thunder/schema/user.rs#L2814) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2824`](../source/thunder/schema/user.rs#L2824) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2830`](../source/thunder/schema/user.rs#L2830) — `fn from(e: AppPushDeviceType) -> i32 {`
+- [`thunder/schema/user.rs:2836`](../source/thunder/schema/user.rs#L2836) — `fn from(e: &AppPushDeviceType) -> i32 {`
+- [`thunder/schema/user.rs:2842`](../source/thunder/schema/user.rs#L2842) — `pub struct DerivedUserState(pub i32);`
+- [`thunder/schema/user.rs:2845`](../source/thunder/schema/user.rs#L2845) — `pub const CORE: DerivedUserState = DerivedUserState(0);`
+- [`thunder/schema/user.rs:2846`](../source/thunder/schema/user.rs#L2846) — `pub const CASUAL: DerivedUserState = DerivedUserState(1);`
+- [`thunder/schema/user.rs:2847`](../source/thunder/schema/user.rs#L2847) — `pub const NEW: DerivedUserState = DerivedUserState(2);`
+- [`thunder/schema/user.rs:2848`](../source/thunder/schema/user.rs#L2848) — `pub const DORMANT: DerivedUserState = DerivedUserState(3);`
+- [`thunder/schema/user.rs:2849`](../source/thunder/schema/user.rs#L2849) — `pub const SPAMMER: DerivedUserState = DerivedUserState(4);`
+- [`thunder/schema/user.rs:2850`](../source/thunder/schema/user.rs#L2850) — `pub const DELETED: DerivedUserState = DerivedUserState(5);`
+- [`thunder/schema/user.rs:2851`](../source/thunder/schema/user.rs#L2851) — `pub const UNKNOWN: DerivedUserState = DerivedUserState(6);`
+- [`thunder/schema/user.rs:2852`](../source/thunder/schema/user.rs#L2852) — `pub const RESERVED_7: DerivedUserState = DerivedUserState(7);`
+- [`thunder/schema/user.rs:2853`](../source/thunder/schema/user.rs#L2853) — `pub const RESERVED_8: DerivedUserState = DerivedUserState(8);`
+- [`thunder/schema/user.rs:2854`](../source/thunder/schema/user.rs#L2854) — `pub const RESERVED_9: DerivedUserState = DerivedUserState(9);`
+- [`thunder/schema/user.rs:2855`](../source/thunder/schema/user.rs#L2855) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2871`](../source/thunder/schema/user.rs#L2871) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2874`](../source/thunder/schema/user.rs#L2874) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DerivedUserState> {`
+- [`thunder/schema/user.rs:2881`](../source/thunder/schema/user.rs#L2881) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2899`](../source/thunder/schema/user.rs#L2899) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2905`](../source/thunder/schema/user.rs#L2905) — `fn from(e: DerivedUserState) -> i32 {`
+- [`thunder/schema/user.rs:2911`](../source/thunder/schema/user.rs#L2911) — `fn from(e: &DerivedUserState) -> i32 {`
+- [`thunder/schema/user.rs:2917`](../source/thunder/schema/user.rs#L2917) — `pub struct UserCohort(pub i32);`
+- [`thunder/schema/user.rs:2920`](../source/thunder/schema/user.rs#L2920) — `pub const PRODUCER_AND_CONSUMER: UserCohort = UserCohort(0);`
+- [`thunder/schema/user.rs:2921`](../source/thunder/schema/user.rs#L2921) — `pub const CONSUMER: UserCohort = UserCohort(1);`
+- [`thunder/schema/user.rs:2922`](../source/thunder/schema/user.rs#L2922) — `pub const IDLER: UserCohort = UserCohort(2);`
+- [`thunder/schema/user.rs:2923`](../source/thunder/schema/user.rs#L2923) — `pub const DISCONNECTED: UserCohort = UserCohort(3);`
+- [`thunder/schema/user.rs:2924`](../source/thunder/schema/user.rs#L2924) — `pub const SMALL_COMMUNITY_MEMBER: UserCohort = UserCohort(4);`
+- [`thunder/schema/user.rs:2925`](../source/thunder/schema/user.rs#L2925) — `pub const RESERVED_5: UserCohort = UserCohort(5);`
+- [`thunder/schema/user.rs:2926`](../source/thunder/schema/user.rs#L2926) — `pub const RESERVED_6: UserCohort = UserCohort(6);`
+- [`thunder/schema/user.rs:2927`](../source/thunder/schema/user.rs#L2927) — `pub const RESERVED_7: UserCohort = UserCohort(7);`
+- [`thunder/schema/user.rs:2928`](../source/thunder/schema/user.rs#L2928) — `pub const RESERVED_8: UserCohort = UserCohort(8);`
+- [`thunder/schema/user.rs:2929`](../source/thunder/schema/user.rs#L2929) — `pub const RESERVED_9: UserCohort = UserCohort(9);`
+- [`thunder/schema/user.rs:2930`](../source/thunder/schema/user.rs#L2930) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:2946`](../source/thunder/schema/user.rs#L2946) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:2949`](../source/thunder/schema/user.rs#L2949) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UserCohort> {`
+- [`thunder/schema/user.rs:2956`](../source/thunder/schema/user.rs#L2956) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:2974`](../source/thunder/schema/user.rs#L2974) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:2980`](../source/thunder/schema/user.rs#L2980) — `fn from(e: UserCohort) -> i32 {`
+- [`thunder/schema/user.rs:2986`](../source/thunder/schema/user.rs#L2986) — `fn from(e: &UserCohort) -> i32 {`
+- [`thunder/schema/user.rs:2992`](../source/thunder/schema/user.rs#L2992) — `pub struct AdvertiserType(pub i32);`
+- [`thunder/schema/user.rs:2995`](../source/thunder/schema/user.rs#L2995) — `pub const PROMOTABLE_USER: AdvertiserType = AdvertiserType(0);`
+- [`thunder/schema/user.rs:2996`](../source/thunder/schema/user.rs#L2996) — `pub const ACCOUNT_USER: AdvertiserType = AdvertiserType(1);`
+- [`thunder/schema/user.rs:2997`](../source/thunder/schema/user.rs#L2997) — `pub const RESERVED_2: AdvertiserType = AdvertiserType(2);`
+- [`thunder/schema/user.rs:2998`](../source/thunder/schema/user.rs#L2998) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:3007`](../source/thunder/schema/user.rs#L3007) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3010`](../source/thunder/schema/user.rs#L3010) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AdvertiserType> {`
+- [`thunder/schema/user.rs:3017`](../source/thunder/schema/user.rs#L3017) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:3028`](../source/thunder/schema/user.rs#L3028) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:3034`](../source/thunder/schema/user.rs#L3034) — `fn from(e: AdvertiserType) -> i32 {`
+- [`thunder/schema/user.rs:3040`](../source/thunder/schema/user.rs#L3040) — `fn from(e: &AdvertiserType) -> i32 {`
+- [`thunder/schema/user.rs:3046`](../source/thunder/schema/user.rs#L3046) — `pub struct ProfileVisibility(pub i32);`
+- [`thunder/schema/user.rs:3049`](../source/thunder/schema/user.rs#L3049) — `pub const SELF: ProfileVisibility = ProfileVisibility(0);`
+- [`thunder/schema/user.rs:3050`](../source/thunder/schema/user.rs#L3050) — `pub const MUTUAL_FOLLOW: ProfileVisibility = ProfileVisibility(1);`
+- [`thunder/schema/user.rs:3051`](../source/thunder/schema/user.rs#L3051) — `pub const FOLLOWING: ProfileVisibility = ProfileVisibility(2);`
+- [`thunder/schema/user.rs:3052`](../source/thunder/schema/user.rs#L3052) — `pub const FOLLOWERS: ProfileVisibility = ProfileVisibility(3);`
+- [`thunder/schema/user.rs:3053`](../source/thunder/schema/user.rs#L3053) — `pub const PUBLIC: ProfileVisibility = ProfileVisibility(4);`
+- [`thunder/schema/user.rs:3054`](../source/thunder/schema/user.rs#L3054) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:3065`](../source/thunder/schema/user.rs#L3065) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3068`](../source/thunder/schema/user.rs#L3068) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileVisibility> {`
+- [`thunder/schema/user.rs:3075`](../source/thunder/schema/user.rs#L3075) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:3088`](../source/thunder/schema/user.rs#L3088) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:3094`](../source/thunder/schema/user.rs#L3094) — `fn from(e: ProfileVisibility) -> i32 {`
+- [`thunder/schema/user.rs:3100`](../source/thunder/schema/user.rs#L3100) — `fn from(e: &ProfileVisibility) -> i32 {`
+- [`thunder/schema/user.rs:3106`](../source/thunder/schema/user.rs#L3106) — `pub struct TestUserStatus(pub i32);`
+- [`thunder/schema/user.rs:3109`](../source/thunder/schema/user.rs#L3109) — `pub const NONE: TestUserStatus = TestUserStatus(0);`
+- [`thunder/schema/user.rs:3110`](../source/thunder/schema/user.rs#L3110) — `pub const TEMPORARY: TestUserStatus = TestUserStatus(1);`
+- [`thunder/schema/user.rs:3111`](../source/thunder/schema/user.rs#L3111) — `pub const PERMANENT: TestUserStatus = TestUserStatus(2);`
+- [`thunder/schema/user.rs:3112`](../source/thunder/schema/user.rs#L3112) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`thunder/schema/user.rs:3121`](../source/thunder/schema/user.rs#L3121) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3124`](../source/thunder/schema/user.rs#L3124) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TestUserStatus> {`
+- [`thunder/schema/user.rs:3131`](../source/thunder/schema/user.rs#L3131) — `fn from(i: i32) -> Self {`
+- [`thunder/schema/user.rs:3142`](../source/thunder/schema/user.rs#L3142) — `fn from(i: &i32) -> Self {`
+- [`thunder/schema/user.rs:3148`](../source/thunder/schema/user.rs#L3148) — `fn from(e: TestUserStatus) -> i32 {`
+- [`thunder/schema/user.rs:3154`](../source/thunder/schema/user.rs#L3154) — `fn from(e: &TestUserStatus) -> i32 {`
+- [`thunder/schema/user.rs:3161`](../source/thunder/schema/user.rs#L3161) — `pub struct ColorValue {`
+- [`thunder/schema/user.rs:3169`](../source/thunder/schema/user.rs#L3169) — `pub fn new<F1, F2, F3, F4>(red: F1, green: F2, blue: F3, alpha: F4) -> ColorValue where F1: Into<Option<i8>>, F2: Into<Option<i8>>, F3: Into<Option<i8>>, F4: Into<Option<i8>> {`
+- [`thunder/schema/user.rs:3180`](../source/thunder/schema/user.rs#L3180) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ColorValue> {`
+- [`thunder/schema/user.rs:3224`](../source/thunder/schema/user.rs#L3224) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3254`](../source/thunder/schema/user.rs#L3254) — `pub struct Image {`
+- [`thunder/schema/user.rs:3261`](../source/thunder/schema/user.rs#L3261) — `pub fn new<F1, F2, F3>(id: F1, filename: F2, extensions_reply: F3) -> Image where F1: Into<Option<i64>>, F2: Into<Option<String>>, F3: Into<Option<Vec<u8>>> {`
+- [`thunder/schema/user.rs:3271`](../source/thunder/schema/user.rs#L3271) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Image> {`
+- [`thunder/schema/user.rs:3309`](../source/thunder/schema/user.rs#L3309) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3334`](../source/thunder/schema/user.rs#L3334) — `pub struct ImageUrls {`
+- [`thunder/schema/user.rs:3340`](../source/thunder/schema/user.rs#L3340) — `pub fn new<F1, F2>(http_url: F1, https_url: F2) -> ImageUrls where F1: Into<Option<String>>, F2: Into<Option<String>> {`
+- [`thunder/schema/user.rs:3349`](../source/thunder/schema/user.rs#L3349) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ImageUrls> {`
+- [`thunder/schema/user.rs:3381`](../source/thunder/schema/user.rs#L3381) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3401`](../source/thunder/schema/user.rs#L3401) — `pub struct ProfileImageUrls {`
+- [`thunder/schema/user.rs:3414`](../source/thunder/schema/user.rs#L3414) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9>(original: F1, normal: F2, bigger: F3, mini: F4, flash_badge: F5, x96: F6, reasonably_small: F7, x200: F8, x400: F9) -> ProfileImageUrls where F1: Into<Option<ImageUrls>>, F2: Into<Option<ImageUrls>>, F3: Into<Option<ImageUrls>>, F4: Into<Option<ImageUrls>>, F5: Into<Option<ImageUrls>>, F6: Into<Option<ImageUrls>>, F7: Into<Option<ImageUrls>>, F8: Into<Option<ImageUrls>>, F9: Into<Option<ImageUrls>> {`
+- [`thunder/schema/user.rs:3430`](../source/thunder/schema/user.rs#L3430) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileImageUrls> {`
+- [`thunder/schema/user.rs:3504`](../source/thunder/schema/user.rs#L3504) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3559`](../source/thunder/schema/user.rs#L3559) — `pub struct Design {`
+- [`thunder/schema/user.rs:3573`](../source/thunder/schema/user.rs#L3573) — `pub fn new<F1, F2, F3, F4, F5, F7, F8, F9, F10, F11>(background_color: F1, text_color: F2, link_color: F3, sidebar_fill_color: F4, sidebar_border_color: F5, background_image_urls: F7, use_background_image: F8, background_tile: F9, background_image: F10, background_position: F11) -> Design where F1: Into<Option<ColorValue>>, F2: Into<Option<ColorValue>>, F3: Into<Option<ColorValue>>, F4: Into<Option<ColorValue>>, F5: Into<Option<ColorValue>>, F7: Into<Option<ImageUrls>>, F8: Into<Option<bool>>, F9: Into<Option<bool>>, F10: Into<Option<Image>>, F11: Into<Option<BackgroundPosition>> {`
+- [`thunder/schema/user.rs:3590`](../source/thunder/schema/user.rs#L3590) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Design> {`
+- [`thunder/schema/user.rs:3670`](../source/thunder/schema/user.rs#L3670) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3730`](../source/thunder/schema/user.rs#L3730) — `pub struct ProfileDesign {`
+- [`thunder/schema/user.rs:3739`](../source/thunder/schema/user.rs#L3739) — `pub fn new<F2, F3, F4, F5, F6>(profile_type: F2, theme_name: F3, design: F4, pinned_tweet_ids: F5, featured_list_ids: F6) -> ProfileDesign where F2: Into<Option<ProfileType>>, F3: Into<Option<String>>, F4: Into<Option<Design>>, F5: Into<Option<Vec<i64>>>, F6: Into<Option<Vec<i64>>> {`
+- [`thunder/schema/user.rs:3751`](../source/thunder/schema/user.rs#L3751) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileDesign> {`
+- [`thunder/schema/user.rs:3813`](../source/thunder/schema/user.rs#L3813) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3856`](../source/thunder/schema/user.rs#L3856) — `pub struct LoginVerify {`
+- [`thunder/schema/user.rs:3863`](../source/thunder/schema/user.rs#L3863) — `pub fn new<F1, F2, F3>(public_key: F1, last_seen_offline_code: F2, iteration_count: F3) -> LoginVerify where F1: Into<Option<String>>, F2: Into<Option<String>>, F3: Into<Option<i32>> {`
+- [`thunder/schema/user.rs:3873`](../source/thunder/schema/user.rs#L3873) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<LoginVerify> {`
+- [`thunder/schema/user.rs:3911`](../source/thunder/schema/user.rs#L3911) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:3936`](../source/thunder/schema/user.rs#L3936) — `pub struct UserPasswordStatus {`
+- [`thunder/schema/user.rs:3942`](../source/thunder/schema/user.rs#L3942) — `pub fn new<F1, F2>(has_password_been_set_by_user: F1, last_password_change_by_user_timestamp: F2) -> UserPasswordStatus where F1: Into<Option<bool>>, F2: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:3951`](../source/thunder/schema/user.rs#L3951) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UserPasswordStatus> {`
+- [`thunder/schema/user.rs:3983`](../source/thunder/schema/user.rs#L3983) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4003`](../source/thunder/schema/user.rs#L4003) — `pub struct Auth {`
+- [`thunder/schema/user.rs:4012`](../source/thunder/schema/user.rs#L4012) — `pub fn new<F1, F2, F3, F4, F5>(login_email: F1, auth_token: F2, hashed_password: F3, login_verification: F4, user_password_status: F5) -> Auth where F1: Into<Option<String>>, F2: Into<Option<String>>, F3: Into<Option<String>>, F4: Into<Option<LoginVerify>>, F5: Into<Option<UserPasswordStatus>> {`
+- [`thunder/schema/user.rs:4024`](../source/thunder/schema/user.rs#L4024) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Auth> {`
+- [`thunder/schema/user.rs:4074`](../source/thunder/schema/user.rs#L4074) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4109`](../source/thunder/schema/user.rs#L4109) — `pub struct ProfileBanner {`
+- [`thunder/schema/user.rs:4117`](../source/thunder/schema/user.rs#L4117) — `pub fn new<F2, F3, F4, F5>(activated: F2, updated_at_msec: F3, urls: F4, extensions_reply: F5) -> ProfileBanner where F2: Into<Option<bool>>, F3: Into<Option<i64>>, F4: Into<Option<ImageUrls>>, F5: Into<Option<Vec<u8>>> {`
+- [`thunder/schema/user.rs:4128`](../source/thunder/schema/user.rs#L4128) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileBanner> {`
+- [`thunder/schema/user.rs:4172`](../source/thunder/schema/user.rs#L4172) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4202`](../source/thunder/schema/user.rs#L4202) — `pub struct BusinessProfile {`
+- [`thunder/schema/user.rs:4208`](../source/thunder/schema/user.rs#L4208) — `pub fn new<F1, F2>(business_profile_state: F1, customer_service_state: F2) -> BusinessProfile where F1: Into<Option<BusinessProfileState>>, F2: Into<Option<CustomerServiceState>> {`
+- [`thunder/schema/user.rs:4217`](../source/thunder/schema/user.rs#L4217) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<BusinessProfile> {`
+- [`thunder/schema/user.rs:4249`](../source/thunder/schema/user.rs#L4249) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4269`](../source/thunder/schema/user.rs#L4269) — `pub struct Language {`
+- [`thunder/schema/user.rs:4275`](../source/thunder/schema/user.rs#L4275) — `pub fn new<F2>(language: String, confidence: F2) -> Language where F2: Into<Option<OrderedFloat<f64>>> {`
+- [`thunder/schema/user.rs:4284`](../source/thunder/schema/user.rs#L4284) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Language> {`
+- [`thunder/schema/user.rs:4317`](../source/thunder/schema/user.rs#L4317) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4335`](../source/thunder/schema/user.rs#L4335) — `pub struct Profile {`
+- [`thunder/schema/user.rs:4356`](../source/thunder/schema/user.rs#L4356) — `pub fn new<F2, F3, F5, F6, F7, F8, F9, F10, F11, F12, F13, F15, F16, F17, F18, F19, F20>(name: F2, screen_name: F3, profile_image_urls: F5, auth: F6, location: F7, description: F8, url: F9, profile_image: F10, profile_banner: F11, location_place_id: F12, has_translator_badge: F13, business_profile_state: F15, vine_profile_visible: F16, translator_type: F17, business_profile: F18, periscope_profile_visible: F19, description_language: F20) -> Profile where F2: Into<Option<String>>, F3: Into<Option<String>>, F5: Into<Option<ProfileImageUrls>>, F6: Into<Option<Auth>>, F7: Into<Option<String>>, F8: Into<Option<String>>, F9: Into<Option<String>>, F10: Into<Option<Image>>, F11: Into<Option<ProfileBanner>>, F12: Into<Option<String>>, F13: Into<Option<bool>>, F15: Into<Option<BusinessProfileState>>, F16: Into<Option<bool>>, F17: Into<Option<TranslatorType>>, F18: Into<Option<BusinessProfile>>, F19: Into<Option<bool>>, F20: Into<Option<Language>> {`
+- [`thunder/schema/user.rs:4380`](../source/thunder/schema/user.rs#L4380) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Profile> {`
+- [`thunder/schema/user.rs:4502`](../source/thunder/schema/user.rs#L4502) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4597`](../source/thunder/schema/user.rs#L4597) — `pub struct TimeZone {`
+- [`thunder/schema/user.rs:4604`](../source/thunder/schema/user.rs#L4604) — `pub fn new<F2, F3, F4>(name: F2, tz_name: F3, utc_offset_seconds: F4) -> TimeZone where F2: Into<Option<String>>, F3: Into<Option<String>>, F4: Into<Option<i32>> {`
+- [`thunder/schema/user.rs:4614`](../source/thunder/schema/user.rs#L4614) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TimeZone> {`
+- [`thunder/schema/user.rs:4652`](../source/thunder/schema/user.rs#L4652) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4677`](../source/thunder/schema/user.rs#L4677) — `pub struct Discoverability {`
+- [`thunder/schema/user.rs:4683`](../source/thunder/schema/user.rs#L4683) — `pub fn new<F2, F4>(discoverable_by_email: F2, discoverable_by_mobile_phone: F4) -> Discoverability where F2: Into<Option<bool>>, F4: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:4692`](../source/thunder/schema/user.rs#L4692) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Discoverability> {`
+- [`thunder/schema/user.rs:4724`](../source/thunder/schema/user.rs#L4724) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4744`](../source/thunder/schema/user.rs#L4744) — `pub struct SmartBlock {`
+- [`thunder/schema/user.rs:4751`](../source/thunder/schema/user.rs#L4751) — `pub fn new<F2, F3>(state: SmartBlockState, at_mentions_enabled: F2, social_proof_enabled: F3) -> SmartBlock where F2: Into<Option<bool>>, F3: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:4761`](../source/thunder/schema/user.rs#L4761) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SmartBlock> {`
+- [`thunder/schema/user.rs:4800`](../source/thunder/schema/user.rs#L4800) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4823`](../source/thunder/schema/user.rs#L4823) — `pub struct AnnotationKey {`
+- [`thunder/schema/user.rs:4829`](../source/thunder/schema/user.rs#L4829) — `pub fn new<F2>(key_namespace: String, name: F2) -> AnnotationKey where F2: Into<Option<String>> {`
+- [`thunder/schema/user.rs:4838`](../source/thunder/schema/user.rs#L4838) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AnnotationKey> {`
+- [`thunder/schema/user.rs:4871`](../source/thunder/schema/user.rs#L4871) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:4889`](../source/thunder/schema/user.rs#L4889) — `pub enum AnnotationValue {`
+- [`thunder/schema/user.rs:4926`](../source/thunder/schema/user.rs#L4926) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AnnotationValue> {`
+- [`thunder/schema/user.rs:5387`](../source/thunder/schema/user.rs#L5387) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:5695`](../source/thunder/schema/user.rs#L5695) — `pub struct Annotation {`
+- [`thunder/schema/user.rs:5702`](../source/thunder/schema/user.rs#L5702) — `pub fn new<F2, F3>(annotation_value: AnnotationValue, expires_at_msec: F2, created_at_msec: F3) -> Annotation where F2: Into<Option<i64>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:5712`](../source/thunder/schema/user.rs#L5712) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Annotation> {`
+- [`thunder/schema/user.rs:5751`](../source/thunder/schema/user.rs#L5751) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:5774`](../source/thunder/schema/user.rs#L5774) — `pub struct Annotations {`
+- [`thunder/schema/user.rs:5779`](../source/thunder/schema/user.rs#L5779) — `pub fn new<F1>(annotations: F1) -> Annotations where F1: Into<Option<BTreeMap<AnnotationKey, Annotation>>> {`
+- [`thunder/schema/user.rs:5787`](../source/thunder/schema/user.rs#L5787) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Annotations> {`
+- [`thunder/schema/user.rs:5820`](../source/thunder/schema/user.rs#L5820) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:5840`](../source/thunder/schema/user.rs#L5840) — `pub struct ProfileRedirectTo {`
+- [`thunder/schema/user.rs:5846`](../source/thunder/schema/user.rs#L5846) — `pub fn new(user_id: i64, screen_name: String) -> ProfileRedirectTo {`
+- [`thunder/schema/user.rs:5855`](../source/thunder/schema/user.rs#L5855) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileRedirectTo> {`
+- [`thunder/schema/user.rs:5889`](../source/thunder/schema/user.rs#L5889) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:5905`](../source/thunder/schema/user.rs#L5905) — `pub struct Account {`
+- [`thunder/schema/user.rs:5977`](../source/thunder/schema/user.rs#L5977) — `pub fn new<F2, F3, F4, F5, F6, F7, F8, F10, F11, F12, F13, F14, F15, F17, F18, F19, F21, F23, F24, F25, F26, F27, F28, F29, F30, F31, F33, F34, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44, F45, F46, F47, F48, F49, F50, F51, F52, F53, F54, F55, F56, F57, F58, F59, F60, F61, F62, F63, F64, F65, F66, F67, F68, F69, F70, F71, F72, F73, F74>(language: F2, time_zone: F3, geo_enabled: F4, has_geotagged_statuses: F5, contributors_enabled: F6, phx_on: F7, phx_opted_out: F8, ssl_only: F10, ssl_only_opt_out: F11, nsfw_view: F12, show_all_inline_media: F13, trend_location_autoselected: F14, trend_location_id: F15, created_via: F17, can_receive_direct_messages_from_all_followers: F18, has_facebook_connections: F19, sms_password_reset_only: F21, use_cookie_personalization: F23, creation_ip: F24, facebook_crosspost_retweets: F25, requires_login_verification: F26, has_personalized_trends: F27, allow_ads_personalization: F28, mention_filter: F29, has_highline_profile: F30, passed_alcohol_age_challenge: F31, allow_media_tagging: F33, has_custom_timelines: F34, birthdate: F35, gender: F36, abuse_filter: F37, last_geotag_scrub_msec: F38, allow_contributor_request: F39, allow_dms_from: F40, allow_dm_groups_from: F41, notifications_filter_quality: F42, notifications_abuse_filter_quality: F43, smart_block: F44, autoplay_disabled: F45, smart_mute_enabled: F46, analytics_type: F47, country_code: F48, address_book_live_sync_enabled: F49, dm_receipt_setting: F50, web_push_enabled: F51, computed_alt_text_enabled: F52, background_location_tracking_enabled: F53, allow_authenticated_periscope_requests: F54, allow_logged_out_device_personalization: F55, allow_location_history_personalization: F56, allow_sharing_data_for_third_party_personalization: F57, dm_quality_filter: F58, allow_device_id_access: F59, allow_gambling_ads: F60, hide_likes_on_profile: F61, allow_video_downloads: F62, hide_subscriptions_on_profile: F63, hide_verified_checkmark: F64, allow_dms_from_v2: F65, enable_parody_account_profile_label: F66, always_allow_dms_from_subscribers: F67, passkey_auth_enrolled: F68, allow_xai_data_sharing: F69, allow_for_you_recommendations: F70, xpayments_enrolled: F71, parody_commentary_fan_label: F72, allow_xai_personalization: F73, parody_commentary_fan_label_last_modified_msec: F74) -> Account where F2: Into<Option<String>>, F3: Into<Option<TimeZone>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F10: Into<Option<bool>>, F11: Into<Option<bool>>, F12: Into<Option<bool>>, F13: Into<Option<bool>>, F14: Into<Option<bool>>, F15: Into<Option<i32>>, F17: Into<Option<String>>, F18: Into<Option<bool>>, F19: Into<Option<bool>>, F21: Into<Option<bool>>, F23: Into<Option<bool>>, F24: Into<Option<String>>, F25: Into<Option<bool>>, F26: Into<Option<bool>>, F27: Into<Option<bool>>, F28: Into<Option<bool>>, F29: Into<Option<MentionFilter>>, F30: Into<Option<bool>>, F31: Into<Option<bool>>, F33: Into<Option<AllowMediaTagging>>, F34: Into<Option<bool>>, F35: Into<Option<String>>, F36: Into<Option<String>>, F37: Into<Option<AbuseFilter>>, F38: Into<Option<i64>>, F39: Into<Option<AllowContributorRequest>>, F40: Into<Option<AllowDmsFrom>>, F41: Into<Option<AllowDmGroupsFrom>>, F42: Into<Option<NotificationsFilterQuality>>, F43: Into<Option<NotificationsAbuseFilterQuality>>, F44: Into<Option<SmartBlock>>, F45: Into<Option<bool>>, F46: Into<Option<bool>>, F47: Into<Option<AnalyticsType>>, F48: Into<Option<String>>, F49: Into<Option<bool>>, F50: Into<Option<DmReceiptSetting>>, F51: Into<Option<bool>>, F52: Into<Option<bool>>, F53: Into<Option<bool>>, F54: Into<Option<bool>>, F55: Into<Option<bool>>, F56: Into<Option<bool>>, F57: Into<Option<bool>>, F58: Into<Option<DmQualityFilterSetting>>, F59: Into<Option<bool>>, F60: Into<Option<bool>>, F61: Into<Option<bool>>, F62: Into<Option<bool>>, F63: Into<Option<bool>>, F64: Into<Option<bool>>, F65: Into<Option<AllowDmsFrom>>, F66: Into<Option<bool>>, F67: Into<Option<bool>>, F68: Into<Option<bool>>, F69: Into<Option<bool>>, F70: Into<Option<bool>>, F71: Into<Option<bool>>, F72: Into<Option<PCFLabel>>, F73: Into<Option<bool>>, F74: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:6052`](../source/thunder/schema/user.rs#L6052) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Account> {`
+- [`thunder/schema/user.rs:6480`](../source/thunder/schema/user.rs#L6480) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:6830`](../source/thunder/schema/user.rs#L6830) — `pub struct AboutThisAccountPreferences {`
+- [`thunder/schema/user.rs:6835`](../source/thunder/schema/user.rs#L6835) — `pub fn new<F1>(inferred_location_resolution_preference: F1) -> AboutThisAccountPreferences where F1: Into<Option<InferredLocationResolution>> {`
+- [`thunder/schema/user.rs:6843`](../source/thunder/schema/user.rs#L6843) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AboutThisAccountPreferences> {`
+- [`thunder/schema/user.rs:6869`](../source/thunder/schema/user.rs#L6869) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:6884`](../source/thunder/schema/user.rs#L6884) — `pub struct ExtendedAccount {`
+- [`thunder/schema/user.rs:6892`](../source/thunder/schema/user.rs#L6892) — `pub fn new<F1, F2, F3, F4>(allow_grok_memory: F1, about_this_account_preferences: F2, grok_character_id: F3, persona_media_gen_access: F4) -> ExtendedAccount where F1: Into<Option<bool>>, F2: Into<Option<AboutThisAccountPreferences>>, F3: Into<Option<String>>, F4: Into<Option<PersonaMediaGenAccess>> {`
+- [`thunder/schema/user.rs:6903`](../source/thunder/schema/user.rs#L6903) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ExtendedAccount> {`
+- [`thunder/schema/user.rs:6947`](../source/thunder/schema/user.rs#L6947) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:6977`](../source/thunder/schema/user.rs#L6977) — `pub struct Sleep {`
+- [`thunder/schema/user.rs:6985`](../source/thunder/schema/user.rs#L6985) — `pub fn new<F2, F3, F4, F5>(sleeping: F2, scheduled_sleeping: F3, scheduled_sleep_start_hour: F4, scheduled_sleep_end_hour: F5) -> Sleep where F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<i32>>, F5: Into<Option<i32>> {`
+- [`thunder/schema/user.rs:6996`](../source/thunder/schema/user.rs#L6996) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Sleep> {`
+- [`thunder/schema/user.rs:7040`](../source/thunder/schema/user.rs#L7040) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:7070`](../source/thunder/schema/user.rs#L7070) — `pub struct Prompts {`
+- [`thunder/schema/user.rs:7079`](../source/thunder/schema/user.rs#L7079) — `pub fn new<F2, F3, F4, F5, F6>(has_dismissed_geo_promo: F2, has_dismissed_mobile_tips: F3, has_dismissed_follow_tips: F4, cookie_personalization_prompt_displayed: F5, gazebo_form_status: F6) -> Prompts where F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<BTreeMap<String, GazeboFormStatus>>> {`
+- [`thunder/schema/user.rs:7091`](../source/thunder/schema/user.rs#L7091) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Prompts> {`
+- [`thunder/schema/user.rs:7148`](../source/thunder/schema/user.rs#L7148) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:7188`](../source/thunder/schema/user.rs#L7188) — `pub struct NotificationExtension1 {`
+- [`thunder/schema/user.rs:7213`](../source/thunder/schema/user.rs#L7213) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21>(send_address_book_notification_email: F1, send_similar_people_email: F2, send_shared_tweet_email: F3, send_conversation_track_email: F4, send_magic_recs_email: F5, send_twitter_emails: F6, send_new_contributor_email: F7, send_added_as_contributor_email: F8, send_smb_sales_marketing_email: F9, send_brand_insights_email: F10, reserved_11: F11, reserved_12: F12, reserved_13: F13, send_retweeted_retweet_email: F14, send_favorited_retweet_email: F15, send_retweeted_mention_email: F16, send_favorited_mention_email: F17, reserved_18: F18, send_performance_digest: F19, send_login_notification_email: F20, send_money_email: F21) -> NotificationExtension1 where F1: Into<Option<bool>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F9: Into<Option<bool>>, F10: Into<Option<bool>>, F11: Into<Option<bool>>, F12: Into<Option<bool>>, F13: Into<Option<bool>>, F14: Into<Option<EmailSettingState>>, F15: Into<Option<EmailSettingState>>, F16: Into<Option<EmailSettingState>>, F17: Into<Option<EmailSettingState>>, F18: Into<Option<EmailSettingState>>, F19: Into<Option<DigestSchedule>>, F20: Into<Option<bool>>, F21: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:7241`](../source/thunder/schema/user.rs#L7241) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<NotificationExtension1> {`
+- [`thunder/schema/user.rs:7387`](../source/thunder/schema/user.rs#L7387) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:7502`](../source/thunder/schema/user.rs#L7502) — `pub struct Notification {`
+- [`thunder/schema/user.rs:7526`](../source/thunder/schema/user.rs#L7526) — `pub fn new<F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F34>(send_mention_email: F2, send_listed_email: F3, send_favorited_email: F4, send_retweeted_email: F5, send_new_follower_email_only_if_following: F6, send_account_updates_email: F7, send_new_friend_email: F8, send_new_direct_text_email: F9, send_email_newsletter: F10, send_individual_follower_emails: F11, email_confirmed: F12, send_resurrection_email: F13, send_network_digest: F14, send_follow_recs_email: F15, send_network_activity_email: F16, send_activation_email: F17, send_partner_email: F18, send_survey_email: F19, send_email_vit_weekly: F20, notification_extension_1: F34) -> Notification where F2: Into<Option<EmailSettingState>>, F3: Into<Option<EmailSettingState>>, F4: Into<Option<EmailSettingState>>, F5: Into<Option<EmailSettingState>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F9: Into<Option<bool>>, F10: Into<Option<bool>>, F11: Into<Option<bool>>, F12: Into<Option<EmailConfirmedState>>, F13: Into<Option<bool>>, F14: Into<Option<DigestSchedule>>, F15: Into<Option<bool>>, F16: Into<Option<bool>>, F17: Into<Option<bool>>, F18: Into<Option<bool>>, F19: Into<Option<bool>>, F20: Into<Option<bool>>, F34: Into<Option<NotificationExtension1>> {`
+- [`thunder/schema/user.rs:7553`](../source/thunder/schema/user.rs#L7553) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Notification> {`
+- [`thunder/schema/user.rs:7693`](../source/thunder/schema/user.rs#L7693) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:7803`](../source/thunder/schema/user.rs#L7803) — `pub struct ForceLoginChallenge {`
+- [`thunder/schema/user.rs:7809`](../source/thunder/schema/user.rs#L7809) — `pub fn new<F1, F2>(created_at_msec: F1, challenge_type: F2) -> ForceLoginChallenge where F1: Into<Option<i64>>, F2: Into<Option<i16>> {`
+- [`thunder/schema/user.rs:7818`](../source/thunder/schema/user.rs#L7818) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ForceLoginChallenge> {`
+- [`thunder/schema/user.rs:7850`](../source/thunder/schema/user.rs#L7850) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:7870`](../source/thunder/schema/user.rs#L7870) — `pub struct SuspensionDetails {`
+- [`thunder/schema/user.rs:7877`](../source/thunder/schema/user.rs#L7877) — `pub fn new<F1, F2, F3>(permanently_suspended: F1, actor_name: F2, suspended_at_msec: F3) -> SuspensionDetails where F1: Into<Option<bool>>, F2: Into<Option<String>>, F3: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:7887`](../source/thunder/schema/user.rs#L7887) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SuspensionDetails> {`
+- [`thunder/schema/user.rs:7925`](../source/thunder/schema/user.rs#L7925) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:7950`](../source/thunder/schema/user.rs#L7950) — `pub struct ConsentViolation {`
+- [`thunder/schema/user.rs:7958`](../source/thunder/schema/user.rs#L7958) — `pub fn new<F1, F2, F3, F4>(in_violation: F1, updated_at_msec: F2, violation_from_country_code: F3, determined_from: F4) -> ConsentViolation where F1: Into<Option<bool>>, F2: Into<Option<i64>>, F3: Into<Option<String>>, F4: Into<Option<ConsentFlow>> {`
+- [`thunder/schema/user.rs:7969`](../source/thunder/schema/user.rs#L7969) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConsentViolation> {`
+- [`thunder/schema/user.rs:8013`](../source/thunder/schema/user.rs#L8013) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8043`](../source/thunder/schema/user.rs#L8043) — `pub struct ConsentResponse {`
+- [`thunder/schema/user.rs:8052`](../source/thunder/schema/user.rs#L8052) — `pub fn new<F1, F2, F3, F4, F6>(response_value: F1, response_at_msec: F2, consent_version: F3, responded_from_country_code: F4, indicators: F6) -> ConsentResponse where F1: Into<Option<ConsentResponseValue>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<String>>, F6: Into<Option<BTreeSet<DerivedConsentIndicator>>> {`
+- [`thunder/schema/user.rs:8064`](../source/thunder/schema/user.rs#L8064) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ConsentResponse> {`
+- [`thunder/schema/user.rs:8120`](../source/thunder/schema/user.rs#L8120) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8159`](../source/thunder/schema/user.rs#L8159) — `pub struct Consent {`
+- [`thunder/schema/user.rs:8165`](../source/thunder/schema/user.rs#L8165) — `pub fn new<F1, F2>(violation: F1, response: F2) -> Consent where F1: Into<Option<ConsentViolation>>, F2: Into<Option<ConsentResponse>> {`
+- [`thunder/schema/user.rs:8174`](../source/thunder/schema/user.rs#L8174) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Consent> {`
+- [`thunder/schema/user.rs:8206`](../source/thunder/schema/user.rs#L8206) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8226`](../source/thunder/schema/user.rs#L8226) — `pub struct U13Remediation {`
+- [`thunder/schema/user.rs:8232`](../source/thunder/schema/user.rs#L8232) — `pub fn new<F1, F2>(reason: F1, state: F2) -> U13Remediation where F1: Into<Option<U13RemediationReason>>, F2: Into<Option<U13RemediationState>> {`
+- [`thunder/schema/user.rs:8241`](../source/thunder/schema/user.rs#L8241) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<U13Remediation> {`
+- [`thunder/schema/user.rs:8273`](../source/thunder/schema/user.rs#L8273) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8293`](../source/thunder/schema/user.rs#L8293) — `pub struct U13RestorationDataStatus {`
+- [`thunder/schema/user.rs:8308`](../source/thunder/schema/user.rs#L8308) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11>(tweets_deleted: F1, gd_settings_reset: F2, sgs_graphs_erased: F3, timelines_erased: F4, acl_erased: F5, moments_erased: F6, media_library_erased: F7, video_analytics_erased: F8, convosvc_inbox_initial_state_cache_flushed: F9, partial_erasure_processed: F10, geo_locations_erased: F11) -> U13RestorationDataStatus where F1: Into<Option<bool>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F9: Into<Option<bool>>, F10: Into<Option<bool>>, F11: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:8326`](../source/thunder/schema/user.rs#L8326) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<U13RestorationDataStatus> {`
+- [`thunder/schema/user.rs:8412`](../source/thunder/schema/user.rs#L8412) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8477`](../source/thunder/schema/user.rs#L8477) — `pub struct U13Restoration {`
+- [`thunder/schema/user.rs:8486`](../source/thunder/schema/user.rs#L8486) — `pub fn new<F1, F2, F3, F4, F5>(status: F1, created_at_msec: F2, updated_at_msec: F3, restoration_started_at_msec: F4, data_status: F5) -> U13Restoration where F1: Into<Option<U13RestorationStatus>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<U13RestorationDataStatus>> {`
+- [`thunder/schema/user.rs:8498`](../source/thunder/schema/user.rs#L8498) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<U13Restoration> {`
+- [`thunder/schema/user.rs:8548`](../source/thunder/schema/user.rs#L8548) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8583`](../source/thunder/schema/user.rs#L8583) — `pub struct Compliance {`
+- [`thunder/schema/user.rs:8590`](../source/thunder/schema/user.rs#L8590) — `pub fn new<F1, F2, F3>(u13_restoration: F1, eligible_for_u13_restoration: F2, eligible_for_parental_consent: F3) -> Compliance where F1: Into<Option<U13Restoration>>, F2: Into<Option<bool>>, F3: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:8600`](../source/thunder/schema/user.rs#L8600) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Compliance> {`
+- [`thunder/schema/user.rs:8638`](../source/thunder/schema/user.rs#L8638) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8663`](../source/thunder/schema/user.rs#L8663) — `pub struct Consents {`
+- [`thunder/schema/user.rs:8671`](../source/thunder/schema/user.rs#L8671) — `pub fn new<F1, F2, F3, F4>(age_consent: F1, settings_consent: F2, terms_consent: F3, u13_remediation: F4) -> Consents where F1: Into<Option<Consent>>, F2: Into<Option<Consent>>, F3: Into<Option<Consent>>, F4: Into<Option<U13Remediation>> {`
+- [`thunder/schema/user.rs:8682`](../source/thunder/schema/user.rs#L8682) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Consents> {`
+- [`thunder/schema/user.rs:8726`](../source/thunder/schema/user.rs#L8726) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8756`](../source/thunder/schema/user.rs#L8756) — `pub struct IdentityVerification {`
+- [`thunder/schema/user.rs:8762`](../source/thunder/schema/user.rs#L8762) — `pub fn new<F1, F2>(is_identity_verified: F1, is_identity_verified_label_hidden: F2) -> IdentityVerification where F1: Into<Option<bool>>, F2: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:8771`](../source/thunder/schema/user.rs#L8771) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<IdentityVerification> {`
+- [`thunder/schema/user.rs:8803`](../source/thunder/schema/user.rs#L8803) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8823`](../source/thunder/schema/user.rs#L8823) — `pub struct VerifiedOrganizationDetails {`
+- [`thunder/schema/user.rs:8829`](../source/thunder/schema/user.rs#L8829) — `pub fn new<F1, F2>(is_verified_organization: F1, is_verified_organization_affiliate: F2) -> VerifiedOrganizationDetails where F1: Into<Option<bool>>, F2: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:8838`](../source/thunder/schema/user.rs#L8838) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<VerifiedOrganizationDetails> {`
+- [`thunder/schema/user.rs:8870`](../source/thunder/schema/user.rs#L8870) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:8890`](../source/thunder/schema/user.rs#L8890) — `pub struct Safety {`
+- [`thunder/schema/user.rs:8948`](../source/thunder/schema/user.rs#L8948) — `pub fn new<F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F25, F26, F27, F28, F29, F30, F31, F32, F33, F34, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44, F45, F46, F47, F49, F50, F51, F52, F53, F54, F55, F56, F57>(is_protected: F2, verified: F3, deactivated: F4, suspended: F5, restricted: F6, nsfw_user: F7, nsfw_admin: F8, has_takedown: F9, has_role: F10, frictionless_follower_state: F11, erased: F12, force_password_reset: F13, protect_password_reset: F14, has_saved_searches: F15, is_lifeline_institution: F16, translation_enabled: F17, frictionless_follower_type: F18, admin_password_last_reset_msec: F19, needs_phone_verification: F20, deactivated_at_msec: F21, manhattan_updated_at_msec: F22, force_login_challenge: F23, suspension_details: F25, access_policy: F26, has_labels: F27, signup_category: F28, signup_trust_level: F29, signup_country_code: F30, require_password_login: F31, has_extended_profile: F32, last_annotated_at_msec: F33, universal_quality_filtering: F34, access_policy_expiry_msec: F35, should_offboard: F36, should_offboard_updated_at_msec: F37, offboarded: F38, offboarded_updated_at_msec: F39, require_some_consent: F40, consents: F41, deactivation_timespan: F42, compromised_state: F43, compromised_at_msec: F44, preerased: F45, verified_type: F46, external_user_update_msec: F47, is_blue_verified: F49, blue_verified_expiration_msec: F50, blue_checkmark_hidden_reason: F51, identity_verification: F52, verified_organization_details: F53, skip_rate_limit: F54, community_verified: F55, subscription_level: F56, signup_creation_source: F57) -> Safety where F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F9: Into<Option<bool>>, F10: Into<Option<bool>>, F11: Into<Option<FrictionlessFollowerState>>, F12: Into<Option<bool>>, F13: Into<Option<bool>>, F14: Into<Option<bool>>, F15: Into<Option<bool>>, F16: Into<Option<bool>>, F17: Into<Option<bool>>, F18: Into<Option<FrictionlessFollowerType>>, F19: Into<Option<i64>>, F20: Into<Option<bool>>, F21: Into<Option<i64>>, F22: Into<Option<i64>>, F23: Into<Option<ForceLoginChallenge>>, F25: Into<Option<SuspensionDetails>>, F26: Into<Option<AccessPolicy>>, F27: Into<Option<bool>>, F28: Into<Option<SignupCategory>>, F29: Into<Option<SignupTrustLevel>>, F30: Into<Option<String>>, F31: Into<Option<bool>>, F32: Into<Option<bool>>, F33: Into<Option<i64>>, F34: Into<Option<UniversalQualityFiltering>>, F35: Into<Option<i64>>, F36: Into<Option<bool>>, F37: Into<Option<i64>>, F38: Into<Option<bool>>, F39: Into<Option<i64>>, F40: Into<Option<bool>>, F41: Into<Option<Consents>>, F42: Into<Option<DeactivationTimespan>>, F43: Into<Option<CompromisedState>>, F44: Into<Option<i64>>, F45: Into<Option<bool>>, F46: Into<Option<VerifiedType>>, F47: Into<Option<i64>>, F49: Into<Option<bool>>, F50: Into<Option<i64>>, F51: Into<Option<BlueCheckmarkHiddenReason>>, F52: Into<Option<IdentityVerification>>, F53: Into<Option<VerifiedOrganizationDetails>>, F54: Into<Option<bool>>, F55: Into<Option<bool>>, F56: Into<Option<SubscriptionLevel>>, F57: Into<Option<SignupCreationSource>> {`
+- [`thunder/schema/user.rs:9009`](../source/thunder/schema/user.rs#L9009) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Safety> {`
+- [`thunder/schema/user.rs:9353`](../source/thunder/schema/user.rs#L9353) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:9633`](../source/thunder/schema/user.rs#L9633) — `pub struct Counts {`
+- [`thunder/schema/user.rs:9652`](../source/thunder/schema/user.rs#L9652) — `pub fn new<F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16>(followers: F2, following: F3, tweets: F4, favorites: F5, listed: F6, blockers: F7, owned_lists: F8, subscribed_lists: F9, media_tweets: F10, owned_public_lists: F11, frictionless_followers: F12, normal_followers: F13, blocking: F14, muters: F15, muting: F16) -> Counts where F2: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<i64>>, F7: Into<Option<i64>>, F8: Into<Option<i64>>, F9: Into<Option<i64>>, F10: Into<Option<i64>>, F11: Into<Option<i64>>, F12: Into<Option<i64>>, F13: Into<Option<i64>>, F14: Into<Option<i64>>, F15: Into<Option<i64>>, F16: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:9674`](../source/thunder/schema/user.rs#L9674) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Counts> {`
+- [`thunder/schema/user.rs:9784`](../source/thunder/schema/user.rs#L9784) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:9869`](../source/thunder/schema/user.rs#L9869) — `pub struct Roles {`
+- [`thunder/schema/user.rs:9876`](../source/thunder/schema/user.rs#L9876) — `pub fn new<F1, F2, F3>(roles: F1, rights: F2, features: F3) -> Roles where F1: Into<Option<BTreeSet<String>>>, F2: Into<Option<BTreeSet<String>>>, F3: Into<Option<BTreeSet<String>>> {`
+- [`thunder/schema/user.rs:9886`](../source/thunder/schema/user.rs#L9886) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Roles> {`
+- [`thunder/schema/user.rs:9942`](../source/thunder/schema/user.rs#L9942) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:9979`](../source/thunder/schema/user.rs#L9979) — `pub struct View {`
+- [`thunder/schema/user.rs:9992`](../source/thunder/schema/user.rs#L9992) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9>(following: F1, followed_by: F2, follow_request_sent: F3, device_following: F4, blocking: F5, blocked_by: F6, no_retweets_from: F7, lifeline_following: F8, lifeline_followed_by: F9) -> View where F1: Into<Option<bool>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F9: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:10008`](../source/thunder/schema/user.rs#L10008) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<View> {`
+- [`thunder/schema/user.rs:10082`](../source/thunder/schema/user.rs#L10082) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10137`](../source/thunder/schema/user.rs#L10137) — `pub struct MediaView {`
+- [`thunder/schema/user.rs:10142`](../source/thunder/schema/user.rs#L10142) — `pub fn new<F1>(can_media_tag: F1) -> MediaView where F1: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:10150`](../source/thunder/schema/user.rs#L10150) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MediaView> {`
+- [`thunder/schema/user.rs:10176`](../source/thunder/schema/user.rs#L10176) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10191`](../source/thunder/schema/user.rs#L10191) — `pub struct DirectMessageView {`
+- [`thunder/schema/user.rs:10197`](../source/thunder/schema/user.rs#L10197) — `pub fn new<F1, F2>(can_send_dm: F1, can_send_secret_dm: F2) -> DirectMessageView where F1: Into<Option<bool>>, F2: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:10206`](../source/thunder/schema/user.rs#L10206) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<DirectMessageView> {`
+- [`thunder/schema/user.rs:10238`](../source/thunder/schema/user.rs#L10238) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10258`](../source/thunder/schema/user.rs#L10258) — `pub struct Perspective {`
+- [`thunder/schema/user.rs:10287`](../source/thunder/schema/user.rs#L10287) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24, F25>(following: F1, followed_by: F2, follow_request_sent: F3, device_following: F4, blocking: F5, blocked_by: F6, no_retweets_from: F7, lifeline_following: F8, lifeline_followed_by: F9, muting: F10, muted_by: F11, follow_request_received: F12, dm_trusted_by: F13, dm_blocking: F14, dm_blocked_by: F15, deprecated_1: F16, deprecated_2: F17, live_following: F18, live_followed_by: F19, keyword_muting: F20, advanced_filtering: F21, frictionless_following: F22, frictionless_device_following: F23, subscribed_by: F24, subscribing: F25) -> Perspective where F1: Into<Option<bool>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>>, F6: Into<Option<bool>>, F7: Into<Option<bool>>, F8: Into<Option<bool>>, F9: Into<Option<bool>>, F10: Into<Option<bool>>, F11: Into<Option<bool>>, F12: Into<Option<bool>>, F13: Into<Option<bool>>, F14: Into<Option<bool>>, F15: Into<Option<bool>>, F16: Into<Option<bool>>, F17: Into<Option<bool>>, F18: Into<Option<bool>>, F19: Into<Option<bool>>, F20: Into<Option<bool>>, F21: Into<Option<bool>>, F22: Into<Option<bool>>, F23: Into<Option<bool>>, F24: Into<Option<bool>>, F25: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:10319`](../source/thunder/schema/user.rs#L10319) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Perspective> {`
+- [`thunder/schema/user.rs:10489`](../source/thunder/schema/user.rs#L10489) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10624`](../source/thunder/schema/user.rs#L10624) — `pub struct Takedown {`
+- [`thunder/schema/user.rs:10629`](../source/thunder/schema/user.rs#L10629) — `pub fn new<F1>(id: F1) -> Takedown where F1: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:10637`](../source/thunder/schema/user.rs#L10637) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Takedown> {`
+- [`thunder/schema/user.rs:10663`](../source/thunder/schema/user.rs#L10663) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10678`](../source/thunder/schema/user.rs#L10678) — `pub struct Takedowns {`
+- [`thunder/schema/user.rs:10684`](../source/thunder/schema/user.rs#L10684) — `pub fn new<F1, F2>(country_codes: F1, takedown_country_reasons: F2) -> Takedowns where F1: Into<Option<BTreeSet<String>>>, F2: Into<Option<Vec<Takedown>>> {`
+- [`thunder/schema/user.rs:10693`](../source/thunder/schema/user.rs#L10693) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Takedowns> {`
+- [`thunder/schema/user.rs:10737`](../source/thunder/schema/user.rs#L10737) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10765`](../source/thunder/schema/user.rs#L10765) — `pub struct SavedSearch {`
+- [`thunder/schema/user.rs:10773`](../source/thunder/schema/user.rs#L10773) — `pub fn new<F1, F2, F3, F4>(id: F1, query: F2, name: F3, created_at_msec: F4) -> SavedSearch where F1: Into<Option<i64>>, F2: Into<Option<String>>, F3: Into<Option<String>>, F4: Into<Option<i64>> {`
+- [`thunder/schema/user.rs:10784`](../source/thunder/schema/user.rs#L10784) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SavedSearch> {`
+- [`thunder/schema/user.rs:10828`](../source/thunder/schema/user.rs#L10828) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10858`](../source/thunder/schema/user.rs#L10858) — `pub struct SavedSearches {`
+- [`thunder/schema/user.rs:10863`](../source/thunder/schema/user.rs#L10863) — `pub fn new<F1>(searches: F1) -> SavedSearches where F1: Into<Option<Vec<SavedSearch>>> {`
+- [`thunder/schema/user.rs:10871`](../source/thunder/schema/user.rs#L10871) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SavedSearches> {`
+- [`thunder/schema/user.rs:10903`](../source/thunder/schema/user.rs#L10903) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:10922`](../source/thunder/schema/user.rs#L10922) — `pub struct Contribution {`
+- [`thunder/schema/user.rs:10928`](../source/thunder/schema/user.rs#L10928) — `pub fn new<F2, F3>(contributors: F2, contributees: F3) -> Contribution where F2: Into<Option<BTreeMap<i64, ContributorAccessLevel>>>, F3: Into<Option<BTreeMap<i64, ContributorAccessLevel>>> {`
+- [`thunder/schema/user.rs:10937`](../source/thunder/schema/user.rs#L10937) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Contribution> {`
+- [`thunder/schema/user.rs:10983`](../source/thunder/schema/user.rs#L10983) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11013`](../source/thunder/schema/user.rs#L11013) — `pub struct UrlEntity {`
+- [`thunder/schema/user.rs:11022`](../source/thunder/schema/user.rs#L11022) — `pub fn new<F1, F2, F3, F4, F5>(from_index: F1, to_index: F2, url: F3, expanded: F4, display: F5) -> UrlEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>>, F4: Into<Option<String>>, F5: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11034`](../source/thunder/schema/user.rs#L11034) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UrlEntity> {`
+- [`thunder/schema/user.rs:11084`](../source/thunder/schema/user.rs#L11084) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11119`](../source/thunder/schema/user.rs#L11119) — `pub struct UrlEntities {`
+- [`thunder/schema/user.rs:11125`](../source/thunder/schema/user.rs#L11125) — `pub fn new<F2, F3>(description_entities: F2, url_entities: F3) -> UrlEntities where F2: Into<Option<Vec<UrlEntity>>>, F3: Into<Option<Vec<UrlEntity>>> {`
+- [`thunder/schema/user.rs:11134`](../source/thunder/schema/user.rs#L11134) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<UrlEntities> {`
+- [`thunder/schema/user.rs:11178`](../source/thunder/schema/user.rs#L11178) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11206`](../source/thunder/schema/user.rs#L11206) — `pub struct MentionEntity {`
+- [`thunder/schema/user.rs:11215`](../source/thunder/schema/user.rs#L11215) — `pub fn new<F1, F2, F3, F4, F5>(from_index: F1, to_index: F2, screen_name: F3, user_id: F4, name: F5) -> MentionEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>>, F4: Into<Option<i64>>, F5: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11227`](../source/thunder/schema/user.rs#L11227) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MentionEntity> {`
+- [`thunder/schema/user.rs:11277`](../source/thunder/schema/user.rs#L11277) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11312`](../source/thunder/schema/user.rs#L11312) — `pub struct MentionEntities {`
+- [`thunder/schema/user.rs:11317`](../source/thunder/schema/user.rs#L11317) — `pub fn new<F1>(description_entities: F1) -> MentionEntities where F1: Into<Option<Vec<MentionEntity>>> {`
+- [`thunder/schema/user.rs:11325`](../source/thunder/schema/user.rs#L11325) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MentionEntities> {`
+- [`thunder/schema/user.rs:11357`](../source/thunder/schema/user.rs#L11357) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11376`](../source/thunder/schema/user.rs#L11376) — `pub struct HashtagEntity {`
+- [`thunder/schema/user.rs:11383`](../source/thunder/schema/user.rs#L11383) — `pub fn new<F1, F2, F3>(from_index: F1, to_index: F2, text: F3) -> HashtagEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11393`](../source/thunder/schema/user.rs#L11393) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<HashtagEntity> {`
+- [`thunder/schema/user.rs:11431`](../source/thunder/schema/user.rs#L11431) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11456`](../source/thunder/schema/user.rs#L11456) — `pub struct HashtagEntities {`
+- [`thunder/schema/user.rs:11461`](../source/thunder/schema/user.rs#L11461) — `pub fn new<F1>(description_entities: F1) -> HashtagEntities where F1: Into<Option<Vec<HashtagEntity>>> {`
+- [`thunder/schema/user.rs:11469`](../source/thunder/schema/user.rs#L11469) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<HashtagEntities> {`
+- [`thunder/schema/user.rs:11501`](../source/thunder/schema/user.rs#L11501) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11520`](../source/thunder/schema/user.rs#L11520) — `pub struct CashtagEntity {`
+- [`thunder/schema/user.rs:11527`](../source/thunder/schema/user.rs#L11527) — `pub fn new<F1, F2, F3>(from_index: F1, to_index: F2, text: F3) -> CashtagEntity where F1: Into<Option<i16>>, F2: Into<Option<i16>>, F3: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11537`](../source/thunder/schema/user.rs#L11537) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CashtagEntity> {`
+- [`thunder/schema/user.rs:11575`](../source/thunder/schema/user.rs#L11575) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11600`](../source/thunder/schema/user.rs#L11600) — `pub struct CashtagEntities {`
+- [`thunder/schema/user.rs:11605`](../source/thunder/schema/user.rs#L11605) — `pub fn new<F1>(description_entities: F1) -> CashtagEntities where F1: Into<Option<Vec<CashtagEntity>>> {`
+- [`thunder/schema/user.rs:11613`](../source/thunder/schema/user.rs#L11613) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<CashtagEntities> {`
+- [`thunder/schema/user.rs:11645`](../source/thunder/schema/user.rs#L11645) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11664`](../source/thunder/schema/user.rs#L11664) — `pub struct FacebookConnection {`
+- [`thunder/schema/user.rs:11673`](../source/thunder/schema/user.rs#L11673) — `pub fn new<F1, F2, F3, F4, F5>(id: F1, type_: F2, crossposting: F3, token: F4, fb_id: F5) -> FacebookConnection where F1: Into<Option<i64>>, F2: Into<Option<FacebookConnectionType>>, F3: Into<Option<bool>>, F4: Into<Option<String>>, F5: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11685`](../source/thunder/schema/user.rs#L11685) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FacebookConnection> {`
+- [`thunder/schema/user.rs:11735`](../source/thunder/schema/user.rs#L11735) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11770`](../source/thunder/schema/user.rs#L11770) — `pub struct FacebookConnections {`
+- [`thunder/schema/user.rs:11775`](../source/thunder/schema/user.rs#L11775) — `pub fn new<F1>(connections: F1) -> FacebookConnections where F1: Into<Option<Vec<FacebookConnection>>> {`
+- [`thunder/schema/user.rs:11783`](../source/thunder/schema/user.rs#L11783) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<FacebookConnections> {`
+- [`thunder/schema/user.rs:11815`](../source/thunder/schema/user.rs#L11815) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11834`](../source/thunder/schema/user.rs#L11834) — `pub struct PeriscopeConnection {`
+- [`thunder/schema/user.rs:11840`](../source/thunder/schema/user.rs#L11840) — `pub fn new<F1, F2>(periscope_user_id: F1, periscope_user_type: F2) -> PeriscopeConnection where F1: Into<Option<String>>, F2: Into<Option<PeriscopeUserType>> {`
+- [`thunder/schema/user.rs:11849`](../source/thunder/schema/user.rs#L11849) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PeriscopeConnection> {`
+- [`thunder/schema/user.rs:11881`](../source/thunder/schema/user.rs#L11881) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11901`](../source/thunder/schema/user.rs#L11901) — `pub struct ProfileConnection {`
+- [`thunder/schema/user.rs:11908`](../source/thunder/schema/user.rs#L11908) — `pub fn new<F1, F2, F3>(id: F1, crossposting: F2, token: F3) -> ProfileConnection where F1: Into<Option<String>>, F2: Into<Option<bool>>, F3: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11918`](../source/thunder/schema/user.rs#L11918) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileConnection> {`
+- [`thunder/schema/user.rs:11956`](../source/thunder/schema/user.rs#L11956) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:11981`](../source/thunder/schema/user.rs#L11981) — `pub struct PageConnection {`
+- [`thunder/schema/user.rs:11988`](../source/thunder/schema/user.rs#L11988) — `pub fn new<F1, F2, F3>(id: F1, crossposting: F2, token: F3) -> PageConnection where F1: Into<Option<String>>, F2: Into<Option<bool>>, F3: Into<Option<String>> {`
+- [`thunder/schema/user.rs:11998`](../source/thunder/schema/user.rs#L11998) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PageConnection> {`
+- [`thunder/schema/user.rs:12036`](../source/thunder/schema/user.rs#L12036) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12061`](../source/thunder/schema/user.rs#L12061) — `pub struct Facebook {`
+- [`thunder/schema/user.rs:12067`](../source/thunder/schema/user.rs#L12067) — `pub fn new<F1, F2>(profile_connection: F1, page_connection: F2) -> Facebook where F1: Into<Option<ProfileConnection>>, F2: Into<Option<PageConnection>> {`
+- [`thunder/schema/user.rs:12076`](../source/thunder/schema/user.rs#L12076) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Facebook> {`
+- [`thunder/schema/user.rs:12108`](../source/thunder/schema/user.rs#L12108) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12128`](../source/thunder/schema/user.rs#L12128) — `pub struct ThirdPartyConnections {`
+- [`thunder/schema/user.rs:12134`](../source/thunder/schema/user.rs#L12134) — `pub fn new<F1, F2>(periscope_connection: F1, facebook: F2) -> ThirdPartyConnections where F1: Into<Option<PeriscopeConnection>>, F2: Into<Option<Facebook>> {`
+- [`thunder/schema/user.rs:12143`](../source/thunder/schema/user.rs#L12143) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ThirdPartyConnections> {`
+- [`thunder/schema/user.rs:12175`](../source/thunder/schema/user.rs#L12175) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12195`](../source/thunder/schema/user.rs#L12195) — `pub struct MutedKeyword {`
+- [`thunder/schema/user.rs:12206`](../source/thunder/schema/user.rs#L12206) — `pub fn new<F1, F2, F3, F4, F5, F6, F7>(id: F1, keyword: F2, valid_from: F3, valid_until: F4, created_at_msec: F5, mute_surfaces: F6, mute_options: F7) -> MutedKeyword where F1: Into<Option<i64>>, F2: Into<Option<String>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<BTreeSet<MuteSurface>>>, F7: Into<Option<BTreeSet<MuteOption>>> {`
+- [`thunder/schema/user.rs:12220`](../source/thunder/schema/user.rs#L12220) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MutedKeyword> {`
+- [`thunder/schema/user.rs:12294`](../source/thunder/schema/user.rs#L12294) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12347`](../source/thunder/schema/user.rs#L12347) — `pub struct AdvancedFilters {`
+- [`thunder/schema/user.rs:12356`](../source/thunder/schema/user.rs#L12356) — `pub fn new<F1, F2, F3, F4, F5>(filter_no_confirmed_email: F1, filter_no_confirmed_phone: F2, filter_default_profile_image: F3, filter_new_users: F4, filter_not_followed_by: F5) -> AdvancedFilters where F1: Into<Option<bool>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<bool>> {`
+- [`thunder/schema/user.rs:12368`](../source/thunder/schema/user.rs#L12368) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AdvancedFilters> {`
+- [`thunder/schema/user.rs:12418`](../source/thunder/schema/user.rs#L12418) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12453`](../source/thunder/schema/user.rs#L12453) — `pub struct MuteSettings {`
+- [`thunder/schema/user.rs:12459`](../source/thunder/schema/user.rs#L12459) — `pub fn new<F1, F2>(muted_keywords: F1, advanced_notification_filters: F2) -> MuteSettings where F1: Into<Option<Vec<MutedKeyword>>>, F2: Into<Option<AdvancedFilters>> {`
+- [`thunder/schema/user.rs:12468`](../source/thunder/schema/user.rs#L12468) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MuteSettings> {`
+- [`thunder/schema/user.rs:12506`](../source/thunder/schema/user.rs#L12506) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12530`](../source/thunder/schema/user.rs#L12530) — `pub struct MessagingDeviceFeatures {`
+- [`thunder/schema/user.rs:12540`](../source/thunder/schema/user.rs#L12540) — `pub fn new<F1, F2, F3, F4, F5, F6>(mo_mms: F1, mo_sms: F2, mt_mms: F3, mt_sms: F4, follow_limit: F5, mt_sms_limit: F6) -> MessagingDeviceFeatures where F1: Into<Option<bool>>, F2: Into<Option<bool>>, F3: Into<Option<bool>>, F4: Into<Option<bool>>, F5: Into<Option<i32>>, F6: Into<Option<i32>> {`
+- [`thunder/schema/user.rs:12553`](../source/thunder/schema/user.rs#L12553) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MessagingDeviceFeatures> {`
+- [`thunder/schema/user.rs:12609`](../source/thunder/schema/user.rs#L12609) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12649`](../source/thunder/schema/user.rs#L12649) — `pub struct MessagingDevice {`
+- [`thunder/schema/user.rs:12669`](../source/thunder/schema/user.rs#L12669) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16>(device_id: F1, user_id: F2, device_type: F3, created_at: F4, updated_at: F5, verified: F6, address: F7, phone_number: F8, locale: F9, short_code: F10, enabled_for: F11, carrier_id: F12, carrier_name: F13, country_code: F14, country_name: F15, features: F16) -> MessagingDevice where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<MessagingDeviceType>>, F4: Into<Option<i64>>, F5: Into<Option<i64>>, F6: Into<Option<bool>>, F7: Into<Option<String>>, F8: Into<Option<String>>, F9: Into<Option<String>>, F10: Into<Option<String>>, F11: Into<Option<String>>, F12: Into<Option<String>>, F13: Into<Option<String>>, F14: Into<Option<String>>, F15: Into<Option<String>>, F16: Into<Option<MessagingDeviceFeatures>> {`
+- [`thunder/schema/user.rs:12692`](../source/thunder/schema/user.rs#L12692) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<MessagingDevice> {`
+- [`thunder/schema/user.rs:12808`](../source/thunder/schema/user.rs#L12808) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:12898`](../source/thunder/schema/user.rs#L12898) — `pub struct AppPushDevice {`
+- [`thunder/schema/user.rs:12924`](../source/thunder/schema/user.rs#L12924) — `pub fn new<F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F19, F20, F21, F22>(device_id: F1, user_id: F2, device_type: F3, token: F4, udid: F5, created_at: F6, updated_at: F7, enabled_for: F8, app_version: F9, client_application_id: F10, environment: F11, available_levels: F12, display: F13, locale: F14, description: F15, push_last_received_ts: F16, last_active_ts: F17, app_release_version: F18, os_version: F19, encryption_key_1: F20, encryption_key_2: F21, settings: F22) -> AppPushDevice where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<AppPushDeviceType>>, F4: Into<Option<String>>, F5: Into<Option<String>>, F6: Into<Option<i64>>, F7: Into<Option<i64>>, F8: Into<Option<i32>>, F9: Into<Option<i32>>, F10: Into<Option<i32>>, F11: Into<Option<i32>>, F12: Into<Option<i32>>, F13: Into<Option<i32>>, F14: Into<Option<String>>, F15: Into<Option<String>>, F16: Into<Option<i64>>, F17: Into<Option<i64>>, F18: Into<Option<String>>, F19: Into<Option<String>>, F20: Into<Option<String>>, F21: Into<Option<String>>, F22: Into<Option<BTreeMap<String, String>>> {`
+- [`thunder/schema/user.rs:12953`](../source/thunder/schema/user.rs#L12953) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AppPushDevice> {`
+- [`thunder/schema/user.rs:13112`](../source/thunder/schema/user.rs#L13112) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13237`](../source/thunder/schema/user.rs#L13237) — `pub struct Devices {`
+- [`thunder/schema/user.rs:13243`](../source/thunder/schema/user.rs#L13243) — `pub fn new<F1, F2>(messaging_devices: F1, app_push_devices: F2) -> Devices where F1: Into<Option<Vec<MessagingDevice>>>, F2: Into<Option<Vec<AppPushDevice>>> {`
+- [`thunder/schema/user.rs:13252`](../source/thunder/schema/user.rs#L13252) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Devices> {`
+- [`thunder/schema/user.rs:13296`](../source/thunder/schema/user.rs#L13296) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13324`](../source/thunder/schema/user.rs#L13324) — `pub struct Place {`
+- [`thunder/schema/user.rs:13332`](../source/thunder/schema/user.rs#L13332) — `pub fn new<F1, F2, F3, F4>(place_id: F1, confidence: F2, display_name: F3, names: F4) -> Place where F1: Into<Option<String>>, F2: Into<Option<OrderedFloat<f64>>>, F3: Into<Option<String>>, F4: Into<Option<BTreeMap<String, String>>> {`
+- [`thunder/schema/user.rs:13343`](../source/thunder/schema/user.rs#L13343) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Place> {`
+- [`thunder/schema/user.rs:13394`](../source/thunder/schema/user.rs#L13394) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13429`](../source/thunder/schema/user.rs#L13429) — `pub struct PublicLocation {`
+- [`thunder/schema/user.rs:13434`](../source/thunder/schema/user.rs#L13434) — `pub fn new<F1>(country: F1) -> PublicLocation where F1: Into<Option<Place>> {`
+- [`thunder/schema/user.rs:13442`](../source/thunder/schema/user.rs#L13442) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<PublicLocation> {`
+- [`thunder/schema/user.rs:13468`](../source/thunder/schema/user.rs#L13468) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13483`](../source/thunder/schema/user.rs#L13483) — `pub struct Derived {`
+- [`thunder/schema/user.rs:13489`](../source/thunder/schema/user.rs#L13489) — `pub fn new<F1, F2>(user_state: F1, cohort: F2) -> Derived where F1: Into<Option<DerivedUserState>>, F2: Into<Option<UserCohort>> {`
+- [`thunder/schema/user.rs:13498`](../source/thunder/schema/user.rs#L13498) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Derived> {`
+- [`thunder/schema/user.rs:13530`](../source/thunder/schema/user.rs#L13530) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13550`](../source/thunder/schema/user.rs#L13550) — `pub struct ProfileLocation {`
+- [`thunder/schema/user.rs:13555`](../source/thunder/schema/user.rs#L13555) — `pub fn new<F1>(place: F1) -> ProfileLocation where F1: Into<Option<Place>> {`
+- [`thunder/schema/user.rs:13563`](../source/thunder/schema/user.rs#L13563) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileLocation> {`
+- [`thunder/schema/user.rs:13589`](../source/thunder/schema/user.rs#L13589) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13604`](../source/thunder/schema/user.rs#L13604) — `pub struct Label {`
+- [`thunder/schema/user.rs:13614`](../source/thunder/schema/user.rs#L13614) — `pub fn new<F1, F3, F4, F5, F6, F7>(id: F1, created_at_msec: F3, expires_at_msec: F4, by_user: F5, reason: F6, source: F7) -> Label where F1: Into<Option<i64>>, F3: Into<Option<i64>>, F4: Into<Option<i64>>, F5: Into<Option<String>>, F6: Into<Option<String>>, F7: Into<Option<String>> {`
+- [`thunder/schema/user.rs:13627`](../source/thunder/schema/user.rs#L13627) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Label> {`
+- [`thunder/schema/user.rs:13683`](../source/thunder/schema/user.rs#L13683) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13723`](../source/thunder/schema/user.rs#L13723) — `pub struct Labels {`
+- [`thunder/schema/user.rs:13729`](../source/thunder/schema/user.rs#L13729) — `pub fn new<F1, F2>(labels: F1, exempted_labels: F2) -> Labels where F1: Into<Option<Vec<Label>>>, F2: Into<Option<Vec<Label>>> {`
+- [`thunder/schema/user.rs:13738`](../source/thunder/schema/user.rs#L13738) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Labels> {`
+- [`thunder/schema/user.rs:13782`](../source/thunder/schema/user.rs#L13782) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13810`](../source/thunder/schema/user.rs#L13810) — `pub struct AdvertiserAccount {`
+- [`thunder/schema/user.rs:13815`](../source/thunder/schema/user.rs#L13815) — `pub fn new<F1>(advertiser_type: F1) -> AdvertiserAccount where F1: Into<Option<AdvertiserType>> {`
+- [`thunder/schema/user.rs:13823`](../source/thunder/schema/user.rs#L13823) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<AdvertiserAccount> {`
+- [`thunder/schema/user.rs:13849`](../source/thunder/schema/user.rs#L13849) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13864`](../source/thunder/schema/user.rs#L13864) — `pub struct ProfileBirthdate {`
+- [`thunder/schema/user.rs:13874`](../source/thunder/schema/user.rs#L13874) — `pub fn new<F4, F5, F6>(value: String, visibility: ProfileVisibility, birth_year_visibility: ProfileVisibility, day: F4, month: F5, year: F6) -> ProfileBirthdate where F4: Into<Option<i32>>, F5: Into<Option<i32>>, F6: Into<Option<i32>> {`
+- [`thunder/schema/user.rs:13887`](../source/thunder/schema/user.rs#L13887) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ProfileBirthdate> {`
+- [`thunder/schema/user.rs:13946`](../source/thunder/schema/user.rs#L13946) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:13980`](../source/thunder/schema/user.rs#L13980) — `pub struct ExtendedProfile {`
+- [`thunder/schema/user.rs:13990`](../source/thunder/schema/user.rs#L13990) — `pub fn new<F1, F2, F3, F4, F5, F6>(birthdate: F1, has_birthdate: F2, age_in_years: F3, age_when_created_in_years: F4, zip_code: F5, full_name: F6) -> ExtendedProfile where F1: Into<Option<ProfileBirthdate>>, F2: Into<Option<bool>>, F3: Into<Option<i32>>, F4: Into<Option<i32>>, F5: Into<Option<String>>, F6: Into<Option<String>> {`
+- [`thunder/schema/user.rs:14003`](../source/thunder/schema/user.rs#L14003) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ExtendedProfile> {`
+- [`thunder/schema/user.rs:14059`](../source/thunder/schema/user.rs#L14059) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:14099`](../source/thunder/schema/user.rs#L14099) — `pub struct TestUserInfo {`
+- [`thunder/schema/user.rs:14106`](../source/thunder/schema/user.rs#L14106) — `pub fn new<F1, F2, F3>(contact_email: F1, created_by: F2, description: F3) -> TestUserInfo where F1: Into<Option<String>>, F2: Into<Option<String>>, F3: Into<Option<String>> {`
+- [`thunder/schema/user.rs:14116`](../source/thunder/schema/user.rs#L14116) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TestUserInfo> {`
+- [`thunder/schema/user.rs:14154`](../source/thunder/schema/user.rs#L14154) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/schema/user.rs:14179`](../source/thunder/schema/user.rs#L14179) — `pub struct User {`
+- [`thunder/schema/user.rs:14224`](../source/thunder/schema/user.rs#L14224) — `pub fn new<F1, F2, F3, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17, F18, F20, F21, F22, F23, F24, F25, F26, F27, F28, F29, F30, F31, F32, F33, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44>(id: F1, created_at_msec: F2, updated_at_msec: F3, profile: F5, profile_design: F6, account: F7, sleep: F8, safety: F9, counts: F10, notification: F11, roles: F12, prompts: F13, view: F14, takedowns: F15, discoverability: F16, contribution: F17, url_entities: F18, saved_searches: F20, storage_state: F21, facebook_connections: F22, devices: F23, public_location: F24, media_view: F25, dm_view: F26, perspective: F27, profile_location: F28, derived: F29, labels: F30, advertiser_account: F31, extended_profile: F32, annotations: F33, extensions_reply: F35, third_party_connections: F36, mention_entities: F37, hashtag_entities: F38, cashtag_entities: F39, test_user_status: F40, mute_settings: F41, test_user_info: F42, compliance: F43, extended_account: F44) -> User where F1: Into<Option<i64>>, F2: Into<Option<i64>>, F3: Into<Option<i64>>, F5: Into<Option<Profile>>, F6: Into<Option<ProfileDesign>>, F7: Into<Option<Account>>, F8: Into<Option<Sleep>>, F9: Into<Option<Safety>>, F10: Into<Option<Counts>>, F11: Into<Option<Notification>>, F12: Into<Option<Roles>>, F13: Into<Option<Prompts>>, F14: Into<Option<View>>, F15: Into<Option<Takedowns>>, F16: Into<Option<Discoverability>>, F17: Into<Option<Contribution>>, F18: Into<Option<UrlEntities>>, F20: Into<Option<SavedSearches>>, F21: Into<Option<i32>>, F22: Into<Option<FacebookConnections>>, F23: Into<Option<Devices>>, F24: Into<Option<PublicLocation>>, F25: Into<Option<MediaView>>, F26: Into<Option<DirectMessageView>>, F27: Into<Option<Perspective>>, F28: Into<Option<ProfileLocation>>, F29: Into<Option<Derived>>, F30: Into<Option<Labels>>, F31: Into<Option<AdvertiserAccount>>, F32: Into<Option<ExtendedProfile>>, F33: Into<Option<Annotations>>, F35: Into<Option<Vec<u8>>>, F36: Into<Option<ThirdPartyConnections>>, F37: Into<Option<MentionEntities>>, F38: Into<Option<HashtagEntities>>, F39: Into<Option<CashtagEntities>>, F40: Into<Option<TestUserStatus>>, F41: Into<Option<MuteSettings>>, F42: Into<Option<TestUserInfo>>, F43: Into<Option<Compliance>>, F44: Into<Option<ExtendedAccount>> {`
+- [`thunder/schema/user.rs:14272`](../source/thunder/schema/user.rs#L14272) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<User> {`
+- [`thunder/schema/user.rs:14538`](../source/thunder/schema/user.rs#L14538) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`thunder/strato_client.rs:10`](../source/thunder/strato_client.rs#L10) — `struct StratoResponse<T> {`
+- [`thunder/strato_client.rs:14`](../source/thunder/strato_client.rs#L14) — `fn deserialize_string_to_i64<'de, D>(deserializer: D) -> Result<i64, D::Error>`
+- [`thunder/strato_client.rs:22`](../source/thunder/strato_client.rs#L22) — `enum StringOrInt {`
+- [`thunder/strato_client.rs:34`](../source/thunder/strato_client.rs#L34) — `struct UserProfile {`
+- [`thunder/strato_client.rs:41`](../source/thunder/strato_client.rs#L41) — `struct UserCounts {`
+- [`thunder/strato_client.rs:49`](../source/thunder/strato_client.rs#L49) — `struct UserData {`
+- [`thunder/strato_client.rs:55`](../source/thunder/strato_client.rs#L55) — `pub struct UserMetadata {`
+- [`thunder/strato_client.rs:63`](../source/thunder/strato_client.rs#L63) — `pub struct StratoClient {`
+- [`thunder/strato_client.rs:69`](../source/thunder/strato_client.rs#L69) — `fn default() -> Self {`
+- [`thunder/strato_client.rs:86`](../source/thunder/strato_client.rs#L86) — `pub fn new() -> Self {`
+- [`thunder/strato_client.rs:90`](../source/thunder/strato_client.rs#L90) — `pub async fn fetch_following_list(&self, user_id: i64, limit: i32) -> Result<Vec<i64>> {`
+- [`thunder/strato_client.rs:97`](../source/thunder/strato_client.rs#L97) — `async fn fetch_following_list_internal(&self, user_id: i64, limit: i32) -> Result<Vec<String>> {`
+- [`thunder/strato_client.rs:164`](../source/thunder/strato_client.rs#L164) — `pub async fn fetch_user_metadata(&self, user_id: i64) -> Result<Option<UserMetadata>> {`
+- [`thunder/thunder_service.rs:39`](../source/thunder/thunder_service.rs#L39) — `pub struct ThunderServiceImpl {`
+- [`thunder/thunder_service.rs:46`](../source/thunder/thunder_service.rs#L46) — `pub fn new(`
+- [`thunder/thunder_service.rs:60`](../source/thunder/thunder_service.rs#L60) — `pub fn server(self) -> InNetworkPostsServiceServer<Self> {`
+- [`thunder/thunder_service.rs:66`](../source/thunder/thunder_service.rs#L66) — `fn analyze_and_report_post_statistics(posts: &[LightPost], stage: &str) {`
+- [`thunder/thunder_service.rs:149`](../source/thunder/thunder_service.rs#L149) — `async fn get_in_network_posts(`
+- [`thunder/thunder_service.rs:162`](../source/thunder/thunder_service.rs#L162) — `struct InFlightGuard;`
+- [`thunder/thunder_service.rs:164`](../source/thunder/thunder_service.rs#L164) — `fn drop(&mut self) {`
+- [`thunder/thunder_service.rs:322`](../source/thunder/thunder_service.rs#L322) — `fn score_recent(mut light_posts: Vec<LightPost>, max_results: usize) -> Vec<LightPost> {`

@@ -1,0 +1,43 @@
+# safety-label-user-agg: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`safety-label-user-agg/postToUserLabelRules.strato:3`](../source/safety-label-user-agg/postToUserLabelRules.strato#L3) — `type SafetyLabelType = com.twitter.spam.rtf.SafetyLabelType`
+- [`safety-label-user-agg/postToUserLabelRules.strato:4`](../source/safety-label-user-agg/postToUserLabelRules.strato#L4) — `type UserLabelValue = com.twitter.gizmoduck.LabelValue`
+- [`safety-label-user-agg/postToUserLabelRules.strato:6`](../source/safety-label-user-agg/postToUserLabelRules.strato#L6) — `type PostLabelSelector = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:11`](../source/safety-label-user-agg/postToUserLabelRules.strato#L11) — `type PostLabelCountCondition = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:19`](../source/safety-label-user-agg/postToUserLabelRules.strato#L19) — `type AllOfPostLabelConditions = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:23`](../source/safety-label-user-agg/postToUserLabelRules.strato#L23) — `type RuleCondition = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:27`](../source/safety-label-user-agg/postToUserLabelRules.strato#L27) — `type UserExclusions = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:34`](../source/safety-label-user-agg/postToUserLabelRules.strato#L34) — `type UserLabelRule = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:45`](../source/safety-label-user-agg/postToUserLabelRules.strato#L45) — `type RuleConfig = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:49`](../source/safety-label-user-agg/postToUserLabelRules.strato#L49) — `type UserContext = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:56`](../source/safety-label-user-agg/postToUserLabelRules.strato#L56) — `type PostLabelData = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:62`](../source/safety-label-user-agg/postToUserLabelRules.strato#L62) — `type UserLabelOutput = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:69`](../source/safety-label-user-agg/postToUserLabelRules.strato#L69) — `def parseConfig(rawConfig: String): RuleConfig = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:77`](../source/safety-label-user-agg/postToUserLabelRules.strato#L77) — `def isRecentPost(tweetId: Long, maxAgeDays: Int): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:82`](../source/safety-label-user-agg/postToUserLabelRules.strato#L82) — `def normalizeLabel(label: String): String = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:86`](../source/safety-label-user-agg/postToUserLabelRules.strato#L86) — `def labelsEqual(left: String, right: String): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:90`](../source/safety-label-user-agg/postToUserLabelRules.strato#L90) — `def safetyLabelFromConfig(label: String): Option[SafetyLabelType] = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:109`](../source/safety-label-user-agg/postToUserLabelRules.strato#L109) — `def userLabelFromConfig(label: String): Option[UserLabelValue] = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:119`](../source/safety-label-user-agg/postToUserLabelRules.strato#L119) — `def triggeredRules(`
+- [`safety-label-user-agg/postToUserLabelRules.strato:131`](../source/safety-label-user-agg/postToUserLabelRules.strato#L131) — `def isExcluded(rule: UserLabelRule, user: UserContext): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:140`](../source/safety-label-user-agg/postToUserLabelRules.strato#L140) — `def isMediaOnly(condition: PostLabelCountCondition): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:144`](../source/safety-label-user-agg/postToUserLabelRules.strato#L144) — `def allConditions(rules: Seq[UserLabelRule]): Seq[PostLabelCountCondition] = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:152`](../source/safety-label-user-agg/postToUserLabelRules.strato#L152) — `def maxWindowSize(rules: Seq[UserLabelRule]): Int = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:161`](../source/safety-label-user-agg/postToUserLabelRules.strato#L161) — `def maxScanSize(rules: Seq[UserLabelRule]): Int = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:176`](../source/safety-label-user-agg/postToUserLabelRules.strato#L176) — `def needsMediaLookup(rules: Seq[UserLabelRule]): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:180`](../source/safety-label-user-agg/postToUserLabelRules.strato#L180) — `def parseSafetyLabels(labels: Seq[String]): Seq[SafetyLabelType] = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:184`](../source/safety-label-user-agg/postToUserLabelRules.strato#L184) — `def isKnownUserLabel(label: String): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:190`](../source/safety-label-user-agg/postToUserLabelRules.strato#L190) — `def isValidPostLabelSelector(selector: PostLabelSelector): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:198`](../source/safety-label-user-agg/postToUserLabelRules.strato#L198) — `def isValidPostLabelCount(condition: PostLabelCountCondition): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:208`](../source/safety-label-user-agg/postToUserLabelRules.strato#L208) — `def isValidRule(rule: UserLabelRule): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:237`](../source/safety-label-user-agg/postToUserLabelRules.strato#L237) — `def validRules(rules: Seq[UserLabelRule]): Seq[UserLabelRule] = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:251`](../source/safety-label-user-agg/postToUserLabelRules.strato#L251) — `def matchesPostLabelSelector(`
+- [`safety-label-user-agg/postToUserLabelRules.strato:266`](../source/safety-label-user-agg/postToUserLabelRules.strato#L266) — `def matchesPostLabelCount(`
+- [`safety-label-user-agg/postToUserLabelRules.strato:286`](../source/safety-label-user-agg/postToUserLabelRules.strato#L286) — `def matchesRule(rule: UserLabelRule, posts: Seq[PostLabelData]): Boolean = {`
+- [`safety-label-user-agg/postToUserLabelRules.strato:294`](../source/safety-label-user-agg/postToUserLabelRules.strato#L294) — `def matchingOutputs(`
+- [`safety-label-user-agg/postToUserLabelRules.strato:321`](../source/safety-label-user-agg/postToUserLabelRules.strato#L321) — `def evaluateForTest(`
+- [`safety-label-user-agg/postToUserLabelRules.strato:349`](../source/safety-label-user-agg/postToUserLabelRules.strato#L349) — `def maxScanSizeForTest(rawConfig: String): Int = {`
+- [`safety-label-user-agg/safetyLabelToUserLevelAggregationV2Processor.strato:7`](../source/safety-label-user-agg/safetyLabelToUserLevelAggregationV2Processor.strato#L7) — `type Tweet = com.twitter.tweetypie.Tweet`
+- [`safety-label-user-agg/safetyLabelToUserLevelAggregationV2Processor.strato:8`](../source/safety-label-user-agg/safetyLabelToUserLevelAggregationV2Processor.strato#L8) — `type Event = com.twitter.spam.rtf.TweetSafetyLabelEvent`

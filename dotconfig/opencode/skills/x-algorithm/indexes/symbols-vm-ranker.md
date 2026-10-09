@@ -1,0 +1,50 @@
+# vm-ranker: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`vm-ranker/args.rs:5`](../source/vm-ranker/args.rs#L5) — `pub struct Args {`
+- [`vm-ranker/dpp.rs:12`](../source/vm-ranker/dpp.rs#L12) — `const EPSILON: f64 = 1e-6;`
+- [`vm-ranker/dpp.rs:15`](../source/vm-ranker/dpp.rs#L15) — `pub struct DppConfig {`
+- [`vm-ranker/dpp.rs:22`](../source/vm-ranker/dpp.rs#L22) — `pub struct DppInput {`
+- [`vm-ranker/dpp.rs:30`](../source/vm-ranker/dpp.rs#L30) — `pub struct DppResult {`
+- [`vm-ranker/dpp.rs:35`](../source/vm-ranker/dpp.rs#L35) — `pub fn rescore(`
+- [`vm-ranker/dpp.rs:217`](../source/vm-ranker/dpp.rs#L217) — `struct GreedyDppResult {`
+- [`vm-ranker/dpp.rs:223`](../source/vm-ranker/dpp.rs#L223) — `fn greedy_dpp(kernel: &[f64], n: usize, k: usize, pinned_first: Option<usize>) -> GreedyDppResult {`
+- [`vm-ranker/dpp.rs:316`](../source/vm-ranker/dpp.rs#L316) — `fn avg_pairwise_cosine(inputs: &[DppInput], indices: &[usize]) -> f64 {`
+- [`vm-ranker/dpp.rs:347`](../source/vm-ranker/dpp.rs#L347) — `fn make_input(id: u64, score: f64, embedding: &[f32]) -> DppInput {`
+- [`vm-ranker/dpp.rs:366`](../source/vm-ranker/dpp.rs#L366) — `fn default_config() -> DppConfig {`
+- [`vm-ranker/dpp.rs:376`](../source/vm-ranker/dpp.rs#L376) — `fn empty_input() {`
+- [`vm-ranker/dpp.rs:382`](../source/vm-ranker/dpp.rs#L382) — `fn single_candidate() {`
+- [`vm-ranker/dpp.rs:391`](../source/vm-ranker/dpp.rs#L391) — `fn identical_embeddings_select_top_scorer_only() {`
+- [`vm-ranker/dpp.rs:411`](../source/vm-ranker/dpp.rs#L411) — `fn orthogonal_embeddings_promote_diversity() {`
+- [`vm-ranker/dpp.rs:434`](../source/vm-ranker/dpp.rs#L434) — `fn filter_only_preserves_original_scores() {`
+- [`vm-ranker/dpp.rs:467`](../source/vm-ranker/dpp.rs#L467) — `fn max_selected_rank_limits_pool() {`
+- [`vm-ranker/dpp.rs:490`](../source/vm-ranker/dpp.rs#L490) — `fn seed_suppresses_near_duplicate() {`
+- [`vm-ranker/dpp.rs:520`](../source/vm-ranker/dpp.rs#L520) — `fn seed_does_not_consume_top_k_budget() {`
+- [`vm-ranker/dpp.rs:538`](../source/vm-ranker/dpp.rs#L538) — `fn f16_vec(vals: &[f32]) -> Vec<f16> {`
+- [`vm-ranker/dpp.rs:543`](../source/vm-ranker/dpp.rs#L543) — `fn dot_product_identical_unit_vectors() {`
+- [`vm-ranker/dpp.rs:550`](../source/vm-ranker/dpp.rs#L550) — `fn dot_product_opposite_vectors() {`
+- [`vm-ranker/dpp.rs:558`](../source/vm-ranker/dpp.rs#L558) — `fn dot_product_orthogonal_vectors() {`
+- [`vm-ranker/dpp.rs:566`](../source/vm-ranker/dpp.rs#L566) — `fn dot_product_zero_vector() {`
+- [`vm-ranker/embedding_store.rs:8`](../source/vm-ranker/embedding_store.rs#L8) — `pub struct EmbeddingStore {`
+- [`vm-ranker/embedding_store.rs:14`](../source/vm-ranker/embedding_store.rs#L14) — `pub fn dim(&self) -> usize {`
+- [`vm-ranker/embedding_store.rs:19`](../source/vm-ranker/embedding_store.rs#L19) — `pub fn init_store(dim: usize) -> Result<(Arc<EmbeddingStore>, O2PreloadFuture)> {`
+- [`vm-ranker/helpers.rs:4`](../source/vm-ranker/helpers.rs#L4) — `pub(crate) fn dot_product(a: &[f16], b: &[f16]) -> f64 {`
+- [`vm-ranker/helpers.rs:21`](../source/vm-ranker/helpers.rs#L21) — `fn dot_product_scalar(a: &[f16], b: &[f16]) -> f64 {`
+- [`vm-ranker/main.rs:15`](../source/vm-ranker/main.rs#L15) — `async fn main() -> Result<()> {`
+- [`vm-ranker/metrics.rs:162`](../source/vm-ranker/metrics.rs#L162) — `pub struct Timer {`
+- [`vm-ranker/metrics.rs:168`](../source/vm-ranker/metrics.rs#L168) — `pub fn new(histogram: Histogram) -> Self {`
+- [`vm-ranker/metrics.rs:177`](../source/vm-ranker/metrics.rs#L177) — `fn drop(&mut self) {`
+- [`vm-ranker/ranker_service.rs:18`](../source/vm-ranker/ranker_service.rs#L18) — `pub struct VMRankerServiceImpl {`
+- [`vm-ranker/ranker_service.rs:24`](../source/vm-ranker/ranker_service.rs#L24) — `pub fn new(max_concurrent_requests: usize, dpp: Option<DppContext>) -> Self {`
+- [`vm-ranker/ranker_service.rs:36`](../source/vm-ranker/ranker_service.rs#L36) — `pub fn server(self) -> VmRankerServiceServer<Self> {`
+- [`vm-ranker/ranker_service.rs:49`](../source/vm-ranker/ranker_service.rs#L49) — `async fn rank(&self, request: Request<RankRequest>) -> Result<Response<RankResponse>, Status> {`
+- [`vm-ranker/ranker_service.rs:75`](../source/vm-ranker/ranker_service.rs#L75) — `struct InFlightGuard;`
+- [`vm-ranker/ranker_service.rs:77`](../source/vm-ranker/ranker_service.rs#L77) — `fn drop(&mut self) {`
+- [`vm-ranker/scoring/dpp_model.rs:13`](../source/vm-ranker/scoring/dpp_model.rs#L13) — `fn l2_norm(v: &[f16]) -> f64 {`
+- [`vm-ranker/scoring/dpp_model.rs:23`](../source/vm-ranker/scoring/dpp_model.rs#L23) — `fn random_unit_embedding(dim: usize) -> Arc<Vec<f16>> {`
+- [`vm-ranker/scoring/dpp_model.rs:39`](../source/vm-ranker/scoring/dpp_model.rs#L39) — `fn build_dpp_inputs(req: &RankRequest, ctx: &DppContext) -> Vec<DppInput> {`
+- [`vm-ranker/scoring/dpp_model.rs:85`](../source/vm-ranker/scoring/dpp_model.rs#L85) — `fn build_seed_input(req: &RankRequest, ctx: &DppContext) -> Option<DppInput> {`
+- [`vm-ranker/scoring/dpp_model.rs:110`](../source/vm-ranker/scoring/dpp_model.rs#L110) — `pub fn rank(req: &RankRequest, ctx: &DppContext) -> Vec<RankedCandidate> {`
+- [`vm-ranker/scoring/mod.rs:13`](../source/vm-ranker/scoring/mod.rs#L13) — `pub struct DppContext {`
+- [`vm-ranker/scoring/mod.rs:18`](../source/vm-ranker/scoring/mod.rs#L18) — `pub async fn rank(`

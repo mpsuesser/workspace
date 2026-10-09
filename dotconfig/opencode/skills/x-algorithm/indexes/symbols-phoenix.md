@@ -1,0 +1,4848 @@
+# phoenix: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`phoenix/crates/common/xai-recsys/build.rs:7`](../source/phoenix/crates/common/xai-recsys/build.rs#L7) — `fn find_feature_config() -> PathBuf {`
+- [`phoenix/crates/common/xai-recsys/build.rs:18`](../source/phoenix/crates/common/xai-recsys/build.rs#L18) — `fn to_upper_snake(name: &str) -> String {`
+- [`phoenix/crates/common/xai-recsys/build.rs:29`](../source/phoenix/crates/common/xai-recsys/build.rs#L29) — `fn to_snake_module(name: &str) -> String {`
+- [`phoenix/crates/common/xai-recsys/build.rs:40`](../source/phoenix/crates/common/xai-recsys/build.rs#L40) — `struct EnumMember {`
+- [`phoenix/crates/common/xai-recsys/build.rs:45`](../source/phoenix/crates/common/xai-recsys/build.rs#L45) — `struct EnumClass {`
+- [`phoenix/crates/common/xai-recsys/build.rs:50`](../source/phoenix/crates/common/xai-recsys/build.rs#L50) — `struct ModuleConst {`
+- [`phoenix/crates/common/xai-recsys/build.rs:55`](../source/phoenix/crates/common/xai-recsys/build.rs#L55) — `fn is_upper_snake(name: &str) -> bool {`
+- [`phoenix/crates/common/xai-recsys/build.rs:63`](../source/phoenix/crates/common/xai-recsys/build.rs#L63) — `fn parse_feature_config(src: &str) -> (Vec<EnumClass>, Vec<ModuleConst>) {`
+- [`phoenix/crates/common/xai-recsys/build.rs:130`](../source/phoenix/crates/common/xai-recsys/build.rs#L130) — `const ADS_DPA_CONST_NAMES: [&str; 6] = [`
+- [`phoenix/crates/common/xai-recsys/build.rs:138`](../source/phoenix/crates/common/xai-recsys/build.rs#L138) — `const ADS_DPA_INT64_MEMBER_NAMES: [&str; 2] = ["firstDpaProductKey", "firstDpaProductKeyHash2"];`
+- [`phoenix/crates/common/xai-recsys/build.rs:140`](../source/phoenix/crates/common/xai-recsys/build.rs#L140) — `fn emit_ads_dpa_cfg(classes: &[EnumClass], consts: &[ModuleConst]) {`
+- [`phoenix/crates/common/xai-recsys/build.rs:166`](../source/phoenix/crates/common/xai-recsys/build.rs#L166) — `fn main() {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:7`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L7) — `pub enum MultimodalEmbeddingType {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:18`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L18) — `pub const fn dim(self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:26`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L26) — `pub const fn as_str(self) -> &'static str {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:37`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L37) — `pub const fn is_enabled(self) -> bool {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:41`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L41) — `pub fn trainer_override(self) -> Option<String> {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:48`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L48) — `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:54`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L54) — `type Err = String;`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:56`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L56) — `fn from_str(s: &str) -> Result<Self, Self::Err> {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:72`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L72) — `pub struct HashTableConfig {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:112`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L112) — `pub fn offset_user(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:116`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L116) — `pub fn offset_item(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:120`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L120) — `pub fn offset_author(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:124`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L124) — `pub fn offset_ip(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:128`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L128) — `pub fn num_user_hashes(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:132`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L132) — `pub fn num_item_hashes(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:136`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L136) — `pub fn num_author_hashes(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:140`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L140) — `pub fn num_ip_hashes(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:144`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L144) — `pub fn effective_item_hash_buckets(&self) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:152`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L152) — `pub fn hash_user_id(&self, user_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:169`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L169) — `pub fn hash_item_id(&self, item_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:184`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L184) — `pub fn hash_author_id(&self, author_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:199`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L199) — `pub fn hash_user_ids(&self, user_ids: &[i64]) -> Vec<i32> {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:214`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L214) — `pub fn hash_item_ids(&self, item_ids: &[i64]) -> Vec<i32> {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:229`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L229) — `pub fn hash_author_ids(&self, author_ids: &[i64]) -> Vec<i32> {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:244`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L244) — `pub fn hash_ip_id(&self, ip_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:258`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L258) — `pub fn hash_ip_ids(&self, ip_ids: &[i64]) -> Vec<i32> {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:275`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L275) — `pub struct ModelConfig {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:287`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L287) — `pub fn from_params(`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:370`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L370) — `fn type_dim_matches_python_embedding_config() {`
+- [`phoenix/crates/common/xai-recsys/src/model_config.rs:380`](../source/phoenix/crates/common/xai-recsys/src/model_config.rs#L380) — `fn type_parses_cli_and_override_spellings() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:32`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L32) — `pub const WEB_CONV_FAKE_TWEET_ID: i64 = 4;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:34`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L34) — `pub fn conv_asset_map(ids: Option<&pb::ConvAssetIds>) -> HashMap<(i64, i64), i64> {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:53`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L53) — `pub fn is_web_conv_row(tweet_id: i64, has_conv_bit: bool) -> bool {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:57`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L57) — `pub fn conv_asset_ids_for_batch(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:101`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L101) — `pub fn record_sid_coverage(sequence: &str, present: u64, count: u64) {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:110`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L110) — `pub fn stamp_semantic_ids(dst: &mut [u16], entry_idx: usize, sid_num_levels: usize, codes: &[i32]) {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:144`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L144) — `pub const PRODUCT_SURFACE_CATEGORICAL_IDX: usize = PRODUCT_SURFACE_SEQ;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:145`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L145) — `const TIMEZONE_IDX: usize = TIMEZONE_SEQ;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:146`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L146) — `const LOCAL_HOUR_IDX: usize = LOCAL_HOUR_OF_DAY_SEQ;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:147`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L147) — `const LOCAL_DOW_IDX: usize = LOCAL_DAY_OF_WEEK_SEQ;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:148`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L148) — `pub const AUTHOR_IS_NSFW_CATEGORICAL_IDX: usize = AUTHOR_IS_NSFW_SEQ;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:150`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L150) — `const AUTHOR_NSFW_BIT: u64 = 2;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:152`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L152) — `fn stamp_engagement_counts(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:162`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L162) — `const INT32_MAX: u64 = i32::MAX as u64;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:182`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L182) — `fn hash_dpa_product_key_with(raw_key: i64, scale: i64, bias: i64) -> i64 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:195`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L195) — `pub fn hash_dpa_product_key(raw_key: i64) -> i64 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:204`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L204) — `pub fn hash_dpa_product_key_2(raw_key: i64) -> i64 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:212`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L212) — `pub fn stamp_i32_as_categorical(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:225`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L225) — `pub fn stamp_bool_seq(source: &[bool], dest: &mut [bool], num_features: usize, feature_idx: usize) {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:233`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L233) — `pub fn stamp_local_time_features(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:256`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L256) — `const TWITTER_EPOCH_MS: i64 = 1288834974657;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:258`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L258) — `fn snowflake_to_creation_ts_sec(tweet_id: i64) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:266`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L266) — `fn now_epoch_sec() -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:282`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L282) — `const TZ_ENUM_TO_UTC_OFFSET_SECS: [i64; 32] = [`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:288`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L288) — `pub fn compute_local_time(utc_epoch_secs: i64, tz_enum: i16) -> (i16, i16) {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:302`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L302) — `pub fn parse_ipv4_to_u32(ip: &str) -> u32 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:318`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L318) — `pub fn compute_user_ip_hashes(model_config: &ModelConfig, ip_id: i64) -> Vec<i32> {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:327`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L327) — `fn encode_client_id(app_id: i64) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:341`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L341) — `fn encode_country_code_crc32(cc: &str) -> i32 {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:348`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L348) — `pub struct UserFeatures {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:357`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L357) — `pub struct InputBuffer {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:407`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L407) — `pub fn repeat_query_into(dest: &mut [f32], query: &[f32], n_slots: usize) {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:421`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L421) — `pub fn num_real_candidates(&self, num_item_hashes: usize, cap: usize) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:431`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L431) — `struct CandidateData {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:450`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L450) — `fn new_with_candidates(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:681`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L681) — `pub fn extract_user_features(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:711`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L711) — `fn record_fill(feature: &str, filled: bool) {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:777`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L777) — `pub fn compute_for_item(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1121`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1121) — `pub fn compute_from_columnar_bytes(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1563`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1563) — `const NUM_CONVERSION_DENSE_FEATURES: usize = 29;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1564`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1564) — `const NUM_CONVERSION_HISTORY_HASHES: usize = 8;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1565`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1565) — `const PER_CANDIDATE_STRIDE: usize = Self::NUM_CONVERSION_DENSE_FEATURES;`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1567`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1567) — `fn extract_candidate_conversion_dense_features(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1590`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1590) — `fn extract_user_conversion_history_hashes(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1603`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1603) — `fn extract_candidate_account_hashes(`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1620`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1620) — `fn conv_asset_ids_for_batch_predicate_and_keys() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1696`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1696) — `fn test_model_config(num_post_categorical_features: usize) -> ModelConfig {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1739`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1739) — `fn feature_config_name_and_value() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1748`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1748) — `fn stamp_i32_as_categorical_basic() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1760`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1760) — `fn stamp_i32_as_categorical_noop_when_feature_idx_out_of_range() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1770`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1770) — `fn product_surface_stamped_into_candidate_categorical_features() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1813`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1813) — `fn author_is_nsfw_stamped_into_candidate_categorical_features() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1842`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1842) — `fn author_is_nsfw_noop_when_feature_idx_out_of_range() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1864`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1864) — `fn product_surface_padding_slots_are_zero() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1897`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1897) — `fn search_query_stays_one_vector() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1923`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1923) — `fn repeat_query_into_writes_prefix_and_keeps_tail() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1930`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1930) — `fn test_user_action_sequence(actions: &[(u64, u64)]) -> pb::UserActionSequence {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1956`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1956) — `fn test_history_model_config() -> ModelConfig {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1963`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1963) — `fn test_num_history_for(actions: &[(u64, u64)]) -> usize {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1978`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1978) — `fn num_history_counts_only_real_pre_padding_positions() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1985`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1985) — `fn num_history_caps_at_history_seq_len() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:1991`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L1991) — `fn num_history_zero_when_no_sequence() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2005`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2005) — `fn proto_history_semantic_ids_use_ranking_plus_one_shift() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2059`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2059) — `fn stamp_semantic_ids_shifts_and_skips_wrong_arity() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2067`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2067) — `fn columnar_history_semantic_ids_read_semantic_id_column() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2122`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2122) — `fn stamp_engagement_counts_writes_correct_indices() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2139`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2139) — `fn stamp_engagement_counts_noop_when_num_features_too_small() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2146`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2146) — `fn stamp_engagement_counts_saturates_to_i32_max() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2164`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2164) — `fn engagement_counts_stamped_into_candidate_int64_features() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2208`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2208) — `fn hash_dpa_product_key_matches_training_numpy() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2248`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2248) — `fn first_dpa_product_key_stamped_into_candidate_int64_features() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2304`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2304) — `fn stale_post_14d_zeroes_and_flags_old_candidate() {`
+- [`phoenix/crates/common/xai-recsys/src/util.rs:2357`](../source/phoenix/crates/common/xai-recsys/src/util.rs#L2357) — `fn user_gender_is_raw_proto_enum() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:10`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L10) — `const PARALLEL_ADLER32_CHUNKS: usize = 128;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:12`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L12) — `pub fn adler32_combine(checksum1: &mut u32, checksum2: u32, len2: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:22`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L22) — `fn adler32_parallel_impl(slice: &[u8], num_chunks: usize) -> u32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:34`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L34) — `pub fn adler32_parallel<'py>(py: Python<'py>, arr: PyReadonlyArray1<'py, u8>) -> PyResult<u32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:41`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L41) — `pub fn adler32_combine_py(_py: Python<'_>, checksum1: u32, checksum2: u32, len2: usize) -> u32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:48`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L48) — `pub fn adler32_shard_partial<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/adler32.rs:107`](../source/phoenix/crates/serving/xai-recsys-engine/src/adler32.rs#L107) — `pub fn adler32_combine_partials<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:8`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L8) — `pub enum AdmissionEtaModel {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:15`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L15) — `pub fn as_str(self) -> &'static str {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:24`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L24) — `type Err = String;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:26`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L26) — `fn from_str(s: &str) -> Result<Self, Self::Err> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:38`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L38) — `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:44`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L44) — `pub struct AdmissionConfig {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:55`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L55) — `pub struct AdmissionController {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:69`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L69) — `pub fn new(cfg: AdmissionConfig) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:89`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L89) — `pub fn eta_model(&self) -> AdmissionEtaModel {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:93`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L93) — `fn ewma(prev: u64, sample: u64, alpha: f64) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:101`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L101) — `pub fn reset_estimates(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:106`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L106) — `pub fn set_enabled(&self, on: bool) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:110`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L110) — `pub fn is_enabled(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:114`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L114) — `pub fn record_service_time_us(&self, sample_us: u64) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:125`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L125) — `pub fn record_sojourn_us(&self, sample_us: u64, admit_backlog: i64) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:141`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L141) — `fn queue_wait_us(&self, q: u64) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:150`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L150) — `pub fn should_reject(&self, remaining_us: Option<u64>, queue_depth: i64) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:169`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L169) — `pub fn predicted_eta_us(&self, queue_depth: i64) -> Option<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:176`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L176) — `pub fn predicted_eta_loop_us(&self, queue_depth: i64) -> Option<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:191`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L191) — `pub fn predicted_eta_pipeline_us(&self, queue_depth: i64) -> Option<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:204`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L204) — `pub fn service_time_us(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:208`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L208) — `pub fn pipeline_time_us(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:212`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L212) — `pub fn batch_size(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:216`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L216) — `pub fn margin_us(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:220`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L220) — `pub fn fallback_budget_us(&self) -> Option<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:233`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L233) — `fn cfg(enabled: bool) -> AdmissionConfig {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:246`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L246) — `fn cfg_pipeline(enabled: bool) -> AdmissionConfig {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:253`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L253) — `fn disabled_never_rejects() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:260`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L260) — `fn no_estimate_admits() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:266`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L266) — `fn missing_deadline_without_fallback_admits() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:273`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L273) — `fn deep_backlog_tight_deadline_rejects() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:280`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L280) — `fn light_load_admits() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:287`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L287) — `fn shallow_backlog_below_floor_admits() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:294`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L294) — `fn fallback_budget_exposed_and_used() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:304`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L304) — `fn fallback_budget_none_when_disabled() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:310`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L310) — `fn pipeline_depth_adds_completion_lag() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:329`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L329) — `fn predicted_eta_tracks_backlog() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:340`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L340) — `fn sojourn_replaces_pipeline_depth_term() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:353`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L353) — `fn sojourn_deep_queue_stores_residual() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:363`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L363) — `fn sojourn_without_s_is_just_p() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:370`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L370) — `fn loop_model_ignores_sojourn_samples() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:381`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L381) — `fn reset_estimates_clears_s_and_p() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:395`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L395) — `fn eta_model_parses_aliases() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/admission.rs:408`](../source/phoenix/crates/serving/xai-recsys-engine/src/admission.rs#L408) — `fn ewma_is_idle_independent_and_smooths() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs:24`](../source/phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs#L24) — `struct Args {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs:67`](../source/phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs#L67) — `fn derive_server_index() -> Option<usize> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs:74`](../source/phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs#L74) — `async fn metrics_handler() -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs:84`](../source/phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs#L84) — `async fn main() -> Result<(), Box<dyn Error>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs:161`](../source/phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs#L161) — `const MAX_CONSECUTIVE_STORAGE_FULL: u32 = 5;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs:222`](../source/phoenix/crates/serving/xai-recsys-engine/src/bin/checkpoint_server.rs#L222) — `fn main() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:24`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L24) — `struct CheckpointPaths {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:32`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L32) — `fn new(prefix: &str) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:42`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L42) — `fn to_local<'a>(&self, grpc_name: &'a str) -> &'a str {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:49`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L49) — `const DEFAULT_CHUNK_SIZE: usize = 256 << 20;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:51`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L51) — `pub struct CheckpointProxy {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:65`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L65) — `pub fn new(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:89`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L89) — `async fn resolve_and_connect(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:185`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L185) — `async fn extra_trainer_channels(&self, addr: SocketAddr, n: usize) -> Vec<transport::Channel> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:229`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L229) — `pub async fn poll_and_download(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:324`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L324) — `async fn download_checkpoint(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:430`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L430) — `fn finalize_and_cleanup(&self, paths: &CheckpointPaths) -> io::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:441`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L441) — `fn cleanup_old_checkpoints(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:475`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L475) — `fn ensure_free_space(&self, required: u64) -> io::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:534`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L534) — `pub fn has_existing_checkpoints(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:547`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L547) — `async fn download_channel_files(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:665`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L665) — `async fn download_chunk(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:712`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L712) — `fn assign_trainer_channels(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:768`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L768) — `fn free_bytes(path: &str) -> io::Result<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:776`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L776) — `pub fn cleanup_stale_staging_dirs() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:791`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L791) — `fn extract_prefix(name: &str) -> Option<&str> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs:797`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_proxy.rs#L797) — `fn find_latest_complete_prefix(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:23`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L23) — `const MAX_CONCURRENT: usize = 16;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:25`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L25) — `const MAX_RETRIES: usize = 6;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:27`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L27) — `const MULTIPART_THRESHOLD: usize = 100 * 1024 * 1024;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:29`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L29) — `const MULTIPART_PART_SIZE: usize = 32 * 1024 * 1024;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:31`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L31) — `const MAX_CONCURRENT_WRITE_REQUESTS: usize = 1;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:33`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L33) — `fn env_usize(name: &str, default: usize) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:49`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L49) — `pub struct CheckpointStore {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:55`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L55) — `fn new(client: Arc<dyn ObjectStore>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:62`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L62) — `pub async fn get(&self, path: &ObjectPath, label: &str) -> Result<Bytes, String> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:76`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L76) — `pub async fn put(&self, path: &ObjectPath, data: Bytes, label: &str) -> Result<(), String> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:114`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L114) — `pub async fn list(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:129`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L129) — `async fn with_retry<F, Fut, T>(&self, label: &str, op: F) -> Result<T, String>`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:176`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L176) — `pub struct XaiO2Store {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:181`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L181) — `pub async fn put(&self, path: &ObjectPath, data: Bytes, label: &str) -> Result<(), String> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:190`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L190) — `pub enum Store {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:196`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L196) — `pub async fn put(&self, path: &ObjectPath, data: Bytes, label: &str) -> Result<(), String> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:205`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L205) — `struct WorkloadIdentityCredentialProvider {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:210`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L210) — `fn from_file(path: &str) -> Result<Self, Box<dyn std::error::Error + Send + Sync>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:231`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L231) — `fn from_file_on_runtime(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:243`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L243) — `type Credential = GcpCredential;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:245`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L245) — `async fn get_credential(&self) -> object_store::Result<Arc<GcpCredential>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:261`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L261) — `fn is_external_account_credential(path: &str) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:275`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L275) — `pub fn get_checkpoint_store(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:384`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L384) — `fn is_o2_scheme(url: &str) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:388`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L388) — `fn use_xai_o2_for(url: &str) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:412`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L412) — `pub fn get_store(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:424`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L424) — `fn get_xai_o2_store(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs:448`](../source/phoenix/crates/serving/xai-recsys-engine/src/checkpoint_store.rs#L448) — `fn build_xai_o2_client(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/const.rs:3`](../source/phoenix/crates/serving/xai-recsys-engine/src/const.rs#L3) — `pub const ROOT_DIR: &str = "/dev/shm/";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/const.rs:5`](../source/phoenix/crates/serving/xai-recsys-engine/src/const.rs#L5) — `pub const LIST: &str = "/copy.Copy/List";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/const.rs:6`](../source/phoenix/crates/serving/xai-recsys-engine/src/const.rs#L6) — `pub const REGISTER: &str = "/copy.Copy/Register";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/const.rs:7`](../source/phoenix/crates/serving/xai-recsys-engine/src/const.rs#L7) — `pub const SEND: &str = "/copy.Copy/Send";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:41`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L41) — `pub type Contexts = Arc<Vec<(ibverbs::Context, ibverbs::ProtectionDomain)>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:42`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L42) — `pub type MR = ibverbs::MemoryRegion<&'static mut [u8]>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:43`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L43) — `pub type MRs = Arc<Vec<Option<MR>>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:44`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L44) — `pub type MRz = Arc<Vec<Vec<MR>>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:47`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L47) — `pub fn get_rmr(rmr: &Vec<u8>) -> Result<ibverbs::RemoteMemorySlice, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:51`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L51) — `pub async fn register_memory_regions(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:94`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L94) — `pub fn make_queues(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:121`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L121) — `pub async fn rdma(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:194`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L194) — `async fn handle_rdma(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:221`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L221) — `const IMM_DATA: u32 = 0x42;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:234`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L234) — `pub struct Sender {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:241`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L241) — `pub const DEFAULT_MAX_ENTRIES: usize = 12;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:244`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L244) — `fn default() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:250`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L250) — `pub fn new(max_entries: usize) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:259`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L259) — `pub fn with_peer_serve(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:271`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L271) — `pub fn publish_manifest(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:282`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L282) — `pub fn revoke_manifest(&self, drain_timeout: Duration) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:289`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L289) — `fn manifest(&self) -> Option<Arc<PeerManifest>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:294`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L294) — `fn walk_dir(path: &Path, start: usize, max_entries: usize) -> io::Result<Vec<(Vec<u8>, usize)>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:337`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L337) — `fn mmap_file(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:360`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L360) — `fn cleanup<'a>(mut bytez: MutexGuard<'a, BTreeMap<String, (Bytes, MRs)>>, max_entries: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:391`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L391) — `pub async fn handle_list(self: Arc<Self>, body: body::Body) -> Result<body::Body, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:408`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L408) — `pub async fn handle_send(self: Arc<Self>, body: body::Body) -> Result<body::Body, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:591`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L591) — `const FULL_SIZE: usize = 0x7FFFFFFF;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:615`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L615) — `pub async fn handle_register(self: Arc<Self>, body: body::Body) -> Result<body::Body, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:653`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L653) — `async fn handle(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:667`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L667) — `pub struct CopyService {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:672`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L672) — `pub fn new(sender: Sender) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:678`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L678) — `pub fn from_arc(sender: Arc<Sender>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:684`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L684) — `const NAME: &'static str = "copy.Copy";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:688`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L688) — `type Response = http::Response<body::Body>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:689`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L689) — `type Error = Infallible;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:690`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L690) — `type Future = BoxFuture<'static, Result<Self::Response, Self::Error>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:692`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L692) — `fn poll_ready(&mut self, _cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:696`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L696) — `fn call(&mut self, request: http::Request<body::Body>) -> Self::Future {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:707`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L707) — `struct TempFile {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:712`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L712) — `fn new(tag: &str, data: &[u8]) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:722`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L722) — `fn path_str(&self) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:728`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L728) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:733`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L733) — `fn backing_data(len: usize) -> Vec<u8> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:737`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L737) — `fn peer_sender(max_sends: usize, rate: Option<f64>) -> Arc<Sender> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:741`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L741) — `fn publish(sender: &Sender, file: &TempFile) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:763`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L763) — `fn empty_frame_body() -> body::Body {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:767`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L767) — `fn send_request_body(names: Vec<&str>, offsets: Vec<usize>, sizes: Vec<usize>) -> body::Body {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:779`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L779) — `async fn list_names(sender: &Arc<Sender>) -> Vec<(String, usize)> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:809`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L809) — `async fn send_and_read(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:835`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L835) — `async fn list_includes_manifest_entries() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:854`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L854) — `async fn send_serves_virtual_slices_and_blobs() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:892`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L892) — `async fn revoke_unpublishes_and_send_fails() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:914`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L914) — `async fn revoke_waits_for_inflight_sends() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:945`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L945) — `async fn send_concurrency_limit() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy.rs:974`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy.rs#L974) — `fn publish_refused_and_revoke_noop_when_disabled() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:45`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L45) — `pub(crate) struct PeerServeMetrics {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:52`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L52) — `fn global() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:61`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L61) — `fn isolated() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:86`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L86) — `pub struct ManifestSpec {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:93`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L93) — `struct CachedMmap {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:98`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L98) — `fn as_ref(&self) -> &[u8] {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:107`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L107) — `struct FileIdentity {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:113`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L113) — `fn file_identity(file: &fs::File) -> io::Result<FileIdentity> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:123`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L123) — `fn file_identity(file: &fs::File) -> io::Result<FileIdentity> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:134`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L134) — `fn cached_file_bytes(path: &str) -> io::Result<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:150`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L150) — `struct LeasedSlice {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:156`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L156) — `fn as_ref(&self) -> &[u8] {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:161`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L161) — `const UNMAP_SLICE_BYTES: usize = 4 << 30;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:164`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L164) — `fn unmap_in_slices(mmap: memmap2::Mmap, slice_bytes: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:198`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L198) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:219`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L219) — `pub struct PeerManifest {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:226`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L226) — `pub fn resolve(&self, name: &str) -> Option<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:233`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L233) — `pub fn list(&self) -> impl Iterator<Item = (Vec<u8>, usize)> + '_ {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:245`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L245) — `pub struct PeerPacer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:251`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L251) — `const BURST_SECS: f64 = 0.25;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:253`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L253) — `pub fn new(bytes_per_sec: f64) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:260`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L260) — `fn consume(&self, n: usize) -> Duration {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:276`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L276) — `pub struct PeerServeState {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:284`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L284) — `pub fn new(max_concurrent_sends: usize, rate_limit_bytes_per_sec: Option<f64>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:292`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L292) — `fn new_with_metrics(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:307`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L307) — `pub fn publish(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:351`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L351) — `pub fn revoke(&self, drain_timeout: Duration) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:373`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L373) — `pub fn manifest(&self) -> Option<Arc<PeerManifest>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:377`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L377) — `pub fn try_acquire_send_permit(&self) -> Option<OwnedSemaphorePermit> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:388`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L388) — `pub fn note_send_while_revoked(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:395`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L395) — `pub fn pacer(&self) -> Option<Arc<PeerPacer>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:400`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L400) — `pub const PEER_PACE_CHUNK: usize = 8 << 20;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:402`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L402) — `pub struct PacedBody {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:412`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L412) — `pub fn new<B: HttpBody<Data = Bytes, Error = Infallible> + Send + 'static>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:420`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L420) — `fn with_metrics<B: HttpBody<Data = Bytes, Error = Infallible> + Send + 'static>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:437`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L437) — `fn pace(&mut self, n: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:448`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L448) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:454`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L454) — `type Data = Bytes;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:455`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L455) — `type Error = Infallible;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:457`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L457) — `fn poll_frame(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:494`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L494) — `struct TempFile {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:499`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L499) — `fn new(tag: &str, data: &[u8]) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:509`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L509) — `fn path_str(&self) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:515`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L515) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:522`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L522) — `fn unmap_in_slices_covers_whole_mapping() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:534`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L534) — `fn mmap_cache_reuses_and_replaces_mappings() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:551`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L551) — `fn leased_slice_drop_releases_lease_without_unmap() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:571`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L571) — `fn backing_data(len: usize) -> Vec<u8> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:575`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L575) — `fn publish(state: &PeerServeState, file: &TempFile) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:598`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L598) — `fn list_names_and_sizes() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:622`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L622) — `fn resolve_slices_blobs_and_unknown_names() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:647`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L647) — `fn publish_validates_bounds() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:666`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L666) — `fn revoke_unpublishes_and_is_idempotent() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:676`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L676) — `fn revoke_waits_for_inflight_reads() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:697`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L697) — `fn send_permits_bound_concurrency() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:706`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L706) — `fn pacer_math() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:717`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L717) — `async fn paced_body_rechunks_and_preserves_bytes() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs:744`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_manifest.rs#L744) — `fn rejected_permit_counted_as_limit() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:22`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L22) — `pub struct TensorBuf<'a> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:28`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L28) — `pub struct DownloadMeta {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:35`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L35) — `pub enum CopyPortError {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:55`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L55) — `fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:83`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L83) — `const MAX_PACING_SLEEP: Duration = Duration::from_secs(60);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:85`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L85) — `pub async fn resolve_copy_urls(urls: &str) -> Result<String, CopyPortError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:121`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L121) — `fn parse_host_port(s: &str) -> Result<(&'static str, String, u16), CopyPortError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:142`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L142) — `fn checkpoint_prefix_from_path(path: &str) -> Result<String, CopyPortError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:153`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L153) — `fn parse_elapsed_from_prefix(prefix: &str) -> Option<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:159`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L159) — `fn newest_full_prefix(entries: &[Vec<(String, usize)>]) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:166`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L166) — `fn full_prefixes_newest_first(entries: &[Vec<(String, usize)>]) -> Vec<String> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:197`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L197) — `fn is_newer_prefix(prefix: &str, elapsed_samples: u64) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:202`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L202) — `fn set_or_check(slot: &mut usize, value: usize, what: &str) -> Result<(), CopyPortError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:216`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L216) — `async fn connect_and_list(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:248`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L248) — `type TransferFuture = BoxFuture<'static, (usize, u32)>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:249`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L249) — `type DenseDownloadPlan = (Vec<TransferFuture>, Vec<usize>, Vec<u8>);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:251`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L251) — `type IndexedTransfer = Result<(usize, (usize, u32)), CopyPortError>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:253`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L253) — `struct TransferSlot(Mutex<Option<TransferFuture>>);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:256`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L256) — `fn poll(&self, cx: &mut std::task::Context<'_>) -> Poll<Result<(usize, u32), CopyPortError>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:276`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L276) — `struct ActiveTransfers {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:282`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L282) — `fn push(&mut self, index: usize, future: TransferFuture) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:293`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L293) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:308`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L308) — `async fn run_downloads(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:322`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L322) — `fn pacing_sleep(total_bytes: u64, rate: u64, elapsed: Duration) -> Duration {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:338`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L338) — `async fn join_rate_limited(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:405`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L405) — `fn check_transfer_results(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:424`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L424) — `fn sfence_after_download() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:431`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L431) — `pub async fn probe_newer_checkpoint(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:444`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L444) — `fn choose_prefix(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:463`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L463) — `pub async fn download_dense_weight(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:503`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L503) — `pub async fn download_dense_and_embeddings(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:628`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L628) — `async fn download_sharded_with_channels(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:697`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L697) — `pub const BUNDLE_MANIFEST_NAME: &str = "export/MANIFEST.json";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:699`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L699) — `pub async fn find_bundle_checkpoint(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:707`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L707) — `fn select_bundle_checkpoint(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:739`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L739) — `pub async fn download_named_files(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:801`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L801) — `pub async fn download_embedding_table(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:822`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L822) — `async fn download_embedding_table_with_conns(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:870`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L870) — `struct DenseListing<'a> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:876`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L876) — `fn index_dense_listing<'a>(prefix: &str, entries: &'a [(String, usize)]) -> DenseListing<'a> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:898`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L898) — `fn build_dense_downloads(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:962`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L962) — `pub(crate) fn replicated_send_ranges(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:981`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L981) — `pub(crate) fn peer_send_max_pieces(piece_bytes: usize) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:985`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L985) — `pub(crate) enum ShardOwnership {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:995`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L995) — `pub(crate) fn classify_shard_ownership(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1061`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1061) — `pub(crate) fn shuffle_sharded_schedule(n: usize, name: &str) -> Vec<usize> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1076`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1076) — `pub(crate) fn restore_piece_order<T>(shuffled: Vec<T>, schedule: &[usize]) -> Option<Vec<T>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1090`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1090) — `fn results_in_piece_order(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1107`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1107) — `pub(crate) fn combine_transfer_checksums(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1128`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1128) — `struct ShardedLayout {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1134`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1134) — `fn from_listing(name: &str, entries: &[Vec<(String, usize)>]) -> Result<Self, CopyPortError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1142`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1142) — `fn total_pieces(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1149`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1149) — `fn listed_bytes(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1153`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1153) — `fn check_buffer_size(&self, name: &str, buf_len: usize) -> Result<(), CopyPortError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1188`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1188) — `async fn spawn_striped_trainer_downloads(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1312`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1312) — `async fn spawn_sharded_downloads(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1436`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1436) — `fn prefix_from_trailing_slash_path() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1444`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1444) — `fn prefix_from_no_trailing_slash() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1452`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1452) — `fn prefix_rejects_short_path() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1457`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1457) — `fn set_or_check_first_then_match() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1466`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1466) — `fn ckpt_listing(elapsed: u64, bundled: bool) -> Vec<(String, usize)> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1475`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1475) — `fn ckpt_prefix(elapsed: u64) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1480`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1480) — `fn full_prefixes_are_newest_first_and_require_every_active_channel() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1495`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1495) — `fn bundle_discovery_picks_newest_bundled_checkpoint() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1505`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1505) — `fn bundle_discovery_falls_back_past_unbundled_newest() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1519`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1519) — `fn bundle_discovery_never_returns_older_than_current() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1533`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1533) — `fn bundle_discovery_none_when_nothing_newer() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1542`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1542) — `fn bundle_discovery_rejects_zero_size_manifest() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1555`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1555) — `fn listing(pieces: &[usize], size: usize) -> Vec<(String, usize)> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1563`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1563) — `fn classify_sharded_owners() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1580`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1580) — `fn classify_replicated_peers() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1592`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1592) — `fn classify_replicated_requires_prefiltering_empty_channels() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1608`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1608) — `fn classify_single_channel_stays_sharded() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1621`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1621) — `fn classify_rejects_inconsistent_ownership() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1629`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1629) — `fn replicated_block_range(total: usize, n: usize, i: usize) -> (usize, usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1638`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1638) — `fn replicated_block_ranges_cover_all_pieces() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1655`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1655) — `fn combine_checksums_validates_sizes() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1662`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1662) — `fn shuffle_schedule_is_stable_permutation() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1675`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1675) — `fn restore_piece_order_inverts_schedule() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1687`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1687) — `fn combine_after_restore_matches_piece_order() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1705`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1705) — `fn replicated_send_ranges_chunk_within_blocks() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1722`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1722) — `fn replicated_send_ranges_round_robin_spans_all_channels() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1739`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1739) — `fn replicated_send_ranges_golden_uncapped_matches_block_range() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1754`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1754) — `fn replicated_send_ranges_cover_all_pieces_in_order() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1768`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1768) — `fn peer_send_max_pieces_bounds() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1775`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1775) — `fn choose_prefix_respects_target() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1792`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1792) — `fn tracking_downloads(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1818`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1818) — `async fn rate_limit_caps_in_flight() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1839`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1839) — `async fn rate_limit_paces_between_batches() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1883`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1883) — `async fn rate_limit_skips_remaining_on_sentinel() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1910`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1910) — `async fn unlimited_path_spawns_all() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1942`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1942) — `async fn refill_preserves_order_concurrency_and_global_pacing() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:1984`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L1984) — `async fn failure_stops_admissions_and_drains_active_work() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2039`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2039) — `fn cancellation_and_shutdown_join_writers_despite_panicking_destructors() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2040`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2040) — `struct PanicOnDrop(Arc<AtomicUsize>);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2042`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2042) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2143`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2143) — `const PREFIX: &str = "elapsed_samples_000000000000000042/trainer/";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2144`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2144) — `type Files = BTreeMap<String, Vec<u8>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2147`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2147) — `struct Traffic {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2155`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2155) — `struct Trainer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2163`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2163) — `const NAME: &'static str = "copy.Copy";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2167`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2167) — `type Response = http::Response<body::Body>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2168`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2168) — `type Error = Infallible;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2169`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2169) — `type Future = BoxFuture<'static, Result<Self::Response, Self::Error>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2171`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2171) — `fn poll_ready(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2178`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2178) — `fn call(&mut self, request: http::Request<body::Body>) -> Self::Future {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2185`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2185) — `async fn handle(self, request: http::Request<body::Body>) -> Result<body::Body, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2276`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2276) — `async fn serve(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2305`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2305) — `fn tensor(name: &str, pieces: std::ops::Range<usize>, piece: usize) -> Files {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2318`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2318) — `async fn trainer_hotswap_preserves_sources_checksums_and_shared_budget() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2426`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2426) — `async fn trainer_extra_listing_fallback_and_short_transfer_retry() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2467`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2467) — `const PREFIX: &str = "elapsed_samples_000000000000000042/testrun/";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2468`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2468) — `const PIECE: usize = 1000;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2469`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2469) — `const PIECES: usize = 5;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2471`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2471) — `async fn spawn_peer(backing: &std::path::Path) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2497`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2497) — `async fn replicated_download_from_two_peers() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2524`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2524) — `async fn replicated_download_multi_connection() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2552`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2552) — `async fn spawn_stale_peer(backing: &std::path::Path) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2576`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2576) — `async fn replicated_multi_connection_excludes_stale_source() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs:2607`](../source/phoenix/crates/serving/xai-recsys-engine/src/copy_port_client.rs#L2607) — `async fn replicated_download_over_tls() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:64`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L64) — `const PAGE_SIZE: usize = 2usize.pow(16);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:66`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L66) — `const PAGE_SIZE: usize = 2usize.pow(12);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:78`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L78) — `pub fn init_parallel<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:100`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L100) — `pub fn madvise_hugepage<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:109`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L109) — `pub fn madvise_sequential<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:118`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L118) — `pub fn madvise_normal<'py>(_py: Python<'py>, mut arr: PyReadwriteArray1<'py, u8>) -> PyResult<()> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:123`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L123) — `fn copy_rows_generic(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:142`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L142) — `const ALIGNMENT: usize = 2usize.pow(6);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:294`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L294) — `fn copy_rows(table_slice: &[u8], row_index_chunk: &[u32], row_chunk: &mut [u8], row_size: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:299`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L299) — `fn copy_rows(table_slice: &[u8], row_index_chunk: &[u32], row_chunk: &mut [u8], row_size: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:309`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L309) — `fn copy_rows(table_slice: &[u8], row_index_chunk: &[u32], row_chunk: &mut [u8], row_size: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:319`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L319) — `pub struct EmbeddingGatherError(pub String);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:322`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L322) — `fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:329`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L329) — `pub fn embedding_gather_into(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:400`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L400) — `pub fn embedding_gather<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:433`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L433) — `const READ_SIZE: usize = 2usize.pow(27);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:435`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L435) — `const WIDTH: usize = 2usize.pow(7);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:436`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L436) — `const CONCURRENCY_OUTER: usize = 8;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:437`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L437) — `const CONCURRENCY_INNER: usize = 16;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:467`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L467) — `fn parse_window_mib(v: Option<&str>, default_mib: u32) -> Option<u32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:472`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L472) — `pub(crate) fn apply_copy_port_http2(endpoint: transport::Endpoint) -> transport::Endpoint {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:482`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L482) — `pub(crate) async fn get_channels(target: String) -> Result<Vec<transport::Channel>, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:490`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L490) — `pub(crate) async fn get_channels_with_endpoints(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:555`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L555) — `pub(crate) fn peer_conns_per_source() -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:563`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L563) — `pub(crate) fn trainer_conns_per_source() -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:571`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L571) — `fn parse_conns_per_source(v: Option<&str>) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:577`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L577) — `pub(crate) fn duplicated_urls(urls: &str, extra: usize) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:590`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L590) — `pub(crate) async fn expand_replicated_channels(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:639`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L639) — `pub(crate) struct JoinOnDrop<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:644`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L644) — `pub(crate) fn new(handle: tokio::task::JoinHandle<T>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:650`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L650) — `pub(crate) async fn join(mut self) -> Result<T, tokio::task::JoinError> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:657`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L657) — `struct JoinWake(std::thread::Thread);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:660`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L660) — `fn wake(self: std::sync::Arc<Self>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:664`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L664) — `fn wake_by_ref(self: &std::sync::Arc<Self>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:670`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L670) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:685`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L685) — `fn install_grpc_chunk(dest: &mut [u8], pos: &mut usize, checksum: &mut u32, chunk: &[u8]) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:699`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L699) — `pub(crate) async fn send_entries(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:726`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L726) — `const GRPC_COPY_PIECE: usize = 4 << 20;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:810`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L810) — `pub(crate) async fn list_entries(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:860`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L860) — `pub(crate) async fn get_channels_list_entries(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:871`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L871) — `pub fn maybe_load_fully_replicated_tensors<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1064`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1064) — `pub(crate) async fn register_tensor_for_download(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1091`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1091) — `pub fn load_tensor_no_resharding<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1306`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1306) — `pub fn load_tensor_into(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1528`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1528) — `pub fn load_tensor<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1584`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1584) — `struct AlignedBuf {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1591`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1591) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1597`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1597) — `fn new_zeroed(len: usize) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1605`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1605) — `fn from_iter(len: usize, it: impl Iterator<Item = u8>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1613`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1613) — `fn as_slice(&self) -> &[u8] {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1617`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1617) — `fn as_mut_slice(&mut self) -> &mut [u8] {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1622`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1622) — `fn deterministic_indices(num_rows: usize, count: usize) -> Vec<u32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1637`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1637) — `fn copy_rows_matches_generic_for_all_row_sizes() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1659`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1659) — `fn gather_accepts_cache_line_multiples_and_rejects_others() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1693`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1693) — `fn bench_copy_rows_row_sizes() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1717`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1717) — `fn window_mib_parses_defaults_and_disables() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1726`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1726) — `fn duplicated_urls_repeats_each_source() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs:1736`](../source/phoenix/crates/serving/xai-recsys-engine/src/emb_table.rs#L1736) — `fn conns_per_source_parses_and_clamps() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:17`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L17) — `const GRPC_FRAME_HEADER_SIZE: usize = 5;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:37`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L37) — `fn method_label(path: &str) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:45`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L45) — `pub struct GrpcCompressionService<S> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:50`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L50) — `pub fn new(inner: S) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:56`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L56) — `const NAME: &'static str = S::NAME;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:66`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L66) — `type Response = http::Response<axum::body::Body>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:67`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L67) — `type Error = Infallible;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:68`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L68) — `type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>> + Send>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:70`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L70) — `fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:74`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L74) — `fn call(&mut self, req: http::Request<ReqBody>) -> Self::Future {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:138`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L138) — `fn rebuild_response(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:153`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L153) — `fn compress_grpc_frame(data: &Bytes) -> Bytes {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:192`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L192) — `fn method_label_strips_service_prefix() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:202`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L202) — `fn compress_sets_flag_and_shrinks_payload() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:218`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L218) — `fn compress_ms_accepts_method_label() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:225`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L225) — `struct FakeSvc {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:230`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L230) — `const NAME: &'static str = "test";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:234`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L234) — `type Response = http::Response<axum::body::Body>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:235`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L235) — `type Error = Infallible;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:236`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L236) — `type Future = std::future::Ready<Result<Self::Response, Self::Error>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:238`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L238) — `fn poll_ready(&mut self, _: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:242`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L242) — `fn call(&mut self, _: http::Request<()>) -> Self::Future {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:257`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L257) — `async fn call_zstd(payload: Vec<u8>) -> http::Response<axum::body::Body> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:268`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L268) — `async fn rebuild_keeps_grpc_status_trailers_when_compressed() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs:284`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_compression.rs#L284) — `async fn rebuild_keeps_grpc_status_trailers_when_too_small_to_compress() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:25`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L25) — `pub fn concat_bodies<I>(bodies: I) -> impl Body<Data = Bytes, Error = Infallible> + Send`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:39`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L39) — `pub fn get_bytes_mut() -> BytesMut {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:43`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L43) — `pub fn freeze(mut buf: BytesMut) -> Full<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:49`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L49) — `pub fn add_ok_trailer<T: Body<Data = Bytes, Error = Infallible> + Send + 'static>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:59`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L59) — `pub fn make_response(payload: Result<body::Body, Status>) -> http::Response<body::Body> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:74`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L74) — `type GrpcCallFuture = BoxFuture<'static, Result<body::Body, Status>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:76`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L76) — `pub trait GrpcCall {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:77`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L77) — `fn grpc_ready<'a>(&'a mut self) -> BoxFuture<'a, Result<(), Status>>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:78`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L78) — `fn grpc_call(&mut self, uri: &str, body: body::Body) -> GrpcCallFuture;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:82`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L82) — `fn grpc_ready<'a>(&'a mut self) -> BoxFuture<'a, Result<(), Status>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:90`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L90) — `fn grpc_call(&mut self, uri: &str, body: body::Body) -> GrpcCallFuture {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:128`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L128) — `pub async fn ready_call_parse<'a, T: Body<Data = Bytes, Error = Infallible> + Send + 'static>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:156`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L156) — `pub fn block_on<T: Send + 'static>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:209`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L209) — `pub(crate) const TRANSFER_FAILED_SENTINEL: usize = usize::MAX;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:211`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L211) — `const MAX_PACING_SLEEP: Duration = Duration::from_secs(60);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:213`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L213) — `fn pacing_sleep(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:229`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L229) — `pub fn block_on_rate_limited(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:294`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L294) — `fn boxed(results: Vec<(usize, u32)>) -> Vec<BoxFuture<'static, (usize, u32)>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:301`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L301) — `fn test_runtime() -> runtime::Runtime {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:310`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L310) — `fn rate_limited_returns_early_on_failed_transfer() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:323`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L323) — `fn rate_limited_returns_all_results_on_success() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:331`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L331) — `fn pacing_sleep_clamps_corrupt_accounting() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs:338`](../source/phoenix/crates/serving/xai-recsys-engine/src/grpc_util.rs#L338) — `fn pacing_sleep_normal_case_unclamped() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:13`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L13) — `pub const AVX_512_ALIGNMENT: usize = 64;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:16`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L16) — `const PAGE_SIZE: usize = 2usize.pow(16);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:18`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L18) — `const PAGE_SIZE: usize = 2usize.pow(12);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:20`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L20) — `const DEFAULT_INIT_THREADS: usize = 128;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:21`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L21) — `const HUGEPAGE_MIN_BYTES: usize = 1 << 21;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:23`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L23) — `pub struct AlignedHostBuffer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:34`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L34) — `pub fn allocate(nbytes: usize) -> io::Result<Self> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:76`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L76) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:80`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L80) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:84`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L84) — `pub fn as_ptr(&self) -> *const u8 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:88`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L88) — `pub fn as_mut_ptr(&mut self) -> *mut u8 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:92`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L92) — `pub fn as_slice(&self) -> &[u8] {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:96`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L96) — `pub fn as_mut_slice(&mut self) -> &mut [u8] {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:102`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L102) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:109`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L109) — `pub fn allocate_emb_table(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:127`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L127) — `fn fault_in_pages(slice: &mut [u8], num_threads: usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:142`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L142) — `pub struct EmbTableHandle {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:153`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L153) — `fn new(height: usize, width: usize, itemsize: usize) -> PyResult<Self> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:165`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L165) — `fn address(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:170`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L170) — `fn nbytes(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:175`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L175) — `fn height(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:180`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L180) — `fn width(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:185`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L185) — `fn itemsize(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:190`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L190) — `fn shape(&self) -> (usize, usize) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:194`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L194) — `fn __repr__(&self) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:207`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L207) — `pub fn into_buffer(self) -> AlignedHostBuffer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:211`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L211) — `pub fn buffer(&self) -> &AlignedHostBuffer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:215`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L215) — `pub fn buffer_mut(&mut self) -> &mut AlignedHostBuffer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs:222`](../source/phoenix/crates/serving/xai-recsys-engine/src/host_buffer.rs#L222) — `pub fn allocate_emb_table_py(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:12`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L12) — `pub const MAX_WR_SIZE: usize = 1 << 30;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:13`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L13) — `pub const MAX_QUEUE_DEPTH: u32 = 1 << 10;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:15`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L15) — `pub fn make_ib_contexts() -> Result<Vec<(Context, ProtectionDomain)>, Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:34`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L34) — `pub fn make_qp(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:41`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L41) — `const MAX_SGE: u32 = 1;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:81`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L81) — `pub fn handshake(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:111`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L111) — `pub async fn poll(pending: usize, queues: &[(QueuePair, CompletionQueue)]) -> Result<(), Status> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs:121`](../source/phoenix/crates/serving/xai-recsys-engine/src/ibverbs_util.rs#L121) — `async fn poll_inner(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:13`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L13) — `pub const NODE_MASK_SIZE: usize = 16;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:14`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L14) — `const MPOL_F_MEMS_ALLOWED: u64 = 4;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:16`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L16) — `pub fn get_numa_policy(flags: u64) -> Result<(c_int, [u64; NODE_MASK_SIZE]), io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:42`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L42) — `pub fn get_numa_node_count() -> Result<u32, io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:59`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L59) — `pub fn set_numa_policy(mode: c_int, node_mask: [u64; NODE_MASK_SIZE]) -> Result<(), io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:80`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L80) — `const HUGE_PAGE_SIZE: usize = 2usize.pow(29);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:82`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L82) — `const HUGE_PAGE_SIZE: usize = 2usize.pow(21);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:84`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L84) — `pub fn madvise_hugepage_internal(slice: &mut [u8]) -> Result<(), io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:108`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L108) — `pub fn madvise_sequential_internal(slice: &mut [u8]) -> Result<(), io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:125`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L125) — `pub fn madvise_normal_internal(slice: &mut [u8]) -> Result<(), io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:143`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L143) — `const NT_THRESHOLD: usize = 4096;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:144`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L144) — `const CHUNK: usize = 32;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:173`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L173) — `pub fn copy_nontemporal(dst: &mut [u8], src: &[u8]) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:178`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L178) — `pub enum InitKind {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs:184`](../source/phoenix/crates/serving/xai-recsys-engine/src/mem_util.rs#L184) — `pub async fn init_mem(buf: &mut [u8], kind: InitKind) -> Result<(), io::Error> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:19`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L19) — `const SNOWFLAKE_EPOCH_MS: i64 = 1288834974657;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:22`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L22) — `pub struct PrefetchMmQueryConfig {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:29`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L29) — `fn age_cutoff_ms(max_age_hours: u64) -> i64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:37`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L37) — `fn passes_age(tweet_id: i64, cutoff_ms: i64) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:41`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L41) — `fn finalize_sample(mut pids: Vec<u64>, sample_size: usize) -> Vec<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:49`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L49) — `fn sample_from_proto(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:87`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L87) — `fn sample_from_columnar(columnar_bytes: &[u8], config: &PrefetchMmQueryConfig) -> Vec<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:133`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L133) — `pub fn sample_positive_history_pids(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:144`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L144) — `pub async fn prefetch_seed_embeddings(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs:168`](../source/phoenix/crates/serving/xai-recsys-engine/src/multimodal_retrieval.rs#L168) — `pub fn read_pre_fetched_seed_embeddings<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:11`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L11) — `pub fn common_prefix_size<T: PartialEq>(a: &[T], b: &[T]) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:15`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L15) — `pub fn decode_names(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:55`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L55) — `pub fn encode_names(names: Vec<Vec<u8>>) -> (Vec<u8>, Vec<usize>, Vec<usize>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:70`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L70) — `pub trait BytesMutProtoExt {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:71`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L71) — `fn put_varints<T: AsPrimitive<u64>, const N: usize>(&mut self, values: [T; N]);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:72`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L72) — `fn put_slices<const N: usize>(&mut self, values: [&[u8]; N]);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:73`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L73) — `fn put_string(&mut self, key: usize, value: &[u8]);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:74`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L74) — `fn put_repeated_ints<T: AsPrimitive<u64>, const N: usize>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:82`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L82) — `fn put_varints<T: AsPrimitive<u64>, const N: usize>(&mut self, values: [T; N]) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:88`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L88) — `fn put_slices<const N: usize>(&mut self, values: [&[u8]; N]) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:94`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L94) — `fn put_string(&mut self, key: usize, value: &[u8]) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:99`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L99) — `fn put_repeated_ints<T: AsPrimitive<u64>, const N: usize>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:114`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L114) — `pub fn repeated_ints<T>(ints: &mut Vec<T>) -> impl FnMut(usize, &[u8]) + Send`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:135`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L135) — `pub fn bytes(bytes: &mut Vec<u8>) -> impl FnMut(usize, &[u8]) + Send {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:144`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L144) — `pub fn repeated_bytes(bytes: &mut Vec<Vec<u8>>) -> impl FnMut(usize, &[u8]) + Send {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:157`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L157) — `pub struct FixedSizeContext {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:164`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L164) — `fn default() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:170`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L170) — `pub fn new() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:174`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L174) — `pub fn init(&mut self, i: i32, e: i32) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:180`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L180) — `pub fn parse(&mut self, input: &[u8]) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:191`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L191) — `pub fn left(&self) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:195`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L195) — `pub fn done(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:199`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L199) — `pub fn x(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:204`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L204) — `pub struct VarintContext {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:210`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L210) — `fn default() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:216`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L216) — `pub fn new() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:220`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L220) — `pub fn init(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:225`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L225) — `pub fn parse(&mut self, input: &[u8]) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:237`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L237) — `pub fn done(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:241`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L241) — `pub fn x(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:246`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L246) — `type FuncStart<'a> = Box<dyn FnMut() + Send + 'a>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:247`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L247) — `type FuncU32<'a> = Box<dyn FnMut(u32) + Send + 'a>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:248`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L248) — `type FuncU64<'a> = Box<dyn FnMut(u64) + Send + 'a>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:249`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L249) — `type FuncInt<'a> = Box<dyn FnMut(usize) + Send + 'a>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:250`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L250) — `type FuncStr<'a> = Box<dyn FnMut(usize, &[u8]) + Send + 'a>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:251`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L251) — `type FuncBytes<'a> = Box<dyn FnMut(usize, Bytes) + Send + 'a>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:253`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L253) — `pub enum Func<'a> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:263`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L263) — `pub trait FuncConvertible<'a, Args> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:264`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L264) — `fn into(self, x: u64) -> (u64, Func<'a>);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:268`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L268) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:275`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L275) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:282`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L282) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:289`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L289) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:296`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L296) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:303`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L303) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:310`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L310) — `fn into(self, x: u64) -> (u64, Func<'a>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:316`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L316) — `pub fn proto<'a, F, Args>(x: u64, arg: F) -> (u64, Func<'a>)`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:330`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L330) — `pub enum BodyKind {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:336`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L336) — `pub async fn parse<'a, T: Body<Data = Bytes, Error = Status> + Send + Unpin>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs:342`](../source/phoenix/crates/serving/xai-recsys-engine/src/proto_parser.rs#L342) — `enum State {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:11`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L11) — `const DEFAULT_MAX_ENTRIES: usize = 12;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:38`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L38) — `const BLOOM_NUM_HASHES: usize = 6;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:40`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L40) — `const NUM_CONVERSION_DENSE_FEATURES: usize = 29;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:41`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L41) — `const NUM_CONVERSION_HISTORY_HASHES: usize = 8;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:44`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L44) — `fn bloom_may_contain(bit_array: &[u64], num_bits: usize, post_id: i64) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:91`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L91) — `struct InFlightGuard;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:94`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L94) — `fn new() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:101`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L101) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:147`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L147) — `fn generate_latency_buckets() -> Vec<f64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:151`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L151) — `fn extract_request_id<T>(request: &Request<T>) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:167`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L167) — `fn queue_backlog<T>(sender: &mpsc::Sender<T>) -> i64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:172`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L172) — `fn should_shed_for_deadline<T>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:204`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L204) — `const MAX_MESSAGE_SIZE: usize = 128 * 1024 * 1024;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:205`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L205) — `const CHANNEL_SIZE: usize = 2048;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:206`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L206) — `const ENQUEUE_TIMEOUT_MS: u64 = 1000;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:207`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L207) — `const QUEUE_MAX_STALENESS_MS: u64 = 1200;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:210`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L210) — `pub struct ReqCandidateSequence {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:217`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L217) — `pub struct ReqUserSequenceAggrgated {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:226`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L226) — `pub trait RequestItem {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:227`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L227) — `fn get_sequence(&self) -> &Option<pb::UserActionSequence>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:228`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L228) — `fn get_user_id(&self) -> i64;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:232`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L232) — `fn get_sequence(&self) -> &Option<pb::UserActionSequence> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:236`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L236) — `fn get_user_id(&self) -> i64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:242`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L242) — `fn get_sequence(&self) -> &Option<pb::UserActionSequence> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:246`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L246) — `fn get_user_id(&self) -> i64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:251`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L251) — `fn stale_drop_message(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:272`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L272) — `fn enqueue_time(&self) -> Instant {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:276`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L276) — `fn deadline(&self) -> Option<Instant> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:280`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L280) — `fn on_stale_drop(mut self, max_staleness: Duration) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:293`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L293) — `fn enqueue_time(&self) -> Instant {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:297`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L297) — `fn deadline(&self) -> Option<Instant> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:301`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L301) — `fn on_stale_drop(mut self, max_staleness: Duration) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:314`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L314) — `pub struct PredictRequestBatch {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:320`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L320) — `pub fn get_candidate_sets<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:366`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L366) — `pub fn get_return_logprob<'py>(&self, py: Python<'py>) -> Bound<'py, PyArray2<bool>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:372`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L372) — `pub fn get_top_logprobs_num<'py>(&self, py: Python<'py>) -> Bound<'py, PyArray2<u32>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:381`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L381) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:385`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L385) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:389`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L389) — `pub fn reply(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:486`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L486) — `struct DonatedArray1<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:492`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L492) — `struct DonatedArray2<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:499`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L499) — `struct DonatedArray3<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:512`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L512) — `fn new(arr: Bound<'_, PyArray1<T>>) -> PyResult<Self> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:541`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L541) — `fn new(arr: Bound<'_, PyArray2<T>>) -> PyResult<Self> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:569`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L569) — `fn new(arr: Bound<'_, PyArray3<T>>) -> PyResult<Self> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:599`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L599) — `struct RetrieveRequestBatch {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:605`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L605) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:609`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L609) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:613`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L613) — `pub fn get_top_ks(&self) -> Vec<u32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:617`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L617) — `pub fn get_topic_entity_ids(&self) -> Vec<Vec<u64>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:624`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L624) — `pub fn get_topic_filter_mode(&self) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:632`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L632) — `pub fn get_pre_fetched_seed_embeddings<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:640`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L640) — `pub fn build_eligible_mask<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:685`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L685) — `const ACTIVE_ADS_DS_TYPE: i32 = 7;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:687`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L687) — `pub fn build_eligible_mask_into_shards(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:722`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L722) — `struct SendPtr(*mut u8, usize);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:781`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L781) — `pub fn reply(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:884`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L884) — `fn serving_host_metadata() -> Option<(String, String)> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:892`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L892) — `type ReloadDirective = (Vec<String>, String);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:894`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L894) — `struct RecsysPredictorImpl {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:914`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L914) — `fn checkpoint_load_delay_seconds(&self) -> Option<u64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:931`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L931) — `async fn predict_next_actions_inner(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1130`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1130) — `async fn predict_next_actions(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1149`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1149) — `async fn reload_model(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1183`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1183) — `async fn handle_request(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1360`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1360) — `pub trait PrepareBatch<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1361`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1361) — `fn compute_batch_inputs_rust_quick<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1372`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1372) — `struct RankingBatchPrep {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1469`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1469) — `fn new(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:1565`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L1565) — `fn compute_batch_inputs_rust_quick<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2296`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2296) — `struct RetrievalBatchPrep {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2340`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2340) — `fn new(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2384`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2384) — `fn compute_batch_inputs_rust_quick<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2733`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2733) — `struct RecsysRetrievalPredictorImpl {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2753`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2753) — `async fn retrieve_top_k_candidates_inner(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2904`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2904) — `async fn retrieve_top_k_candidates(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2923`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2923) — `async fn reload_model(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:2958`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L2958) — `async fn handle_retrieval_request(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3164`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3164) — `fn new(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3440`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3440) — `fn record_service_time_ms(&self, ms: f64) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3449`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3449) — `fn set_deadline_admission_enabled(&self, enabled: bool) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3453`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3453) — `fn dequeue(&mut self) -> $batch_type {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3467`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3467) — `fn set_ready(&self, is_ready: bool) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3484`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3484) — `fn is_finished(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3488`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3488) — `fn cancel_forcefully(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3492`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3492) — `fn cancel(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3496`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3496) — `fn check_reload_request(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3500`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3500) — `fn reset_reload_request(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3504`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3504) — `fn take_reload_directive(&self) -> Option<(Vec<String>, String)> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3508`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3508) — `fn set_checkpoint_timestamp(&self, timestamp: f64) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3513`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3513) — `fn set_serving_prefix(&self, prefix: &str) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3518`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3518) — `fn publish_peer_manifest(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3552`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3552) — `fn publish_peer_manifest(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3568`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3568) — `fn revoke_peer_manifest(slf: PyRef<'_, Self>, drain_timeout_secs: f64) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3581`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3581) — `fn revoke_peer_manifest(&self, _py: Python, drain_timeout_secs: f64) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3587`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3587) — `fn set_checkpoint_loading(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3598`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3598) — `fn clear_checkpoint_loading(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3609`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3609) — `fn reset_dequeue_timer(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3614`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3614) — `fn wait(&mut self, timeout: Option<TimeDelta>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3624`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3624) — `fn hash_user_id(&self, user_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3628`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3628) — `fn hash_item_id(&self, item_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3632`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3632) — `fn hash_author_id(&self, author_id: i64, index: usize) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3638`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3638) — `fn hash_user_ids(&self, user_ids: Vec<i64>) -> Vec<i32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3642`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3642) — `fn hash_item_ids(&self, item_ids: Vec<i64>) -> Vec<i32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3646`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3646) — `fn hash_author_ids(&self, author_ids: Vec<i64>) -> Vec<i32> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3651`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3651) — `pub fn compute_batch_inputs_rust_quick<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/python.rs:3692`](../source/phoenix/crates/serving/xai-recsys-engine/src/python.rs#L3692) — `pub fn xai_recsys_engine(_py: Python<'_>, m: &Bound<PyModule>) -> PyResult<()> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:17`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L17) — `pub fn latency_buckets_ms() -> Vec<f64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:225`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L225) — `fn epoch_millis() -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:232`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L232) — `pub fn arm_not_ready_probe() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:241`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L241) — `pub fn disarm_not_ready_probe() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:245`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L245) — `fn not_ready_elapsed_seconds() -> Option<f64> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:253`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L253) — `pub fn record_not_ready_arrival(client: &str) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:261`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L261) — `pub fn grpc_status_label(code: tonic::Code) -> &'static str {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:283`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L283) — `pub fn status_code<T>(result: &tonic::Result<Response<T>>) -> tonic::Code {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:290`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L290) — `pub fn client_label<T>(request: &Request<T>) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:297`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L297) — `pub fn workload_label<T>(request: &Request<T>) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:304`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L304) — `pub fn src_dc_label<T>(request: &Request<T>) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:311`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L311) — `pub fn emit_request_metrics(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:327`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L327) — `pub fn export() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:376`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L376) — `pub fn record_client_server_network_delay<T>(request: &Request<T>, client: &str) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:395`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L395) — `pub fn remaining_deadline_budget_us(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:406`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L406) — `pub fn mpsc_backlog<T>(tx: &tokio::sync::mpsc::Sender<T>) -> i64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:410`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L410) — `pub fn observe_admission<T, Item>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:452`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L452) — `pub fn record_admission_service_sample(admission: &AdmissionController, sample_us: u64) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:457`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L457) — `pub fn reset_admission_estimates(admission: &AdmissionController) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:463`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L463) — `pub fn record_admission_sojourn_sample(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:472`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L472) — `pub struct RequestLabels {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:480`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L480) — `pub fn from_request<T>(request: &Request<T>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:490`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L490) — `pub fn extract_grpc_timeout<T>(request: &Request<T>) -> Option<Duration> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:506`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L506) — `pub fn record_grpc_timeout_presence(grpc_timeout: Option<Duration>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:514`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L514) — `pub fn on_request_received(labels: &RequestLabels) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:519`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L519) — `pub fn on_request_received_from<T>(request: &Request<T>, labels: &RequestLabels) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:524`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L524) — `pub fn record_ranking_token_stats<I>(rows: I, history_seq_len: usize, candidate_seq_len: usize)`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:553`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L553) — `pub fn on_request_canceled(labels: &RequestLabels) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:564`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L564) — `pub struct RequestMetricsGuard {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:573`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L573) — `pub fn begin<T>(request: &Request<T>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:585`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L585) — `pub fn record_reject(&mut self, reason: &str) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:592`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L592) — `pub fn client(&self) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:596`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L596) — `pub fn admit_backlog(&self) -> i64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:600`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L600) — `pub fn elapsed_us(&self) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:604`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L604) — `pub fn arm_sojourn(&mut self, admission: Arc<AdmissionController>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:608`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L608) — `fn record_sojourn(&self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:615`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L615) — `pub fn finish<R>(mut self, result: tonic::Result<Response<R>>) -> tonic::Result<Response<R>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:624`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L624) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:633`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L633) — `pub fn on_request_finished<T>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:675`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L675) — `fn client_label_uses_client_name_and_defaults_to_unknown() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:688`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L688) — `fn workload_label_uses_src_workload_independently_of_client() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:702`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L702) — `fn src_dc_label_uses_src_dc_and_defaults_to_unknown() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:712`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L712) — `fn network_delay_records_under_client_and_src_dc() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:723`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L723) — `fn not_ready_probe_transitions() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:742`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L742) — `fn canceled_count(client: &str) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:749`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L749) — `fn guard_drop_without_finish_counts_canceled() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:762`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L762) — `fn guard_finish_does_not_count_canceled() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:774`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L774) — `fn guard_drop_records_sojourn_when_armed() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:798`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L798) — `fn rejected(reason: &str, client: &str) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:805`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L805) — `fn reset_admission_estimates_clears_gauges_and_p() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:829`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L829) — `fn deadline_shed_does_not_double_count_as_inflight_cap() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs:871`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_metrics.rs#L871) — `fn resource_exhausted_without_prior_reject_counts_inflight_cap() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:9`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L9) — `pub trait QueuedItem {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:10`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L10) — `fn enqueue_time(&self) -> Instant;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:12`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L12) — `fn deadline(&self) -> Option<Instant>;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:14`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L14) — `fn on_stale_drop(self, max_staleness: Duration);`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:17`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L17) — `fn is_expired<T: QueuedItem>(item: &T, max_staleness: Duration, now: Instant) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:27`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L27) — `pub struct RequestQueue<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:35`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L35) — `pub fn new(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:97`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L97) — `pub async fn dequeue(&mut self) -> Vec<T> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:122`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L122) — `pub fn reset_dequeue_timer(&mut self) {}`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:124`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L124) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs:128`](../source/phoenix/crates/serving/xai-recsys-engine/src/request_queue.rs#L128) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:32`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L32) — `fn get_runtime() -> &'static Runtime {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:43`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L43) — `fn get_o2_runtime() -> &'static Runtime {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:54`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L54) — `const MAX_CONCURRENT_UPLOADS: usize = 16;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:56`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L56) — `const MULTIPART_THRESHOLD: usize = 100 * 1024 * 1024;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:58`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L58) — `const MULTIPART_PART_SIZE: usize = 16 * 1024 * 1024;`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:60`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L60) — `fn o2_store_from_url(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:113`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L113) — `fn o2_shared_store(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:120`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L120) — `async fn upload_with_retry(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:179`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L179) — `fn is_o2_url(url: &str) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:183`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L183) — `fn sanitize_path_for_o2(path: &str) -> String {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:208`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L208) — `pub fn upload_files_to_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:326`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L326) — `pub fn download_prefix_to_local(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:350`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L350) — `async fn download_prefix_to_local_async(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:456`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L456) — `pub fn download_files_from_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:486`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L486) — `async fn download_files_from_storage_async(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:557`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L557) — `pub fn list_storage_objects(storage_url: String) -> PyResult<Vec<String>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:569`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L569) — `async fn list_storage_objects_async(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:601`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L601) — `pub fn find_latest_storage_checkpoint(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:617`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L617) — `async fn find_latest_storage_checkpoint_async(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:800`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L800) — `pub fn load_arrays_from_storage<'py>(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:875`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L875) — `pub fn remove_old_from_storage(storage_url: String, n: usize, name_size_pairs: Vec<(String, u64)>) {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:897`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L897) — `async fn remove_old_from_storage_async(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1039`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1039) — `fn extract_run_id(checkpoint_dir: &str) -> Option<&str> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1187`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1187) — `enum StorageContext {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1192`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1192) — `async fn delete_single_object(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1207`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1207) — `async fn load_single_array(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1425`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1425) — `pub fn reshard_col_to_row_and_upload(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1639`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1639) — `pub fn copy_chunks_to_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1772`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1772) — `pub fn upload_inline_data_to_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs:1848`](../source/phoenix/crates/serving/xai-recsys-engine/src/storage_util.rs#L1848) — `pub fn load_reshard_row_to_col(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:6`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L6) — `pub const ENV_TLS_CA: &str = "COPY_PORT_TLS_CA";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:7`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L7) — `pub const ENV_TLS_CERT: &str = "COPY_PORT_TLS_CERT";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:8`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L8) — `pub const ENV_TLS_KEY: &str = "COPY_PORT_TLS_KEY";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:9`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L9) — `pub const ENV_TLS_SERVER_NAME: &str = "COPY_PORT_TLS_SERVER_NAME";`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:11`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L11) — `fn install_crypto_provider() {}`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:13`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L13) — `fn invalid(msg: String) -> io::Error {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:17`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L17) — `fn read(path: &str, what: &str) -> io::Result<Vec<u8>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:22`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L22) — `pub struct ServerTlsOptions {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:29`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L29) — `pub fn from_paths(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:51`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L51) — `pub fn load(&self) -> io::Result<ServerTlsConfig> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:70`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L70) — `pub struct ClientTlsOptions {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:78`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L78) — `pub fn from_env() -> io::Result<Option<Self>> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:105`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L105) — `pub fn load(&self) -> io::Result<ClientTlsConfig> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:122`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L122) — `pub fn endpoint_for(url: &str, tls: Option<&ClientTlsOptions>) -> io::Result<Endpoint> {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:142`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L142) — `fn opts(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:157`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L157) — `fn server_options_pairing() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:178`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L178) — `fn server_load_missing_files() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:191`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L191) — `fn client_options_from_env() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/tls.rs:213`](../source/phoenix/crates/serving/xai-recsys-engine/src/tls.rs#L213) — `fn endpoint_scheme_routing() {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:20`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L20) — `pub struct RetrievalInputBuffer {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:42`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L42) — `pub fn compute_for_item(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:239`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L239) — `pub fn compute_from_columnar_bytes(`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:472`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L472) — `pub struct PredictRequestItem {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:490`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L490) — `fn default() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:510`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L510) — `pub struct RetrieveRequestItem {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:530`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L530) — `fn sid_test_config() -> ModelConfig {`
+- [`phoenix/crates/serving/xai-recsys-engine/src/util.rs:572`](../source/phoenix/crates/serving/xai-recsys-engine/src/util.rs#L572) — `fn proto_history_semantic_ids_are_read_from_tweet_info() {`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:9`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L9) — `class PyMmEmbeddingsClient:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:10`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L10) — `def __init__(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:17`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L17) — `def fetch_mm_embeddings_array(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:20`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L20) — `def wait_until_ready(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:22`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L22) — `class RankingBatchPrep:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:23`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L23) — `def __init__(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:87`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L87) — `class RetrievalBatchPrep:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:88`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L88) — `def __init__(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:120`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L120) — `class ReqUserSequenceAggrgated:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:128`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L128) — `class ReqCandidateSequence:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:133`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L133) — `class RetrieveRequestBatch:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:134`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L134) — `def len(self) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:135`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L135) — `def is_empty(self) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:136`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L136) — `def reply(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:146`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L146) — `def get_top_ks(self) -> List[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:147`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L147) — `def get_topic_entity_ids(self) -> List[List[int]]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:148`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L148) — `def get_topic_filter_mode(self) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:149`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L149) — `def get_pre_fetched_seed_embeddings(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:154`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L154) — `class PredictRequestBatch:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:155`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L155) — `def get_candidate_sets(self, max_num_cands: int) -> ReqCandidateSequence: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:156`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L156) — `def get_return_logprob(self) -> list[bool]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:157`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L157) — `def get_top_logprobs_num(self) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:158`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L158) — `def reply(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:164`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L164) — `def len(self) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:166`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L166) — `class RecsysPredictorServer:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:167`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L167) — `def __init__(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:231`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L231) — `def set_ready(self, is_ready: bool) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:232`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L232) — `def check_reload_request(self) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:233`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L233) — `def reset_reload_request(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:234`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L234) — `def set_checkpoint_loading(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:235`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L235) — `def clear_checkpoint_loading(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:236`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L236) — `def reset_dequeue_timer(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:237`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L237) — `def record_service_time_ms(self, ms: float) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:238`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L238) — `def set_deadline_admission_enabled(self, enabled: bool) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:239`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L239) — `def is_finished(self) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:240`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L240) — `def cancel(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:241`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L241) — `def wait(self, timeout: timedelta | None) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:242`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L242) — `def dequeue(self) -> PredictRequestBatch | None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:243`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L243) — `def set_serving_prefix(self, prefix: str) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:244`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L244) — `def take_reload_directive(self) -> Tuple[List[str], str] | None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:245`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L245) — `def publish_peer_manifest(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:251`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L251) — `def revoke_peer_manifest(self, drain_timeout_secs: float = 10.0) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:252`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L252) — `def hash_user_id(self, user_id: int, index: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:253`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L253) — `def hash_item_id(self, item_id: int, index: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:254`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L254) — `def hash_author_id(self, author_id: int, index: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:255`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L255) — `def hash_user_ids(self, user_ids: list[int]) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:256`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L256) — `def hash_item_ids(self, item_ids: list[int]) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:257`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L257) — `def hash_author_ids(self, author_ids: list[int]) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:258`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L258) — `def compute_batch_inputs_rust_quick(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:266`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L266) — `class RecsysRetrievalPredictorServer:`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:267`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L267) — `def __init__(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:331`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L331) — `def set_ready(self, is_ready: bool) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:332`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L332) — `def check_reload_request(self) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:333`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L333) — `def reset_reload_request(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:334`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L334) — `def set_checkpoint_loading(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:335`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L335) — `def clear_checkpoint_loading(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:336`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L336) — `def reset_dequeue_timer(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:337`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L337) — `def record_service_time_ms(self, ms: float) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:338`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L338) — `def set_deadline_admission_enabled(self, enabled: bool) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:339`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L339) — `def is_finished(self) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:340`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L340) — `def cancel(self) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:341`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L341) — `def wait(self, timeout: timedelta | None) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:342`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L342) — `def dequeue(self) -> RetrieveRequestBatch | None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:343`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L343) — `def set_serving_prefix(self, prefix: str) -> None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:344`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L344) — `def take_reload_directive(self) -> Tuple[List[str], str] | None: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:345`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L345) — `def publish_peer_manifest(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:351`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L351) — `def revoke_peer_manifest(self, drain_timeout_secs: float = 10.0) -> bool: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:352`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L352) — `def hash_user_id(self, user_id: int, index: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:353`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L353) — `def hash_item_id(self, item_id: int, index: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:354`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L354) — `def hash_author_id(self, author_id: int, index: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:355`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L355) — `def hash_user_ids(self, user_ids: list[int]) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:356`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L356) — `def hash_item_ids(self, item_ids: list[int]) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:357`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L357) — `def hash_author_ids(self, author_ids: list[int]) -> list[int]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:358`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L358) — `def compute_batch_inputs_rust_quick(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:366`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L366) — `def init_parallel(arr: npt.NDArray[np.uint8], num_threads: int): ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:367`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L367) — `def madvise_hugepage(arr: npt.NDArray[np.uint8]): ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:368`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L368) — `def embedding_gather(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:375`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L375) — `def load_tensor(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:384`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L384) — `def load_tensor_no_resharding(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:394`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L394) — `def load_tensor_no_resharding(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:405`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L405) — `def maybe_load_fully_replicated_tensors(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:415`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L415) — `def maybe_load_fully_replicated_tensors(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:425`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L425) — `def upload_files_to_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:428`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L428) — `def download_prefix_to_local(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:434`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L434) — `def download_files_from_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:440`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L440) — `def upload_inline_data_to_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:444`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L444) — `def copy_chunks_to_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:449`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L449) — `def reshard_col_to_row_and_upload(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:458`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L458) — `def load_reshard_row_to_col(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:468`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L468) — `def list_storage_objects(storage_url: str) -> List[str]: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:469`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L469) — `def find_latest_storage_checkpoint(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:474`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L474) — `def load_arrays_from_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:479`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L479) — `def remove_old_from_storage(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:482`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L482) — `def adler32_parallel(data: npt.NDArray[np.uint8]) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:483`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L483) — `def adler32_combine_py(checksum1: int, checksum2: int, len2: int) -> int: ...`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:484`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L484) — `def adler32_shard_partial(`
+- [`phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi:491`](../source/phoenix/crates/serving/xai-recsys-engine/xai_recsys_engine.pyi#L491) — `def adler32_combine_partials(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:15`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L15) — `pub struct EmbeddingCache {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:20`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L20) — `struct Slot {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:25`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L25) — `struct Inner {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:34`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L34) — `pub fn new(capacity: usize, ttl: Duration) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:49`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L49) — `pub fn insert(&self, post_id: u64, embedding: Arc<Vec<f16>>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:54`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L54) — `pub fn bulk_insert(&self, records: impl Iterator<Item = (u64, Arc<Vec<f16>>)>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:73`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L73) — `fn insert_inner(inner: &mut Inner, post_id: u64, embedding: Arc<Vec<f16>>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:92`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L92) — `pub fn get(&self, post_id: u64) -> Option<Arc<Vec<f16>>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:103`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L103) — `pub fn copy_to(&self, post_id: u64, dst: &mut [f16]) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:122`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L122) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:126`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L126) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:130`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L130) — `pub fn drain_all(&self) -> Vec<(u64, Vec<f16>)> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:149`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L149) — `const HEADER_SIZE: usize = 64;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:151`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L151) — `const SLOT_HEADER_SIZE: usize = 8;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:153`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L153) — `const LMDB_META_KEY_EMB_DIM: u64 = 0;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:155`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L155) — `pub struct LmdbEmbeddingCache {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:172`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L172) — `struct Header {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:179`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L179) — `pub fn create(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:190`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L190) — `const PAGE_ALIGN: usize = 65536;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:220`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L220) — `fn madvise(addr: *mut c_void, len: usize, advice: i32) -> i32;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:222`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L222) — `const MADV_POPULATE_WRITE: i32 = 23;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:261`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L261) — `pub fn open(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:312`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L312) — `pub fn insert_many(&self, records: Vec<(u64, Vec<f16>)>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:393`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L393) — `pub fn copy_to(&self, post_id: u64, dst: &mut [f16]) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:420`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L420) — `pub fn copy_batch(&self, post_ids: &[u64], emb_dim: usize, out: &mut [f16]) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:450`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L450) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:454`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L454) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:458`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L458) — `pub fn emb_dim(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:462`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L462) — `pub fn flush(&self) -> anyhow::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:468`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L468) — `fn header(&self) -> &Header {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:472`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L472) — `fn slot_offset(&self, idx: usize) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:476`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L476) — `fn read_slot_post_id(&self, idx: usize, ordering: Ordering) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:482`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L482) — `fn write_slot_post_id(&self, idx: usize, post_id: u64, ordering: Ordering) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:488`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L488) — `fn write_slot_embedding(&self, idx: usize, embedding: &[f16]) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:500`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L500) — `fn read_slot_embedding(&self, idx: usize, dst: &mut [f16]) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:515`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L515) — `const TEST_TTL: Duration = Duration::from_secs(2 * 24 * 3600);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:517`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L517) — `fn fresh_id(seq: u64) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:518`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L518) — `const TWEPOCH_MS: u64 = 1288834974657;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:526`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L526) — `fn emb(seed: u64, dim: usize) -> Vec<f16> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:533`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L533) — `fn basic_insert_get() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:553`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L553) — `fn update_existing() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:570`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L570) — `fn fifo_eviction() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:596`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L596) — `fn persistent_across_open() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:614`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L614) — `fn copy_batch_basic() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs:632`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/embedding_cache.rs#L632) — `fn skip_zero_post_id() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:30`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L30) — `pub struct Experiment(pub i32);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:33`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L33) — `pub const PROD: Experiment = Experiment(0);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:34`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L34) — `pub const TEST: Experiment = Experiment(1);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:35`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L35) — `pub const ENUM_VALUES: &'static [Self] = &[`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:43`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L43) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:46`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L46) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<Experiment> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:53`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L53) — `fn from(i: i32) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:63`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L63) — `fn from(i: &i32) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:69`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L69) — `fn from(e: Experiment) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:75`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L75) — `fn from(e: &Experiment) -> i32 {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:82`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L82) — `pub struct GrokAnalyzeTaskEntity {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:88`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L88) — `pub fn new(post_id: i64, created_at_secs: i64) -> GrokAnalyzeTaskEntity {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:97`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L97) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<GrokAnalyzeTaskEntity> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:131`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L131) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:147`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L147) — `pub struct SemanticCoreData {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:152`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L152) — `pub fn new(event: i64) -> SemanticCoreData {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:160`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L160) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<SemanticCoreData> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:187`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L187) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:200`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L200) — `pub struct TrendFlattened {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:215`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L215) — `pub fn new<F6, F7, F12, F13, F14, F15>(id: i64, title: String, post_ids: Vec<i64>, cluster_embedding: Vec<OrderedFloat<f64>>, summary: String, engagement_score: F6, is_new_trend: F7, semantic_core_data: F12, experiment_id: F13, hook: F14, created_at_ms: F15) -> TrendFlattened where F6: Into<Option<OrderedFloat<f64>>>, F7: Into<Option<bool>>, F12: Into<Option<SemanticCoreData>>, F13: Into<Option<Experiment>>, F14: Into<Option<String>>, F15: Into<Option<i64>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:233`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L233) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TrendFlattened> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:336`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L336) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:399`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L399) — `pub struct StoryFlattened {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:415`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L415) — `pub fn new<F6, F7, F8, F9, F10, F11, F13>(cluster_id: i64, product_id: i64, title: String, engagement: i32, story_type: String, is_noteworthy: F6, verified: F7, topics: F8, categories: F9, created_at_ms: F10, last_updated_at_ms: F11, experiment_id: F13) -> StoryFlattened where F6: Into<Option<String>>, F7: Into<Option<String>>, F8: Into<Option<String>>, F9: Into<Option<String>>, F10: Into<Option<i64>>, F11: Into<Option<i64>>, F13: Into<Option<Experiment>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:434`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L434) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<StoryFlattened> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:531`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L531) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:591`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L591) — `pub struct ArticleCrawlerEventEntity {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:597`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L597) — `pub fn new(post_id: i64, created_at_secs: i64) -> ArticleCrawlerEventEntity {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:606`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L606) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<ArticleCrawlerEventEntity> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:640`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L640) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:656`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L656) — `pub struct TweetEmbedding {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:676`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L676) — `pub fn new<F1, F2, F3, F5, F7, F102, F104, F900, F901, F902, F903, F906, F907, F908, F909, F910>(tweet_id: F1, embedding1: F2, user_id: F3, user_credibility: F5, followers: F7, text: F102, url_card_title: F104, user_name: F900, user_screen_name: F901, qt_text: F902, reply_to_text: F903, qt_followers: F906, reply_to_followers: F907, qt_text_raw: F908, reply_to_text_raw: F909, media_caption: F910) -> TweetEmbedding where F1: Into<Option<i64>>, F2: Into<Option<Vec<OrderedFloat<f64>>>>, F3: Into<Option<i64>>, F5: Into<Option<i16>>, F7: Into<Option<i64>>, F102: Into<Option<String>>, F104: Into<Option<String>>, F900: Into<Option<String>>, F901: Into<Option<String>>, F902: Into<Option<String>>, F903: Into<Option<String>>, F906: Into<Option<i64>>, F907: Into<Option<i64>>, F908: Into<Option<String>>, F909: Into<Option<String>>, F910: Into<Option<String>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:699`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L699) — `fn read_from_in_protocol(i_prot: &mut dyn TInputProtocol) -> thrift::Result<TweetEmbedding> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/events.rs:821`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/events.rs#L821) — `fn write_to_out_protocol(&self, o_prot: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:24`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L24) — `const MAX_EMBEDDING_CACHE_SIZE: usize = 150_000_000;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:26`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L26) — `const NUM_SHARDS: usize = 256;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:28`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L28) — `const BASE_PATH: &str = "/dev/shm/mm_embeddings";`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:30`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L30) — `const EMBEDDING_TTL: Duration = Duration::from_secs(2 * 24 * 3600);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:32`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L32) — `fn embedding_ttl() -> Duration {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:70`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L70) — `enum CacheShard {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:76`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L76) — `fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:83`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L83) — `fn copy_to(&self, post_id: u64, dst: &mut [f16]) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:90`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L90) — `fn get(&self, post_id: u64) -> Option<Arc<Vec<f16>>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:107`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L107) — `pub struct MmEmbeddingsClient {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:112`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L112) — `pub type O2PreloadFuture = Pin<Box<dyn Future<Output = Result<()>> + Send>>;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:115`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L115) — `fn shard(&self, key: u64) -> &CacheShard {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:119`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L119) — `pub fn total_len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:123`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L123) — `fn shard_records(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:135`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L135) — `fn insert_bucket(shard: &CacheShard, bucket: Vec<(u64, Vec<f16>)>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:146`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L146) — `pub fn insert_sync(&self, embeddings: Vec<EmbeddingRecord>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:154`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L154) — `pub fn ingest_parquet_bytes_sync(&self, data: bytes::Bytes, file_name: &str) -> Result<usize> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:161`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L161) — `pub async fn preload_embeddings(&self, embeddings: Vec<EmbeddingRecord>, parallel: bool) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:199`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L199) — `pub fn get(&self, post_id: u64) -> Option<Arc<Vec<f16>>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:203`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L203) — `pub fn in_process() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:219`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L219) — `pub fn fetch_mm_embeddings_into(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:266`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L266) — `pub fn fetch_mm_embeddings_sync(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:278`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L278) — `pub async fn fetch_mm_embeddings(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:288`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L288) — `fn o2_env_vars() -> (String, String) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:294`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L294) — `pub fn get_mm_client(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:413`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L413) — `async fn in_process_fetch_hits_and_misses() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:414`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L414) — `const TWEPOCH_MS: u64 = 1_288_834_974_657;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:449`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L449) — `async fn bench_serving() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs:460`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_client.rs#L460) — `const TWEPOCH_MS: u64 = 1288834974657;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:34`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L34) — `const RETRY_TIMEOUT: Duration = Duration::from_secs(1);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:35`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L35) — `const MAX_RETRIES: usize = 9;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:38`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L38) — `pub struct MmEmbeddingFetcher {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:45`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L45) — `pub fn from_env(bucket: &str, prefix: &str) -> Result<Self> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:84`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L84) — `pub fn new(primary: O2Client) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:92`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L92) — `pub fn primary(&self) -> &O2Client {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:96`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L96) — `pub fn bucket(&self) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:100`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L100) — `pub fn prefix(&self) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:104`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L104) — `pub async fn list(&self, key: &str) -> Result<Vec<ObjectMeta>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:149`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L149) — `pub async fn get_raw(&self, path: &ObjectPath) -> Result<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:202`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L202) — `fn fallback_full_path(&self, key: &str) -> ObjectPath {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs:211`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/mm_embedding_fetcher.rs#L211) — `fn build_unsigned_store(bucket: &str, endpoint: &str) -> Option<Arc<dyn ObjectStore>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:29`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L29) — `const RETRY_TIMEOUT: Duration = Duration::from_secs(1);`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:30`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L30) — `const MAX_RETRIES: usize = 9;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:33`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L33) — `pub struct O2Client {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:40`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L40) — `fn should_retry_error(err: &object_store::Error) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:44`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L44) — `pub fn from_env(bucket: &str, prefix: &str) -> Result<Self> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:61`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L61) — `pub fn new(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:99`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L99) — `fn full_path(&self, key: &str) -> ObjectPath {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:108`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L108) — `pub fn bucket(&self) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:112`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L112) — `pub fn prefix(&self) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:116`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L116) — `pub async fn put(&self, key: &str, data: Bytes) -> Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:145`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L145) — `pub async fn list(&self, key: &str) -> Result<Vec<ObjectMeta>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:178`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L178) — `pub async fn get_raw(&self, path: &ObjectPath) -> Result<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:220`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L220) — `pub async fn try_list(&self, key: &str) -> Result<Vec<ObjectMeta>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:231`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L231) — `pub async fn try_get_raw(&self, path: &ObjectPath) -> Result<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs:243`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/o2.rs#L243) — `pub async fn delete(&self, path: &ObjectPath) -> Result<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/python.rs:13`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/python.rs#L13) — `pub struct PyMmEmbeddingsClient {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/python.rs:20`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/python.rs#L20) — `pub fn client(&self) -> &MmEmbeddingsClient {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/python.rs:29`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/python.rs#L29) — `fn new(py: Python<'_>, shared: bool, worker_id: usize, emb_dim: usize) -> PyResult<Self> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/python.rs:65`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/python.rs#L65) — `fn fetch_mm_embeddings_array<'py>(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/python.rs:92`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/python.rs#L92) — `fn wait_until_ready(&mut self, py: Python<'_>) -> PyResult<()> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:64`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L64) — `pub struct EmbeddingRecord {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:70`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L70) — `pub struct EmbeddingStore {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:76`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L76) — `pub fn new(version: String) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:83`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L83) — `pub fn insert(&self, post_id: u64, embedding: Vec<f32>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:93`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L93) — `pub fn version(&self) -> &str {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:97`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L97) — `pub fn take_snapshot(&self) -> Vec<EmbeddingRecord> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:104`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L104) — `pub fn len(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:108`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L108) — `pub fn is_empty(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:113`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L113) — `pub fn write_embeddings_to_parquet(records: &[EmbeddingRecord], version: &str) -> Result<Bytes> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:166`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L166) — `pub async fn dump_snapshot(store: &EmbeddingStore, o2_client: &O2Client, dst_dir: &str) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:238`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L238) — `pub fn read_embeddings_from_parquet(data: Bytes, file_name: &str) -> Result<Vec<EmbeddingRecord>> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:292`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L292) — `pub async fn read_embeddings_from_o2(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:320`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L320) — `pub fn start_o2_reader_task(mm_fetcher: MmEmbeddingFetcher, mm_client: Arc<MmEmbeddingsClient>) {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:334`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L334) — `pub fn snapshot_time(obj: &object_store::ObjectMeta) -> DateTime<Utc> {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:345`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L345) — `pub async fn list_recent_embedding_objects(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:384`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L384) — `const DEFAULT_O2_FETCH_CONCURRENCY: usize = 24;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:386`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L386) — `fn o2_fetch_concurrency() -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:393`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L393) — `fn parse_o2_fetch_concurrency(raw: &str) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:408`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L408) — `pub async fn fetch_recent_embeddings_from_o2(`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:599`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L599) — `fn make_obj(path: &str, last_modified: DateTime<Utc>) -> ObjectMeta {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:610`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L610) — `fn snapshot_time_parses_filename() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:620`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L620) — `fn snapshot_time_falls_back_to_last_modified() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:627`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L627) — `fn snapshot_time_handles_nested_path() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:637`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L637) — `fn o2_fetch_concurrency_parses_valid_values() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs:644`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snapshot.rs#L644) — `fn o2_fetch_concurrency_falls_back_on_invalid_values() {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs:5`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs#L5) — `const TWEPOCH_MS: u64 = 1288834974657;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs:6`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs#L6) — `const TIMESTAMP_SHIFT: u64 = 22;`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs:8`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs#L8) — `pub fn snowflake_timestamp_ms(id: u64) -> u64 {`
+- [`phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs:12`](../source/phoenix/crates/serving/xai-recsys-mm-server/src/snowflake.rs#L12) — `pub fn snowflake_age(id: u64) -> Option<Duration> {`
+- [`phoenix/crates/serving/xai-recsys-proto/build.rs:9`](../source/phoenix/crates/serving/xai-recsys-proto/build.rs#L9) — `fn find_protoc() -> Option<PathBuf> {`
+- [`phoenix/crates/serving/xai-recsys-proto/build.rs:10`](../source/phoenix/crates/serving/xai-recsys-proto/build.rs#L10) — `fn usable(protoc: &Path) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-proto/build.rs:58`](../source/phoenix/crates/serving/xai-recsys-proto/build.rs#L58) — `fn compile(`
+- [`phoenix/crates/serving/xai-recsys-proto/build.rs:77`](../source/phoenix/crates/serving/xai-recsys-proto/build.rs#L77) — `fn main() {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:300`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L300) — `enum ActionName {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:517`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L517) — `enum ContinuousActionName {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:526`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L526) — `enum ActionGroup {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:543`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L543) — `enum ActionCategory {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:549`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L549) — `enum SemanticIdModel {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:555`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L555) — `enum LanguageCode {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:753`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L753) — `enum CountryCode {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1006`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1006) — `enum ProductSurface {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1030`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1030) — `enum Page {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1131`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1131) — `enum Gender {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1138`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1138) — `enum MaskType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1143`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1143) — `enum UserType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1150`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1150) — `enum AppPushDeviceType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1156`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1156) — `enum SubscriptionLevel {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1166`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1166) — `enum AdsActionName {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1403`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1403) — `enum CompressionType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1660`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1660) — `enum UserActionAggregationAlgorithmType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1665`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1665) — `enum UserActionAggregationType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1713`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1713) — `enum UserActionSequenceSourceDataType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1724`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1724) — `enum ResponseFormat {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1741`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1741) — `enum UaasModelType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1747`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1747) — `enum UaasProductSurface {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1779`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1779) — `enum AgeBucket {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1824`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1824) — `enum Timezone {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto:1859`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys.proto#L1859) — `enum DeviceNetworkType {`
+- [`phoenix/crates/serving/xai-recsys-proto/proto/recsys_features.proto:7`](../source/phoenix/crates/serving/xai-recsys-proto/proto/recsys_features.proto#L7) — `enum ClientAppPlatform {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:3`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L3) — `pub const NUM_TOPICS: usize = 32;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:5`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L5) — `pub const TOPIC_SPORTS: i64 = 1925949452197478400;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:6`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L6) — `pub const TOPIC_ANIME: i64 = 1925949503837798401;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:7`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L7) — `pub const TOPIC_CELEBRITY: i64 = 1925949555071176704;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:8`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L8) — `pub const TOPIC_MUSIC: i64 = 1925949604224196608;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:9`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L9) — `pub const TOPIC_NEWS: i64 = 1925949634972626944;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:10`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L10) — `pub const TOPIC_BUSINESS_FINANCE: i64 = 1925949659857530880;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:11`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L11) — `pub const TOPIC_CRYPTOCURRENCY: i64 = 1925949693290295298;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:12`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L12) — `pub const TOPIC_TECHNOLOGY: i64 = 1925949722688126976;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:13`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L13) — `pub const TOPIC_SCIENCE: i64 = 1925949744683114496;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:14`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L14) — `pub const TOPIC_GAMING: i64 = 1925949766673797120;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:15`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L15) — `pub const TOPIC_MOVIES_TV: i64 = 1925949788068909057;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:16`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L16) — `pub const TOPIC_TRAVEL: i64 = 1925949812844769280;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:17`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L17) — `pub const TOPIC_FOOD: i64 = 1925949835649126400;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:18`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L18) — `pub const TOPIC_HEALTH_FITNESS: i64 = 1925949856834588672;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:19`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L19) — `pub const TOPIC_MEMES: i64 = 1925949876694556672;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:20`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L20) — `pub const TOPIC_ART: i64 = 1925949898106540032;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:21`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L21) — `pub const TOPIC_FASHION: i64 = 1925949932181082112;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:22`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L22) — `pub const TOPIC_RELIGION: i64 = 1925949956008878080;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:23`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L23) — `pub const TOPIC_SHOPPING: i64 = 1925949979966701568;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:24`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L24) — `pub const TOPIC_CARS: i64 = 1925950007624028160;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:25`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L25) — `pub const TOPIC_AVIATION: i64 = 1925950031476957184;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:26`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L26) — `pub const TOPIC_MOTORCYCLES: i64 = 1925950100397793280;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:27`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L27) — `pub const TOPIC_BEAUTY: i64 = 1925950199861538818;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:28`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L28) — `pub const TOPIC_NATURE_OUTDOORS: i64 = 1925950228047216640;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:29`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L29) — `pub const TOPIC_PETS: i64 = 1925950249245282304;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:30`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L30) — `pub const TOPIC_RELATIONSHIPS: i64 = 1925950276835454977;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:31`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L31) — `pub const TOPIC_HOME_GARDEN: i64 = 1925950341452845057;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:32`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L32) — `pub const TOPIC_CAREER: i64 = 1925950361245786112;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:33`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L33) — `pub const TOPIC_DANCE: i64 = 1925950383899267072;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:34`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L34) — `pub const TOPIC_EDUCATION: i64 = 1925950405709631490;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:35`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L35) — `pub const TOPIC_PODCASTS: i64 = 1925950433807175680;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:36`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L36) — `pub const TOPIC_STREAMING: i64 = 1925950455806369792;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:38`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L38) — `pub const PARENT_TOPIC_IDS: [i64; NUM_TOPICS] = [`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:73`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L73) — `pub fn topic_index(id: i64) -> Option<usize> {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:151`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L151) — `pub fn ids_to_multihot(ids: &[i64], max_categories: usize) -> [bool; NUM_TOPICS] {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs:171`](../source/phoenix/crates/serving/xai-recsys-proto/src/grok_topics.rs#L171) — `pub fn ids_to_bool_array<const N: usize>(ids: &[i64], known: &[i64; N]) -> [bool; N] {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:3`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L3) — `pub const NUM_INSTALLED_APPS: usize = 64;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:5`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L5) — `pub const NUM_INSTALLED_APPS_128: usize = 128;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:7`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L7) — `pub const MAX_DEVICES_PER_USER: u32 = 5;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:11`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L11) — `pub enum InstalledApp {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:100`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L100) — `pub const fn index(self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:104`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L104) — `pub fn from_slug(slug: &str) -> Option<Self> {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:194`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L194) — `pub fn build_multi_hot(slugs: &[String], num_slots: usize) -> Vec<bool> {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:214`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L214) — `fn app_at_index_64_ignored_in_64_bit_vector() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs:224`](../source/phoenix/crates/serving/xai-recsys-proto/src/installed_apps.rs#L224) — `fn app_at_index_59_included_in_64_bit_vector() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:6`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L6) — `pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("recsys_descriptor");`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:16`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L16) — `pub const SAFETY_BIT_AUTHOR_NSFW: u64 = 1 << 2;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:18`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L18) — `pub fn timezone_string_to_enum(tz: &str) -> Timezone {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:55`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L55) — `pub fn language_code_string_to_enum(lang: &str) -> LanguageCode {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:67`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L67) — `pub fn country_code_string_to_enum(country: &str) -> CountryCode {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:82`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L82) — `fn test_language_code_string_to_enum() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/lib.rs:123`](../source/phoenix/crates/serving/xai-recsys-proto/src/lib.rs#L123) — `fn test_country_code_string_to_enum() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:5`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L5) — `pub const ACTION_INDEX: usize = ContinuousActionName::AdsWebCtPurchaseValue as usize;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:7`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L7) — `pub fn is_valid_baseline(baseline: &PurchaseValueBaseline) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:14`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L14) — `pub fn find_baseline(`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:31`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L31) — `fn baseline(impression_id: i64, advertiser_account_id: i64) -> PurchaseValueBaseline {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:40`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L40) — `fn slot_five_and_existing_slots_are_stable() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:49`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L49) — `fn old_requests_decode_with_no_baselines() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:60`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L60) — `fn baselines_and_return_logits_list_use_independent_wire_tags() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:76`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L76) — `fn baseline_wire_tags_are_stable() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:85`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L85) — `fn valid_baseline_requires_positive_ids_and_positive_finite_mean() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs:98`](../source/phoenix/crates/serving/xai-recsys-proto/src/purchase_value.rs#L98) — `fn find_baseline_matches_identity_not_order_and_skips_invalid() {`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:3`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L3) — `pub const NUM_PACKS: usize = 20;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:5`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L5) — `pub const PACK_GAME_STUDIO_UPDATES: i64 = 2012651434790006786;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:6`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L6) — `pub const PACK_US_NEWS_POLITICS: i64 = 2012651486501584896;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:7`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L7) — `pub const PACK_FORTUNE_500_CEOS: i64 = 2012651451206516736;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:8`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L8) — `pub const PACK_BEAUTY_CREATORS: i64 = 2012651477861359616;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:9`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L9) — `pub const PACK_TECH_ICONS_OGS: i64 = 2012651483464908800;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:10`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L10) — `pub const PACK_LUXURY_FASHION: i64 = 2012651454889119745;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:11`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L11) — `pub const PACK_STAR_ATHLETES: i64 = 2012651460090052608;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:12`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L12) — `pub const PACK_WAR_CONFLICT_SECURITY: i64 = 2012651479081861120;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:13`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L13) — `pub const PACK_STREAMING_PLATFORMS: i64 = 2012651434580283392;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:14`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L14) — `pub const PACK_GLOBAL_NEWSROOMS: i64 = 2012651473549561858;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:15`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L15) — `pub const PACK_US_POLITICAL_FIGURES: i64 = 2012651473386049536;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:16`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L16) — `pub const PACK_BIG_MEME_ACCOUNTS: i64 = 2012651471657943040;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:17`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L17) — `pub const PACK_MUSIC_INDUSTRY_VOICES: i64 = 2012651460060696576;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:18`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L18) — `pub const PACK_TRAVEL_PUBLISHERS: i64 = 2012651456814342147;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:19`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L19) — `pub const PACK_BIG_TECH_CEOS: i64 = 2012651483322290177;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:20`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L20) — `pub const PACK_BITCOIN_MAXIMALISTS: i64 = 2012651438418071553;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:21`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L21) — `pub const PACK_NFL_STARS: i64 = 2012651451131015168;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:22`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L22) — `pub const PACK_UN_DIPLOMATS: i64 = 2012651455614717952;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:23`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L23) — `pub const PACK_NBA_VOICES: i64 = 2012651482982559744;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:24`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L24) — `pub const PACK_FINANCE_MEME_ACCOUNTS: i64 = 2012651474828832769;`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:26`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L26) — `pub const PACK_IDS: [i64; NUM_PACKS] = [`
+- [`phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs:49`](../source/phoenix/crates/serving/xai-recsys-proto/src/starter_packs.rs#L49) — `pub fn ids_to_bool_array<const N: usize>(ids: &[i64], known: &[i64; N]) -> [bool; N] {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:30`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L30) — `pub fn init_env_logger() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:50`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L50) — `type StatusCallback = Arc<dyn Fn() -> Pin<Box<dyn Future<Output = String> + Send>> + Send + Sync>;`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:53`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L53) — `pub enum NetConfig {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:59`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L59) — `pub struct GrpcConfig<L = tower::layer::util::Identity> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:80`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L80) — `fn default() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:104`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L104) — `pub fn new(port: u16, routes: tonic::service::Routes) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:113`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L113) — `pub fn with_tls_config(mut self, tls_config: tonic::transport::ServerTlsConfig) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:118`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L118) — `pub fn with_layer<NewLayer>(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:143`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L143) — `pub fn accept_http1(mut self, accept: bool) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:148`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L148) — `pub fn with_readyz_endpoint(mut self) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:153`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L153) — `pub fn with_max_connection_age(mut self, duration: Duration) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:158`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L158) — `pub fn with_http2_max_header_list_size(mut self, size: u32) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:164`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L164) — `pub struct HttpMtlsConfig {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:171`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L171) — `pub fn new(port: u16, router: axum::Router) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:179`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L179) — `pub fn with_tls(mut self, config: std::sync::Arc<rustls::ServerConfig>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:186`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L186) — `pub struct HttpServer {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:199`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L199) — `pub struct HttpServerBuilder<L = tower::layer::util::Identity> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:211`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L211) — `pub fn with_grpc<NewL>(self, grpc: GrpcConfig<NewL>) -> HttpServerBuilder<NewL> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:224`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L224) — `pub fn with_net_config(mut self, net: NetConfig) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:229`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L229) — `pub fn with_http_mtls(mut self, config: HttpMtlsConfig) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:234`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L234) — `pub fn with_so_reuseaddr(mut self, enabled: bool) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:239`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L239) — `pub async fn build(self) -> std::io::Result<HttpServer>`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:267`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L267) — `pub fn builder(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:289`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L289) — `async fn new_internal<L>(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:371`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L371) — `pub fn set_readiness(&self, is_ready: bool) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:375`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L375) — `pub fn terminate_gracefully(&self) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:379`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L379) — `pub fn terminate_forcefully(&self) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:385`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L385) — `pub fn is_terminated(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:389`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L389) — `pub async fn wait_for_termination(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:393`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L393) — `pub fn add_statusz_callback<F, Fut>(&self, f: F)`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:402`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L402) — `fn map_bind_error(e: std::io::Error, name: &str, port: u16) -> std::io::Error {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:409`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L409) — `fn bind_addr(port: u16, net: NetConfig) -> SocketAddr {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:416`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L416) — `fn bind_listener(port: u16, net: NetConfig, so_reuseaddr: bool) -> std::io::Result<TcpListener> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:429`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L429) — `fn spawn_cancellation_on_sigterm(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:449`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L449) — `fn spawn_grpc_server<L>(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:547`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L547) — `const TLS_HANDSHAKE_TIMEOUT: Duration = Duration::from_secs(5);`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:549`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L549) — `struct TlsListener {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:554`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L554) — `struct TlsConn {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:559`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L559) — `fn poll_read(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:569`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L569) — `fn poll_write(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:576`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L576) — `fn poll_flush(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:582`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L582) — `fn poll_shutdown(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:591`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L591) — `type Io = TlsConn;`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:592`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L592) — `type Addr = SocketAddr;`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:594`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L594) — `fn accept(&mut self) -> impl Future<Output = (Self::Io, Self::Addr)> + Send {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:620`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L620) — `fn local_addr(&self) -> std::io::Result<Self::Addr> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:625`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L625) — `fn spawn_http_mtls_server(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:666`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L666) — `fn spawn_http_server(`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:687`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L687) — `async fn healthz() -> (StatusCode, &'static str) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:691`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L691) — `async fn metrics() -> (StatusCode, String) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:703`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L703) — `async fn readyz(State(server_state): State<ServerState>) -> (StatusCode, &'static str) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:713`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L713) — `pub fn default_statusz_content() -> String {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:742`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L742) — `struct ServerState {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:749`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L749) — `fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:762`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L762) — `fn new() -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:770`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L770) — `fn add_statusz_callback<F, Fut>(&self, f: F)`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:781`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L781) — `async fn get_extra_content(&self) -> String {`
+- [`phoenix/crates/serving/xai-recsys-server/src/lib.rs:797`](../source/phoenix/crates/serving/xai-recsys-server/src/lib.rs#L797) — `async fn statusz_handler(State(state): State<ServerState>) -> Html<String> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs:7`](../source/phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs#L7) — `pub struct LoadGauge {`
+- [`phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs:12`](../source/phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs#L12) — `pub fn try_acquire(`
+- [`phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs:25`](../source/phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs#L25) — `pub fn get_load(&self) -> usize {`
+- [`phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs:31`](../source/phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs#L31) — `pub struct LoadGuard {`
+- [`phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs:37`](../source/phoenix/crates/serving/xai-recsys-server/src/load_gauge.rs#L37) — `fn drop(&mut self) {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:12`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L12) — `pub(crate) struct ReadyzProbe {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:18`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L18) — `fn is_ready(&self) -> bool {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:24`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L24) — `pub(crate) struct ReadyzLayer {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:29`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L29) — `pub(crate) fn new(probe: Option<ReadyzProbe>) -> Self {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:35`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L35) — `type Service = ReadyzService<S>;`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:37`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L37) — `fn layer(&self, inner: S) -> Self::Service {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:46`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L46) — `pub(crate) struct ReadyzService<S> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:55`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L55) — `type Response = Response<tonic::body::Body>;`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:56`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L56) — `type Error = S::Error;`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:57`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L57) — `type Future =`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:60`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L60) — `fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:64`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L64) — `fn call(&mut self, req: Request<tonic::body::Body>) -> Self::Future {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:96`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L96) — `fn probe(accepting: bool, terminating: bool) -> ReadyzProbe {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:103`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L103) — `fn inner() -> impl Service<`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:115`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L115) — `fn request(method: Method, path: &str) -> Request<tonic::body::Body> {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:123`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L123) — `async fn call(`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:147`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L147) — `async fn ready_returns_200() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:155`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L155) — `async fn draining_returns_503() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:163`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L163) — `async fn terminating_returns_503() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:170`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L170) — `async fn readiness_flip_is_observed_live() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:185`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L185) — `async fn grpc_requests_pass_through() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:198`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L198) — `async fn post_readyz_passes_through() {`
+- [`phoenix/crates/serving/xai-recsys-server/src/readyz.rs:205`](../source/phoenix/crates/serving/xai-recsys-server/src/readyz.rs#L205) — `async fn disabled_is_pure_passthrough() {`
+- [`phoenix/crates/serving/xai-recsys-sid-proto/build.rs:3`](../source/phoenix/crates/serving/xai-recsys-sid-proto/build.rs#L3) — `fn main() -> Result<(), Box<dyn std::error::Error>> {`
+- [`phoenix/crates/storage/xai-o2/src/base_client.rs:10`](../source/phoenix/crates/storage/xai-o2/src/base_client.rs#L10) — `pub trait BaseO2Client: Debug + Send + Sync {`
+- [`phoenix/crates/storage/xai-o2/src/base_client.rs:11`](../source/phoenix/crates/storage/xai-o2/src/base_client.rs#L11) — `async fn put(&self, key: &str, data: Bytes) -> Result<()>;`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:10`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L10) — `pub const BACKEND_UNAVAILABLE: &str =`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:14`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L14) — `pub struct O2ClientBuilder {}`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:17`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L17) — `pub fn endpoint(&mut self, _value: impl Into<String>) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:21`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L21) — `pub fn bucket(&mut self, _value: impl Into<String>) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:25`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L25) — `pub fn prefix(&mut self, _value: impl Into<String>) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:29`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L29) — `pub fn access_key_id(&mut self, _value: impl Into<String>) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:33`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L33) — `pub fn secret_access_key(&mut self, _value: impl Into<String>) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:37`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L37) — `pub fn allow_anonymous(&mut self, _value: bool) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:41`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L41) — `pub fn timeout(&mut self, _value: Duration) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:45`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L45) — `pub fn io_timeout(&mut self, _value: Duration) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:49`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L49) — `pub fn retry_max_times(&mut self, _value: usize) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:53`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L53) — `pub fn retry_min_delay(&mut self, _value: Duration) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:57`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L57) — `pub fn retry_max_delay(&mut self, _value: Duration) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:61`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L61) — `pub fn write_chunk_size_mib(&mut self, _value: usize) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:65`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L65) — `pub fn write_chunk_concurrency(&mut self, _value: usize) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:69`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L69) — `pub fn max_concurrent_write_requests(&mut self, _value: usize) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:73`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L73) — `pub fn trace_always(&mut self, _value: bool) -> &mut Self {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:77`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L77) — `pub fn build(&self) -> Result<Arc<dyn BaseO2Client>> {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:87`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L87) — `fn build_fails_loudly_after_full_configuration() {`
+- [`phoenix/crates/storage/xai-o2/src/o2_client_builder.rs:110`](../source/phoenix/crates/storage/xai-o2/src/o2_client_builder.rs#L110) — `fn build_error_converts_to_boxed_std_error() {`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:40`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L40) — `def _config_class_key(cls: type) -> str:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:44`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L44) — `def make_unregistered_config_error_message(cls_name: str) -> str:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:51`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L51) — `def unregistered_config_error_message_if_unregistered(cls: type) -> str | None:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:59`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L59) — `class Config:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:60`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L60) — `def to_dict(self):`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:79`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L79) — `def from_dict(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:93`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L93) — `def to_json(self, sort_keys: bool = False):`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:99`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L99) — `def from_json(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:113`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L113) — `def init(self, *args, **kwargs):`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:117`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L117) — `def get_type_hints(cls) -> dict[str, type]:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:122`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L122) — `def configclass(cls: Type[ConfigType]) -> Type[ConfigType]: ...`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:126`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L126) — `def configclass(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:132`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L132) — `def configclass(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:136`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L136) — `def _configclass(cls: Type[ConfigType]) -> Type[ConfigType]:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:158`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L158) — `def from_dict(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:256`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L256) — `def to_dict(obj: Any, container: str = "???") -> Any:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:295`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L295) — `def _resolve_type_hints(cls: type) -> dict[str, Type[Any]]:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:305`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L305) — `def resolve_type_hints(dcls: Any) -> dict[str, Type[Any]]:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:311`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L311) — `def replace_cli_subs(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:327`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L327) — `def replace_presets(args: list[str], presets: dict[str, list[str]]) -> list[str]:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:342`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L342) — `def replace_recursive(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:403`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L403) — `def cast_type(ty: Type[Any], val: str):`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:472`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L472) — `def is_union(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:476`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L476) — `def is_optional(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:480`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L480) — `def is_list(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:484`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L484) — `def is_tuple(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:488`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L488) — `def is_dict(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:492`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L492) — `def is_path(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:499`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L499) — `def is_bytes(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:506`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L506) — `def is_datetime(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:515`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L515) — `def is_class_ref(ty) -> bool:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:520`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L520) — `def _unwrap_optional(ty: Any) -> Any:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:528`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L528) — `def _coerce_enum_value(enum_cls: enum.EnumMeta, value: Any) -> Any:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:537`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L537) — `def _coerce_class_ref(value: Any, where: str) -> Any:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:553`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L553) — `def _coerce_enums_from_hint(vtype: Any, value: Any) -> Any:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:567`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L567) — `def parse_kv(kv: str) -> tuple[str, str]:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:574`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L574) — `def get_module(mod_path: str) -> ModuleType:`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:584`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L584) — `def get_configs_from_mod(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:594`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L594) — `def get_named_config_from_module(`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:624`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L624) — `class DiscoveredConfigsInModule(NamedTuple):`
+- [`phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py:629`](../source/phoenix/python/common/xai-configlib/src/xai_configlib/__init__.py#L629) — `def get_all_configs_from_module(`
+- [`phoenix/python/common/xai-gimmick/src/xai_gimmick/__init__.py:3`](../source/phoenix/python/common/xai-gimmick/src/xai_gimmick/__init__.py#L3) — `def plural(sequence_or_int):`
+- [`phoenix/python/common/xai-gimmick/src/xai_gimmick/__init__.py:11`](../source/phoenix/python/common/xai-gimmick/src/xai_gimmick/__init__.py#L11) — `def contract(numbers, minimum=4):`
+- [`phoenix/python/common/xai-gimmick/src/xai_gimmick/__init__.py:30`](../source/phoenix/python/common/xai-gimmick/src/xai_gimmick/__init__.py#L30) — `def color(s, value=None):`
+- [`phoenix/python/common/xai-proto/backend_proxy.py:8`](../source/phoenix/python/common/xai-proto/backend_proxy.py#L8) — `def build_wheel(wheel_directory, config_settings=None, metadata_directory=None):`
+- [`phoenix/python/common/xai-proto/backend_proxy.py:12`](../source/phoenix/python/common/xai-proto/backend_proxy.py#L12) — `def get_requires_for_build_wheel(config_settings=None):`
+- [`phoenix/python/common/xai-proto/backend_proxy.py:16`](../source/phoenix/python/common/xai-proto/backend_proxy.py#L16) — `def prepare_metadata_for_build_wheel(metadata_directory, config_settings=None):`
+- [`phoenix/python/common/xai-proto/backend_proxy.py:20`](../source/phoenix/python/common/xai-proto/backend_proxy.py#L20) — `def build_editable(wheel_directory, config_settings=None, metadata_directory=None):`
+- [`phoenix/python/common/xai-proto/backend_proxy.py:24`](../source/phoenix/python/common/xai-proto/backend_proxy.py#L24) — `def get_requires_for_build_editable(config_settings=None):`
+- [`phoenix/python/common/xai-proto/backend_proxy.py:28`](../source/phoenix/python/common/xai-proto/backend_proxy.py#L28) — `def prepare_metadata_for_build_editable(metadata_directory, config_settings=None):`
+- [`phoenix/python/common/xai-proto/hatch_build.py:20`](../source/phoenix/python/common/xai-proto/hatch_build.py#L20) — `class CustomBuildHook(BuildHookInterface):`
+- [`phoenix/python/common/xai-proto/hatch_build.py:21`](../source/phoenix/python/common/xai-proto/hatch_build.py#L21) — `def initialize(self, version, build_data):`
+- [`phoenix/python/common/xai-proto/hatch_build.py:34`](../source/phoenix/python/common/xai-proto/hatch_build.py#L34) — `def run_protoc(out_dir: Path) -> None:`
+- [`phoenix/python/common/xai-proto/hatch_build.py:75`](../source/phoenix/python/common/xai-proto/hatch_build.py#L75) — `def is_gnu_sed():`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:300`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L300) — `enum ActionName {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:517`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L517) — `enum ContinuousActionName {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:526`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L526) — `enum ActionGroup {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:543`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L543) — `enum ActionCategory {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:549`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L549) — `enum SemanticIdModel {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:555`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L555) — `enum LanguageCode {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:753`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L753) — `enum CountryCode {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1006`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1006) — `enum ProductSurface {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1030`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1030) — `enum Page {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1131`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1131) — `enum Gender {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1138`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1138) — `enum MaskType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1143`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1143) — `enum UserType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1150`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1150) — `enum AppPushDeviceType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1156`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1156) — `enum SubscriptionLevel {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1166`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1166) — `enum AdsActionName {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1403`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1403) — `enum CompressionType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1660`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1660) — `enum UserActionAggregationAlgorithmType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1665`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1665) — `enum UserActionAggregationType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1713`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1713) — `enum UserActionSequenceSourceDataType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1724`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1724) — `enum ResponseFormat {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1741`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1741) — `enum UaasModelType {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1747`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1747) — `enum UaasProductSurface {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1779`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1779) — `enum AgeBucket {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1824`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1824) — `enum Timezone {`
+- [`phoenix/python/common/xai-proto/proto/recsys.proto:1859`](../source/phoenix/python/common/xai-proto/proto/recsys.proto#L1859) — `enum DeviceNetworkType {`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py:12`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py#L12) — `def adler32(data: jax.Array) -> jax.Array:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py:13`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py#L13) — `def _host(arr):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py:19`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py#L19) — `def global_adler32(data: jax.Array, mesh, pspec) -> jax.Array:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py:26`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/adler32_zlib.py#L26) — `def global_adler32_fast(data: jax.Array, mesh, pspec) -> jax.Array:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:26`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L26) — `class ChecksumInconsistencyError(RuntimeError):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:30`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L30) — `def compute_checksums(state, state_sharding, mesh):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:58`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L58) — `def _slices2devices(shape, spec, mesh_items):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:70`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L70) — `def check_consistency_python(state, shard_checksums, label="state"):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:90`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L90) — `def get_checksum_dict(state, state_sharding, mesh, checksums=None):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:142`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L142) — `def adler32_combine(adlers, lengths, BASE=ADLER_BASE):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:159`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L159) — `def checksum_tree(tree, shardings, mesh, combine=True):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:174`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L174) — `def local_adler32(tree):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:194`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L194) — `def global_checksum_tree(arrays, shardings, mesh):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:206`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L206) — `def check_consistency_xla(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:223`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L223) — `def reduce_and_compare(shard_checksums):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:238`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L238) — `class ConsistencyState(NamedTuple):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:245`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L245) — `def get_consistency(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:270`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L270) — `class _FakeDevice:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:271`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L271) — `def __init__(self, id):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:275`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L275) — `def _get_slices(shape: list[int], spec: list[None | str | list[str]], mesh: dict[str, int]):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:288`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L288) — `def format_slices(slices, shape):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:300`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L300) — `def check_consistent(slices2devices, checksums, fn, key, shape):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:320`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L320) — `def check_internal_consistency(checksum_dict, fn="<in-memory checksum_dict>", names=None):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:340`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L340) — `def verify_at_save(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py:361`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/checksum.py#L361) — `def compare_checksum_dicts(fn, computed, rename=None, names=None):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:17`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L17) — `def _ready(futures, timeout, q=queue.SimpleQueue()):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:27`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L27) — `class _Array:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:31`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L31) — `def _unsafe_jax2np(array: jax.Array) -> np.ndarray:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:45`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L45) — `def pbroadcast(x, axis_name, source):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:51`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L51) — `def get_replicated_axes(shardings: PyTree[jax.sharding.Sharding]) -> PyTree[P]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:52`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L52) — `def _get_axes(sharding):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:63`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L63) — `def get_sources(shardings: PyTree[jax.sharding.Sharding], replicated_axes: PyTree[P]):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:66`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L66) — `def get_source(sharding, axes):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:79`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L79) — `def get_load_mask(axes: PyTree[P], srcs: PyTree[jax.Array], mesh: jax.sharding.Mesh):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py:82`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/common.py#L82) — `def load_mask():`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:22`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L22) — `def _unwrap_with_backoff(kms_client, dek_path) -> bytes:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:49`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L49) — `def _read_wrapped_dek(dek_path: pathlib.Path) -> dict | None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:57`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L57) — `def publish_tree_dek(path: pathlib.Path, kms_client) -> tuple[bytes, str, dict, dict]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:104`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L104) — `def adopt_tree_dek(path: pathlib.Path, kms_client) -> bytes:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:117`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L117) — `def _unwrap_header_master(kms_client, path: pathlib.Path) -> bytes:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:129`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L129) — `def _header_wrapped_master(path: pathlib.Path) -> tuple[str, dict]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py:151`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/dek.py#L151) — `def _first_envelope(path: pathlib.Path) -> pathlib.Path:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py:12`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py#L12) — `def at_dir(kvstore: dict, path: pathlib.Path | str) -> dict:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py:22`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py#L22) — `def use_encrypted_kvstore(ocdbt_config: dict, kvstore: dict) -> dict:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py:28`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py#L28) — `def _envelope_spec(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py:47`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/encrypted_kvstore.py#L47) — `def encrypted_kvstore(path: pathlib.Path, kms_client, encryption_chunk_size: int) -> dict:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/fix_jax.py:6`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/fix_jax.py#L6) — `def patch_xla_extensions():`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:42`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L42) — `def _is_encrypted_tree(tree: pathlib.Path) -> bool:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:50`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L50) — `def _names_from_tree_metadata(metadata_json: dict[str, Any]) -> list[str]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:58`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L58) — `def _read_encrypted_file(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:65`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L65) — `def _encrypted_tspec_transform(kvstore_base: dict[str, Any]) -> Callable:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:66`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L66) — `def transform(tspec: dict[str, Any]) -> dict[str, Any]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:72`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L72) — `def _prepare_checkpoint_read(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:103`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L103) — `def _restore_node_serialize_enabled() -> bool:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:107`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L107) — `def _node_lock_path() -> str:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:116`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L116) — `class _NodeBatchLock:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:117`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L117) — `def __init__(self, path: str):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:121`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L121) — `def __enter__(self):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:131`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L131) — `def __exit__(self, *exc):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:134`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L134) — `def close(self):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:141`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L141) — `def _release_batch_memory():`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:149`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L149) — `def _build_read_plan(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:180`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L180) — `def _pack_read_batches(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:202`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L202) — `def _convert_domains(domains: dict[str, Any], host_state: dict[str, jax.Array]) -> dict[str, Any]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:214`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L214) — `def _open_tensor(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:244`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L244) — `def _read_into_shards(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:280`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L280) — `def _drain_read_futures(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:317`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L317) — `def load_checkpoint(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:438`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L438) — `def _auto_window_bytes(plan: list[tuple[str, str, list[bool], int]]) -> int:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:444`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L444) — `def _stage_to_host(arrays: dict[str, jax.Array]) -> dict[str, jax.Array]:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:454`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L454) — `def copy_aliased_arrays(tree):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:457`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L457) — `def _copy(x):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:470`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L470) — `def load_checkpoint_streamed(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:603`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L603) — `def broadcast_replicated(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:617`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L617) — `def broadcast(tree):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py:623`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/load.py#L623) — `def rename_tensor(name: str, rename_patterns: dict[str, str]):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:27`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L27) — `def encrypt_write(base, directory, name: str, data: bytes) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:32`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L32) — `def decrypt_read(base, directory, name: str) -> bytes:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:40`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L40) — `def _require_array_leaves(state) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:53`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L53) — `class EncryptedPyTreeCheckpointHandler(BasePyTreeCheckpointHandler):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:54`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L54) — `def __init__(self, kms_client, encryption_chunk_size: int, **kwargs):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:62`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L62) — `def _base_for(self, directory) -> dict:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:72`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L72) — `def set_kms_client(self, kms_client) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:75`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L75) — `def _write_metadata_file(self, directory, param_infos, save_args, use_zarr3=False):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:76`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L76) — `def _save_fn():`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:91`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L91) — `def _read_metadata_file(self, directory):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:96`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L96) — `def finalize(self, directory):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:108`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L108) — `class EncryptedCheckpointMetadataStore:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:109`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L109) — `def __init__(self, base_for):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:112`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L112) — `def is_blocking_writer(self) -> bool:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:115`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L115) — `def write(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:128`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L128) — `def read(self, checkpoint_path: str | os.PathLike) -> _step_metadata.StepMetadata | None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:136`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L136) — `def update(self, checkpoint_path: str | os.PathLike, **kwargs) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:144`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L144) — `def wait_until_finished(self) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:147`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L147) — `def close(self) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:151`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L151) — `def _encrypted_array_handler(array_handler_cls, base_for, array_handler_args=()):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:152`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L152) — `class EncryptedArrayHandler(array_handler_cls):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:153`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L153) — `def __init__(self, *args, **kwargs):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:157`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L157) — `def _get_json_tspec_write(self, info, *args, **kwargs):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:164`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L164) — `def _get_json_tspec_read(self, info, *args, **kwargs):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:171`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L171) — `async def _serialize_sharding(self, sharding, info, sharding_metadata_txn):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:191`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L191) — `def encrypted_checkpointer(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:202`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L202) — `def base_for(directory) -> dict:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:232`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L232) — `class _ArraysOnlyRegistry:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:233`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L233) — `def __init__(self, inner):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:236`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L236) — `def get(self, ty):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:244`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L244) — `def has(self, ty):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:247`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L247) — `def add(self, *args, **kwargs):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:258`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L258) — `def wait_until_finished() -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:263`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L263) — `def get_encrypted_checkpointer(`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:332`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L332) — `def assert_all_enveloped(path: pathlib.Path) -> None:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py:348`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/orbax_encrypted.py#L348) — `def extend_base(path: str, kms_client, encryption_chunk_size: int) -> dict:`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:8`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L8) — `def keystr(keys):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:15`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L15) — `def tree_to_dict(tree, is_leaf=None, keep_none=True):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:26`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L26) — `def unflatten_dict(flat_dict, sep="."):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:37`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L37) — `def tree_from_dict(flat_dict):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:41`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L41) — `def has_subtree(name, flat_dict):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:52`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L52) — `def tree_map_overlap(update_leaf_fn, tree1, tree2):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:65`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L65) — `def update_tree(tree, updated_leaves, treedef):`
+- [`phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py:81`](../source/phoenix/python/training/xai-checkpointing/xai_checkpointing/tree_util.py#L81) — `def local_nbytes(tree):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:28`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L28) — `class SidLookupServiceStub(object):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:29`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L29) — `def __init__(self, channel):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:38`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L38) — `class SidLookupServiceServicer(object):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:39`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L39) — `def LookupSids(self, request, context):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:45`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L45) — `def add_SidLookupServiceServicer_to_server(servicer, server):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:60`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L60) — `class SidLookupService(object):`
+- [`phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py:62`](../source/phoenix/reference/_sid_proto/sid_lookup_pb2_grpc.py#L62) — `def LookupSids(`
+- [`phoenix/reference/dump_gen.py:51`](../source/phoenix/reference/dump_gen.py#L51) — `def _batch_relpath(partition: int, batch_id: int) -> str:`
+- [`phoenix/reference/dump_gen.py:55`](../source/phoenix/reference/dump_gen.py#L55) — `def _load_sid_codes(path: str, world: World) -> np.ndarray:`
+- [`phoenix/reference/dump_gen.py:84`](../source/phoenix/reference/dump_gen.py#L84) — `def _pick_users(rng: np.random.Generator, world: World, n: int) -> np.ndarray:`
+- [`phoenix/reference/dump_gen.py:93`](../source/phoenix/reference/dump_gen.py#L93) — `def _history_lengths(rng: np.random.Generator, n: int) -> np.ndarray:`
+- [`phoenix/reference/dump_gen.py:101`](../source/phoenix/reference/dump_gen.py#L101) — `def _strictly_increasing(times: np.ndarray, cap_ms: int) -> tuple[np.ndarray, np.ndarray]:`
+- [`phoenix/reference/dump_gen.py:108`](../source/phoenix/reference/dump_gen.py#L108) — `def _build_rows(`
+- [`phoenix/reference/dump_gen.py:201`](../source/phoenix/reference/dump_gen.py#L201) — `def _write_batch_file(path: Path, world: World, cols: dict[str, np.ndarray], mm: str | None):`
+- [`phoenix/reference/dump_gen.py:205`](../source/phoenix/reference/dump_gen.py#L205) — `def fsl(arr2d: np.ndarray, typ: pa.DataType) -> pa.Array:`
+- [`phoenix/reference/dump_gen.py:209`](../source/phoenix/reference/dump_gen.py#L209) — `def fsl2(arr3d: np.ndarray, typ: pa.DataType) -> pa.Array:`
+- [`phoenix/reference/dump_gen.py:274`](../source/phoenix/reference/dump_gen.py#L274) — `def _write_world_tables(world: World, out_dir: Path) -> None:`
+- [`phoenix/reference/dump_gen.py:342`](../source/phoenix/reference/dump_gen.py#L342) — `def write_dump(`
+- [`phoenix/reference/dump_gen.py:389`](../source/phoenix/reference/dump_gen.py#L389) — `def _fmt_ts(ms: int) -> str:`
+- [`phoenix/reference/dump_gen.py:393`](../source/phoenix/reference/dump_gen.py#L393) — `def _fmt_actions(row: np.ndarray) -> str:`
+- [`phoenix/reference/dump_gen.py:398`](../source/phoenix/reference/dump_gen.py#L398) — `def preview_sessions(out_dir: str, n: int) -> str:`
+- [`phoenix/reference/dump_gen.py:448`](../source/phoenix/reference/dump_gen.py#L448) — `def _check_with_pyarrow(out: Path, mm: str | None, sid: bool = False) -> None:`
+- [`phoenix/reference/dump_gen.py:496`](../source/phoenix/reference/dump_gen.py#L496) — `def col2d(name: str, dtype) -> np.ndarray:`
+- [`phoenix/reference/dump_gen.py:605`](../source/phoenix/reference/dump_gen.py#L605) — `def _check_with_trainer(out: Path, sid: bool = False) -> None:`
+- [`phoenix/reference/dump_gen.py:675`](../source/phoenix/reference/dump_gen.py#L675) — `def run_self_check(out_dir: str, mm: str | None = None, sid: bool = False) -> None:`
+- [`phoenix/reference/dump_gen.py:681`](../source/phoenix/reference/dump_gen.py#L681) — `def main(argv: list[str] | None = None) -> int:`
+- [`phoenix/reference/example_data/example_posts.py:29`](../source/phoenix/reference/example_data/example_posts.py#L29) — `def _png(tag: bytes) -> bytes:`
+- [`phoenix/reference/example_data/example_posts.py:33`](../source/phoenix/reference/example_data/example_posts.py#L33) — `def example_posts() -> list[Post]:`
+- [`phoenix/reference/example_data/example_posts.py:87`](../source/phoenix/reference/example_data/example_posts.py#L87) — `def _self_check() -> None:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:31`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L31) — `def _mm_matrix(world: World) -> np.ndarray:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:38`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L38) — `def _write_npy_table(world: World, mm: np.ndarray, out: Path) -> int:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:47`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L47) — `def _gallery_rows(world: World) -> np.ndarray:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:53`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L53) — `def _write_inference_posts(world: World, mm: np.ndarray, rows: np.ndarray, out: Path) -> int:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:69`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L69) — `def _write_global_ids(world: World, rows: np.ndarray, out: Path) -> int:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:85`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L85) — `def write_artifacts(out_dir: str, seed: int = 20260721, now_ms: int | None = None) -> dict:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:97`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L97) — `def _check_with_pyarrow(out: Path, seed: int) -> None:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:150`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L150) — `def _check_with_trainer(out: Path) -> None:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:188`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L188) — `def run_self_check(out_dir: str, seed: int) -> None:`
+- [`phoenix/reference/gen_recs_artifacts_gen.py:194`](../source/phoenix/reference/gen_recs_artifacts_gen.py#L194) — `def main(argv: list[str] | None = None) -> int:`
+- [`phoenix/reference/mm_encoder.py:31`](../source/phoenix/reference/mm_encoder.py#L31) — `class Author:`
+- [`phoenix/reference/mm_encoder.py:37`](../source/phoenix/reference/mm_encoder.py#L37) — `class Image:`
+- [`phoenix/reference/mm_encoder.py:42`](../source/phoenix/reference/mm_encoder.py#L42) — `class Video:`
+- [`phoenix/reference/mm_encoder.py:47`](../source/phoenix/reference/mm_encoder.py#L47) — `class PollCard:`
+- [`phoenix/reference/mm_encoder.py:53`](../source/phoenix/reference/mm_encoder.py#L53) — `class LegacyCard:`
+- [`phoenix/reference/mm_encoder.py:61`](../source/phoenix/reference/mm_encoder.py#L61) — `class UnifiedCard:`
+- [`phoenix/reference/mm_encoder.py:68`](../source/phoenix/reference/mm_encoder.py#L68) — `class CardV2:`
+- [`phoenix/reference/mm_encoder.py:74`](../source/phoenix/reference/mm_encoder.py#L74) — `class ArticleMetadata:`
+- [`phoenix/reference/mm_encoder.py:81`](../source/phoenix/reference/mm_encoder.py#L81) — `class Post:`
+- [`phoenix/reference/mm_encoder.py:91`](../source/phoenix/reference/mm_encoder.py#L91) — `def remove_tco_links(text: str) -> str:`
+- [`phoenix/reference/mm_encoder.py:97`](../source/phoenix/reference/mm_encoder.py#L97) — `def render_post(`
+- [`phoenix/reference/mm_encoder.py:127`](../source/phoenix/reference/mm_encoder.py#L127) — `def _render_single_post(`
+- [`phoenix/reference/mm_encoder.py:172`](../source/phoenix/reference/mm_encoder.py#L172) — `def _process_medium(`
+- [`phoenix/reference/mm_encoder.py:181`](../source/phoenix/reference/mm_encoder.py#L181) — `def _process_image(`
+- [`phoenix/reference/mm_encoder.py:191`](../source/phoenix/reference/mm_encoder.py#L191) — `def _process_video(`
+- [`phoenix/reference/mm_encoder.py:215`](../source/phoenix/reference/mm_encoder.py#L215) — `def _process_cardv2(`
+- [`phoenix/reference/mm_encoder.py:252`](../source/phoenix/reference/mm_encoder.py#L252) — `def format_chatml(text_with_pads: str, system_prompt: str = DEFAULT_SYSTEM_PROMPT) -> str:`
+- [`phoenix/reference/mm_encoder.py:260`](../source/phoenix/reference/mm_encoder.py#L260) — `def truncate_l2(emb: np.ndarray, dim: int = TRUNCATE_DIM) -> np.ndarray:`
+- [`phoenix/reference/mm_encoder.py:270`](../source/phoenix/reference/mm_encoder.py#L270) — `def encode(`
+- [`phoenix/reference/mm_encoder.py:296`](../source/phoenix/reference/mm_encoder.py#L296) — `def embed_post(`
+- [`phoenix/reference/mm_encoder.py:314`](../source/phoenix/reference/mm_encoder.py#L314) — `def _encode_http(`
+- [`phoenix/reference/mm_encoder.py:354`](../source/phoenix/reference/mm_encoder.py#L354) — `def _parse_encode_response(result) -> list:`
+- [`phoenix/reference/mm_encoder.py:374`](../source/phoenix/reference/mm_encoder.py#L374) — `def _load_st_model(model_id: str, device: str | None):`
+- [`phoenix/reference/mm_encoder.py:385`](../source/phoenix/reference/mm_encoder.py#L385) — `def _encode_transformers(`
+- [`phoenix/reference/mm_encoder.py:434`](../source/phoenix/reference/mm_encoder.py#L434) — `def _self_check() -> None:`
+- [`phoenix/reference/mm_snapshot_gen.py:21`](../source/phoenix/reference/mm_snapshot_gen.py#L21) — `def _embed_posts(embedder, posts, post_ids, dim):`
+- [`phoenix/reference/mm_snapshot_gen.py:61`](../source/phoenix/reference/mm_snapshot_gen.py#L61) — `def write_mm_snapshot(`
+- [`phoenix/reference/mm_snapshot_gen.py:108`](../source/phoenix/reference/mm_snapshot_gen.py#L108) — `def _self_check() -> None:`
+- [`phoenix/reference/mm_snapshot_gen.py:165`](../source/phoenix/reference/mm_snapshot_gen.py#L165) — `def _self_check_embedder() -> None:`
+- [`phoenix/reference/mm_snapshot_gen.py:174`](../source/phoenix/reference/mm_snapshot_gen.py#L174) — `def stub_embedder(post):`
+- [`phoenix/reference/mm_snapshot_gen.py:178`](../source/phoenix/reference/mm_snapshot_gen.py#L178) — `class _StubPost:`
+- [`phoenix/reference/mm_snapshot_gen.py:179`](../source/phoenix/reference/mm_snapshot_gen.py#L179) — `def __init__(self, pid):`
+- [`phoenix/reference/oss_recsys_synth.py:12`](../source/phoenix/reference/oss_recsys_synth.py#L12) — `def synth_mm_embeddings(`
+- [`phoenix/reference/oss_recsys_synth.py:30`](../source/phoenix/reference/oss_recsys_synth.py#L30) — `def synth_sid_codebooks(`
+- [`phoenix/reference/oss_recsys_synth.py:43`](../source/phoenix/reference/oss_recsys_synth.py#L43) — `def mm_to_sid(mm_emb: np.ndarray, codebooks: np.ndarray) -> np.ndarray:`
+- [`phoenix/reference/oss_recsys_synth.py:62`](../source/phoenix/reference/oss_recsys_synth.py#L62) — `def sid_codes_for_posts(`
+- [`phoenix/reference/oss_recsys_synth.py:75`](../source/phoenix/reference/oss_recsys_synth.py#L75) — `def synth_post_sids(`
+- [`phoenix/reference/repack_checkpoint.py:46`](../source/phoenix/reference/repack_checkpoint.py#L46) — `def _dir_size(path: Path) -> int:`
+- [`phoenix/reference/repack_checkpoint.py:50`](../source/phoenix/reference/repack_checkpoint.py#L50) — `def _cpu_device():`
+- [`phoenix/reference/repack_checkpoint.py:54`](../source/phoenix/reference/repack_checkpoint.py#L54) — `def _restore_full(src_orbax: Path) -> dict:`
+- [`phoenix/reference/repack_checkpoint.py:58`](../source/phoenix/reference/repack_checkpoint.py#L58) — `def _reduce_tree(full: dict, keep_opt_state: bool) -> dict:`
+- [`phoenix/reference/repack_checkpoint.py:62`](../source/phoenix/reference/repack_checkpoint.py#L62) — `def prune(node):`
+- [`phoenix/reference/repack_checkpoint.py:86`](../source/phoenix/reference/repack_checkpoint.py#L86) — `class _NoCompressionArrayHandler(ocp.type_handlers.ArrayHandler):`
+- [`phoenix/reference/repack_checkpoint.py:87`](../source/phoenix/reference/repack_checkpoint.py#L87) — `def _get_json_tspec_write(self, *args, **kwargs):`
+- [`phoenix/reference/repack_checkpoint.py:95`](../source/phoenix/reference/repack_checkpoint.py#L95) — `def _save_reduced(reduced: dict, dst_orbax: Path) -> None:`
+- [`phoenix/reference/repack_checkpoint.py:110`](../source/phoenix/reference/repack_checkpoint.py#L110) — `def _checksum_dict(reduced: dict) -> dict:`
+- [`phoenix/reference/repack_checkpoint.py:134`](../source/phoenix/reference/repack_checkpoint.py#L134) — `def _scrub_path_value(value):`
+- [`phoenix/reference/repack_checkpoint.py:142`](../source/phoenix/reference/repack_checkpoint.py#L142) — `def _scrub_json_paths(node):`
+- [`phoenix/reference/repack_checkpoint.py:150`](../source/phoenix/reference/repack_checkpoint.py#L150) — `def _scrub_sidecars(src: Path, dst: Path) -> list[str]:`
+- [`phoenix/reference/repack_checkpoint.py:188`](../source/phoenix/reference/repack_checkpoint.py#L188) — `def repack(src: Path, dst: Path, keep_opt_state: bool) -> None:`
+- [`phoenix/reference/repack_checkpoint.py:228`](../source/phoenix/reference/repack_checkpoint.py#L228) — `def main(argv: list[str] | None = None) -> int:`
+- [`phoenix/reference/retrieve_then_rank.py:16`](../source/phoenix/reference/retrieve_then_rank.py#L16) — `def parse_args(argv: list[str] | None = None) -> argparse.Namespace:`
+- [`phoenix/reference/retrieve_then_rank.py:27`](../source/phoenix/reference/retrieve_then_rank.py#L27) — `def _load_world_tables(data_dir: Path):`
+- [`phoenix/reference/retrieve_then_rank.py:37`](../source/phoenix/reference/retrieve_then_rank.py#L37) — `def _iter_sessions(data_dir: Path, n: int):`
+- [`phoenix/reference/retrieve_then_rank.py:61`](../source/phoenix/reference/retrieve_then_rank.py#L61) — `def _session_to_user_action_sequence(sess) -> "object":`
+- [`phoenix/reference/retrieve_then_rank.py:104`](../source/phoenix/reference/retrieve_then_rank.py#L104) — `def main(argv: list[str] | None = None) -> int:`
+- [`phoenix/reference/sid_assign.py:23`](../source/phoenix/reference/sid_assign.py#L23) — `def _encode_chunk(latent: np.ndarray, stages: np.ndarray) -> np.ndarray:`
+- [`phoenix/reference/sid_assign.py:38`](../source/phoenix/reference/sid_assign.py#L38) — `def encode_batch(`
+- [`phoenix/reference/sid_assign.py:60`](../source/phoenix/reference/sid_assign.py#L60) — `def process_shard(`
+- [`phoenix/reference/sid_codebook.py:42`](../source/phoenix/reference/sid_codebook.py#L42) — `def get_mesh() -> Mesh:`
+- [`phoenix/reference/sid_codebook.py:54`](../source/phoenix/reference/sid_codebook.py#L54) — `def _kmeans_iter(residual, centroids, K: int):`
+- [`phoenix/reference/sid_codebook.py:64`](../source/phoenix/reference/sid_codebook.py#L64) — `def step(res, cent):`
+- [`phoenix/reference/sid_codebook.py:88`](../source/phoenix/reference/sid_codebook.py#L88) — `def _update_residual(residual, centroids, assigns):`
+- [`phoenix/reference/sid_codebook.py:98`](../source/phoenix/reference/sid_codebook.py#L98) — `def f(res, cent, asn):`
+- [`phoenix/reference/sid_codebook.py:105`](../source/phoenix/reference/sid_codebook.py#L105) — `def _assign_codes_one_stage(residual, centroids, K: int):`
+- [`phoenix/reference/sid_codebook.py:115`](../source/phoenix/reference/sid_codebook.py#L115) — `def f(res, cent):`
+- [`phoenix/reference/sid_codebook.py:124`](../source/phoenix/reference/sid_codebook.py#L124) — `def _pad_to_multiple(arr: np.ndarray, multiple: int) -> tuple[np.ndarray, int]:`
+- [`phoenix/reference/sid_codebook.py:133`](../source/phoenix/reference/sid_codebook.py#L133) — `def _put_sharded(arr: np.ndarray) -> jax.Array:`
+- [`phoenix/reference/sid_codebook.py:138`](../source/phoenix/reference/sid_codebook.py#L138) — `def _put_replicated(arr: np.ndarray) -> jax.Array:`
+- [`phoenix/reference/sid_codebook.py:143`](../source/phoenix/reference/sid_codebook.py#L143) — `def train_rq_kmeans(`
+- [`phoenix/reference/sid_codebook.py:202`](../source/phoenix/reference/sid_codebook.py#L202) — `def encode_rq(`
+- [`phoenix/reference/sid_codebook.py:227`](../source/phoenix/reference/sid_codebook.py#L227) — `def evaluate_codebook(`
+- [`phoenix/reference/sid_codebook.py:289`](../source/phoenix/reference/sid_codebook.py#L289) — `def _init_mlp(key: jax.Array, dims: list[int]) -> dict:`
+- [`phoenix/reference/sid_codebook.py:299`](../source/phoenix/reference/sid_codebook.py#L299) — `def _mlp_n_layers(params: dict) -> int:`
+- [`phoenix/reference/sid_codebook.py:303`](../source/phoenix/reference/sid_codebook.py#L303) — `def _mlp_forward(params: dict, x: jax.Array, n_layers: int | None = None) -> jax.Array:`
+- [`phoenix/reference/sid_codebook.py:311`](../source/phoenix/reference/sid_codebook.py#L311) — `def _rq_quantize(latent: jax.Array, codebooks: jax.Array):`
+- [`phoenix/reference/sid_codebook.py:340`](../source/phoenix/reference/sid_codebook.py#L340) — `def _ema_update_codebooks(`
+- [`phoenix/reference/sid_codebook.py:365`](../source/phoenix/reference/sid_codebook.py#L365) — `def _revive_dead_codes(`
+- [`phoenix/reference/sid_codebook.py:388`](../source/phoenix/reference/sid_codebook.py#L388) — `def train_rqvae(`
+- [`phoenix/reference/sid_codebook.py:423`](../source/phoenix/reference/sid_codebook.py#L423) — `def warmup_step(enc_params, dec_params, opt_state, batch):`
+- [`phoenix/reference/sid_codebook.py:424`](../source/phoenix/reference/sid_codebook.py#L424) — `def loss_fn(enc_p, dec_p):`
+- [`phoenix/reference/sid_codebook.py:438`](../source/phoenix/reference/sid_codebook.py#L438) — `def vae_step(enc_params, dec_params, opt_state, batch, codebooks_jax):`
+- [`phoenix/reference/sid_codebook.py:441`](../source/phoenix/reference/sid_codebook.py#L441) — `def loss_fn(enc_p, dec_p):`
+- [`phoenix/reference/sid_codebook.py:570`](../source/phoenix/reference/sid_codebook.py#L570) — `def encode_rqvae(`
+- [`phoenix/reference/sid_codebook.py:595`](../source/phoenix/reference/sid_codebook.py#L595) — `def evaluate_rqvae(`
+- [`phoenix/reference/sid_codebook.py:686`](../source/phoenix/reference/sid_codebook.py#L686) — `def load_codebook_npz(path: str | Path) -> np.ndarray:`
+- [`phoenix/reference/sid_codebook.py:691`](../source/phoenix/reference/sid_codebook.py#L691) — `def load_rqvae_npz(path: str | Path) -> tuple[dict, dict, np.ndarray]:`
+- [`phoenix/reference/sid_codebook.py:699`](../source/phoenix/reference/sid_codebook.py#L699) — `def cmd_train(args):`
+- [`phoenix/reference/sid_codebook.py:728`](../source/phoenix/reference/sid_codebook.py#L728) — `def cmd_evaluate(args):`
+- [`phoenix/reference/sid_codebook.py:741`](../source/phoenix/reference/sid_codebook.py#L741) — `def cmd_train_vae(args):`
+- [`phoenix/reference/sid_codebook.py:787`](../source/phoenix/reference/sid_codebook.py#L787) — `def cmd_evaluate_vae(args):`
+- [`phoenix/reference/sid_codebook.py:800`](../source/phoenix/reference/sid_codebook.py#L800) — `def main():`
+- [`phoenix/reference/sid_index_server.py:24`](../source/phoenix/reference/sid_index_server.py#L24) — `def _load_index(parquet: str) -> tuple[np.ndarray, np.ndarray]:`
+- [`phoenix/reference/sid_index_server.py:42`](../source/phoenix/reference/sid_index_server.py#L42) — `class SidIndexServicer(sid_lookup_pb2_grpc.SidLookupServiceServicer):`
+- [`phoenix/reference/sid_index_server.py:43`](../source/phoenix/reference/sid_index_server.py#L43) — `def __init__(self, post_ids: np.ndarray, codes: np.ndarray):`
+- [`phoenix/reference/sid_index_server.py:49`](../source/phoenix/reference/sid_index_server.py#L49) — `def LookupSids(self, request, context):`
+- [`phoenix/reference/sid_index_server.py:69`](../source/phoenix/reference/sid_index_server.py#L69) — `def serve(parquet: str, port: int, max_workers: int = 8) -> None:`
+- [`phoenix/reference/sid_index_server.py:96`](../source/phoenix/reference/sid_index_server.py#L96) — `def main() -> int:`
+- [`phoenix/reference/sid_io.py:17`](../source/phoenix/reference/sid_io.py#L17) — `def mlp_forward_np(params: dict, x: np.ndarray) -> np.ndarray:`
+- [`phoenix/reference/sid_io.py:24`](../source/phoenix/reference/sid_io.py#L24) — `def load_codebook(path: str | Path) -> tuple[np.ndarray, int, tuple[dict, dict] | None]:`
+- [`phoenix/reference/sid_io.py:61`](../source/phoenix/reference/sid_io.py#L61) — `def is_rqvae(path: str | Path) -> bool:`
+- [`phoenix/reference/sid_io.py:75`](../source/phoenix/reference/sid_io.py#L75) — `def save_codebook_npz(`
+- [`phoenix/reference/sid_io.py:96`](../source/phoenix/reference/sid_io.py#L96) — `def save_rqvae_npz(`
+- [`phoenix/reference/sid_io.py:128`](../source/phoenix/reference/sid_io.py#L128) — `def save_codebook_safetensors(`
+- [`phoenix/reference/sid_io.py:152`](../source/phoenix/reference/sid_io.py#L152) — `def save_rqvae_safetensors(`
+- [`phoenix/reference/sid_io.py:186`](../source/phoenix/reference/sid_io.py#L186) — `def assign_sids(embeddings: np.ndarray, codebook_path: str | Path) -> np.ndarray:`
+- [`phoenix/reference/sid_mock_server.py:23`](../source/phoenix/reference/sid_mock_server.py#L23) — `class SidLookupServicer(sid_lookup_pb2_grpc.SidLookupServiceServicer):`
+- [`phoenix/reference/sid_mock_server.py:24`](../source/phoenix/reference/sid_mock_server.py#L24) — `def __init__(self, num_levels: int, codebook_size: int, mm_dim: int, seed: int):`
+- [`phoenix/reference/sid_mock_server.py:30`](../source/phoenix/reference/sid_mock_server.py#L30) — `def LookupSids(self, request, context):`
+- [`phoenix/reference/sid_mock_server.py:53`](../source/phoenix/reference/sid_mock_server.py#L53) — `def serve(port: int, num_levels: int, codebook_size: int, mm_dim: int, seed: int) -> None:`
+- [`phoenix/reference/sid_mock_server.py:72`](../source/phoenix/reference/sid_mock_server.py#L72) — `def main() -> int:`
+- [`phoenix/reference/sid_snapshot_gen.py:21`](../source/phoenix/reference/sid_snapshot_gen.py#L21) — `def write_sid_snapshot(`
+- [`phoenix/reference/sid_snapshot_gen.py:84`](../source/phoenix/reference/sid_snapshot_gen.py#L84) — `def _self_check() -> None:`
+- [`phoenix/reference/train_step.py:16`](../source/phoenix/reference/train_step.py#L16) — `def _hash_leaves(batch: Any, use_ip: bool) -> list[jax.Array]:`
+- [`phoenix/reference/train_step.py:29`](../source/phoenix/reference/train_step.py#L29) — `def flatten_token_ids(batch: Any, use_ip: bool) -> jax.Array:`
+- [`phoenix/reference/train_step.py:34`](../source/phoenix/reference/train_step.py#L34) — `def lookup_embeddings(`
+- [`phoenix/reference/train_step.py:57`](../source/phoenix/reference/train_step.py#L57) — `def _cumsum(xs: list[int]) -> list[int]:`
+- [`phoenix/reference/train_step.py:65`](../source/phoenix/reference/train_step.py#L65) — `def segment_sum_embeddings(`
+- [`phoenix/reference/train_step.py:87`](../source/phoenix/reference/train_step.py#L87) — `def compute_grad_norm(grads: Any) -> jax.Array:`
+- [`phoenix/reference/train_step.py:93`](../source/phoenix/reference/train_step.py#L93) — `def is_valid_step(grads: Any, keep_threshold: float | None = None) -> tuple[jax.Array, jax.Array]:`
+- [`phoenix/reference/train_step.py:101`](../source/phoenix/reference/train_step.py#L101) — `def recsys_train_step(`
+- [`phoenix/reference/train_synth.py:21`](../source/phoenix/reference/train_synth.py#L21) — `def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:`
+- [`phoenix/reference/train_synth.py:73`](../source/phoenix/reference/train_synth.py#L73) — `def _read_num_partitions(data_dir: Path) -> int:`
+- [`phoenix/reference/train_synth.py:88`](../source/phoenix/reference/train_synth.py#L88) — `def _count_dump_rows(data_dir: Path) -> int:`
+- [`phoenix/reference/train_synth.py:97`](../source/phoenix/reference/train_synth.py#L97) — `def main(argv: list[str] | None = None) -> int:`
+- [`phoenix/reference/world.py:153`](../source/phoenix/reference/world.py#L153) — `class Topic:`
+- [`phoenix/reference/world.py:158`](../source/phoenix/reference/world.py#L158) — `def __str__(self) -> str:`
+- [`phoenix/reference/world.py:163`](../source/phoenix/reference/world.py#L163) — `class Author:`
+- [`phoenix/reference/world.py:171`](../source/phoenix/reference/world.py#L171) — `def __str__(self) -> str:`
+- [`phoenix/reference/world.py:180`](../source/phoenix/reference/world.py#L180) — `class User:`
+- [`phoenix/reference/world.py:200`](../source/phoenix/reference/world.py#L200) — `def prefs_str(self) -> str:`
+- [`phoenix/reference/world.py:205`](../source/phoenix/reference/world.py#L205) — `def __str__(self) -> str:`
+- [`phoenix/reference/world.py:213`](../source/phoenix/reference/world.py#L213) — `class Post:`
+- [`phoenix/reference/world.py:223`](../source/phoenix/reference/world.py#L223) — `def __str__(self) -> str:`
+- [`phoenix/reference/world.py:227`](../source/phoenix/reference/world.py#L227) — `class World:`
+- [`phoenix/reference/world.py:228`](../source/phoenix/reference/world.py#L228) — `def __init__(self, seed: int, now_ms: int, arrays: dict[str, np.ndarray | list]):`
+- [`phoenix/reference/world.py:239`](../source/phoenix/reference/world.py#L239) — `def _build_topic_pools(self) -> None:`
+- [`phoenix/reference/world.py:254`](../source/phoenix/reference/world.py#L254) — `def topic(self, t: int) -> Topic:`
+- [`phoenix/reference/world.py:257`](../source/phoenix/reference/world.py#L257) — `def author(self, i: int) -> Author:`
+- [`phoenix/reference/world.py:267`](../source/phoenix/reference/world.py#L267) — `def user(self, i: int) -> User:`
+- [`phoenix/reference/world.py:290`](../source/phoenix/reference/world.py#L290) — `def post(self, i: int) -> Post:`
+- [`phoenix/reference/world.py:302`](../source/phoenix/reference/world.py#L302) — `def affinity(self, user_row: int, post_rows: np.ndarray) -> np.ndarray:`
+- [`phoenix/reference/world.py:308`](../source/phoenix/reference/world.py#L308) — `def gate(affinity: np.ndarray) -> np.ndarray:`
+- [`phoenix/reference/world.py:311`](../source/phoenix/reference/world.py#L311) — `def action_probs(self, affinity: np.ndarray) -> np.ndarray:`
+- [`phoenix/reference/world.py:314`](../source/phoenix/reference/world.py#L314) — `def sample_engagement(`
+- [`phoenix/reference/world.py:342`](../source/phoenix/reference/world.py#L342) — `def _topic_prefix(self, t: int, max_created_ms: int | None) -> np.ndarray:`
+- [`phoenix/reference/world.py:349`](../source/phoenix/reference/world.py#L349) — `def _sample_topic_pool(`
+- [`phoenix/reference/world.py:361`](../source/phoenix/reference/world.py#L361) — `def _user_topic_draw(self, rng: np.random.Generator, user_row: int, n: int) -> np.ndarray:`
+- [`phoenix/reference/world.py:367`](../source/phoenix/reference/world.py#L367) — `def sample_engaged_posts(`
+- [`phoenix/reference/world.py:383`](../source/phoenix/reference/world.py#L383) — `def sample_candidate_posts(self, rng: np.random.Generator, user_row: int, n: int) -> np.ndarray:`
+- [`phoenix/reference/world.py:398`](../source/phoenix/reference/world.py#L398) — `def engagement_times(`
+- [`phoenix/reference/world.py:417`](../source/phoenix/reference/world.py#L417) — `def mm_vector(self, post_rows: np.ndarray | int) -> np.ndarray:`
+- [`phoenix/reference/world.py:431`](../source/phoenix/reference/world.py#L431) — `def preview(self, n: int = 3) -> str:`
+- [`phoenix/reference/world.py:452`](../source/phoenix/reference/world.py#L452) — `def _rng(seed: int, key: int) -> np.random.Generator:`
+- [`phoenix/reference/world.py:456`](../source/phoenix/reference/world.py#L456) — `def generate_world(`
+- [`phoenix/reference/world.py:586`](../source/phoenix/reference/world.py#L586) — `def _self_check() -> None:`
+- [`phoenix/reference/world_snapshots.py:37`](../source/phoenix/reference/world_snapshots.py#L37) — `class _WorldPost:`
+- [`phoenix/reference/world_snapshots.py:40`](../source/phoenix/reference/world_snapshots.py#L40) — `def __init__(self, post_id: int, row: int):`
+- [`phoenix/reference/world_snapshots.py:45`](../source/phoenix/reference/world_snapshots.py#L45) — `def _build_mm_matrix(world) -> np.ndarray:`
+- [`phoenix/reference/world_snapshots.py:53`](../source/phoenix/reference/world_snapshots.py#L53) — `def _write_mm(world, mm: np.ndarray, out: Path) -> int:`
+- [`phoenix/reference/world_snapshots.py:68`](../source/phoenix/reference/world_snapshots.py#L68) — `def _train_and_assign_sids(`
+- [`phoenix/reference/world_snapshots.py:113`](../source/phoenix/reference/world_snapshots.py#L113) — `def _write_sid(world, codes: np.ndarray, codebooks: np.ndarray | None, out: Path) -> int:`
+- [`phoenix/reference/world_snapshots.py:138`](../source/phoenix/reference/world_snapshots.py#L138) — `def _write_post_creation(world, codes: np.ndarray, out: Path) -> int:`
+- [`phoenix/reference/world_snapshots.py:165`](../source/phoenix/reference/world_snapshots.py#L165) — `def _write_retrieval_corpus(world, codes: np.ndarray, out: Path) -> int:`
+- [`phoenix/reference/world_snapshots.py:190`](../source/phoenix/reference/world_snapshots.py#L190) — `def _topic_coherence_demo(world, mm: np.ndarray, codes: np.ndarray, n_probe: int = 3) -> str:`
+- [`phoenix/reference/world_snapshots.py:210`](../source/phoenix/reference/world_snapshots.py#L210) — `def _self_check(out: Path, world, codes: np.ndarray) -> None:`
+- [`phoenix/reference/world_snapshots.py:240`](../source/phoenix/reference/world_snapshots.py#L240) — `def build_snapshots(`
+- [`phoenix/reference/world_snapshots.py:286`](../source/phoenix/reference/world_snapshots.py#L286) — `def main(argv: list[str] | None = None) -> int:`
+- [`phoenix/xrex/configs/config.py:14`](../source/phoenix/xrex/configs/config.py#L14) — `class Dataset(Config, ABC):`
+- [`phoenix/xrex/configs/config.py:16`](../source/phoenix/xrex/configs/config.py#L16) — `def make(`
+- [`phoenix/xrex/configs/config.py:30`](../source/phoenix/xrex/configs/config.py#L30) — `def example_data(self, batch_size: int) -> Any:`
+- [`phoenix/xrex/configs/config_loader.py:42`](../source/phoenix/xrex/configs/config_loader.py#L42) — `def get_config_module(mod_name: str) -> dict[str, Config]:`
+- [`phoenix/xrex/configs/config_loader.py:52`](../source/phoenix/xrex/configs/config_loader.py#L52) — `def replace_cli_subs(config: Any, kvs: list[str]) -> tuple[Any, dict[str, list[str]]]:`
+- [`phoenix/xrex/configs/config_loader.py:56`](../source/phoenix/xrex/configs/config_loader.py#L56) — `def replace_and_validate_cli_subs(config: Any, kvs: list[str]) -> Any:`
+- [`phoenix/xrex/configs/config_loader.py:69`](../source/phoenix/xrex/configs/config_loader.py#L69) — `def _apply_deployment_defaults(config: Config) -> Config:`
+- [`phoenix/xrex/configs/config_loader.py:77`](../source/phoenix/xrex/configs/config_loader.py#L77) — `def get_named_config(name: str) -> Config:`
+- [`phoenix/xrex/configs/data_feeds.py:32`](../source/phoenix/xrex/configs/data_feeds.py#L32) — `def kafka_kwargs(cluster: str = _KAFKA_CLUSTER) -> dict:`
+- [`phoenix/xrex/configs/data_feeds.py:41`](../source/phoenix/xrex/configs/data_feeds.py#L41) — `def phoenix_kafka_kwargs() -> dict:`
+- [`phoenix/xrex/configs/data_feeds.py:71`](../source/phoenix/xrex/configs/data_feeds.py#L71) — `def _off_cluster_suffix() -> str:`
+- [`phoenix/xrex/configs/data_feeds.py:77`](../source/phoenix/xrex/configs/data_feeds.py#L77) — `def job_suffix() -> str:`
+- [`phoenix/xrex/configs/data_feeds.py:95`](../source/phoenix/xrex/configs/data_feeds.py#L95) — `def _group_id(config_name: str) -> str:`
+- [`phoenix/xrex/configs/data_feeds.py:99`](../source/phoenix/xrex/configs/data_feeds.py#L99) — `def resolve_global_ids_file_path(global_ids_file_path: Path | None) -> Path | None:`
+- [`phoenix/xrex/configs/data_feeds.py:105`](../source/phoenix/xrex/configs/data_feeds.py#L105) — `def _ranking_aggregated_kafka(mparams, hash_table, use_post_sid, sid_num_levels, config_name):`
+- [`phoenix/xrex/configs/data_feeds.py:130`](../source/phoenix/xrex/configs/data_feeds.py#L130) — `def _ranking_rust_kafka(mparams, hash_table, use_post_sid, sid_num_levels, config_name):`
+- [`phoenix/xrex/configs/data_feeds.py:156`](../source/phoenix/xrex/configs/data_feeds.py#L156) — `def _ranking_kafka_dispatcher(mparams, hash_table, use_post_sid, sid_num_levels, config_name):`
+- [`phoenix/xrex/configs/data_feeds.py:186`](../source/phoenix/xrex/configs/data_feeds.py#L186) — `def _ranking_offline_kafka_dump(mparams, hash_table, use_post_sid, sid_num_levels, config_name):`
+- [`phoenix/xrex/configs/data_feeds.py:206`](../source/phoenix/xrex/configs/data_feeds.py#L206) — `def _ranking_rust_parquet(mparams, hash_table, use_post_sid, sid_num_levels, config_name):`
+- [`phoenix/xrex/configs/data_feeds.py:226`](../source/phoenix/xrex/configs/data_feeds.py#L226) — `def _ranking_grpc_recsys(mparams, hash_table, use_post_sid, sid_num_levels, config_name):`
+- [`phoenix/xrex/configs/data_feeds.py:268`](../source/phoenix/xrex/configs/data_feeds.py#L268) — `def _retrieval_aggregated_kafka(`
+- [`phoenix/xrex/configs/data_feeds.py:300`](../source/phoenix/xrex/configs/data_feeds.py#L300) — `def _retrieval_rust_kafka(`
+- [`phoenix/xrex/configs/data_feeds.py:335`](../source/phoenix/xrex/configs/data_feeds.py#L335) — `def _retrieval_offline_kafka_dump(`
+- [`phoenix/xrex/configs/data_feeds.py:377`](../source/phoenix/xrex/configs/data_feeds.py#L377) — `def _sid_aggregated_kafka(hash_table, dataset_params: dict, config_name: str):`
+- [`phoenix/xrex/configs/data_feeds.py:404`](../source/phoenix/xrex/configs/data_feeds.py#L404) — `def _gen_recs_aggregated_kafka(mparams, hash_table, dataset_params: dict):`
+- [`phoenix/xrex/configs/xrecsys.py:46`](../source/phoenix/xrex/configs/xrecsys.py#L46) — `def _round_up_to_multiple(n: int, k: int) -> int:`
+- [`phoenix/xrex/configs/xrecsys.py:50`](../source/phoenix/xrex/configs/xrecsys.py#L50) — `def _validate_params(mparams: dict, num_user_prefix_tokens: int) -> None:`
+- [`phoenix/xrex/configs/xrecsys.py:65`](../source/phoenix/xrex/configs/xrecsys.py#L65) — `def _default_recsys_scaling() -> ScaleConfig:`
+- [`phoenix/xrex/configs/xrecsys.py:69`](../source/phoenix/xrex/configs/xrecsys.py#L69) — `def _make_feature_prep_config(mparams: dict, scale_config: ScaleConfig) -> FeaturePrepConfig:`
+- [`phoenix/xrex/configs/xrecsys.py:128`](../source/phoenix/xrex/configs/xrecsys.py#L128) — `def _make_cfg(`
+- [`phoenix/xrex/configs/xrecsys.py:179`](../source/phoenix/xrex/configs/xrecsys.py#L179) — `def _make_dataset(`
+- [`phoenix/xrex/configs/xrecsys.py:235`](../source/phoenix/xrex/configs/xrecsys.py#L235) — `def _sequence_len(mparams, dataset, num_user_prefix_tokens: int) -> int:`
+- [`phoenix/xrex/configs/xrecsys.py:244`](../source/phoenix/xrex/configs/xrecsys.py#L244) — `def _home_direct_packed_base() -> dict:`
+- [`phoenix/xrex/configs/xrecsys.py:492`](../source/phoenix/xrex/configs/xrecsys.py#L492) — `class _ConfigRegistry(dict[str, RecsysTrainer]):`
+- [`phoenix/xrex/configs/xrecsys.py:496`](../source/phoenix/xrex/configs/xrecsys.py#L496) — `def _normalize_key(cls, key: str) -> tuple[str, bool]:`
+- [`phoenix/xrex/configs/xrecsys.py:501`](../source/phoenix/xrex/configs/xrecsys.py#L501) — `def __contains__(self, key: object) -> bool:`
+- [`phoenix/xrex/configs/xrecsys.py:507`](../source/phoenix/xrex/configs/xrecsys.py#L507) — `def __getitem__(self, key: str) -> RecsysTrainer:`
+- [`phoenix/xrex/configs/xrecsys.py:517`](../source/phoenix/xrex/configs/xrecsys.py#L517) — `def get(self, key: str, default: RecsysTrainer | None = None) -> RecsysTrainer | None:`
+- [`phoenix/xrex/configs/xrecsys_gen_recs.py:31`](../source/phoenix/xrex/configs/xrecsys_gen_recs.py#L31) — `def _round_up_to_multiple(n: int, k: int) -> int:`
+- [`phoenix/xrex/configs/xrecsys_gen_recs.py:41`](../source/phoenix/xrex/configs/xrecsys_gen_recs.py#L41) — `def _make_cfg(cfg, user_vocab_size: int, item_vocab_size: int, author_vocab_size: int):`
+- [`phoenix/xrex/configs/xrecsys_gen_recs.py:71`](../source/phoenix/xrex/configs/xrecsys_gen_recs.py#L71) — `def _make_dataset(`
+- [`phoenix/xrex/configs/xrecsys_sid_retrieval.py:56`](../source/phoenix/xrex/configs/xrecsys_sid_retrieval.py#L56) — `def _round_up(n: int, k: int) -> int:`
+- [`phoenix/xrex/configs/xrecsys_sid_retrieval.py:101`](../source/phoenix/xrex/configs/xrecsys_sid_retrieval.py#L101) — `def _make_dataset(dataset_type: str = "aggregated_kafka", config_name: str = "xrecsys_sid_gen_rec"):`
+- [`phoenix/xrex/configs/xrecsys_sid_retrieval.py:131`](../source/phoenix/xrex/configs/xrecsys_sid_retrieval.py#L131) — `def make_trainer(`
+- [`phoenix/xrex/configs/xrecsys_sid_variants.py:7`](../source/phoenix/xrex/configs/xrecsys_sid_variants.py#L7) — `def build_streaming_model_cfgs(make_trainer, make_dataset) -> dict:`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:48`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L48) — `def _round_up_to_multiple(n: int, k: int) -> int:`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:52`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L52) — `def _has_user_features_token(mparams: dict) -> bool:`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:65`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L65) — `def _default_recsys_scaling() -> ScaleConfig:`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:69`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L69) — `def _make_feature_prep_config(mparams: dict, scale_config: ScaleConfig) -> FeaturePrepConfig:`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:120`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L120) — `def _num_user_prefix_tokens(`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:135`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L135) — `def _resolve_global_ids_file_path(path: Path | None) -> Path | None:`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:141`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L141) — `def _make_cfg(`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:201`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L201) — `def _make_dataset(`
+- [`phoenix/xrex/configs/xrecsys_two_tower.py:250`](../source/phoenix/xrex/configs/xrecsys_two_tower.py#L250) — `def _xrecsys_two_tower_combined_base() -> dict:`
+- [`phoenix/xrex/configs/xrecsys_two_tower_evals.py:10`](../source/phoenix/xrex/configs/xrecsys_two_tower_evals.py#L10) — `def build_evals(mparams, dataset, has_user_features_token) -> list[EvalModule]:`
+- [`phoenix/xrex/configs/xrecsys_two_tower_evals.py:77`](../source/phoenix/xrex/configs/xrecsys_two_tower_evals.py#L77) — `def make_wandb_hook(evaluator, ctx):`
+- [`phoenix/xrex/cuda/adler32/__init__.py:45`](../source/phoenix/xrex/cuda/adler32/__init__.py#L45) — `def _adler32_reference(data: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/cuda/adler32/__init__.py:46`](../source/phoenix/xrex/cuda/adler32/__init__.py#L46) — `def _host(arr):`
+- [`phoenix/xrex/cuda/adler32/__init__.py:52`](../source/phoenix/xrex/cuda/adler32/__init__.py#L52) — `def _adler32_ffi(data: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/cuda/adler32/__init__.py:65`](../source/phoenix/xrex/cuda/adler32/__init__.py#L65) — `def adler32(data: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:19`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L19) — `const std::size_t size = input.size_bytes();`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:23`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L23) — `const int grid_dim = std::min<int>(1024, (size + BLOCK_DIM - 1) / BLOCK_DIM);`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:43`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L43) — `const std::size_t ndim = global_shape.element_count();`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:59`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L59) — `const std::size_t size = input.size_bytes();`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:61`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L61) — `const int grid_dim = std::min<int>(1024, (size + BLOCK_DIM - 1) / BLOCK_DIM);`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:63`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L63) — `const uint8_t* d = reinterpret_cast<const uint8_t*>(input.untyped_data());`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:64`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L64) — `const uint32_t* g = global_shape.typed_data();`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:65`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L65) — `const uint32_t* s = shard_shape.typed_data();`
+- [`phoenix/xrex/cuda/adler32/src/adler32_api.cu:66`](../source/phoenix/xrex/cuda/adler32/src/adler32_api.cu#L66) — `const uint32_t* o = shard_offsets.typed_data();`
+- [`phoenix/xrex/cuda/adler32/src/adler32_cpu.cc:11`](../source/phoenix/xrex/cuda/adler32/src/adler32_cpu.cc#L11) — `const ffi::AnyBuffer input,`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:27`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L27) — `const uint8_t* data, size_t length, uint32_t* sum1, uint32_t* sum2`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:38`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L38) — `const uint8_t* u8 = reinterpret_cast<const uint8_t*>(&u32);`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:80`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L80) — `const uint8_t* data,`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:81`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L81) — `const uint32_t* global_shape,`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:82`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L82) — `const uint32_t* shard_shape,`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:83`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L83) — `const uint32_t* shard_offsets,`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:152`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L152) — `const uint8_t* data,`
+- [`phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh:153`](../source/phoenix/xrex/cuda/adler32/src/adler32_kernel.cuh#L153) — `const uint32_t* scales,`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:64`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L64) — `class AsyncEmbContextHandle(NamedTuple):`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:77`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L77) — `def attrs(self) -> dict:`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:90`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L90) — `def make_context_handle(`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:157`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L157) — `def lookup_start(`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:174`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L174) — `def lookup_done(pin: jax.Array, ctx: AsyncEmbContextHandle) -> jax.Array:`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:183`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L183) — `def rowwise_adagrad_update_start(`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:231`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L231) — `def rowwise_adagrad_lazy_update_start(`
+- [`phoenix/xrex/cuda/async_emb/async_emb.py:285`](../source/phoenix/xrex/cuda/async_emb/async_emb.py#L285) — `def rowwise_adagrad_update_done(gate: jax.Array, ctx: AsyncEmbContextHandle):`
+- [`phoenix/xrex/cuda/async_emb/comm_utils.py:11`](../source/phoenix/xrex/cuda/async_emb/comm_utils.py#L11) — `def get_flatten_axis_index(axis_names: AxisNames):`
+- [`phoenix/xrex/cuda/async_emb/comm_utils.py:17`](../source/phoenix/xrex/cuda/async_emb/comm_utils.py#L17) — `def get_flatten_axis_size(axis_names: AxisNames) -> int:`
+- [`phoenix/xrex/cuda/async_emb/comm_utils.py:28`](../source/phoenix/xrex/cuda/async_emb/comm_utils.py#L28) — `def get_flatten_replica_groups(mesh: Mesh, axis_names: tuple[str]) -> tuple[int, list[int]]:`
+- [`phoenix/xrex/cuda/async_emb/comm_utils.py:42`](../source/phoenix/xrex/cuda/async_emb/comm_utils.py#L42) — `def get_context_id(group_size: int, flatten_replicas: tuple[int, ...]) -> int:`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:162`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L162) — `const auto& spec = ctx->spec();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:202`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L202) — `const auto& spec = ctx->spec();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:280`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L280) — `const ffi::AnyBuffer& grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:281`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L281) — `const ffi::AnyBuffer& segment_ids,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:282`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L282) — `const ffi::AnyBuffer& unique_tokens,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:283`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L283) — `const ffi::AnyBuffer& table,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:284`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L284) — `const ffi::AnyBuffer& row_state,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:285`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L285) — `const ffi::AnyBuffer& pending`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:287`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L287) — `const auto& spec = ctx->spec();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:355`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L355) — `const float lr_f = float(*learning_rate);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:356`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L356) — `const float eps_f = float(*eps);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:357`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L357) — `const float decay_f = float(*decay_factor);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:358`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L358) — `const float wd_f = float(*weight_decay_factor);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:376`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L376) — `const auto& spec = ctx->spec();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:377`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L377) — `const AdagradParams adagrad{lr_f, eps_f, decay_f, 1.f / float(spec.emb_width), wd_f, 0.f, 0.f};`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:470`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L470) — `const float lr_f = float(*learning_rate);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:471`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L471) — `const float eps_f = float(*eps);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:472`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L472) — `const float accum_rate_f = float(*accum_decay_rate);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:473`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L473) — `const float wd_rate_f = float(*weight_decay_rate);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:500`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L500) — `const auto& spec = ctx->spec();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:501`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L501) — `const AdagradParams adagrad{`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:544`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L544) — `const auto& layout = ctx->layout();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:740`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L740) — `const auto& spec = ctx->spec();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:741`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L741) — `const auto& layout = ctx->layout();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:742`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L742) — `const size_t index_bytes =`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:744`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L744) — `const size_t block_bytes = size_t(ctx->worldSize()) * size_t(spec.tokens_per_rank) *`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:747`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L747) — `struct Region {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_api.cc:752`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_api.cc#L752) — `const std::unordered_map<std::string, Region> regions = {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:52`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L52) — `const char* value = std::getenv(name);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:61`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L61) — `const char* value = std::getenv("XAI_ASYNC_EMB_TIMEOUT_SECONDS");`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:79`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L79) — `const SliceLayout slices{0, 8, 1};`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:101`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L101) — `const size_t slice_bytes = checkedProduct(`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:361`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L361) — `const auto now = std::chrono::steady_clock::now();`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:405`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L405) — `const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(timeout_ms);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:425`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L425) — `const auto deadline = std::chrono::steady_clock::now() + std::chrono::milliseconds(timeout_ms);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:440`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L440) — `const auto deadline = std::chrono::steady_clock::now() + kNcclReadyTimeout;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:461`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L461) — `const auto& layout = layout_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:462`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L462) — `const auto& spec = spec_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:465`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L465) — `const size_t block_count = size_t(spec.tokens_per_rank) * size_t(spec.shard_width);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:507`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L507) — `const auto deadline = std::chrono::steady_clock::now() + std::chrono::minutes(5);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:529`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L529) — `const AsyncEmbContext::PipelineState& AsyncEmbContext::pipeline(Operation operation) const {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:544`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L544) — `const TablePhase next = operation == Operation::Lookup ? TablePhase::Lookup : TablePhase::Update;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:574`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L574) — `const auto& layout = layout_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:575`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L575) — `const auto& spec = spec_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:583`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L583) — `const SliceLayout slices{spec.tokens_per_rank, spec.shard_width, world_size_};`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:608`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L608) — `const auto& layout = layout_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:609`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L609) — `const auto& spec = spec_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:610`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L610) — `const SliceLayout slices{spec.tokens_per_rank, spec.shard_width, world_size_};`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:662`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L662) — `const float* row_sq_sums = reinterpret_cast<const float*>(arena() + layout.row_sq_sums);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:663`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L663) — `const ReducedGradients reduced{`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:709`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L709) — `const int32_t* pending,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:712`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L712) — `const int32_t* logical_step`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:761`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L761) — `const ReducedGradients reduced{f32, f32, f32, reinterpret_cast<UpdateScalars*>(f32 + 256), 0, 8};`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:762`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L762) — `const UpdateJob job{bf16, i32, i32, bf16, 1};`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:777`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L777) — `const std::string name = operation == Operation::Lookup ? "lookup" : "update";`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:788`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L788) — `const cudaEvent_t done = pipeline(operation).done;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc:789`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.cc#L789) — `const auto deadline = std::chrono::steady_clock::now() + watchdog_timeout_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:22`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L22) — `struct PipelineSpec {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:29`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L29) — `struct ArenaLayout {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:44`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L44) — `struct LookupJob {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:45`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L45) — `const int32_t* token_ids;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:46`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L46) — `const __nv_bfloat16* table;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:50`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L50) — `struct UpdateJob {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:51`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L51) — `const __nv_bfloat16* grads;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:52`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L52) — `const int32_t* segment_ids;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:53`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L53) — `const int32_t* unique_tokens;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:58`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L58) — `struct ReducedGradients {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:60`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L60) — `const float* row_sq_sums;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:61`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L61) — `const float* grad_norm_sq;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:70`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L70) — `class CudaEvent {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:84`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L84) — `class CudaStream {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:99`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L99) — `class DeviceArena {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:114`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L114) — `class AsyncEmbContext : public common::CommContext {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:116`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L116) — `enum class Operation { Lookup, Update };`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:126`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L126) — `const PipelineSpec& spec() const { return spec_; }`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:127`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L127) — `const ArenaLayout& layout() const { return layout_; }`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:135`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L135) — `const int32_t* pending,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:138`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L138) — `const int32_t* logical_step = nullptr`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:153`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L153) — `enum class TablePhase { None, Lookup, Update };`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:155`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L155) — `struct PipelineState {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:165`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L165) — `const PipelineState& pipeline(Operation operation) const;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:184`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L184) — `const PipelineSpec spec_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:185`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L185) — `const std::string name_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:186`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L186) — `const ArenaLayout layout_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:187`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L187) — `const int world_size_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:188`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L188) — `const std::chrono::seconds watchdog_timeout_;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp:211`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_comm.hpp#L211) — `const void* last_table_ = nullptr;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:26`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L26) — `const int4* src_vec = reinterpret_cast<const int4*>(src);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:32`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L32) — `const int2* src_vec = reinterpret_cast<const int2*>(src);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:60`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L60) — `const int32_t* token_ids_all,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:61`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L61) — `const __nv_bfloat16* table_shard,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:69`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L69) — `const int64_t total = tokens_per_rank * nranks * lanes_per_row;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:70`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L70) — `const int64_t grid_stride = gridDim.x * int64_t(blockDim.x);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:73`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L73) — `const int64_t token = item / lanes_per_row;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:74`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L74) — `const int lane = static_cast<int>(item - token * lanes_per_row);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:85`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L85) — `const __nv_bfloat16* src = table_shard + row * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:86`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L86) — `const int dst_rank = static_cast<int>(token / tokens_per_rank);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:87`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L87) — `const int64_t slot = token - int64_t(dst_rank) * tokens_per_rank;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:95`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L95) — `const int32_t* token_ids_all,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:96`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L96) — `const __nv_bfloat16* table_shard,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:98`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L98) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:102`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L102) — `const int64_t lanes = slices.shard_width <= 16 ? 1 : 32;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:103`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L103) — `const int64_t work = slices.tokens_per_rank * int64_t(slices.nranks) * lanes;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:118`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L118) — `const __nv_bfloat16* recv_slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:124`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L124) — `const int64_t emb_width = int64_t(nranks) * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:125`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L125) — `const int64_t thread_id = blockIdx.x * int64_t(blockDim.x) + threadIdx.x;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:126`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L126) — `const int64_t grid_stride = gridDim.x * int64_t(blockDim.x);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:128`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L128) — `const int64_t units_per_slice = shard_width / 8;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:129`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L129) — `const int64_t units_total = tokens_per_rank * emb_width / 8;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:130`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L130) — `const int4* src = reinterpret_cast<const int4*>(recv_slices);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:133`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L133) — `const int64_t slice_unit = unit % units_per_slice;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:134`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L134) — `const int64_t token_rank = unit / units_per_slice;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:135`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L135) — `const int rank = static_cast<int>(token_rank % nranks);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:136`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L136) — `const int64_t token = token_rank / nranks;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:142`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L142) — `const int64_t total = tokens_per_rank * emb_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:144`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L144) — `const int64_t col = elem % emb_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:145`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L145) — `const int64_t token = elem / emb_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:146`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L146) — `const int rank = static_cast<int>(col / shard_width);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:147`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L147) — `const int64_t slice_col = col - int64_t(rank) * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:155`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L155) — `const __nv_bfloat16* recv_slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:157`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L157) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:160`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L160) — `const int64_t work = slices.tokens_per_rank * int64_t(slices.nranks) * slices.shard_width /`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:169`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L169) — `const __nv_bfloat16* grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:175`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L175) — `const int64_t emb_width = int64_t(nranks) * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:176`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L176) — `const int64_t thread_id = blockIdx.x * int64_t(blockDim.x) + threadIdx.x;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:177`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L177) — `const int64_t grid_stride = gridDim.x * int64_t(blockDim.x);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:179`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L179) — `const int64_t units_per_slice = shard_width / 8;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:180`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L180) — `const int64_t units_total = tokens_per_rank * emb_width / 8;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:181`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L181) — `const int4* src = reinterpret_cast<const int4*>(grads);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:183`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L183) — `const int64_t slice_unit = unit % units_per_slice;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:184`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L184) — `const int64_t token_rank = unit / units_per_slice;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:185`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L185) — `const int rank = static_cast<int>(token_rank % nranks);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:186`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L186) — `const int64_t token = token_rank / nranks;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:193`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L193) — `const int64_t total = tokens_per_rank * emb_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:195`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L195) — `const int64_t col = elem % emb_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:196`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L196) — `const int64_t token = elem / emb_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:197`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L197) — `const int rank = static_cast<int>(col / shard_width);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:198`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L198) — `const int64_t slice_col = col - int64_t(rank) * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:206`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L206) — `const __nv_bfloat16* grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:208`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L208) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:211`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L211) — `const int64_t work = slices.tokens_per_rank * int64_t(slices.nranks) * slices.shard_width /`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:220`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L220) — `const __nv_bfloat16* routed_grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:221`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L221) — `const int32_t* segment_ids_all,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:228`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L228) — `const int64_t thread_id = blockIdx.x * int64_t(blockDim.x) + threadIdx.x;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:229`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L229) — `const int64_t grid_stride = gridDim.x * int64_t(blockDim.x);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:233`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L233) — `const int64_t total = n_tokens_global * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:235`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L235) — `const int64_t token = elem / shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:236`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L236) — `const int64_t col = elem - token * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:237`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L237) — `const int32_t segment = __ldg(segment_ids_all + token);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:249`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L249) — `const float* grad_accum, float* row_sq_sums, int64_t num_unique, int64_t shard_width`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:251`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L251) — `const int64_t thread_id = blockIdx.x * int64_t(blockDim.x) + threadIdx.x;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:252`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L252) — `const int64_t grid_stride = gridDim.x * int64_t(blockDim.x);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:256`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L256) — `const float* row_vals = grad_accum + row * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:258`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L258) — `const float grad = __bfloat162float(__float2bfloat16(row_vals[col]));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:264`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L264) — `const float block_total = block_sum(thread_total);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:271`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L271) — `const __nv_bfloat16* routed_grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:272`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L272) — `const int32_t* segment_ids_all,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:275`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L275) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:279`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L279) — `const int64_t n_tokens_global = slices.tokens_per_rank * int64_t(slices.nranks);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:302`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L302) — `const float* row_sq_sums,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:303`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L303) — `const int32_t* unique_tokens,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:313`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L313) — `const float norm = sqrtf(__ldg(row_sq_sums + num_unique));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:314`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L314) — `const bool apply = isfinite(norm) && __ldg(&scalars->pending) != 0;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:315`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L315) — `const bool lazy = last_step != nullptr;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:316`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L316) — `const int32_t clock = lazy ? __ldg(&scalars->step) : 0;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:317`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L317) — `const int64_t thread_id = blockIdx.x * int64_t(blockDim.x) + threadIdx.x;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:322`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L322) — `const int lane = static_cast<int>(threadIdx.x) & 31;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:323`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L323) — `const int64_t total = num_unique * shard_width;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:324`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L324) — `const int64_t grid_stride = gridDim.x * int64_t(blockDim.x);`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:326`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L326) — `const int64_t elem = warp_base + lane;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:327`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L327) — `const bool in_range = elem < total;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:328`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L328) — `const int64_t row = in_range ? elem / shard_width : 0;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:329`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L329) — `const int col = in_range ? static_cast<int>(elem - row * shard_width) : 0;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:334`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L334) — `const bool ok = in_range && apply && token >= 0 && token < vocab_rows;`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:340`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L340) — `const float delta = fmaxf(0.f, float(clock - last_step[token]));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:352`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L352) — `const float step = (-adagrad.lr) * (1.f / (sqrtf(accum) + adagrad.eps));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:353`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L353) — `const float grad = __bfloat162float(__float2bfloat16(grad_accum[elem]));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:354`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L354) — `const float delta = __bfloat162float(__float2bfloat16(step * grad));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:356`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L356) — `const float decayed = __bfloat162float(__float2bfloat16(__bfloat162float(*cell) * wd));`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:370`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L370) — `const float* row_sq_sums,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:371`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L371) — `const int32_t* unique_tokens,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu:377`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.cu#L377) — `const AdagradParams& adagrad,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:10`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L10) — `struct SliceLayout {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:16`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L16) — `struct AdagradParams {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:26`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L26) — `struct UpdateScalars {`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:36`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L36) — `const int32_t* token_ids_all,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:37`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L37) — `const __nv_bfloat16* table_shard,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:39`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L39) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:45`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L45) — `const __nv_bfloat16* recv_slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:47`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L47) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:52`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L52) — `const __nv_bfloat16* grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:54`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L54) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:59`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L59) — `const __nv_bfloat16* routed_grads,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:60`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L60) — `const int32_t* segment_ids_all,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:63`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L63) — `const SliceLayout& slices,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:70`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L70) — `const float* row_sq_sums,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:71`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L71) — `const int32_t* unique_tokens,`
+- [`phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp:77`](../source/phoenix/xrex/cuda/async_emb/src/async_emb_kernel.hpp#L77) — `const AdagradParams& adagrad,`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.cc:22`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.cc#L22) — `const std::string &ctx_name,`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.cc:23`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.cc#L23) — `const GroupInfo &info,`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.cc:28`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.cc#L28) — `const int TIMEOUT_MS = 300000;`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.cc:115`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.cc#L115) — `const int TIMEOUT_MS = 300000;`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.cc:137`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.cc#L137) — `const uint8_t *data_ptr = reinterpret_cast<const uint8_t *>(recv_bytes.c_str());`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.h:14`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.h#L14) — `struct GroupInfo {`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.h:24`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.h#L24) — `class CommContext {`
+- [`phoenix/xrex/cuda/async_emb/src/comm_utils.h:35`](../source/phoenix/xrex/cuda/async_emb/src/comm_utils.h#L35) — `class CommContextRegistry {`
+- [`phoenix/xrex/cuda/top_k_by_key/__init__.py:58`](../source/phoenix/xrex/cuda/top_k_by_key/__init__.py#L58) — `def top_k_by_key(`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:13`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L13) — `struct Bf16Greater {`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:18`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L18) — `const nv_bfloat16* __restrict__ row, int64_t stride, int64_t m, nv_bfloat16* __restrict__ out`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:26`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L26) — `const nv_bfloat16 ninf = __float2bfloat16(-INFINITY);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:33`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L33) — `const nv_bfloat16* __restrict__ keys,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:36`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L36) — `const nv_bfloat16* __restrict__ pivots,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:41`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L41) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:42`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L42) — `const nv_bfloat16 pivot = pivots[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:43`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L43) — `const nv_bfloat16* krow = keys + static_cast<int64_t>(row) * n;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:47`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L47) — `const nv_bfloat16 kv = krow[i];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:49`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L49) — `const int pos = atomicAdd(&counts[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:61`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L61) — `const nv_bfloat16* keys_ptr,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:71`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L71) — `const int64_t target_survivors =`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:73`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L73) — `const int64_t sample_target =`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:75`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L75) — `const int64_t sample_stride = std::max<int64_t>(n / std::max<int64_t>(sample_target, 1), 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:76`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L76) — `const int64_t sample_size = std::max<int64_t>(n / sample_stride, 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:77`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L77) — `const int64_t order_stat_idx =`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:79`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L79) — `const int64_t cap = std::min<int64_t>(kSortCapFactor * k, n);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:89`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L89) — `const Bf16Greater greater_op;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:92`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L92) — `const nv_bfloat16* row_ptr = keys_ptr + r * n;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:93`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L93) — `const int gblocks =`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:114`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L114) — `const int64_t total = num_rows * cap;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:115`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L115) — `const int fblocks =`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:120`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L120) — `const int xblocks = static_cast<int>(std::min<int64_t>((n + kThreads - 1) / kThreads, 2048));`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:121`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L121) — `const dim3 grid(static_cast<unsigned>(xblocks), static_cast<unsigned>(num_rows));`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:151`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L151) — `const int64_t num_rows = (dims.size() == 1) ? 1 : dims[0];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:152`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L152) — `const int64_t n = (dims.size() == 1) ? dims[0] : dims[1];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu:157`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_async_kernel.cu#L157) — `const nv_bfloat16* keys_ptr = reinterpret_cast<const nv_bfloat16*>(keys.typed_data());`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_kernel.cu:29`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_kernel.cu#L29) — `const nv_bfloat16* keys_ptr,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_kernel.cu:101`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_kernel.cu#L101) — `const nv_bfloat16* keys_ptr = reinterpret_cast<const nv_bfloat16*>(keys.typed_data());`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:22`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L22) — `const uint16_t* __restrict__ keys, int64_t n, uint32_t* __restrict__ hist`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:25`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L25) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:26`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L26) — `const int warp = threadIdx.x / 32;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:29`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L29) — `const uint16_t* krow = keys + (int64_t)row * n;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:45`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L45) — `const uint32_t* __restrict__ hist,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:50`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L50) — `const int row = blockIdx.x;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:51`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L51) — `const uint32_t* h = hist + row * 256;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:65`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L65) — `const uint16_t* __restrict__ keys,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:68`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L68) — `const int32_t* __restrict__ hi_bin,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:75`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L75) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:76`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L76) — `const int warp = threadIdx.x / 32;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:77`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L77) — `const uint32_t H = (uint32_t)hi_bin[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:80`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L80) — `const uint16_t* krow = keys + (int64_t)row * n;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:85`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L85) — `const uint16_t raw = krow[i];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:86`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L86) — `const uint32_t t = ordered16(raw);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:87`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L87) — `const uint32_t hi = t >> 8;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:89`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L89) — `const int pos = atomicAdd(&out_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:109`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L109) — `const uint32_t* __restrict__ hist_lo,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:110`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L110) — `const int32_t* __restrict__ k2,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:114`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L114) — `const int row = blockIdx.x;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:115`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L115) — `const uint32_t* h = hist_lo + row * 256;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:116`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L116) — `const int64_t kk2 = k2[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:130`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L130) — `const uint16_t* __restrict__ keys,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:133`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L133) — `const int32_t* __restrict__ hi_bin,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:134`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L134) — `const int32_t* __restrict__ lo_bin,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:135`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L135) — `const int32_t* __restrict__ ties_needed,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:141`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L141) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:142`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L142) — `const uint32_t H = (uint32_t)hi_bin[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:143`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L143) — `const uint32_t L = (uint32_t)lo_bin[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:144`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L144) — `const int need = ties_needed[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:145`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L145) — `const uint16_t* krow = keys + (int64_t)row * n;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:150`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L150) — `const uint16_t raw = krow[i];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:151`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L151) — `const uint32_t t = ordered16(raw);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:154`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L154) — `const uint32_t lo = t & 0xFFu;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:156`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L156) — `const int pos = atomicAdd(&out_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:162`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L162) — `const int tp = atomicAdd(&tie_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:164`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L164) — `const int pos = atomicAdd(&out_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:176`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L176) — `const uint16_t* __restrict__ keys,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:182`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L182) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:183`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L183) — `const int warp = threadIdx.x / 32;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:186`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L186) — `const uint4* krow = reinterpret_cast<const uint4*>(keys + (int64_t)row * n);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:189`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L189) — `const uint4 v = krow[i];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:190`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L190) — `const uint32_t words[4] = {v.x, v.y, v.z, v.w};`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:208`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L208) — `const uint16_t* __restrict__ keys,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:212`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L212) — `const int32_t* __restrict__ hi_bin,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:219`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L219) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:220`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L220) — `const int warp = threadIdx.x / 32;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:221`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L221) — `const uint32_t H = (uint32_t)hi_bin[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:224`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L224) — `const uint4* krow = reinterpret_cast<const uint4*>(keys + (int64_t)row * n);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:229`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L229) — `const uint4 v = krow[i];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:230`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L230) — `const uint32_t words[4] = {v.x, v.y, v.z, v.w};`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:235`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L235) — `const uint16_t raw = (uint16_t)(half ? (words[w] >> 16) : (words[w] & 0xFFFFu));`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:236`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L236) — `const uint32_t t = ordered16(raw);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:237`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L237) — `const uint32_t hi = t >> 8;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:239`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L239) — `const int pos = atomicAdd(&out_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:261`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L261) — `const uint16_t* __restrict__ keys,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:265`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L265) — `const int32_t* __restrict__ hi_bin,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:266`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L266) — `const int32_t* __restrict__ lo_bin,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:267`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L267) — `const int32_t* __restrict__ ties_needed,`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:273`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L273) — `const int row = blockIdx.y;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:274`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L274) — `const uint32_t H = (uint32_t)hi_bin[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:275`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L275) — `const uint32_t L = (uint32_t)lo_bin[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:276`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L276) — `const int need = ties_needed[row];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:277`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L277) — `const uint4* krow = reinterpret_cast<const uint4*>(keys + (int64_t)row * n);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:282`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L282) — `const uint4 v = krow[i];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:283`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L283) — `const uint32_t words[4] = {v.x, v.y, v.z, v.w};`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:288`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L288) — `const uint16_t raw = (uint16_t)(half ? (words[w] >> 16) : (words[w] & 0xFFFFu));`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:289`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L289) — `const uint32_t t = ordered16(raw);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:292`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L292) — `const uint32_t lo = t & 0xFFu;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:294`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L294) — `const int pos = atomicAdd(&out_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:300`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L300) — `const int tp = atomicAdd(&tie_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:302`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L302) — `const int pos = atomicAdd(&out_count[row], 1);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:325`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L325) — `const int64_t rows = (dims.size() == 1) ? 1 : dims[0];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:326`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L326) — `const int64_t n = (dims.size() == 1) ? dims[0] : dims[1];`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:334`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L334) — `const uint16_t* keys_ptr = reinterpret_cast<const uint16_t*>(keys.typed_data());`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:361`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L361) — `const int64_t n8 = n / 8;`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:362`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L362) — `const int xblocks = (int)std::min<int64_t>((n8 + kThreads - 1) / kThreads, 2048);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:363`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L363) — `const dim3 grid((unsigned)xblocks, (unsigned)rows);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:374`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L374) — `const int xblocks = (int)std::min<int64_t>((n + kThreads - 1) / kThreads, 2048);`
+- [`phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu:375`](../source/phoenix/xrex/cuda/top_k_by_key/src/top_k_by_key_radix_select_kernel.cu#L375) — `const dim3 grid((unsigned)xblocks, (unsigned)rows);`
+- [`phoenix/xrex/cuda/unique/__init__.py:20`](../source/phoenix/xrex/cuda/unique/__init__.py#L20) — `def unique(`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.cu:41`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.cu#L41) — `const bool sort_pairs = d_values != nullptr;`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.cu:82`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.cu#L82) — `const bool return_inverse,`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.cu:83`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.cu#L83) — `const int64_t size,`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.cu:84`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.cu#L84) — `const int64_t fill_value,`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.cu:92`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.cu#L92) — `const int N = arr.element_count();`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.cu:97`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.cu#L97) — `const auto* arr_ptr = arr.typed_data();`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.hpp:13`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.hpp#L13) — `const bool return_inverse,`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.hpp:14`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.hpp#L14) — `const int64_t size,`
+- [`phoenix/xrex/cuda/unique/src/unique_kernel.hpp:15`](../source/phoenix/xrex/cuda/unique/src/unique_kernel.hpp#L15) — `const int64_t fill_value,`
+- [`phoenix/xrex/cuda/xla_utils/thrust_allocator.hpp:12`](../source/phoenix/xrex/cuda/xla_utils/thrust_allocator.hpp#L12) — `class ThrustAllocator {`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:13`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L13) — `def cutedsl_arch():`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:24`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L24) — `def build_dense_block_sparse_layout(seq_len, hist_len, num_q_heads, hist_valid_len):`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:78`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L78) — `def _bcast(arr):`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:103`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L103) — `def ranker_attention_fa4(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:231`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L231) — `def launch_fwd(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:291`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L291) — `def launch_pre(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:389`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L389) — `def launch_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:462`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L462) — `def launch_post_dq(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:490`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L490) — `def launch_post_dk(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:515`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L515) — `def launch_post_dv(`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:545`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L545) — `def _attention(q, k, v, *bs_args):`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:551`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L551) — `def _attention_fwd(q, k, v, *bs_args):`
+- [`phoenix/xrex/cutedsl/ranker_attention_fa4.py:559`](../source/phoenix/xrex/cutedsl/ranker_attention_fa4.py#L559) — `def _attention_bwd(res, g):`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:17`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L17) — `class TuningConfig:`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:26`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L26) — `def get_device_tuning_config() -> TuningConfig:`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:30`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L30) — `def _build_packed_block_sparse(`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:179`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L179) — `class BlockSparseLayout:`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:196`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L196) — `def build_block_sparse_layout(`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:296`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L296) — `def ranker_attention_varlen_fa4(`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:403`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L403) — `def launch_fwd(`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:505`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L505) — `def launch_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:573`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L573) — `def launch_post_dq(stream, mAccum, mOut, scale: cutlass.Float32):`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:595`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L595) — `def launch_post_dk(stream, mAccum, mOut, scale: cutlass.Float32):`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:615`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L615) — `def launch_post_dv(stream, mAccum, mOut, scale: cutlass.Float32):`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:643`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L643) — `def _attention(q, k, v, *bs_args):`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:649`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L649) — `def _attention_fwd(q, k, v, *bs_args):`
+- [`phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py:657`](../source/phoenix/xrex/cutedsl/ranker_attention_varlen_fa4.py#L657) — `def _attention_bwd(res, g):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/ampere_helpers.py:40`](../source/phoenix/xrex/cutedsl/ranker_fa4/ampere_helpers.py#L40) — `def get_smem_layout_atom(dtype: Type[cutlass.Numeric], k_dim: int) -> cute.ComposedLayout:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/ampere_helpers.py:67`](../source/phoenix/xrex/cutedsl/ranker_fa4/ampere_helpers.py#L67) — `def gemm(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/ampere_helpers.py:119`](../source/phoenix/xrex/cutedsl/ranker_fa4/ampere_helpers.py#L119) — `def gemm_rs(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/barrier.py:42`](../source/phoenix/xrex/cutedsl/ranker_fa4/barrier.py#L42) — `def ld_acquire(lock_ptr: cute.Pointer, *, loc=None, ip=None) -> cutlass.Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/barrier.py:57`](../source/phoenix/xrex/cutedsl/ranker_fa4/barrier.py#L57) — `def red_relaxed(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/barrier.py:73`](../source/phoenix/xrex/cutedsl/ranker_fa4/barrier.py#L73) — `def red_release(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/barrier.py:89`](../source/phoenix/xrex/cutedsl/ranker_fa4/barrier.py#L89) — `def wait_eq(lock_ptr: cute.Pointer, thread_idx: int | Int32, flag_offset: int, val: Int32) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/barrier.py:98`](../source/phoenix/xrex/cutedsl/ranker_fa4/barrier.py#L98) — `def arrive_inc(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:45`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L45) — `def _tcgen05_mma_kind(op: cute.nvgpu.tcgen05.mma.MmaOp) -> str:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:64`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L64) — `def gemm_w_idx(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:93`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L93) — `def gemm_ptx_w_idx(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:128`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L128) — `def gemm(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:141`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L141) — `def i64_to_i32x2(i: int) -> Tuple[int, int]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:146`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L146) — `def gemm_ptx(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:259`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L259) — `def gemm_ptx_loop(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:421`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L421) — `def gemm_ptx_partial(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:620`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L620) — `def gemm_ptx_partial1(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:791`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L791) — `def gemm_ptx_precomputed(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:947`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L947) — `def declare_ptx_smem_desc(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:985`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L985) — `def declare_ptx_idesc(op: cute.nvgpu.tcgen05.mma.MmaOp, var_name: str = "idesc") -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py:999`](../source/phoenix/xrex/cutedsl/ranker_fa4/blackwell_helpers.py#L999) — `def gemm_ptx_precomputed_varname(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:45`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L45) — `class BlockInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:56`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L56) — `def get_n_block_min_max(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:90`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L90) — `def get_m_block_min_max(self, seqlen_info: SeqlenInfoQK, n_block: Int32) -> Tuple[Int32, Int32]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:106`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L106) — `def get_n_block_k_new_min_max(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:132`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L132) — `def get_n_block_min_causal_local_mask(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:150`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L150) — `def get_n_block_min_before_local_mask(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_info.py:167`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_info.py#L167) — `def get_n_block_max_for_m_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:49`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L49) — `def _get_curr_blocksparse_tensors_varlen(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:99`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L99) — `def _get_curr_blocksparse_tensors(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:143`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L143) — `def get_curr_blocksparse_tensors(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:165`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L165) — `def load_block_list(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:205`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L205) — `def finish_overlap_v_load(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:222`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L222) — `def sparse_tensor_m_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:236`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L236) — `def _bridge_block_lists(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:258`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L258) — `def produce_block_sparse_loads(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:404`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L404) — `def _consume_block_list(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:475`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L475) — `def consume_block_sparse_loads(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:620`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L620) — `def load_block_list_sm100(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:655`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L655) — `def produce_block_sparse_loads_sm100(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:781`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L781) — `def get_total_block_count(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:813`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L813) — `def handle_block_sparse_empty_tile_correction_sm100(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:914`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L914) — `def softmax_block_sparse_sm100(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1094`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1094) — `def get_total_q_block_count_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1114`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1114) — `def produce_block_sparse_q_loads_bwd_sm100(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1228`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1228) — `def get_block_sparse_iteration_info_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1279`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1279) — `def get_m_block_from_iter_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1329`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1329) — `def _load_q_do_block_sm90(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1371`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1371) — `def produce_block_sparse_q_loads_bwd_sm90(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1457`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1457) — `def consume_block_sparse_mma_bwd_sm90(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1577`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1577) — `def _store_one_dQaccum_sm90(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py:1606`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparse_utils.py#L1606) — `def dQaccum_store_block_sparse_bwd_sm90(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:42`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L42) — `def ceildiv(a: int, b: int) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:46`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L46) — `class BlockSparseTensors(NamedTuple):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:61`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L61) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:73`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L73) — `class BlockSparseTensorsTorch(NamedTuple):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:91`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L91) — `def _ordered_to_dense_simple(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:109`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L109) — `def compute_dq_write_order(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:140`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L140) — `def _gather_write_order(bwd_idx, bwd_cnt):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:156`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L156) — `def compute_dq_write_order_from_block_mask(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:186`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L186) — `def get_sparse_q_block_size(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:202`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L202) — `def _expand_sparsity_tensor(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:224`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L224) — `def _check_and_expand_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:256`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L256) — `def _check_and_expand_metadata_tensor(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:275`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L275) — `def get_block_sparse_expected_shapes(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:292`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L292) — `def infer_block_sparse_expected_shapes(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:373`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L373) — `def get_block_sparse_expected_shapes_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:390`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L390) — `def normalize_block_sparse_tensors(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:507`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L507) — `def is_block_sparsity_enabled(tensors: BlockSparseTensorsTorch) -> bool:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:514`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L514) — `def get_block_sparse_broadcast_pattern(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:541`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L541) — `def normalize_block_sparse_config(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:600`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L600) — `def normalize_block_sparse_config_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:647`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L647) — `def to_cute_block_sparse_tensors(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py:714`](../source/phoenix/xrex/cutedsl/ranker_fa4/block_sparsity.py#L714) — `def fast_sampling(mask_mod):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:48`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L48) — `def cvt_copy(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:67`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L67) — `def load_s2r(src: cute.Tensor, *, loc=None, ip=None) -> cute.Tensor:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:74`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L74) — `def get_copy_atom(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:83`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L83) — `def make_tmem_copy(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:97`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L97) — `def copy(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:112`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L112) — `def tiled_copy_1d(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:123`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L123) — `def tiled_copy_2d(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:141`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L141) — `def atomic_add_fp32x4(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:170`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L170) — `def set_block_rank(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:188`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L188) — `def store_shared_remote_fp32x4(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:232`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L232) — `def cpasync_bulk_s2cluster(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:264`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L264) — `def cpasync_bulk_g2s(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:288`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L288) — `def cpasync_reduce_bulk_add_f32(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:308`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L308) — `def cpasync_bulk_get_copy_fn(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:319`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L319) — `def copy_bulk(src_idx, dst_idx, **new_kwargs):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:329`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L329) — `def copy_bulk_single_stage(**new_kwargs):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:336`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L336) — `def tma_get_copy_fn(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:365`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L365) — `def copy_tma(src_idx, dst_idx, **new_kwargs):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:368`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L368) — `def copy_tma_single_stage(**new_kwargs):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:374`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L374) — `def tma_producer_copy_fn(copy: Callable, pipeline: cutlass.pipeline.PipelineAsync):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py:375`](../source/phoenix/xrex/cutedsl/ranker_fa4/copy_utils.py#L375) — `def copy_fn(src_idx, producer_state: cutlass.pipeline.PipelineState, **new_kwargs):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:66`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L66) — `def get_max_active_clusters(cluster_size):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:71`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L71) — `def get_device_capacity(device: torch.device = None) -> Tuple[int, int]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:75`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L75) — `def assume_strides_aligned(t):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:81`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L81) — `def assume_tensor_aligned(t):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:87`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L87) — `def to_cute_tensor(t, assumed_align=16, leading_dim=-1, fully_dynamic=False, enable_tvm_ffi=True):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:106`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L106) — `def to_cute_aux_tensor(t, enable_tvm_ffi=True):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:120`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L120) — `def get_aux_tensor_metadata(aux_tensors):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:131`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L131) — `def get_broadcast_dims(tensor: torch.Tensor) -> Tuple[bool, ...]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py:135`](../source/phoenix/xrex/cutedsl/ranker_fa4/cute_dsl_utils.py#L135) — `def dump_kernel_attributes(compiled_kernel):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py:44`](../source/phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py#L44) — `def _parse_log_level(raw: str) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py:61`](../source/phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py#L61) — `def _configure_default_handler() -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py:79`](../source/phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py#L79) — `def get_fa_log_level() -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py:83`](../source/phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py#L83) — `def set_fa_log_level(level: int | str) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py:91`](../source/phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py#L91) — `def fa_log(level: int, msg: str):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py:96`](../source/phoenix/xrex/cutedsl/ranker_fa4/fa_logging.py#L96) — `def fa_printf(level: int, fmt, *args):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/fast_math.py:40`](../source/phoenix/xrex/cutedsl/ranker_fa4/fast_math.py#L40) — `def clz(x: Int32) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:63`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L63) — `def _bs_bwd_seq_at(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:87`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L87) — `class FlashAttentionBackwardSm80:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:88`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L88) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:148`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L148) — `def can_implement(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:183`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L183) — `def _check_type(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:225`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L225) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:351`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L351) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:385`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L385) — `def _get_shared_storage_cls(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:402`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L402) — `class SharedStorageSeparateQV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:413`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L413) — `class SharedStorageSharedQV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:430`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L430) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:568`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L568) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1017`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1017) — `def compute_one_m_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1034`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1034) — `def load_Q_next():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1042`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1042) — `def load_dO_next():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1186`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1186) — `def dQ_mma(hook_fn):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1242`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1242) — `def compute_one_m_block_bs(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1261`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1261) — `def load_Q_next():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1266`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1266) — `def load_dO_next():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1410`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1410) — `def dQ_mma(hook_fn):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1466`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1466) — `def mainloop_block_sparse(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1633`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1633) — `def epilogue(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1777`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1777) — `def advance_pipeline(self, pipeline_index, num_stages: cutlass.Constexpr):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1781`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1781) — `def load_K(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1815`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1815) — `def load_V(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1849`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1849) — `def load_Q_LSE(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py:1902`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd.py#L1902) — `def load_dO_dPsum(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:60`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L60) — `class FlashAttentionBackwardPostprocess:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:61`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L61) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:89`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L89) — `def can_implement(dtype, head_dim, tile_m, num_threads) -> bool:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:98`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L98) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:139`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L139) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:206`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L206) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py:282`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_postprocess.py#L282) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py:56`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py#L56) — `class FlashAttentionBackwardPreprocess:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py:57`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py#L57) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py:77`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py#L77) — `def can_implement(dtype, head_dim, tile_m, num_threads) -> bool:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py:88`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py#L88) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py:113`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py#L113) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py:205`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_preprocess.py#L205) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:74`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L74) — `class FlashAttentionBackwardSm100:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:77`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L77) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:238`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L238) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:263`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L263) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:312`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L312) — `def _setup_smem_layout(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:428`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L428) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:738`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L738) — `class SharedStorage:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:816`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L816) — `class SharedStorage:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:969`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L969) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:1545`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L1545) — `def relay(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:1587`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L1587) — `def load(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:2080`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L2080) — `def mma(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:2470`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L2470) — `def split_wg(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:2512`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L2512) — `def apply_score_mod(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:2549`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L2549) — `def apply_score_mod_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:2580`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L2580) — `def compute_loop(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:3143`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L3143) — `def _dq_semaphore_lock_value(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:3172`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L3172) — `def dQacc_reduce(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:3424`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L3424) — `def epilogue_dKV(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py:3559`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm100.py#L3559) — `def epilogue_dK_or_dV_tma(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:72`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L72) — `class FlashAttentionBackwardSm90:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:75`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L75) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:161`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L161) — `def can_implement(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:185`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L185) — `def _check_type(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:215`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L215) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:253`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L253) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:300`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L300) — `def _get_shared_storage_cls(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:322`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L322) — `class SharedStorageQKV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:338`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L338) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:378`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L378) — `def _qkv_transpose(t):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:614`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L614) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:835`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L835) — `def load(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1002`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1002) — `def apply_score_mod(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1044`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1044) — `def apply_score_mod_bwd(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1088`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1088) — `def mma(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1420`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1420) — `def _get_stat(tSrS: cute.Tensor, row: Int32, lane: Int32, shuffle: bool) -> Float32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1428`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1428) — `def mma_one_m_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1569`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1569) — `def epilogue_dKV(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py:1719`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_bwd_sm90.py#L1719) — `def dQaccum_store(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:70`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L70) — `class FlashAttentionForwardBase:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:71`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L71) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:122`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L122) — `def can_implement(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:157`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L157) — `def _check_type(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:185`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L185) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:265`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L265) — `def _get_smem_layout_atom(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:268`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L268) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:271`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L271) — `def _get_shared_storage_cls(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:275`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L275) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:288`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L288) — `def epilogue(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:398`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L398) — `def advance_pipeline(self, pipeline_index):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:402`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L402) — `def load_Q(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:426`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L426) — `def load_K(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:468`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L468) — `def load_V(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:517`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L517) — `def _bs_seq_at(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:538`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L538) — `class FlashAttentionForwardSm80(FlashAttentionForwardBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:539`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L539) — `def _get_smem_layout_atom(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:547`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L547) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:560`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L560) — `def _get_shared_storage_cls(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:569`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L569) — `class SharedStorageQKV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:575`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L575) — `class SharedStorageSharedQV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:582`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L582) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:708`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L708) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:916`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L916) — `def preprocess_Q():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1023`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1023) — `def compute_one_n_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1044`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1044) — `def sync():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1053`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1053) — `def load_V_next():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1092`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1092) — `def load_K_next():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1122`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1122) — `def mainloop_block_sparse(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1248`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1248) — `def compute_one_n_block_bs(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1260`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1260) — `def sync():`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py:1302`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd.py#L1302) — `def apply_score_mod(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:194`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L194) — `class DescaleTensors(NamedTuple):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:199`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L199) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:203`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L203) — `class FlashAttentionForwardSm100:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:204`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L204) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:405`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L405) — `def _setup_attributes(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:437`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L437) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:741`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L741) — `class SharedStorage:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:834`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L834) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:1307`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L1307) — `def load(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:1535`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L1535) — `def mma(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:1746`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L1746) — `def _kv_head_idx(self, head_idx: Int32) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:1752`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L1752) — `def _load_effective_descales(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:1770`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L1770) — `def softmax_loop(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2118`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2118) — `def softmax_step(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2222`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2222) — `def correction_loop(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2539`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2539) — `def correction_rescale(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2578`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2578) — `def correction_epilogue(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2645`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2645) — `def _store_O_to_gmem(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2687`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2687) — `def epilogue_s2g(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2764`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2764) — `def clc_scheduler_warp(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2787`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2787) — `def empty_warp(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2795`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2795) — `def load_Q(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2808`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2808) — `def load_Q_non_tma(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2844`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2844) — `def load_KV(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2897`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2897) — `def offset_kv_smem(self, sX: cute.Tensor, stage: Int32, phase: Int32):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py:2906`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm100.py#L2906) — `def apply_score_mod(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:75`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L75) — `class FlashAttentionForwardSm90(FlashAttentionForwardBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:76`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L76) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:95`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L95) — `def _get_smem_layout_atom(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:119`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L119) — `def _get_tiled_mma(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:143`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L143) — `def _get_shared_storage_cls(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:159`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L159) — `class SharedStorageQKV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:169`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L169) — `class SharedStorageSharedQV:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:180`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L180) — `def __call__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:414`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L414) — `def kernel(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:638`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L638) — `def load(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:894`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L894) — `def load_KV(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:914`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L914) — `def mma(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1221`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1221) — `def first_half_block_overlap(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1269`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1269) — `def last_half_block_overlap(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1289`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1289) — `def mma_one_n_block(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1342`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1342) — `def mma_one_n_block_intrawg_overlap(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1401`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1401) — `def mma_init(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1411`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1411) — `def apply_score_mod(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1444`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1444) — `def warp_scheduler_barrier_sync(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py:1453`](../source/phoenix/xrex/cutedsl/ranker_fa4/flash_fwd_sm90.py#L1453) — `def warp_scheduler_barrier_arrive(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:53`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L53) — `def r2p_bitmask_below(limit: Int32, s: int) -> Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:59`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L59) — `def r2p_bitmask_above(limit: Int32, s: int) -> Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:65`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L65) — `def mask_r2p_lambda(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:85`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L85) — `def sm90_col_to_r2p_idx(col_limit: Int32) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:90`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L90) — `def row_to_r2p_idx(x: Int32, num_rep: int, num_wg: int) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:95`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L95) — `class AttentionMask:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:105`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L105) — `def seqlen_q(self) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:109`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L109) — `def seqlen_k(self) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:113`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L113) — `def apply_mask(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:354`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L354) — `def mask_gen_fn(s: int) -> Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:407`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L407) — `def apply_mask_sm100(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:633`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L633) — `def mask_gen_fn(s: int) -> Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:641`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L641) — `def apply_mask_sm100_transposed(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:840`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L840) — `def mask_gen_fn(s: int) -> Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:860`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L860) — `class Sm100MaskEnum(enum.Enum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:871`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L871) — `class Sm100FusedMask:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:872`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L872) — `def get_trip_count(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:928`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L928) — `def get_trip_start_count_via_block_info(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:966`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L966) — `def get_trip_mask_bounds_via_block_info(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1009`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1009) — `def get_trip_start(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1045`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1045) — `def get_leading_mask_id(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1103`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1103) — `def get_trailing_mask_id(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1169`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1169) — `def get_masked_leading_count(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1198`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1198) — `def get_masked_trailing_count(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1249`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1249) — `def get_unmasked_trip_count(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1291`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1291) — `def apply_mask(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mask.py:1341`](../source/phoenix/xrex/cutedsl/ranker_fa4/mask.py#L1341) — `def apply_mask_via_causal_local(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:70`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L70) — `class Major(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:75`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L75) — `class ScaleIn(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:80`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L80) — `class Saturate(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:85`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L85) — `class CFormat(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:91`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L91) — `class F16F32Format(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:97`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L97) — `class S8Format(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:102`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L102) — `class MXF8F6F4Format(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:110`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L110) — `class MaxShift(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:117`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L117) — `def to_UMMA_format(cutlass_type) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:135`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L135) — `def to_C_format(cutlass_type) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:145`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L145) — `def make_instr_desc(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:189`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L189) — `def mma_op_to_idesc(op: cute.nvgpu.tcgen05.mma.MmaOp):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:201`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L201) — `class LayoutType(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:209`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L209) — `def _layout_type(swizzle: cute.Swizzle) -> LayoutType:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:229`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L229) — `def make_smem_desc_base(layout: cute.Layout, swizzle: cute.Swizzle, major: Major) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:288`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L288) — `def make_smem_desc_start_addr(start_addr: cute.Pointer) -> cutlass.Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py:292`](../source/phoenix/xrex/cutedsl/ranker_fa4/mma_sm100_desc.py#L292) — `def smem_desc_base_from_tensor(sA: cute.Tensor, major: Major) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py:37`](../source/phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py#L37) — `class NamedBarrierFwd(enum.IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py:46`](../source/phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py#L46) — `class NamedBarrierFwdSm100(enum.IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py:59`](../source/phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py#L59) — `class NamedBarrierBwd(enum.IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py:73`](../source/phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py#L73) — `class NamedBarrierBwdSm100(enum.IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py:81`](../source/phoenix/xrex/cutedsl/ranker_fa4/named_barrier.py#L81) — `class NamedBarrierFwdSm100_MLA2CTA(enum.IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:45`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L45) — `def pack_gqa_layout(T, qhead_per_kvhead, nheads_kv, head_idx):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:62`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L62) — `def make_packgqa_tiled_tma_atom(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:99`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L99) — `def unpack_gqa_layout(T, qhead_per_kvhead, head_idx):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:118`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L118) — `class PackGQA:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:125`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L125) — `def compute_ptr(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:145`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L145) — `def load_Q(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:189`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L189) — `def store_LSE(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py:223`](../source/phoenix/xrex/cutedsl/ranker_fa4/pack_gqa.py#L223) — `def store_O(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:49`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L49) — `class PagedKVManager(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:78`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L78) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:165`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L165) — `def load_page_table(self, n_block: Int32):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:186`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L186) — `def compute_X_ptr(self, K_or_V: str):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:200`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L200) — `def _flatten_smem_sm100(self, sX: cute.Tensor, K_or_V: str):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:213`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L213) — `def _copy_row_async(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py:234`](../source/phoenix/xrex/cutedsl/ranker_fa4/paged_kv.py#L234) — `def load_KV(self, n_block: Int32, sX: cute.Tensor, K_or_V: str):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:50`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L50) — `def _override_create(parent_cls, child_cls):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:52`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L52) — `def create(*args, **kwargs):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:60`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L60) — `def _make_state(index: Int32, phase: Int32) -> PipelineState:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:64`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L64) — `class PipelineStateSimple:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:65`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L65) — `def __init__(self, stages: int, phase_index: Int32):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:69`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L69) — `def clone(self) -> "PipelineStateSimple":`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:73`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L73) — `def stages(self) -> int:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:77`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L77) — `def index(self) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:84`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L84) — `def phase(self) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:90`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L90) — `def advance(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:96`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L96) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:100`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L100) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:104`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L104) — `def make_pipeline_state(type: PipelineUserType, stages: int):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:113`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L113) — `def _call_with_elect_one(parent_method, self, state, elect_one, syncwarp, loc, ip):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:123`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L123) — `class _PipelineIndexPhaseMixin:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:125`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L125) — `def producer_acquire_w_index_phase(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:138`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L138) — `def producer_commit_w_index(self, index: Int32, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:143`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L143) — `def consumer_wait_w_index_phase(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:156`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L156) — `def consumer_release_w_index(self, index: Int32, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:162`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L162) — `class NamedBarrier(NamedBarrierOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:166`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L166) — `def arrive_w_index(self, index: Int32, *, loc=None, ip=None) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:175`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L175) — `def arrive_and_wait_w_index(self, index: Int32, *, loc=None, ip=None) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:188`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L188) — `class PipelineAsync(_PipelineIndexPhaseMixin, PipelineAsyncOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:195`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L195) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:212`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L212) — `def producer_commit(self, state: PipelineState, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:224`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L224) — `def consumer_release(self, state: PipelineState, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:237`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L237) — `class PipelineCpAsync(_PipelineIndexPhaseMixin, PipelineCpAsyncOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:242`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L242) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:255`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L255) — `def consumer_release(self, state: PipelineState, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:268`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L268) — `class PipelineTmaAsync(_PipelineIndexPhaseMixin, PipelineTmaAsyncOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:270`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L270) — `def producer_acquire(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:296`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L296) — `class PipelineTmaUmma(_PipelineIndexPhaseMixin, PipelineTmaUmmaOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:298`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L298) — `def producer_acquire(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:338`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L338) — `class PipelineUmmaAsync(_PipelineIndexPhaseMixin, PipelineUmmaAsyncOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/pipeline.py:346`](../source/phoenix/xrex/cutedsl/ranker_fa4/pipeline.py#L346) — `class PipelineAsyncUmma(_PipelineIndexPhaseMixin, PipelineAsyncUmmaOg):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:44`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L44) — `class SeqlenInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:51`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L51) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:72`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L72) — `def offset_batch(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:91`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L91) — `class SeqlenInfoQK:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:107`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L107) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:171`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L171) — `def offset_batch_Q(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:208`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L208) — `def offset_batch_K(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:240`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L240) — `class SeqlenInfoQKNewK:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py:252`](../source/phoenix/xrex/cutedsl/ranker_fa4/seqlen_info.py#L252) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:50`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L50) — `class Softmax(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:59`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L59) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:69`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L69) — `def reset(self) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:73`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L73) — `def _compute_row_max(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:78`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L78) — `def _compute_row_sum(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:84`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L84) — `def online_softmax(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:139`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L139) — `def finalize(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:173`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L173) — `def rescale_O(self, acc_O: cute.Tensor, row_scale: cute.Tensor) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:181`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L181) — `class SoftmaxSm100(Softmax):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:186`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L186) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:208`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L208) — `def compute_row_max_local(self, acc_S_row: cute.TensorSSA, is_first: Boolean) -> Float32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:217`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L217) — `def update_row_max_from_local(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:239`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L239) — `def update_row_max(self, acc_S_row: cute.TensorSSA, is_first: int) -> Tuple[Float32, Float32]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:258`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L258) — `def update_row_sum(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:265`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L265) — `def scale_subtract_rowmax(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:282`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L282) — `def apply_exp2_convert(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:323`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L323) — `def scale_apply_exp2_convert(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:356`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L356) — `def floor_if_packed(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:366`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L366) — `def apply_score_mod_inner(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/softmax.py:461`](../source/phoenix/xrex/cutedsl/ranker_fa4/softmax.py#L461) — `def apply_score_mod_bwd_inner(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:65`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L65) — `class SchedulingMode(IntEnum):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:73`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L73) — `class ClcState(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:80`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L80) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:89`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L89) — `def initial_work_tile_info(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:92`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L92) — `def get_current_work(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:95`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L95) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:101`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L101) — `def consumer_wait(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:104`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L104) — `def consumer_release(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:108`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L108) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:112`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L112) — `class WorkTileInfo(cutlass.utils.WorkTileInfo):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:114`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L114) — `def __new_from_mlir_values__(self, values: list[ir.Value]) -> "WorkTileInfo":`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:122`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L122) — `class TileSchedulerProtocol(Protocol):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:123`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L123) — `def get_current_work(self) -> WorkTileInfo: ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:125`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L125) — `def initial_work_tile_info(self) -> WorkTileInfo: ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:127`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L127) — `def advance_to_next_work(self, *, loc=None, ip=None): ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:129`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L129) — `def prefetch_next_work(self, *, loc=None, ip=None) -> None: ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:131`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L131) — `def producer_tail(self, *, loc=None, ip=None) -> None: ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:135`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L135) — `class TileSchedulerArguments(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:157`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L157) — `class SingleTileScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:159`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L159) — `class Params(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:170`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L170) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:184`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L184) — `def __init__(self, params: Params, blk_coord: cute.Coord, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:192`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L192) — `def to_underlying_arguments(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:205`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L205) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:215`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L215) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:232`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L232) — `def get_current_work(self, *, loc=None, ip=None) -> WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:243`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L243) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:246`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L246) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:249`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L249) — `def advance_to_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:253`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L253) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:256`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L256) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:264`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L264) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:272`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L272) — `class StaticPersistentTileScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:274`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L274) — `class Params(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:281`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L281) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:293`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L293) — `def __init__(self, params: Params, tile_idx: Int32, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:300`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L300) — `def to_underlying_arguments(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:313`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L313) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:323`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L323) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:335`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L335) — `def get_current_work(self, *, loc=None, ip=None) -> WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:343`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L343) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:346`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L346) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:349`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L349) — `def advance_to_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:356`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L356) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:359`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L359) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:367`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L367) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:378`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L378) — `class SingleTileLPTScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:380`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L380) — `class Params(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:401`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L401) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:438`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L438) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:456`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L456) — `def to_underlying_arguments(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:468`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L468) — `def _clc_grid_shape(params: Params):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:482`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L482) — `def clc_problem_shape(params: Params):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:490`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L490) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:501`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L501) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:512`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L512) — `def clc_work_to_coords(self, work) -> WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:536`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L536) — `def get_current_work(self, *, loc=None, ip=None) -> WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:558`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L558) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:565`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L565) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:569`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L569) — `def advance_to_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:578`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L578) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:582`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L582) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:593`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L593) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:604`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L604) — `class SingleTileLPTBwdScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:606`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L606) — `class Params(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:620`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L620) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:647`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L647) — `def __init__(self, params: Params, tile_idx: Int32, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:654`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L654) — `def to_underlying_arguments(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:668`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L668) — `def create(params: Params, *, loc=None, ip=None) -> "SingleTileLPTBwdScheduler":`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:673`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L673) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:682`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L682) — `def get_current_work(self, *, loc=None, ip=None) -> cutlass.utils.WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:701`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L701) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:704`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L704) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:707`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L707) — `def advance_to_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:711`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L711) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:719`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L719) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:727`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L727) — `class SingleTileVarlenScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:729`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L729) — `class Params(ParamsBase):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:747`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L747) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:788`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L788) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:807`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L807) — `def to_underlying_arguments(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:820`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L820) — `def clc_problem_shape(params: Params):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:828`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L828) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:848`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L848) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:862`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L862) — `def _get_num_m_blocks(self, lane: Int32, bidb_start: Int32) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:885`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L885) — `def _varlen_coord_map(self) -> WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:970`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L970) — `def get_current_work(self, *, loc=None, ip=None) -> WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:984`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L984) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:997`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L997) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1001`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1001) — `def advance_to_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1010`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1010) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1014`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1014) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1025`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1025) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1036`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1036) — `class Sm100FmhaStaticTileSchedulerParams:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1037`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1037) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1050`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1050) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1058`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1058) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1068`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1068) — `class Sm100FmhaStaticTileScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1069`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1069) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1092`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1092) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1110`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1110) — `def check_valid_work_for_seqlen_q(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1117`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1117) — `def get_current_work(self, *, loc=None, ip=None) -> cutlass.utils.WorkTileInfo:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1140`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1140) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1143`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1143) — `def advance_to_next_work(self, *, advance_count=1, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1149`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1149) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1152`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1152) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1155`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1155) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1162`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1162) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1175`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1175) — `def compute_sm100_fmha_grid(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1192`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1192) — `class Sm100FmhaClcDynamicTileSchedulerParams:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1193`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1193) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1219`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1219) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1230`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1230) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1241`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1241) — `def get_grid_shape(self, *, loc=None, ip=None) -> Tuple[int, int, int]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1244`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1244) — `def clc_hw_params(self) -> ClcDynamicPersistentTileSchedulerParams:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1251`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1251) — `class Sm100FmhaClcDynamicTileScheduler:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1252`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1252) — `def __init__(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1273`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1273) — `def __extract_mlir_values__(self):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1282`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1282) — `def __new_from_mlir_values__(self, values):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1300`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1300) — `def create(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1330`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1330) — `def get_grid_shape(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1338`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1338) — `def work_tile_info_from_clc_response(self, result_addr: cute.Pointer, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1354`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1354) — `def get_current_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1357`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1357) — `def initial_work_tile_info(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1363`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1363) — `def advance_to_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1370`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1370) — `def prefetch_next_work(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1373`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1373) — `def producer_tail(self, *, loc=None, ip=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1377`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1377) — `def num_tiles_executed(self) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1381`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1381) — `def compute_sm100_fmha_grid_clc(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py:1396`](../source/phoenix/xrex/cutedsl/ranker_fa4/tile_scheduler.py#L1396) — `def make_sm100_thread_cooperative_group(size: int):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:90`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L90) — `def _is_cuda_12() -> bool:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:106`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L106) — `def _get_use_clc_scheduler_default() -> bool:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:110`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L110) — `def _get_disable_2cta_default(is_fwd: bool = False) -> bool:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:117`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L117) — `def _compute_base_hash(func: Callable) -> str:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:135`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L135) — `def hash_callable(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:164`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L164) — `def create_softcap_scoremod(softcap_val):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:166`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L166) — `def scoremod_premask_fn(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:175`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L175) — `def create_softcap_scoremod_bwd(softcap_val):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:177`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L177) — `def scoremod_bwd_fn(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:190`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L190) — `def compute_softmax_scale_log2(softmax_scale, score_mod):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:197`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L197) — `def compute_fastdiv_mods(mQ, mK, qhead_per_kvhead, pack_gqa, aux_tensors, mPageTable=None):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:209`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L209) — `def convert_from_dlpack(x, leading_dim, alignment=16, divisibility=1) -> cute.Tensor:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:219`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L219) — `def convert_from_dlpack_compact_dynamic(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:246`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L246) — `def convert_from_dlpack_leading_static(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:258`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L258) — `def make_tiled_copy_A(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:267`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L267) — `def make_tiled_copy_B(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:276`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L276) — `def mma_make_fragment_A(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:285`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L285) — `def mma_make_fragment_B(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:294`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L294) — `def get_smem_store_atom(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:311`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L311) — `def warp_reduce(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:329`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L329) — `def smid(*, loc=None, ip=None) -> Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:344`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L344) — `def fmax(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:373`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L373) — `def fmax_reduce(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:413`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L413) — `def fadd_reduce(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:441`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L441) — `def atomic_add_fp32(a: float | Float32, gmem_ptr: cute.Pointer, *, loc=None, ip=None) -> None:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:448`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L448) — `def elem_pointer(x: cute.Tensor, coord: cute.Coord, *, loc=None, ip=None) -> cute.Pointer:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:453`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L453) — `def predicate_k(tAcA: cute.Tensor, limit: cutlass.Int32) -> cute.Tensor:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:467`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L467) — `def canonical_warp_group_idx(sync: bool = True) -> cutlass.Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:475`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L475) — `def shuffle_sync(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:493`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L493) — `def shl_u32(val: cutlass.Uint32, shift: cutlass.Uint32, *, loc=None, ip=None) -> cutlass.Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:511`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L511) — `def shr_u32(val: cutlass.Uint32, shift: cutlass.Uint32, *, loc=None, ip=None) -> cutlass.Uint32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:529`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L529) — `def warp_prefix_sum(val: cutlass.Int32, lane: Optional[cutlass.Int32] = None) -> cutlass.Int32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:541`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L541) — `def cvt_f16x2_f32(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:559`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L559) — `def cvt_f16(src: cute.Tensor, dst: cute.Tensor) -> None: ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:563`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L563) — `def cvt_f16(src: cute.Tensor, dtype: Type[cute.Numeric]) -> cute.Tensor: ...`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:567`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L567) — `def cvt_f16(src: cute.Tensor, dst_or_dtype):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:590`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L590) — `def evaluate_polynomial(x: Float32, poly: Tuple[Float32, ...], *, loc=None, ip=None) -> Float32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:600`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L600) — `def evaluate_polynomial_2(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:611`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L611) — `def add_round_down(x: float | Float32, y: float | Float32, *, loc=None, ip=None) -> Float32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:626`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L626) — `def combine_int_frac_ex2(x_rounded: Float32, frac_ex2: Float32, *, loc=None, ip=None) -> Float32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:651`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L651) — `def ex2_emulation(x: Float32, *, poly_degree: int = 3, loc=None, ip=None) -> Float32:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:663`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L663) — `def ex2_emulation_2(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:680`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L680) — `def e2e_asm2(x: Float32, y: Float32, *, loc=None, ip=None) -> Tuple[Float32, Float32]:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:727`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L727) — `def domain_offset_aligned(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:741`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L741) — `def warp_reduction(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:763`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L763) — `def make_cotiled_copy(`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:825`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L825) — `def scalar_to_ssa(a: cute.Numeric, dtype) -> cute.TensorSSA:`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:831`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L831) — `def ssa_to_scalar(val):`
+- [`phoenix/xrex/cutedsl/ranker_fa4/utils.py:836`](../source/phoenix/xrex/cutedsl/ranker_fa4/utils.py#L836) — `def get_batch_from_cu_tensor(idx: Int32, cu_tensor: cute.Tensor) -> Int32:`
+- [`phoenix/xrex/data/conversion_labels.py:22`](../source/phoenix/xrex/data/conversion_labels.py#L22) — `def type_delay_column(conversion_type: str) -> str:`
+- [`phoenix/xrex/data/conversion_labels.py:27`](../source/phoenix/xrex/data/conversion_labels.py#L27) — `def action_delay_columns(sidecar_path: str) -> list[str]:`
+- [`phoenix/xrex/data/conversion_labels.py:35`](../source/phoenix/xrex/data/conversion_labels.py#L35) — `def action_index_of(column: str) -> int:`
+- [`phoenix/xrex/data/conversion_labels.py:41`](../source/phoenix/xrex/data/conversion_labels.py#L41) — `def sidecar_path_for(batch_file_path: str) -> str:`
+- [`phoenix/xrex/data/conversion_labels.py:52`](../source/phoenix/xrex/data/conversion_labels.py#L52) — `def load_sidecar_delays(`
+- [`phoenix/xrex/data/conversion_labels.py:74`](../source/phoenix/xrex/data/conversion_labels.py#L74) — `def attach_delays(batch: pa.RecordBatch, delays: dict[str, np.ndarray]) -> pa.RecordBatch:`
+- [`phoenix/xrex/data/conversion_labels.py:85`](../source/phoenix/xrex/data/conversion_labels.py#L85) — `def fold_action_delays_into_multihot(batch: pa.RecordBatch, window_ms: int) -> pa.RecordBatch:`
+- [`phoenix/xrex/data/conversion_labels.py:138`](../source/phoenix/xrex/data/conversion_labels.py#L138) — `def delays_to_labels(delays: np.ndarray, window_ms: int) -> np.ndarray:`
+- [`phoenix/xrex/data/grpc_recsys.py:28`](../source/phoenix/xrex/data/grpc_recsys.py#L28) — `class PhoenixGrpcDataset(PhoenixDataset):`
+- [`phoenix/xrex/data/grpc_recsys.py:33`](../source/phoenix/xrex/data/grpc_recsys.py#L33) — `def shutdown(self):`
+- [`phoenix/xrex/data/grpc_recsys.py:36`](../source/phoenix/xrex/data/grpc_recsys.py#L36) — `def make(`
+- [`phoenix/xrex/data/grpc_recsys.py:100`](../source/phoenix/xrex/data/grpc_recsys.py#L100) — `def producer() -> None:`
+- [`phoenix/xrex/data/grpc_recsys.py:184`](../source/phoenix/xrex/data/grpc_recsys.py#L184) — `def generator():`
+- [`phoenix/xrex/data/grpc_recsys.py:197`](../source/phoenix/xrex/data/grpc_recsys.py#L197) — `def _create_recsys_features_batch(self, batch_size: int) -> RecsysFeaturesBatch:`
+- [`phoenix/xrex/data/grpc_recsys.py:275`](../source/phoenix/xrex/data/grpc_recsys.py#L275) — `def fill_token(self) -> int:`
+- [`phoenix/xrex/data/grpc_recsys.py:278`](../source/phoenix/xrex/data/grpc_recsys.py#L278) — `def example_data_shape(self, batch_size: int):`
+- [`phoenix/xrex/data/grpc_recsys.py:326`](../source/phoenix/xrex/data/grpc_recsys.py#L326) — `def example_data(`
+- [`phoenix/xrex/data/parquet_recsys.py:61`](../source/phoenix/xrex/data/parquet_recsys.py#L61) — `def extract_datetime_from_file_name(file_name: str) -> datetime:`
+- [`phoenix/xrex/data/parquet_recsys.py:69`](../source/phoenix/xrex/data/parquet_recsys.py#L69) — `def load_global_ids_from_parquet_file(`
+- [`phoenix/xrex/data/parquet_recsys.py:136`](../source/phoenix/xrex/data/parquet_recsys.py#L136) — `class LazyRecordBatchIterator:`
+- [`phoenix/xrex/data/parquet_recsys.py:137`](../source/phoenix/xrex/data/parquet_recsys.py#L137) — `def __init__(`
+- [`phoenix/xrex/data/parquet_recsys.py:156`](../source/phoenix/xrex/data/parquet_recsys.py#L156) — `def seek(self):`
+- [`phoenix/xrex/data/parquet_recsys.py:182`](../source/phoenix/xrex/data/parquet_recsys.py#L182) — `def read(self) -> pa.RecordBatch:`
+- [`phoenix/xrex/data/parquet_recsys.py:200`](../source/phoenix/xrex/data/parquet_recsys.py#L200) — `def skip_batch(self):`
+- [`phoenix/xrex/data/parquet_recsys.py:210`](../source/phoenix/xrex/data/parquet_recsys.py#L210) — `def _resolve_file_path(base_path: str, file_entry: str) -> str:`
+- [`phoenix/xrex/data/parquet_recsys.py:221`](../source/phoenix/xrex/data/parquet_recsys.py#L221) — `def _match_partition_file(file_path: str) -> re.Match[str] | None:`
+- [`phoenix/xrex/data/parquet_recsys.py:229`](../source/phoenix/xrex/data/parquet_recsys.py#L229) — `def _extract_batch_id(file_path: str) -> int | None:`
+- [`phoenix/xrex/data/parquet_recsys.py:236`](../source/phoenix/xrex/data/parquet_recsys.py#L236) — `def _extract_partition_id(file_path: str) -> int | None:`
+- [`phoenix/xrex/data/parquet_recsys.py:244`](../source/phoenix/xrex/data/parquet_recsys.py#L244) — `class InterleavingRecordBatchProvider:`
+- [`phoenix/xrex/data/parquet_recsys.py:245`](../source/phoenix/xrex/data/parquet_recsys.py#L245) — `def __init__(`
+- [`phoenix/xrex/data/parquet_recsys.py:395`](../source/phoenix/xrex/data/parquet_recsys.py#L395) — `def _get_ready_batches(self) -> list[list[str]]:`
+- [`phoenix/xrex/data/parquet_recsys.py:400`](../source/phoenix/xrex/data/parquet_recsys.py#L400) — `def _get_ready_batches_from_metadata(self) -> list[list[str]]:`
+- [`phoenix/xrex/data/parquet_recsys.py:429`](../source/phoenix/xrex/data/parquet_recsys.py#L429) — `def _get_ready_batches_from_index(self) -> list[list[str]]:`
+- [`phoenix/xrex/data/parquet_recsys.py:487`](../source/phoenix/xrex/data/parquet_recsys.py#L487) — `def _open_file(self, file: str, pool: ThreadPoolExecutor, active: deque) -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:491`](../source/phoenix/xrex/data/parquet_recsys.py#L491) — `def _impl():`
+- [`phoenix/xrex/data/parquet_recsys.py:510`](../source/phoenix/xrex/data/parquet_recsys.py#L510) — `def _safe_read(`
+- [`phoenix/xrex/data/parquet_recsys.py:518`](../source/phoenix/xrex/data/parquet_recsys.py#L518) — `def _drain_files(`
+- [`phoenix/xrex/data/parquet_recsys.py:531`](../source/phoenix/xrex/data/parquet_recsys.py#L531) — `def _submit_opens() -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:539`](../source/phoenix/xrex/data/parquet_recsys.py#L539) — `def _harvest_ready() -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:545`](../source/phoenix/xrex/data/parquet_recsys.py#L545) — `def _fill_active() -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:549`](../source/phoenix/xrex/data/parquet_recsys.py#L549) — `def _fill_active_blocking() -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:609`](../source/phoenix/xrex/data/parquet_recsys.py#L609) — `def get_record_batches(self) -> Iterator[pa.RecordBatch]:`
+- [`phoenix/xrex/data/parquet_recsys.py:612`](../source/phoenix/xrex/data/parquet_recsys.py#L612) — `def get_position(self) -> DataPosition:`
+- [`phoenix/xrex/data/parquet_recsys.py:629`](../source/phoenix/xrex/data/parquet_recsys.py#L629) — `def _get_record_batches_synced(self) -> Iterator[pa.RecordBatch]:`
+- [`phoenix/xrex/data/parquet_recsys.py:631`](../source/phoenix/xrex/data/parquet_recsys.py#L631) — `def safe_thread_pool():`
+- [`phoenix/xrex/data/parquet_recsys.py:650`](../source/phoenix/xrex/data/parquet_recsys.py#L650) — `def _start_prefetch_async(next_files: list[str]) -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:657`](../source/phoenix/xrex/data/parquet_recsys.py#L657) — `def _open_and_read_first(`
+- [`phoenix/xrex/data/parquet_recsys.py:681`](../source/phoenix/xrex/data/parquet_recsys.py#L681) — `def _collect_prefetch() -> tuple[deque, list]:`
+- [`phoenix/xrex/data/parquet_recsys.py:760`](../source/phoenix/xrex/data/parquet_recsys.py#L760) — `def pad_batch(batch_unpadded: RecsysFeaturesBatch, batch_size: int) -> RecsysFeaturesBatch:`
+- [`phoenix/xrex/data/parquet_recsys.py:763`](../source/phoenix/xrex/data/parquet_recsys.py#L763) — `def pad_array(arr: np.ndarray) -> np.ndarray:`
+- [`phoenix/xrex/data/parquet_recsys.py:769`](../source/phoenix/xrex/data/parquet_recsys.py#L769) — `def pad_post_seq(post_seq: PostSeq) -> PostSeq:`
+- [`phoenix/xrex/data/parquet_recsys.py:781`](../source/phoenix/xrex/data/parquet_recsys.py#L781) — `def _pad_post_seq_fields(post_seq: PostSeq) -> PostSeq:`
+- [`phoenix/xrex/data/parquet_recsys.py:853`](../source/phoenix/xrex/data/parquet_recsys.py#L853) — `class PhoenixDataset(Dataset):`
+- [`phoenix/xrex/data/parquet_recsys.py:897`](../source/phoenix/xrex/data/parquet_recsys.py#L897) — `def multimodal_embedding_dim(self) -> int:`
+- [`phoenix/xrex/data/parquet_recsys.py:909`](../source/phoenix/xrex/data/parquet_recsys.py#L909) — `def _parse_date_bound(s: str) -> int | None:`
+- [`phoenix/xrex/data/parquet_recsys.py:912`](../source/phoenix/xrex/data/parquet_recsys.py#L912) — `def compute_max_steps(`
+- [`phoenix/xrex/data/parquet_recsys.py:973`](../source/phoenix/xrex/data/parquet_recsys.py#L973) — `def shutdown(self):`
+- [`phoenix/xrex/data/parquet_recsys.py:997`](../source/phoenix/xrex/data/parquet_recsys.py#L997) — `def get_data_position(self) -> DataPosition | None:`
+- [`phoenix/xrex/data/parquet_recsys.py:1002`](../source/phoenix/xrex/data/parquet_recsys.py#L1002) — `def make(`
+- [`phoenix/xrex/data/parquet_recsys.py:1024`](../source/phoenix/xrex/data/parquet_recsys.py#L1024) — `def producer() -> None:`
+- [`phoenix/xrex/data/parquet_recsys.py:1222`](../source/phoenix/xrex/data/parquet_recsys.py#L1222) — `def generator():`
+- [`phoenix/xrex/data/parquet_recsys.py:1235`](../source/phoenix/xrex/data/parquet_recsys.py#L1235) — `def example_data_shape(self, batch_size: int) -> Any:`
+- [`phoenix/xrex/data/parquet_recsys.py:1300`](../source/phoenix/xrex/data/parquet_recsys.py#L1300) — `def example_data(`
+- [`phoenix/xrex/data/parquet_recsys.py:1409`](../source/phoenix/xrex/data/parquet_recsys.py#L1409) — `def get_latest_datetime(self, time_ms_seq) -> datetime:`
+- [`phoenix/xrex/data/parquet_recsys.py:1419`](../source/phoenix/xrex/data/parquet_recsys.py#L1419) — `class PhoenixToyDataset(PhoenixDataset):`
+- [`phoenix/xrex/data/parquet_recsys.py:1420`](../source/phoenix/xrex/data/parquet_recsys.py#L1420) — `def tweet_id_to_action_id(self, tweet_ids: np.ndarray) -> np.ndarray:`
+- [`phoenix/xrex/data/parquet_recsys.py:1424`](../source/phoenix/xrex/data/parquet_recsys.py#L1424) — `def make_recsys_features_batch(self, batch_size: int) -> RecsysFeaturesBatch:`
+- [`phoenix/xrex/data/parquet_recsys.py:1522`](../source/phoenix/xrex/data/parquet_recsys.py#L1522) — `def make(`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:21`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L21) — `class ValidBatchesMetadata(TypedDict):`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:27`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L27) — `class DataPosition(TypedDict):`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:33`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L33) — `def batch_path(topic_dir: str, partition_id: int, batch_id: int) -> str:`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:40`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L40) — `def load_valid_batches_metadata(path: str) -> ValidBatchesMetadata | None:`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:54`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L54) — `def parse_date_bound(s: str) -> int | None:`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:61`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L61) — `class _FooterTimestamps:`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:62`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L62) — `def __init__(self, topic_dir: str, min_batch: int, max_batch: int):`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:67`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L67) — `def __len__(self) -> int:`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:70`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L70) — `def __getitem__(self, idx: int) -> int:`
+- [`phoenix/xrex/data/parquet_recsys_metadata.py:87`](../source/phoenix/xrex/data/parquet_recsys_metadata.py#L87) — `def resolve_time_range(`
+- [`phoenix/xrex/data/recsys/constants.py:16`](../source/phoenix/xrex/data/recsys/constants.py#L16) — `def to_pascal_case(s):`
+- [`phoenix/xrex/data/recsys/constants.py:389`](../source/phoenix/xrex/data/recsys/constants.py#L389) — `def engagement_to_ids(metric_group):`
+- [`phoenix/xrex/data/recsys/feature_config.py:8`](../source/phoenix/xrex/data/recsys/feature_config.py#L8) — `class CategoricalFeature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:41`](../source/phoenix/xrex/data/recsys/feature_config.py#L41) — `class BoolFeature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:47`](../source/phoenix/xrex/data/recsys/feature_config.py#L47) — `class FloatFeature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:51`](../source/phoenix/xrex/data/recsys/feature_config.py#L51) — `class Int64Feature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:91`](../source/phoenix/xrex/data/recsys/feature_config.py#L91) — `class UserCategoricalFeature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:101`](../source/phoenix/xrex/data/recsys/feature_config.py#L101) — `class UserBoolFeature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:105`](../source/phoenix/xrex/data/recsys/feature_config.py#L105) — `class UserFloatFeature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:112`](../source/phoenix/xrex/data/recsys/feature_config.py#L112) — `class UserInt64Feature(enum.IntEnum):`
+- [`phoenix/xrex/data/recsys/feature_config.py:153`](../source/phoenix/xrex/data/recsys/feature_config.py#L153) — `def _build_required_columns() -> list[str]:`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:20`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L20) — `class TargetSpaceMode(str, Enum):`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:26`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L26) — `class TargetEmbeddings:`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:35`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L35) — `class CandidateSourceFeatures:`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:42`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L42) — `class CandidateTable:`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:49`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L49) — `def get_target_space_mode(cfg) -> TargetSpaceMode:`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:55`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L55) — `def l2_normalize(x: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:60`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L60) — `def project_mm_only_candidate_space(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:68`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L68) — `def _slice_flat_candidate_embedding_window(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:91`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L91) — `def build_post_combined_candidate_space(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:119`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L119) — `def _build_post_combined_targets(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:170`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L170) — `def build_target_embeddings_from_batch(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:217`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L217) — `def build_global_negative_target_embeddings(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:246`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L246) — `def build_candidate_space_table_from_source_features(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:272`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L272) — `def score_against_candidate_table(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:281`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L281) — `def prepare_eval_table(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:295`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L295) — `def compute_recall_for_batch(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:358`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L358) — `def build_recall_metrics(`
+- [`phoenix/xrex/data/recsys/gen_recs_semantics.py:396`](../source/phoenix/xrex/data/recsys/gen_recs_semantics.py#L396) — `def load_mm_embedding_table(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:57`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L57) — `def compute_post_unexplored_labels(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:94`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L94) — `class CandidateNegativeFilter(enum.Enum):`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:99`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L99) — `class CandidateNegativeMode(enum.Enum):`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:104`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L104) — `def _apply_candidate_negative_filter(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:148`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L148) — `class PostEmbeddingTable:`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:153`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L153) — `def __init__(self, directory: str):`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:162`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L162) — `def lookup(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:178`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L178) — `def _col(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:191`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L191) — `def _col_null_filled(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:204`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L204) — `class PostSeq(TypedDict):`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:230`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L230) — `def empty_feature_arrays(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:246`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L246) — `def empty_user_feature_arrays(batch_size: int) -> dict[str, typing.Any]:`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:257`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L257) — `def _extract_user_features(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:300`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L300) — `class RecsysFeaturesBatch(TypedDict):`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:322`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L322) — `def _read_value_labels(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:346`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L346) — `def _extend_value_labels(post_seq: PostSeq, shape: tuple[int, int]) -> dict[str, np.ndarray]:`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:355`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L355) — `def _extract_feature_columns(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:368`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L368) — `def _stack_features(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:381`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L381) — `def from_record_batch(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:911`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L911) — `def _hash_dpa_keys(keys: npt.NDArray[np.int64], scale: int, bias: int) -> npt.NDArray:`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:1053`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L1053) — `def apply_negative_sampling(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:1231`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L1231) — `def _copy_neg_features(curr_user_idx, start_slot, end_slot, post_src, query_src):`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:1337`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L1337) — `def apply_global_negative_sampling(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:1609`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L1609) — `def compute_local_time_features(`
+- [`phoenix/xrex/data/recsys/recsys_batch.py:1630`](../source/phoenix/xrex/data/recsys/recsys_batch.py#L1630) — `def main():`
+- [`phoenix/xrex/data/recsys/safety_filter.py:14`](../source/phoenix/xrex/data/recsys/safety_filter.py#L14) — `def apply_safety_filter(`
+- [`phoenix/xrex/data/recsys/safety_filter.py:40`](../source/phoenix/xrex/data/recsys/safety_filter.py#L40) — `def safety_filter_stats(`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:15`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L15) — `class LengthDistribution(Config, ABC):`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:21`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L21) — `def sample(`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:32`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L32) — `class BetaLengthDistribution(LengthDistribution):`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:40`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L40) — `def __post_init__(self):`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:46`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L46) — `def sample(`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:75`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L75) — `class FixedLengthDistribution(LengthDistribution):`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:80`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L80) — `def __post_init__(self):`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:83`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L83) — `def sample(`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:95`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L95) — `def fit_sample_budget(lengths: np.ndarray, target_sum: int, lo: int, hi: int) -> np.ndarray:`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:151`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L151) — `class SequencePackedLayout:`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:161`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L161) — `def pack_batch(`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:186`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L186) — `def _reshape_sequence(seq, seq_len: int, packed_len: int) -> PostSeq:`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:195`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L195) — `def _gather_scatter_sequence(`
+- [`phoenix/xrex/data/recsys/sequence_packing.py:228`](../source/phoenix/xrex/data/recsys/sequence_packing.py#L228) — `def _make_batch(`
+- [`phoenix/xrex/data/retrieval_dataset.py:33`](../source/phoenix/xrex/data/retrieval_dataset.py#L33) — `def _bridge_o2_env() -> None:`
+- [`phoenix/xrex/data/retrieval_dataset.py:56`](../source/phoenix/xrex/data/retrieval_dataset.py#L56) — `def _sid_window(filename: str) -> tuple[str, str]:`
+- [`phoenix/xrex/data/retrieval_dataset.py:63`](../source/phoenix/xrex/data/retrieval_dataset.py#L63) — `def _idx(sub: str) -> str:`
+- [`phoenix/xrex/data/retrieval_dataset.py:70`](../source/phoenix/xrex/data/retrieval_dataset.py#L70) — `def _read_credential(env_var: str, search_dirs: list[Path] | None = None) -> str:`
+- [`phoenix/xrex/data/retrieval_dataset.py:85`](../source/phoenix/xrex/data/retrieval_dataset.py#L85) — `def _read_file_credential(filename: str, search_dirs: list[Path]) -> str | None:`
+- [`phoenix/xrex/data/retrieval_dataset.py:96`](../source/phoenix/xrex/data/retrieval_dataset.py#L96) — `def _parse_snapshot_timestamp(key: str) -> int | None:`
+- [`phoenix/xrex/data/retrieval_dataset.py:105`](../source/phoenix/xrex/data/retrieval_dataset.py#L105) — `def _download_from_o2(name: str, bucket: str, prefix: str) -> tuple[bytes, int, str]:`
+- [`phoenix/xrex/data/retrieval_dataset.py:144`](../source/phoenix/xrex/data/retrieval_dataset.py#L144) — `def _download_from_gcs(name: str, prefix: str) -> tuple[bytes, int, str]:`
+- [`phoenix/xrex/data/retrieval_dataset.py:174`](../source/phoenix/xrex/data/retrieval_dataset.py#L174) — `def _gcs_available() -> bool:`
+- [`phoenix/xrex/data/retrieval_dataset.py:179`](../source/phoenix/xrex/data/retrieval_dataset.py#L179) — `def _parse_parquet_ids(body: bytes) -> tuple[np.ndarray, np.ndarray]:`
+- [`phoenix/xrex/data/retrieval_dataset.py:188`](../source/phoenix/xrex/data/retrieval_dataset.py#L188) — `def _load_from_o2(`
+- [`phoenix/xrex/data/retrieval_dataset.py:242`](../source/phoenix/xrex/data/retrieval_dataset.py#L242) — `class RetrievalDataset(Enum):`
+- [`phoenix/xrex/data/retrieval_dataset.py:276`](../source/phoenix/xrex/data/retrieval_dataset.py#L276) — `def __new__(cls, value: int, path: str | None = None, backup_path: str | None = None):`
+- [`phoenix/xrex/data/retrieval_dataset.py:283`](../source/phoenix/xrex/data/retrieval_dataset.py#L283) — `def _get_valid_path(self) -> str | None:`
+- [`phoenix/xrex/data/retrieval_dataset.py:289`](../source/phoenix/xrex/data/retrieval_dataset.py#L289) — `def load(`
+- [`phoenix/xrex/data/retrieval_dataset.py:350`](../source/phoenix/xrex/data/retrieval_dataset.py#L350) — `def loadable(cls) -> list[RetrievalDataset]:`
+- [`phoenix/xrex/data/retrieval_dataset.py:354`](../source/phoenix/xrex/data/retrieval_dataset.py#L354) — `def load_datasets(`
+- [`phoenix/xrex/data/retrieval_dataset.py:411`](../source/phoenix/xrex/data/retrieval_dataset.py#L411) — `def _bind_deployment_corpus_paths() -> None:`
+- [`phoenix/xrex/data/rust_ext.py:21`](../source/phoenix/xrex/data/rust_ext.py#L21) — `def load(name: str) -> ModuleType:`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:33`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L33) — `class RustKafkaDataset(PhoenixKafkaDataset):`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:48`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L48) — `def _warn_ignored_inherited_fields(self) -> None:`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:99`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L99) — `def _async_kafka_consumer_arrow(`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:268`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L268) — `def _start_global_ids_reload_thread(`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:279`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L279) — `def reload_loop() -> None:`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:318`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L318) — `def _start_control_watcher(`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:325`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L325) — `def watcher() -> None:`
+- [`phoenix/xrex/data/rust_kafka_recsys.py:384`](../source/phoenix/xrex/data/rust_kafka_recsys.py#L384) — `def make(`
+- [`phoenix/xrex/data/rust_parquet_recsys.py:34`](../source/phoenix/xrex/data/rust_parquet_recsys.py#L34) — `class RustParquetDataset(PhoenixDataset):`
+- [`phoenix/xrex/data/rust_parquet_recsys.py:39`](../source/phoenix/xrex/data/rust_parquet_recsys.py#L39) — `def get_data_position(self) -> DataPosition | None:`
+- [`phoenix/xrex/data/rust_parquet_recsys.py:42`](../source/phoenix/xrex/data/rust_parquet_recsys.py#L42) — `def make(`
+- [`phoenix/xrex/data/rust_parquet_recsys.py:78`](../source/phoenix/xrex/data/rust_parquet_recsys.py#L78) — `def producer() -> None:`
+- [`phoenix/xrex/data/rust_parquet_recsys.py:264`](../source/phoenix/xrex/data/rust_parquet_recsys.py#L264) — `def generator():`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:30`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L30) — `def parse_positive_action_indices(value: str) -> tuple[int, ...]:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:37`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L37) — `class KafkaAuth:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:48`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L48) — `def mtls(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:64`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L64) — `def sasl(cls, mechanism: str, username: str, password: str) -> "KafkaAuth":`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:72`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L72) — `def ssl_context(self) -> ssl.SSLContext:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:91`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L91) — `def consumer_kwargs(self) -> dict[str, Any]:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:106`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L106) — `def _coerce_auth(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:117`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L117) — `def _has_positive_candidate(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:164`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L164) — `def _init_consumer_metrics(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:219`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L219) — `def _get_partition_lag_callback(_options) -> list[Observation]:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:240`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L240) — `def _get_partition_consumed_offset_callback(_options) -> list[Observation]:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:263`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L263) — `def _get_partition_end_offset_callback(_options) -> list[Observation]:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:286`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L286) — `def _get_uptime_callback(_options):`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:342`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L342) — `def deserialize_arrow_ipc(data: bytes) -> pa.RecordBatch:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:358`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L358) — `async def _deserialize_messages(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:443`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L443) — `class _ExecutorShutdown(Exception):`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:447`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L447) — `async def deserialize_messages(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:491`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L491) — `async def force_kafka_metadata_update(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:511`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L511) — `async def discover_partition_count(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:546`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L546) — `def _range_partitions(total_partitions: int, shard_index: int, num_shards: int) -> list[int]:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:556`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L556) — `async def handle_topic_offset(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:619`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L619) — `async def seek_to_timestamp(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:634`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L634) — `async def seek_consumer_to_offset(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:646`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L646) — `class PartitionLagTracker:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:647`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L647) — `def __init__(self) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:651`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L651) — `def record_consumed_offsets(self, messages: dict[TopicPartition, list[ConsumerRecord]]) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:659`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L659) — `def update_partition_lag(self, partition: int, latest_offset: int, end_offset: int) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:662`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L662) — `def get_partition_lag_offsets(self, partition: int) -> int:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:669`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L669) — `def get_latest_consumed_offset(self, partition: int) -> int | None:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:677`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L677) — `class DropModeController:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:678`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L678) — `def __init__(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:701`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L701) — `def update_drop_mode_for_partition(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:741`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L741) — `def record_dropped(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:750`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L750) — `def should_drop_message(self, partition: int, offset: int) -> bool:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:755`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L755) — `def _update_increase_state(self, partition: int, lag_offsets: int) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:772`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L772) — `async def _fetch_and_update_partition_lag(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:806`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L806) — `class ConsumerMode(enum.Enum):`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:811`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L811) — `async def _consumer_poll_loop(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:971`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L971) — `async def _round_robin_merger(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:1009`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L1009) — `async def _consume_multi_consumer(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:1152`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L1152) — `async def _stop_event_waiter():`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:1156`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L1156) — `async def _reset_event_fanout():`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:1191`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L1191) — `def _check_reset_sentinel(last_reset_ts: float) -> float | None:`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:1201`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L1201) — `async def _seek_all_to_end(`
+- [`phoenix/xrex/data/streaming/kafkaconsumer.py:1213`](../source/phoenix/xrex/data/streaming/kafkaconsumer.py#L1213) — `async def consume_messages(`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:51`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L51) — `def get_grpc_channel(grpc_host: str, grpc_port) -> grpc.aio.Channel:`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:56`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L56) — `async def get_service_dimensions(grpc_host_template: str, grpc_port: int) -> tuple[int, int]:`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:68`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L68) — `async def get_server_assignments(`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:96`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L96) — `async def initialize_clients(`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:129`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L129) — `async def consume_messages(`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:182`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L182) — `async def consume_buffered():`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:255`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L255) — `class PhoenixKafkaDispatcherDataset(PhoenixKafkaDataset):`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:263`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L263) — `def _async_kafka_consumer_arrow(`
+- [`phoenix/xrex/data/streaming/kafkadispatcherloader.py:279`](../source/phoenix/xrex/data/streaming/kafkadispatcherloader.py#L279) — `async def consumption_loop(stop_event):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:89`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L89) — `def _parse_catchup_duration(raw: str | None) -> float:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:116`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L116) — `def _post_catchup_request(window_secs: float) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:124`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L124) — `def _take_catchup_request() -> tuple[int, float] | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:132`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L132) — `def _rearm_catchup_request(generation: int) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:162`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L162) — `def _start_reset_http_server(base_port: int, num_ports: int) -> int | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:165`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L165) — `class _ResetHandler(BaseHTTPRequestHandler):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:168`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L168) — `def _respond(self, status: int, body: str) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:174`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L174) — `def do_POST(self):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:220`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L220) — `def do_GET(self):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:236`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L236) — `def log_message(self, format, *args):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:264`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L264) — `def _init_otel_metrics(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:512`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L512) — `def _get_queue_size_callback(_options):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:526`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L526) — `def _get_partition_delivered_offset_callback(_options):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:600`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L600) — `def _make_training_callback(metric_key: str):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:601`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L601) — `def _callback(_options):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:649`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L649) — `def report_training_metrics(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:671`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L671) — `def _cast_column(arr: pa.Array, target_type: pa.DataType) -> pa.Array:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:710`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L710) — `def _unify_record_batch_schemas(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:772`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L772) — `def _has_port(address: str) -> bool:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:780`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L780) — `def ensure_sasl_password_env(cluster_name: str) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:784`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L784) — `def resolve_internal_bootstrap(bootstrap_servers: str, auth_mode: str = "sasl") -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:791`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L791) — `def cluster_sasl_username(cluster_name: str) -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:804`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L804) — `def _mtls_certs_dir() -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:808`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L808) — `def _mtls_cert_paths(certs_dir: str) -> tuple[str, str, str] | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:827`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L827) — `def _mtls_client_paths(certs_dir: str) -> tuple[str, str] | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:836`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L836) — `def platform_ca_bundle_path() -> str | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:843`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L843) — `def system_ca_bundle_path() -> str | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:850`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L850) — `def _try_resolve_sasl_password(bootstrap_servers: str) -> str | None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:855`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L855) — `def _resolve_mtls_bootstrap(bootstrap_servers: str) -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:865`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L865) — `def auto_detect_auth(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:929`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L929) — `def _resolve_bootstrap_servers(bootstrap_servers: str, auth_mode: str = "sasl") -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:942`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L942) — `def _resolve_sasl_password(bootstrap_servers: str) -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:953`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L953) — `class PhoenixKafkaDataset(PhoenixDataset):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1010`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1010) — `def kafka_to_training_batch(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1103`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1103) — `def make(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1216`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1216) — `def _detect_auth(self) -> KafkaAuth:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1223`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1223) — `def _resolve_bootstrap_servers(self, auth: KafkaAuth | None = None) -> str:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1227`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1227) — `def ensure_partition_count(self) -> None:`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1259`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1259) — `async def _periodic_reload_task(self, stop_event: threading.Event | None):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1293`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1293) — `def _async_kafka_consumer_arrow(`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1320`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1320) — `async def consumption_loop(stop_event):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1433`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1433) — `def shutdown(self):`
+- [`phoenix/xrex/data/streaming/kafkaloader.py:1461`](../source/phoenix/xrex/data/streaming/kafkaloader.py#L1461) — `async def main():`
+- [`phoenix/xrex/driver/config_factory.py:13`](../source/phoenix/xrex/driver/config_factory.py#L13) — `def _sync_feature_prep(run_config: Config) -> None:`
+- [`phoenix/xrex/driver/config_factory.py:33`](../source/phoenix/xrex/driver/config_factory.py#L33) — `def build_eval_configs(`
+- [`phoenix/xrex/driver/core.py:46`](../source/phoenix/xrex/driver/core.py#L46) — `class DriverContext:`
+- [`phoenix/xrex/driver/core.py:64`](../source/phoenix/xrex/driver/core.py#L64) — `class Completed(Exception):`
+- [`phoenix/xrex/driver/core.py:68`](../source/phoenix/xrex/driver/core.py#L68) — `class ExceptionHandlerRegistry:`
+- [`phoenix/xrex/driver/core.py:69`](../source/phoenix/xrex/driver/core.py#L69) — `def __init__(self):`
+- [`phoenix/xrex/driver/core.py:72`](../source/phoenix/xrex/driver/core.py#L72) — `def register(self, type):`
+- [`phoenix/xrex/driver/core.py:73`](../source/phoenix/xrex/driver/core.py#L73) — `def decorator(func):`
+- [`phoenix/xrex/driver/core.py:79`](../source/phoenix/xrex/driver/core.py#L79) — `def get_handler(self, type):`
+- [`phoenix/xrex/driver/core.py:84`](../source/phoenix/xrex/driver/core.py#L84) — `class MultiRunDriverState:`
+- [`phoenix/xrex/driver/core.py:95`](../source/phoenix/xrex/driver/core.py#L95) — `class DriverConfig(Config):`
+- [`phoenix/xrex/driver/core.py:112`](../source/phoenix/xrex/driver/core.py#L112) — `def _init_multi_run(self, ctx: DriverContext) -> MultiRunDriverState:`
+- [`phoenix/xrex/driver/core.py:115`](../source/phoenix/xrex/driver/core.py#L115) — `def _prepare_single_run(self, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/core.py:147`](../source/phoenix/xrex/driver/core.py#L147) — `def _single_run(self, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/core.py:150`](../source/phoenix/xrex/driver/core.py#L150) — `def _handle_exception(self, e: BaseException, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/core.py:163`](../source/phoenix/xrex/driver/core.py#L163) — `def _handle_keyboard_interrupt(self, e: KeyboardInterrupt, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/core.py:169`](../source/phoenix/xrex/driver/core.py#L169) — `def _handle_system_exit(self, e: SystemExit, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/core.py:175`](../source/phoenix/xrex/driver/core.py#L175) — `def _handle_completed(self, e: Completed, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/core.py:181`](../source/phoenix/xrex/driver/core.py#L181) — `def run(self, ctx: DriverContext):`
+- [`phoenix/xrex/driver/core.py:219`](../source/phoenix/xrex/driver/core.py#L219) — `def signal_complete(self):`
+- [`phoenix/xrex/driver/core.py:226`](../source/phoenix/xrex/driver/core.py#L226) — `def logged_metric_keys():`
+- [`phoenix/xrex/driver/core.py:250`](../source/phoenix/xrex/driver/core.py#L250) — `def log_metrics(metrics: dict[str, float | int]):`
+- [`phoenix/xrex/driver/core.py:260`](../source/phoenix/xrex/driver/core.py#L260) — `def init_run_dir(`
+- [`phoenix/xrex/driver/core.py:319`](../source/phoenix/xrex/driver/core.py#L319) — `def configure_worker(`
+- [`phoenix/xrex/driver/hooks.py:48`](../source/phoenix/xrex/driver/hooks.py#L48) — `def _should_omit_wandb_metric(key: str) -> bool:`
+- [`phoenix/xrex/driver/hooks.py:56`](../source/phoenix/xrex/driver/hooks.py#L56) — `def _filter_wandb_metrics(metrics: Mapping[str, Any]) -> dict[str, Any]:`
+- [`phoenix/xrex/driver/hooks.py:60`](../source/phoenix/xrex/driver/hooks.py#L60) — `def _write_filtered_wandb_metrics(metrics: Mapping[str, Any]) -> None:`
+- [`phoenix/xrex/driver/hooks.py:68`](../source/phoenix/xrex/driver/hooks.py#L68) — `def _import_wandb():`
+- [`phoenix/xrex/driver/hooks.py:75`](../source/phoenix/xrex/driver/hooks.py#L75) — `class HookManager:`
+- [`phoenix/xrex/driver/hooks.py:76`](../source/phoenix/xrex/driver/hooks.py#L76) — `def __init__(self):`
+- [`phoenix/xrex/driver/hooks.py:79`](../source/phoenix/xrex/driver/hooks.py#L79) — `def add_hook(self, hook: DriverHook):`
+- [`phoenix/xrex/driver/hooks.py:82`](../source/phoenix/xrex/driver/hooks.py#L82) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:86`](../source/phoenix/xrex/driver/hooks.py#L86) — `def on_train_start(self, model_config: Any):`
+- [`phoenix/xrex/driver/hooks.py:90`](../source/phoenix/xrex/driver/hooks.py#L90) — `def on_step(self, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:94`](../source/phoenix/xrex/driver/hooks.py#L94) — `def on_checkpoint_save(`
+- [`phoenix/xrex/driver/hooks.py:110`](../source/phoenix/xrex/driver/hooks.py#L110) — `def on_train_rollback(self):`
+- [`phoenix/xrex/driver/hooks.py:114`](../source/phoenix/xrex/driver/hooks.py#L114) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/hooks.py:125`](../source/phoenix/xrex/driver/hooks.py#L125) — `class DriverHook:`
+- [`phoenix/xrex/driver/hooks.py:126`](../source/phoenix/xrex/driver/hooks.py#L126) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:129`](../source/phoenix/xrex/driver/hooks.py#L129) — `def on_train_start(self, model_config: Any):`
+- [`phoenix/xrex/driver/hooks.py:132`](../source/phoenix/xrex/driver/hooks.py#L132) — `def on_step(self, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:135`](../source/phoenix/xrex/driver/hooks.py#L135) — `def on_checkpoint_save(`
+- [`phoenix/xrex/driver/hooks.py:144`](../source/phoenix/xrex/driver/hooks.py#L144) — `def on_train_rollback(self):`
+- [`phoenix/xrex/driver/hooks.py:147`](../source/phoenix/xrex/driver/hooks.py#L147) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/hooks.py:152`](../source/phoenix/xrex/driver/hooks.py#L152) — `def _rich_media_types() -> tuple[type, ...]:`
+- [`phoenix/xrex/driver/hooks.py:159`](../source/phoenix/xrex/driver/hooks.py#L159) — `def filter_serializable(metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:172`](../source/phoenix/xrex/driver/hooks.py#L172) — `def write_metrics_file(path: Path, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:181`](../source/phoenix/xrex/driver/hooks.py#L181) — `def write_wandb_log(metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:191`](../source/phoenix/xrex/driver/hooks.py#L191) — `class MetricsFileHook(DriverHook):`
+- [`phoenix/xrex/driver/hooks.py:194`](../source/phoenix/xrex/driver/hooks.py#L194) — `def __post_init__(self):`
+- [`phoenix/xrex/driver/hooks.py:200`](../source/phoenix/xrex/driver/hooks.py#L200) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:205`](../source/phoenix/xrex/driver/hooks.py#L205) — `def on_step(self, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:211`](../source/phoenix/xrex/driver/hooks.py#L211) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/hooks.py:227`](../source/phoenix/xrex/driver/hooks.py#L227) — `class PrometheusHook(DriverHook):`
+- [`phoenix/xrex/driver/hooks.py:228`](../source/phoenix/xrex/driver/hooks.py#L228) — `def __init__(`
+- [`phoenix/xrex/driver/hooks.py:243`](../source/phoenix/xrex/driver/hooks.py#L243) — `def _create_gauges(self, run: Run):`
+- [`phoenix/xrex/driver/hooks.py:261`](../source/phoenix/xrex/driver/hooks.py#L261) — `def setup(self):`
+- [`phoenix/xrex/driver/hooks.py:271`](../source/phoenix/xrex/driver/hooks.py#L271) — `async def route_metrics(request: fastapi.Request) -> fastapi.responses.Response:`
+- [`phoenix/xrex/driver/hooks.py:274`](../source/phoenix/xrex/driver/hooks.py#L274) — `async def _send(asgi_dict):`
+- [`phoenix/xrex/driver/hooks.py:300`](../source/phoenix/xrex/driver/hooks.py#L300) — `def cleanup(self):`
+- [`phoenix/xrex/driver/hooks.py:307`](../source/phoenix/xrex/driver/hooks.py#L307) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:312`](../source/phoenix/xrex/driver/hooks.py#L312) — `def on_step(self, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:317`](../source/phoenix/xrex/driver/hooks.py#L317) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/hooks.py:322`](../source/phoenix/xrex/driver/hooks.py#L322) — `class WandbHook(DriverHook):`
+- [`phoenix/xrex/driver/hooks.py:326`](../source/phoenix/xrex/driver/hooks.py#L326) — `def __post_init__(self):`
+- [`phoenix/xrex/driver/hooks.py:332`](../source/phoenix/xrex/driver/hooks.py#L332) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:355`](../source/phoenix/xrex/driver/hooks.py#L355) — `def _do_init(wandb_id: str, resume: str) -> None:`
+- [`phoenix/xrex/driver/hooks.py:410`](../source/phoenix/xrex/driver/hooks.py#L410) — `def on_step(self, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:414`](../source/phoenix/xrex/driver/hooks.py#L414) — `def on_train_rollback(self):`
+- [`phoenix/xrex/driver/hooks.py:445`](../source/phoenix/xrex/driver/hooks.py#L445) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/hooks.py:453`](../source/phoenix/xrex/driver/hooks.py#L453) — `class ClickhouseHook(DriverHook):`
+- [`phoenix/xrex/driver/hooks.py:454`](../source/phoenix/xrex/driver/hooks.py#L454) — `def __init__(self, driver_config: Any = None):`
+- [`phoenix/xrex/driver/hooks.py:480`](../source/phoenix/xrex/driver/hooks.py#L480) — `def _insert(self, metrics):`
+- [`phoenix/xrex/driver/hooks.py:508`](../source/phoenix/xrex/driver/hooks.py#L508) — `def on_train_start(self, model_config: Any):`
+- [`phoenix/xrex/driver/hooks.py:547`](../source/phoenix/xrex/driver/hooks.py#L547) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:559`](../source/phoenix/xrex/driver/hooks.py#L559) — `def on_step(self, metrics: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:574`](../source/phoenix/xrex/driver/hooks.py#L574) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/hooks.py:580`](../source/phoenix/xrex/driver/hooks.py#L580) — `class CheckpointMonitoringState(Enum):`
+- [`phoenix/xrex/driver/hooks.py:588`](../source/phoenix/xrex/driver/hooks.py#L588) — `def _should_keep(`
+- [`phoenix/xrex/driver/hooks.py:619`](../source/phoenix/xrex/driver/hooks.py#L619) — `def _rename_for_deletion(path: str) -> str | None:`
+- [`phoenix/xrex/driver/hooks.py:631`](../source/phoenix/xrex/driver/hooks.py#L631) — `def _rm_rf_batch(paths: list[str]):`
+- [`phoenix/xrex/driver/hooks.py:641`](../source/phoenix/xrex/driver/hooks.py#L641) — `def _checkpoint_cleaner(`
+- [`phoenix/xrex/driver/hooks.py:724`](../source/phoenix/xrex/driver/hooks.py#L724) — `def _shutdown_checkpoint_worker(worker, tasks):`
+- [`phoenix/xrex/driver/hooks.py:730`](../source/phoenix/xrex/driver/hooks.py#L730) — `class CheckpointMonitoringHook(DriverHook):`
+- [`phoenix/xrex/driver/hooks.py:731`](../source/phoenix/xrex/driver/hooks.py#L731) — `def __init__(self):`
+- [`phoenix/xrex/driver/hooks.py:736`](../source/phoenix/xrex/driver/hooks.py#L736) — `def _checkpoint_monitoring(self, trainer_config: Jsonable, run_id: str):`
+- [`phoenix/xrex/driver/hooks.py:761`](../source/phoenix/xrex/driver/hooks.py#L761) — `def _is_worker_alive(self):`
+- [`phoenix/xrex/driver/hooks.py:764`](../source/phoenix/xrex/driver/hooks.py#L764) — `def _shutdown_worker(self):`
+- [`phoenix/xrex/driver/hooks.py:769`](../source/phoenix/xrex/driver/hooks.py#L769) — `def on_boot(self, run: Run, run_dir: Path, config: Jsonable):`
+- [`phoenix/xrex/driver/hooks.py:780`](../source/phoenix/xrex/driver/hooks.py#L780) — `def on_step(self, _: Mapping[str, Any]):`
+- [`phoenix/xrex/driver/hooks.py:795`](../source/phoenix/xrex/driver/hooks.py#L795) — `def on_train_stop(self):`
+- [`phoenix/xrex/driver/local.py:21`](../source/phoenix/xrex/driver/local.py#L21) — `class LocalTrainerContext(TrainerContext):`
+- [`phoenix/xrex/driver/local.py:22`](../source/phoenix/xrex/driver/local.py#L22) — `def _handle(self, event: TrainerEvent, data: Any):`
+- [`phoenix/xrex/driver/local.py:31`](../source/phoenix/xrex/driver/local.py#L31) — `class LocalDriverConfig(DriverConfig):`
+- [`phoenix/xrex/driver/local.py:47`](../source/phoenix/xrex/driver/local.py#L47) — `def _single_run(self, mr_state: MultiRunDriverState):`
+- [`phoenix/xrex/driver/run.py:16`](../source/phoenix/xrex/driver/run.py#L16) — `def pin_visible_devices(n: int) -> None:`
+- [`phoenix/xrex/driver/run.py:50`](../source/phoenix/xrex/driver/run.py#L50) — `def _build_trainer_context(run_config: Any) -> Any:`
+- [`phoenix/xrex/driver/run.py:83`](../source/phoenix/xrex/driver/run.py#L83) — `def run_driver_train(driver_config: Any, run_config: Any) -> None:`
+- [`phoenix/xrex/eval/eval_utils.py:20`](../source/phoenix/xrex/eval/eval_utils.py#L20) — `class EvalModule(Config):`
+- [`phoenix/xrex/eval/eval_utils.py:27`](../source/phoenix/xrex/eval/eval_utils.py#L27) — `def initialize(self):`
+- [`phoenix/xrex/eval/eval_utils.py:42`](../source/phoenix/xrex/eval/eval_utils.py#L42) — `class EvaluationTaskNew(Config):`
+- [`phoenix/xrex/eval/eval_utils.py:47`](../source/phoenix/xrex/eval/eval_utils.py#L47) — `def initialize(self):`
+- [`phoenix/xrex/eval/eval_utils.py:52`](../source/phoenix/xrex/eval/eval_utils.py#L52) — `def report(self, name: str, step: Optional[int] = None) -> str:`
+- [`phoenix/xrex/eval/eval_utils.py:65`](../source/phoenix/xrex/eval/eval_utils.py#L65) — `def params_from_state(state):`
+- [`phoenix/xrex/eval/eval_utils.py:70`](../source/phoenix/xrex/eval/eval_utils.py#L70) — `class ForwardEvalNew(EvaluationTaskNew):`
+- [`phoenix/xrex/eval/eval_utils.py:71`](../source/phoenix/xrex/eval/eval_utils.py#L71) — `def run(self, data_iter, forward_fn, mesh, name=None, **kwargs):`
+- [`phoenix/xrex/eval/eval_utils.py:107`](../source/phoenix/xrex/eval/eval_utils.py#L107) — `def run_forward_evals_new(`
+- [`phoenix/xrex/eval/eval_utils.py:128`](../source/phoenix/xrex/eval/eval_utils.py#L128) — `def report_forward_eval_results(`
+- [`phoenix/xrex/eval/evaluator_recsys.py:10`](../source/phoenix/xrex/eval/evaluator_recsys.py#L10) — `def report_forward_eval_results(`
+- [`phoenix/xrex/eval/metrics.py:12`](../source/phoenix/xrex/eval/metrics.py#L12) — `class ForwardMetrics(Config):`
+- [`phoenix/xrex/eval/metrics.py:14`](../source/phoenix/xrex/eval/metrics.py#L14) — `def run_batch(self, logits, inputs, targets, mask=None):`
+- [`phoenix/xrex/eval/metrics.py:18`](../source/phoenix/xrex/eval/metrics.py#L18) — `def get(self) -> float | dict[str | None, float] | None:`
+- [`phoenix/xrex/eval/metrics.py:21`](../source/phoenix/xrex/eval/metrics.py#L21) — `def after_run(`
+- [`phoenix/xrex/eval/metrics.py:32`](../source/phoenix/xrex/eval/metrics.py#L32) — `class WeightedAverageAccumulator:`
+- [`phoenix/xrex/eval/metrics.py:36`](../source/phoenix/xrex/eval/metrics.py#L36) — `def add(self, metrics, weight):`
+- [`phoenix/xrex/eval/metrics.py:40`](../source/phoenix/xrex/eval/metrics.py#L40) — `def get(self):`
+- [`phoenix/xrex/eval/metrics.py:48`](../source/phoenix/xrex/eval/metrics.py#L48) — `class SimpleSumAccumulator:`
+- [`phoenix/xrex/eval/metrics.py:51`](../source/phoenix/xrex/eval/metrics.py#L51) — `def add(self, value):`
+- [`phoenix/xrex/eval/metrics.py:54`](../source/phoenix/xrex/eval/metrics.py#L54) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:22`](../source/phoenix/xrex/eval/metrics_recsys.py#L22) — `class RecsysRCEAccumulator:`
+- [`phoenix/xrex/eval/metrics_recsys.py:28`](../source/phoenix/xrex/eval/metrics_recsys.py#L28) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:34`](../source/phoenix/xrex/eval/metrics_recsys.py#L34) — `def add(self, ce_example, total_valid, num_pos, num_neg):`
+- [`phoenix/xrex/eval/metrics_recsys.py:40`](../source/phoenix/xrex/eval/metrics_recsys.py#L40) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:48`](../source/phoenix/xrex/eval/metrics_recsys.py#L48) — `def get_ce(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:53`](../source/phoenix/xrex/eval/metrics_recsys.py#L53) — `def get_bce(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:63`](../source/phoenix/xrex/eval/metrics_recsys.py#L63) — `class RecallAccumulator(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:67`](../source/phoenix/xrex/eval/metrics_recsys.py#L67) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:71`](../source/phoenix/xrex/eval/metrics_recsys.py#L71) — `def add(self, true_positives: float, total_positives: float):`
+- [`phoenix/xrex/eval/metrics_recsys.py:75`](../source/phoenix/xrex/eval/metrics_recsys.py#L75) — `def get(self) -> float:`
+- [`phoenix/xrex/eval/metrics_recsys.py:82`](../source/phoenix/xrex/eval/metrics_recsys.py#L82) — `class RecsysAccumulatedLossMetrics(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:86`](../source/phoenix/xrex/eval/metrics_recsys.py#L86) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:90`](../source/phoenix/xrex/eval/metrics_recsys.py#L90) — `def add(self, batch_loss, num_batches=1):`
+- [`phoenix/xrex/eval/metrics_recsys.py:94`](../source/phoenix/xrex/eval/metrics_recsys.py#L94) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:101`](../source/phoenix/xrex/eval/metrics_recsys.py#L101) — `class RecsysFloatTracker(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:104`](../source/phoenix/xrex/eval/metrics_recsys.py#L104) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:107`](../source/phoenix/xrex/eval/metrics_recsys.py#L107) — `def set(self, value):`
+- [`phoenix/xrex/eval/metrics_recsys.py:110`](../source/phoenix/xrex/eval/metrics_recsys.py#L110) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:115`](../source/phoenix/xrex/eval/metrics_recsys.py#L115) — `class RecsysSumMetrics(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:118`](../source/phoenix/xrex/eval/metrics_recsys.py#L118) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:121`](../source/phoenix/xrex/eval/metrics_recsys.py#L121) — `def add(self, value: float):`
+- [`phoenix/xrex/eval/metrics_recsys.py:124`](../source/phoenix/xrex/eval/metrics_recsys.py#L124) — `def get(self) -> float:`
+- [`phoenix/xrex/eval/metrics_recsys.py:133`](../source/phoenix/xrex/eval/metrics_recsys.py#L133) — `def get_rce(logits, targets, mask, id_array):`
+- [`phoenix/xrex/eval/metrics_recsys.py:153`](../source/phoenix/xrex/eval/metrics_recsys.py#L153) — `class RecsysRCEMetrics(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:156`](../source/phoenix/xrex/eval/metrics_recsys.py#L156) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:159`](../source/phoenix/xrex/eval/metrics_recsys.py#L159) — `def initialize(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:162`](../source/phoenix/xrex/eval/metrics_recsys.py#L162) — `def run_batch(self, logits, targets, mask):`
+- [`phoenix/xrex/eval/metrics_recsys.py:178`](../source/phoenix/xrex/eval/metrics_recsys.py#L178) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:182`](../source/phoenix/xrex/eval/metrics_recsys.py#L182) — `def get_ratio(self) -> float:`
+- [`phoenix/xrex/eval/metrics_recsys.py:192`](../source/phoenix/xrex/eval/metrics_recsys.py#L192) — `class RecsysNumTokensMetrics(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:193`](../source/phoenix/xrex/eval/metrics_recsys.py#L193) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:196`](../source/phoenix/xrex/eval/metrics_recsys.py#L196) — `def initialize(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:199`](../source/phoenix/xrex/eval/metrics_recsys.py#L199) — `def run_batch(self, logits, targets, mask):`
+- [`phoenix/xrex/eval/metrics_recsys.py:202`](../source/phoenix/xrex/eval/metrics_recsys.py#L202) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:208`](../source/phoenix/xrex/eval/metrics_recsys.py#L208) — `class RecsysCEMetrics(RecsysRCEMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:209`](../source/phoenix/xrex/eval/metrics_recsys.py#L209) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:212`](../source/phoenix/xrex/eval/metrics_recsys.py#L212) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:218`](../source/phoenix/xrex/eval/metrics_recsys.py#L218) — `class AUROCAccumulator:`
+- [`phoenix/xrex/eval/metrics_recsys.py:221`](../source/phoenix/xrex/eval/metrics_recsys.py#L221) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:229`](../source/phoenix/xrex/eval/metrics_recsys.py#L229) — `def __init__(self, n_thresholds: int = 256):`
+- [`phoenix/xrex/eval/metrics_recsys.py:239`](../source/phoenix/xrex/eval/metrics_recsys.py#L239) — `def update(self, predictions, labels):`
+- [`phoenix/xrex/eval/metrics_recsys.py:243`](../source/phoenix/xrex/eval/metrics_recsys.py#L243) — `def compute_counts(threshold):`
+- [`phoenix/xrex/eval/metrics_recsys.py:262`](../source/phoenix/xrex/eval/metrics_recsys.py#L262) — `def compute(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:269`](../source/phoenix/xrex/eval/metrics_recsys.py#L269) — `class RecsysAUROC(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:272`](../source/phoenix/xrex/eval/metrics_recsys.py#L272) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:275`](../source/phoenix/xrex/eval/metrics_recsys.py#L275) — `def initialize(self, n_thresholds=2048):`
+- [`phoenix/xrex/eval/metrics_recsys.py:278`](../source/phoenix/xrex/eval/metrics_recsys.py#L278) — `def update(self, predictions, labels):`
+- [`phoenix/xrex/eval/metrics_recsys.py:283`](../source/phoenix/xrex/eval/metrics_recsys.py#L283) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:290`](../source/phoenix/xrex/eval/metrics_recsys.py#L290) — `def get_valid_entries(self, y, p, valid_mask):`
+- [`phoenix/xrex/eval/metrics_recsys.py:296`](../source/phoenix/xrex/eval/metrics_recsys.py#L296) — `def run_batch(self, logits, targets, valid_mask):`
+- [`phoenix/xrex/eval/metrics_recsys.py:314`](../source/phoenix/xrex/eval/metrics_recsys.py#L314) — `class PRAccumulator:`
+- [`phoenix/xrex/eval/metrics_recsys.py:317`](../source/phoenix/xrex/eval/metrics_recsys.py#L317) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:324`](../source/phoenix/xrex/eval/metrics_recsys.py#L324) — `def __init__(self, n_thresholds: int = 8192):`
+- [`phoenix/xrex/eval/metrics_recsys.py:333`](../source/phoenix/xrex/eval/metrics_recsys.py#L333) — `def update(self, predictions, labels):`
+- [`phoenix/xrex/eval/metrics_recsys.py:337`](../source/phoenix/xrex/eval/metrics_recsys.py#L337) — `def compute_counts(threshold):`
+- [`phoenix/xrex/eval/metrics_recsys.py:353`](../source/phoenix/xrex/eval/metrics_recsys.py#L353) — `def compute(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:364`](../source/phoenix/xrex/eval/metrics_recsys.py#L364) — `class RecsysPRAUC(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:367`](../source/phoenix/xrex/eval/metrics_recsys.py#L367) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:370`](../source/phoenix/xrex/eval/metrics_recsys.py#L370) — `def initialize(self, n_thresholds=8192):`
+- [`phoenix/xrex/eval/metrics_recsys.py:373`](../source/phoenix/xrex/eval/metrics_recsys.py#L373) — `def update(self, predictions, labels):`
+- [`phoenix/xrex/eval/metrics_recsys.py:377`](../source/phoenix/xrex/eval/metrics_recsys.py#L377) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:384`](../source/phoenix/xrex/eval/metrics_recsys.py#L384) — `def get_valid_entries(self, y, p, valid_mask):`
+- [`phoenix/xrex/eval/metrics_recsys.py:390`](../source/phoenix/xrex/eval/metrics_recsys.py#L390) — `def run_batch(self, logits, targets, valid_mask):`
+- [`phoenix/xrex/eval/metrics_recsys.py:407`](../source/phoenix/xrex/eval/metrics_recsys.py#L407) — `def build_post_id_sorter(all_post_ids: np.ndarray) -> tuple[np.ndarray, np.ndarray]:`
+- [`phoenix/xrex/eval/metrics_recsys.py:412`](../source/phoenix/xrex/eval/metrics_recsys.py#L412) — `def lookup_post_indices(`
+- [`phoenix/xrex/eval/metrics_recsys.py:426`](../source/phoenix/xrex/eval/metrics_recsys.py#L426) — `class RecallReportState:`
+- [`phoenix/xrex/eval/metrics_recsys.py:436`](../source/phoenix/xrex/eval/metrics_recsys.py#L436) — `class RecsysRecallMetrics(ForwardMetrics):`
+- [`phoenix/xrex/eval/metrics_recsys.py:441`](../source/phoenix/xrex/eval/metrics_recsys.py#L441) — `def clear(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:446`](../source/phoenix/xrex/eval/metrics_recsys.py#L446) — `def _get_report_state(self) -> RecallReportState:`
+- [`phoenix/xrex/eval/metrics_recsys.py:454`](../source/phoenix/xrex/eval/metrics_recsys.py#L454) — `def _check_half_life(self) -> None:`
+- [`phoenix/xrex/eval/metrics_recsys.py:459`](../source/phoenix/xrex/eval/metrics_recsys.py#L459) — `def initialize(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:464`](../source/phoenix/xrex/eval/metrics_recsys.py#L464) — `def run_batch(self, logits):`
+- [`phoenix/xrex/eval/metrics_recsys.py:471`](../source/phoenix/xrex/eval/metrics_recsys.py#L471) — `def add_ratio_counts(self, hits: float, total: float) -> None:`
+- [`phoenix/xrex/eval/metrics_recsys.py:476`](../source/phoenix/xrex/eval/metrics_recsys.py#L476) — `def run_batch_global_recall(`
+- [`phoenix/xrex/eval/metrics_recsys.py:508`](../source/phoenix/xrex/eval/metrics_recsys.py#L508) — `def run_in_batch_recall_by_forward_fn(`
+- [`phoenix/xrex/eval/metrics_recsys.py:544`](../source/phoenix/xrex/eval/metrics_recsys.py#L544) — `def get(self):`
+- [`phoenix/xrex/eval/metrics_recsys.py:559`](../source/phoenix/xrex/eval/metrics_recsys.py#L559) — `def _advance_report_state(self, reduced_tp: float, reduced_total: float) -> None:`
+- [`phoenix/xrex/eval/metrics_recsys.py:582`](../source/phoenix/xrex/eval/metrics_recsys.py#L582) — `def get_report_extras(self) -> dict[str, float]:`
+- [`phoenix/xrex/eval/metrics_recsys.py:588`](../source/phoenix/xrex/eval/metrics_recsys.py#L588) — `def get_recall(self, logits):`
+- [`phoenix/xrex/eval/metrics_recsys.py:606`](../source/phoenix/xrex/eval/metrics_recsys.py#L606) — `def merge_report_extras(`
+- [`phoenix/xrex/eval/recsys_eval.py:44`](../source/phoenix/xrex/eval/recsys_eval.py#L44) — `def _make_gather_in_batch_jit(mesh: jax.sharding.Mesh):`
+- [`phoenix/xrex/eval/recsys_eval.py:48`](../source/phoenix/xrex/eval/recsys_eval.py#L48) — `def _gather_fn(table, indices):`
+- [`phoenix/xrex/eval/recsys_eval.py:57`](../source/phoenix/xrex/eval/recsys_eval.py#L57) — `class RecsysTwoTowerEval(EvaluationTaskNew):`
+- [`phoenix/xrex/eval/recsys_eval.py:95`](../source/phoenix/xrex/eval/recsys_eval.py#L95) — `def metadata_stats(self) -> List[str]:`
+- [`phoenix/xrex/eval/recsys_eval.py:102`](../source/phoenix/xrex/eval/recsys_eval.py#L102) — `def initialize(self):`
+- [`phoenix/xrex/eval/recsys_eval.py:105`](../source/phoenix/xrex/eval/recsys_eval.py#L105) — `def clear_metrics(self):`
+- [`phoenix/xrex/eval/recsys_eval.py:111`](../source/phoenix/xrex/eval/recsys_eval.py#L111) — `def run(`
+- [`phoenix/xrex/eval/recsys_eval.py:159`](../source/phoenix/xrex/eval/recsys_eval.py#L159) — `def _trim(v, D=D, B=B, total_C=total_C, eval_C=eval_C):`
+- [`phoenix/xrex/eval/recsys_eval.py:175`](../source/phoenix/xrex/eval/recsys_eval.py#L175) — `def is_local_data(data):`
+- [`phoenix/xrex/eval/recsys_eval.py:176`](../source/phoenix/xrex/eval/recsys_eval.py#L176) — `def check_leaf(x):`
+- [`phoenix/xrex/eval/recsys_eval.py:502`](../source/phoenix/xrex/eval/recsys_eval.py#L502) — `def _create_retrieval_metrics(self):`
+- [`phoenix/xrex/eval/recsys_eval.py:576`](../source/phoenix/xrex/eval/recsys_eval.py#L576) — `def get_metadata_for_post_ids(self, post_ids: np.ndarray, metadata_table) -> pd.DataFrame:`
+- [`phoenix/xrex/eval/recsys_eval.py:585`](../source/phoenix/xrex/eval/recsys_eval.py#L585) — `class RecsysSIDRetrievalEval(EvaluationTaskNew):`
+- [`phoenix/xrex/eval/recsys_eval.py:608`](../source/phoenix/xrex/eval/recsys_eval.py#L608) — `def initialize(self):`
+- [`phoenix/xrex/eval/recsys_eval.py:612`](../source/phoenix/xrex/eval/recsys_eval.py#L612) — `def set_resolver(self, resolver: "SidBeamResolver") -> None:`
+- [`phoenix/xrex/eval/recsys_eval.py:615`](../source/phoenix/xrex/eval/recsys_eval.py#L615) — `def _reset_accumulators(self):`
+- [`phoenix/xrex/eval/recsys_eval.py:630`](../source/phoenix/xrex/eval/recsys_eval.py#L630) — `def clear_metrics(self):`
+- [`phoenix/xrex/eval/recsys_eval.py:633`](../source/phoenix/xrex/eval/recsys_eval.py#L633) — `def run(`
+- [`phoenix/xrex/eval/recsys_eval.py:680`](../source/phoenix/xrex/eval/recsys_eval.py#L680) — `def is_local_data(data):`
+- [`phoenix/xrex/eval/recsys_eval.py:733`](../source/phoenix/xrex/eval/recsys_eval.py#L733) — `def _normalize_beam_codes(out) -> jax.Array:`
+- [`phoenix/xrex/eval/recsys_eval.py:739`](../source/phoenix/xrex/eval/recsys_eval.py#L739) — `def _extract_targets(self, cpu_batch):`
+- [`phoenix/xrex/eval/recsys_eval.py:766`](../source/phoenix/xrex/eval/recsys_eval.py#L766) — `def _accumulate_beam(self, cpu_batch, beam_codes_np):`
+- [`phoenix/xrex/eval/recsys_eval.py:821`](../source/phoenix/xrex/eval/recsys_eval.py#L821) — `def _fit_host_local_batch(cpu_batch, target: int):`
+- [`phoenix/xrex/eval/recsys_eval.py:822`](../source/phoenix/xrex/eval/recsys_eval.py#L822) — `def _fit(x):`
+- [`phoenix/xrex/eval/recsys_eval.py:837`](../source/phoenix/xrex/eval/recsys_eval.py#L837) — `def _multihost_sum_scalar(value: float | int) -> float:`
+- [`phoenix/xrex/eval/recsys_eval.py:843`](../source/phoenix/xrex/eval/recsys_eval.py#L843) — `def collect_metrics(self) -> Dict[str, float]:`
+- [`phoenix/xrex/eval/recsys_eval.py:883`](../source/phoenix/xrex/eval/recsys_eval.py#L883) — `def sid_eval_batch_geometry(eval_bs_per_device: int, num_devices: int) -> tuple[int, int, int]:`
+- [`phoenix/xrex/eval/recsys_eval.py:895`](../source/phoenix/xrex/eval/recsys_eval.py#L895) — `def make_sid_retrieval_eval_task(`
+- [`phoenix/xrex/eval/recsys_eval.py:920`](../source/phoenix/xrex/eval/recsys_eval.py#L920) — `def finalize_sid_eval_metrics(`
+- [`phoenix/xrex/eval/recsys_eval.py:940`](../source/phoenix/xrex/eval/recsys_eval.py#L940) — `def log_sid_eval_summary(`
+- [`phoenix/xrex/eval/recsys_eval.py:978`](../source/phoenix/xrex/eval/recsys_eval.py#L978) — `def run_recsys_evals(`
+- [`phoenix/xrex/inference/checkpoint_storage.py:24`](../source/phoenix/xrex/inference/checkpoint_storage.py#L24) — `def _require_storage_engine() -> None:`
+- [`phoenix/xrex/inference/checkpoint_storage.py:35`](../source/phoenix/xrex/inference/checkpoint_storage.py#L35) — `def detect_store(runner) -> Store:`
+- [`phoenix/xrex/inference/checkpoint_storage.py:45`](../source/phoenix/xrex/inference/checkpoint_storage.py#L45) — `def maybe_load_from_storage(runner, ctx, store: Store, tag=None):`
+- [`phoenix/xrex/inference/checkpoint_storage.py:67`](../source/phoenix/xrex/inference/checkpoint_storage.py#L67) — `def resolve_checkpoint_arg(runner, checkpoint_path) -> bool:`
+- [`phoenix/xrex/inference/checkpoint_storage.py:76`](../source/phoenix/xrex/inference/checkpoint_storage.py#L76) — `def append_storage_overrides(checkpoint_path: str, overrides: list) -> None:`
+- [`phoenix/xrex/inference/checkpoint_storage.py:82`](../source/phoenix/xrex/inference/checkpoint_storage.py#L82) — `def load_checkpoint_from_storage(self, ctx: TrainerContext) -> tuple[bool, int, int]:`
+- [`phoenix/xrex/inference/debug_logger.py:22`](../source/phoenix/xrex/inference/debug_logger.py#L22) — `def build_debug_schema() -> pa.Schema:`
+- [`phoenix/xrex/inference/gen_recs_runner.py:35`](../source/phoenix/xrex/inference/gen_recs_runner.py#L35) — `class GenRecsModelRunner(`
+- [`phoenix/xrex/inference/gen_recs_runner.py:41`](../source/phoenix/xrex/inference/gen_recs_runner.py#L41) — `def init(self, batch, rng: jax.Array) -> RecsysInferenceState:`
+- [`phoenix/xrex/inference/gen_recs_runner.py:47`](../source/phoenix/xrex/inference/gen_recs_runner.py#L47) — `def _family_init_post_embeddings(self, post_embeddings):`
+- [`phoenix/xrex/inference/gen_recs_runner.py:62`](../source/phoenix/xrex/inference/gen_recs_runner.py#L62) — `def _setup_gen_recs_jit(self) -> None:`
+- [`phoenix/xrex/inference/gen_recs_runner.py:100`](../source/phoenix/xrex/inference/gen_recs_runner.py#L100) — `def gen_recs_forward_fn(`
+- [`phoenix/xrex/inference/gen_recs_runner.py:166`](../source/phoenix/xrex/inference/gen_recs_runner.py#L166) — `def get_batch_prep(`
+- [`phoenix/xrex/inference/gen_recs_runner.py:189`](../source/phoenix/xrex/inference/gen_recs_runner.py#L189) — `def gather_embeddings_and_forward(`
+- [`phoenix/xrex/inference/gen_recs_runner.py:218`](../source/phoenix/xrex/inference/gen_recs_runner.py#L218) — `def reply_request(`
+- [`phoenix/xrex/inference/gen_recs_runner.py:244`](../source/phoenix/xrex/inference/gen_recs_runner.py#L244) — `def maybe_load_checkpoint(self, ctx, tag=None):`
+- [`phoenix/xrex/inference/gen_recs_runner.py:302`](../source/phoenix/xrex/inference/gen_recs_runner.py#L302) — `def _start_mm_embeddings_preload(self) -> None:`
+- [`phoenix/xrex/inference/gen_recs_runner.py:305`](../source/phoenix/xrex/inference/gen_recs_runner.py#L305) — `def run(self) -> None:`
+- [`phoenix/xrex/inference/gen_recs_runner.py:309`](../source/phoenix/xrex/inference/gen_recs_runner.py#L309) — `def create_server(`
+- [`phoenix/xrex/inference/gen_recs_services.py:11`](../source/phoenix/xrex/inference/gen_recs_services.py#L11) — `def _apply_gen_recs_service_env(service_type: str) -> None:`
+- [`phoenix/xrex/inference/h2d.py:30`](../source/phoenix/xrex/inference/h2d.py#L30) — `class MultimodalEmbeddingBuffer(NamedTuple):`
+- [`phoenix/xrex/inference/h2d.py:36`](../source/phoenix/xrex/inference/h2d.py#L36) — `class EmbeddingSlices(NamedTuple):`
+- [`phoenix/xrex/inference/h2d.py:45`](../source/phoenix/xrex/inference/h2d.py#L45) — `class H2DState(NamedTuple):`
+- [`phoenix/xrex/inference/h2d.py:55`](../source/phoenix/xrex/inference/h2d.py#L55) — `def _create_aligned_array(shape: Tuple[int, ...], itemsize: int, dtype):`
+- [`phoenix/xrex/inference/h2d.py:79`](../source/phoenix/xrex/inference/h2d.py#L79) — `def _create_mm_embedding_buffer_views(`
+- [`phoenix/xrex/inference/h2d.py:92`](../source/phoenix/xrex/inference/h2d.py#L92) — `def open_shared_emb_table(`
+- [`phoenix/xrex/inference/h2d.py:108`](../source/phoenix/xrex/inference/h2d.py#L108) — `def create_memmap_emb_table(`
+- [`phoenix/xrex/inference/h2d.py:132`](../source/phoenix/xrex/inference/h2d.py#L132) — `def prefault_memmap(mm: np.ndarray) -> float:`
+- [`phoenix/xrex/inference/h2d.py:145`](../source/phoenix/xrex/inference/h2d.py#L145) — `def parallel_copyto(dst: np.ndarray, src: np.ndarray) -> None:`
+- [`phoenix/xrex/inference/h2d.py:164`](../source/phoenix/xrex/inference/h2d.py#L164) — `def open_existing_memmap_emb_table(`
+- [`phoenix/xrex/inference/h2d.py:185`](../source/phoenix/xrex/inference/h2d.py#L185) — `def create_h2d_state(`
+- [`phoenix/xrex/inference/h2d.py:307`](../source/phoenix/xrex/inference/h2d.py#L307) — `def lookup_h2d_embeddings(`
+- [`phoenix/xrex/inference/h2d.py:406`](../source/phoenix/xrex/inference/h2d.py#L406) — `def _maybe_init_rows(`
+- [`phoenix/xrex/inference/int8_post_table.py:8`](../source/phoenix/xrex/inference/int8_post_table.py#L8) — `def quantize_post_table(t: jax.Array) -> tuple[jax.Array, jax.Array]:`
+- [`phoenix/xrex/inference/launch_inference.py:39`](../source/phoenix/xrex/inference/launch_inference.py#L39) — `def str2bool(value: str) -> bool:`
+- [`phoenix/xrex/inference/launch_inference.py:50`](../source/phoenix/xrex/inference/launch_inference.py#L50) — `def parse_bs_per_device_buckets(value: str) -> tuple[int, ...]:`
+- [`phoenix/xrex/inference/launch_inference.py:66`](../source/phoenix/xrex/inference/launch_inference.py#L66) — `def _atomic_link_publish(final_path: str, val: bytes, pod: str) -> bool:`
+- [`phoenix/xrex/inference/launch_inference.py:90`](../source/phoenix/xrex/inference/launch_inference.py#L90) — `def _seed_local_from_nfs(local_dir: str, nfs_dir: str, pod: str) -> int:`
+- [`phoenix/xrex/inference/launch_inference.py:123`](../source/phoenix/xrex/inference/launch_inference.py#L123) — `def _install_local_first_lru_cache_put(nfs_dir: str | None) -> None:`
+- [`phoenix/xrex/inference/launch_inference.py:132`](../source/phoenix/xrex/inference/launch_inference.py#L132) — `def _local_first_put(self, key: str, val: bytes) -> None:`
+- [`phoenix/xrex/inference/launch_inference.py:156`](../source/phoenix/xrex/inference/launch_inference.py#L156) — `def _maybe_configure_jax_persistent_cache(args: argparse.Namespace) -> None:`
+- [`phoenix/xrex/inference/launch_inference.py:226`](../source/phoenix/xrex/inference/launch_inference.py#L226) — `def _locked_update(name, value):`
+- [`phoenix/xrex/inference/launch_inference.py:250`](../source/phoenix/xrex/inference/launch_inference.py#L250) — `def run(`
+- [`phoenix/xrex/inference/metrics.py:10`](../source/phoenix/xrex/inference/metrics.py#L10) — `class MetricsPublisher:`
+- [`phoenix/xrex/inference/metrics.py:11`](../source/phoenix/xrex/inference/metrics.py#L11) — `def __init__(self, port=8000):`
+- [`phoenix/xrex/inference/metrics.py:287`](../source/phoenix/xrex/inference/metrics.py#L287) — `def _wire_jax_compilation_cache_metrics(self) -> None:`
+- [`phoenix/xrex/inference/metrics.py:294`](../source/phoenix/xrex/inference/metrics.py#L294) — `def _on_event(event: str, **_kwargs) -> None:`
+- [`phoenix/xrex/inference/metrics.py:300`](../source/phoenix/xrex/inference/metrics.py#L300) — `def _on_duration(event: str, duration_secs: float, **_kwargs) -> None:`
+- [`phoenix/xrex/inference/metrics.py:317`](../source/phoenix/xrex/inference/metrics.py#L317) — `def register_inference_batch_metrics(`
+- [`phoenix/xrex/inference/metrics.py:364`](../source/phoenix/xrex/inference/metrics.py#L364) — `def observe_bucket_selection(self, orig_batch_size: int, bucket_size: int) -> None:`
+- [`phoenix/xrex/inference/metrics.py:376`](../source/phoenix/xrex/inference/metrics.py#L376) — `def set_pod_status(self, status: str) -> None:`
+- [`phoenix/xrex/inference/metrics.py:387`](../source/phoenix/xrex/inference/metrics.py#L387) — `def increment_requests(self, stage):`
+- [`phoenix/xrex/inference/metrics.py:390`](../source/phoenix/xrex/inference/metrics.py#L390) — `def observe_latency(self, stage):`
+- [`phoenix/xrex/inference/metrics.py:391`](../source/phoenix/xrex/inference/metrics.py#L391) — `def decorator(func):`
+- [`phoenix/xrex/inference/metrics.py:392`](../source/phoenix/xrex/inference/metrics.py#L392) — `def wrapper(*args, **kwargs):`
+- [`phoenix/xrex/inference/metrics.py:403`](../source/phoenix/xrex/inference/metrics.py#L403) — `def get_metrics_publisher(port=8000):`
+- [`phoenix/xrex/inference/model_runner.py:106`](../source/phoenix/xrex/inference/model_runner.py#L106) — `def get_model_checkpoint_timestamp(ctx):`
+- [`phoenix/xrex/inference/model_runner.py:117`](../source/phoenix/xrex/inference/model_runner.py#L117) — `def _classify_copy_port_error(error: Exception) -> str:`
+- [`phoenix/xrex/inference/model_runner.py:142`](../source/phoenix/xrex/inference/model_runner.py#L142) — `def _resolve_copy_url_to_http(copy_url: str) -> str:`
+- [`phoenix/xrex/inference/model_runner.py:157`](../source/phoenix/xrex/inference/model_runner.py#L157) — `def _read_version_file(path: str) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:164`](../source/phoenix/xrex/inference/model_runner.py#L164) — `def _write_version_file(path: str, version: int) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:168`](../source/phoenix/xrex/inference/model_runner.py#L168) — `def _process_start_time_epoch() -> float | None:`
+- [`phoenix/xrex/inference/model_runner.py:192`](../source/phoenix/xrex/inference/model_runner.py#L192) — `def _glibc_malloc_trim() -> tuple[bool, float] | None:`
+- [`phoenix/xrex/inference/model_runner.py:212`](../source/phoenix/xrex/inference/model_runner.py#L212) — `def _save_tensors_to_shm(`
+- [`phoenix/xrex/inference/model_runner.py:239`](../source/phoenix/xrex/inference/model_runner.py#L239) — `def _load_tensors_from_shm(`
+- [`phoenix/xrex/inference/model_runner.py:261`](../source/phoenix/xrex/inference/model_runner.py#L261) — `class RequestBatchProtocol(Protocol):`
+- [`phoenix/xrex/inference/model_runner.py:262`](../source/phoenix/xrex/inference/model_runner.py#L262) — `def len(self) -> int: ...`
+- [`phoenix/xrex/inference/model_runner.py:269`](../source/phoenix/xrex/inference/model_runner.py#L269) — `class _PipelinedBatchResult(typing.Generic[RequestBatch]):`
+- [`phoenix/xrex/inference/model_runner.py:278`](../source/phoenix/xrex/inference/model_runner.py#L278) — `class ServerProtocol(Protocol, Generic[RequestBatch]):`
+- [`phoenix/xrex/inference/model_runner.py:279`](../source/phoenix/xrex/inference/model_runner.py#L279) — `def set_ready(self, is_ready: bool): ...`
+- [`phoenix/xrex/inference/model_runner.py:281`](../source/phoenix/xrex/inference/model_runner.py#L281) — `def cancel(self): ...`
+- [`phoenix/xrex/inference/model_runner.py:283`](../source/phoenix/xrex/inference/model_runner.py#L283) — `def cancel_forcefully(self): ...`
+- [`phoenix/xrex/inference/model_runner.py:285`](../source/phoenix/xrex/inference/model_runner.py#L285) — `def dequeue(self) -> RequestBatch | None: ...`
+- [`phoenix/xrex/inference/model_runner.py:287`](../source/phoenix/xrex/inference/model_runner.py#L287) — `def check_reload_request(self) -> bool: ...`
+- [`phoenix/xrex/inference/model_runner.py:289`](../source/phoenix/xrex/inference/model_runner.py#L289) — `def reset_reload_request(self) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:291`](../source/phoenix/xrex/inference/model_runner.py#L291) — `def reset_dequeue_timer(self) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:293`](../source/phoenix/xrex/inference/model_runner.py#L293) — `def record_service_time_ms(self, ms: float) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:295`](../source/phoenix/xrex/inference/model_runner.py#L295) — `def set_deadline_admission_enabled(self, enabled: bool) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:297`](../source/phoenix/xrex/inference/model_runner.py#L297) — `def set_checkpoint_loading(self) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:299`](../source/phoenix/xrex/inference/model_runner.py#L299) — `def clear_checkpoint_loading(self) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:301`](../source/phoenix/xrex/inference/model_runner.py#L301) — `def set_checkpoint_timestamp(self, timestamp: float) -> None: ...`
+- [`phoenix/xrex/inference/model_runner.py:303`](../source/phoenix/xrex/inference/model_runner.py#L303) — `def compute_batch_inputs_rust_quick(`
+- [`phoenix/xrex/inference/model_runner.py:311`](../source/phoenix/xrex/inference/model_runner.py#L311) — `def is_finished(self) -> bool: ...`
+- [`phoenix/xrex/inference/model_runner.py:317`](../source/phoenix/xrex/inference/model_runner.py#L317) — `def _loader_subprocess_main(`
+- [`phoenix/xrex/inference/model_runner.py:504`](../source/phoenix/xrex/inference/model_runner.py#L504) — `class BaseModelRunner(RecsysTrainer, Generic[RequestBatch, ModelConfig], ABC):`
+- [`phoenix/xrex/inference/model_runner.py:599`](../source/phoenix/xrex/inference/model_runner.py#L599) — `def sorted_buckets(self) -> tuple[int, ...]:`
+- [`phoenix/xrex/inference/model_runner.py:604`](../source/phoenix/xrex/inference/model_runner.py#L604) — `def select_bucket(self, orig_batch_size: int) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:612`](../source/phoenix/xrex/inference/model_runner.py#L612) — `def is_multi_worker(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:616`](../source/phoenix/xrex/inference/model_runner.py#L616) — `def is_leader(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:620`](../source/phoenix/xrex/inference/model_runner.py#L620) — `def shared_emb_table_path(self) -> str | None:`
+- [`phoenix/xrex/inference/model_runner.py:626`](../source/phoenix/xrex/inference/model_runner.py#L626) — `def hotswap_emb_table_path(self) -> str | None:`
+- [`phoenix/xrex/inference/model_runner.py:632`](../source/phoenix/xrex/inference/model_runner.py#L632) — `def shared_mm_emb_path(self) -> str | None:`
+- [`phoenix/xrex/inference/model_runner.py:637`](../source/phoenix/xrex/inference/model_runner.py#L637) — `def _read_reload_trigger(self) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:640`](../source/phoenix/xrex/inference/model_runner.py#L640) — `def _bump_reload_trigger(self) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:646`](../source/phoenix/xrex/inference/model_runner.py#L646) — `def _broadcast_reload_trigger(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:655`](../source/phoenix/xrex/inference/model_runner.py#L655) — `def _observe_peer_reload_trigger(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:665`](../source/phoenix/xrex/inference/model_runner.py#L665) — `def _write_reload_done(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:741`](../source/phoenix/xrex/inference/model_runner.py#L741) — `def from_trainer(`
+- [`phoenix/xrex/inference/model_runner.py:788`](../source/phoenix/xrex/inference/model_runner.py#L788) — `def padded_input_vocab_size(self) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:797`](../source/phoenix/xrex/inference/model_runner.py#L797) — `def padded_max_posts(self) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:807`](../source/phoenix/xrex/inference/model_runner.py#L807) — `def active_emb_table(self) -> np.ndarray:`
+- [`phoenix/xrex/inference/model_runner.py:814`](../source/phoenix/xrex/inference/model_runner.py#L814) — `def standby_emb_table(self) -> np.ndarray:`
+- [`phoenix/xrex/inference/model_runner.py:819`](../source/phoenix/xrex/inference/model_runner.py#L819) — `def _download_rate_limit_bytes_per_sec(self) -> int | None:`
+- [`phoenix/xrex/inference/model_runner.py:825`](../source/phoenix/xrex/inference/model_runner.py#L825) — `def _stage_rate_limit_bytes_per_sec(self) -> int | None:`
+- [`phoenix/xrex/inference/model_runner.py:831`](../source/phoenix/xrex/inference/model_runner.py#L831) — `def _log_gpu_memory_stats(self, label: str) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:850`](../source/phoenix/xrex/inference/model_runner.py#L850) — `def _log_param_sizes(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:860`](../source/phoenix/xrex/inference/model_runner.py#L860) — `def _init_hotswap_buffers(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1063`](../source/phoenix/xrex/inference/model_runner.py#L1063) — `def _prefault_standby_emb_slot(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1078`](../source/phoenix/xrex/inference/model_runner.py#L1078) — `def _maybe_init_live_dense_swap(self, standby_host_state: Any) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1189`](../source/phoenix/xrex/inference/model_runner.py#L1189) — `def _live_swap_two_tower_supported(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:1207`](../source/phoenix/xrex/inference/model_runner.py#L1207) — `def _build_live_pe_meta_plan(`
+- [`phoenix/xrex/inference/model_runner.py:1258`](../source/phoenix/xrex/inference/model_runner.py#L1258) — `def _stage_live_post_embeddings(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:1326`](../source/phoenix/xrex/inference/model_runner.py#L1326) — `def _prepare_live_swap_derived_state(self, staged_meta: dict[str, np.ndarray]) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1329`](../source/phoenix/xrex/inference/model_runner.py#L1329) — `def _commit_live_swap_derived_state(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1333`](../source/phoenix/xrex/inference/model_runner.py#L1333) — `def _live_swap_requires_pipeline_flush(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:1337`](../source/phoenix/xrex/inference/model_runner.py#L1337) — `def _post_hotswap_warmup_needed(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:1340`](../source/phoenix/xrex/inference/model_runner.py#L1340) — `def _stage_live_params(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:1380`](../source/phoenix/xrex/inference/model_runner.py#L1380) — `def _device_put_leaf_paced(`
+- [`phoenix/xrex/inference/model_runner.py:1410`](../source/phoenix/xrex/inference/model_runner.py#L1410) — `def _apply_live_swap(self, server: ServerProtocol[RequestBatch]) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1420`](../source/phoenix/xrex/inference/model_runner.py#L1420) — `def _apply_live_swap_inner(self, server: ServerProtocol[RequestBatch]) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1467`](../source/phoenix/xrex/inference/model_runner.py#L1467) — `def _spawn_loader_subprocess(`
+- [`phoenix/xrex/inference/model_runner.py:1523`](../source/phoenix/xrex/inference/model_runner.py#L1523) — `def _respawn_loader_subprocess(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1543`](../source/phoenix/xrex/inference/model_runner.py#L1543) — `def _hotswap_cycle_busy(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:1551`](../source/phoenix/xrex/inference/model_runner.py#L1551) — `def _reset_server_reload_request(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1561`](../source/phoenix/xrex/inference/model_runner.py#L1561) — `def _abort_hotswap_cycle(self, stage: str, reason: str) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1581`](../source/phoenix/xrex/inference/model_runner.py#L1581) — `def _malloc_trim_after_swap(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1596`](../source/phoenix/xrex/inference/model_runner.py#L1596) — `def _coordinator_loop(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1721`](../source/phoenix/xrex/inference/model_runner.py#L1721) — `def _publish_standby_metadata(self, payload: dict) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1747`](../source/phoenix/xrex/inference/model_runner.py#L1747) — `def _follower_coordinator_loop(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:1842`](../source/phoenix/xrex/inference/model_runner.py#L1842) — `def _finalize_hot_swap(`
+- [`phoenix/xrex/inference/model_runner.py:2035`](../source/phoenix/xrex/inference/model_runner.py#L2035) — `def _on_post_hotswap(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:2038`](../source/phoenix/xrex/inference/model_runner.py#L2038) — `def request_completed(self):`
+- [`phoenix/xrex/inference/model_runner.py:2042`](../source/phoenix/xrex/inference/model_runner.py#L2042) — `def track_request_in_flight(self):`
+- [`phoenix/xrex/inference/model_runner.py:2049`](../source/phoenix/xrex/inference/model_runner.py#L2049) — `def init(self, batch: RecsysFeaturesBatch, rng: jax.Array) -> RecsysInferenceState:`
+- [`phoenix/xrex/inference/model_runner.py:2114`](../source/phoenix/xrex/inference/model_runner.py#L2114) — `def _is_fully_replicated(value: jax.Array) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:2122`](../source/phoenix/xrex/inference/model_runner.py#L2122) — `def _get_host_state_tensor_bytes(`
+- [`phoenix/xrex/inference/model_runner.py:2138`](../source/phoenix/xrex/inference/model_runner.py#L2138) — `def _broadcast_tensor_to_all_shards(self, value: jax.Array, source_bytes: np.ndarray) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:2146`](../source/phoenix/xrex/inference/model_runner.py#L2146) — `def _scatter_contiguous_to_shards(`
+- [`phoenix/xrex/inference/model_runner.py:2158`](../source/phoenix/xrex/inference/model_runner.py#L2158) — `def _get_copy_port_timeout(self) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:2171`](../source/phoenix/xrex/inference/model_runner.py#L2171) — `def _ensure_shm_signal_at_version(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:2184`](../source/phoenix/xrex/inference/model_runner.py#L2184) — `def _load_via_copy_port(`
+- [`phoenix/xrex/inference/model_runner.py:2366`](../source/phoenix/xrex/inference/model_runner.py#L2366) — `def _load_via_nfs(self, ctx: TrainerContext, tag: str | None = None) -> tuple[bool, int, int]:`
+- [`phoenix/xrex/inference/model_runner.py:2501`](../source/phoenix/xrex/inference/model_runner.py#L2501) — `def maybe_load_checkpoint(`
+- [`phoenix/xrex/inference/model_runner.py:2576`](../source/phoenix/xrex/inference/model_runner.py#L2576) — `def maybe_rotate_debug_log_path(self):`
+- [`phoenix/xrex/inference/model_runner.py:2591`](../source/phoenix/xrex/inference/model_runner.py#L2591) — `def example_data(self, bs: int) -> RecsysFeaturesBatch:`
+- [`phoenix/xrex/inference/model_runner.py:2606`](../source/phoenix/xrex/inference/model_runner.py#L2606) — `def _get_persistent_buffer(`
+- [`phoenix/xrex/inference/model_runner.py:2622`](../source/phoenix/xrex/inference/model_runner.py#L2622) — `def _get_h2d_state(self, request_in_flight_id: int, bucket_size: int | None = None) -> H2DState:`
+- [`phoenix/xrex/inference/model_runner.py:2666`](../source/phoenix/xrex/inference/model_runner.py#L2666) — `def _start_mm_embeddings_preload(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:2689`](../source/phoenix/xrex/inference/model_runner.py#L2689) — `def _await_mm_embeddings_client(self) -> PyMmEmbeddingsClient | None:`
+- [`phoenix/xrex/inference/model_runner.py:2742`](../source/phoenix/xrex/inference/model_runner.py#L2742) — `def _h2d_shape_kwargs(self, bs: int) -> dict[str, Any]:`
+- [`phoenix/xrex/inference/model_runner.py:2756`](../source/phoenix/xrex/inference/model_runner.py#L2756) — `def _packed_shape(x) -> tuple[int, int]:`
+- [`phoenix/xrex/inference/model_runner.py:2811`](../source/phoenix/xrex/inference/model_runner.py#L2811) — `def _rebind_numa_all_nodes(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:2826`](../source/phoenix/xrex/inference/model_runner.py#L2826) — `def create_state(self, ctx: TrainerContext) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:2871`](../source/phoenix/xrex/inference/model_runner.py#L2871) — `def get_batch_prep(`
+- [`phoenix/xrex/inference/model_runner.py:2879`](../source/phoenix/xrex/inference/model_runner.py#L2879) — `def _build_eligible_mask_pipelined(`
+- [`phoenix/xrex/inference/model_runner.py:2885`](../source/phoenix/xrex/inference/model_runner.py#L2885) — `def gather_embeddings_and_forward(`
+- [`phoenix/xrex/inference/model_runner.py:2899`](../source/phoenix/xrex/inference/model_runner.py#L2899) — `def reply_request(`
+- [`phoenix/xrex/inference/model_runner.py:2909`](../source/phoenix/xrex/inference/model_runner.py#L2909) — `def create_server(`
+- [`phoenix/xrex/inference/model_runner.py:2914`](../source/phoenix/xrex/inference/model_runner.py#L2914) — `def wait_for_server_shutdown(`
+- [`phoenix/xrex/inference/model_runner.py:2925`](../source/phoenix/xrex/inference/model_runner.py#L2925) — `def prepare_and_compute(`
+- [`phoenix/xrex/inference/model_runner.py:3046`](../source/phoenix/xrex/inference/model_runner.py#L3046) — `def _has_newer_checkpoint(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:3076`](../source/phoenix/xrex/inference/model_runner.py#L3076) — `def _copy_port_has_newer_checkpoint(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:3088`](../source/phoenix/xrex/inference/model_runner.py#L3088) — `def _newer_nfs_checkpoint(self, ctx: TrainerContext):`
+- [`phoenix/xrex/inference/model_runner.py:3103`](../source/phoenix/xrex/inference/model_runner.py#L3103) — `def _poll_copy_port_probe(self) -> str:`
+- [`phoenix/xrex/inference/model_runner.py:3133`](../source/phoenix/xrex/inference/model_runner.py#L3133) — `def _reload_trigger_check_enabled(`
+- [`phoenix/xrex/inference/model_runner.py:3140`](../source/phoenix/xrex/inference/model_runner.py#L3140) — `def handle_requests(`
+- [`phoenix/xrex/inference/model_runner.py:3155`](../source/phoenix/xrex/inference/model_runner.py#L3155) — `def as_np_array(x: jax.Array) -> np.ndarray:`
+- [`phoenix/xrex/inference/model_runner.py:3180`](../source/phoenix/xrex/inference/model_runner.py#L3180) — `def jax_array_bytes(x: jax.Array) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:3183`](../source/phoenix/xrex/inference/model_runner.py#L3183) — `def output_bytes_val(out: Any) -> int:`
+- [`phoenix/xrex/inference/model_runner.py:3194`](../source/phoenix/xrex/inference/model_runner.py#L3194) — `def maybe_process_and_reply(`
+- [`phoenix/xrex/inference/model_runner.py:3419`](../source/phoenix/xrex/inference/model_runner.py#L3419) — `def _bg_dequeue(_r=_dq_result, _e=_dq_event) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:3451`](../source/phoenix/xrex/inference/model_runner.py#L3451) — `def _publish_checkpoint_timestamp(self, server: Any, timestamp: float) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:3462`](../source/phoenix/xrex/inference/model_runner.py#L3462) — `def _warmup_buckets(self, rng: jax.Array) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:3490`](../source/phoenix/xrex/inference/model_runner.py#L3490) — `def run(self):`
+- [`phoenix/xrex/inference/model_runner.py:3514`](../source/phoenix/xrex/inference/model_runner.py#L3514) — `def _handle_sigterm(signum, frame):`
+- [`phoenix/xrex/inference/model_runner.py:3526`](../source/phoenix/xrex/inference/model_runner.py#L3526) — `def _handle_shutdown_request() -> None:`
+- [`phoenix/xrex/inference/model_runner.py:3891`](../source/phoenix/xrex/inference/model_runner.py#L3891) — `class RankingModelRunner(`
+- [`phoenix/xrex/inference/model_runner.py:3899`](../source/phoenix/xrex/inference/model_runner.py#L3899) — `def _rng_and_init_data(self, seq_len: int | None = None, bs: int | None = None):`
+- [`phoenix/xrex/inference/model_runner.py:3944`](../source/phoenix/xrex/inference/model_runner.py#L3944) — `def _get_persistent_buffer(`
+- [`phoenix/xrex/inference/model_runner.py:3962`](../source/phoenix/xrex/inference/model_runner.py#L3962) — `def get_batch_prep(`
+- [`phoenix/xrex/inference/model_runner.py:4019`](../source/phoenix/xrex/inference/model_runner.py#L4019) — `def gather_embeddings_and_forward(`
+- [`phoenix/xrex/inference/model_runner.py:4070`](../source/phoenix/xrex/inference/model_runner.py#L4070) — `def reply_request(`
+- [`phoenix/xrex/inference/model_runner.py:4088`](../source/phoenix/xrex/inference/model_runner.py#L4088) — `def create_server(`
+- [`phoenix/xrex/inference/model_runner.py:4154`](../source/phoenix/xrex/inference/model_runner.py#L4154) — `def create_executable(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4169`](../source/phoenix/xrex/inference/model_runner.py#L4169) — `def _build_and_register_forward_jit(`
+- [`phoenix/xrex/inference/model_runner.py:4191`](../source/phoenix/xrex/inference/model_runner.py#L4191) — `def _packed_recsys_embeddings(`
+- [`phoenix/xrex/inference/model_runner.py:4265`](../source/phoenix/xrex/inference/model_runner.py#L4265) — `def forward_fn(`
+- [`phoenix/xrex/inference/model_runner.py:4348`](../source/phoenix/xrex/inference/model_runner.py#L4348) — `class RetrievalModelRunner(`
+- [`phoenix/xrex/inference/model_runner.py:4397`](../source/phoenix/xrex/inference/model_runner.py#L4397) — `def _dataset_ranges_from_types(`
+- [`phoenix/xrex/inference/model_runner.py:4420`](../source/phoenix/xrex/inference/model_runner.py#L4420) — `def _compute_dataset_ranges(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4435`](../source/phoenix/xrex/inference/model_runner.py#L4435) — `def _get_dataset_ranges(`
+- [`phoenix/xrex/inference/model_runner.py:4455`](../source/phoenix/xrex/inference/model_runner.py#L4455) — `def maybe_load_checkpoint(`
+- [`phoenix/xrex/inference/model_runner.py:4479`](../source/phoenix/xrex/inference/model_runner.py#L4479) — `def _reload_topic_bitmaps(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4493`](../source/phoenix/xrex/inference/model_runner.py#L4493) — `def _load_topic_bitmaps_from_parquet(self, parquet_path: str) -> jax.Array | None:`
+- [`phoenix/xrex/inference/model_runner.py:4532`](../source/phoenix/xrex/inference/model_runner.py#L4532) — `def _on_post_hotswap(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4550`](../source/phoenix/xrex/inference/model_runner.py#L4550) — `def _prepare_live_swap_derived_state(self, staged_meta: dict[str, np.ndarray]) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4559`](../source/phoenix/xrex/inference/model_runner.py#L4559) — `def _commit_live_swap_derived_state(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4583`](../source/phoenix/xrex/inference/model_runner.py#L4583) — `def _live_swap_requires_pipeline_flush(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:4587`](../source/phoenix/xrex/inference/model_runner.py#L4587) — `def _post_hotswap_warmup_needed(self) -> bool:`
+- [`phoenix/xrex/inference/model_runner.py:4590`](../source/phoenix/xrex/inference/model_runner.py#L4590) — `def _precompile_live_two_tower_variants(`
+- [`phoenix/xrex/inference/model_runner.py:4657`](../source/phoenix/xrex/inference/model_runner.py#L4657) — `def _init_bloom_filter_pinned_buffer(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:4702`](../source/phoenix/xrex/inference/model_runner.py#L4702) — `def _get_persistent_buffer(`
+- [`phoenix/xrex/inference/model_runner.py:4721`](../source/phoenix/xrex/inference/model_runner.py#L4721) — `def get_batch_prep(`
+- [`phoenix/xrex/inference/model_runner.py:4750`](../source/phoenix/xrex/inference/model_runner.py#L4750) — `def _build_eligible_mask(`
+- [`phoenix/xrex/inference/model_runner.py:4811`](../source/phoenix/xrex/inference/model_runner.py#L4811) — `def _build_eligible_mask_pipelined(`
+- [`phoenix/xrex/inference/model_runner.py:4819`](../source/phoenix/xrex/inference/model_runner.py#L4819) — `def _forward_jit_for_bucket(self, bucket_size: int | None) -> JittedOrCompiled:`
+- [`phoenix/xrex/inference/model_runner.py:4823`](../source/phoenix/xrex/inference/model_runner.py#L4823) — `def gather_embeddings_and_forward(`
+- [`phoenix/xrex/inference/model_runner.py:4913`](../source/phoenix/xrex/inference/model_runner.py#L4913) — `def _sds(x: Any) -> Any:`
+- [`phoenix/xrex/inference/model_runner.py:4980`](../source/phoenix/xrex/inference/model_runner.py#L4980) — `def _post_table_forward_arg(self, state: RecsysInferenceState):`
+- [`phoenix/xrex/inference/model_runner.py:4997`](../source/phoenix/xrex/inference/model_runner.py#L4997) — `def reply_request(`
+- [`phoenix/xrex/inference/model_runner.py:5027`](../source/phoenix/xrex/inference/model_runner.py#L5027) — `def create_server(`
+- [`phoenix/xrex/inference/model_runner.py:5093`](../source/phoenix/xrex/inference/model_runner.py#L5093) — `def create_executable(self) -> None:`
+- [`phoenix/xrex/inference/model_runner.py:5108`](../source/phoenix/xrex/inference/model_runner.py#L5108) — `def _build_two_tower_jit(self, bs: int) -> JittedOrCompiled:`
+- [`phoenix/xrex/inference/model_runner.py:5148`](../source/phoenix/xrex/inference/model_runner.py#L5148) — `def _packed_recsys_embeddings(`
+- [`phoenix/xrex/inference/model_runner.py:5182`](../source/phoenix/xrex/inference/model_runner.py#L5182) — `def two_tower_forward_fn(`
+- [`phoenix/xrex/inference/oss_bench/bench.py:37`](../source/phoenix/xrex/inference/oss_bench/bench.py#L37) — `class BenchConfig:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:51`](../source/phoenix/xrex/inference/oss_bench/bench.py#L51) — `def _detect_launch_script() -> tuple[Path, Path]:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:63`](../source/phoenix/xrex/inference/oss_bench/bench.py#L63) — `def build_launch_argv(cfg: BenchConfig) -> tuple[Path, Path, list[str]]:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:126`](../source/phoenix/xrex/inference/oss_bench/bench.py#L126) — `def boot_inference_server(cfg: BenchConfig) -> subprocess.Popen[bytes]:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:163`](../source/phoenix/xrex/inference/oss_bench/bench.py#L163) — `def wait_for_ready(`
+- [`phoenix/xrex/inference/oss_bench/bench.py:176`](../source/phoenix/xrex/inference/oss_bench/bench.py#L176) — `def _drain():`
+- [`phoenix/xrex/inference/oss_bench/bench.py:223`](../source/phoenix/xrex/inference/oss_bench/bench.py#L223) — `def make_request(cfg: BenchConfig) -> Any:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:229`](../source/phoenix/xrex/inference/oss_bench/bench.py#L229) — `def _user_action_sequence(history_n: int = 3) -> Any:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:264`](../source/phoenix/xrex/inference/oss_bench/bench.py#L264) — `def _make_ranking_request(history_n: int = 3, n_candidates: int = 8) -> Any:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:277`](../source/phoenix/xrex/inference/oss_bench/bench.py#L277) — `def _make_retrieval_request(history_n: int = 3) -> Any:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:289`](../source/phoenix/xrex/inference/oss_bench/bench.py#L289) — `def grpc_port_ready(port: int, timeout_s: float) -> bool:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:298`](../source/phoenix/xrex/inference/oss_bench/bench.py#L298) — `def send_request(`
+- [`phoenix/xrex/inference/oss_bench/bench.py:312`](../source/phoenix/xrex/inference/oss_bench/bench.py#L312) — `def response_to_dict(response: recsys_pb2.PredictNextActionsResponse) -> dict[str, Any]:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:318`](../source/phoenix/xrex/inference/oss_bench/bench.py#L318) — `def save_golden(response: recsys_pb2.PredictNextActionsResponse, path: Path) -> None:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:325`](../source/phoenix/xrex/inference/oss_bench/bench.py#L325) — `def verify_against_golden(`
+- [`phoenix/xrex/inference/oss_bench/bench.py:346`](../source/phoenix/xrex/inference/oss_bench/bench.py#L346) — `def shutdown_server(server: subprocess.Popen[bytes], timeout_s: int = 10) -> None:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:359`](../source/phoenix/xrex/inference/oss_bench/bench.py#L359) — `def run_bench(cfg: BenchConfig, golden_path: Path | None, save_golden_path: Path | None) -> int:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:396`](../source/phoenix/xrex/inference/oss_bench/bench.py#L396) — `def parse_args() -> tuple[BenchConfig, Path | None, Path | None]:`
+- [`phoenix/xrex/inference/oss_bench/bench.py:473`](../source/phoenix/xrex/inference/oss_bench/bench.py#L473) — `def main() -> int:`
+- [`phoenix/xrex/inference/pinned_d2h.py:17`](../source/phoenix/xrex/inference/pinned_d2h.py#L17) — `class PinnedD2HBuffer:`
+- [`phoenix/xrex/inference/pinned_d2h.py:18`](../source/phoenix/xrex/inference/pinned_d2h.py#L18) — `def __init__(`
+- [`phoenix/xrex/inference/pinned_d2h.py:52`](../source/phoenix/xrex/inference/pinned_d2h.py#L52) — `def transfer(self, arr: jax.Array) -> np.ndarray:`
+- [`phoenix/xrex/inference/pinned_d2h.py:106`](../source/phoenix/xrex/inference/pinned_d2h.py#L106) — `def begin_cycle(self) -> None:`
+- [`phoenix/xrex/inference/pinned_d2h.py:109`](../source/phoenix/xrex/inference/pinned_d2h.py#L109) — `def __del__(self) -> None:`
+- [`phoenix/xrex/inference/sid_post_index.py:18`](../source/phoenix/xrex/inference/sid_post_index.py#L18) — `class SidPostIndex:`
+- [`phoenix/xrex/inference/sid_post_index.py:19`](../source/phoenix/xrex/inference/sid_post_index.py#L19) — `def __init__(`
+- [`phoenix/xrex/inference/sid_post_index.py:79`](../source/phoenix/xrex/inference/sid_post_index.py#L79) — `def from_datasets(`
+- [`phoenix/xrex/inference/sid_post_index.py:112`](../source/phoenix/xrex/inference/sid_post_index.py#L112) — `def __len__(self) -> int:`
+- [`phoenix/xrex/inference/sid_post_index.py:117`](../source/phoenix/xrex/inference/sid_post_index.py#L117) — `class ResolveStats:`
+- [`phoenix/xrex/inference/sid_post_index.py:125`](../source/phoenix/xrex/inference/sid_post_index.py#L125) — `class SidBeamResolver:`
+- [`phoenix/xrex/inference/sid_post_index.py:126`](../source/phoenix/xrex/inference/sid_post_index.py#L126) — `def __init__(`
+- [`phoenix/xrex/inference/sid_post_index.py:149`](../source/phoenix/xrex/inference/sid_post_index.py#L149) — `def from_sid_post_index(`
+- [`phoenix/xrex/inference/sid_post_index.py:181`](../source/phoenix/xrex/inference/sid_post_index.py#L181) — `def from_datasets(`
+- [`phoenix/xrex/inference/sid_post_index.py:196`](../source/phoenix/xrex/inference/sid_post_index.py#L196) — `def resolve_to_indices(`
+- [`phoenix/xrex/inference/sid_post_index.py:250`](../source/phoenix/xrex/inference/sid_post_index.py#L250) — `def resolve_to_post_ids(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:39`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L39) — `class _CorpusView:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:43`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L43) — `def post_ids(self) -> npt.NDArray[np.int64]:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:47`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L47) — `def author_ids(self) -> npt.NDArray[np.int64]:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:51`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L51) — `def sentinel_idx(self) -> int:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:55`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L55) — `def num_posts(self) -> int:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:60`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L60) — `class SidRetrievalModelRunner(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:73`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L73) — `def _setup_sid_retrieval_jit(self) -> None:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:118`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L118) — `def sid_retrieval_forward_fn(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:169`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L169) — `def _get_persistent_buffer(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:184`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L184) — `def get_batch_prep(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:213`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L213) — `def gather_embeddings_and_forward(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:258`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L258) — `def reply_request(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:329`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L329) — `def maybe_load_checkpoint(self, ctx, tag=None):`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:341`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L341) — `def _build_corpus_view(self) -> _CorpusView:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:360`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L360) — `def _beam_only_lookup(`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:368`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L368) — `def run(self) -> None:`
+- [`phoenix/xrex/inference/sid_retrieval_runner.py:372`](../source/phoenix/xrex/inference/sid_retrieval_runner.py#L372) — `def create_server(`
+- [`phoenix/xrex/inference/status_server.py:17`](../source/phoenix/xrex/inference/status_server.py#L17) — `def default_token_path(port: int) -> str:`
+- [`phoenix/xrex/inference/status_server.py:21`](../source/phoenix/xrex/inference/status_server.py#L21) — `def issue_shutdown_token(port: int, path: str | None = None) -> tuple[str | None, str]:`
+- [`phoenix/xrex/inference/status_server.py:43`](../source/phoenix/xrex/inference/status_server.py#L43) — `def read_shutdown_token(port: int, path: str | None = None) -> str | None:`
+- [`phoenix/xrex/inference/status_server.py:51`](../source/phoenix/xrex/inference/status_server.py#L51) — `def shutdown_request_authorized(client_ip: str, authorization: str, token: str | None) -> bool:`
+- [`phoenix/xrex/inference/status_server.py:63`](../source/phoenix/xrex/inference/status_server.py#L63) — `class StatusServerConfig:`
+- [`phoenix/xrex/inference/status_server.py:70`](../source/phoenix/xrex/inference/status_server.py#L70) — `class StatusServer:`
+- [`phoenix/xrex/inference/status_server.py:71`](../source/phoenix/xrex/inference/status_server.py#L71) — `def __init__(self, *, config: StatusServerConfig):`
+- [`phoenix/xrex/inference/status_server.py:81`](../source/phoenix/xrex/inference/status_server.py#L81) — `def shutdown_token_path(self) -> str | None:`
+- [`phoenix/xrex/inference/status_server.py:84`](../source/phoenix/xrex/inference/status_server.py#L84) — `def start(self) -> None:`
+- [`phoenix/xrex/inference/status_server.py:92`](../source/phoenix/xrex/inference/status_server.py#L92) — `class Handler(BaseHTTPRequestHandler):`
+- [`phoenix/xrex/inference/status_server.py:93`](../source/phoenix/xrex/inference/status_server.py#L93) — `def _respond(self, status: int, payload: bytes) -> None:`
+- [`phoenix/xrex/inference/status_server.py:100`](../source/phoenix/xrex/inference/status_server.py#L100) — `def _handle_shutdown(self) -> None:`
+- [`phoenix/xrex/inference/status_server.py:121`](../source/phoenix/xrex/inference/status_server.py#L121) — `def do_GET(self) -> None:`
+- [`phoenix/xrex/inference/status_server.py:135`](../source/phoenix/xrex/inference/status_server.py#L135) — `def do_POST(self) -> None:`
+- [`phoenix/xrex/inference/status_server.py:142`](../source/phoenix/xrex/inference/status_server.py#L142) — `def log_message(self, format, *args):`
+- [`phoenix/xrex/inference/status_server.py:161`](../source/phoenix/xrex/inference/status_server.py#L161) — `def stop(self) -> None:`
+- [`phoenix/xrex/models/ads_head_masking.py:23`](../source/phoenix/xrex/models/ads_head_masking.py#L23) — `def _head_mask(indices: Sequence[int], num_actions: int) -> jax.Array:`
+- [`phoenix/xrex/models/ads_head_masking.py:27`](../source/phoenix/xrex/models/ads_head_masking.py#L27) — `def ads_head_masking_factor(`
+- [`phoenix/xrex/models/ads_head_masking.py:54`](../source/phoenix/xrex/models/ads_head_masking.py#L54) — `def ads_late_window_no_early_slice(`
+- [`phoenix/xrex/models/attention.py:18`](../source/phoenix/xrex/models/attention.py#L18) — `class AttentionConfig(Config):`
+- [`phoenix/xrex/models/attention.py:39`](../source/phoenix/xrex/models/attention.py#L39) — `class Attention(hk.Module):`
+- [`phoenix/xrex/models/attention.py:42`](../source/phoenix/xrex/models/attention.py#L42) — `def __init__(`
+- [`phoenix/xrex/models/attention.py:54`](../source/phoenix/xrex/models/attention.py#L54) — `def __call__(`
+- [`phoenix/xrex/models/attention.py:66`](../source/phoenix/xrex/models/attention.py#L66) — `def call_attn(`
+- [`phoenix/xrex/models/attention.py:79`](../source/phoenix/xrex/models/attention.py#L79) — `class CustomAttention(Attention):`
+- [`phoenix/xrex/models/attention.py:80`](../source/phoenix/xrex/models/attention.py#L80) — `def sharded_custom_op_with_extra_args(`
+- [`phoenix/xrex/models/attention.py:85`](../source/phoenix/xrex/models/attention.py#L85) — `def call_attn(self, query, key, value, segment_ids, segment_ids_k, temp, **kwargs):`
+- [`phoenix/xrex/models/attention.py:147`](../source/phoenix/xrex/models/attention.py#L147) — `class PallasAttention(CustomAttention):`
+- [`phoenix/xrex/models/attention.py:148`](../source/phoenix/xrex/models/attention.py#L148) — `def sharded_custom_op_with_extra_args(self):`
+- [`phoenix/xrex/models/attention.py:149`](../source/phoenix/xrex/models/attention.py#L149) — `def sharded_mha(q, k, v, segment_ids, segment_ids_k, temp):`
+- [`phoenix/xrex/models/attention.py:171`](../source/phoenix/xrex/models/attention.py#L171) — `def import_attention_fa3():`
+- [`phoenix/xrex/models/attention.py:186`](../source/phoenix/xrex/models/attention.py#L186) — `def make_segment_ids_monotonic(segment_ids):`
+- [`phoenix/xrex/models/attention.py:192`](../source/phoenix/xrex/models/attention.py#L192) — `def identity_segment_ids(segment_ids):`
+- [`phoenix/xrex/models/attention.py:196`](../source/phoenix/xrex/models/attention.py#L196) — `def qk_tie_segment_ids(segment_ids, segment_ids_k):`
+- [`phoenix/xrex/models/attention.py:216`](../source/phoenix/xrex/models/attention.py#L216) — `def make_attention_mask(`
+- [`phoenix/xrex/models/attention.py:227`](../source/phoenix/xrex/models/attention.py#L227) — `def _cap_attention_logits(logits: jax.Array, cap: float, method: str) -> jax.Array:`
+- [`phoenix/xrex/models/attention.py:238`](../source/phoenix/xrex/models/attention.py#L238) — `class JaxAttention(Attention):`
+- [`phoenix/xrex/models/attention.py:239`](../source/phoenix/xrex/models/attention.py#L239) — `def call_attn(`
+- [`phoenix/xrex/models/attention.py:255`](../source/phoenix/xrex/models/attention.py#L255) — `def sharding_rule(named_shape: NamedShape) -> jax.sharding.NamedSharding:`
+- [`phoenix/xrex/models/collective_policy.py:13`](../source/phoenix/xrex/models/collective_policy.py#L13) — `def _get_layer_pattern() -> re.Pattern:`
+- [`phoenix/xrex/models/collective_policy.py:17`](../source/phoenix/xrex/models/collective_policy.py#L17) — `def _extract_layer_info(ops: set[str]) -> tuple[str | None, int | None]:`
+- [`phoenix/xrex/models/collective_policy.py:28`](../source/phoenix/xrex/models/collective_policy.py#L28) — `def _dp_allreduce_pipelining_policy(ctx: mlir.LoweringRuleContext):`
+- [`phoenix/xrex/models/collective_policy.py:47`](../source/phoenix/xrex/models/collective_policy.py#L47) — `def make_dp_allreduce_policy():`
+- [`phoenix/xrex/models/compress_token_ids.py:12`](../source/phoenix/xrex/models/compress_token_ids.py#L12) — `def compress_token_ids(`
+- [`phoenix/xrex/models/layers.py:37`](../source/phoenix/xrex/models/layers.py#L37) — `class RotaryEmbedding(hk.Module):`
+- [`phoenix/xrex/models/layers.py:38`](../source/phoenix/xrex/models/layers.py#L38) — `def __init__(`
+- [`phoenix/xrex/models/layers.py:49`](../source/phoenix/xrex/models/layers.py#L49) — `def __call__(`
+- [`phoenix/xrex/models/layers.py:80`](../source/phoenix/xrex/models/layers.py#L80) — `class Linear(LinearImpl):`
+- [`phoenix/xrex/models/layers.py:81`](../source/phoenix/xrex/models/layers.py#L81) — `def __init__(`
+- [`phoenix/xrex/models/layers.py:117`](../source/phoenix/xrex/models/layers.py#L117) — `class MultiHeadAttention(hk.Module):`
+- [`phoenix/xrex/models/layers.py:118`](../source/phoenix/xrex/models/layers.py#L118) — `def __init__(`
+- [`phoenix/xrex/models/layers.py:142`](../source/phoenix/xrex/models/layers.py#L142) — `def data_axis(self):`
+- [`phoenix/xrex/models/layers.py:147`](../source/phoenix/xrex/models/layers.py#L147) — `def __call__(`
+- [`phoenix/xrex/models/layers.py:188`](../source/phoenix/xrex/models/layers.py#L188) — `def slicing(input):`
+- [`phoenix/xrex/models/layers.py:358`](../source/phoenix/xrex/models/layers.py#L358) — `def _apply_rope(`
+- [`phoenix/xrex/models/layers.py:384`](../source/phoenix/xrex/models/layers.py#L384) — `def _get_attn_impl(`
+- [`phoenix/xrex/models/layers.py:424`](../source/phoenix/xrex/models/layers.py#L424) — `def _add_h_axis(arr):`
+- [`phoenix/xrex/models/layers.py:445`](../source/phoenix/xrex/models/layers.py#L445) — `def _out_projection(`
+- [`phoenix/xrex/models/layers.py:475`](../source/phoenix/xrex/models/layers.py#L475) — `def _linear_projection(`
+- [`phoenix/xrex/models/layers.py:507`](../source/phoenix/xrex/models/layers.py#L507) — `def rotate_half(`
+- [`phoenix/xrex/models/linear_layer.py:19`](../source/phoenix/xrex/models/linear_layer.py#L19) — `class LinearConfig(Config):`
+- [`phoenix/xrex/models/linear_layer.py:24`](../source/phoenix/xrex/models/linear_layer.py#L24) — `class LinearImpl(hk.Module):`
+- [`phoenix/xrex/models/linear_layer.py:25`](../source/phoenix/xrex/models/linear_layer.py#L25) — `def __init__(`
+- [`phoenix/xrex/models/linear_layer.py:50`](../source/phoenix/xrex/models/linear_layer.py#L50) — `def __call__(`
+- [`phoenix/xrex/models/loss_recsys.py:17`](../source/phoenix/xrex/models/loss_recsys.py#L17) — `def multihot_loss_compute(`
+- [`phoenix/xrex/models/loss_recsys.py:54`](../source/phoenix/xrex/models/loss_recsys.py#L54) — `def continuous_loss_compute(`
+- [`phoenix/xrex/models/loss_recsys.py:97`](../source/phoenix/xrex/models/loss_recsys.py#L97) — `def purchase_value_valid_mask(`
+- [`phoenix/xrex/models/loss_recsys.py:117`](../source/phoenix/xrex/models/loss_recsys.py#L117) — `def purchase_value_loss_compute(`
+- [`phoenix/xrex/models/loss_recsys.py:176`](../source/phoenix/xrex/models/loss_recsys.py#L176) — `def purchase_value_smoothed_stats(`
+- [`phoenix/xrex/models/loss_recsys.py:225`](../source/phoenix/xrex/models/loss_recsys.py#L225) — `def binary_threshold_loss_compute(`
+- [`phoenix/xrex/models/loss_recsys.py:251`](../source/phoenix/xrex/models/loss_recsys.py#L251) — `def tweedie_loss_compute(`
+- [`phoenix/xrex/models/model_utils.py:14`](../source/phoenix/xrex/models/model_utils.py#L14) — `def get_layer_name(name_scope: str) -> str:`
+- [`phoenix/xrex/models/model_utils.py:24`](../source/phoenix/xrex/models/model_utils.py#L24) — `class Parameter:`
+- [`phoenix/xrex/models/model_utils.py:32`](../source/phoenix/xrex/models/model_utils.py#L32) — `def flatten(p):`
+- [`phoenix/xrex/models/model_utils.py:36`](../source/phoenix/xrex/models/model_utils.py#L36) — `def unflatten(fields, arrays):`
+- [`phoenix/xrex/models/model_utils.py:40`](../source/phoenix/xrex/models/model_utils.py#L40) — `def fields(self):`
+- [`phoenix/xrex/models/model_utils.py:49`](../source/phoenix/xrex/models/model_utils.py#L49) — `def shape(self):`
+- [`phoenix/xrex/models/model_utils.py:53`](../source/phoenix/xrex/models/model_utils.py#L53) — `def dtype(self):`
+- [`phoenix/xrex/models/model_utils.py:56`](../source/phoenix/xrex/models/model_utils.py#L56) — `def unwrap(self):`
+- [`phoenix/xrex/models/model_utils.py:59`](../source/phoenix/xrex/models/model_utils.py#L59) — `def __mul__(self, m):`
+- [`phoenix/xrex/models/model_utils.py:66`](../source/phoenix/xrex/models/model_utils.py#L66) — `def __add__(self, m):`
+- [`phoenix/xrex/models/model_utils.py:80`](../source/phoenix/xrex/models/model_utils.py#L80) — `class GlobalReductionOp(Enum):`
+- [`phoenix/xrex/models/model_utils.py:87`](../source/phoenix/xrex/models/model_utils.py#L87) — `def make_global_reduction_fn(`
+- [`phoenix/xrex/models/model_utils.py:95`](../source/phoenix/xrex/models/model_utils.py#L95) — `def _get_parallel_reduce_fn(global_reduction_op: GlobalReductionOp):`
+- [`phoenix/xrex/models/model_utils.py:106`](../source/phoenix/xrex/models/model_utils.py#L106) — `def global_reduction_fn(x: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/model_utils.py:113`](../source/phoenix/xrex/models/model_utils.py#L113) — `def _run_reducer(x):`
+- [`phoenix/xrex/models/model_utils.py:129`](../source/phoenix/xrex/models/model_utils.py#L129) — `def wrap_init_fn(init_fn, **kwargs):`
+- [`phoenix/xrex/models/model_utils.py:130`](../source/phoenix/xrex/models/model_utils.py#L130) — `def wrapped(*a, **b):`
+- [`phoenix/xrex/models/model_utils.py:140`](../source/phoenix/xrex/models/model_utils.py#L140) — `def unwrap_params(x):`
+- [`phoenix/xrex/models/model_utils.py:147`](../source/phoenix/xrex/models/model_utils.py#L147) — `def unwrap_tree(tree):`
+- [`phoenix/xrex/models/model_utils.py:151`](../source/phoenix/xrex/models/model_utils.py#L151) — `def unwrap_getter(dtype_unwrap: jnp.dtype):`
+- [`phoenix/xrex/models/model_utils.py:152`](../source/phoenix/xrex/models/model_utils.py#L152) — `def _unwrap_getter(next_getter, value, context):`
+- [`phoenix/xrex/models/model_utils.py:160`](../source/phoenix/xrex/models/model_utils.py#L160) — `def get_parameter(name, shape, dtype, init, rms_clip_axes=None, **kwargs):`
+- [`phoenix/xrex/models/normalization.py:15`](../source/phoenix/xrex/models/normalization.py#L15) — `def rms_norm_fn(`
+- [`phoenix/xrex/models/normalization.py:35`](../source/phoenix/xrex/models/normalization.py#L35) — `def all_heads_qk_norm_fn(`
+- [`phoenix/xrex/models/normalization.py:59`](../source/phoenix/xrex/models/normalization.py#L59) — `class RMSNorm(hk.Module):`
+- [`phoenix/xrex/models/normalization.py:60`](../source/phoenix/xrex/models/normalization.py#L60) — `def __init__(`
+- [`phoenix/xrex/models/normalization.py:98`](../source/phoenix/xrex/models/normalization.py#L98) — `def __call__(self, inputs: jax.Array):`
+- [`phoenix/xrex/models/recsys_attention.py:13`](../source/phoenix/xrex/models/recsys_attention.py#L13) — `class RecsysAttentionConfig(AttentionConfig):`
+- [`phoenix/xrex/models/recsys_attention.py:23`](../source/phoenix/xrex/models/recsys_attention.py#L23) — `class PallasRankerAttention(CustomAttention):`
+- [`phoenix/xrex/models/recsys_attention.py:24`](../source/phoenix/xrex/models/recsys_attention.py#L24) — `def sharded_custom_op_with_extra_args(self):`
+- [`phoenix/xrex/models/recsys_attention.py:25`](../source/phoenix/xrex/models/recsys_attention.py#L25) — `def sharded_mha(q, k, v, segment_ids, segment_ids_k, temp):`
+- [`phoenix/xrex/models/recsys_attention.py:93`](../source/phoenix/xrex/models/recsys_attention.py#L93) — `class PallasRankerAttentionInference(CustomAttention):`
+- [`phoenix/xrex/models/recsys_attention.py:94`](../source/phoenix/xrex/models/recsys_attention.py#L94) — `def sharded_custom_op_with_extra_args(self):`
+- [`phoenix/xrex/models/recsys_attention.py:95`](../source/phoenix/xrex/models/recsys_attention.py#L95) — `def sharded_mha(q, k, v, segment_ids, segment_ids_k, temp):`
+- [`phoenix/xrex/models/recsys_attention.py:156`](../source/phoenix/xrex/models/recsys_attention.py#L156) — `class PallasRankerVarlenAttention(CustomAttention):`
+- [`phoenix/xrex/models/recsys_attention.py:157`](../source/phoenix/xrex/models/recsys_attention.py#L157) — `def sharded_custom_op_with_extra_args(self, **kwargs):`
+- [`phoenix/xrex/models/recsys_attention.py:163`](../source/phoenix/xrex/models/recsys_attention.py#L163) — `def sharded_mha(`
+- [`phoenix/xrex/models/recsys_attention.py:197`](../source/phoenix/xrex/models/recsys_attention.py#L197) — `class CutedslRankerAttention(CustomAttention):`
+- [`phoenix/xrex/models/recsys_attention.py:198`](../source/phoenix/xrex/models/recsys_attention.py#L198) — `def sharded_custom_op_with_extra_args(self):`
+- [`phoenix/xrex/models/recsys_attention.py:220`](../source/phoenix/xrex/models/recsys_attention.py#L220) — `def sharded_mha(q, k, v, segment_ids, segment_ids_k, temp):`
+- [`phoenix/xrex/models/recsys_attention.py:244`](../source/phoenix/xrex/models/recsys_attention.py#L244) — `class CutedslRankerVarlenAttention(CustomAttention):`
+- [`phoenix/xrex/models/recsys_attention.py:245`](../source/phoenix/xrex/models/recsys_attention.py#L245) — `def sharded_custom_op_with_extra_args(self, **kwargs):`
+- [`phoenix/xrex/models/recsys_attention.py:263`](../source/phoenix/xrex/models/recsys_attention.py#L263) — `def sharded_mha(`
+- [`phoenix/xrex/models/recsys_attention.py:315`](../source/phoenix/xrex/models/recsys_attention.py#L315) — `def _rep(s):`
+- [`phoenix/xrex/models/recsys_embedding.py:16`](../source/phoenix/xrex/models/recsys_embedding.py#L16) — `class EmbTable(NamedTuple):`
+- [`phoenix/xrex/models/recsys_embedding.py:25`](../source/phoenix/xrex/models/recsys_embedding.py#L25) — `class RecsysEmbeddingsParameter:`
+- [`phoenix/xrex/models/recsys_embedding.py:35`](../source/phoenix/xrex/models/recsys_embedding.py#L35) — `class RecsysEmbeddings:`
+- [`phoenix/xrex/models/recsys_embedding.py:44`](../source/phoenix/xrex/models/recsys_embedding.py#L44) — `def get_recsys_embed_param_to_jax_array(`
+- [`phoenix/xrex/models/recsys_embedding.py:73`](../source/phoenix/xrex/models/recsys_embedding.py#L73) — `def get_recsys_embed_jax_array_to_param(`
+- [`phoenix/xrex/models/recsys_embedding.py:109`](../source/phoenix/xrex/models/recsys_embedding.py#L109) — `def _recsys_embeddings_parameter_flatten(obj):`
+- [`phoenix/xrex/models/recsys_embedding.py:123`](../source/phoenix/xrex/models/recsys_embedding.py#L123) — `def _recsys_embeddings_parameter_unflatten(aux_data, children):`
+- [`phoenix/xrex/models/recsys_embedding.py:127`](../source/phoenix/xrex/models/recsys_embedding.py#L127) — `def _recsys_embeddings_flatten(obj):`
+- [`phoenix/xrex/models/recsys_embedding.py:141`](../source/phoenix/xrex/models/recsys_embedding.py#L141) — `def _recsys_embeddings_unflatten(aux_data, children):`
+- [`phoenix/xrex/models/recsys_embedding.py:155`](../source/phoenix/xrex/models/recsys_embedding.py#L155) — `def _hash_ids_batch(`
+- [`phoenix/xrex/models/recsys_embedding.py:176`](../source/phoenix/xrex/models/recsys_embedding.py#L176) — `class HashKeys(Config):`
+- [`phoenix/xrex/models/recsys_embedding.py:198`](../source/phoenix/xrex/models/recsys_embedding.py#L198) — `def __post_init__(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:209`](../source/phoenix/xrex/models/recsys_embedding.py#L209) — `def effective_item_hash_buckets(self) -> int:`
+- [`phoenix/xrex/models/recsys_embedding.py:213`](../source/phoenix/xrex/models/recsys_embedding.py#L213) — `def num_user_hashes(self) -> int:`
+- [`phoenix/xrex/models/recsys_embedding.py:217`](../source/phoenix/xrex/models/recsys_embedding.py#L217) — `def num_item_hashes(self) -> int:`
+- [`phoenix/xrex/models/recsys_embedding.py:221`](../source/phoenix/xrex/models/recsys_embedding.py#L221) — `def num_author_hashes(self) -> int:`
+- [`phoenix/xrex/models/recsys_embedding.py:225`](../source/phoenix/xrex/models/recsys_embedding.py#L225) — `def num_ip_hashes(self) -> int:`
+- [`phoenix/xrex/models/recsys_embedding.py:230`](../source/phoenix/xrex/models/recsys_embedding.py#L230) — `class HashTable(Config):`
+- [`phoenix/xrex/models/recsys_embedding.py:235`](../source/phoenix/xrex/models/recsys_embedding.py#L235) — `def offset_user(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:239`](../source/phoenix/xrex/models/recsys_embedding.py#L239) — `def offset_item(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:243`](../source/phoenix/xrex/models/recsys_embedding.py#L243) — `def offset_author(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:247`](../source/phoenix/xrex/models/recsys_embedding.py#L247) — `def offset_ip(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:251`](../source/phoenix/xrex/models/recsys_embedding.py#L251) — `def num_user_hashes(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:255`](../source/phoenix/xrex/models/recsys_embedding.py#L255) — `def num_item_hashes(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:259`](../source/phoenix/xrex/models/recsys_embedding.py#L259) — `def num_author_hashes(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:263`](../source/phoenix/xrex/models/recsys_embedding.py#L263) — `def num_ip_hashes(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:267`](../source/phoenix/xrex/models/recsys_embedding.py#L267) — `def user_id_table_size(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:271`](../source/phoenix/xrex/models/recsys_embedding.py#L271) — `def item_id_table_size(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:275`](../source/phoenix/xrex/models/recsys_embedding.py#L275) — `def author_id_table_size(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:279`](../source/phoenix/xrex/models/recsys_embedding.py#L279) — `def ip_id_table_size(self):`
+- [`phoenix/xrex/models/recsys_embedding.py:282`](../source/phoenix/xrex/models/recsys_embedding.py#L282) — `def get_user_hash(self, user_ids: np.ndarray) -> np.ndarray:`
+- [`phoenix/xrex/models/recsys_embedding.py:298`](../source/phoenix/xrex/models/recsys_embedding.py#L298) — `def get_author_hash(self, author_ids: np.ndarray) -> np.ndarray:`
+- [`phoenix/xrex/models/recsys_embedding.py:310`](../source/phoenix/xrex/models/recsys_embedding.py#L310) — `def get_item_hash(self, item_ids: np.ndarray) -> np.ndarray:`
+- [`phoenix/xrex/models/recsys_embedding.py:322`](../source/phoenix/xrex/models/recsys_embedding.py#L322) — `def get_ip_hash(self, ip_ids: np.ndarray) -> np.ndarray:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:37`](../source/phoenix/xrex/models/recsys_feature_prep.py#L37) — `class FeaturePrepStreams(NamedTuple):`
+- [`phoenix/xrex/models/recsys_feature_prep.py:49`](../source/phoenix/xrex/models/recsys_feature_prep.py#L49) — `def _compute_post_age_bucket_linear(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:73`](../source/phoenix/xrex/models/recsys_feature_prep.py#L73) — `def _cast_jax(x: typing.Any) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:77`](../source/phoenix/xrex/models/recsys_feature_prep.py#L77) — `def _cosine_compact_kernel(u: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:82`](../source/phoenix/xrex/models/recsys_feature_prep.py#L82) — `def _box_kernel(u: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:86`](../source/phoenix/xrex/models/recsys_feature_prep.py#L86) — `def _triangle_kernel(u: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:90`](../source/phoenix/xrex/models/recsys_feature_prep.py#L90) — `def _cyclic_kernel_weights(u: jax.Array, kernel: str, width: float) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:101`](../source/phoenix/xrex/models/recsys_feature_prep.py#L101) — `def _compute_cyclic_time_phase(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:112`](../source/phoenix/xrex/models/recsys_feature_prep.py#L112) — `def _compute_cyclic_kernel_embedding(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:142`](../source/phoenix/xrex/models/recsys_feature_prep.py#L142) — `class FeaturePrepConfig(Config):`
+- [`phoenix/xrex/models/recsys_feature_prep.py:222`](../source/phoenix/xrex/models/recsys_feature_prep.py#L222) — `def has_user_features(self) -> bool:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:235`](../source/phoenix/xrex/models/recsys_feature_prep.py#L235) — `def post_age_cardinality(self) -> int:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:239`](../source/phoenix/xrex/models/recsys_feature_prep.py#L239) — `def _feature_scale_spec(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:260`](../source/phoenix/xrex/models/recsys_feature_prep.py#L260) — `def _get_proj(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:285`](../source/phoenix/xrex/models/recsys_feature_prep.py#L285) — `def _get_emb_table(name: str, cardinality: int, dim: int, config: FeaturePrepConfig) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:303`](../source/phoenix/xrex/models/recsys_feature_prep.py#L303) — `def _get_learned_vector(name: str, dim: int, config: FeaturePrepConfig) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:320`](../source/phoenix/xrex/models/recsys_feature_prep.py#L320) — `def _project_hash(embedding: jax.Array, name: str, config: FeaturePrepConfig) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:325`](../source/phoenix/xrex/models/recsys_feature_prep.py#L325) — `def _embed_categorical(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:333`](../source/phoenix/xrex/models/recsys_feature_prep.py#L333) — `def _dither_hour_forward(hour: jax.Array, fraction: float, num_hours: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:339`](../source/phoenix/xrex/models/recsys_feature_prep.py#L339) — `def _embed_scalar_times_vector(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:346`](../source/phoenix/xrex/models/recsys_feature_prep.py#L346) — `def _embed_cyclic(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:378`](../source/phoenix/xrex/models/recsys_feature_prep.py#L378) — `def _embed_multi_hot(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:385`](../source/phoenix/xrex/models/recsys_feature_prep.py#L385) — `def _embed_location(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:402`](../source/phoenix/xrex/models/recsys_feature_prep.py#L402) — `def _build_user_token(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:434`](../source/phoenix/xrex/models/recsys_feature_prep.py#L434) — `def _build_user_features_token(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:526`](../source/phoenix/xrex/models/recsys_feature_prep.py#L526) — `def _add_context_features(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:673`](../source/phoenix/xrex/models/recsys_feature_prep.py#L673) — `def _embed_entity_sid_scaled(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:765`](../source/phoenix/xrex/models/recsys_feature_prep.py#L765) — `def _add_sid_features(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:806`](../source/phoenix/xrex/models/recsys_feature_prep.py#L806) — `def _add_history_features(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:861`](../source/phoenix/xrex/models/recsys_feature_prep.py#L861) — `def _add_candidate_features(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:903`](../source/phoenix/xrex/models/recsys_feature_prep.py#L903) — `def _build_seq_tokens(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:940`](../source/phoenix/xrex/models/recsys_feature_prep.py#L940) — `def _flatten_user_batch_for_seqpack(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:948`](../source/phoenix/xrex/models/recsys_feature_prep.py#L948) — `def _flat_user(field: str) -> jax.Array | None:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:993`](../source/phoenix/xrex/models/recsys_feature_prep.py#L993) — `def _reshape_seq(emb: jax.Array | None) -> jax.Array | None:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:1008`](../source/phoenix/xrex/models/recsys_feature_prep.py#L1008) — `def build_feature_prep_streams(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:1086`](../source/phoenix/xrex/models/recsys_feature_prep.py#L1086) — `def _assemble_unpacked(streams: FeaturePrepStreams) -> tuple[jax.Array, jax.Array, int]:`
+- [`phoenix/xrex/models/recsys_feature_prep.py:1098`](../source/phoenix/xrex/models/recsys_feature_prep.py#L1098) — `def _assemble_packed(`
+- [`phoenix/xrex/models/recsys_feature_prep.py:1128`](../source/phoenix/xrex/models/recsys_feature_prep.py#L1128) — `def build_feature_prep_inputs(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:47`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L47) — `def autoregressive_generate(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:67`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L67) — `class RecsysGenRecsModelConfig(RecsysAggregatedModelConfig):`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:84`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L84) — `def make_post_embeddings(self):`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:105`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L105) — `def make(self, sharding_context: ShardingContext) -> RecsysGenRecsModel:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:114`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L114) — `class RecsysGenRecsModel(RecsysAggregatedModel):`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:118`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L118) — `def _project_to_target_space(self, hidden: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:125`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L125) — `def _project_to_mm_space(self, hidden: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:145`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L145) — `def _project_to_post_space(self, hidden: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:165`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L165) — `def _project_mm_to_candidate_space(self, mm_embeddings: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:183`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L183) — `def build_history_only(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:250`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L250) — `def _autoregressive_loop(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:277`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L277) — `def _feedback_token_to_transformer_input(next_emb_3d: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:303`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L303) — `def body_fn(i, carry):`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:343`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L343) — `def generate(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:365`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L365) — `def project_candidates(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:396`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L396) — `def build_gen_recs_inputs(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:451`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L451) — `def _product_surface_embedding_fn(ps_ids: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:488`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L488) — `def forward_gen_recs(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:530`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L530) — `def loss(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:575`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L575) — `def _product_surface_embedding_fn(ps_ids: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:682`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L682) — `def _compute_per_position_accuracy(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:696`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L696) — `def _sharded(local_preds, local_targets, local_mask):`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:733`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L733) — `def _compute_log_q_weights(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:750`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L750) — `def _compute_infonce_loss(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:779`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L779) — `def _sharded_infonce(*args) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:884`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L884) — `def _compute_batch_topk_accuracy(`
+- [`phoenix/xrex/models/recsys_gen_recs_model.py:901`](../source/phoenix/xrex/models/recsys_gen_recs_model.py#L901) — `def _sharded_topk(`
+- [`phoenix/xrex/models/recsys_model.py:121`](../source/phoenix/xrex/models/recsys_model.py#L121) — `def compute_post_age_bucket(`
+- [`phoenix/xrex/models/recsys_model.py:163`](../source/phoenix/xrex/models/recsys_model.py#L163) — `def compute_engagement_count_bucket(`
+- [`phoenix/xrex/models/recsys_model.py:173`](../source/phoenix/xrex/models/recsys_model.py#L173) — `def right_anchored_rope_positions(`
+- [`phoenix/xrex/models/recsys_model.py:197`](../source/phoenix/xrex/models/recsys_model.py#L197) — `def packed_per_user_history_event_count(`
+- [`phoenix/xrex/models/recsys_model.py:213`](../source/phoenix/xrex/models/recsys_model.py#L213) — `class NormConfig(Config):`
+- [`phoenix/xrex/models/recsys_model.py:220`](../source/phoenix/xrex/models/recsys_model.py#L220) — `class ContinuousActionLossConfig(Config):`
+- [`phoenix/xrex/models/recsys_model.py:245`](../source/phoenix/xrex/models/recsys_model.py#L245) — `def __post_init__(self):`
+- [`phoenix/xrex/models/recsys_model.py:270`](../source/phoenix/xrex/models/recsys_model.py#L270) — `def _get_surface_mask(`
+- [`phoenix/xrex/models/recsys_model.py:282`](../source/phoenix/xrex/models/recsys_model.py#L282) — `def _rescale_sigmoid_heads_for_inference(`
+- [`phoenix/xrex/models/recsys_model.py:306`](../source/phoenix/xrex/models/recsys_model.py#L306) — `class CategoricalFeatureConfig(Config):`
+- [`phoenix/xrex/models/recsys_model.py:318`](../source/phoenix/xrex/models/recsys_model.py#L318) — `def resolved_embedding_name(self) -> str:`
+- [`phoenix/xrex/models/recsys_model.py:323`](../source/phoenix/xrex/models/recsys_model.py#L323) — `class ContextFeaturesConfig(Config):`
+- [`phoenix/xrex/models/recsys_model.py:335`](../source/phoenix/xrex/models/recsys_model.py#L335) — `def metric_num_tokens(y: jnp.ndarray, valid_mask: jnp.ndarray) -> jnp.ndarray:`
+- [`phoenix/xrex/models/recsys_model.py:339`](../source/phoenix/xrex/models/recsys_model.py#L339) — `def metric_loss(p: jnp.ndarray, y: jnp.ndarray, valid_mask: jnp.ndarray) -> jnp.ndarray:`
+- [`phoenix/xrex/models/recsys_model.py:340`](../source/phoenix/xrex/models/recsys_model.py#L340) — `def _compute_loss(y, p, valid_mask, total_valid):`
+- [`phoenix/xrex/models/recsys_model.py:356`](../source/phoenix/xrex/models/recsys_model.py#L356) — `def metric_xauc(`
+- [`phoenix/xrex/models/recsys_model.py:382`](../source/phoenix/xrex/models/recsys_model.py#L382) — `def metric_rce(p: jnp.ndarray, y: jnp.ndarray, valid_mask: jnp.ndarray) -> jnp.ndarray:`
+- [`phoenix/xrex/models/recsys_model.py:383`](../source/phoenix/xrex/models/recsys_model.py#L383) — `def _compute_rce(y, p, valid_mask, num_pos, total_valid):`
+- [`phoenix/xrex/models/recsys_model.py:402`](../source/phoenix/xrex/models/recsys_model.py#L402) — `def metric_prauc(`
+- [`phoenix/xrex/models/recsys_model.py:408`](../source/phoenix/xrex/models/recsys_model.py#L408) — `def compute_pr_at_threshold(threshold):`
+- [`phoenix/xrex/models/recsys_model.py:425`](../source/phoenix/xrex/models/recsys_model.py#L425) — `def metric_ratio_pos(p: jnp.ndarray, y: jnp.ndarray, valid_mask: jnp.ndarray) -> jnp.ndarray:`
+- [`phoenix/xrex/models/recsys_model.py:432`](../source/phoenix/xrex/models/recsys_model.py#L432) — `def metric_ndcg(p: jnp.ndarray, y: jnp.ndarray, valid_mask: jnp.ndarray) -> jnp.ndarray:`
+- [`phoenix/xrex/models/recsys_model.py:433`](../source/phoenix/xrex/models/recsys_model.py#L433) — `def compute_single_ndcg(p_row: jnp.ndarray, y_row: jnp.ndarray, mask_row: jnp.ndarray):`
+- [`phoenix/xrex/models/recsys_model.py:463`](../source/phoenix/xrex/models/recsys_model.py#L463) — `def metric_calib(p: jnp.ndarray, y: jnp.ndarray, valid_mask: jnp.ndarray) -> jnp.ndarray:`
+- [`phoenix/xrex/models/recsys_model.py:469`](../source/phoenix/xrex/models/recsys_model.py#L469) — `def engagement_metrics(p, y, masks, auc_thresholds):`
+- [`phoenix/xrex/models/recsys_model.py:480`](../source/phoenix/xrex/models/recsys_model.py#L480) — `def get_probs_and_labels(`
+- [`phoenix/xrex/models/recsys_model.py:496`](../source/phoenix/xrex/models/recsys_model.py#L496) — `def metrics_calc(`
+- [`phoenix/xrex/models/recsys_model.py:520`](../source/phoenix/xrex/models/recsys_model.py#L520) — `def metrics_calc_global_num_tokens(masks: dict[str, jax.Array], stats: dict):`
+- [`phoenix/xrex/models/recsys_model.py:537`](../source/phoenix/xrex/models/recsys_model.py#L537) — `class RecsysAggregatedModelConfig(Config):`
+- [`phoenix/xrex/models/recsys_model.py:564`](../source/phoenix/xrex/models/recsys_model.py#L564) — `def purchase_value_enabled(self) -> bool:`
+- [`phoenix/xrex/models/recsys_model.py:567`](../source/phoenix/xrex/models/recsys_model.py#L567) — `def validate_purchase_value(self) -> None:`
+- [`phoenix/xrex/models/recsys_model.py:684`](../source/phoenix/xrex/models/recsys_model.py#L684) — `def multimodal_embedding_dim(self) -> int:`
+- [`phoenix/xrex/models/recsys_model.py:689`](../source/phoenix/xrex/models/recsys_model.py#L689) — `def make(self, sharding_context: ShardingContext) -> RecsysAggregatedModel:`
+- [`phoenix/xrex/models/recsys_model.py:744`](../source/phoenix/xrex/models/recsys_model.py#L744) — `def get_embed_memory_kind(self) -> MemoryKind:`
+- [`phoenix/xrex/models/recsys_model.py:748`](../source/phoenix/xrex/models/recsys_model.py#L748) — `def embedding_dtype(self):`
+- [`phoenix/xrex/models/recsys_model.py:751`](../source/phoenix/xrex/models/recsys_model.py#L751) — `def make_embedding_table(self, rng, optim, input_vocab_size: int, init_opt_state: bool):`
+- [`phoenix/xrex/models/recsys_model.py:771`](../source/phoenix/xrex/models/recsys_model.py#L771) — `def compute_tflops(self, num_seq_per_sec: float) -> float:`
+- [`phoenix/xrex/models/recsys_model.py:779`](../source/phoenix/xrex/models/recsys_model.py#L779) — `def compute_mfu(self, num_seq_per_sec: float) -> float:`
+- [`phoenix/xrex/models/recsys_model.py:788`](../source/phoenix/xrex/models/recsys_model.py#L788) — `def num_user_prefix_tokens(self) -> int:`
+- [`phoenix/xrex/models/recsys_model.py:796`](../source/phoenix/xrex/models/recsys_model.py#L796) — `def sequence_len(self):`
+- [`phoenix/xrex/models/recsys_model.py:800`](../source/phoenix/xrex/models/recsys_model.py#L800) — `def num_layers(self) -> int:`
+- [`phoenix/xrex/models/recsys_model.py:804`](../source/phoenix/xrex/models/recsys_model.py#L804) — `def num_kv_heads(self) -> int:`
+- [`phoenix/xrex/models/recsys_model.py:809`](../source/phoenix/xrex/models/recsys_model.py#L809) — `def key_size(self) -> int:`
+- [`phoenix/xrex/models/recsys_model.py:814`](../source/phoenix/xrex/models/recsys_model.py#L814) — `def get_candidate_tweet_counts(`
+- [`phoenix/xrex/models/recsys_model.py:831`](../source/phoenix/xrex/models/recsys_model.py#L831) — `def normalize_continuous_value(`
+- [`phoenix/xrex/models/recsys_model.py:843`](../source/phoenix/xrex/models/recsys_model.py#L843) — `def compute_continuous_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:919`](../source/phoenix/xrex/models/recsys_model.py#L919) — `def project_continuous_value_to_embedding(`
+- [`phoenix/xrex/models/recsys_model.py:958`](../source/phoenix/xrex/models/recsys_model.py#L958) — `def block_user_reduce(`
+- [`phoenix/xrex/models/recsys_model.py:999`](../source/phoenix/xrex/models/recsys_model.py#L999) — `def embed_entity_sid(`
+- [`phoenix/xrex/models/recsys_model.py:1081`](../source/phoenix/xrex/models/recsys_model.py#L1081) — `def block_history_reduce(`
+- [`phoenix/xrex/models/recsys_model.py:1165`](../source/phoenix/xrex/models/recsys_model.py#L1165) — `def block_candidate_reduce(`
+- [`phoenix/xrex/models/recsys_model.py:1255`](../source/phoenix/xrex/models/recsys_model.py#L1255) — `def pad_to_next_128_multiple(`
+- [`phoenix/xrex/models/recsys_model.py:1376`](../source/phoenix/xrex/models/recsys_model.py#L1376) — `def cast_jax(arr: npt.NDArray) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:1380`](../source/phoenix/xrex/models/recsys_model.py#L1380) — `def build_metric_masks(`
+- [`phoenix/xrex/models/recsys_model.py:1527`](../source/phoenix/xrex/models/recsys_model.py#L1527) — `class RecsysAggregatedModel(hk.Module):`
+- [`phoenix/xrex/models/recsys_model.py:1533`](../source/phoenix/xrex/models/recsys_model.py#L1533) — `def data_axis(self):`
+- [`phoenix/xrex/models/recsys_model.py:1536`](../source/phoenix/xrex/models/recsys_model.py#L1536) — `def _compute_metrics_after_masks(`
+- [`phoenix/xrex/models/recsys_model.py:1650`](../source/phoenix/xrex/models/recsys_model.py#L1650) — `def compute_length_bucketed_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:1699`](../source/phoenix/xrex/models/recsys_model.py#L1699) — `def _build_metric_masks(`
+- [`phoenix/xrex/models/recsys_model.py:1731`](../source/phoenix/xrex/models/recsys_model.py#L1731) — `def compute_recsys_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:1781`](../source/phoenix/xrex/models/recsys_model.py#L1781) — `def compute_timestamp_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:1799`](../source/phoenix/xrex/models/recsys_model.py#L1799) — `def compute_sid_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:1809`](../source/phoenix/xrex/models/recsys_model.py#L1809) — `def _sid_coverage(sids, padding_mask, prefix: str) -> None:`
+- [`phoenix/xrex/models/recsys_model.py:1830`](../source/phoenix/xrex/models/recsys_model.py#L1830) — `def compute_engagement_count_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:1848`](../source/phoenix/xrex/models/recsys_model.py#L1848) — `def _add_scalar_stats(`
+- [`phoenix/xrex/models/recsys_model.py:1863`](../source/phoenix/xrex/models/recsys_model.py#L1863) — `def _add_bucket_percentiles(`
+- [`phoenix/xrex/models/recsys_model.py:1947`](../source/phoenix/xrex/models/recsys_model.py#L1947) — `def compute_author_nsfw_metrics(`
+- [`phoenix/xrex/models/recsys_model.py:1981`](../source/phoenix/xrex/models/recsys_model.py#L1981) — `def multi_hot_to_embeddings(`
+- [`phoenix/xrex/models/recsys_model.py:2039`](../source/phoenix/xrex/models/recsys_model.py#L2039) — `def single_hot_to_embeddings(`
+- [`phoenix/xrex/models/recsys_model.py:2066`](../source/phoenix/xrex/models/recsys_model.py#L2066) — `def embed_categorical_context_features(`
+- [`phoenix/xrex/models/recsys_model.py:2121`](../source/phoenix/xrex/models/recsys_model.py#L2121) — `def build_unified_context_embedding(`
+- [`phoenix/xrex/models/recsys_model.py:2214`](../source/phoenix/xrex/models/recsys_model.py#L2214) — `def _get_unembedding(self) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:2234`](../source/phoenix/xrex/models/recsys_model.py#L2234) — `def _get_dpa_product_embedding_table(self) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:2247`](../source/phoenix/xrex/models/recsys_model.py#L2247) — `def decode(self, inputs: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:2252`](../source/phoenix/xrex/models/recsys_model.py#L2252) — `def _get_continuous_unembedding(self) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:2271`](../source/phoenix/xrex/models/recsys_model.py#L2271) — `def decode_continuous(`
+- [`phoenix/xrex/models/recsys_model.py:2342`](../source/phoenix/xrex/models/recsys_model.py#L2342) — `def _apply_activation(self, logits: jax.Array, activation: str | None) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:2351`](../source/phoenix/xrex/models/recsys_model.py#L2351) — `def maybe_tfmr_project_embeddings(self, embeddings, config):`
+- [`phoenix/xrex/models/recsys_model.py:2376`](../source/phoenix/xrex/models/recsys_model.py#L2376) — `def _build_user_embedding(`
+- [`phoenix/xrex/models/recsys_model.py:2433`](../source/phoenix/xrex/models/recsys_model.py#L2433) — `def _maybe_add_dpa_input_embedding(`
+- [`phoenix/xrex/models/recsys_model.py:2468`](../source/phoenix/xrex/models/recsys_model.py#L2468) — `def build_inputs(`
+- [`phoenix/xrex/models/recsys_model.py:2771`](../source/phoenix/xrex/models/recsys_model.py#L2771) — `def _embed_post_sid(seq_name: str) -> jnp.ndarray | None:`
+- [`phoenix/xrex/models/recsys_model.py:2897`](../source/phoenix/xrex/models/recsys_model.py#L2897) — `def __call__(`
+- [`phoenix/xrex/models/recsys_model.py:2980`](../source/phoenix/xrex/models/recsys_model.py#L2980) — `def loss(`
+- [`phoenix/xrex/models/recsys_model.py:3513`](../source/phoenix/xrex/models/recsys_model.py#L3513) — `def value_operand(name: str, dtype: jnp.dtype) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_model.py:3642`](../source/phoenix/xrex/models/recsys_model.py#L3642) — `def forward(`
+- [`phoenix/xrex/models/recsys_sid.py:18`](../source/phoenix/xrex/models/recsys_sid.py#L18) — `def _load_sid_decoder(`
+- [`phoenix/xrex/models/recsys_sid.py:32`](../source/phoenix/xrex/models/recsys_sid.py#L32) — `def reconstruct_entity_sid(`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:55`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L55) — `class RecsysSIDRetrievalConfig(RecsysAggregatedModelConfig):`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:69`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L69) — `def make(self, sharding_context: ShardingContext) -> RecsysSIDRetrievalModel:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:78`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L78) — `class RecsysSIDRetrievalModel(RecsysAggregatedModel):`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:82`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L82) — `def _embed_sid_token(self, code: jax.Array, level: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:109`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L109) — `def _predict_sid_level(self, hidden: jax.Array, level: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:136`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L136) — `def _build_post_sid_token(`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:158`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L158) — `def _sid_token_or_zeros_init(self, seq) -> jax.Array | None:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:171`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L171) — `def _build_history_embeddings(`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:254`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L254) — `def _pick_target(self, batch: RecsysFeaturesBatch) -> tuple[jax.Array, jax.Array, jax.Array]:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:275`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L275) — `def _run_transformer(`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:309`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L309) — `def _apply_tfmr_proj(self, embeddings: jax.Array, cfg) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:328`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L328) — `def _make_final_ln(self):`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:337`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L337) — `def _decode_hidden(self, emb, mask, level, apply_ln):`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:343`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L343) — `def generate(`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:360`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L360) — `def _build_block_causal_mask(self, B: int, H: int, K: int, level: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:373`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L373) — `def _build_beam_positions(self, B: int, H: int, K: int, level: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:381`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L381) — `def _embed_beam_tokens(self, beam_codes: jax.Array, level: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:388`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L388) — `def _gather_last_token_hidden(self, hidden: jax.Array, H: int, K: int, level: int) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:393`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L393) — `def generate_parallel(`
+- [`phoenix/xrex/models/recsys_sid_retrieval_model.py:467`](../source/phoenix/xrex/models/recsys_sid_retrieval_model.py#L467) — `def loss(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:71`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L71) — `def user_tower_segment_ids(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:85`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L85) — `def _l2_normalize_candidates(embeddings: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:91`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L91) — `class RecsysCandidateTower(hk.Module):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:97`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L97) — `def __init__(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:114`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L114) — `def _concat_then_mlp(self, post_author_embedding: jax.Array, head_index: int = 0) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:159`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L159) — `def _project_then_sum(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:202`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L202) — `def _proj_one(emb: jax.Array, name: str) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:233`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L233) — `def __call__(self, post_author_embedding: jax.Array, head_index: int = 0) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:240`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L240) — `def _mean_pool(self, post_author_embedding: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:245`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L245) — `class RecsysCandidateModelConfig(Config):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:253`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L253) — `def make(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:276`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L276) — `def make_post_embeddings(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:305`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L305) — `def _compute_recall_at_k(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:325`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L325) — `def _pos_scores(pos_scores_shard: jax.Array) -> tuple[jax.Array, jax.Array]:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:382`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L382) — `def _compute_score_stats(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:399`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L399) — `def _self_scores(self_scores_shard: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:444`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L444) — `def _compute_retrieval_metrics(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:521`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L521) — `def compute_retrieval_loss(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:557`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L557) — `def _sharded_full_matmul(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:592`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L592) — `def _apply_logq_correction(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:717`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L717) — `def _rearrange_negatives(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:765`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L765) — `def _sharded_u2u_and_i2i_matmul(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:858`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L858) — `class RecsysTwoTowerModel(hk.Module):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:865`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L865) — `def data_axis(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:869`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L869) — `def build_user_inputs(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:948`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L948) — `def _flatten_lead(x):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1065`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1065) — `def _build_post_sid_token(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1087`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1087) — `def _sid_token_or_zeros_init(self, seq, _config) -> jax.Array | None:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1098`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1098) — `def _candidate_feature_tensors(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1125`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1125) — `def _stack_candidate_tokens(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1139`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1139) — `def build_candidate_embeddings(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1157`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1157) — `def build_candidate_embeddings_from_lookups(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1190`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1190) — `def __call__(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1232`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1232) — `def _pool(outputs, mask, cu_seqlens):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1326`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1326) — `def forward(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1356`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1356) — `def local_top_k(scores: jax.Array, k: int):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1370`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1370) — `def _trim_eval_users(user_embedding: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1386`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1386) — `def compute_top_k(post_embeddings: jax.Array, user_embedding: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1405`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1405) — `def mask_and_top_k(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1446`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1446) — `def compute_top_k_int8(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1482`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1482) — `def slice_and_top_k(all_scores, _start=start, _end=end):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1524`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1524) — `def user_embeddings_only(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1538`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1538) — `def loss(`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1637`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1637) — `class RecsysTwoTowerModelConfig(Config):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1721`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1721) — `def get_positive_actions(cls) -> list[int]:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1725`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1725) — `def get_hard_negative_actions(cls) -> list[int]:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1729`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1729) — `def get_soft_negative_actions(cls) -> list[int]:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1732`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1732) — `def get_per_head_actions(self) -> list[tuple[list[int], list[int], list[int]]]:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1747`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1747) — `def use_ip_address(self) -> bool:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1751`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1751) — `def use_user_embedding(self) -> bool:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1755`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1755) — `def use_post_embedding(self) -> bool:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1759`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1759) — `def emb_table_width(self) -> int:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1768`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1768) — `def hash_table(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1772`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1772) — `def model_config(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1776`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1776) — `def use_seqpack(self) -> bool:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1780`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1780) — `def num_user_prefix_tokens(self) -> int:`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1784`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1784) — `def sequence_len(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1787`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1787) — `def compute_mfu(self, num_seq_per_sec_per_device):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1790`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1790) — `def compute_tflops(self, num_seq_per_sec_per_device):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1793`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1793) — `def get_embed_memory_kind(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1797`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1797) — `def embedding_dtype(self):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1800`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1800) — `def make_embedding_table(self, rng, optim, input_vocab_size: int, init_opt_state: bool):`
+- [`phoenix/xrex/models/recsys_two_tower_model.py:1805`](../source/phoenix/xrex/models/recsys_two_tower_model.py#L1805) — `def make(self, sharding_context: ShardingContext):`
+- [`phoenix/xrex/models/recsys_user_features.py:15`](../source/phoenix/xrex/models/recsys_user_features.py#L15) — `def cast_jax(x):`
+- [`phoenix/xrex/models/recsys_user_features.py:20`](../source/phoenix/xrex/models/recsys_user_features.py#L20) — `class UserFeaturesConfig(Config):`
+- [`phoenix/xrex/models/recsys_user_features.py:53`](../source/phoenix/xrex/models/recsys_user_features.py#L53) — `def has_user_features(self) -> bool:`
+- [`phoenix/xrex/models/recsys_user_features.py:66`](../source/phoenix/xrex/models/recsys_user_features.py#L66) — `def build_user_feature_parts(`
+- [`phoenix/xrex/models/recsys_user_features.py:158`](../source/phoenix/xrex/models/recsys_user_features.py#L158) — `def build_location_features(`
+- [`phoenix/xrex/models/recsys_user_features.py:203`](../source/phoenix/xrex/models/recsys_user_features.py#L203) — `def build_gender_features(`
+- [`phoenix/xrex/models/recsys_user_features.py:234`](../source/phoenix/xrex/models/recsys_user_features.py#L234) — `def build_age_features(`
+- [`phoenix/xrex/models/recsys_user_features.py:277`](../source/phoenix/xrex/models/recsys_user_features.py#L277) — `def build_user_features_token(`
+- [`phoenix/xrex/models/remat.py:8`](../source/phoenix/xrex/models/remat.py#L8) — `class RematType(enum.IntEnum):`
+- [`phoenix/xrex/models/remat.py:14`](../source/phoenix/xrex/models/remat.py#L14) — `def custom_remat_policy(policy: RematType):`
+- [`phoenix/xrex/models/scaling.py:10`](../source/phoenix/xrex/models/scaling.py#L10) — `class ScaleConfig(Config):`
+- [`phoenix/xrex/models/scaling.py:16`](../source/phoenix/xrex/models/scaling.py#L16) — `def ln_lr_multiplier(self):`
+- [`phoenix/xrex/models/scaling.py:19`](../source/phoenix/xrex/models/scaling.py#L19) — `def qk_norm_lr_multiplier(self):`
+- [`phoenix/xrex/models/scaling.py:22`](../source/phoenix/xrex/models/scaling.py#L22) — `def emb_lr_multiplier(self, emb_size):`
+- [`phoenix/xrex/models/scaling.py:25`](../source/phoenix/xrex/models/scaling.py#L25) — `def hidden_lr_multiplier(self, fan_in):`
+- [`phoenix/xrex/models/scaling.py:28`](../source/phoenix/xrex/models/scaling.py#L28) — `def ffn_output_lr_multiplier(self, fan_in, gated_mlp):`
+- [`phoenix/xrex/models/scaling.py:31`](../source/phoenix/xrex/models/scaling.py#L31) — `def attn_output_lr_multiplier(self, fan_in):`
+- [`phoenix/xrex/models/scaling.py:34`](../source/phoenix/xrex/models/scaling.py#L34) — `def input_scale(self, emb_size):`
+- [`phoenix/xrex/models/scaling.py:37`](../source/phoenix/xrex/models/scaling.py#L37) — `def output_scale(self, emb_size):`
+- [`phoenix/xrex/models/scaling.py:40`](../source/phoenix/xrex/models/scaling.py#L40) — `def attn_output_scale(self, key_size):`
+- [`phoenix/xrex/models/sharding_context.py:21`](../source/phoenix/xrex/models/sharding_context.py#L21) — `def axis_group_size(axis_names: PyTree, mesh: Mesh) -> int:`
+- [`phoenix/xrex/models/sharding_context.py:28`](../source/phoenix/xrex/models/sharding_context.py#L28) — `class NamedShape:`
+- [`phoenix/xrex/models/sharding_context.py:31`](../source/phoenix/xrex/models/sharding_context.py#L31) — `def __init__(self, shape: Shape | None = None, names: tuple[str, ...] | None = None):`
+- [`phoenix/xrex/models/sharding_context.py:43`](../source/phoenix/xrex/models/sharding_context.py#L43) — `def __repr__(self) -> str:`
+- [`phoenix/xrex/models/sharding_context.py:50`](../source/phoenix/xrex/models/sharding_context.py#L50) — `class ShardingContext:`
+- [`phoenix/xrex/models/sharding_context.py:51`](../source/phoenix/xrex/models/sharding_context.py#L51) — `def __init__(`
+- [`phoenix/xrex/models/sharding_context.py:61`](../source/phoenix/xrex/models/sharding_context.py#L61) — `def register_sharding_rule(self, namespace: str) -> Callable[[ShardingRule], None]:`
+- [`phoenix/xrex/models/sharding_context.py:67`](../source/phoenix/xrex/models/sharding_context.py#L67) — `def _register_sharding_rule(rule: ShardingRule) -> "ShardingContext":`
+- [`phoenix/xrex/models/sharding_context.py:72`](../source/phoenix/xrex/models/sharding_context.py#L72) — `def logical_axis_to_physical(`
+- [`phoenix/xrex/models/sharding_context.py:93`](../source/phoenix/xrex/models/sharding_context.py#L93) — `def sharding_specs(`
+- [`phoenix/xrex/models/sharding_context.py:107`](../source/phoenix/xrex/models/sharding_context.py#L107) — `def logical_group_size(self, logical_axis_names: PyTree | str, namespace: str = "default"):`
+- [`phoenix/xrex/models/sharding_context.py:123`](../source/phoenix/xrex/models/sharding_context.py#L123) — `def make_sharding_context_from_config(`
+- [`phoenix/xrex/models/sharding_context.py:128`](../source/phoenix/xrex/models/sharding_context.py#L128) — `def _sharding_rule(`
+- [`phoenix/xrex/models/sharding_context.py:166`](../source/phoenix/xrex/models/sharding_context.py#L166) — `def make_legacy_sharding_context(mesh: Mesh) -> ShardingContext:`
+- [`phoenix/xrex/models/topic_categories.py:155`](../source/phoenix/xrex/models/topic_categories.py#L155) — `def topic_ids_to_bitmap(topic_entity_ids: list[int] | None) -> int:`
+- [`phoenix/xrex/models/topic_categories.py:167`](../source/phoenix/xrex/models/topic_categories.py#L167) — `def bitmaps_to_int32_array(bitmaps: list[int]) -> npt.NDArray[np.int32]:`
+- [`phoenix/xrex/models/transformer.py:49`](../source/phoenix/xrex/models/transformer.py#L49) — `class TransformerModelOutput:`
+- [`phoenix/xrex/models/transformer.py:54`](../source/phoenix/xrex/models/transformer.py#L54) — `class FeedForwardConfig(Config):`
+- [`phoenix/xrex/models/transformer.py:64`](../source/phoenix/xrex/models/transformer.py#L64) — `class TransformerConfig(Config):`
+- [`phoenix/xrex/models/transformer.py:93`](../source/phoenix/xrex/models/transformer.py#L93) — `def __post_init__(self):`
+- [`phoenix/xrex/models/transformer.py:98`](../source/phoenix/xrex/models/transformer.py#L98) — `def ffn_dim(self):`
+- [`phoenix/xrex/models/transformer.py:101`](../source/phoenix/xrex/models/transformer.py#L101) — `def compute_forward_flops_per_sec(self, num_seq_per_sec: float, S: int) -> tuple[float, float]:`
+- [`phoenix/xrex/models/transformer.py:104`](../source/phoenix/xrex/models/transformer.py#L104) — `def attn_flops():`
+- [`phoenix/xrex/models/transformer.py:128`](../source/phoenix/xrex/models/transformer.py#L128) — `def compute_tflops(self, num_seq_per_sec: float, S: int) -> float:`
+- [`phoenix/xrex/models/transformer.py:133`](../source/phoenix/xrex/models/transformer.py#L133) — `def compute_mfu(`
+- [`phoenix/xrex/models/transformer.py:140`](../source/phoenix/xrex/models/transformer.py#L140) — `def make(self, sharding_context: ShardingContext) -> hk.Module:`
+- [`phoenix/xrex/models/transformer.py:148`](../source/phoenix/xrex/models/transformer.py#L148) — `class MHABlock(hk.Module):`
+- [`phoenix/xrex/models/transformer.py:154`](../source/phoenix/xrex/models/transformer.py#L154) — `def __call__(`
+- [`phoenix/xrex/models/transformer.py:169`](../source/phoenix/xrex/models/transformer.py#L169) — `def attn_block(`
+- [`phoenix/xrex/models/transformer.py:177`](../source/phoenix/xrex/models/transformer.py#L177) — `def softmax_attn() -> MultiHeadAttentionOutput:`
+- [`phoenix/xrex/models/transformer.py:217`](../source/phoenix/xrex/models/transformer.py#L217) — `class DenseBlock(hk.Module):`
+- [`phoenix/xrex/models/transformer.py:227`](../source/phoenix/xrex/models/transformer.py#L227) — `def __call__(`
+- [`phoenix/xrex/models/transformer.py:341`](../source/phoenix/xrex/models/transformer.py#L341) — `class DecoderOutput:`
+- [`phoenix/xrex/models/transformer.py:347`](../source/phoenix/xrex/models/transformer.py#L347) — `class FFNLayerOutput:`
+- [`phoenix/xrex/models/transformer.py:352`](../source/phoenix/xrex/models/transformer.py#L352) — `class FFNLayer(hk.Module):`
+- [`phoenix/xrex/models/transformer.py:358`](../source/phoenix/xrex/models/transformer.py#L358) — `def __call__(`
+- [`phoenix/xrex/models/transformer.py:363`](../source/phoenix/xrex/models/transformer.py#L363) — `def base_dense_block(`
+- [`phoenix/xrex/models/transformer.py:388`](../source/phoenix/xrex/models/transformer.py#L388) — `class DecoderLayer(hk.Module):`
+- [`phoenix/xrex/models/transformer.py:403`](../source/phoenix/xrex/models/transformer.py#L403) — `def __call__(`
+- [`phoenix/xrex/models/transformer.py:433`](../source/phoenix/xrex/models/transformer.py#L433) — `def run_attn_layer(h_attn_in: jax.Array):`
+- [`phoenix/xrex/models/transformer.py:471`](../source/phoenix/xrex/models/transformer.py#L471) — `def run_ffn_layer(h_ffn_in: jax.Array):`
+- [`phoenix/xrex/models/transformer.py:530`](../source/phoenix/xrex/models/transformer.py#L530) — `def layer_stack_block(`
+- [`phoenix/xrex/models/transformer.py:585`](../source/phoenix/xrex/models/transformer.py#L585) — `class Transformer(hk.Module):`
+- [`phoenix/xrex/models/transformer.py:593`](../source/phoenix/xrex/models/transformer.py#L593) — `def data_axis(self):`
+- [`phoenix/xrex/models/transformer.py:596`](../source/phoenix/xrex/models/transformer.py#L596) — `def __call__(`
+- [`phoenix/xrex/models/transformer.py:644`](../source/phoenix/xrex/models/transformer.py#L644) — `def block(`
+- [`phoenix/xrex/optimizers/optim.py:18`](../source/phoenix/xrex/optimizers/optim.py#L18) — `def _convert_floats(x, dtype):`
+- [`phoenix/xrex/optimizers/optim.py:24`](../source/phoenix/xrex/optimizers/optim.py#L24) — `def _instantiate(x: BaseSchedule | Any):`
+- [`phoenix/xrex/optimizers/optim.py:28`](../source/phoenix/xrex/optimizers/optim.py#L28) — `class InjectHyperparamsState(NamedTuple):`
+- [`phoenix/xrex/optimizers/optim.py:34`](../source/phoenix/xrex/optimizers/optim.py#L34) — `def inject_hyperparams(`
+- [`phoenix/xrex/optimizers/optim.py:49`](../source/phoenix/xrex/optimizers/optim.py#L49) — `def wrapped_transform(*args, **kwargs) -> optax.GradientTransformation:`
+- [`phoenix/xrex/optimizers/optim.py:64`](../source/phoenix/xrex/optimizers/optim.py#L64) — `def schedule_fn(count, dtype):`
+- [`phoenix/xrex/optimizers/optim.py:67`](../source/phoenix/xrex/optimizers/optim.py#L67) — `def init_fn(params):`
+- [`phoenix/xrex/optimizers/optim.py:76`](../source/phoenix/xrex/optimizers/optim.py#L76) — `def update_fn(updates, state, params=None, **extra_args):`
+- [`phoenix/xrex/optimizers/optim.py:92`](../source/phoenix/xrex/optimizers/optim.py#L92) — `def apply_updates(`
+- [`phoenix/xrex/optimizers/optim.py:102`](../source/phoenix/xrex/optimizers/optim.py#L102) — `class EmptyState(NamedTuple):`
+- [`phoenix/xrex/optimizers/optim.py:106`](../source/phoenix/xrex/optimizers/optim.py#L106) — `def init_empty_state(params):`
+- [`phoenix/xrex/optimizers/optim.py:111`](../source/phoenix/xrex/optimizers/optim.py#L111) — `def scale_by_lr_multiplier() -> optax.GradientTransformation:`
+- [`phoenix/xrex/optimizers/optim.py:112`](../source/phoenix/xrex/optimizers/optim.py#L112) — `def update_fn(updates, state, params=None):`
+- [`phoenix/xrex/optimizers/optim.py:128`](../source/phoenix/xrex/optimizers/optim.py#L128) — `class OptimConfig(Config):`
+- [`phoenix/xrex/optimizers/optim.py:136`](../source/phoenix/xrex/optimizers/optim.py#L136) — `def make(self):`
+- [`phoenix/xrex/optimizers/optim.py:142`](../source/phoenix/xrex/optimizers/optim.py#L142) — `def schedule_optim(learning_rate, b1, b2, weight_decay):`
+- [`phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py:15`](../source/phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py#L15) — `class AsyncEmbGradientUpdate(NamedTuple):`
+- [`phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py:23`](../source/phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py#L23) — `class AsyncEmbOptimizer(Protocol):`
+- [`phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py:24`](../source/phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py#L24) — `def gradient_update_start(`
+- [`phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py:37`](../source/phoenix/xrex/optimizers/recsys/async_emb_gradient_update.py#L37) — `def gradient_update_done(`
+- [`phoenix/xrex/optimizers/recsys/config.py:16`](../source/phoenix/xrex/optimizers/recsys/config.py#L16) — `class RecsysEmbeddingOptimConfig(Config):`
+- [`phoenix/xrex/optimizers/recsys/config.py:19`](../source/phoenix/xrex/optimizers/recsys/config.py#L19) — `def _active(self) -> str:`
+- [`phoenix/xrex/optimizers/recsys/config.py:22`](../source/phoenix/xrex/optimizers/recsys/config.py#L22) — `def make(self) -> optax.GradientTransformation | None:`
+- [`phoenix/xrex/optimizers/recsys/config.py:25`](../source/phoenix/xrex/optimizers/recsys/config.py#L25) — `def make_optimizer(`
+- [`phoenix/xrex/optimizers/recsys/dense_optim.py:20`](../source/phoenix/xrex/optimizers/recsys/dense_optim.py#L20) — `class RecsysDenseOptimConfig(OptimConfig):`
+- [`phoenix/xrex/optimizers/recsys/dense_optim.py:32`](../source/phoenix/xrex/optimizers/recsys/dense_optim.py#L32) — `def make(self):`
+- [`phoenix/xrex/optimizers/recsys/dense_optim.py:39`](../source/phoenix/xrex/optimizers/recsys/dense_optim.py#L39) — `def schedule_optim(learning_rate, b1, b2, weight_decay):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:18`](../source/phoenix/xrex/optimizers/recsys/muon.py#L18) — `def _leaf_name(path) -> str:`
+- [`phoenix/xrex/optimizers/recsys/muon.py:26`](../source/phoenix/xrex/optimizers/recsys/muon.py#L26) — `def _is_matrix_group(path, x, adam_patterns: tuple[str, ...]) -> bool:`
+- [`phoenix/xrex/optimizers/recsys/muon.py:35`](../source/phoenix/xrex/optimizers/recsys/muon.py#L35) — `def muon_dimension_numbers(`
+- [`phoenix/xrex/optimizers/recsys/muon.py:41`](../source/phoenix/xrex/optimizers/recsys/muon.py#L41) — `def _label(path, p):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:69`](../source/phoenix/xrex/optimizers/recsys/muon.py#L69) — `def _cast_muon_group(updates, adam_patterns: tuple[str, ...], dtype):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:70`](../source/phoenix/xrex/optimizers/recsys/muon.py#L70) — `def _cast(path, u):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:79`](../source/phoenix/xrex/optimizers/recsys/muon.py#L79) — `def embedding_decay_mask(emb_patterns: tuple[str, ...]):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:80`](../source/phoenix/xrex/optimizers/recsys/muon.py#L80) — `def mask_fn(params):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:81`](../source/phoenix/xrex/optimizers/recsys/muon.py#L81) — `def _m(path, p):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:95`](../source/phoenix/xrex/optimizers/recsys/muon.py#L95) — `def parse_split_fused(spec: str) -> dict[str, int]:`
+- [`phoenix/xrex/optimizers/recsys/muon.py:106`](../source/phoenix/xrex/optimizers/recsys/muon.py#L106) — `def _split_block_dim(path, split_spec: dict[str, int]):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:114`](../source/phoenix/xrex/optimizers/recsys/muon.py#L114) — `def scale_by_muon_shaped(`
+- [`phoenix/xrex/optimizers/recsys/muon.py:128`](../source/phoenix/xrex/optimizers/recsys/muon.py#L128) — `def _orthogonalize(path, x, dim_num):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:151`](../source/phoenix/xrex/optimizers/recsys/muon.py#L151) — `def init_fn(params):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:155`](../source/phoenix/xrex/optimizers/recsys/muon.py#L155) — `def update_fn(updates, state, params=None):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:179`](../source/phoenix/xrex/optimizers/recsys/muon.py#L179) — `def make_muon_optimizer(cfg):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:194`](../source/phoenix/xrex/optimizers/recsys/muon.py#L194) — `def param_labels(params):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:201`](../source/phoenix/xrex/optimizers/recsys/muon.py#L201) — `def dim_nums_for_partition(params):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:212`](../source/phoenix/xrex/optimizers/recsys/muon.py#L212) — `def optimizer(learning_rate, b1, b2, weight_decay):`
+- [`phoenix/xrex/optimizers/recsys/muon.py:233`](../source/phoenix/xrex/optimizers/recsys/muon.py#L233) — `def wrapped_update(updates, state, params=None):`
+- [`phoenix/xrex/optimizers/recsys/protocol.py:13`](../source/phoenix/xrex/optimizers/recsys/protocol.py#L13) — `def _lookup(embedding_table_param: Parameter, token_ids: jax.Array) -> Parameter:`
+- [`phoenix/xrex/optimizers/recsys/protocol.py:17`](../source/phoenix/xrex/optimizers/recsys/protocol.py#L17) — `class RecsysEmbeddingOptimizer(Protocol):`
+- [`phoenix/xrex/optimizers/recsys/protocol.py:18`](../source/phoenix/xrex/optimizers/recsys/protocol.py#L18) — `def init(self, params: dict[str, Parameter]) -> Any: ...`
+- [`phoenix/xrex/optimizers/recsys/protocol.py:20`](../source/phoenix/xrex/optimizers/recsys/protocol.py#L20) — `def transform_embeddings(`
+- [`phoenix/xrex/optimizers/recsys/protocol.py:28`](../source/phoenix/xrex/optimizers/recsys/protocol.py#L28) — `def sparse_update(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:32`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L32) — `class RecsysRowwiseAdagradConfig(Config):`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:42`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L42) — `class RecsysRowwiseAdagradState(NamedTuple):`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:48`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L48) — `class RecsysRowwiseAdagradOptimizer(RecsysEmbeddingOptimizer, AsyncEmbOptimizer):`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:49`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L49) — `def __init__(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:65`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L65) — `def init(self, params: dict[str, Parameter]) -> RecsysRowwiseAdagradState:`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:82`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L82) — `def transform_embeddings(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:91`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L91) — `def decay_factor(self) -> float:`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:94`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L94) — `def gradient_update_start(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:140`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L140) — `def start_lazy(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:214`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L214) — `def start(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:257`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L257) — `def gradient_update_done(`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:263`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L263) — `def done(gate: jax.Array) -> tuple[jax.Array, jax.Array, jax.Array]:`
+- [`phoenix/xrex/optimizers/recsys/rowwise_adagrad.py:269`](../source/phoenix/xrex/optimizers/recsys/rowwise_adagrad.py#L269) — `def sparse_update(`
+- [`phoenix/xrex/optimizers/schedule.py:9`](../source/phoenix/xrex/optimizers/schedule.py#L9) — `class BaseSchedule(Config):`
+- [`phoenix/xrex/optimizers/schedule.py:10`](../source/phoenix/xrex/optimizers/schedule.py#L10) — `def make(self):`
+- [`phoenix/xrex/optimizers/schedule.py:15`](../source/phoenix/xrex/optimizers/schedule.py#L15) — `class BaseSampleSchedule(Config):`
+- [`phoenix/xrex/optimizers/schedule.py:16`](../source/phoenix/xrex/optimizers/schedule.py#L16) — `def make(self) -> Callable[..., float]:`
+- [`phoenix/xrex/optimizers/schedule.py:21`](../source/phoenix/xrex/optimizers/schedule.py#L21) — `class ConstantSampleSchedule(BaseSampleSchedule):`
+- [`phoenix/xrex/optimizers/schedule.py:24`](../source/phoenix/xrex/optimizers/schedule.py#L24) — `def make(self) -> Callable[..., float]:`
+- [`phoenix/xrex/optimizers/schedule.py:25`](../source/phoenix/xrex/optimizers/schedule.py#L25) — `def schedule(*_args: Any, **_kwargs: Any) -> float:`
+- [`phoenix/xrex/pallas/attention.py:13`](../source/phoenix/xrex/pallas/attention.py#L13) — `def tanh(x):`
+- [`phoenix/xrex/pallas/attention.py:17`](../source/phoenix/xrex/pallas/attention.py#L17) — `def mha_forward_kernel(`
+- [`phoenix/xrex/pallas/attention.py:46`](../source/phoenix/xrex/pallas/attention.py#L46) — `def body(start_k, carry):`
+- [`phoenix/xrex/pallas/attention.py:131`](../source/phoenix/xrex/pallas/attention.py#L131) — `def mha(`
+- [`phoenix/xrex/pallas/attention.py:210`](../source/phoenix/xrex/pallas/attention.py#L210) — `def _mha_forward(`
+- [`phoenix/xrex/pallas/attention.py:298`](../source/phoenix/xrex/pallas/attention.py#L298) — `def _preprocess_backward_kernel(out_ref, dout_ref, l_ref, new_dout_ref, delta_ref, *, block_q: int):`
+- [`phoenix/xrex/pallas/attention.py:311`](../source/phoenix/xrex/pallas/attention.py#L311) — `def _preprocess_backward(out, do, l, block_q: int, debug: bool, interpret: bool):`
+- [`phoenix/xrex/pallas/attention.py:344`](../source/phoenix/xrex/pallas/attention.py#L344) — `def mha_backward_kernel_dq(`
+- [`phoenix/xrex/pallas/attention.py:382`](../source/phoenix/xrex/pallas/attention.py#L382) — `def inner_loop(start_k, dq):`
+- [`phoenix/xrex/pallas/attention.py:436`](../source/phoenix/xrex/pallas/attention.py#L436) — `def mha_backward_kernel_dkv(`
+- [`phoenix/xrex/pallas/attention.py:474`](../source/phoenix/xrex/pallas/attention.py#L474) — `def inner_loop(start_q, carry):`
+- [`phoenix/xrex/pallas/attention.py:534`](../source/phoenix/xrex/pallas/attention.py#L534) — `def _mha_backward(`
+- [`phoenix/xrex/pallas/ranker_attention.py:34`](../source/phoenix/xrex/pallas/ranker_attention.py#L34) — `def tanh(x):`
+- [`phoenix/xrex/pallas/ranker_attention.py:38`](../source/phoenix/xrex/pallas/ranker_attention.py#L38) — `def mha_forward_kernel(`
+- [`phoenix/xrex/pallas/ranker_attention.py:72`](../source/phoenix/xrex/pallas/ranker_attention.py#L72) — `def body(start_k, carry):`
+- [`phoenix/xrex/pallas/ranker_attention.py:170`](../source/phoenix/xrex/pallas/ranker_attention.py#L170) — `def mha(`
+- [`phoenix/xrex/pallas/ranker_attention.py:250`](../source/phoenix/xrex/pallas/ranker_attention.py#L250) — `def _mha_forward(`
+- [`phoenix/xrex/pallas/ranker_attention.py:342`](../source/phoenix/xrex/pallas/ranker_attention.py#L342) — `def _preprocess_backward_kernel(out_ref, dout_ref, l_ref, new_dout_ref, delta_ref, *, block_q: int):`
+- [`phoenix/xrex/pallas/ranker_attention.py:356`](../source/phoenix/xrex/pallas/ranker_attention.py#L356) — `def _preprocess_backward(out, do, l, block_q: int, debug: bool, interpret: bool):`
+- [`phoenix/xrex/pallas/ranker_attention.py:389`](../source/phoenix/xrex/pallas/ranker_attention.py#L389) — `def mha_backward_kernel_dq(`
+- [`phoenix/xrex/pallas/ranker_attention.py:429`](../source/phoenix/xrex/pallas/ranker_attention.py#L429) — `def inner_loop(start_k, dq):`
+- [`phoenix/xrex/pallas/ranker_attention.py:495`](../source/phoenix/xrex/pallas/ranker_attention.py#L495) — `def mha_backward_kernel_dkv(`
+- [`phoenix/xrex/pallas/ranker_attention.py:535`](../source/phoenix/xrex/pallas/ranker_attention.py#L535) — `def inner_loop(start_q, carry):`
+- [`phoenix/xrex/pallas/ranker_attention.py:607`](../source/phoenix/xrex/pallas/ranker_attention.py#L607) — `def _mha_backward(`
+- [`phoenix/xrex/pallas/ranker_attention.py:788`](../source/phoenix/xrex/pallas/ranker_attention.py#L788) — `def mha_reference(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:23`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L23) — `def tanh(x):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:27`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L27) — `def _abs(x):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:31`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L31) — `def _apply_cap(qk, cap: float, cap_method: str):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:44`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L44) — `class TuningConfig:`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:57`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L57) — `def __post_init__(self):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:74`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L74) — `def has_backward_blocks(self) -> bool:`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:78`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L78) — `def _attention_forward(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:115`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L115) — `def kernel(q_ref, k_ref, v_ref, bound_ref, out_ref, lse_ref, scoped):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:129`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L129) — `def perform_schedule_barrier():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:136`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L136) — `def tile_has_tokens(lower, upper) -> bool:`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:157`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L157) — `def _zero_out_wg():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:185`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L185) — `def _compute_wg():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:214`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L214) — `def _():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:219`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L219) — `def kv_loop(kv_step, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:229`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L229) — `def compute_qk(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:264`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L264) — `def end_softmax_barriers():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:277`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L277) — `def compute_pv(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:284`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L284) — `def _wait():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:313`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L313) — `def _memory_wg():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:319`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L319) — `def _prefetch(i=i):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:331`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L331) — `def _kv_loop(kv_step):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:346`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L346) — `def entry(q_ref, k_ref, v_ref, bound_ref, out_ref, lse_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:406`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L406) — `def _normalize_bound(bound, batch_size: int, seq_len: int):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:428`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L428) — `def attention(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:455`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L455) — `def _attention_fwd(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:485`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L485) — `def _attention_bwd(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:543`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L543) — `def kernel_dq(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:582`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L582) — `def _compute_thread(pipeline_callback):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:617`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L617) — `def kv_pipeline(kv_step, k_smem, v_smem, k_consumed_barrier, v_consumed_barrier, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:628`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L628) — `def compute_s(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:653`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L653) — `def compute_dp(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:676`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L676) — `def compute_dq(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:726`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L726) — `def kernel_dkv(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:780`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L780) — `def q_block_for_step(q_step):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:790`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L790) — `def _compute_thread(pipeline_callback):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:828`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L828) — `def q_pipeline(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:845`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L845) — `def _compute_sT(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:874`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L874) — `def _compute(refs):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:907`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L907) — `def compute_dk(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1005`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1005) — `def attention_with_pipeline_emitter(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1047`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1047) — `def fa3_kernel(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1057`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1057) — `def perform_schedule_barrier():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1062`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1062) — `def _compute_thread(pipeline_callback):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1096`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1096) — `def kv_pipeline(_, k_smem, v_smem, k_consumed_barrier, v_consumed_barrier, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1100`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1100) — `def compute_qk(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1122`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1122) — `def compute_pv(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1185`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1185) — `def attention_reference(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1242`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1242) — `def _attention_forward_inference(`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1263`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1263) — `def kernel(q_ref, k_ref, v_ref, bound_ref, out_ref, scoped):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1277`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1277) — `def perform_schedule_barrier():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1284`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1284) — `def tile_has_tokens(lower, upper):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1305`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1305) — `def _zero_out_wg():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1321`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1321) — `def _compute_wg():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1349`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1349) — `def _():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1354`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1354) — `def _step_body(kv_step, acc, m_i, l_i, apply_mask_fn):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1357`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1357) — `def compute_qk(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1384`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1384) — `def end_softmax_barriers():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1397`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1397) — `def compute_pv(acc_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1403`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1403) — `def _wait():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1410`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1410) — `def no_mask_fn(qk, kv_step):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1413`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1413) — `def hist_kv_loop(kv_step, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1419`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1419) — `def diagonal_mask_fn(qk, kv_step):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1454`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1454) — `def cand_kv_loop(cand_step, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1473`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1473) — `def _memory_wg():`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1479`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1479) — `def _prefetch(i=i):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1491`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1491) — `def _kv_loop(kv_step):`
+- [`phoenix/xrex/pallas/ranker_attention_fa3.py:1506`](../source/phoenix/xrex/pallas/ranker_attention_fa3.py#L1506) — `def entry(q_ref, k_ref, v_ref, bound_ref, out_ref):`
+- [`phoenix/xrex/pallas/ranker_attention_utils.py:16`](../source/phoenix/xrex/pallas/ranker_attention_utils.py#L16) — `def history_candidate_mask(`
+- [`phoenix/xrex/pallas/ranker_attention_utils.py:59`](../source/phoenix/xrex/pallas/ranker_attention_utils.py#L59) — `def history_candidate_mask_kv_q(`
+- [`phoenix/xrex/pallas/ranker_attention_utils.py:102`](../source/phoenix/xrex/pallas/ranker_attention_utils.py#L102) — `def kv_block_for_step(`
+- [`phoenix/xrex/pallas/ranker_attention_utils.py:119`](../source/phoenix/xrex/pallas/ranker_attention_utils.py#L119) — `def bounds_from_segment_ids(segment_ids: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/pallas/ranker_attention_utils.py:130`](../source/phoenix/xrex/pallas/ranker_attention_utils.py#L130) — `def _bounds(mask: jax.Array) -> tuple[jax.Array, jax.Array]:`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:29`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L29) — `def tanh(x):`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:33`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L33) — `def compute_block_state_metadata(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:52`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L52) — `def compute_last_history_block_idx(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:66`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L66) — `def mha_forward_kernel(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:106`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L106) — `def body(start_k, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:194`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L194) — `def mha_forward_kernel_inference(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:226`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L226) — `def history_body(start_k, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:258`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L258) — `def candidate_body(start_k, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:328`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L328) — `def mha_inference_gqa(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:442`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L442) — `def mha(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:531`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L531) — `def _mha_forward(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:636`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L636) — `def mha_backward_kernel_dq(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:681`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L681) — `def inner_loop(start_k, dq):`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:761`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L761) — `def mha_backward_kernel_dkv(`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:803`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L803) — `def inner_loop(start_q, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_v2.py:884`](../source/phoenix/xrex/pallas/ranker_attention_v2.py#L884) — `def _mha_backward(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:17`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L17) — `class TuningConfig:`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:31`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L31) — `def __post_init__(self):`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:69`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L69) — `def get_device_tuning_config() -> TuningConfig:`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:78`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L78) — `def tanh(x):`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:82`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L82) — `def _gather_block_segments(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:101`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L101) — `def compute_block_state_metadata(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:120`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L120) — `def compute_last_history_block_idx(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:135`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L135) — `def pack_inputs(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:194`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L194) — `def mha_forward_kernel(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:251`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L251) — `def body(start_k, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:391`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L391) — `def mha(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:524`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L524) — `def _mha_forward(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:676`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L676) — `def _preprocess_backward_packed(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:689`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L689) — `def mha_backward_kernel_dq(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:758`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L758) — `def inner_loop(start_k, dq):`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:859`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L859) — `def mha_backward_kernel_dkv(`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:926`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L926) — `def inner_loop(start_q, carry):`
+- [`phoenix/xrex/pallas/ranker_attention_varlen.py:1032`](../source/phoenix/xrex/pallas/ranker_attention_varlen.py#L1032) — `def _mha_backward(`
+- [`phoenix/xrex/train/checkpoint_write.py:22`](../source/phoenix/xrex/train/checkpoint_write.py#L22) — `def install_offload_state(trainer) -> None:`
+- [`phoenix/xrex/train/checkpoint_write.py:23`](../source/phoenix/xrex/train/checkpoint_write.py#L23) — `def d2h_copy(src, dst):`
+- [`phoenix/xrex/train/checkpoint_write.py:38`](../source/phoenix/xrex/train/checkpoint_write.py#L38) — `def register_offload_state(trainer) -> None:`
+- [`phoenix/xrex/train/checkpoint_write.py:44`](../source/phoenix/xrex/train/checkpoint_write.py#L44) — `def barrier(self, name: str) -> None:`
+- [`phoenix/xrex/train/checkpoint_write.py:48`](../source/phoenix/xrex/train/checkpoint_write.py#L48) — `def get_checkpoint_path(self, ctx) -> str:`
+- [`phoenix/xrex/train/checkpoint_write.py:52`](../source/phoenix/xrex/train/checkpoint_write.py#L52) — `def save_checkpoint(`
+- [`phoenix/xrex/train/checkpoint_write.py:113`](../source/phoenix/xrex/train/checkpoint_write.py#L113) — `def _callback(`
+- [`phoenix/xrex/train/checkpoint_write.py:164`](../source/phoenix/xrex/train/checkpoint_write.py#L164) — `def install(trainer_cls) -> None:`
+- [`phoenix/xrex/train/embedding_loader.py:25`](../source/phoenix/xrex/train/embedding_loader.py#L25) — `def _create_aligned_array(shape: Tuple[int, ...], itemsize: int, dtype):`
+- [`phoenix/xrex/train/embedding_loader.py:43`](../source/phoenix/xrex/train/embedding_loader.py#L43) — `def load_embedding_table(`
+- [`phoenix/xrex/train/embedding_loader.py:96`](../source/phoenix/xrex/train/embedding_loader.py#L96) — `def load_embedding_table_partial(orbax_path: str, start_row: int, emb_table: npt.NDArray) -> int:`
+- [`phoenix/xrex/train/misc.py:16`](../source/phoenix/xrex/train/misc.py#L16) — `class CheckpointConfig(Config):`
+- [`phoenix/xrex/train/misc.py:76`](../source/phoenix/xrex/train/misc.py#L76) — `def __post_init__(self):`
+- [`phoenix/xrex/train/misc.py:80`](../source/phoenix/xrex/train/misc.py#L80) — `def should_save(self, step: int):`
+- [`phoenix/xrex/train/misc.py:84`](../source/phoenix/xrex/train/misc.py#L84) — `class TrainingStateProtocol(Protocol):`
+- [`phoenix/xrex/train/misc.py:86`](../source/phoenix/xrex/train/misc.py#L86) — `def params(self) -> hk.Params: ...`
+- [`phoenix/xrex/train/misc.py:89`](../source/phoenix/xrex/train/misc.py#L89) — `def opt_state(self) -> optax.OptState | None: ...`
+- [`phoenix/xrex/train/misc.py:92`](../source/phoenix/xrex/train/misc.py#L92) — `def rng(self) -> jax.Array: ...`
+- [`phoenix/xrex/train/misc.py:95`](../source/phoenix/xrex/train/misc.py#L95) — `def step(self) -> jax.Array: ...`
+- [`phoenix/xrex/train/misc.py:97`](../source/phoenix/xrex/train/misc.py#L97) — `def purge_opt_state(self) -> "TrainingStateProtocol": ...`
+- [`phoenix/xrex/train/misc.py:100`](../source/phoenix/xrex/train/misc.py#L100) — `class TrainingState(NamedTuple):`
+- [`phoenix/xrex/train/misc.py:107`](../source/phoenix/xrex/train/misc.py#L107) — `def purge_opt_state(self):`
+- [`phoenix/xrex/train/misc.py:111`](../source/phoenix/xrex/train/misc.py#L111) — `class PostEmbeddings(NamedTuple):`
+- [`phoenix/xrex/train/misc.py:118`](../source/phoenix/xrex/train/misc.py#L118) — `class RecsysInferenceState(NamedTuple):`
+- [`phoenix/xrex/train/misc.py:125`](../source/phoenix/xrex/train/misc.py#L125) — `def purge_opt_state(self):`
+- [`phoenix/xrex/train/misc.py:129`](../source/phoenix/xrex/train/misc.py#L129) — `class RecsysTrainingState(NamedTuple):`
+- [`phoenix/xrex/train/misc.py:142`](../source/phoenix/xrex/train/misc.py#L142) — `def purge_opt_state(self):`
+- [`phoenix/xrex/train/parallel_config.py:8`](../source/phoenix/xrex/train/parallel_config.py#L8) — `class ParallelConfig(Config):`
+- [`phoenix/xrex/train/parallel_config.py:16`](../source/phoenix/xrex/train/parallel_config.py#L16) — `def axis_names(self) -> tuple[str, str, str, str, str, str]:`
+- [`phoenix/xrex/train/parallel_config.py:19`](../source/phoenix/xrex/train/parallel_config.py#L19) — `def mesh_shape(self):`
+- [`phoenix/xrex/train/parallel_config.py:22`](../source/phoenix/xrex/train/parallel_config.py#L22) — `def mesh_axis_names(self):`
+- [`phoenix/xrex/train/parallel_config.py:25`](../source/phoenix/xrex/train/parallel_config.py#L25) — `def num_devices(self):`
+- [`phoenix/xrex/train/parallel_config.py:28`](../source/phoenix/xrex/train/parallel_config.py#L28) — `def get_local_batch_size_and_rank(self, global_batch_size):`
+- [`phoenix/xrex/train/recsys_bundle_export.py:90`](../source/phoenix/xrex/train/recsys_bundle_export.py#L90) — `def _template_fill(key: str, value: Any) -> bool | int | float:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:112`](../source/phoenix/xrex/train/recsys_bundle_export.py#L112) — `def restamp_manifest(data: bytes) -> bytes:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:118`](../source/phoenix/xrex/train/recsys_bundle_export.py#L118) — `class EmbeddingSlices(NamedTuple):`
+- [`phoenix/xrex/train/recsys_bundle_export.py:127`](../source/phoenix/xrex/train/recsys_bundle_export.py#L127) — `class PackedGeometry(NamedTuple):`
+- [`phoenix/xrex/train/recsys_bundle_export.py:135`](../source/phoenix/xrex/train/recsys_bundle_export.py#L135) — `class BundleFile:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:141`](../source/phoenix/xrex/train/recsys_bundle_export.py#L141) — `class RetrievalExport:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:152`](../source/phoenix/xrex/train/recsys_bundle_export.py#L152) — `def output_names(self) -> list[str]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:159`](../source/phoenix/xrex/train/recsys_bundle_export.py#L159) — `def manifest_block(self) -> dict[str, Any]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:181`](../source/phoenix/xrex/train/recsys_bundle_export.py#L181) — `def _pspec_to_json(pspec: Any) -> list[Any]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:185`](../source/phoenix/xrex/train/recsys_bundle_export.py#L185) — `def _pspec_from_json(entries: list[Any]) -> Any:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:193`](../source/phoenix/xrex/train/recsys_bundle_export.py#L193) — `def ensure_parameter_serialization_registered() -> None:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:201`](../source/phoenix/xrex/train/recsys_bundle_export.py#L201) — `def serialize_auxdata(aux: dict[str, Any]) -> bytes:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:206`](../source/phoenix/xrex/train/recsys_bundle_export.py#L206) — `def deserialize_auxdata(data: bytes) -> dict[str, Any]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:225`](../source/phoenix/xrex/train/recsys_bundle_export.py#L225) — `def ensure_packing_layout_serialization_registered() -> None:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:242`](../source/phoenix/xrex/train/recsys_bundle_export.py#L242) — `def _dtype_name(dtype: Any) -> str:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:246`](../source/phoenix/xrex/train/recsys_bundle_export.py#L246) — `def _aval_entry(leaf: Any) -> dict[str, Any]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:250`](../source/phoenix/xrex/train/recsys_bundle_export.py#L250) — `def _to_shape_dtype_struct(tree: Any) -> Any:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:257`](../source/phoenix/xrex/train/recsys_bundle_export.py#L257) — `def _serving_sequence_len(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:288`](../source/phoenix/xrex/train/recsys_bundle_export.py#L288) — `def _user_tower_sequence_len(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:310`](../source/phoenix/xrex/train/recsys_bundle_export.py#L310) — `def _make_export_config(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:368`](../source/phoenix/xrex/train/recsys_bundle_export.py#L368) — `def _token_feature_config(model_config: Any, *, two_tower: bool) -> Any:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:372`](../source/phoenix/xrex/train/recsys_bundle_export.py#L372) — `def _batch_template(export_cfg: Any, bs: int, *, packed: bool) -> Any:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:390`](../source/phoenix/xrex/train/recsys_bundle_export.py#L390) — `def _batch_avals(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:418`](../source/phoenix/xrex/train/recsys_bundle_export.py#L418) — `def _embedding_slices(export_cfg: Any, history_seq_len: int, candidate_seq_len: int):`
+- [`phoenix/xrex/train/recsys_bundle_export.py:438`](../source/phoenix/xrex/train/recsys_bundle_export.py#L438) — `def _packed_embedding_slices(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:472`](../source/phoenix/xrex/train/recsys_bundle_export.py#L472) — `def _recsys_embeddings_from_merged(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:496`](../source/phoenix/xrex/train/recsys_bundle_export.py#L496) — `def _section(start: int, end: int, rows: int) -> jax.Array:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:519`](../source/phoenix/xrex/train/recsys_bundle_export.py#L519) — `def _make_forward_fn(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:531`](../source/phoenix/xrex/train/recsys_bundle_export.py#L531) — `def forward_fn(batch: Any, merged_embeddings: jax.Array):`
+- [`phoenix/xrex/train/recsys_bundle_export.py:545`](../source/phoenix/xrex/train/recsys_bundle_export.py#L545) — `def _make_retrieval_forward_fn(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:558`](../source/phoenix/xrex/train/recsys_bundle_export.py#L558) — `def forward_fn(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:586`](../source/phoenix/xrex/train/recsys_bundle_export.py#L586) — `def _scan_custom_call_targets(lowered_text: str) -> list[str]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:595`](../source/phoenix/xrex/train/recsys_bundle_export.py#L595) — `def _export_mesh(export_cfg: Any, mesh_devices: int) -> jax.sharding.Mesh:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:609`](../source/phoenix/xrex/train/recsys_bundle_export.py#L609) — `def _retrieval_shardings(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:622`](../source/phoenix/xrex/train/recsys_bundle_export.py#L622) — `def batch_leaf_sharding(path: Any, leaf: Any) -> Any:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:643`](../source/phoenix/xrex/train/recsys_bundle_export.py#L643) — `def _sharding_entry(hlo_sharding: Any, ndim: int, num_devices: int, what: str) -> dict[str, Any]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:670`](../source/phoenix/xrex/train/recsys_bundle_export.py#L670) — `def _mesh_block(mesh: Any, use_shardy: bool) -> dict[str, Any]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:679`](../source/phoenix/xrex/train/recsys_bundle_export.py#L679) — `def _input_spec(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:744`](../source/phoenix/xrex/train/recsys_bundle_export.py#L744) — `def _retrieval_export(runner: Any) -> RetrievalExport:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:803`](../source/phoenix/xrex/train/recsys_bundle_export.py#L803) — `def build_bundle(trainer: RecsysTrainer, *, mesh_devices: int = 1) -> list[BundleFile]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:1089`](../source/phoenix/xrex/train/recsys_bundle_export.py#L1089) — `def _leaf_width(tree: Any, key: str, axis: int) -> int:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:1096`](../source/phoenix/xrex/train/recsys_bundle_export.py#L1096) — `def _prep_spec(`
+- [`phoenix/xrex/train/recsys_bundle_export.py:1172`](../source/phoenix/xrex/train/recsys_bundle_export.py#L1172) — `def _emb_table_geometry(trainer: RecsysTrainer) -> tuple[int, int]:`
+- [`phoenix/xrex/train/recsys_bundle_export.py:1180`](../source/phoenix/xrex/train/recsys_bundle_export.py#L1180) — `def _build_manifest(`
+- [`phoenix/xrex/train/trainer.py:83`](../source/phoenix/xrex/train/trainer.py#L83) — `def default_name():`
+- [`phoenix/xrex/train/trainer.py:87`](../source/phoenix/xrex/train/trainer.py#L87) — `class TrainerEvent(Enum):`
+- [`phoenix/xrex/train/trainer.py:94`](../source/phoenix/xrex/train/trainer.py#L94) — `class DriverMessage(Enum):`
+- [`phoenix/xrex/train/trainer.py:101`](../source/phoenix/xrex/train/trainer.py#L101) — `class DatasetMetadata:`
+- [`phoenix/xrex/train/trainer.py:108`](../source/phoenix/xrex/train/trainer.py#L108) — `class TrainerContext:`
+- [`phoenix/xrex/train/trainer.py:132`](../source/phoenix/xrex/train/trainer.py#L132) — `def _handle(self, event: TrainerEvent, data: Any) -> None:`
+- [`phoenix/xrex/train/trainer.py:136`](../source/phoenix/xrex/train/trainer.py#L136) — `def on_boot(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:139`](../source/phoenix/xrex/train/trainer.py#L139) — `def on_train_start(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:142`](../source/phoenix/xrex/train/trainer.py#L142) — `def on_step(`
+- [`phoenix/xrex/train/trainer.py:153`](../source/phoenix/xrex/train/trainer.py#L153) — `def on_completed(self, cause: str) -> None:`
+- [`phoenix/xrex/train/trainer.py:156`](../source/phoenix/xrex/train/trainer.py#L156) — `def _wait_for_driver_ack(self) -> DriverMessage:`
+- [`phoenix/xrex/train/trainer.py:163`](../source/phoenix/xrex/train/trainer.py#L163) — `class Trainer(Config):`
+- [`phoenix/xrex/train/trainer.py:248`](../source/phoenix/xrex/train/trainer.py#L248) — `def step(self) -> int:`
+- [`phoenix/xrex/train/trainer.py:257`](../source/phoenix/xrex/train/trainer.py#L257) — `def initialize(self, ctx: TrainerContext) -> None:`
+- [`phoenix/xrex/train/trainer.py:324`](../source/phoenix/xrex/train/trainer.py#L324) — `def start_startup_profile(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:331`](../source/phoenix/xrex/train/trainer.py#L331) — `def stop_startup_profile(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:336`](../source/phoenix/xrex/train/trainer.py#L336) — `def maybe_nsys_step(self, soft_step: int, block_tensor) -> None:`
+- [`phoenix/xrex/train/trainer.py:346`](../source/phoenix/xrex/train/trainer.py#L346) — `def create_runtime(self, ctx: TrainerContext):`
+- [`phoenix/xrex/train/trainer.py:385`](../source/phoenix/xrex/train/trainer.py#L385) — `def create_profile_server(self, ctx: TrainerContext):`
+- [`phoenix/xrex/train/trainer.py:392`](../source/phoenix/xrex/train/trainer.py#L392) — `def prepare_data(self, batch):`
+- [`phoenix/xrex/train/trainer.py:403`](../source/phoenix/xrex/train/trainer.py#L403) — `def create_optim(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:413`](../source/phoenix/xrex/train/trainer.py#L413) — `def create_dataset(self, ctx: TrainerContext):`
+- [`phoenix/xrex/train/trainer.py:430`](../source/phoenix/xrex/train/trainer.py#L430) — `def dataset_with_prepare(dataset):`
+- [`phoenix/xrex/train/trainer.py:434`](../source/phoenix/xrex/train/trainer.py#L434) — `def dataset_thread_iterator(dataset, stop=object()):`
+- [`phoenix/xrex/train/trainer.py:463`](../source/phoenix/xrex/train/trainer.py#L463) — `def _train_dataset(dataset):`
+- [`phoenix/xrex/train/trainer.py:471`](../source/phoenix/xrex/train/trainer.py#L471) — `def warmup_dataloader(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:474`](../source/phoenix/xrex/train/trainer.py#L474) — `def next_data_batch(self):`
+- [`phoenix/xrex/train/trainer.py:477`](../source/phoenix/xrex/train/trainer.py#L477) — `def _rng_and_init_data(self, seq_len: int | None = None):`
+- [`phoenix/xrex/train/trainer.py:491`](../source/phoenix/xrex/train/trainer.py#L491) — `def override_model_config(self):`
+- [`phoenix/xrex/train/trainer.py:498`](../source/phoenix/xrex/train/trainer.py#L498) — `def create_executable(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:507`](../source/phoenix/xrex/train/trainer.py#L507) — `def loss_fn(batch):`
+- [`phoenix/xrex/train/trainer.py:515`](../source/phoenix/xrex/train/trainer.py#L515) — `def loss_fn_more_metrics(batch):`
+- [`phoenix/xrex/train/trainer.py:523`](../source/phoenix/xrex/train/trainer.py#L523) — `def logits_eval_fn(inputs):`
+- [`phoenix/xrex/train/trainer.py:543`](../source/phoenix/xrex/train/trainer.py#L543) — `def init(r):`
+- [`phoenix/xrex/train/trainer.py:595`](../source/phoenix/xrex/train/trainer.py#L595) — `def maybe_create_eval_executables(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:611`](../source/phoenix/xrex/train/trainer.py#L611) — `def get_eval_executable_by_shape(`
+- [`phoenix/xrex/train/trainer.py:724`](../source/phoenix/xrex/train/trainer.py#L724) — `def adjust_host_sharding(self, host_sharding):`
+- [`phoenix/xrex/train/trainer.py:727`](../source/phoenix/xrex/train/trainer.py#L727) — `def create_extra_executables(self, init_data=None) -> None:`
+- [`phoenix/xrex/train/trainer.py:737`](../source/phoenix/xrex/train/trainer.py#L737) — `def h2d_copy(src, dst):`
+- [`phoenix/xrex/train/trainer.py:758`](../source/phoenix/xrex/train/trainer.py#L758) — `def identity(x):`
+- [`phoenix/xrex/train/trainer.py:773`](../source/phoenix/xrex/train/trainer.py#L773) — `def norm(tree):`
+- [`phoenix/xrex/train/trainer.py:787`](../source/phoenix/xrex/train/trainer.py#L787) — `def compute_checksums(state):`
+- [`phoenix/xrex/train/trainer.py:820`](../source/phoenix/xrex/train/trainer.py#L820) — `def allreduce_data(batch):`
+- [`phoenix/xrex/train/trainer.py:838`](../source/phoenix/xrex/train/trainer.py#L838) — `def checksum_dict(self):`
+- [`phoenix/xrex/train/trainer.py:848`](../source/phoenix/xrex/train/trainer.py#L848) — `def register_jit_function(`
+- [`phoenix/xrex/train/trainer.py:867`](../source/phoenix/xrex/train/trainer.py#L867) — `def compile_or_load(self, phases: set[str] | None = None) -> None:`
+- [`phoenix/xrex/train/trainer.py:914`](../source/phoenix/xrex/train/trainer.py#L914) — `def initialize_checkpoint_index(self, checkpoint: CheckpointMeta | None) -> None:`
+- [`phoenix/xrex/train/trainer.py:921`](../source/phoenix/xrex/train/trainer.py#L921) — `def create_state(self, ctx: TrainerContext) -> None:`
+- [`phoenix/xrex/train/trainer.py:968`](../source/phoenix/xrex/train/trainer.py#L968) — `def get_sharding(self, shapes):`
+- [`phoenix/xrex/train/trainer.py:976`](../source/phoenix/xrex/train/trainer.py#L976) — `def init(self, batch, rng) -> TrainingStateProtocol:`
+- [`phoenix/xrex/train/trainer.py:1001`](../source/phoenix/xrex/train/trainer.py#L1001) — `def next_eval_batch(self, eval_dataset, data_world_size: int, num_processes_per_data_rank: int):`
+- [`phoenix/xrex/train/trainer.py:1029`](../source/phoenix/xrex/train/trainer.py#L1029) — `def eval(`
+- [`phoenix/xrex/train/trainer.py:1042`](../source/phoenix/xrex/train/trainer.py#L1042) — `def _eval_iter(`
+- [`phoenix/xrex/train/trainer.py:1134`](../source/phoenix/xrex/train/trainer.py#L1134) — `def is_valid_step(self, grads: jax.Array) -> tuple[jax.Array, jax.Array]:`
+- [`phoenix/xrex/train/trainer.py:1135`](../source/phoenix/xrex/train/trainer.py#L1135) — `def keep_step(grad_norm: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/train/trainer.py:1147`](../source/phoenix/xrex/train/trainer.py#L1147) — `def _get_checkpoint_infos(self):`
+- [`phoenix/xrex/train/trainer.py:1160`](../source/phoenix/xrex/train/trainer.py#L1160) — `def purge_opt_state_on_load(self, host_state):`
+- [`phoenix/xrex/train/trainer.py:1164`](../source/phoenix/xrex/train/trainer.py#L1164) — `def warm_start_staging_spec(self):`
+- [`phoenix/xrex/train/trainer.py:1170`](../source/phoenix/xrex/train/trainer.py#L1170) — `def _uses_tensorstore_save(self) -> bool:`
+- [`phoenix/xrex/train/trainer.py:1173`](../source/phoenix/xrex/train/trainer.py#L1173) — `def maybe_load_checkpoint(`
+- [`phoenix/xrex/train/trainer.py:1292`](../source/phoenix/xrex/train/trainer.py#L1292) — `def _graft_replaced(pairs: list[tuple[jax.Array, jax.Array]]) -> None:`
+- [`phoenix/xrex/train/trainer.py:1300`](../source/phoenix/xrex/train/trainer.py#L1300) — `def _graft(x):`
+- [`phoenix/xrex/train/trainer.py:1377`](../source/phoenix/xrex/train/trainer.py#L1377) — `def _align_to_state(tree):`
+- [`phoenix/xrex/train/trainer.py:1450`](../source/phoenix/xrex/train/trainer.py#L1450) — `def run(self) -> None:`
+- [`phoenix/xrex/train/trainer.py:1546`](../source/phoenix/xrex/train/trainer.py#L1546) — `def handle_profiler(self, soft_step: int, block_tensor: jax.Array) -> None:`
+- [`phoenix/xrex/train/trainer.py:1560`](../source/phoenix/xrex/train/trainer.py#L1560) — `def handle_metrics(`
+- [`phoenix/xrex/train/trainer.py:1596`](../source/phoenix/xrex/train/trainer.py#L1596) — `def cast_metrics(`
+- [`phoenix/xrex/train/trainer.py:1612`](../source/phoenix/xrex/train/trainer.py#L1612) — `def cast_val(key: str, val: Any) -> int | float | None:`
+- [`phoenix/xrex/train/trainer_gen_recs.py:40`](../source/phoenix/xrex/train/trainer_gen_recs.py#L40) — `class GenRecsTrainer(RecsysTrainer):`
+- [`phoenix/xrex/train/trainer_gen_recs.py:74`](../source/phoenix/xrex/train/trainer_gen_recs.py#L74) — `def using_seqpack(self) -> bool:`
+- [`phoenix/xrex/train/trainer_gen_recs.py:77`](../source/phoenix/xrex/train/trainer_gen_recs.py#L77) — `def init(self, batch: RecsysFeaturesBatch, rng: jax.Array) -> RecsysTrainingState:`
+- [`phoenix/xrex/train/trainer_gen_recs.py:83`](../source/phoenix/xrex/train/trainer_gen_recs.py#L83) — `def create_executable(self) -> None:`
+- [`phoenix/xrex/train/trainer_gen_recs.py:88`](../source/phoenix/xrex/train/trainer_gen_recs.py#L88) — `def _family_init_post_embeddings(self, post_embeddings):`
+- [`phoenix/xrex/train/trainer_gen_recs.py:93`](../source/phoenix/xrex/train/trainer_gen_recs.py#L93) — `def _family_create_executable_hook(self) -> None:`
+- [`phoenix/xrex/train/trainer_gen_recs.py:97`](../source/phoenix/xrex/train/trainer_gen_recs.py#L97) — `def gen_recs_eval_forward_fn(`
+- [`phoenix/xrex/train/trainer_gen_recs.py:121`](../source/phoenix/xrex/train/trainer_gen_recs.py#L121) — `def gen_recs_project_fn(`
+- [`phoenix/xrex/train/trainer_gen_recs.py:171`](../source/phoenix/xrex/train/trainer_gen_recs.py#L171) — `def _family_post_sharding_hook(self) -> None:`
+- [`phoenix/xrex/train/trainer_gen_recs.py:196`](../source/phoenix/xrex/train/trainer_gen_recs.py#L196) — `def _maybe_inject_global_neg_embeddings(self, batch):`
+- [`phoenix/xrex/train/trainer_gen_recs.py:224`](../source/phoenix/xrex/train/trainer_gen_recs.py#L224) — `def eval(self, soft_step: int):`
+- [`phoenix/xrex/train/trainer_gen_recs.py:229`](../source/phoenix/xrex/train/trainer_gen_recs.py#L229) — `def maybe_build_gen_recs_post_embeddings(self):`
+- [`phoenix/xrex/train/trainer_gen_recs.py:408`](../source/phoenix/xrex/train/trainer_gen_recs.py#L408) — `def eval_gen_recs(self, soft_step: int) -> dict[str, float]:`
+- [`phoenix/xrex/train/trainer_recsys.py:116`](../source/phoenix/xrex/train/trainer_recsys.py#L116) — `def _deep_filter_nones(tree):`
+- [`phoenix/xrex/train/trainer_recsys.py:138`](../source/phoenix/xrex/train/trainer_recsys.py#L138) — `def _download_ocdbt_coordinator(cloud_url: str, local_dir: str) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:154`](../source/phoenix/xrex/train/trainer_recsys.py#L154) — `def _find_cross_process_files(local_dir: str, proc_idx: int) -> list[str]:`
+- [`phoenix/xrex/train/trainer_recsys.py:157`](../source/phoenix/xrex/train/trainer_recsys.py#L157) — `def _tensor_name(key: str) -> str:`
+- [`phoenix/xrex/train/trainer_recsys.py:214`](../source/phoenix/xrex/train/trainer_recsys.py#L214) — `def _download_own_process_dir(cloud_url: str, local_dir: str, proc_idx: int) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:237`](../source/phoenix/xrex/train/trainer_recsys.py#L237) — `def _download_cross_process_files(`
+- [`phoenix/xrex/train/trainer_recsys.py:260`](../source/phoenix/xrex/train/trainer_recsys.py#L260) — `def _count_local_files(directory: str) -> tuple[int, int]:`
+- [`phoenix/xrex/train/trainer_recsys.py:271`](../source/phoenix/xrex/train/trainer_recsys.py#L271) — `def _download_ocdbt_from_cloud(cloud_url: str, local_dir: str, proc_idx: int) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:292`](../source/phoenix/xrex/train/trainer_recsys.py#L292) — `class FetchedBatch:`
+- [`phoenix/xrex/train/trainer_recsys.py:299`](../source/phoenix/xrex/train/trainer_recsys.py#L299) — `class BatchPipelineState:`
+- [`phoenix/xrex/train/trainer_recsys.py:305`](../source/phoenix/xrex/train/trainer_recsys.py#L305) — `class IncrementalState(NamedTuple):`
+- [`phoenix/xrex/train/trainer_recsys.py:312`](../source/phoenix/xrex/train/trainer_recsys.py#L312) — `class Store(enum.Enum):`
+- [`phoenix/xrex/train/trainer_recsys.py:318`](../source/phoenix/xrex/train/trainer_recsys.py#L318) — `def from_path(path):`
+- [`phoenix/xrex/train/trainer_recsys.py:326`](../source/phoenix/xrex/train/trainer_recsys.py#L326) — `def path_to_dotted(path):`
+- [`phoenix/xrex/train/trainer_recsys.py:338`](../source/phoenix/xrex/train/trainer_recsys.py#L338) — `def pbroadcast(x, axis_name, source):`
+- [`phoenix/xrex/train/trainer_recsys.py:344`](../source/phoenix/xrex/train/trainer_recsys.py#L344) — `def _pad_vocab_for_ep(emb: jax.Array, ep: int, name: str = "emb_table") -> jax.Array:`
+- [`phoenix/xrex/train/trainer_recsys.py:353`](../source/phoenix/xrex/train/trainer_recsys.py#L353) — `def _write_all_bytes(path: str, mv: memoryview, chunk_size: int = 1 << 30) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:379`](../source/phoenix/xrex/train/trainer_recsys.py#L379) — `def _read_checkpoint_kafka_config(ctx) -> tuple[str | None, int | None]:`
+- [`phoenix/xrex/train/trainer_recsys.py:398`](../source/phoenix/xrex/train/trainer_recsys.py#L398) — `class RecsysCheckpointConfig(CheckpointConfig):`
+- [`phoenix/xrex/train/trainer_recsys.py:403`](../source/phoenix/xrex/train/trainer_recsys.py#L403) — `class RecsysTrainer(Trainer):`
+- [`phoenix/xrex/train/trainer_recsys.py:456`](../source/phoenix/xrex/train/trainer_recsys.py#L456) — `def __post_init__(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:503`](../source/phoenix/xrex/train/trainer_recsys.py#L503) — `def create_runtime(self, ctx):`
+- [`phoenix/xrex/train/trainer_recsys.py:508`](../source/phoenix/xrex/train/trainer_recsys.py#L508) — `def example_data(self, bs: int) -> RecsysFeaturesBatch:`
+- [`phoenix/xrex/train/trainer_recsys.py:526`](../source/phoenix/xrex/train/trainer_recsys.py#L526) — `def prepare_data(self, batch):`
+- [`phoenix/xrex/train/trainer_recsys.py:542`](../source/phoenix/xrex/train/trainer_recsys.py#L542) — `def _purchase_value_ema_keys(self) -> dict[str, jax.Array]:`
+- [`phoenix/xrex/train/trainer_recsys.py:553`](../source/phoenix/xrex/train/trainer_recsys.py#L553) — `def init(self, batch: RecsysFeaturesBatch, rng: jax.Array) -> RecsysTrainingState:`
+- [`phoenix/xrex/train/trainer_recsys.py:661`](../source/phoenix/xrex/train/trainer_recsys.py#L661) — `def _lookup(self, embedding_table_param: Parameter, token_ids: jax.Array) -> Parameter:`
+- [`phoenix/xrex/train/trainer_recsys.py:673`](../source/phoenix/xrex/train/trainer_recsys.py#L673) — `def _gather(table: jax.Array, ids: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/train/trainer_recsys.py:696`](../source/phoenix/xrex/train/trainer_recsys.py#L696) — `def _get_embedding_hash_leaves(self, data: RecsysFeaturesBatch) -> list[jax.Array]:`
+- [`phoenix/xrex/train/trainer_recsys.py:722`](../source/phoenix/xrex/train/trainer_recsys.py#L722) — `def get_recsys_embeddings(`
+- [`phoenix/xrex/train/trainer_recsys.py:800`](../source/phoenix/xrex/train/trainer_recsys.py#L800) — `def _unflatten_emb_lookup(`
+- [`phoenix/xrex/train/trainer_recsys.py:826`](../source/phoenix/xrex/train/trainer_recsys.py#L826) — `def _flatten_emb_grads(self, grads: RecsysEmbeddingsParameter) -> jax.Array:`
+- [`phoenix/xrex/train/trainer_recsys.py:845`](../source/phoenix/xrex/train/trainer_recsys.py#L845) — `def local_global_hack(self, batch):`
+- [`phoenix/xrex/train/trainer_recsys.py:859`](../source/phoenix/xrex/train/trainer_recsys.py#L859) — `def _maybe_inject_global_neg_embeddings(`
+- [`phoenix/xrex/train/trainer_recsys.py:864`](../source/phoenix/xrex/train/trainer_recsys.py#L864) — `def _empty_history_augmentation_period(self) -> int:`
+- [`phoenix/xrex/train/trainer_recsys.py:868`](../source/phoenix/xrex/train/trainer_recsys.py#L868) — `def _apply_per_history_user_dropout(self, batch: RecsysFeaturesBatch, rate: float) -> int:`
+- [`phoenix/xrex/train/trainer_recsys.py:889`](../source/phoenix/xrex/train/trainer_recsys.py#L889) — `def dataset_with_prepare(`
+- [`phoenix/xrex/train/trainer_recsys.py:917`](../source/phoenix/xrex/train/trainer_recsys.py#L917) — `def dataset_without_prepare(`
+- [`phoenix/xrex/train/trainer_recsys.py:938`](../source/phoenix/xrex/train/trainer_recsys.py#L938) — `def dataset_thread_iterator(`
+- [`phoenix/xrex/train/trainer_recsys.py:964`](../source/phoenix/xrex/train/trainer_recsys.py#L964) — `def _report_save_timing(self, metrics) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:989`](../source/phoenix/xrex/train/trainer_recsys.py#L989) — `def handle_metrics(`
+- [`phoenix/xrex/train/trainer_recsys.py:1009`](../source/phoenix/xrex/train/trainer_recsys.py#L1009) — `def create_dataset(self, ctx: TrainerContext):`
+- [`phoenix/xrex/train/trainer_recsys.py:1072`](../source/phoenix/xrex/train/trainer_recsys.py#L1072) — `def create_embedding_init_data(self) -> RecsysEmbeddingsParameter:`
+- [`phoenix/xrex/train/trainer_recsys.py:1205`](../source/phoenix/xrex/train/trainer_recsys.py#L1205) — `def get_flattened_token_ids(self, data: RecsysFeaturesBatch) -> jax.Array:`
+- [`phoenix/xrex/train/trainer_recsys.py:1231`](../source/phoenix/xrex/train/trainer_recsys.py#L1231) — `def _segment_sum(`
+- [`phoenix/xrex/train/trainer_recsys.py:1284`](../source/phoenix/xrex/train/trainer_recsys.py#L1284) — `def _seg_sum(grads: jax.Array, tokens: jax.Array):`
+- [`phoenix/xrex/train/trainer_recsys.py:1294`](../source/phoenix/xrex/train/trainer_recsys.py#L1294) — `def update(`
+- [`phoenix/xrex/train/trainer_recsys.py:1364`](../source/phoenix/xrex/train/trainer_recsys.py#L1364) — `def _update(updated, original):`
+- [`phoenix/xrex/train/trainer_recsys.py:1431`](../source/phoenix/xrex/train/trainer_recsys.py#L1431) — `def async_emb_step(`
+- [`phoenix/xrex/train/trainer_recsys.py:1491`](../source/phoenix/xrex/train/trainer_recsys.py#L1491) — `def loss_fn(params, embeddings):`
+- [`phoenix/xrex/train/trainer_recsys.py:1540`](../source/phoenix/xrex/train/trainer_recsys.py#L1540) — `def _update(updated, original):`
+- [`phoenix/xrex/train/trainer_recsys.py:1604`](../source/phoenix/xrex/train/trainer_recsys.py#L1604) — `def async_emb_update(`
+- [`phoenix/xrex/train/trainer_recsys.py:1635`](../source/phoenix/xrex/train/trainer_recsys.py#L1635) — `def _flush_deferred_embedding_update(self, state: RecsysTrainingState) -> RecsysTrainingState:`
+- [`phoenix/xrex/train/trainer_recsys.py:1662`](../source/phoenix/xrex/train/trainer_recsys.py#L1662) — `def using_seqpack(self) -> bool:`
+- [`phoenix/xrex/train/trainer_recsys.py:1669`](../source/phoenix/xrex/train/trainer_recsys.py#L1669) — `def using_fa4(self) -> bool:`
+- [`phoenix/xrex/train/trainer_recsys.py:1680`](../source/phoenix/xrex/train/trainer_recsys.py#L1680) — `def add_block_sparse_layout(self, batch: RecsysFeaturesBatch) -> RecsysFeaturesBatch:`
+- [`phoenix/xrex/train/trainer_recsys.py:1708`](../source/phoenix/xrex/train/trainer_recsys.py#L1708) — `def _seqpack_block_size(self) -> int:`
+- [`phoenix/xrex/train/trainer_recsys.py:1726`](../source/phoenix/xrex/train/trainer_recsys.py#L1726) — `def _create_async_emb_executables(self, init_data, lr_shape, compiler_options) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:1775`](../source/phoenix/xrex/train/trainer_recsys.py#L1775) — `def first_step_embedding_lookup_start(state, batch):`
+- [`phoenix/xrex/train/trainer_recsys.py:1785`](../source/phoenix/xrex/train/trainer_recsys.py#L1785) — `def empty_embedding_grad_update():`
+- [`phoenix/xrex/train/trainer_recsys.py:1793`](../source/phoenix/xrex/train/trainer_recsys.py#L1793) — `def apply_deferred_embedding_update(state, grad_update):`
+- [`phoenix/xrex/train/trainer_recsys.py:1878`](../source/phoenix/xrex/train/trainer_recsys.py#L1878) — `def create_executable(self) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:1906`](../source/phoenix/xrex/train/trainer_recsys.py#L1906) — `def loss_fn(`
+- [`phoenix/xrex/train/trainer_recsys.py:1929`](../source/phoenix/xrex/train/trainer_recsys.py#L1929) — `def loss_fn_eval(batch: RecsysFeaturesBatch, recsys_embeddings: RecsysEmbeddingsParameter):`
+- [`phoenix/xrex/train/trainer_recsys.py:1938`](../source/phoenix/xrex/train/trainer_recsys.py#L1938) — `def user_forward_fn(`
+- [`phoenix/xrex/train/trainer_recsys.py:1953`](../source/phoenix/xrex/train/trainer_recsys.py#L1953) — `def two_tower_forward_fn(`
+- [`phoenix/xrex/train/trainer_recsys.py:1979`](../source/phoenix/xrex/train/trainer_recsys.py#L1979) — `def candidate_tower_forward_fn(`
+- [`phoenix/xrex/train/trainer_recsys.py:2001`](../source/phoenix/xrex/train/trainer_recsys.py#L2001) — `def forward_fn(`
+- [`phoenix/xrex/train/trainer_recsys.py:2042`](../source/phoenix/xrex/train/trainer_recsys.py#L2042) — `def init(r):`
+- [`phoenix/xrex/train/trainer_recsys.py:2105`](../source/phoenix/xrex/train/trainer_recsys.py#L2105) — `def maybe_create_eval_executables(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:2146`](../source/phoenix/xrex/train/trainer_recsys.py#L2146) — `def _register_recsys_checksum_jit(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:2156`](../source/phoenix/xrex/train/trainer_recsys.py#L2156) — `def compute_checksums_filtered(state):`
+- [`phoenix/xrex/train/trainer_recsys.py:2164`](../source/phoenix/xrex/train/trainer_recsys.py#L2164) — `def checksum_dict(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:2176`](../source/phoenix/xrex/train/trainer_recsys.py#L2176) — `def _is_copy_port_binder(self) -> bool:`
+- [`phoenix/xrex/train/trainer_recsys.py:2182`](../source/phoenix/xrex/train/trainer_recsys.py#L2182) — `def _copy_port_channel(self, port: int) -> grpc.Channel:`
+- [`phoenix/xrex/train/trainer_recsys.py:2199`](../source/phoenix/xrex/train/trainer_recsys.py#L2199) — `def read(p: str) -> bytes | None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2210`](../source/phoenix/xrex/train/trainer_recsys.py#L2210) — `def _free_ports(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:2220`](../source/phoenix/xrex/train/trainer_recsys.py#L2220) — `def _init_shmem_write_pool(self) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2225`](../source/phoenix/xrex/train/trainer_recsys.py#L2225) — `def _init_incremental_state(self) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2233`](../source/phoenix/xrex/train/trainer_recsys.py#L2233) — `def _copy_port_emb_host_spec(self) -> P | None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2250`](../source/phoenix/xrex/train/trainer_recsys.py#L2250) — `def adjust_host_sharding(self, host_sharding):`
+- [`phoenix/xrex/train/trainer_recsys.py:2265`](../source/phoenix/xrex/train/trainer_recsys.py#L2265) — `def _finalize_checkpoint_load(`
+- [`phoenix/xrex/train/trainer_recsys.py:2413`](../source/phoenix/xrex/train/trainer_recsys.py#L2413) — `def _find_own_cloud_checkpoint(self) -> str | None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2457`](../source/phoenix/xrex/train/trainer_recsys.py#L2457) — `def _has_own_local_checkpoint(self) -> bool:`
+- [`phoenix/xrex/train/trainer_recsys.py:2466`](../source/phoenix/xrex/train/trainer_recsys.py#L2466) — `def purge_opt_state_on_load(self, host_state):`
+- [`phoenix/xrex/train/trainer_recsys.py:2472`](../source/phoenix/xrex/train/trainer_recsys.py#L2472) — `def warm_start_staging_spec(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:2477`](../source/phoenix/xrex/train/trainer_recsys.py#L2477) — `def maybe_load_checkpoint(self, ctx: TrainerContext, tag=None):`
+- [`phoenix/xrex/train/trainer_recsys.py:2676`](../source/phoenix/xrex/train/trainer_recsys.py#L2676) — `def get_sharded(key, value):`
+- [`phoenix/xrex/train/trainer_recsys.py:2730`](../source/phoenix/xrex/train/trainer_recsys.py#L2730) — `def reshard(path, value):`
+- [`phoenix/xrex/train/trainer_recsys.py:2756`](../source/phoenix/xrex/train/trainer_recsys.py#L2756) — `def broadcast_from_leader(x):`
+- [`phoenix/xrex/train/trainer_recsys.py:2811`](../source/phoenix/xrex/train/trainer_recsys.py#L2811) — `def next_data_batch(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:2825`](../source/phoenix/xrex/train/trainer_recsys.py#L2825) — `def fetch() -> FetchedBatch:`
+- [`phoenix/xrex/train/trainer_recsys.py:2846`](../source/phoenix/xrex/train/trainer_recsys.py#L2846) — `def _checkpoint_data_position(self) -> DataPosition | None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2852`](../source/phoenix/xrex/train/trainer_recsys.py#L2852) — `def _maybe_build_stablehlo_bundle(self) -> list | None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2877`](../source/phoenix/xrex/train/trainer_recsys.py#L2877) — `def _write_stablehlo_bundle_files(self, prefix: str, bundle_files: list | None) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:2897`](../source/phoenix/xrex/train/trainer_recsys.py#L2897) — `def _write_shmem_checkpoint(`
+- [`phoenix/xrex/train/trainer_recsys.py:3002`](../source/phoenix/xrex/train/trainer_recsys.py#L3002) — `def save_checkpoint(self, *args, **kwargs):`
+- [`phoenix/xrex/train/trainer_recsys.py:3309`](../source/phoenix/xrex/train/trainer_recsys.py#L3309) — `def _bg_upload():`
+- [`phoenix/xrex/train/trainer_recsys.py:3368`](../source/phoenix/xrex/train/trainer_recsys.py#L3368) — `def run(self) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:3388`](../source/phoenix/xrex/train/trainer_recsys.py#L3388) — `def two_int32_to_int64(self, two_int32: jax.Array | np.ndarray) -> npt.NDArray[np.int64]:`
+- [`phoenix/xrex/train/trainer_recsys.py:3393`](../source/phoenix/xrex/train/trainer_recsys.py#L3393) — `def int64_to_two_int32(self, post_ids: npt.NDArray[np.int64]) -> jax.Array:`
+- [`phoenix/xrex/train/trainer_recsys.py:3398`](../source/phoenix/xrex/train/trainer_recsys.py#L3398) — `def eval(self, soft_step: int):`
+- [`phoenix/xrex/train/trainer_recsys.py:3404`](../source/phoenix/xrex/train/trainer_recsys.py#L3404) — `def maybe_build_retrieval_post_embeddings(self):`
+- [`phoenix/xrex/train/trainer_recsys.py:3503`](../source/phoenix/xrex/train/trainer_recsys.py#L3503) — `def _forward_chunked(head_index: int) -> jax.Array:`
+- [`phoenix/xrex/train/trainer_recsys.py:3574`](../source/phoenix/xrex/train/trainer_recsys.py#L3574) — `def maybe_build_gen_recs_post_embeddings(self) -> None:`
+- [`phoenix/xrex/train/trainer_recsys.py:3577`](../source/phoenix/xrex/train/trainer_recsys.py#L3577) — `def eval_two_tower(self, soft_step: int):`
+- [`phoenix/xrex/train/trainer_recsys.py:3583`](../source/phoenix/xrex/train/trainer_recsys.py#L3583) — `def _two_tower_eval_forward_fn(`
+- [`phoenix/xrex/train/trainer_recsys.py:3610`](../source/phoenix/xrex/train/trainer_recsys.py#L3610) — `def _make_candidate_tower_eval_fn(head_idx: int = 0):`
+- [`phoenix/xrex/train/trainer_recsys.py:3611`](../source/phoenix/xrex/train/trainer_recsys.py#L3611) — `def _fn(candidate_embeddings, post_sids=None, post_hashes=None):`
+- [`phoenix/xrex/train/trainer_recsys.py:3642`](../source/phoenix/xrex/train/trainer_recsys.py#L3642) — `def _loss_fn(batch: RecsysFeaturesBatch):`
+- [`phoenix/xrex/train/trainer_recsys.py:3652`](../source/phoenix/xrex/train/trainer_recsys.py#L3652) — `def _user_emb_fn(batch: RecsysFeaturesBatch):`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:25`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L25) — `class SidRetrievalTrainer(RecsysTrainer):`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:35`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L35) — `def create_executable(self) -> None:`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:39`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L39) — `def _family_create_executable_hook(self) -> None:`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:48`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L48) — `def _make_sid_generate_fn(beam_width: int):`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:50`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L50) — `def fn(`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:65`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L65) — `def eval(self, soft_step: int):`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:70`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L70) — `def _reload_sid_beam_resolver(self) -> tuple[object, float]:`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:94`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L94) — `def eval_sid_retrieval(self, soft_step: int) -> dict[str, float]:`
+- [`phoenix/xrex/train/trainer_sid_retrieval.py:126`](../source/phoenix/xrex/train/trainer_sid_retrieval.py#L126) — `def beam_forward_fn(jax_batch):`
+- [`phoenix/xrex/utils/aot.py:43`](../source/phoenix/xrex/utils/aot.py#L43) — `def is_host_callbacks(obj: Any) -> bool:`
+- [`phoenix/xrex/utils/aot.py:50`](../source/phoenix/xrex/utils/aot.py#L50) — `class TracedWithOptions:`
+- [`phoenix/xrex/utils/aot.py:57`](../source/phoenix/xrex/utils/aot.py#L57) — `class AOTInfo:`
+- [`phoenix/xrex/utils/aot.py:66`](../source/phoenix/xrex/utils/aot.py#L66) — `class PartiallySerialized:`
+- [`phoenix/xrex/utils/aot.py:74`](../source/phoenix/xrex/utils/aot.py#L74) — `def clear_xla_dump_flags(compile_options: xc.CompileOptions | None) -> xc.CompileOptions | None:`
+- [`phoenix/xrex/utils/aot.py:101`](../source/phoenix/xrex/utils/aot.py#L101) — `def remap_compile_options_device_assignment(`
+- [`phoenix/xrex/utils/aot.py:130`](../source/phoenix/xrex/utils/aot.py#L130) — `def load_compiled_from_serialized(`
+- [`phoenix/xrex/utils/aot.py:189`](../source/phoenix/xrex/utils/aot.py#L189) — `def partially_serialize(compiled: Compiled, execution_devices: Sequence[xc.Device]):`
+- [`phoenix/xrex/utils/aot.py:213`](../source/phoenix/xrex/utils/aot.py#L213) — `class _JaxPjrtPickler(pickle.Pickler):`
+- [`phoenix/xrex/utils/aot.py:214`](../source/phoenix/xrex/utils/aot.py#L214) — `def __init__(self, file, execution_devices: Sequence[xc.Device]):`
+- [`phoenix/xrex/utils/aot.py:222`](../source/phoenix/xrex/utils/aot.py#L222) — `def persistent_id(self, obj):`
+- [`phoenix/xrex/utils/aot.py:240`](../source/phoenix/xrex/utils/aot.py#L240) — `class _JaxPjrtUnpickler(pickle.Unpickler):`
+- [`phoenix/xrex/utils/aot.py:241`](../source/phoenix/xrex/utils/aot.py#L241) — `def __init__(`
+- [`phoenix/xrex/utils/aot.py:263`](../source/phoenix/xrex/utils/aot.py#L263) — `def persistent_load(self, pid):`
+- [`phoenix/xrex/utils/aot.py:297`](../source/phoenix/xrex/utils/aot.py#L297) — `def _lowered_name(lowered: Lowered):`
+- [`phoenix/xrex/utils/aot.py:303`](../source/phoenix/xrex/utils/aot.py#L303) — `class HashContext:`
+- [`phoenix/xrex/utils/aot.py:310`](../source/phoenix/xrex/utils/aot.py#L310) — `def read_annotation_file(file_path: str) -> str:`
+- [`phoenix/xrex/utils/aot.py:323`](../source/phoenix/xrex/utils/aot.py#L323) — `def cutlass_module_device_digest(module_bytes: bytes) -> str:`
+- [`phoenix/xrex/utils/aot.py:347`](../source/phoenix/xrex/utils/aot.py#L347) — `def _sanitize_cutlass_calls(m: ir.Module) -> ir.Module:`
+- [`phoenix/xrex/utils/aot.py:348`](../source/phoenix/xrex/utils/aot.py#L348) — `def _update(op: ir.Operation) -> ir.WalkResult:`
+- [`phoenix/xrex/utils/aot.py:369`](../source/phoenix/xrex/utils/aot.py#L369) — `def get_sanitized_ir_text(lowered: Lowered, add_loc: bool) -> str:`
+- [`phoenix/xrex/utils/aot.py:377`](../source/phoenix/xrex/utils/aot.py#L377) — `def get_environment_info() -> str:`
+- [`phoenix/xrex/utils/aot.py:394`](../source/phoenix/xrex/utils/aot.py#L394) — `def get_cache_key(lowered: Lowered, extra_info: list[str] = None, add_loc: bool = False):`
+- [`phoenix/xrex/utils/aot.py:435`](../source/phoenix/xrex/utils/aot.py#L435) — `def _replicate(array):`
+- [`phoenix/xrex/utils/aot.py:445`](../source/phoenix/xrex/utils/aot.py#L445) — `def replicate(source: np.ndarray | None = None) -> np.ndarray:`
+- [`phoenix/xrex/utils/aot.py:463`](../source/phoenix/xrex/utils/aot.py#L463) — `def RetryFileLock(lock_file: Path, *, poll_interval: float):`
+- [`phoenix/xrex/utils/aot.py:506`](../source/phoenix/xrex/utils/aot.py#L506) — `def compile_or_load_all_traced(`
+- [`phoenix/xrex/utils/aot.py:535`](../source/phoenix/xrex/utils/aot.py#L535) — `def _compile_or_load(name, traced_with_options, metrics: Dict[str, Dict[str, float]]):`
+- [`phoenix/xrex/utils/aot.py:716`](../source/phoenix/xrex/utils/aot.py#L716) — `class JittedOrCompiled(Wrapped):`
+- [`phoenix/xrex/utils/aot.py:719`](../source/phoenix/xrex/utils/aot.py#L719) — `def __init__(self, jitted, name=None):`
+- [`phoenix/xrex/utils/aot.py:723`](../source/phoenix/xrex/utils/aot.py#L723) — `def lower(self, *args, **kwargs):`
+- [`phoenix/xrex/utils/aot.py:728`](../source/phoenix/xrex/utils/aot.py#L728) — `def trace(self, *args, **kwargs) -> Traced:`
+- [`phoenix/xrex/utils/aot.py:733`](../source/phoenix/xrex/utils/aot.py#L733) — `def name(self):`
+- [`phoenix/xrex/utils/aot.py:740`](../source/phoenix/xrex/utils/aot.py#L740) — `def __call__(self, *args, **kwargs):`
+- [`phoenix/xrex/utils/checkpoint_cloud.py:13`](../source/phoenix/xrex/utils/checkpoint_cloud.py#L13) — `def ensure_orbax_dir_finalized(local_ckpt_dir: str, tag: str) -> None:`
+- [`phoenix/xrex/utils/checkpoint_cloud.py:28`](../source/phoenix/xrex/utils/checkpoint_cloud.py#L28) — `def collect_cloud_upload_files(`
+- [`phoenix/xrex/utils/checkpointing.py:32`](../source/phoenix/xrex/utils/checkpointing.py#L32) — `def _save_node_serialize_enabled() -> bool:`
+- [`phoenix/xrex/utils/checkpointing.py:36`](../source/phoenix/xrex/utils/checkpointing.py#L36) — `def _save_node_lock_path() -> str:`
+- [`phoenix/xrex/utils/checkpointing.py:45`](../source/phoenix/xrex/utils/checkpointing.py#L45) — `class _NodeBatchLock:`
+- [`phoenix/xrex/utils/checkpointing.py:46`](../source/phoenix/xrex/utils/checkpointing.py#L46) — `def __init__(self, path: str):`
+- [`phoenix/xrex/utils/checkpointing.py:50`](../source/phoenix/xrex/utils/checkpointing.py#L50) — `def __enter__(self):`
+- [`phoenix/xrex/utils/checkpointing.py:60`](../source/phoenix/xrex/utils/checkpointing.py#L60) — `def __exit__(self, *exc):`
+- [`phoenix/xrex/utils/checkpointing.py:63`](../source/phoenix/xrex/utils/checkpointing.py#L63) — `def close(self):`
+- [`phoenix/xrex/utils/checkpointing.py:70`](../source/phoenix/xrex/utils/checkpointing.py#L70) — `def _release_batch_memory():`
+- [`phoenix/xrex/utils/checkpointing.py:78`](../source/phoenix/xrex/utils/checkpointing.py#L78) — `class _AsyncCheckpointer(ocp.AsyncCheckpointer):`
+- [`phoenix/xrex/utils/checkpointing.py:79`](../source/phoenix/xrex/utils/checkpointing.py#L79) — `def wait_until_finished(self):`
+- [`phoenix/xrex/utils/checkpointing.py:86`](../source/phoenix/xrex/utils/checkpointing.py#L86) — `def get_checkpointer(timeout_secs=900, save_concurrent_gb: int | None = None):`
+- [`phoenix/xrex/utils/checkpointing.py:118`](../source/phoenix/xrex/utils/checkpointing.py#L118) — `class NoCompressionArrayHandler(ocp.type_handlers.ArrayHandler):`
+- [`phoenix/xrex/utils/checkpointing.py:119`](../source/phoenix/xrex/utils/checkpointing.py#L119) — `def _get_json_tspec_write(self, *args, **kwargs):`
+- [`phoenix/xrex/utils/checkpointing.py:127`](../source/phoenix/xrex/utils/checkpointing.py#L127) — `class ThrottledD2HArrayHandler(ocp.type_handlers.ArrayHandler):`
+- [`phoenix/xrex/utils/checkpointing.py:128`](../source/phoenix/xrex/utils/checkpointing.py#L128) — `def __init__(self, concurrent_bytes: int, **kwargs):`
+- [`phoenix/xrex/utils/checkpointing.py:134`](../source/phoenix/xrex/utils/checkpointing.py#L134) — `def _addressable_nbytes(self, arr: jax.Array) -> int:`
+- [`phoenix/xrex/utils/checkpointing.py:141`](../source/phoenix/xrex/utils/checkpointing.py#L141) — `async def serialize(self, values, infos, args=None):`
+- [`phoenix/xrex/utils/checkpointing.py:218`](../source/phoenix/xrex/utils/checkpointing.py#L218) — `class ThrottledNoCompressionArrayHandler(ThrottledD2HArrayHandler, NoCompressionArrayHandler):`
+- [`phoenix/xrex/utils/checkpointing.py:222`](../source/phoenix/xrex/utils/checkpointing.py#L222) — `def save_checkpoint(`
+- [`phoenix/xrex/utils/checkpointing.py:317`](../source/phoenix/xrex/utils/checkpointing.py#L317) — `def _callback():`
+- [`phoenix/xrex/utils/checkpointing.py:363`](../source/phoenix/xrex/utils/checkpointing.py#L363) — `def wait_until_finished():`
+- [`phoenix/xrex/utils/cluster.py:8`](../source/phoenix/xrex/utils/cluster.py#L8) — `def get_cluster() -> str:`
+- [`phoenix/xrex/utils/cluster.py:17`](../source/phoenix/xrex/utils/cluster.py#L17) — `def get_cloud() -> str:`
+- [`phoenix/xrex/utils/cluster.py:21`](../source/phoenix/xrex/utils/cluster.py#L21) — `def get_user() -> str:`
+- [`phoenix/xrex/utils/cluster.py:25`](../source/phoenix/xrex/utils/cluster.py#L25) — `def get_job_name() -> str:`
+- [`phoenix/xrex/utils/cluster.py:29`](../source/phoenix/xrex/utils/cluster.py#L29) — `def get_pod_name() -> str:`
+- [`phoenix/xrex/utils/cluster.py:33`](../source/phoenix/xrex/utils/cluster.py#L33) — `def get_node_name() -> str:`
+- [`phoenix/xrex/utils/cluster.py:37`](../source/phoenix/xrex/utils/cluster.py#L37) — `def get_hostname() -> str:`
+- [`phoenix/xrex/utils/cluster.py:41`](../source/phoenix/xrex/utils/cluster.py#L41) — `def has_roce_fabric() -> bool:`
+- [`phoenix/xrex/utils/gpu.py:18`](../source/phoenix/xrex/utils/gpu.py#L18) — `class GpuArch(Enum):`
+- [`phoenix/xrex/utils/gpu.py:28`](../source/phoenix/xrex/utils/gpu.py#L28) — `def string_to_gpu_arch(arch_str: str) -> GpuArch:`
+- [`phoenix/xrex/utils/gpu.py:45`](../source/phoenix/xrex/utils/gpu.py#L45) — `def _check_cuda_errors(status):`
+- [`phoenix/xrex/utils/gpu.py:51`](../source/phoenix/xrex/utils/gpu.py#L51) — `def gpu_arch():`
+- [`phoenix/xrex/utils/gpu.py:126`](../source/phoenix/xrex/utils/gpu.py#L126) — `def peak_tflops() -> float:`
+- [`phoenix/xrex/utils/gpu.py:143`](../source/phoenix/xrex/utils/gpu.py#L143) — `def num_physical_devices_per_node() -> int:`
+- [`phoenix/xrex/utils/gpu.py:159`](../source/phoenix/xrex/utils/gpu.py#L159) — `def _read_sysfs(path: str) -> str:`
+- [`phoenix/xrex/utils/gpu.py:164`](../source/phoenix/xrex/utils/gpu.py#L164) — `def _parse_cpulist(text: str) -> set[int]:`
+- [`phoenix/xrex/utils/gpu.py:172`](../source/phoenix/xrex/utils/gpu.py#L172) — `def schedulable_cpus(*nodes: int) -> set[int]:`
+- [`phoenix/xrex/utils/gpu.py:184`](../source/phoenix/xrex/utils/gpu.py#L184) — `def _gpu_index_to_local_numa_node() -> dict[int, int]:`
+- [`phoenix/xrex/utils/gpu.py:232`](../source/phoenix/xrex/utils/gpu.py#L232) — `def _running_in_ci() -> bool:`
+- [`phoenix/xrex/utils/gpu.py:236`](../source/phoenix/xrex/utils/gpu.py#L236) — `def _running_on_a_devbox() -> bool:`
+- [`phoenix/xrex/utils/gpu.py:240`](../source/phoenix/xrex/utils/gpu.py#L240) — `def _get_max_clocks() -> tuple[int, int]:`
+- [`phoenix/xrex/utils/gpu.py:257`](../source/phoenix/xrex/utils/gpu.py#L257) — `def set_gpu_clocks_to_max() -> None:`
+- [`phoenix/xrex/utils/gpu.py:270`](../source/phoenix/xrex/utils/gpu.py#L270) — `def pin_process_to_local_numa(gpu_index: int | str) -> None:`
+- [`phoenix/xrex/utils/jax_extensions.py:32`](../source/phoenix/xrex/utils/jax_extensions.py#L32) — `def patch_dot_general():`
+- [`phoenix/xrex/utils/jax_extensions.py:44`](../source/phoenix/xrex/utils/jax_extensions.py#L44) — `def patch_xla_extensions():`
+- [`phoenix/xrex/utils/jax_extensions.py:56`](../source/phoenix/xrex/utils/jax_extensions.py#L56) — `def check_jax_cuda_version():`
+- [`phoenix/xrex/utils/jax_extensions.py:105`](../source/phoenix/xrex/utils/jax_extensions.py#L105) — `def patch_shard_map_transpose():`
+- [`phoenix/xrex/utils/jax_extensions.py:118`](../source/phoenix/xrex/utils/jax_extensions.py#L118) — `def _xla_metadata_value_lowering_rule(`
+- [`phoenix/xrex/utils/jax_extensions.py:136`](../source/phoenix/xrex/utils/jax_extensions.py#L136) — `def _target_op_to_attach_metadata(value_mlir: ir.Value) -> ir.Operation | None:`
+- [`phoenix/xrex/utils/jax_extensions.py:143`](../source/phoenix/xrex/utils/jax_extensions.py#L143) — `def _attach_xla_metadata_to_op(xla_metadata: dict[str, Any], op: ir.Operation) -> None:`
+- [`phoenix/xrex/utils/jax_extensions.py:157`](../source/phoenix/xrex/utils/jax_extensions.py#L157) — `def set_xla_metadata_with_context(`
+- [`phoenix/xrex/utils/jax_extensions.py:179`](../source/phoenix/xrex/utils/jax_extensions.py#L179) — `def no_barrier_jvp(primals, tangents):`
+- [`phoenix/xrex/utils/jax_extensions.py:189`](../source/phoenix/xrex/utils/jax_extensions.py#L189) — `def no_barrier_batcher(args, dims):`
+- [`phoenix/xrex/utils/jax_extensions.py:197`](../source/phoenix/xrex/utils/jax_extensions.py#L197) — `def no_barrier(x):`
+- [`phoenix/xrex/utils/jax_extensions.py:201`](../source/phoenix/xrex/utils/jax_extensions.py#L201) — `def _find_no_barrier_inputs(jaxpr: Jaxpr) -> tuple[bool, ...]:`
+- [`phoenix/xrex/utils/jax_extensions.py:204`](../source/phoenix/xrex/utils/jax_extensions.py#L204) — `def is_marked(var: Atom) -> bool:`
+- [`phoenix/xrex/utils/jax_extensions.py:209`](../source/phoenix/xrex/utils/jax_extensions.py#L209) — `def mark_var(var: Atom):`
+- [`phoenix/xrex/utils/jax_extensions.py:240`](../source/phoenix/xrex/utils/jax_extensions.py#L240) — `def _patched_remat_lowering(`
+- [`phoenix/xrex/utils/jax_extensions.py:280`](../source/phoenix/xrex/utils/jax_extensions.py#L280) — `def is_upstream_jax() -> bool:`
+- [`phoenix/xrex/utils/jax_extensions.py:284`](../source/phoenix/xrex/utils/jax_extensions.py#L284) — `def skip_test_if(predicate: Callable[[], bool], reason: str):`
+- [`phoenix/xrex/utils/jax_extensions.py:285`](../source/phoenix/xrex/utils/jax_extensions.py#L285) — `def skip(test_method):`
+- [`phoenix/xrex/utils/jax_extensions.py:287`](../source/phoenix/xrex/utils/jax_extensions.py#L287) — `def test_method_wrapper(self, *args, **kwargs):`
+- [`phoenix/xrex/utils/jax_extensions.py:298`](../source/phoenix/xrex/utils/jax_extensions.py#L298) — `def skip_test_if_upstream_jax():`
+- [`phoenix/xrex/utils/jax_extensions.py:304`](../source/phoenix/xrex/utils/jax_extensions.py#L304) — `def initialize_extensions():`
+- [`phoenix/xrex/utils/launch_env.py:30`](../source/phoenix/xrex/utils/launch_env.py#L30) — `def run_files_note(run_dir: str | Path) -> str | None:`
+- [`phoenix/xrex/utils/layer_stack.py:30`](../source/phoenix/xrex/utils/layer_stack.py#L30) — `def _check_no_varargs(f: Callable[..., Any]) -> None:`
+- [`phoenix/xrex/utils/layer_stack.py:39`](../source/phoenix/xrex/utils/layer_stack.py#L39) — `def _get_rng_stack(count: int) -> jax.Array | None:`
+- [`phoenix/xrex/utils/layer_stack.py:46`](../source/phoenix/xrex/utils/layer_stack.py#L46) — `def _apply_generator_fn_to_parameter_states(`
+- [`phoenix/xrex/utils/layer_stack.py:77`](../source/phoenix/xrex/utils/layer_stack.py#L77) — `def _get_lifted_state_keys(state: hk.MutableState) -> set[tuple[str, str]]:`
+- [`phoenix/xrex/utils/layer_stack.py:85`](../source/phoenix/xrex/utils/layer_stack.py#L85) — `def _merge_inner_state(`
+- [`phoenix/xrex/utils/layer_stack.py:106`](../source/phoenix/xrex/utils/layer_stack.py#L106) — `class TransparencyMapping(Protocol):`
+- [`phoenix/xrex/utils/layer_stack.py:107`](../source/phoenix/xrex/utils/layer_stack.py#L107) — `def stacked_to_flat(self, stacked_module_name: str, scan_idx: int) -> str: ...`
+- [`phoenix/xrex/utils/layer_stack.py:109`](../source/phoenix/xrex/utils/layer_stack.py#L109) — `def flat_to_stacked(self, unstacked_module_name: str) -> tuple[str, int] | None: ...`
+- [`phoenix/xrex/utils/layer_stack.py:112`](../source/phoenix/xrex/utils/layer_stack.py#L112) — `def split_params(`
+- [`phoenix/xrex/utils/layer_stack.py:118`](../source/phoenix/xrex/utils/layer_stack.py#L118) — `def _split(x):`
+- [`phoenix/xrex/utils/layer_stack.py:138`](../source/phoenix/xrex/utils/layer_stack.py#L138) — `def stack_params(`
+- [`phoenix/xrex/utils/layer_stack.py:176`](../source/phoenix/xrex/utils/layer_stack.py#L176) — `class _LayerStack:`
+- [`phoenix/xrex/utils/layer_stack.py:177`](../source/phoenix/xrex/utils/layer_stack.py#L177) — `def __init__(`
+- [`phoenix/xrex/utils/layer_stack.py:193`](../source/phoenix/xrex/utils/layer_stack.py#L193) — `def __call__(self, x, *args_ys, reverse=False, **kwargs):`
+- [`phoenix/xrex/utils/layer_stack.py:197`](../source/phoenix/xrex/utils/layer_stack.py#L197) — `def per_layer_init_fn(c, a):`
+- [`phoenix/xrex/utils/layer_stack.py:208`](../source/phoenix/xrex/utils/layer_stack.py#L208) — `def scanned_init_fn(x, rng):`
+- [`phoenix/xrex/utils/layer_stack.py:219`](../source/phoenix/xrex/utils/layer_stack.py#L219) — `def update_pspec(x):`
+- [`phoenix/xrex/utils/layer_stack.py:243`](../source/phoenix/xrex/utils/layer_stack.py#L243) — `def layer(`
+- [`phoenix/xrex/utils/layer_stack.py:289`](../source/phoenix/xrex/utils/layer_stack.py#L289) — `def _call_wrapped(`
+- [`phoenix/xrex/utils/layer_stack.py:298`](../source/phoenix/xrex/utils/layer_stack.py#L298) — `class _LayerStackNoPerLayer(_LayerStack):`
+- [`phoenix/xrex/utils/layer_stack.py:299`](../source/phoenix/xrex/utils/layer_stack.py#L299) — `def __init__(`
+- [`phoenix/xrex/utils/layer_stack.py:321`](../source/phoenix/xrex/utils/layer_stack.py#L321) — `def _call_wrapped(self, args, y, **kwargs):`
+- [`phoenix/xrex/utils/layer_stack.py:329`](../source/phoenix/xrex/utils/layer_stack.py#L329) — `class _LayerStackWithPerLayer(_LayerStack):`
+- [`phoenix/xrex/utils/layer_stack.py:330`](../source/phoenix/xrex/utils/layer_stack.py#L330) — `def __init__(`
+- [`phoenix/xrex/utils/layer_stack.py:351`](../source/phoenix/xrex/utils/layer_stack.py#L351) — `def _call_wrapped(self, x, *args, **kwargs):`
+- [`phoenix/xrex/utils/layer_stack.py:355`](../source/phoenix/xrex/utils/layer_stack.py#L355) — `def layer_stack(`
+- [`phoenix/xrex/utils/layer_stack.py:370`](../source/phoenix/xrex/utils/layer_stack.py#L370) — `def iterate(f):`
+- [`phoenix/xrex/utils/layer_stack.py:374`](../source/phoenix/xrex/utils/layer_stack.py#L374) — `def wrapped(x, *args, **kwargs):`
+- [`phoenix/xrex/utils/layer_stack.py:391`](../source/phoenix/xrex/utils/layer_stack.py#L391) — `def wrapped(*args, **kwargs):`
+- [`phoenix/xrex/utils/log_timer.py:10`](../source/phoenix/xrex/utils/log_timer.py#L10) — `def duration(secs: float) -> str:`
+- [`phoenix/xrex/utils/log_timer.py:29`](../source/phoenix/xrex/utils/log_timer.py#L29) — `class Timer:`
+- [`phoenix/xrex/utils/log_timer.py:30`](../source/phoenix/xrex/utils/log_timer.py#L30) — `def __init__(self) -> None:`
+- [`phoenix/xrex/utils/log_timer.py:34`](../source/phoenix/xrex/utils/log_timer.py#L34) — `def __repr__(self) -> str:`
+- [`phoenix/xrex/utils/log_timer.py:37`](../source/phoenix/xrex/utils/log_timer.py#L37) — `def elapsed(self) -> float:`
+- [`phoenix/xrex/utils/log_timer.py:42`](../source/phoenix/xrex/utils/log_timer.py#L42) — `def __rtruediv__(self, dividend):`
+- [`phoenix/xrex/utils/log_timer.py:46`](../source/phoenix/xrex/utils/log_timer.py#L46) — `class C(Protocol):`
+- [`phoenix/xrex/utils/log_timer.py:47`](../source/phoenix/xrex/utils/log_timer.py#L47) — `def __call__(self, *args: Any, **kwargs: Any) -> Any: ...`
+- [`phoenix/xrex/utils/log_timer.py:54`](../source/phoenix/xrex/utils/log_timer.py#L54) — `def log_elapsed_time(logger_or_func: logging.Logger) -> Callable[[F], F]: ...`
+- [`phoenix/xrex/utils/log_timer.py:58`](../source/phoenix/xrex/utils/log_timer.py#L58) — `def log_elapsed_time(logger_or_func: F) -> F: ...`
+- [`phoenix/xrex/utils/log_timer.py:61`](../source/phoenix/xrex/utils/log_timer.py#L61) — `def log_elapsed_time(logger_or_func: logging.Logger | Callable[[F], F]) -> F | Callable[[F], F]:`
+- [`phoenix/xrex/utils/log_timer.py:62`](../source/phoenix/xrex/utils/log_timer.py#L62) — `def decorator(f: F) -> F:`
+- [`phoenix/xrex/utils/log_timer.py:63`](../source/phoenix/xrex/utils/log_timer.py#L63) — `def wrap(*args: Any, **kwargs: Any) -> Any:`
+- [`phoenix/xrex/utils/log_util.py:20`](../source/phoenix/xrex/utils/log_util.py#L20) — `class ForceRotateOnStartHandler(RotatingFileHandler):`
+- [`phoenix/xrex/utils/log_util.py:21`](../source/phoenix/xrex/utils/log_util.py#L21) — `def __init__(self, filename, maxBytes=0, backupCount=0, encoding=None, delay=False):`
+- [`phoenix/xrex/utils/log_util.py:33`](../source/phoenix/xrex/utils/log_util.py#L33) — `def set_log_dataset(name: str | None) -> None:`
+- [`phoenix/xrex/utils/log_util.py:37`](../source/phoenix/xrex/utils/log_util.py#L37) — `def set_log_row(record_id: int | None) -> None:`
+- [`phoenix/xrex/utils/log_util.py:53`](../source/phoenix/xrex/utils/log_util.py#L53) — `def _stringify(value: object) -> str:`
+- [`phoenix/xrex/utils/log_util.py:61`](../source/phoenix/xrex/utils/log_util.py#L61) — `def _format_extra_kv(record: logging.LogRecord) -> str:`
+- [`phoenix/xrex/utils/log_util.py:77`](../source/phoenix/xrex/utils/log_util.py#L77) — `def get_formatter(`
+- [`phoenix/xrex/utils/log_util.py:105`](../source/phoenix/xrex/utils/log_util.py#L105) — `class MicrosecondFormatter(logging.Formatter):`
+- [`phoenix/xrex/utils/log_util.py:106`](../source/phoenix/xrex/utils/log_util.py#L106) — `def formatTime(self, record, datefmt=None):`
+- [`phoenix/xrex/utils/log_util.py:110`](../source/phoenix/xrex/utils/log_util.py#L110) — `def format(self, record):`
+- [`phoenix/xrex/utils/log_util.py:136`](../source/phoenix/xrex/utils/log_util.py#L136) — `def configure_logging(`
+- [`phoenix/xrex/utils/log_util.py:152`](../source/phoenix/xrex/utils/log_util.py#L152) — `def _is_telemetry_capture(h: logging.Handler) -> bool:`
+- [`phoenix/xrex/utils/log_util.py:212`](../source/phoenix/xrex/utils/log_util.py#L212) — `class MultiLineStreamHandler(logging.StreamHandler):`
+- [`phoenix/xrex/utils/log_util.py:213`](../source/phoenix/xrex/utils/log_util.py#L213) — `def emit(self, record):`
+- [`phoenix/xrex/utils/log_util.py:231`](../source/phoenix/xrex/utils/log_util.py#L231) — `def setup_axiom_only_logger(worker_name: str | None = None):`
+- [`phoenix/xrex/utils/log_util.py:244`](../source/phoenix/xrex/utils/log_util.py#L244) — `class _BrokenPipeSafeStreamHandler(logging.StreamHandler):`
+- [`phoenix/xrex/utils/log_util.py:245`](../source/phoenix/xrex/utils/log_util.py#L245) — `def handleError(self, record: logging.LogRecord) -> None:`
+- [`phoenix/xrex/utils/log_util.py:257`](../source/phoenix/xrex/utils/log_util.py#L257) — `def add_stream_handler(`
+- [`phoenix/xrex/utils/metadata.py:47`](../source/phoenix/xrex/utils/metadata.py#L47) — `def checkpoint_dir_or_default(checkpoint_dir: str | None):`
+- [`phoenix/xrex/utils/metadata.py:53`](../source/phoenix/xrex/utils/metadata.py#L53) — `def metadata_file_exists(checkpoint_path: Path):`
+- [`phoenix/xrex/utils/metadata.py:59`](../source/phoenix/xrex/utils/metadata.py#L59) — `def read_checkpoint_metadata(metadata_path: Path) -> MetadataFromCheckpoint:`
+- [`phoenix/xrex/utils/metadata.py:69`](../source/phoenix/xrex/utils/metadata.py#L69) — `def write_checkpoint_metadata(`
+- [`phoenix/xrex/utils/metadata.py:90`](../source/phoenix/xrex/utils/metadata.py#L90) — `def read_metadata_file(checkpoint_path: Path) -> MetadataFromCheckpoint | None:`
+- [`phoenix/xrex/utils/metadata.py:110`](../source/phoenix/xrex/utils/metadata.py#L110) — `def write_metadata_file(`
+- [`phoenix/xrex/utils/metadata.py:133`](../source/phoenix/xrex/utils/metadata.py#L133) — `class Run:`
+- [`phoenix/xrex/utils/metadata.py:146`](../source/phoenix/xrex/utils/metadata.py#L146) — `def new_from_scratch(cls, name: str, reuse_run_id: bool = False) -> Run:`
+- [`phoenix/xrex/utils/metadata.py:164`](../source/phoenix/xrex/utils/metadata.py#L164) — `def new_child(self, name: str, reuse_run_id: bool = False) -> Run:`
+- [`phoenix/xrex/utils/metadata.py:188`](../source/phoenix/xrex/utils/metadata.py#L188) — `def new_restart(self, reuse_run_id: bool = False) -> Run:`
+- [`phoenix/xrex/utils/metadata.py:205`](../source/phoenix/xrex/utils/metadata.py#L205) — `def checkpoint_path(self, base_dir: str | None, elapsed_samples: int) -> str:`
+- [`phoenix/xrex/utils/metadata.py:211`](../source/phoenix/xrex/utils/metadata.py#L211) — `def run_id_parts(self) -> tuple[str, int]:`
+- [`phoenix/xrex/utils/metadata.py:215`](../source/phoenix/xrex/utils/metadata.py#L215) — `class LoadType(Enum):`
+- [`phoenix/xrex/utils/metadata.py:222`](../source/phoenix/xrex/utils/metadata.py#L222) — `class CheckpointMeta:`
+- [`phoenix/xrex/utils/metadata.py:232`](../source/phoenix/xrex/utils/metadata.py#L232) — `def is_manual_load(self) -> bool:`
+- [`phoenix/xrex/utils/metadata.py:238`](../source/phoenix/xrex/utils/metadata.py#L238) — `def from_dict(cls, data: dict[str, Any]):`
+- [`phoenix/xrex/utils/metadata.py:243`](../source/phoenix/xrex/utils/metadata.py#L243) — `class Jsonable(Protocol):`
+- [`phoenix/xrex/utils/metadata.py:244`](../source/phoenix/xrex/utils/metadata.py#L244) — `def to_json(self) -> str: ...`
+- [`phoenix/xrex/utils/metadata.py:247`](../source/phoenix/xrex/utils/metadata.py#L247) — `def guess_checkpoint_format(path):`
+- [`phoenix/xrex/utils/metadata.py:257`](../source/phoenix/xrex/utils/metadata.py#L257) — `def has_committed_payload(checkpoint_path: Path) -> bool:`
+- [`phoenix/xrex/utils/metadata.py:272`](../source/phoenix/xrex/utils/metadata.py#L272) — `def _is_loadable_checkpoint(checkpoint_path: Path) -> bool:`
+- [`phoenix/xrex/utils/metadata.py:286`](../source/phoenix/xrex/utils/metadata.py#L286) — `class MetadataProvider(ABC):`
+- [`phoenix/xrex/utils/metadata.py:288`](../source/phoenix/xrex/utils/metadata.py#L288) — `def discover_checkpoint(`
+- [`phoenix/xrex/utils/metadata.py:293`](../source/phoenix/xrex/utils/metadata.py#L293) — `def get_run_info(self, checkpoint: CheckpointMeta) -> Run: ...`
+- [`phoenix/xrex/utils/metadata.py:296`](../source/phoenix/xrex/utils/metadata.py#L296) — `def record_run(self, run: Run, config: Jsonable):`
+- [`phoenix/xrex/utils/metadata.py:300`](../source/phoenix/xrex/utils/metadata.py#L300) — `def record_checkpoint(`
+- [`phoenix/xrex/utils/metadata.py:316`](../source/phoenix/xrex/utils/metadata.py#L316) — `def _matching_subdirs(search_dir: Path, pattern):`
+- [`phoenix/xrex/utils/metadata.py:324`](../source/phoenix/xrex/utils/metadata.py#L324) — `def _search_for_latest_path_manual(search_dir: Path):`
+- [`phoenix/xrex/utils/metadata.py:349`](../source/phoenix/xrex/utils/metadata.py#L349) — `def _search_for_latest_path(search_dir: Path) -> Optional[tuple[str, Path, int]]:`
+- [`phoenix/xrex/utils/metadata.py:375`](../source/phoenix/xrex/utils/metadata.py#L375) — `class FileSystemProvider(MetadataProvider):`
+- [`phoenix/xrex/utils/metadata.py:376`](../source/phoenix/xrex/utils/metadata.py#L376) — `def __init__(self, checkpoint_dir: str | Path):`
+- [`phoenix/xrex/utils/metadata.py:380`](../source/phoenix/xrex/utils/metadata.py#L380) — `def discover_checkpoint(`
+- [`phoenix/xrex/utils/metadata.py:420`](../source/phoenix/xrex/utils/metadata.py#L420) — `def get_run_info(self, checkpoint: CheckpointMeta) -> Run:`
+- [`phoenix/xrex/utils/metadata.py:431`](../source/phoenix/xrex/utils/metadata.py#L431) — `def record_run(self, run: Run, config: Jsonable):`
+- [`phoenix/xrex/utils/metadata.py:434`](../source/phoenix/xrex/utils/metadata.py#L434) — `def record_checkpoint(`
+- [`phoenix/xrex/utils/metadata.py:477`](../source/phoenix/xrex/utils/metadata.py#L477) — `class MetadataManager:`
+- [`phoenix/xrex/utils/metadata.py:484`](../source/phoenix/xrex/utils/metadata.py#L484) — `def init_or_restart(`
+- [`phoenix/xrex/utils/metadata.py:491`](../source/phoenix/xrex/utils/metadata.py#L491) — `def init_run(`
+- [`phoenix/xrex/utils/metadata.py:516`](../source/phoenix/xrex/utils/metadata.py#L516) — `def checkpoint(self) -> Optional[CheckpointMeta]:`
+- [`phoenix/xrex/utils/metadata.py:519`](../source/phoenix/xrex/utils/metadata.py#L519) — `def discover_checkpoint(`
+- [`phoenix/xrex/utils/metadata.py:540`](../source/phoenix/xrex/utils/metadata.py#L540) — `def restart_run(self) -> tuple[Run, Optional[CheckpointMeta]]:`
+- [`phoenix/xrex/utils/metadata.py:573`](../source/phoenix/xrex/utils/metadata.py#L573) — `def record_completed_checkpoint(`
+- [`phoenix/xrex/utils/metadata.py:601`](../source/phoenix/xrex/utils/metadata.py#L601) — `def _record_run(self, run: Run, config: Jsonable):`
+- [`phoenix/xrex/utils/metadata.py:606`](../source/phoenix/xrex/utils/metadata.py#L606) — `def build_metadata_manager(checkpoint_dir: str | None) -> MetadataManager:`
+- [`phoenix/xrex/utils/metadata.py:614`](../source/phoenix/xrex/utils/metadata.py#L614) — `def _new_run_id() -> str:`
+- [`phoenix/xrex/utils/metadata.py:622`](../source/phoenix/xrex/utils/metadata.py#L622) — `def _increment_restart_count(run_id: str) -> str:`
+- [`phoenix/xrex/utils/metadata.py:627`](../source/phoenix/xrex/utils/metadata.py#L627) — `def _into_parts(run_id: str) -> tuple[str, int]:`
+- [`phoenix/xrex/utils/metadata.py:632`](../source/phoenix/xrex/utils/metadata.py#L632) — `def _git_bin() -> str:`
+- [`phoenix/xrex/utils/metadata.py:640`](../source/phoenix/xrex/utils/metadata.py#L640) — `def _commit_hash() -> str:`
+- [`phoenix/xrex/utils/metrics.py:18`](../source/phoenix/xrex/utils/metrics.py#L18) — `def pop():`
+- [`phoenix/xrex/utils/metrics.py:25`](../source/phoenix/xrex/utils/metrics.py#L25) — `def addto(key, value, default):`
+- [`phoenix/xrex/utils/metrics.py:30`](../source/phoenix/xrex/utils/metrics.py#L30) — `def _is_embedding_param(key: str) -> bool:`
+- [`phoenix/xrex/utils/metrics.py:34`](../source/phoenix/xrex/utils/metrics.py#L34) — `def _embedding_per_row_axis(key: str) -> int:`
+- [`phoenix/xrex/utils/metrics.py:38`](../source/phoenix/xrex/utils/metrics.py#L38) — `def _embedding_row_norm_ratios(`
+- [`phoenix/xrex/utils/metrics.py:51`](../source/phoenix/xrex/utils/metrics.py#L51) — `def _compute_norm(p, axes=None):`
+- [`phoenix/xrex/utils/metrics.py:55`](../source/phoenix/xrex/utils/metrics.py#L55) — `def split_metrics(`
+- [`phoenix/xrex/utils/metrics.py:60`](../source/phoenix/xrex/utils/metrics.py#L60) — `def layer_stack_base(key: str, layer_idx: int) -> str:`
+- [`phoenix/xrex/utils/metrics.py:90`](../source/phoenix/xrex/utils/metrics.py#L90) — `def _find_moment_state(state):`
+- [`phoenix/xrex/utils/metrics.py:101`](../source/phoenix/xrex/utils/metrics.py#L101) — `def _moment_metrics(first_state) -> dict:`
+- [`phoenix/xrex/utils/metrics.py:116`](../source/phoenix/xrex/utils/metrics.py#L116) — `def norm_metrics(params, opt_state, gradients, updates):`
+- [`phoenix/xrex/utils/metrics.py:141`](../source/phoenix/xrex/utils/metrics.py#L141) — `def extract_stacked_metrics(metrics):`
+- [`phoenix/xrex/utils/model.py:8`](../source/phoenix/xrex/utils/model.py#L8) — `class MemoryModelOutput:`
+- [`phoenix/xrex/utils/nsys.py:9`](../source/phoenix/xrex/utils/nsys.py#L9) — `def nsys_start(run_dir: str, session_name: str, options: str):`
+- [`phoenix/xrex/utils/nsys.py:22`](../source/phoenix/xrex/utils/nsys.py#L22) — `def nsys_stop_and_shutdown(session_name: str):`
+- [`phoenix/xrex/utils/ocdbt.py:13`](../source/phoenix/xrex/utils/ocdbt.py#L13) — `def _read_varint(data: bytes, pos: int) -> Tuple[int, int]:`
+- [`phoenix/xrex/utils/ocdbt.py:26`](../source/phoenix/xrex/utils/ocdbt.py#L26) — `def _read_names(`
+- [`phoenix/xrex/utils/ocdbt.py:55`](../source/phoenix/xrex/utils/ocdbt.py#L55) — `def _read_lists(data: bytes, pos: int, num_values: int, *lists) -> int:`
+- [`phoenix/xrex/utils/ocdbt.py:63`](../source/phoenix/xrex/utils/ocdbt.py#L63) — `def _decompress(zd, data: bytes) -> bytes:`
+- [`phoenix/xrex/utils/ocdbt.py:66`](../source/phoenix/xrex/utils/ocdbt.py#L66) — `def _get():`
+- [`phoenix/xrex/utils/ocdbt.py:75`](../source/phoenix/xrex/utils/ocdbt.py#L75) — `def _load_node(`
+- [`phoenix/xrex/utils/ocdbt.py:155`](../source/phoenix/xrex/utils/ocdbt.py#L155) — `def load_shard_sources(`
+- [`phoenix/xrex/utils/profiler.py:25`](../source/phoenix/xrex/utils/profiler.py#L25) — `class _ProfileSession:`
+- [`phoenix/xrex/utils/profiler.py:31`](../source/phoenix/xrex/utils/profiler.py#L31) — `class _ProfileState:`
+- [`phoenix/xrex/utils/profiler.py:35`](../source/phoenix/xrex/utils/profiler.py#L35) — `def reset(self) -> None:`
+- [`phoenix/xrex/utils/profiler.py:42`](../source/phoenix/xrex/utils/profiler.py#L42) — `def start_trace(log_dir: str | PathLike[str]) -> None:`
+- [`phoenix/xrex/utils/profiler.py:49`](../source/phoenix/xrex/utils/profiler.py#L49) — `def _export_and_write_fdo(sess: _profiler.ProfilerSession, log_dir: Path, xplane: object) -> None:`
+- [`phoenix/xrex/utils/profiler.py:64`](../source/phoenix/xrex/utils/profiler.py#L64) — `def stop_trace(timeout: float = _STOP_TRACE_TIMEOUT_SECS) -> None:`
+- [`phoenix/xrex/utils/profiler.py:89`](../source/phoenix/xrex/utils/profiler.py#L89) — `def read_fdo_profile(fun_name: str, fdo_dir: str | PathLike[str] | None) -> str | None:`
+- [`phoenix/xrex/utils/profiler.py:107`](../source/phoenix/xrex/utils/profiler.py#L107) — `def start_profiler_server(port: int, process_index: int) -> _profiler.ProfilerServer:`
+- [`phoenix/xrex/utils/pyspy_profiler.py:16`](../source/phoenix/xrex/utils/pyspy_profiler.py#L16) — `class _PyspyState:`
+- [`phoenix/xrex/utils/pyspy_profiler.py:20`](../source/phoenix/xrex/utils/pyspy_profiler.py#L20) — `def reset(self) -> None:`
+- [`phoenix/xrex/utils/pyspy_profiler.py:27`](../source/phoenix/xrex/utils/pyspy_profiler.py#L27) — `def start_pyspy_trace(dir_path: os.PathLike, blocking: bool = False, rate: int = 100) -> None:`
+- [`phoenix/xrex/utils/pyspy_profiler.py:59`](../source/phoenix/xrex/utils/pyspy_profiler.py#L59) — `def stop_pyspy_trace() -> None:`
+- [`phoenix/xrex/utils/recsys_async_emb_lookup.py:17`](../source/phoenix/xrex/utils/recsys_async_emb_lookup.py#L17) — `def lookup_start(`
+- [`phoenix/xrex/utils/recsys_async_emb_lookup.py:33`](../source/phoenix/xrex/utils/recsys_async_emb_lookup.py#L33) — `def start(`
+- [`phoenix/xrex/utils/recsys_async_emb_lookup.py:42`](../source/phoenix/xrex/utils/recsys_async_emb_lookup.py#L42) — `def lookup_done(`
+- [`phoenix/xrex/utils/recsys_async_emb_lookup.py:55`](../source/phoenix/xrex/utils/recsys_async_emb_lookup.py#L55) — `def done(lookup_pin: jax.Array) -> jax.Array:`
+- [`phoenix/xrex/utils/toolbox_notify.py:23`](../source/phoenix/xrex/utils/toolbox_notify.py#L23) — `def _post(kind: str, body_key: str, path: str, required_prefix: str) -> None:`
+- [`phoenix/xrex/utils/toolbox_notify.py:34`](../source/phoenix/xrex/utils/toolbox_notify.py#L34) — `def _fire() -> None:`
+- [`phoenix/xrex/utils/toolbox_notify.py:52`](../source/phoenix/xrex/utils/toolbox_notify.py#L52) — `def notify_checkpoint_async(checkpoint_path: str | os.PathLike[str]) -> None:`
+- [`phoenix/xrex/utils/tracer.py:32`](../source/phoenix/xrex/utils/tracer.py#L32) — `class OsUrandomIdGenerator(IdGenerator):`
+- [`phoenix/xrex/utils/tracer.py:33`](../source/phoenix/xrex/utils/tracer.py#L33) — `def generate_span_id(self) -> int:`
+- [`phoenix/xrex/utils/tracer.py:36`](../source/phoenix/xrex/utils/tracer.py#L36) — `def generate_trace_id(self) -> int:`
+- [`phoenix/xrex/utils/tracer.py:40`](../source/phoenix/xrex/utils/tracer.py#L40) — `class MockTracer:`
+- [`phoenix/xrex/utils/tracer.py:41`](../source/phoenix/xrex/utils/tracer.py#L41) — `def start_as_current_span(self, *args, **kwargs):`
+- [`phoenix/xrex/utils/tracer.py:42`](../source/phoenix/xrex/utils/tracer.py#L42) — `class MockContextManager:`
+- [`phoenix/xrex/utils/tracer.py:43`](../source/phoenix/xrex/utils/tracer.py#L43) — `def __enter__(self):`
+- [`phoenix/xrex/utils/tracer.py:46`](../source/phoenix/xrex/utils/tracer.py#L46) — `def __exit__(self, exc_type, exc_value, traceback):`
+- [`phoenix/xrex/utils/tracer.py:54`](../source/phoenix/xrex/utils/tracer.py#L54) — `class TracerConfig(Config):`
+- [`phoenix/xrex/utils/tracer.py:75`](../source/phoenix/xrex/utils/tracer.py#L75) — `def add_perfetto_span_processors(`
+- [`phoenix/xrex/utils/tracer.py:81`](../source/phoenix/xrex/utils/tracer.py#L81) — `def setup_tracer(`
+- [`phoenix/xrex/utils/tracer.py:125`](../source/phoenix/xrex/utils/tracer.py#L125) — `def shutdown_patched():`
+- [`phoenix/xrex/utils/tracer.py:141`](../source/phoenix/xrex/utils/tracer.py#L141) — `def get_otel_collector_addr(tracer_config: TracerConfig) -> str | None:`
+- [`phoenix/xrex/utils/tracer.py:149`](../source/phoenix/xrex/utils/tracer.py#L149) — `def flatten_attributes(attributes: NestedAttributes) -> Attributes:`
+- [`phoenix/xrex/utils/tracer.py:164`](../source/phoenix/xrex/utils/tracer.py#L164) — `def compose_resource_attributes(`
+- [`phoenix/xrex/utils/tracer.py:186`](../source/phoenix/xrex/utils/tracer.py#L186) — `def inject_from_span_ctx(span_context: trace.SpanContext) -> dict[str, str]:`
+- [`phoenix/xrex/utils/tracer.py:195`](../source/phoenix/xrex/utils/tracer.py#L195) — `def extract_to_span_ctx(carrier: dict[str, str]) -> trace.SpanContext:`
+- [`phoenix/xrex/utils/tracer.py:201`](../source/phoenix/xrex/utils/tracer.py#L201) — `def current_trace_ctx_carrier() -> dict[str, str]:`
+- [`phoenix/xrex/utils/tracer.py:207`](../source/phoenix/xrex/utils/tracer.py#L207) — `def current_traceparent() -> str | None:`
+- [`phoenix/xrex/utils/tracer.py:211`](../source/phoenix/xrex/utils/tracer.py#L211) — `def current_trace_ctx() -> trace.Context:`
+- [`phoenix/xrex/utils/tracer.py:215`](../source/phoenix/xrex/utils/tracer.py#L215) — `def trace_ctx_from_carrier(carrier: dict[str, str]) -> trace.Context:`
+- [`phoenix/xrex/utils/tracer.py:219`](../source/phoenix/xrex/utils/tracer.py#L219) — `def trace_ctx_from_traceparent(traceparent: str) -> trace.Context:`
+- [`phoenix/xrex/utils/tracer.py:223`](../source/phoenix/xrex/utils/tracer.py#L223) — `def attach_span(span: trace.Span) -> object:`
+- [`phoenix/xrex/utils/tracer.py:229`](../source/phoenix/xrex/utils/tracer.py#L229) — `def start_and_attach_span(tracer: trace.Tracer, *args, **kwargs) -> tuple[trace.Span, object]:`
+- [`phoenix/xrex/utils/tracer.py:235`](../source/phoenix/xrex/utils/tracer.py#L235) — `def detach_and_end_span(span: trace.Span, token: object):`
+- [`phoenix/xrex/utils/tracer.py:240`](../source/phoenix/xrex/utils/tracer.py#L240) — `def start_linked_root_span(`
+- [`phoenix/xrex/utils/utils.py:35`](../source/phoenix/xrex/utils/utils.py#L35) — `def ffn_size(`
+- [`phoenix/xrex/utils/utils.py:53`](../source/phoenix/xrex/utils/utils.py#L53) — `def remat_less(`
+- [`phoenix/xrex/utils/utils.py:64`](../source/phoenix/xrex/utils/utils.py#L64) — `def disable_core_dumps() -> None:`
+- [`phoenix/xrex/utils/utils.py:68`](../source/phoenix/xrex/utils/utils.py#L68) — `def increase_fd_limit() -> None:`
+- [`phoenix/xrex/utils/utils.py:77`](../source/phoenix/xrex/utils/utils.py#L77) — `def compute_num_elements(leaves: Any) -> int:`
+- [`phoenix/xrex/utils/utils.py:78`](../source/phoenix/xrex/utils/utils.py#L78) — `def compute(x: Any) -> int:`
+- [`phoenix/xrex/utils/utils.py:87`](../source/phoenix/xrex/utils/utils.py#L87) — `def compute_num_stored_elements(params):`
+- [`phoenix/xrex/utils/utils.py:91`](../source/phoenix/xrex/utils/utils.py#L91) — `def get_bytes_in_use() -> int:`
+- [`phoenix/xrex/utils/utils.py:98`](../source/phoenix/xrex/utils/utils.py#L98) — `def get_peak_bytes_in_use() -> int:`
+- [`phoenix/xrex/utils/utils.py:105`](../source/phoenix/xrex/utils/utils.py#L105) — `def safe_cast(x: Any, target_dtype: Any) -> Any:`
+- [`phoenix/xrex/utils/utils.py:114`](../source/phoenix/xrex/utils/utils.py#L114) — `def cast_bfloat16(x: Any) -> Any:`
+- [`phoenix/xrex/utils/utils.py:125`](../source/phoenix/xrex/utils/utils.py#L125) — `def selective_tree_cast(cast_rule: dict[str, str] = {}, default_dtype: str | None = None):`
+- [`phoenix/xrex/utils/utils.py:126`](../source/phoenix/xrex/utils/utils.py#L126) — `def _cast_to_dtype(value, dtype: str):`
+- [`phoenix/xrex/utils/utils.py:131`](../source/phoenix/xrex/utils/utils.py#L131) — `def _cast_with_path(x):`
+- [`phoenix/xrex/utils/utils.py:132`](../source/phoenix/xrex/utils/utils.py#L132) — `def cast_with_path(path, value):`
+- [`phoenix/xrex/utils/utils.py:148`](../source/phoenix/xrex/utils/utils.py#L148) — `def flatten_dict(d: dict[Any, Any]) -> dict[str, Any]:`
+- [`phoenix/xrex/utils/utils.py:159`](../source/phoenix/xrex/utils/utils.py#L159) — `class Summary:`
+- [`phoenix/xrex/utils/utils.py:162`](../source/phoenix/xrex/utils/utils.py#L162) — `def __init__(self, strict=True) -> None:`
+- [`phoenix/xrex/utils/utils.py:166`](../source/phoenix/xrex/utils/utils.py#L166) — `def __enter__(self) -> Self:`
+- [`phoenix/xrex/utils/utils.py:170`](../source/phoenix/xrex/utils/utils.py#L170) — `def __exit__(`
+- [`phoenix/xrex/utils/utils.py:178`](../source/phoenix/xrex/utils/utils.py#L178) — `def add(self, key: str, value: Any) -> None:`
+- [`phoenix/xrex/utils/utils.py:183`](../source/phoenix/xrex/utils/utils.py#L183) — `def get(self) -> dict[str, Any]:`
+- [`phoenix/xrex/utils/utils.py:187`](../source/phoenix/xrex/utils/utils.py#L187) — `def summarize(cls, key: str, value: Any) -> None:`
+- [`phoenix/xrex/utils/utils.py:192`](../source/phoenix/xrex/utils/utils.py#L192) — `def summarize(key: str, value: Any) -> None:`
+- [`phoenix/xrex/utils/utils.py:196`](../source/phoenix/xrex/utils/utils.py#L196) — `class TensorDumpManager:`
+- [`phoenix/xrex/utils/utils.py:197`](../source/phoenix/xrex/utils/utils.py#L197) — `def __init__(self):`
+- [`phoenix/xrex/utils/utils.py:201`](../source/phoenix/xrex/utils/utils.py#L201) — `def dump_to_file(`
+- [`phoenix/xrex/utils/utils.py:216`](../source/phoenix/xrex/utils/utils.py#L216) — `def func(value):`
+- [`phoenix/xrex/utils/utils.py:228`](../source/phoenix/xrex/utils/utils.py#L228) — `def to_numpy(x):`
+- [`phoenix/xrex/utils/utils.py:246`](../source/phoenix/xrex/utils/utils.py#L246) — `def increment_global_idx(self, cnt: int) -> None:`
+- [`phoenix/xrex/utils/utils.py:247`](../source/phoenix/xrex/utils/utils.py#L247) — `def func(cnt):`
+- [`phoenix/xrex/utils/utils.py:253`](../source/phoenix/xrex/utils/utils.py#L253) — `def sleep_before_next_step(self, sleep_time: int) -> None:`
+- [`phoenix/xrex/utils/utils.py:254`](../source/phoenix/xrex/utils/utils.py#L254) — `def func(sleep_time):`
+- [`phoenix/xrex/utils/utils.py:266`](../source/phoenix/xrex/utils/utils.py#L266) — `def dump_to_file(folder: str | None, name: str, value: jax.Array) -> None:`
+- [`phoenix/xrex/utils/utils.py:270`](../source/phoenix/xrex/utils/utils.py#L270) — `def unroll_layer_dumps(layer_dumps):`
+- [`phoenix/xrex/utils/utils.py:277`](../source/phoenix/xrex/utils/utils.py#L277) — `def dump_block_outputs(config, layer_dumps, total_num_layers: int, n_layers: Optional[int] = None):`
+- [`phoenix/xrex/utils/utils.py:316`](../source/phoenix/xrex/utils/utils.py#L316) — `def compute_norm(tree: Any):`
+- [`phoenix/xrex/utils/utils.py:327`](../source/phoenix/xrex/utils/utils.py#L327) — `def alarm_after(timeout):`
+- [`phoenix/xrex/utils/utils.py:335`](../source/phoenix/xrex/utils/utils.py#L335) — `class PreemptionNotifier:`
+- [`phoenix/xrex/utils/utils.py:336`](../source/phoenix/xrex/utils/utils.py#L336) — `def __init__(self):`
+- [`phoenix/xrex/utils/utils.py:339`](../source/phoenix/xrex/utils/utils.py#L339) — `def enable(self):`
+- [`phoenix/xrex/utils/utils.py:344`](../source/phoenix/xrex/utils/utils.py#L344) — `def disable(self):`
+- [`phoenix/xrex/utils/utils.py:348`](../source/phoenix/xrex/utils/utils.py#L348) — `def _on_signal(self, signum, frame):`
+- [`phoenix/xrex/utils/utils.py:357`](../source/phoenix/xrex/utils/utils.py#L357) — `def gelu_fn(x: jnp.ndarray, approximate: bool = False):`

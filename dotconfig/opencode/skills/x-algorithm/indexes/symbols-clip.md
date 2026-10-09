@@ -1,0 +1,94 @@
+# clip: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`clip/config.py:5`](../source/clip/config.py#L5) — `class ClipConfig:`
+- [`clip/config.py:8`](../source/clip/config.py#L8) — `def __init__(`
+- [`clip/datasets/language_image_dataset.py:12`](../source/clip/datasets/language_image_dataset.py#L12) — `class LanguageImageGcsDataset:`
+- [`clip/datasets/language_image_dataset.py:13`](../source/clip/datasets/language_image_dataset.py#L13) — `def __init__(`
+- [`clip/datasets/language_image_dataset.py:39`](../source/clip/datasets/language_image_dataset.py#L39) — `def create_dataset(`
+- [`clip/datasets/media_cache_dataset.py:14`](../source/clip/datasets/media_cache_dataset.py#L14) — `class MediaCacheBqDataset:`
+- [`clip/datasets/media_cache_dataset.py:15`](../source/clip/datasets/media_cache_dataset.py#L15) — `def __init__(`
+- [`clip/datasets/media_cache_dataset.py:35`](../source/clip/datasets/media_cache_dataset.py#L35) — `def _read_from_bq(self, row_restriction=None):`
+- [`clip/datasets/media_cache_dataset.py:54`](../source/clip/datasets/media_cache_dataset.py#L54) — `def create_dataset(`
+- [`clip/datasets/media_cache_dataset.py:85`](../source/clip/datasets/media_cache_dataset.py#L85) — `def _generator_fn():`
+- [`clip/datasets/media_cache_dataset.py:93`](../source/clip/datasets/media_cache_dataset.py#L93) — `def _read(features):`
+- [`clip/datasets/media_cache_dataset.py:102`](../source/clip/datasets/media_cache_dataset.py#L102) — `def _filter_fn(features, image_field):`
+- [`clip/keras_model.py:19`](../source/clip/keras_model.py#L19) — `def get_clip_model(model_name=PROD_MODEL):`
+- [`clip/keras_model.py:24`](../source/clip/keras_model.py#L24) — `def get_packer_package_name(model_name):`
+- [`clip/keras_model.py:29`](../source/clip/keras_model.py#L29) — `def _maybe_download_model(`
+- [`clip/keras_model.py:75`](../source/clip/keras_model.py#L75) — `class TwitterCLIPKeras(tf.keras.Model):`
+- [`clip/keras_model.py:79`](../source/clip/keras_model.py#L79) — `def __init__(self, image_module, text_module, image_size, embedding_dim):`
+- [`clip/keras_model.py:94`](../source/clip/keras_model.py#L94) — `def call(self, inputs):`
+- [`clip/keras_model.py:101`](../source/clip/keras_model.py#L101) — `def get_embedding_dim(self):`
+- [`clip/keras_model.py:105`](../source/clip/keras_model.py#L105) — `def decode_and_preprocess_image(self, image):`
+- [`clip/keras_model.py:111`](../source/clip/keras_model.py#L111) — `def preprocess_image(self, image):`
+- [`clip/keras_model.py:117`](../source/clip/keras_model.py#L117) — `def predict_from_encoded_images(self, images):`
+- [`clip/keras_model.py:124`](../source/clip/keras_model.py#L124) — `def predict_from_preprocessed_images(self, images):`
+- [`clip/keras_model.py:134`](../source/clip/keras_model.py#L134) — `def predict_from_preprocessed_texts(self, texts):`
+- [`clip/keras_model.py:143`](../source/clip/keras_model.py#L143) — `def get_export_signatures(self):`
+- [`clip/model.py:30`](../source/clip/model.py#L30) — `class ImageResolutionError(Exception):`
+- [`clip/model.py:34`](../source/clip/model.py#L34) — `class TwitterCLIP:`
+- [`clip/model.py:58`](../source/clip/model.py#L58) — `def __init__(`
+- [`clip/model.py:147`](../source/clip/model.py#L147) — `def _prepare_model_for_gpu(self):`
+- [`clip/model.py:160`](../source/clip/model.py#L160) — `def encode_images(self, images, return_numpy=False, normalize_outputs=True):`
+- [`clip/model.py:189`](../source/clip/model.py#L189) — `def encode_texts(self, texts, return_numpy=False, normalize_outputs=True):`
+- [`clip/model.py:204`](../source/clip/model.py#L204) — `def encode(`
+- [`clip/model.py:225`](../source/clip/model.py#L225) — `def get_logits(self, features, image_field="image", text_field="tweet_text"):`
+- [`clip/model.py:237`](../source/clip/model.py#L237) — `def normalize_outputs(x):`
+- [`clip/model.py:245`](../source/clip/model.py#L245) — `def _to_onnx(self, output_dir, image=True, text=True):`
+- [`clip/model.py:284`](../source/clip/model.py#L284) — `def _to_onnx_tf_rep(self, image=True, text=True):`
+- [`clip/model.py:306`](../source/clip/model.py#L306) — `def export_image_encoder_to_dbv2_model_file(`
+- [`clip/model.py:316`](../source/clip/model.py#L316) — `def _model(image):`
+- [`clip/model.py:337`](../source/clip/model.py#L337) — `def export_to_keras_saved_model(self, output_dir):`
+- [`clip/modules.py:6`](../source/clip/modules.py#L6) — `class GeLU(torch.nn.Module):`
+- [`clip/modules.py:7`](../source/clip/modules.py#L7) — `def forward(self, x):`
+- [`clip/modules.py:18`](../source/clip/modules.py#L18) — `class LayerNorm(torch.nn.Module):`
+- [`clip/modules.py:19`](../source/clip/modules.py#L19) — `def __init__(self, features, eps=1e-6):`
+- [`clip/modules.py:25`](../source/clip/modules.py#L25) — `def forward(self, x):`
+- [`clip/modules.py:31`](../source/clip/modules.py#L31) — `class PositionwiseFeedForward(torch.nn.Module):`
+- [`clip/modules.py:32`](../source/clip/modules.py#L32) — `def __init__(self, d_in, d_h, d_out, dropout=0.1):`
+- [`clip/modules.py:40`](../source/clip/modules.py#L40) — `def forward(self, x):`
+- [`clip/modules.py:44`](../source/clip/modules.py#L44) — `class ImageCLIP(torch.nn.Module):`
+- [`clip/modules.py:45`](../source/clip/modules.py#L45) — `def __init__(self, model, top_feedforward=False, d_h=None, d_out=None):`
+- [`clip/modules.py:59`](../source/clip/modules.py#L59) — `def forward(self, image):`
+- [`clip/modules.py:64`](../source/clip/modules.py#L64) — `class TextCLIP(torch.nn.Module):`
+- [`clip/modules.py:65`](../source/clip/modules.py#L65) — `def __init__(self, model, top_feedforward=False, d_h=None, d_out=None):`
+- [`clip/modules.py:79`](../source/clip/modules.py#L79) — `def forward(self, text):`
+- [`clip/scripts/export_dbv2_image_model.py:15`](../source/clip/scripts/export_dbv2_image_model.py#L15) — `def export_model(`
+- [`clip/scripts/export_keras_models.py:14`](../source/clip/scripts/export_keras_models.py#L14) — `def _rsync_to_packer(role, package_name, file_path):`
+- [`clip/scripts/export_keras_models.py:34`](../source/clip/scripts/export_keras_models.py#L34) — `def _check_packer():`
+- [`clip/scripts/export_keras_models.py:41`](../source/clip/scripts/export_keras_models.py#L41) — `def export_keras_models(model_names):`
+- [`clip/training.py:17`](../source/clip/training.py#L17) — `def parse_args():`
+- [`clip/training.py:28`](../source/clip/training.py#L28) — `def add_dataset_args(parser):`
+- [`clip/training.py:48`](../source/clip/training.py#L48) — `def add_model_args(parser):`
+- [`clip/training.py:74`](../source/clip/training.py#L74) — `def add_training_args(parser):`
+- [`clip/training.py:122`](../source/clip/training.py#L122) — `def train(config):`
+- [`clip/training.py:162`](../source/clip/training.py#L162) — `def _compute_loss():`
+- [`clip/utils/data_utils.py:21`](../source/clip/utils/data_utils.py#L21) — `def read_tfrecords_from_gcs(`
+- [`clip/utils/data_utils.py:30`](../source/clip/utils/data_utils.py#L30) — `def _read_tfrecord(data):`
+- [`clip/utils/data_utils.py:44`](../source/clip/utils/data_utils.py#L44) — `def clean_text(features, text_field="text"):`
+- [`clip/utils/data_utils.py:56`](../source/clip/utils/data_utils.py#L56) — `def clip_preproc_train(`
+- [`clip/utils/data_utils.py:84`](../source/clip/utils/data_utils.py#L84) — `def clip_preproc_val(`
+- [`clip/utils/data_utils.py:108`](../source/clip/utils/data_utils.py#L108) — `def get_clip_decode_and_proc_fn(`
+- [`clip/utils/data_utils.py:123`](../source/clip/utils/data_utils.py#L123) — `def _decode_and_proc_fn(image_byte_string):`
+- [`clip/utils/data_utils.py:127`](../source/clip/utils/data_utils.py#L127) — `def _map_fn(features):`
+- [`clip/utils/data_utils.py:140`](../source/clip/utils/data_utils.py#L140) — `def blobstore_fetch(urls, cache_dir):`
+- [`clip/utils/data_utils.py:163`](../source/clip/utils/data_utils.py#L163) — `def init_blobstore_client(pool_size=1000, retries=0):`
+- [`clip/utils/data_utils.py:176`](../source/clip/utils/data_utils.py#L176) — `def _bytestring_feature(list_of_bytestrings):`
+- [`clip/utils/data_utils.py:180`](../source/clip/utils/data_utils.py#L180) — `def _float_feature(list_of_floats):`
+- [`clip/utils/data_utils.py:184`](../source/clip/utils/data_utils.py#L184) — `def _int64_feature(list_of_ints):`
+- [`clip/utils/data_utils.py:188`](../source/clip/utils/data_utils.py#L188) — `def write_dataset_to_gcs_tfrecords(`
+- [`clip/utils/data_utils.py:235`](../source/clip/utils/data_utils.py#L235) — `def aspect_preserving_resize(image, new_smallest_size):`
+- [`clip/utils/data_utils.py:268`](../source/clip/utils/data_utils.py#L268) — `def _drop_frames(x):`
+- [`clip/utils/data_utils.py:269`](../source/clip/utils/data_utils.py#L269) — `def f1():`
+- [`clip/utils/data_utils.py:272`](../source/clip/utils/data_utils.py#L272) — `def f2():`
+- [`clip/utils/io_utils.py:9`](../source/clip/utils/io_utils.py#L9) — `def maybe_download_file(url, local_dir=None, hdfs_config=None):`
+- [`clip/utils/io_utils.py:35`](../source/clip/utils/io_utils.py#L35) — `def _download_file_from_hadoop(url, local_path, hdfs_config=None):`
+- [`clip/utils/io_utils.py:43`](../source/clip/utils/io_utils.py#L43) — `def _download_file_from_gcs(url, local_path):`
+- [`clip/utils/model_utils.py:4`](../source/clip/utils/model_utils.py#L4) — `def create_logits(x1, x2, logit_scale):`
+- [`clip/utils/model_utils.py:14`](../source/clip/utils/model_utils.py#L14) — `def print_clip_model_stats(model):`
+- [`clip/utils/model_utils.py:27`](../source/clip/utils/model_utils.py#L27) — `def convert_models_to_fp32(model):`
+- [`clip/utils/train_utils.py:6`](../source/clip/utils/train_utils.py#L6) — `def get_avg(prev_avg, x, n):`
+- [`clip/utils/train_utils.py:10`](../source/clip/utils/train_utils.py#L10) — `def create_optimizer(`
+- [`clip/utils/train_utils.py:43`](../source/clip/utils/train_utils.py#L43) — `def set_memory_growth():`

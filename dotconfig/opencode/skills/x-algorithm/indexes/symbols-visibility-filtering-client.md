@@ -1,0 +1,262 @@
+# visibility-filtering-client: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`visibility-filtering-client/discovery.rs:19`](../source/visibility-filtering-client/discovery.rs#L19) — `const VF_WILY_PATH: &str = "/s/visibility/xai-vf-service:grpc";`
+- [`visibility-filtering-client/discovery.rs:21`](../source/visibility-filtering-client/discovery.rs#L21) — `const DEFAULT_VF_XDS_LISTENER: &str = "xai-vf-service.prod.visibility:grpc";`
+- [`visibility-filtering-client/discovery.rs:23`](../source/visibility-filtering-client/discovery.rs#L23) — `const VF_XDS_LISTENER_ENV: &str = "VF_CLIENT_XDS_LISTENER";`
+- [`visibility-filtering-client/discovery.rs:25`](../source/visibility-filtering-client/discovery.rs#L25) — `const VF_DNS_POLL_INTERVAL: Duration = Duration::from_millis(5_000);`
+- [`visibility-filtering-client/discovery.rs:27`](../source/visibility-filtering-client/discovery.rs#L27) — `const VF_XDS_BUILD_TIMEOUT: Duration = Duration::from_secs(10);`
+- [`visibility-filtering-client/discovery.rs:29`](../source/visibility-filtering-client/discovery.rs#L29) — `const VF_XDS_EAGER_RESOLUTION_TIMEOUT: Duration = Duration::from_secs(5);`
+- [`visibility-filtering-client/discovery.rs:32`](../source/visibility-filtering-client/discovery.rs#L32) — `pub(crate) enum VfDiscovery {`
+- [`visibility-filtering-client/discovery.rs:39`](../source/visibility-filtering-client/discovery.rs#L39) — `pub(crate) fn parse(env_name: &str, value: Option<&str>) -> Self {`
+- [`visibility-filtering-client/discovery.rs:54`](../source/visibility-filtering-client/discovery.rs#L54) — `pub(crate) fn from_env(env_name: &str) -> Self {`
+- [`visibility-filtering-client/discovery.rs:60`](../source/visibility-filtering-client/discovery.rs#L60) — `pub(crate) enum VfChannelError {`
+- [`visibility-filtering-client/discovery.rs:66`](../source/visibility-filtering-client/discovery.rs#L66) — `fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {`
+- [`visibility-filtering-client/discovery.rs:74`](../source/visibility-filtering-client/discovery.rs#L74) — `fn vf_xds_listener(override_value: Option<&str>) -> String {`
+- [`visibility-filtering-client/discovery.rs:81`](../source/visibility-filtering-client/discovery.rs#L81) — `fn vf_xds_listener_from_env() -> String {`
+- [`visibility-filtering-client/discovery.rs:85`](../source/visibility-filtering-client/discovery.rs#L85) — `fn vf_tls_domain(dc: &str) -> String {`
+- [`visibility-filtering-client/discovery.rs:89`](../source/visibility-filtering-client/discovery.rs#L89) — `fn vf_tls(dc: &str) -> Result<TlsMode, VfChannelError> {`
+- [`visibility-filtering-client/discovery.rs:96`](../source/visibility-filtering-client/discovery.rs#L96) — `fn incr_build_metric(name: &str, transport: &str, result: &str) {`
+- [`visibility-filtering-client/discovery.rs:110`](../source/visibility-filtering-client/discovery.rs#L110) — `pub(crate) struct VfChannelParams<'a> {`
+- [`visibility-filtering-client/discovery.rs:119`](../source/visibility-filtering-client/discovery.rs#L119) — `pub(crate) enum VfChannel {`
+- [`visibility-filtering-client/discovery.rs:124`](../source/visibility-filtering-client/discovery.rs#L124) — `pub(crate) async fn build_vf_channel(`
+- [`visibility-filtering-client/discovery.rs:164`](../source/visibility-filtering-client/discovery.rs#L164) — `async fn build_vf_wily_channel(params: &VfChannelParams<'_>) -> Result<Channel, VfChannelError> {`
+- [`visibility-filtering-client/discovery.rs:170`](../source/visibility-filtering-client/discovery.rs#L170) — `struct NamedWilyLookup {`
+- [`visibility-filtering-client/discovery.rs:177`](../source/visibility-filtering-client/discovery.rs#L177) — `async fn resolve_service_endpoints(&self) -> Result<EndpointWeights, anyhow::Error> {`
+- [`visibility-filtering-client/discovery.rs:185`](../source/visibility-filtering-client/discovery.rs#L185) — `async fn build_wily_channel(params: &VfChannelParams<'_>) -> Result<Channel, VfChannelError> {`
+- [`visibility-filtering-client/discovery.rs:218`](../source/visibility-filtering-client/discovery.rs#L218) — `async fn build_xds_channel(`
+- [`visibility-filtering-client/discovery.rs:265`](../source/visibility-filtering-client/discovery.rs#L265) — `const ENV: &str = "VF_TEST_DISCOVERY";`
+- [`visibility-filtering-client/discovery.rs:268`](../source/visibility-filtering-client/discovery.rs#L268) — `fn discovery_parse_defaults_to_wily() {`
+- [`visibility-filtering-client/discovery.rs:277`](../source/visibility-filtering-client/discovery.rs#L277) — `fn discovery_parse_xds_opt_in() {`
+- [`visibility-filtering-client/discovery.rs:283`](../source/visibility-filtering-client/discovery.rs#L283) — `fn xds_listener_matches_live_registration() {`
+- [`visibility-filtering-client/discovery.rs:294`](../source/visibility-filtering-client/discovery.rs#L294) — `fn xds_listener_override() {`
+- [`visibility-filtering-client/discovery.rs:302`](../source/visibility-filtering-client/discovery.rs#L302) — `fn tls_domain_matches_wily_path_sni() {`
+- [`visibility-filtering-client/evaluated.rs:5`](../source/visibility-filtering-client/evaluated.rs#L5) — `pub const MAX_ACTION_BYTES: usize = 64 * 1024;`
+- [`visibility-filtering-client/evaluated.rs:8`](../source/visibility-filtering-client/evaluated.rs#L8) — `pub enum EvaluationResult {`
+- [`visibility-filtering-client/evaluated.rs:14`](../source/visibility-filtering-client/evaluated.rs#L14) — `pub fn decode_action(bytes: &[u8]) -> Result<Action> {`
+- [`visibility-filtering-client/evaluated.rs:50`](../source/visibility-filtering-client/evaluated.rs#L50) — `fn declared_lengths_are_rejected_before_reading_payloads() {`
+- [`visibility-filtering-client/evaluated.rs:71`](../source/visibility-filtering-client/evaluated.rs#L71) — `fn decode_action_roundtrips_and_rejects_decode_errors() {`
+- [`visibility-filtering-client/graphql_results.rs:8`](../source/visibility-filtering-client/graphql_results.rs#L8) — `const DEFAULT_LANG: &str = "en";`
+- [`visibility-filtering-client/graphql_results.rs:12`](../source/visibility-filtering-client/graphql_results.rs#L12) — `struct Catalog {`
+- [`visibility-filtering-client/graphql_results.rs:16`](../source/visibility-filtering-client/graphql_results.rs#L16) — `struct Entry {`
+- [`visibility-filtering-client/graphql_results.rs:44`](../source/visibility-filtering-client/graphql_results.rs#L44) — `pub fn translate(resname: &str, lang: &str) -> Option<&'static str> {`
+- [`visibility-filtering-client/graphql_results.rs:55`](../source/visibility-filtering-client/graphql_results.rs#L55) — `struct Lang {`
+- [`visibility-filtering-client/graphql_results.rs:70`](../source/visibility-filtering-client/graphql_results.rs#L70) — `pub fn is_rtl(lang: &str) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:79`](../source/visibility-filtering-client/graphql_results.rs#L79) — `pub fn get_safety_result(reason: &FilteredReason) -> Option<&SafetyResult> {`
+- [`visibility-filtering-client/graphql_results.rs:86`](../source/visibility-filtering-client/graphql_results.rs#L86) — `pub fn get_appealable(sr: &SafetyResult) -> Option<&action::Appealable> {`
+- [`visibility-filtering-client/graphql_results.rs:94`](../source/visibility-filtering-client/graphql_results.rs#L94) — `pub fn get_soft_intervention(sr: &SafetyResult) -> Option<&action::SoftIntervention> {`
+- [`visibility-filtering-client/graphql_results.rs:102`](../source/visibility-filtering-client/graphql_results.rs#L102) — `pub fn get_tweet_visibility_nudge(sr: &SafetyResult) -> Option<&action::TweetVisibilityNudge> {`
+- [`visibility-filtering-client/graphql_results.rs:110`](../source/visibility-filtering-client/graphql_results.rs#L110) — `pub fn get_limited_actions_policy(sr: &SafetyResult) -> Option<&action::LimitedActionsPolicy> {`
+- [`visibility-filtering-client/graphql_results.rs:128`](../source/visibility-filtering-client/graphql_results.rs#L128) — `pub fn get_tombstone(reason: &FilteredReason) -> Option<&action::Tombstone> {`
+- [`visibility-filtering-client/graphql_results.rs:135`](../source/visibility-filtering-client/graphql_results.rs#L135) — `pub fn get_media_interstitial(sr: &SafetyResult) -> Option<&MediaInterstitial> {`
+- [`visibility-filtering-client/graphql_results.rs:146`](../source/visibility-filtering-client/graphql_results.rs#L146) — `fn interstitial_reason_for_media_blur(`
+- [`visibility-filtering-client/graphql_results.rs:166`](../source/visibility-filtering-client/graphql_results.rs#L166) — `pub fn resolve_blurred_image_interstitial(`
+- [`visibility-filtering-client/graphql_results.rs:175`](../source/visibility-filtering-client/graphql_results.rs#L175) — `pub fn is_dropped_media_blur(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:186`](../source/visibility-filtering-client/graphql_results.rs#L186) — `pub fn get_fosnr_limited_engagement_appealable_reason(`
+- [`visibility-filtering-client/graphql_results.rs:205`](../source/visibility-filtering-client/graphql_results.rs#L205) — `fn drop_reason(reason: &FilteredReason) -> Option<&action::DropReason> {`
+- [`visibility-filtering-client/graphql_results.rs:212`](../source/visibility-filtering-client/graphql_results.rs#L212) — `pub fn is_tombstone(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:216`](../source/visibility-filtering-client/graphql_results.rs#L216) — `pub fn is_drop_exclusive_tweet(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:223`](../source/visibility-filtering-client/graphql_results.rs#L223) — `pub fn is_nsfw_viewer_is_underage(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:230`](../source/visibility-filtering-client/graphql_results.rs#L230) — `pub fn is_nsfw_viewer_has_no_stated_age(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:237`](../source/visibility-filtering-client/graphql_results.rs#L237) — `pub fn is_nsfw_logged_out(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:244`](../source/visibility-filtering-client/graphql_results.rs#L244) — `pub fn is_drop_premium_tweet(reason: &FilteredReason) -> bool {`
+- [`visibility-filtering-client/graphql_results.rs:251`](../source/visibility-filtering-client/graphql_results.rs#L251) — `pub fn blurred_image_interstitial_resnames(`
+- [`visibility-filtering-client/graphql_results.rs:273`](../source/visibility-filtering-client/graphql_results.rs#L273) — `pub fn tombstone_resname_and_link(`
+- [`visibility-filtering-client/graphql_results.rs:305`](../source/visibility-filtering-client/graphql_results.rs#L305) — `pub fn contextual_thrift_interstitial_resname_link(`
+- [`visibility-filtering-client/graphql_results.rs:329`](../source/visibility-filtering-client/graphql_results.rs#L329) — `pub fn appealable_policy_slug_link(`
+- [`visibility-filtering-client/graphql_results.rs:353`](../source/visibility-filtering-client/graphql_results.rs#L353) — `fn nsfw_tweet_interstitial_without_all_media() -> SafetyResult {`
+- [`visibility-filtering-client/graphql_results.rs:375`](../source/visibility-filtering-client/graphql_results.rs#L375) — `fn media_blur_without_wire_all_media_is_dropped() {`
+- [`visibility-filtering-client/graphql_results.rs:383`](../source/visibility-filtering-client/graphql_results.rs#L383) — `fn prefers_wire_all_media_visibility_results_when_present() {`
+- [`visibility-filtering-client/links.rs:12`](../source/visibility-filtering-client/links.rs#L12) — `pub const NOTICES_ON_TWITTER: &str = rules!("notices-on-x");`
+- [`visibility-filtering-client/links.rs:13`](../source/visibility-filtering-client/links.rs#L13) — `pub const ENFORCEMENT_OPTIONS: &str = rules!("enforcement-options");`
+- [`visibility-filtering-client/links.rs:14`](../source/visibility-filtering-client/links.rs#L14) — `pub const PUBLIC_INTEREST: &str = rules!("public-interest");`
+- [`visibility-filtering-client/links.rs:15`](../source/visibility-filtering-client/links.rs#L15) — `pub const TWITTER_RULES: &str = rules!("x-rules");`
+- [`visibility-filtering-client/links.rs:16`](../source/visibility-filtering-client/links.rs#L16) — `pub const ELECTION_INTEGRITY: &str = rules!("election-integrity-policy");`
+- [`visibility-filtering-client/links.rs:17`](../source/visibility-filtering-client/links.rs#L17) — `pub const CRISIS_MISINFORMATION: &str = rules!("crisis-misinformation");`
+- [`visibility-filtering-client/links.rs:18`](../source/visibility-filtering-client/links.rs#L18) — `pub const MEDICAL_MISINFORMATION: &str = rules!("medical-misinformation-policy");`
+- [`visibility-filtering-client/links.rs:19`](../source/visibility-filtering-client/links.rs#L19) — `pub const MANIPULATED_MEDIA: &str = rules!("manipulated-media");`
+- [`visibility-filtering-client/links.rs:20`](../source/visibility-filtering-client/links.rs#L20) — `pub const HATEFUL_CONDUCT_POLICY: &str = rules!("hateful-conduct-policy");`
+- [`visibility-filtering-client/links.rs:21`](../source/visibility-filtering-client/links.rs#L21) — `pub const ABUSIVE_BEHAVIOR: &str = rules!("abusive-behavior");`
+- [`visibility-filtering-client/links.rs:22`](../source/visibility-filtering-client/links.rs#L22) — `pub const ABUSIVE_PROFILE: &str = rules!("abusive-profile");`
+- [`visibility-filtering-client/links.rs:23`](../source/visibility-filtering-client/links.rs#L23) — `pub const ADULT_CONTENT: &str = rules!("adult-content");`
+- [`visibility-filtering-client/links.rs:24`](../source/visibility-filtering-client/links.rs#L24) — `pub const AGE_ASSURANCE: &str = rules!("age-assurance");`
+- [`visibility-filtering-client/links.rs:25`](../source/visibility-filtering-client/links.rs#L25) — `pub const LEGAL_DEMANDS_LOCAL_LAWS_WITHHELD: &str = rules!("post-withheld-by-country");`
+- [`visibility-filtering-client/links.rs:27`](../source/visibility-filtering-client/links.rs#L27) — `pub const COMMUNITIES: &str = using!("communities");`
+- [`visibility-filtering-client/links.rs:28`](../source/visibility-filtering-client/links.rs#L28) — `pub const SUPER_FOLLOWS: &str = using!("super-follows");`
+- [`visibility-filtering-client/links.rs:29`](../source/visibility-filtering-client/links.rs#L29) — `pub const PREMIUM_CONTENT: &str = "https://help.x.com/en/using-x/x-premium";`
+- [`visibility-filtering-client/links.rs:30`](../source/visibility-filtering-client/links.rs#L30) — `pub const DMCA_WITHHELD: &str = "https://help.x.com/articles/15795";`
+- [`visibility-filtering-client/links.rs:32`](../source/visibility-filtering-client/links.rs#L32) — `pub const PROFILE_SETTINGS: &str = "https://x.com/settings/profile";`
+- [`visibility-filtering-client/links.rs:33`](../source/visibility-filtering-client/links.rs#L33) — `pub const X_DOT_COM: &str = "https://x.com";`
+- [`visibility-filtering-client/links.rs:35`](../source/visibility-filtering-client/links.rs#L35) — `pub const BLURRED_MEDIA_TOMBSTONE_IMAGE: &str =`
+- [`visibility-filtering-client/models.rs:8`](../source/visibility-filtering-client/models.rs#L8) — `pub struct KeywordMatch {`
+- [`visibility-filtering-client/models.rs:14`](../source/visibility-filtering-client/models.rs#L14) — `pub enum SafetyResultReason {`
+- [`visibility-filtering-client/models.rs:51`](../source/visibility-filtering-client/models.rs#L51) — `pub struct SafetyResult {`
+- [`visibility-filtering-client/models.rs:58`](../source/visibility-filtering-client/models.rs#L58) — `pub enum Action {`
+- [`visibility-filtering-client/models.rs:70`](../source/visibility-filtering-client/models.rs#L70) — `pub struct DropReason {}`
+- [`visibility-filtering-client/models.rs:74`](../source/visibility-filtering-client/models.rs#L74) — `pub enum FilteredReason {`
+- [`visibility-filtering-client/models.rs:95`](../source/visibility-filtering-client/models.rs#L95) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/models.rs:99`](../source/visibility-filtering-client/models.rs#L99) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/models.rs:121`](../source/visibility-filtering-client/models.rs#L121) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/models.rs:127`](../source/visibility-filtering-client/models.rs#L127) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/models.rs:131`](../source/visibility-filtering-client/models.rs#L131) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/models.rs:192`](../source/visibility-filtering-client/models.rs#L192) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/models.rs:198`](../source/visibility-filtering-client/models.rs#L198) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/models.rs:202`](../source/visibility-filtering-client/models.rs#L202) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/models.rs:255`](../source/visibility-filtering-client/models.rs#L255) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/models.rs:261`](../source/visibility-filtering-client/models.rs#L261) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/models.rs:265`](../source/visibility-filtering-client/models.rs#L265) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/models.rs:279`](../source/visibility-filtering-client/models.rs#L279) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/models.rs:285`](../source/visibility-filtering-client/models.rs#L285) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/models.rs:289`](../source/visibility-filtering-client/models.rs#L289) — `fn from_thrift(proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/models.rs:372`](../source/visibility-filtering-client/models.rs#L372) — `fn to_thrift(&self, _proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/models.rs:378`](../source/visibility-filtering-client/models.rs#L378) — `fn from(value: vf_pb::KeywordMatch) -> Self {`
+- [`visibility-filtering-client/models.rs:386`](../source/visibility-filtering-client/models.rs#L386) — `fn from(value: KeywordMatch) -> Self {`
+- [`visibility-filtering-client/models.rs:394`](../source/visibility-filtering-client/models.rs#L394) — `fn from(_value: vf_pb::DropReason) -> Self {`
+- [`visibility-filtering-client/models.rs:400`](../source/visibility-filtering-client/models.rs#L400) — `fn from(_value: DropReason) -> Self {`
+- [`visibility-filtering-client/models.rs:406`](../source/visibility-filtering-client/models.rs#L406) — `fn from(value: vf_pb::Action) -> Self {`
+- [`visibility-filtering-client/models.rs:421`](../source/visibility-filtering-client/models.rs#L421) — `fn from(value: Action) -> Self {`
+- [`visibility-filtering-client/models.rs:436`](../source/visibility-filtering-client/models.rs#L436) — `fn from(value: vf_pb::SafetyResult) -> Self {`
+- [`visibility-filtering-client/models.rs:446`](../source/visibility-filtering-client/models.rs#L446) — `fn from(value: SafetyResult) -> Self {`
+- [`visibility-filtering-client/models.rs:454`](../source/visibility-filtering-client/models.rs#L454) — `fn from(value: vf_pb::FilteredReason) -> Self {`
+- [`visibility-filtering-client/models.rs:511`](../source/visibility-filtering-client/models.rs#L511) — `fn from(value: FilteredReason) -> Self {`
+- [`visibility-filtering-client/models.rs:576`](../source/visibility-filtering-client/models.rs#L576) — `fn roundtrip_keyword_match_reason() {`
+- [`visibility-filtering-client/models.rs:586`](../source/visibility-filtering-client/models.rs#L586) — `fn map_safety_result_with_action() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:18`](../source/visibility-filtering-client/tweet_safety_label.rs#L18) — `const DEFAULT_TIMEOUT_MS: u64 = 200;`
+- [`visibility-filtering-client/tweet_safety_label.rs:19`](../source/visibility-filtering-client/tweet_safety_label.rs#L19) — `const DEFAULT_MAX_BATCH_SIZE: usize = 50;`
+- [`visibility-filtering-client/tweet_safety_label.rs:22`](../source/visibility-filtering-client/tweet_safety_label.rs#L22) — `pub enum SafetyLabelFailure {`
+- [`visibility-filtering-client/tweet_safety_label.rs:28`](../source/visibility-filtering-client/tweet_safety_label.rs#L28) — `pub struct SafetyLabelsBatch {`
+- [`visibility-filtering-client/tweet_safety_label.rs:34`](../source/visibility-filtering-client/tweet_safety_label.rs#L34) — `pub trait TweetSafetyLabelClient: Send + Sync {`
+- [`visibility-filtering-client/tweet_safety_label.rs:35`](../source/visibility-filtering-client/tweet_safety_label.rs#L35) — `async fn get_safety_labels(&self, tweet_ids: Vec<u64>) -> Result<SafetyLabelsBatch, Status>;`
+- [`visibility-filtering-client/tweet_safety_label.rs:38`](../source/visibility-filtering-client/tweet_safety_label.rs#L38) — `pub struct ProdTweetSafetyLabelClient {`
+- [`visibility-filtering-client/tweet_safety_label.rs:45`](../source/visibility-filtering-client/tweet_safety_label.rs#L45) — `enum VfServiceClient {`
+- [`visibility-filtering-client/tweet_safety_label.rs:51`](../source/visibility-filtering-client/tweet_safety_label.rs#L51) — `async fn get_safety_labels(`
+- [`visibility-filtering-client/tweet_safety_label.rs:62`](../source/visibility-filtering-client/tweet_safety_label.rs#L62) — `enum RequestStatus {`
+- [`visibility-filtering-client/tweet_safety_label.rs:67`](../source/visibility-filtering-client/tweet_safety_label.rs#L67) — `struct RequestMetricsGuard {`
+- [`visibility-filtering-client/tweet_safety_label.rs:74`](../source/visibility-filtering-client/tweet_safety_label.rs#L74) — `fn new() -> Self {`
+- [`visibility-filtering-client/tweet_safety_label.rs:82`](../source/visibility-filtering-client/tweet_safety_label.rs#L82) — `fn mark_completed(&mut self) {`
+- [`visibility-filtering-client/tweet_safety_label.rs:88`](../source/visibility-filtering-client/tweet_safety_label.rs#L88) — `fn drop(&mut self) {`
+- [`visibility-filtering-client/tweet_safety_label.rs:108`](../source/visibility-filtering-client/tweet_safety_label.rs#L108) — `const VF_SAFETY_LABELS_DISCOVERY_ENV: &str = "VF_SAFETY_LABELS_DISCOVERY";`
+- [`visibility-filtering-client/tweet_safety_label.rs:109`](../source/visibility-filtering-client/tweet_safety_label.rs#L109) — `const VF_SAFETY_LABELS_APERTURE_SIZE: usize = 16;`
+- [`visibility-filtering-client/tweet_safety_label.rs:111`](../source/visibility-filtering-client/tweet_safety_label.rs#L111) — `fn vf_channel_params(dc: &str) -> VfChannelParams<'_> {`
+- [`visibility-filtering-client/tweet_safety_label.rs:122`](../source/visibility-filtering-client/tweet_safety_label.rs#L122) — `fn channel_error_to_status(e: VfChannelError) -> Status {`
+- [`visibility-filtering-client/tweet_safety_label.rs:131`](../source/visibility-filtering-client/tweet_safety_label.rs#L131) — `fn make_client<T>(channel: T) -> VisibilityFilteringServiceClient<T>`
+- [`visibility-filtering-client/tweet_safety_label.rs:144`](../source/visibility-filtering-client/tweet_safety_label.rs#L144) — `pub async fn new(dc: &str) -> Result<Self, Status> {`
+- [`visibility-filtering-client/tweet_safety_label.rs:161`](../source/visibility-filtering-client/tweet_safety_label.rs#L161) — `pub fn with_timeout_ms(mut self, timeout_ms: u64) -> Self {`
+- [`visibility-filtering-client/tweet_safety_label.rs:170`](../source/visibility-filtering-client/tweet_safety_label.rs#L170) — `pub fn with_max_batch_size(mut self, size: usize) -> Self {`
+- [`visibility-filtering-client/tweet_safety_label.rs:180`](../source/visibility-filtering-client/tweet_safety_label.rs#L180) — `fn proto_to_safety_label(label: &vf_pb::SafetyLabel) -> SafetyLabel {`
+- [`visibility-filtering-client/tweet_safety_label.rs:220`](../source/visibility-filtering-client/tweet_safety_label.rs#L220) — `pub(crate) fn proto_to_safety_label_map(proto: &vf_pb::SafetyLabelMap) -> SafetyLabelMap {`
+- [`visibility-filtering-client/tweet_safety_label.rs:230`](../source/visibility-filtering-client/tweet_safety_label.rs#L230) — `async fn get_safety_labels(&self, tweet_ids: Vec<u64>) -> Result<SafetyLabelsBatch, Status> {`
+- [`visibility-filtering-client/tweet_safety_label.rs:336`](../source/visibility-filtering-client/tweet_safety_label.rs#L336) — `pub struct MockTweetSafetyLabelClient;`
+- [`visibility-filtering-client/tweet_safety_label.rs:340`](../source/visibility-filtering-client/tweet_safety_label.rs#L340) — `async fn get_safety_labels(&self, tweet_ids: Vec<u64>) -> Result<SafetyLabelsBatch, Status> {`
+- [`visibility-filtering-client/tweet_safety_label.rs:366`](../source/visibility-filtering-client/tweet_safety_label.rs#L366) — `struct TestVisibilityFilteringService {`
+- [`visibility-filtering-client/tweet_safety_label.rs:372`](../source/visibility-filtering-client/tweet_safety_label.rs#L372) — `fn default() -> Self {`
+- [`visibility-filtering-client/tweet_safety_label.rs:382`](../source/visibility-filtering-client/tweet_safety_label.rs#L382) — `async fn evaluate_tweets(`
+- [`visibility-filtering-client/tweet_safety_label.rs:389`](../source/visibility-filtering-client/tweet_safety_label.rs#L389) — `async fn filter_tweets(`
+- [`visibility-filtering-client/tweet_safety_label.rs:396`](../source/visibility-filtering-client/tweet_safety_label.rs#L396) — `async fn get_safety_labels(`
+- [`visibility-filtering-client/tweet_safety_label.rs:419`](../source/visibility-filtering-client/tweet_safety_label.rs#L419) — `async fn start_test_server(`
+- [`visibility-filtering-client/tweet_safety_label.rs:435`](../source/visibility-filtering-client/tweet_safety_label.rs#L435) — `async fn test_client(addr: SocketAddr) -> ProdTweetSafetyLabelClient {`
+- [`visibility-filtering-client/tweet_safety_label.rs:450`](../source/visibility-filtering-client/tweet_safety_label.rs#L450) — `fn proto_botmaker_action_to_thrift() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:465`](../source/visibility-filtering-client/tweet_safety_label.rs#L465) — `fn proto_tool_action_to_thrift() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:486`](../source/visibility-filtering-client/tweet_safety_label.rs#L486) — `fn proto_grok_annotation_action_to_thrift() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:505`](../source/visibility-filtering-client/tweet_safety_label.rs#L505) — `fn proto_no_source_to_thrift() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:512`](../source/visibility-filtering-client/tweet_safety_label.rs#L512) — `async fn get_safety_labels_returns_empty_map_for_empty_input() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:527`](../source/visibility-filtering-client/tweet_safety_label.rs#L527) — `async fn get_safety_labels_uses_custom_batch_size() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:553`](../source/visibility-filtering-client/tweet_safety_label.rs#L553) — `async fn with_max_batch_size_zero_falls_back_to_default_batch_size() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:581`](../source/visibility-filtering-client/tweet_safety_label.rs#L581) — `async fn get_safety_labels_parses_failed_ids() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:604`](../source/visibility-filtering-client/tweet_safety_label.rs#L604) — `async fn get_safety_labels_marks_transport_failed_batch_ids() {`
+- [`visibility-filtering-client/tweet_safety_label.rs:626`](../source/visibility-filtering-client/tweet_safety_label.rs#L626) — `async fn get_safety_labels_merges_batches() {`
+- [`visibility-filtering-client/vf_client.rs:29`](../source/visibility-filtering-client/vf_client.rs#L29) — `pub enum SafetyLevel {`
+- [`visibility-filtering-client/vf_client.rs:44`](../source/visibility-filtering-client/vf_client.rs#L44) — `pub fn from_tag(tag: i32) -> Option<Self> {`
+- [`visibility-filtering-client/vf_client.rs:63`](../source/visibility-filtering-client/vf_client.rs#L63) — `pub struct VisibilityFilteringLookupContext {`
+- [`visibility-filtering-client/vf_client.rs:69`](../source/visibility-filtering-client/vf_client.rs#L69) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/vf_client.rs:73`](../source/visibility-filtering-client/vf_client.rs#L73) — `fn from_thrift(_proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/vf_client.rs:77`](../source/visibility-filtering-client/vf_client.rs#L77) — `fn to_thrift(&self, proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/vf_client.rs:96`](../source/visibility-filtering-client/vf_client.rs#L96) — `fn thrift_type() -> TType {`
+- [`visibility-filtering-client/vf_client.rs:100`](../source/visibility-filtering-client/vf_client.rs#L100) — `fn from_thrift(_proto: &mut dyn TInputProtocol) -> Self {`
+- [`visibility-filtering-client/vf_client.rs:104`](../source/visibility-filtering-client/vf_client.rs#L104) — `fn to_thrift(&self, proto: &mut dyn TOutputProtocol) {`
+- [`visibility-filtering-client/vf_client.rs:110`](../source/visibility-filtering-client/vf_client.rs#L110) — `pub struct TweetVisibility {`
+- [`visibility-filtering-client/vf_client.rs:117`](../source/visibility-filtering-client/vf_client.rs#L117) — `pub fn to_visibility_reason(&self) -> Option<FilteredReason> {`
+- [`visibility-filtering-client/vf_client.rs:137`](../source/visibility-filtering-client/vf_client.rs#L137) — `pub trait VfClient {`
+- [`visibility-filtering-client/vf_client.rs:138`](../source/visibility-filtering-client/vf_client.rs#L138) — `async fn get_result(`
+- [`visibility-filtering-client/vf_client.rs:147`](../source/visibility-filtering-client/vf_client.rs#L147) — `pub struct StratoVfClient {`
+- [`visibility-filtering-client/vf_client.rs:152`](../source/visibility-filtering-client/vf_client.rs#L152) — `pub async fn new(`
+- [`visibility-filtering-client/vf_client.rs:179`](../source/visibility-filtering-client/vf_client.rs#L179) — `fn action_from_strato_reason(reason: &Option<FilteredReason>) -> Action {`
+- [`visibility-filtering-client/vf_client.rs:192`](../source/visibility-filtering-client/vf_client.rs#L192) — `async fn get_result(`
+- [`visibility-filtering-client/vf_client.rs:243`](../source/visibility-filtering-client/vf_client.rs#L243) — `const XAI_VF_DEFAULT_TIMEOUT_MS: u64 = 400;`
+- [`visibility-filtering-client/vf_client.rs:244`](../source/visibility-filtering-client/vf_client.rs#L244) — `const XAI_VF_MAX_BATCH_SIZE: usize = 50;`
+- [`visibility-filtering-client/vf_client.rs:245`](../source/visibility-filtering-client/vf_client.rs#L245) — `const XAI_VF_APERTURE_SIZE: usize = 16;`
+- [`visibility-filtering-client/vf_client.rs:246`](../source/visibility-filtering-client/vf_client.rs#L246) — `const VF_FILTER_TWEETS_DISCOVERY_ENV: &str = "VF_FILTER_TWEETS_DISCOVERY";`
+- [`visibility-filtering-client/vf_client.rs:248`](../source/visibility-filtering-client/vf_client.rs#L248) — `pub struct XaiVfClient {`
+- [`visibility-filtering-client/vf_client.rs:254`](../source/visibility-filtering-client/vf_client.rs#L254) — `enum FilterTweetsServiceClient {`
+- [`visibility-filtering-client/vf_client.rs:260`](../source/visibility-filtering-client/vf_client.rs#L260) — `async fn evaluate_tweets(`
+- [`visibility-filtering-client/vf_client.rs:270`](../source/visibility-filtering-client/vf_client.rs#L270) — `async fn filter_tweets(`
+- [`visibility-filtering-client/vf_client.rs:281`](../source/visibility-filtering-client/vf_client.rs#L281) — `fn filter_tweets_channel_params(dc: &str) -> VfChannelParams<'_> {`
+- [`visibility-filtering-client/vf_client.rs:292`](../source/visibility-filtering-client/vf_client.rs#L292) — `fn channel_error_to_anyhow(e: VfChannelError) -> anyhow::Error {`
+- [`visibility-filtering-client/vf_client.rs:298`](../source/visibility-filtering-client/vf_client.rs#L298) — `fn make_filter_tweets_client<T>(channel: T) -> VisibilityFilteringServiceClient<T>`
+- [`visibility-filtering-client/vf_client.rs:311`](../source/visibility-filtering-client/vf_client.rs#L311) — `pub async fn evaluate_tweets(`
+- [`visibility-filtering-client/vf_client.rs:337`](../source/visibility-filtering-client/vf_client.rs#L337) — `pub fn from_channel(channel: Channel) -> Self {`
+- [`visibility-filtering-client/vf_client.rs:344`](../source/visibility-filtering-client/vf_client.rs#L344) — `pub async fn connect(datacenter: &str) -> Result<Self> {`
+- [`visibility-filtering-client/vf_client.rs:360`](../source/visibility-filtering-client/vf_client.rs#L360) — `pub fn with_timeout_ms(mut self, timeout_ms: u64) -> Self {`
+- [`visibility-filtering-client/vf_client.rs:370`](../source/visibility-filtering-client/vf_client.rs#L370) — `fn decode_response(`
+- [`visibility-filtering-client/vf_client.rs:399`](../source/visibility-filtering-client/vf_client.rs#L399) — `fn to_proto_safety_level(level: SafetyLevel) -> vf_pb::SafetyLevel {`
+- [`visibility-filtering-client/vf_client.rs:414`](../source/visibility-filtering-client/vf_client.rs#L414) — `fn result_to_visibility(result: vf_pb::TweetVisibilityResult) -> TweetVisibility {`
+- [`visibility-filtering-client/vf_client.rs:426`](../source/visibility-filtering-client/vf_client.rs#L426) — `fn results_to_map(`
+- [`visibility-filtering-client/vf_client.rs:446`](../source/visibility-filtering-client/vf_client.rs#L446) — `fn rpc_error_map(`
+- [`visibility-filtering-client/vf_client.rs:461`](../source/visibility-filtering-client/vf_client.rs#L461) — `fn classify_filter_tweets_error_code(code: tonic::Code) -> &'static str {`
+- [`visibility-filtering-client/vf_client.rs:471`](../source/visibility-filtering-client/vf_client.rs#L471) — `struct FilterTweetsClientMetrics {`
+- [`visibility-filtering-client/vf_client.rs:477`](../source/visibility-filtering-client/vf_client.rs#L477) — `fn record_failed_chunk(&mut self, code: &'static str, id_count: usize) {`
+- [`visibility-filtering-client/vf_client.rs:483`](../source/visibility-filtering-client/vf_client.rs#L483) — `enum FilterTweetsRequestStatus {`
+- [`visibility-filtering-client/vf_client.rs:489`](../source/visibility-filtering-client/vf_client.rs#L489) — `struct FilterTweetsRequestMetricsGuard {`
+- [`visibility-filtering-client/vf_client.rs:495`](../source/visibility-filtering-client/vf_client.rs#L495) — `fn new() -> Self {`
+- [`visibility-filtering-client/vf_client.rs:502`](../source/visibility-filtering-client/vf_client.rs#L502) — `fn mark_completed(&mut self, metrics: &FilterTweetsClientMetrics) {`
+- [`visibility-filtering-client/vf_client.rs:512`](../source/visibility-filtering-client/vf_client.rs#L512) — `fn drop(&mut self) {`
+- [`visibility-filtering-client/vf_client.rs:525`](../source/visibility-filtering-client/vf_client.rs#L525) — `fn emit_filter_tweets_client_metrics(latency_ms: f64, metrics: &FilterTweetsClientMetrics) {`
+- [`visibility-filtering-client/vf_client.rs:549`](../source/visibility-filtering-client/vf_client.rs#L549) — `async fn get_result(`
+- [`visibility-filtering-client/vf_client.rs:621`](../source/visibility-filtering-client/vf_client.rs#L621) — `pub struct MockVfClient;`
+- [`visibility-filtering-client/vf_client.rs:625`](../source/visibility-filtering-client/vf_client.rs#L625) — `async fn get_result(`
+- [`visibility-filtering-client/vf_client.rs:650`](../source/visibility-filtering-client/vf_client.rs#L650) — `async fn test_decode_simple() {`
+- [`visibility-filtering-client/vf_client.rs:689`](../source/visibility-filtering-client/vf_client.rs#L689) — `fn decode_response_requires_complete_ordered_tweets_and_outcomes() {`
+- [`visibility-filtering-client/vf_client.rs:739`](../source/visibility-filtering-client/vf_client.rs#L739) — `struct EvaluateStub {`
+- [`visibility-filtering-client/vf_client.rs:747`](../source/visibility-filtering-client/vf_client.rs#L747) — `async fn evaluate_tweets(`
+- [`visibility-filtering-client/vf_client.rs:773`](../source/visibility-filtering-client/vf_client.rs#L773) — `async fn filter_tweets(`
+- [`visibility-filtering-client/vf_client.rs:779`](../source/visibility-filtering-client/vf_client.rs#L779) — `async fn get_safety_labels(`
+- [`visibility-filtering-client/vf_client.rs:787`](../source/visibility-filtering-client/vf_client.rs#L787) — `async fn evaluate_against(`
+- [`visibility-filtering-client/vf_client.rs:832`](../source/visibility-filtering-client/vf_client.rs#L832) — `async fn evaluate_tweets_chunks_and_fails_whole_call_on_any_chunk_error_or_deadline() {`
+- [`visibility-filtering-client/vf_client.rs:873`](../source/visibility-filtering-client/vf_client.rs#L873) — `fn classify_filter_tweets_error_code_taxonomy() {`
+- [`visibility-filtering-client/vf_client.rs:897`](../source/visibility-filtering-client/vf_client.rs#L897) — `fn filter_tweets_client_metrics_aggregates_failed_chunks_only() {`
+- [`visibility-filtering-client/vf_client.rs:914`](../source/visibility-filtering-client/vf_client.rs#L914) — `fn filter_tweets_client_metrics_success_emits_no_errors() {`
+- [`visibility-filtering-client/vf_client.rs:921`](../source/visibility-filtering-client/vf_client.rs#L921) — `struct RecordingReceiver {`
+- [`visibility-filtering-client/vf_client.rs:926`](../source/visibility-filtering-client/vf_client.rs#L926) — `fn counter(&self, key: &str) -> u64 {`
+- [`visibility-filtering-client/vf_client.rs:932`](../source/visibility-filtering-client/vf_client.rs#L932) — `fn incr(&self, name: &str, scopes: &[(&str, &str)], value: u64) {`
+- [`visibility-filtering-client/vf_client.rs:942`](../source/visibility-filtering-client/vf_client.rs#L942) — `fn observe(`
+- [`visibility-filtering-client/vf_client.rs:950`](../source/visibility-filtering-client/vf_client.rs#L950) — `fn observe_expo(&self, _: &str, _: &[(&str, &str)], _: f64) {}`
+- [`visibility-filtering-client/vf_client.rs:951`](../source/visibility-filtering-client/vf_client.rs#L951) — `fn observe_vm(&self, _: &str, _: &[(&str, &str)], _: f64) {}`
+- [`visibility-filtering-client/vf_client.rs:952`](../source/visibility-filtering-client/vf_client.rs#L952) — `fn gauge(&self, _: &str, _: &[(&str, &str)], _: f64) {}`
+- [`visibility-filtering-client/vf_client.rs:955`](../source/visibility-filtering-client/vf_client.rs#L955) — `fn request_guard_with(receiver: Arc<RecordingReceiver>) -> FilterTweetsRequestMetricsGuard {`
+- [`visibility-filtering-client/vf_client.rs:963`](../source/visibility-filtering-client/vf_client.rs#L963) — `fn request_guard_counts_completed_or_degraded_by_failed_chunks() {`
+- [`visibility-filtering-client/vf_client.rs:981`](../source/visibility-filtering-client/vf_client.rs#L981) — `async fn request_guard_counts_cancelled_when_future_dropped_mid_flight() {`
+- [`visibility-filtering-client/vf_client.rs:996`](../source/visibility-filtering-client/vf_client.rs#L996) — `fn safety_level_maps_to_proto() {`
+- [`visibility-filtering-client/vf_client.rs:1012`](../source/visibility-filtering-client/vf_client.rs#L1012) — `fn results_to_map_converts_actions_and_fails_closed() {`
+- [`visibility-filtering-client/vf_client.rs:1108`](../source/visibility-filtering-client/vf_client.rs#L1108) — `fn strato_absent_and_bare_reasons_keep_their_policy() {`
+- [`visibility-filtering-client/vf_client.rs:1117`](../source/visibility-filtering-client/vf_client.rs#L1117) — `fn response_projection_preserves_rust_reason_shape() {`
+- [`visibility-filtering-client/vf_client.rs:1149`](../source/visibility-filtering-client/vf_client.rs#L1149) — `fn results_to_map_converts_labels_and_fails_closed() {`
+- [`visibility-filtering-client/vf_client.rs:1209`](../source/visibility-filtering-client/vf_client.rs#L1209) — `struct StubVfService {`
+- [`visibility-filtering-client/vf_client.rs:1215`](../source/visibility-filtering-client/vf_client.rs#L1215) — `async fn evaluate_tweets(`
+- [`visibility-filtering-client/vf_client.rs:1222`](../source/visibility-filtering-client/vf_client.rs#L1222) — `async fn filter_tweets(`
+- [`visibility-filtering-client/vf_client.rs:1251`](../source/visibility-filtering-client/vf_client.rs#L1251) — `async fn get_safety_labels(`
+- [`visibility-filtering-client/vf_client.rs:1259`](../source/visibility-filtering-client/vf_client.rs#L1259) — `async fn start_stub_server() -> (`
+- [`visibility-filtering-client/vf_client.rs:1284`](../source/visibility-filtering-client/vf_client.rs#L1284) — `async fn get_result_keeps_block_directions_distinct() {`
+- [`visibility-filtering-client/vf_client.rs:1318`](../source/visibility-filtering-client/vf_client.rs#L1318) — `async fn get_result_forwards_country_code() {`
+- [`visibility-filtering-client/vf_client.rs:1356`](../source/visibility-filtering-client/vf_client.rs#L1356) — `async fn get_result_empty_input_skips_call() {`
+- [`visibility-filtering-client/vf_client.rs:1366`](../source/visibility-filtering-client/vf_client.rs#L1366) — `async fn get_result_chunks_large_batches() {`
+- [`visibility-filtering-client/vf_client.rs:1389`](../source/visibility-filtering-client/vf_client.rs#L1389) — `async fn get_result_partial_success_fills_missing_ids() {`
+- [`visibility-filtering-client/vf_client.rs:1391`](../source/visibility-filtering-client/vf_client.rs#L1391) — `struct PartialVfService;`
+- [`visibility-filtering-client/vf_client.rs:1395`](../source/visibility-filtering-client/vf_client.rs#L1395) — `async fn evaluate_tweets(`
+- [`visibility-filtering-client/vf_client.rs:1402`](../source/visibility-filtering-client/vf_client.rs#L1402) — `async fn filter_tweets(`
+- [`visibility-filtering-client/vf_client.rs:1422`](../source/visibility-filtering-client/vf_client.rs#L1422) — `async fn get_safety_labels(`
+- [`visibility-filtering-client/vf_client.rs:1474`](../source/visibility-filtering-client/vf_client.rs#L1474) — `async fn get_result_multi_chunk_partial_rpc_failure() {`
+- [`visibility-filtering-client/vf_client.rs:1476`](../source/visibility-filtering-client/vf_client.rs#L1476) — `struct FailSecondChunkService;`
+- [`visibility-filtering-client/vf_client.rs:1480`](../source/visibility-filtering-client/vf_client.rs#L1480) — `async fn evaluate_tweets(`
+- [`visibility-filtering-client/vf_client.rs:1487`](../source/visibility-filtering-client/vf_client.rs#L1487) — `async fn filter_tweets(`
+- [`visibility-filtering-client/vf_client.rs:1514`](../source/visibility-filtering-client/vf_client.rs#L1514) — `async fn get_safety_labels(`

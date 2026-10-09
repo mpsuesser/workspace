@@ -1,0 +1,293 @@
+# agatha: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`agatha/hub/agatha/Bijections.scala:7`](../source/agatha/hub/agatha/Bijections.scala#L7) — `object Bijections {`
+- [`agatha/hub/agatha/builder/Builder.scala:16`](../source/agatha/hub/agatha/builder/Builder.scala#L16) — `object Builder {`
+- [`agatha/hub/agatha/builder/Builder.scala:17`](../source/agatha/hub/agatha/builder/Builder.scala#L17) — `def apply(`
+- [`agatha/hub/agatha/builder/Builder.scala:40`](../source/agatha/hub/agatha/builder/Builder.scala#L40) — `object BuilderApp {`
+- [`agatha/hub/agatha/builder/Builder.scala:41`](../source/agatha/hub/agatha/builder/Builder.scala#L41) — `def apply(`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:19`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L19) — `object DefaultParams {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:42`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L42) — `trait AgathaJobConfig extends PredictJobConfig with BuildJobConfig`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:44`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L44) — `trait BuildJobConfig extends BaseJobConfig {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:47`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L47) — `def writeModelledFeatures(`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:54`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L54) — `trait PredictJobConfig extends BaseJobConfig {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:55`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L55) — `def readModelledFeatures(`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:61`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L61) — `def outputPredictions(`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:67`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L67) — `trait BaseJobConfig {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:74`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L74) — `def readUserFeatures(dateRange: DateRange): TypedPipe[UserFeature]`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:77`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L77) — `object BaseBuildJob {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:78`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L78) — `def apply(`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:105`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L105) — `class BuildJobTemplate(jobConfig: BuildJobConfig) extends TwitterExecutionApp {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:106`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L106) — `override def job: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:117`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L117) — `class ScheduledBuildJobTemplate(jobConfig: BuildJobConfig) extends TwitterScheduledExecutionApp {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:118`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L118) — `override def scheduledJob: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:132`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L132) — `object BasePredictJob {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:133`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L133) — `def apply(`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:155`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L155) — `class PredictJobTemplate(jobConfig: PredictJobConfig) extends TwitterExecutionApp {`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:156`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L156) — `override def job: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:166`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L166) — `class ScheduledPredictJobTemplate(jobConfig: PredictJobConfig)`
+- [`agatha/hub/agatha/job/AgathaJobTemplates.scala:168`](../source/agatha/hub/agatha/job/AgathaJobTemplates.scala#L168) — `override def scheduledJob: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/hub/agatha/labels/LabelGenerator.scala:7`](../source/agatha/hub/agatha/labels/LabelGenerator.scala#L7) — `trait LabelGenerator {`
+- [`agatha/hub/agatha/labels/LabelGenerator.scala:9`](../source/agatha/hub/agatha/labels/LabelGenerator.scala#L9) — `def read(dateRange: DateRange): TypedPipe[UserLabel]`
+- [`agatha/hub/agatha/labels/LabelManager.scala:7`](../source/agatha/hub/agatha/labels/LabelManager.scala#L7) — `trait LabelManager {`
+- [`agatha/hub/agatha/labels/LabelManager.scala:15`](../source/agatha/hub/agatha/labels/LabelManager.scala#L15) — `def getLabels(labelName: String, dateRange: DateRange): TypedPipe[UserLabel] =`
+- [`agatha/hub/agatha/labels/LabelManager.scala:18`](../source/agatha/hub/agatha/labels/LabelManager.scala#L18) — `def getLabels(labelMap: Map[String, DateRange]): Map[String, TypedPipe[UserLabel]] = {`
+- [`agatha/hub/agatha/predict/Aggregators.scala:10`](../source/agatha/hub/agatha/predict/Aggregators.scala#L10) — `object Aggregators {`
+- [`agatha/hub/agatha/predict/Aggregators.scala:12`](../source/agatha/hub/agatha/predict/Aggregators.scala#L12) — `def getMoments(`
+- [`agatha/hub/agatha/predict/Aggregators.scala:30`](../source/agatha/hub/agatha/predict/Aggregators.scala#L30) — `def getPresentMoments(`
+- [`agatha/hub/agatha/predict/Aggregators.scala:41`](../source/agatha/hub/agatha/predict/Aggregators.scala#L41) — `def getPresentPercentiles(`
+- [`agatha/hub/agatha/predict/Predict.scala:15`](../source/agatha/hub/agatha/predict/Predict.scala#L15) — `object Predict {`
+- [`agatha/hub/agatha/predict/Predict.scala:17`](../source/agatha/hub/agatha/predict/Predict.scala#L17) — `def getPMIForUserFeatures(`
+- [`agatha/hub/agatha/predict/Predict.scala:53`](../source/agatha/hub/agatha/predict/Predict.scala#L53) — `object PredictionApp {`
+- [`agatha/hub/agatha/predict/Predict.scala:54`](../source/agatha/hub/agatha/predict/Predict.scala#L54) — `def apply(`
+- [`agatha/hub/agatha/predict/package.scala:6`](../source/agatha/hub/agatha/predict/package.scala#L6) — `type UserGraphGrouping = (Long, FeatureClass)`
+- [`agatha/hub/agatha/thrift/agatha.thrift:5`](../source/agatha/hub/agatha/thrift/agatha.thrift#L5) — `struct FeatureClass {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:10`](../source/agatha/hub/agatha/thrift/agatha.thrift#L10) — `struct FeatureIdentifier {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:15`](../source/agatha/hub/agatha/thrift/agatha.thrift#L15) — `struct Feature {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:20`](../source/agatha/hub/agatha/thrift/agatha.thrift#L20) — `struct UserFeature {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:25`](../source/agatha/hub/agatha/thrift/agatha.thrift#L25) — `struct LabelDateRange {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:30`](../source/agatha/hub/agatha/thrift/agatha.thrift#L30) — `struct ModelledFeatureLabelMetadata {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:34`](../source/agatha/hub/agatha/thrift/agatha.thrift#L34) — `struct ModelledFeature {`
+- [`agatha/hub/agatha/thrift/agatha.thrift:45`](../source/agatha/hub/agatha/thrift/agatha.thrift#L45) — `struct UserLabel {`
+- [`agatha/hub/agatha/thrift/featureSource.thrift:3`](../source/agatha/hub/agatha/thrift/featureSource.thrift#L3) — `enum FeatureSource {`
+- [`agatha/hub/agatha/util/CrossedPMIStatToModelledFeature.scala:7`](../source/agatha/hub/agatha/util/CrossedPMIStatToModelledFeature.scala#L7) — `object CrossedPMIStatToModelledFeature {`
+- [`agatha/hub/agatha/util/CrossedPMIStatToModelledFeature.scala:8`](../source/agatha/hub/agatha/util/CrossedPMIStatToModelledFeature.scala#L8) — `def apply(crossed: CrossedPMIStats[FeatureIdentifier, String]): ModelledFeature =`
+- [`agatha/hub/agatha/util/CrossedPMIStatToModelledFeature.scala:20`](../source/agatha/hub/agatha/util/CrossedPMIStatToModelledFeature.scala#L20) — `def invert(mf: ModelledFeature): CrossedPMIStats[FeatureIdentifier, String] =`
+- [`agatha/hub/pmi/ModelCommon.scala:10`](../source/agatha/hub/pmi/ModelCommon.scala#L10) — `def applyRegularizationToPipe[T, U](`
+- [`agatha/hub/pmi/ModelCommon.scala:28`](../source/agatha/hub/pmi/ModelCommon.scala#L28) — `def getFeatureSumsWithMinFeatures[T, U](`
+- [`agatha/hub/pmi/ModelCommon.scala:51`](../source/agatha/hub/pmi/ModelCommon.scala#L51) — `def getDataWithSumsSketch[T, U](`
+- [`agatha/hub/pmi/ModelCommon.scala:70`](../source/agatha/hub/pmi/ModelCommon.scala#L70) — `def getDataWithSumsHash[T, U](`
+- [`agatha/hub/pmi/PMI.scala:14`](../source/agatha/hub/pmi/PMI.scala#L14) — `object PMI {`
+- [`agatha/hub/pmi/PMI.scala:16`](../source/agatha/hub/pmi/PMI.scala#L16) — `case class RegularizationParams(`
+- [`agatha/hub/pmi/PMI.scala:22`](../source/agatha/hub/pmi/PMI.scala#L22) — `case class PMIParams(`
+- [`agatha/hub/pmi/PMI.scala:27`](../source/agatha/hub/pmi/PMI.scala#L27) — `case class FeatureStats[T](featureId: T, featureValue: Double, featureSum: Double)`
+- [`agatha/hub/pmi/PMI.scala:29`](../source/agatha/hub/pmi/PMI.scala#L29) — `case class PMIStats[T, U, V](`
+- [`agatha/hub/pmi/PMI.scala:35`](../source/agatha/hub/pmi/PMI.scala#L35) — `case class CrossedPMIStats[U, V](`
+- [`agatha/hub/pmi/PMI.scala:45`](../source/agatha/hub/pmi/PMI.scala#L45) — `private def returnUnsmoothedMatrix[T, U, V](`
+- [`agatha/hub/pmi/PMI.scala:148`](../source/agatha/hub/pmi/PMI.scala#L148) — `def bigPMI[T, U, V](`
+- [`agatha/hub/pmi/PMI.scala:197`](../source/agatha/hub/pmi/PMI.scala#L197) — `def bigPMIwithUnsmoothedMatrix[T, U, V](`
+- [`agatha/hub/pmi/PMI.scala:248`](../source/agatha/hub/pmi/PMI.scala#L248) — `def bigPMI[T, U](`
+- [`agatha/hub/pmi/PMISetExtractors.scala:8`](../source/agatha/hub/pmi/PMISetExtractors.scala#L8) — `object PMISetExtractors {`
+- [`agatha/hub/pmi/PMISetExtractors.scala:10`](../source/agatha/hub/pmi/PMISetExtractors.scala#L10) — `case class EntityCount[T](entityId: T, count: Long)`
+- [`agatha/hub/pmi/PMISetExtractors.scala:12`](../source/agatha/hub/pmi/PMISetExtractors.scala#L12) — `case class PMISetOutput[T, U, V](dataRow: (T, U, Double), label: V, pmi: Double)`
+- [`agatha/hub/pmi/PMISetExtractors.scala:14`](../source/agatha/hub/pmi/PMISetExtractors.scala#L14) — `def getEntityCounts[K](`
+- [`agatha/hub/pmi/PMISetExtractors.scala:23`](../source/agatha/hub/pmi/PMISetExtractors.scala#L23) — `def getPMISetPerEntityAndLabel[T, U, V, W](`
+- [`agatha/hub/pmi/PMISetExtractors.scala:47`](../source/agatha/hub/pmi/PMISetExtractors.scala#L47) — `def getLeaveOneOutPMIExpSetPerEntityAndLabel[T, U, V, W](`
+- [`agatha/hub/pmi/PMITypes.scala:7`](../source/agatha/hub/pmi/PMITypes.scala#L7) — `object PMITypes {`
+- [`agatha/hub/pmi/PMITypes.scala:8`](../source/agatha/hub/pmi/PMITypes.scala#L8) — `abstract class PMIDataContainer[T, U, V](`
+- [`agatha/hub/pmi/PMITypes.scala:29`](../source/agatha/hub/pmi/PMITypes.scala#L29) — `case class BigToBigPMIContainer[T, U, V](`
+- [`agatha/hub/pmi/PMITypes.scala:53`](../source/agatha/hub/pmi/PMITypes.scala#L53) — `case class BigToSmallPMIContainer[T, U, V](`
+- [`agatha/hub/pmi/PMITypes.scala:78`](../source/agatha/hub/pmi/PMITypes.scala#L78) — `case class SmallToSmallPMIContainer[T, U, V](`
+- [`agatha/hub/pmi/PMITypes.scala:103`](../source/agatha/hub/pmi/PMITypes.scala#L103) — `case class SymmetricPMIContainer[T, U](`
+- [`agatha/hub/pmi/PMITypes.scala:105`](../source/agatha/hub/pmi/PMITypes.scala#L105) — `def joinFeatureSumsToPipe(`
+- [`agatha/hub/pmi/PreProcessors.scala:6`](../source/agatha/hub/pmi/PreProcessors.scala#L6) — `object PreProcessors {`
+- [`agatha/hub/pmi/PreProcessors.scala:8`](../source/agatha/hub/pmi/PreProcessors.scala#L8) — `def sampleFeaturesPerInstance[T, U](`
+- [`agatha/hub/pmi/PreProcessors.scala:23`](../source/agatha/hub/pmi/PreProcessors.scala#L23) — `def capFeatureSumPerInstance[T, U](`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:18`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L18) — `object TopFollowPmi extends RequiredBinaryComparatorsExecutionApp with AdhocExecutionApp {`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:19`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L19) — `def runOnDateRange(`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:46`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L46) — `object DataUtils {`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:47`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L47) — `type User = Long`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:48`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L48) — `type EdgeLite = (User, User)`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:50`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L50) — `def getMedPlusUsers(`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:69`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L69) — `def getFollowGraph(implicit dateRange: DateRange): TypedPipe[EdgeLite] = {`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:77`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L77) — `def getMedPlusFollowGraph(implicit dateRange: DateRange): TypedPipe[EdgeLite] = {`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:85`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L85) — `def getTopNProducers(`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:99`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L99) — `def filterGraphToTopNProducers(`
+- [`agatha/hub/pmi/examples/TopFollowPmi.scala:111`](../source/agatha/hub/pmi/examples/TopFollowPmi.scala#L111) — `object BigPMIConfig {`
+- [`agatha/hub/pmi/math/Math.scala:3`](../source/agatha/hub/pmi/math/Math.scala#L3) — `case class MathParams(`
+- [`agatha/hub/pmi/math/Math.scala:14`](../source/agatha/hub/pmi/math/Math.scala#L14) — `def getSparsePMI(pmi: Double)(implicit mathParams: MathParams): Option[Double] = {`
+- [`agatha/hub/pmi/math/Math.scala:23`](../source/agatha/hub/pmi/math/Math.scala#L23) — `def bayesianAverage(`
+- [`agatha/hub/pmi/math/Math.scala:37`](../source/agatha/hub/pmi/math/Math.scala#L37) — `def confidenceIntervalCorrection(`
+- [`agatha/hub/pmi/math/Math.scala:50`](../source/agatha/hub/pmi/math/Math.scala#L50) — `def computePMIExpWithVariance(`
+- [`agatha/hub/pmi/math/Math.scala:95`](../source/agatha/hub/pmi/math/Math.scala#L95) — `def computePMI(`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:9`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L9) — `object Moments {`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:10`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L10) — `class Moments(private val moments: Map[Int, Double], maxMoment: Int) {`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:26`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L26) — `def sparseContains(k: Int): Boolean = moments.contains(k)`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:28`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L28) — `def denseContains(k: Int): Boolean = toDenseMap.contains(k)`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:30`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L30) — `def get(i: Int): Option[Double] = if (i > maxMoment)`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:35`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L35) — `def apply(i: Int): Double = if (i > maxMoment)`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:42`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L42) — `case class StandardizedMoments(`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:47`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L47) — `case class CentralMoments(`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:67`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L67) — `def getMoments[T, U](`
+- [`agatha/hub/pmi/math/aggregators/Moments.scala:140`](../source/agatha/hub/pmi/math/aggregators/Moments.scala#L140) — `def getPresentMoments[T](`
+- [`agatha/hub/pmi/math/aggregators/Percentiles.scala:8`](../source/agatha/hub/pmi/math/aggregators/Percentiles.scala#L8) — `object Percentiles {`
+- [`agatha/hub/pmi/math/aggregators/Percentiles.scala:10`](../source/agatha/hub/pmi/math/aggregators/Percentiles.scala#L10) — `def getPresentPercentiles[T](`
+- [`agatha/scalding/AgathaFeaturesPredictJob.scala:26`](../source/agatha/scalding/AgathaFeaturesPredictJob.scala#L26) — `object AgathaFeaturesJobConfig extends PredictJobConfig {`
+- [`agatha/scalding/AgathaFeaturesPredictJob.scala:38`](../source/agatha/scalding/AgathaFeaturesPredictJob.scala#L38) — `override def readUserFeatures(dateRange: DateRange): TypedPipe[UserFeature] = {`
+- [`agatha/scalding/AgathaFeaturesPredictJob.scala:45`](../source/agatha/scalding/AgathaFeaturesPredictJob.scala#L45) — `override def readModelledFeatures(`
+- [`agatha/scalding/AgathaFeaturesPredictJob.scala:65`](../source/agatha/scalding/AgathaFeaturesPredictJob.scala#L65) — `override def outputPredictions(`
+- [`agatha/scalding/AgathaFeaturesPredictJob.scala:86`](../source/agatha/scalding/AgathaFeaturesPredictJob.scala#L86) — `object AgathaFeaturesPredictJob extends PredictJobTemplate(AgathaFeaturesJobConfig)`
+- [`agatha/scalding/AgathaFeaturesPredictJob.scala:87`](../source/agatha/scalding/AgathaFeaturesPredictJob.scala#L87) — `object ScheduledAgathaFeaturesPredictJob`
+- [`agatha/scalding/NSFWBuildJob.scala:20`](../source/agatha/scalding/NSFWBuildJob.scala#L20) — `object NSFWBuildJobConfig extends BuildJobConfig {`
+- [`agatha/scalding/NSFWBuildJob.scala:27`](../source/agatha/scalding/NSFWBuildJob.scala#L27) — `override def readUserFeatures(dateRange: DateRange): TypedPipe[UserFeature] = {`
+- [`agatha/scalding/NSFWBuildJob.scala:34`](../source/agatha/scalding/NSFWBuildJob.scala#L34) — `override def writeModelledFeatures(`
+- [`agatha/scalding/NSFWBuildJob.scala:53`](../source/agatha/scalding/NSFWBuildJob.scala#L53) — `object NSFWBuildJob`
+- [`agatha/scalding/NSFWBuildJob.scala:57`](../source/agatha/scalding/NSFWBuildJob.scala#L57) — `object ScheduledNSFWBuildJob extends ScheduledBuildJobTemplate(NSFWBuildJobConfig)`
+- [`agatha/scalding/RateBasedBuildJob.scala:22`](../source/agatha/scalding/RateBasedBuildJob.scala#L22) — `object RateBasedJobConfig extends BuildJobConfig {`
+- [`agatha/scalding/RateBasedBuildJob.scala:31`](../source/agatha/scalding/RateBasedBuildJob.scala#L31) — `override def readUserFeatures(dateRange: DateRange): TypedPipe[UserFeature] = {`
+- [`agatha/scalding/RateBasedBuildJob.scala:38`](../source/agatha/scalding/RateBasedBuildJob.scala#L38) — `override def writeModelledFeatures(`
+- [`agatha/scalding/RateBasedBuildJob.scala:57`](../source/agatha/scalding/RateBasedBuildJob.scala#L57) — `object RateBasedBuildJob`
+- [`agatha/scalding/RateBasedBuildJob.scala:60`](../source/agatha/scalding/RateBasedBuildJob.scala#L60) — `object ScheduledRateBasedBuildJob extends ScheduledBuildJobTemplate(RateBasedJobConfig)`
+- [`agatha/scalding/SpagathaBuildJob.scala:20`](../source/agatha/scalding/SpagathaBuildJob.scala#L20) — `object SpagathaJobConfig extends BuildJobConfig {`
+- [`agatha/scalding/SpagathaBuildJob.scala:27`](../source/agatha/scalding/SpagathaBuildJob.scala#L27) — `override def readUserFeatures(dateRange: DateRange): TypedPipe[UserFeature] = {`
+- [`agatha/scalding/SpagathaBuildJob.scala:34`](../source/agatha/scalding/SpagathaBuildJob.scala#L34) — `override def writeModelledFeatures(`
+- [`agatha/scalding/SpagathaBuildJob.scala:53`](../source/agatha/scalding/SpagathaBuildJob.scala#L53) — `object SpagathaBuildJob`
+- [`agatha/scalding/SpagathaBuildJob.scala:56`](../source/agatha/scalding/SpagathaBuildJob.scala#L56) — `object ScheduledSpagathaBuildJob extends ScheduledBuildJobTemplate(SpagathaJobConfig)`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:34`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L34) — `trait BlinkScoreExtractionConfig {`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:44`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L44) — `def getUserPredictions(dateRange: DateRange): TypedPipe[UserPrediction]`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:46`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L46) — `def writeUserBlinkScores(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:51`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L51) — `def writeCalibratedUserBlinkScores(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:57`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L57) — `object BaseBlinkScoreJob {`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:58`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L58) — `def apply(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:134`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L134) — `def percentileCalibrateUserAverages(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:144`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L144) — `def filterToLabel(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:197`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L197) — `class BlinkScoreJobTemplate(config: BlinkScoreExtractionConfig) extends TwitterExecutionApp {`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:198`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L198) — `override def job: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:209`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L209) — `class ScheduledBlinkScoreJobTemplate(jobConfig: BlinkScoreExtractionConfig)`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:211`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L211) — `override def scheduledJob: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:225`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L225) — `trait BlinkScoreConfig extends BlinkScoreExtractionConfig {`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:272`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L272) — `override def getUserPredictions(dateRange: DateRange): TypedPipe[UserPrediction] =`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:278`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L278) — `override def writeUserBlinkScores(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:294`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L294) — `override def writeCalibratedUserBlinkScores(`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:328`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L328) — `object ProdBlinkScoreConfig extends BlinkScoreConfig {`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:332`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L332) — `object AdhocBlinkScoreConfig extends BlinkScoreConfig {`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:336`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L336) — `object AdhocBlinkScoreJob extends BlinkScoreJobTemplate(AdhocBlinkScoreConfig)`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:337`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L337) — `object ProdNonScheduledBlinkScoreJob extends BlinkScoreJobTemplate(ProdBlinkScoreConfig)`
+- [`agatha/scalding/blink/BlinkScoreJobTemplate.scala:338`](../source/agatha/scalding/blink/BlinkScoreJobTemplate.scala#L338) — `object ScheduledBlinkScoreJob extends ScheduledBlinkScoreJobTemplate(ProdBlinkScoreConfig)`
+- [`agatha/scalding/blink/ManhattanImportInjection.scala:9`](../source/agatha/scalding/blink/ManhattanImportInjection.scala#L9) — `object ManhattanImportInjection extends NumericInjections {`
+- [`agatha/scalding/data/ActiveUserFeaturesJob.scala:18`](../source/agatha/scalding/data/ActiveUserFeaturesJob.scala#L18) — `object ActiveUserFeaturesConfig extends FeatureExtractionConfig {`
+- [`agatha/scalding/data/ActiveUserFeaturesJob.scala:39`](../source/agatha/scalding/data/ActiveUserFeaturesJob.scala#L39) — `override def getUsers(dateRange: DateRange): TypedPipe[Long] = {`
+- [`agatha/scalding/data/ActiveUserFeaturesJob.scala:44`](../source/agatha/scalding/data/ActiveUserFeaturesJob.scala#L44) — `override def writeUserFeatures(`
+- [`agatha/scalding/data/ActiveUserFeaturesJob.scala:60`](../source/agatha/scalding/data/ActiveUserFeaturesJob.scala#L60) — `object ActiveUserFeaturesJob`
+- [`agatha/scalding/data/ActiveUserFeaturesJob.scala:63`](../source/agatha/scalding/data/ActiveUserFeaturesJob.scala#L63) — `object ScheduledActiveUserFeaturesJob`
+- [`agatha/scalding/data/DataLoader.scala:8`](../source/agatha/scalding/data/DataLoader.scala#L8) — `trait DataLoader {`
+- [`agatha/scalding/data/DataLoader.scala:10`](../source/agatha/scalding/data/DataLoader.scala#L10) — `def read(dateRange: DateRange): TypedPipe[(Long, Feature)]`
+- [`agatha/scalding/data/DataLoader.scala:13`](../source/agatha/scalding/data/DataLoader.scala#L13) — `trait GraphBasedDataLoader extends DataLoader {`
+- [`agatha/scalding/data/DataLoaderUtil.scala:8`](../source/agatha/scalding/data/DataLoaderUtil.scala#L8) — `object DataLoaderUtil {`
+- [`agatha/scalding/data/DataLoaderUtil.scala:10`](../source/agatha/scalding/data/DataLoaderUtil.scala#L10) — `def notTestAccount(userId: Long): Boolean = {`
+- [`agatha/scalding/data/DataLoaderUtil.scala:14`](../source/agatha/scalding/data/DataLoaderUtil.scala#L14) — `def getDirectionalGraphFeaturesFromUserPair(`
+- [`agatha/scalding/data/DataLoaderUtil.scala:43`](../source/agatha/scalding/data/DataLoaderUtil.scala#L43) — `def createUserFeatures(`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:13`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L13) — `trait FeatureExtractionConfig {`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:18`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L18) — `def getUsers(dateRange: DateRange): TypedPipe[Long]`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:20`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L20) — `def writeUserFeatures(userFeatures: TypedPipe[UserFeature], dateRange: DateRange): Execution[Unit]`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:23`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L23) — `class FeatureExtractionTemplate(config: FeatureExtractionConfig) extends TwitterExecutionApp {`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:24`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L24) — `override def job: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:39`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L39) — `class ScheduledFeatureExtractionTemplate(config: FeatureExtractionConfig)`
+- [`agatha/scalding/data/FeatureExtractionTemplate.scala:41`](../source/agatha/scalding/data/FeatureExtractionTemplate.scala#L41) — `override def scheduledJob: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/scalding/data/loaders/AbuseReportGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/AbuseReportGraphDataLoader.scala#L8) — `case class AbuseReportGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/BlockGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/BlockGraphDataLoader.scala#L8) — `case class BlockGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:27`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L27) — `object CombinedUserDataLoader extends DataLoader {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:31`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L31) — `private def logInt(value: Double, scale: Double): Long = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:37`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L37) — `private def getAccountCreationTimeFeatures(user: User) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:50`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L50) — `private def getSignupIpFeatures(user: User) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:74`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L74) — `private def getCountFeaturesFromUserExtended(userExtended: UserExtended) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:86`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L86) — `private def getSignupGeoFeaturesFomUserExtended(userExtended: UserExtended) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:96`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L96) — `private def getClientFeatures(user: User) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:113`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L113) — `private def getUserProfileFeatures(user: User) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:134`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L134) — `private def getSafetyFeatures(safety: Safety) = {`
+- [`agatha/scalding/data/loaders/CombinedUserDataLoader.scala:180`](../source/agatha/scalding/data/loaders/CombinedUserDataLoader.scala#L180) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/ContributorGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/ContributorGraphDataLoader.scala#L8) — `case class ContributorGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/DirectMessageGraphDataLoader.scala:15`](../source/agatha/scalding/data/loaders/DirectMessageGraphDataLoader.scala#L15) — `case class DirectMessageGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/DirectMessageGraphDataLoader.scala:19`](../source/agatha/scalding/data/loaders/DirectMessageGraphDataLoader.scala#L19) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/FavGraphDataLoader.scala:16`](../source/agatha/scalding/data/loaders/FavGraphDataLoader.scala#L16) — `case class FavGraphDataLoader(createReverseFeatures: Boolean) extends GraphBasedDataLoader {`
+- [`agatha/scalding/data/loaders/FavGraphDataLoader.scala:19`](../source/agatha/scalding/data/loaders/FavGraphDataLoader.scala#L19) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/FavedTweetsDataLoader.scala:18`](../source/agatha/scalding/data/loaders/FavedTweetsDataLoader.scala#L18) — `object FavedTweetsDataLoader extends DataLoader {`
+- [`agatha/scalding/data/loaders/FavedTweetsDataLoader.scala:19`](../source/agatha/scalding/data/loaders/FavedTweetsDataLoader.scala#L19) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/FollowGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/FollowGraphDataLoader.scala#L8) — `case class FollowGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/HashtagTweetsDataLoader.scala:17`](../source/agatha/scalding/data/loaders/HashtagTweetsDataLoader.scala#L17) — `object HashtagTweetsDataLoader extends DataLoader {`
+- [`agatha/scalding/data/loaders/HashtagTweetsDataLoader.scala:40`](../source/agatha/scalding/data/loaders/HashtagTweetsDataLoader.scala#L40) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/LegitTattleGraphDataLoader.scala:15`](../source/agatha/scalding/data/loaders/LegitTattleGraphDataLoader.scala#L15) — `case class LegitTattleGraphDataLoader(createReverseFeatures: Boolean) extends GraphBasedDataLoader {`
+- [`agatha/scalding/data/loaders/LegitTattleGraphDataLoader.scala:18`](../source/agatha/scalding/data/loaders/LegitTattleGraphDataLoader.scala#L18) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/ListFollowerGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/ListFollowerGraphDataLoader.scala#L8) — `object ListFollowerGraphDataLoader extends MostRecentEdgeSourceDataLoader {`
+- [`agatha/scalding/data/loaders/ListMembershipGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/ListMembershipGraphDataLoader.scala#L8) — `object ListMembershipGraphDataLoader extends MostRecentEdgeSourceDataLoader {`
+- [`agatha/scalding/data/loaders/MostRecentEdgeSourceDataLoader.scala:17`](../source/agatha/scalding/data/loaders/MostRecentEdgeSourceDataLoader.scala#L17) — `trait MostRecentEdgeSourceDataLoader extends GraphBasedDataLoader {`
+- [`agatha/scalding/data/loaders/MostRecentEdgeSourceDataLoader.scala:24`](../source/agatha/scalding/data/loaders/MostRecentEdgeSourceDataLoader.scala#L24) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/MuteGraphDataLoader.scala:8`](../source/agatha/scalding/data/loaders/MuteGraphDataLoader.scala#L8) — `case class MuteGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/NonLegitTattlesNoBlocksGraphDataLoader.scala:16`](../source/agatha/scalding/data/loaders/NonLegitTattlesNoBlocksGraphDataLoader.scala#L16) — `case class NonLegitTattlesNoBlocksGraphDataLoader(createReverseFeatures: Boolean)`
+- [`agatha/scalding/data/loaders/NonLegitTattlesNoBlocksGraphDataLoader.scala:20`](../source/agatha/scalding/data/loaders/NonLegitTattlesNoBlocksGraphDataLoader.scala#L20) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/RetweetedTweetsDataLoader.scala:17`](../source/agatha/scalding/data/loaders/RetweetedTweetsDataLoader.scala#L17) — `object RetweetedTweetsDataLoader extends DataLoader {`
+- [`agatha/scalding/data/loaders/RetweetedTweetsDataLoader.scala:20`](../source/agatha/scalding/data/loaders/RetweetedTweetsDataLoader.scala#L20) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/data/loaders/TweetAuthorEngagementGraph.scala:15`](../source/agatha/scalding/data/loaders/TweetAuthorEngagementGraph.scala#L15) — `case class TweetAuthorEngagementGraph(createReverseFeatures: Boolean) extends GraphBasedDataLoader {`
+- [`agatha/scalding/data/loaders/TweetAuthorEngagementGraph.scala:48`](../source/agatha/scalding/data/loaders/TweetAuthorEngagementGraph.scala#L48) — `override def read(dateRange: DateRange): TypedPipe[(Long, Feature)] = {`
+- [`agatha/scalding/labels/AgathaLabelManager.scala:12`](../source/agatha/scalding/labels/AgathaLabelManager.scala#L12) — `object AgathaLabelManager extends LabelManager {`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:13`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L13) — `case class LabelledUsers(`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:18`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L18) — `trait LabelExtractionConfig {`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:22`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L22) — `def generateLabels(dateRange: DateRange): Execution[Seq[LabelledUsers]]`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:24`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L24) — `def writeLabels(users: Execution[Seq[LabelledUsers]], dateRange: DateRange): Execution[Unit] = {`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:40`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L40) — `class LabelExtractionTemplate(config: LabelExtractionConfig) extends TwitterExecutionApp {`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:41`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L41) — `override def job: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:55`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L55) — `class ScheduledLabelExtractionTemplate(config: LabelExtractionConfig)`
+- [`agatha/scalding/labels/LabelExtractionTemplate.scala:57`](../source/agatha/scalding/labels/LabelExtractionTemplate.scala#L57) — `override def scheduledJob: Execution[Unit] = Execution.withId { implicit uniqueId =>`
+- [`agatha/scalding/labels/LabelUtil.scala:11`](../source/agatha/scalding/labels/LabelUtil.scala#L11) — `object LabelUtil {`
+- [`agatha/scalding/labels/LabelUtil.scala:12`](../source/agatha/scalding/labels/LabelUtil.scala#L12) — `def getLabelSizes(`
+- [`agatha/scalding/labels/LabelUtil.scala:25`](../source/agatha/scalding/labels/LabelUtil.scala#L25) — `def capFeatureSum(`
+- [`agatha/scalding/labels/LabelUtil.scala:41`](../source/agatha/scalding/labels/LabelUtil.scala#L41) — `def getPrior(positiveNegativePipe: TypedPipe[(Double, Double)]): ValuePipe[Double] = {`
+- [`agatha/scalding/labels/LabelUtil.scala:46`](../source/agatha/scalding/labels/LabelUtil.scala#L46) — `def createPositiveNegativeLabelsFromActiveUsers(`
+- [`agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala:11`](../source/agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala#L11) — `object BlocksPerFav extends LabelGenerator {`
+- [`agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala:14`](../source/agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala#L14) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala:22`](../source/agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala#L22) — `object MentionFilteredBlocksPerFav extends LabelGenerator {`
+- [`agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala:25`](../source/agatha/scalding/labels/blocks_per_fav/BlocksPerFav.scala#L25) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/favs/Favs.scala:14`](../source/agatha/scalding/labels/favs/Favs.scala#L14) — `object Favs {`
+- [`agatha/scalding/labels/favs/Favs.scala:15`](../source/agatha/scalding/labels/favs/Favs.scala#L15) — `def readOutOfNetworkFavs(dateRange: DateRange): TypedPipe[(Long, Long)] = {`
+- [`agatha/scalding/labels/favs/Favs.scala:21`](../source/agatha/scalding/labels/favs/Favs.scala#L21) — `def getFavs(implicit dateRange: DateRange): TypedPipe[(Long, Long)] = {`
+- [`agatha/scalding/labels/favs/Favs.scala:39`](../source/agatha/scalding/labels/favs/Favs.scala#L39) — `def getOutOfNetworkFavs(`
+- [`agatha/scalding/labels/favs/Favs.scala:51`](../source/agatha/scalding/labels/favs/Favs.scala#L51) — `def getInNetwork(implicit dateRange: DateRange): TypedPipe[(Long, Long)] = {`
+- [`agatha/scalding/labels/nsfw/NSFWLabel.scala:9`](../source/agatha/scalding/labels/nsfw/NSFWLabel.scala#L9) — `object NSFWLabel extends LabelGenerator {`
+- [`agatha/scalding/labels/nsfw/NSFWLabel.scala:12`](../source/agatha/scalding/labels/nsfw/NSFWLabel.scala#L12) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala:12`](../source/agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala#L12) — `object NSFWLabelExtraction extends LabelExtractionConfig {`
+- [`agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala:15`](../source/agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala#L15) — `def generatePositivesAndNegativeNSFWUsers(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala:33`](../source/agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala#L33) — `override def generateLabels(dateRange: DateRange): Execution[Seq[LabelledUsers]] = {`
+- [`agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala:45`](../source/agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala#L45) — `object NSFWExtractionJob`
+- [`agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala:48`](../source/agatha/scalding/labels/nsfw/NSFWLabelExtraction.scala#L48) — `object ScheduledNSFWExtractionJob`
+- [`agatha/scalding/labels/nsfw/NsfwAgathaLabelManager.scala:6`](../source/agatha/scalding/labels/nsfw/NsfwAgathaLabelManager.scala#L6) — `object NsfwAgathaLabelManager extends LabelManager {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:28`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L28) — `object RateBasedLabels {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:29`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L29) — `def computeScoresForInteractions(`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:59`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L59) — `def getUserLabels(dateRange: DateRange)(implicit tz: TimeZone): Execution[Seq[LabelledUsers]] = {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:120`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L120) — `def getBlocks(dateRange: DateRange): TypedPipe[(Long, Long)] = {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:142`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L142) — `def getReports(dateRange: DateRange)(implicit tz: TimeZone): TypedPipe[(Long, Long)] = {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:161`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L161) — `def getSpamReports(`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:186`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L186) — `def getMentionFilteredEngagements(`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:226`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L226) — `def getMentionFilteredBlocks: DateRange => TypedPipe[(Long, Long)] =`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala:228`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabels.scala#L228) — `def getMentionFilteredReports: DateRange => TypedPipe[(Long, Long)] =`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala:10`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala#L10) — `object RateBasedLabelsExtraction extends LabelExtractionConfig {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala:13`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala#L13) — `override def generateLabels(dateRange: DateRange): Execution[Seq[LabelledUsers]] = {`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala:18`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala#L18) — `object RateBasedExtractionJob`
+- [`agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala:21`](../source/agatha/scalding/labels/rate_based_labels/RateBasedLabelsExtraction.scala#L21) — `object ScheduledRateBasedExtractionJob`
+- [`agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala:13`](../source/agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala#L13) — `object ReportsPerFav extends LabelGenerator {`
+- [`agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala:17`](../source/agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala#L17) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala:25`](../source/agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala#L25) — `object MentionFilteredReportsPerFav extends LabelGenerator {`
+- [`agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala:29`](../source/agatha/scalding/labels/reports_per_fav/ReportsPerFav.scala#L29) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala:13`](../source/agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala#L13) — `object SpamReportsPerFav extends LabelGenerator {`
+- [`agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala:17`](../source/agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala#L17) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala:25`](../source/agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala#L25) — `object AllSpamReportsPerFav extends LabelGenerator {`
+- [`agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala:29`](../source/agatha/scalding/labels/spam_reports_per_fav/SpamReportsPerFav.scala#L29) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/spam_suspended/SpamSuspendedLabel.scala:11`](../source/agatha/scalding/labels/spam_suspended/SpamSuspendedLabel.scala#L11) — `object SpamSuspendedLabel extends LabelGenerator {`
+- [`agatha/scalding/labels/spam_suspended/SpamSuspendedLabel.scala:14`](../source/agatha/scalding/labels/spam_suspended/SpamSuspendedLabel.scala#L14) — `override def read(dateRange: DateRange): TypedPipe[UserLabel] = {`
+- [`agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala:15`](../source/agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala#L15) — `object SpamSuspendedLabelExtraction extends LabelExtractionConfig {`
+- [`agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala:18`](../source/agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala#L18) — `override def generateLabels(dateRange: DateRange): Execution[Seq[LabelledUsers]] = {`
+- [`agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala:30`](../source/agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala#L30) — `object SpamSuspendedExtractionJob`
+- [`agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala:33`](../source/agatha/scalding/labels/spam_suspended/SpamSuspendedLabelExtraction.scala#L33) — `object ScheduledSpamSuspendedExtractionJob`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:25`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L25) — `object BaseQuantileFeatureExport {`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:26`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L26) — `type FeatureKey = (FeatureClass, String, Double)`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:117`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L117) — `def apply(argDateRange: DateRange): Execution[Unit] = {`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:185`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L185) — `object QuantileFeatureExportJob extends TwitterExecutionApp {`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:186`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L186) — `override def job: Execution[Unit] = {`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:197`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L197) — `object ScheduledQuantileFeatureExportJob extends TwitterScheduledExecutionApp {`
+- [`agatha/scalding/quantile/QuantileFeatureExport.scala:198`](../source/agatha/scalding/quantile/QuantileFeatureExport.scala#L198) — `override def scheduledJob: Execution[Unit] = {`
+- [`agatha/scalding/util/FeaturesToLabels.scala:14`](../source/agatha/scalding/util/FeaturesToLabels.scala#L14) — `object FeaturesToLabels {`
+- [`agatha/scalding/util/FeaturesToLabels.scala:32`](../source/agatha/scalding/util/FeaturesToLabels.scala#L32) — `def makeIntervals(list: List[Int], top: Boolean): List[(Int, Int)] = {`
+- [`agatha/scalding/util/FeaturesToLabels.scala:43`](../source/agatha/scalding/util/FeaturesToLabels.scala#L43) — `def parseList[V](list: List[Int], outputList: List[V], top: Boolean): Map[(Int, Int), V] = {`
+- [`agatha/scalding/util/FeaturesToLabels.scala:50`](../source/agatha/scalding/util/FeaturesToLabels.scala#L50) — `def readDatasetAndJoinOnActiveUsers(`
+- [`agatha/scalding/util/FeaturesToLabels.scala:65`](../source/agatha/scalding/util/FeaturesToLabels.scala#L65) — `def generateCutoffs[V](`
+- [`agatha/scalding/util/FeaturesToLabels.scala:96`](../source/agatha/scalding/util/FeaturesToLabels.scala#L96) — `def applyCutOffs[V](`
+- [`agatha/scalding/util/GetActiveUsers.scala:10`](../source/agatha/scalding/util/GetActiveUsers.scala#L10) — `object GetActiveUsers {`
+- [`agatha/scalding/util/GetActiveUsers.scala:11`](../source/agatha/scalding/util/GetActiveUsers.scala#L11) — `def apply(dateRange: DateRange): TypedPipe[Long] = {`
+- [`agatha/scalding/util/GetSuspendedUsers.scala:12`](../source/agatha/scalding/util/GetSuspendedUsers.scala#L12) — `object GetSuspendedUsers {`
+- [`agatha/scalding/util/GetSuspendedUsers.scala:13`](../source/agatha/scalding/util/GetSuspendedUsers.scala#L13) — `def apply(dateRange: DateRange)(implicit tz: TimeZone): TypedPipe[Long] = {`
+- [`agatha/scalding/util/PredictionsToDataSetPipe.scala:17`](../source/agatha/scalding/util/PredictionsToDataSetPipe.scala#L17) — `object PredictionsToDataSetPipe {`
+- [`agatha/scalding/util/PredictionsToDataSetPipe.scala:22`](../source/agatha/scalding/util/PredictionsToDataSetPipe.scala#L22) — `private def featuresToSparseMapExec[K](`
+- [`agatha/scalding/util/PredictionsToDataSetPipe.scala:34`](../source/agatha/scalding/util/PredictionsToDataSetPipe.scala#L34) — `def apply(`
+- [`agatha/thrift/agatha.thrift:5`](../source/agatha/thrift/agatha.thrift#L5) — `struct FlattenedBlinkScore {`
+- [`agatha/thrift/agatha.thrift:11`](../source/agatha/thrift/agatha.thrift#L11) — `struct UserPrediction {`
+- [`agatha/thrift/agatha.thrift:18`](../source/agatha/thrift/agatha.thrift#L18) — `struct UserQuantilePrediction {`

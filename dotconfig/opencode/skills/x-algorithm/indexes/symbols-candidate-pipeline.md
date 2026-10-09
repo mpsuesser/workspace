@@ -1,0 +1,140 @@
+# candidate-pipeline: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`candidate-pipeline/candidate_pipeline.rs:20`](../source/candidate-pipeline/candidate_pipeline.rs#L20) — `const FINAL_RESULT_SIZE_SCOPE: [(&str, &str); 1] = [("requests", "result_size")];`
+- [`candidate-pipeline/candidate_pipeline.rs:21`](../source/candidate-pipeline/candidate_pipeline.rs#L21) — `const FINAL_RESULT_EMPTY_SCOPE: [(&str, &str); 1] = [("requests", "result_empty")];`
+- [`candidate-pipeline/candidate_pipeline.rs:24`](../source/candidate-pipeline/candidate_pipeline.rs#L24) — `pub enum PipelineStage {`
+- [`candidate-pipeline/candidate_pipeline.rs:38`](../source/candidate-pipeline/candidate_pipeline.rs#L38) — `pub fn stat_labels(`
+- [`candidate-pipeline/candidate_pipeline.rs:51`](../source/candidate-pipeline/candidate_pipeline.rs#L51) — `pub struct PipelineComponents {`
+- [`candidate-pipeline/candidate_pipeline.rs:56`](../source/candidate-pipeline/candidate_pipeline.rs#L56) — `pub struct PipelineResult<Q, C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:64`](../source/candidate-pipeline/candidate_pipeline.rs#L64) — `pub fn empty() -> Self {`
+- [`candidate-pipeline/candidate_pipeline.rs:73`](../source/candidate-pipeline/candidate_pipeline.rs#L73) — `pub trait PipelineQuery: Clone + Send + Sync + 'static {`
+- [`candidate-pipeline/candidate_pipeline.rs:74`](../source/candidate-pipeline/candidate_pipeline.rs#L74) — `fn params(&self) -> &xai_feature_switches::Params;`
+- [`candidate-pipeline/candidate_pipeline.rs:75`](../source/candidate-pipeline/candidate_pipeline.rs#L75) — `fn decider(&self) -> Option<&xai_decider::Decider>;`
+- [`candidate-pipeline/candidate_pipeline.rs:78`](../source/candidate-pipeline/candidate_pipeline.rs#L78) — `pub trait PipelineCandidate: Clone + Send + Sync + 'static {}`
+- [`candidate-pipeline/candidate_pipeline.rs:82`](../source/candidate-pipeline/candidate_pipeline.rs#L82) — `pub trait CandidatePipeline<Q, C>: Send + Sync`
+- [`candidate-pipeline/candidate_pipeline.rs:87`](../source/candidate-pipeline/candidate_pipeline.rs#L87) — `fn query_hydrators(&self) -> &[Box<dyn QueryHydrator<Q>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:88`](../source/candidate-pipeline/candidate_pipeline.rs#L88) — `fn dependent_query_hydrators(&self) -> &[Box<dyn QueryHydrator<Q>>] {`
+- [`candidate-pipeline/candidate_pipeline.rs:91`](../source/candidate-pipeline/candidate_pipeline.rs#L91) — `fn sources(&self) -> &[Box<dyn Source<Q, C>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:92`](../source/candidate-pipeline/candidate_pipeline.rs#L92) — `fn hydrators(&self) -> &[Box<dyn Hydrator<Q, C>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:93`](../source/candidate-pipeline/candidate_pipeline.rs#L93) — `fn filters(&self) -> &[Box<dyn Filter<Q, C>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:94`](../source/candidate-pipeline/candidate_pipeline.rs#L94) — `fn scorers(&self) -> &[Box<dyn Scorer<Q, C>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:95`](../source/candidate-pipeline/candidate_pipeline.rs#L95) — `fn selector(&self) -> &dyn Selector<Q, C>;`
+- [`candidate-pipeline/candidate_pipeline.rs:96`](../source/candidate-pipeline/candidate_pipeline.rs#L96) — `fn post_selection_hydrators(&self) -> &[Box<dyn Hydrator<Q, C>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:97`](../source/candidate-pipeline/candidate_pipeline.rs#L97) — `fn post_selection_filters(&self) -> &[Box<dyn Filter<Q, C>>];`
+- [`candidate-pipeline/candidate_pipeline.rs:98`](../source/candidate-pipeline/candidate_pipeline.rs#L98) — `fn side_effects(&self) -> Arc<Vec<Box<dyn SideEffect<Q, C>>>>;`
+- [`candidate-pipeline/candidate_pipeline.rs:99`](../source/candidate-pipeline/candidate_pipeline.rs#L99) — `fn result_size(&self) -> usize;`
+- [`candidate-pipeline/candidate_pipeline.rs:100`](../source/candidate-pipeline/candidate_pipeline.rs#L100) — `fn finalize(&self, _query: &Q, _candidates: &mut Vec<C>) {}`
+- [`candidate-pipeline/candidate_pipeline.rs:103`](../source/candidate-pipeline/candidate_pipeline.rs#L103) — `async fn execute(&self, query: Q) -> PipelineResult<Q, C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:111`](../source/candidate-pipeline/candidate_pipeline.rs#L111) — `async fn execute_stages(&self, query: Q) -> PipelineResult<Q, C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:164`](../source/candidate-pipeline/candidate_pipeline.rs#L164) — `fn components(&self) -> Vec<PipelineComponents> {`
+- [`candidate-pipeline/candidate_pipeline.rs:165`](../source/candidate-pipeline/candidate_pipeline.rs#L165) — `fn stage<T: ?Sized>(`
+- [`candidate-pipeline/candidate_pipeline.rs:214`](../source/candidate-pipeline/candidate_pipeline.rs#L214) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/candidate_pipeline.rs:222`](../source/candidate-pipeline/candidate_pipeline.rs#L222) — `async fn hydrate_query(&self, query: Q) -> Q {`
+- [`candidate-pipeline/candidate_pipeline.rs:246`](../source/candidate-pipeline/candidate_pipeline.rs#L246) — `async fn hydrate_dependent_query(&self, query: Q) -> Q {`
+- [`candidate-pipeline/candidate_pipeline.rs:274`](../source/candidate-pipeline/candidate_pipeline.rs#L274) — `async fn fetch_candidates(&self, query: &Q) -> Vec<C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:295`](../source/candidate-pipeline/candidate_pipeline.rs#L295) — `async fn hydrate(&self, query: &Q, candidates: Vec<C>) -> Vec<C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:304`](../source/candidate-pipeline/candidate_pipeline.rs#L304) — `async fn hydrate_post_selection(&self, query: &Q, candidates: Vec<C>) -> Vec<C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:314`](../source/candidate-pipeline/candidate_pipeline.rs#L314) — `async fn run_hydrators(`
+- [`candidate-pipeline/candidate_pipeline.rs:341`](../source/candidate-pipeline/candidate_pipeline.rs#L341) — `fn filter(&self, query: &Q, candidates: Vec<C>) -> (Vec<C>, Vec<C>) {`
+- [`candidate-pipeline/candidate_pipeline.rs:353`](../source/candidate-pipeline/candidate_pipeline.rs#L353) — `fn filter_post_selection(&self, query: &Q, candidates: Vec<C>) -> (Vec<C>, Vec<C>) {`
+- [`candidate-pipeline/candidate_pipeline.rs:362`](../source/candidate-pipeline/candidate_pipeline.rs#L362) — `fn run_filters(`
+- [`candidate-pipeline/candidate_pipeline.rs:390`](../source/candidate-pipeline/candidate_pipeline.rs#L390) — `async fn score(&self, query: &Q, mut candidates: Vec<C>) -> Vec<C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:403`](../source/candidate-pipeline/candidate_pipeline.rs#L403) — `fn select(&self, query: &Q, candidates: Vec<C>) -> SelectResult<C> {`
+- [`candidate-pipeline/candidate_pipeline.rs:415`](../source/candidate-pipeline/candidate_pipeline.rs#L415) — `fn run_side_effects(&self, input: Arc<SideEffectInput<Q, C>>) {`
+- [`candidate-pipeline/candidate_pipeline.rs:429`](../source/candidate-pipeline/candidate_pipeline.rs#L429) — `fn stat_result_size(&self, final_candidates: &[C]) {`
+- [`candidate-pipeline/filter.rs:8`](../source/candidate-pipeline/filter.rs#L8) — `pub struct FilterResult<C> {`
+- [`candidate-pipeline/filter.rs:13`](../source/candidate-pipeline/filter.rs#L13) — `pub trait Filter<Q, C>: Any + Send + Sync`
+- [`candidate-pipeline/filter.rs:18`](../source/candidate-pipeline/filter.rs#L18) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/filter.rs:30`](../source/candidate-pipeline/filter.rs#L30) — `fn run(&self, query: &Q, candidates: Vec<C>, stage: PipelineStage) -> FilterResult<C> {`
+- [`candidate-pipeline/filter.rs:46`](../source/candidate-pipeline/filter.rs#L46) — `fn filter(&self, query: &Q, candidates: Vec<C>) -> FilterResult<C>;`
+- [`candidate-pipeline/filter.rs:48`](../source/candidate-pipeline/filter.rs#L48) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/filter.rs:52`](../source/candidate-pipeline/filter.rs#L52) — `fn stat(&self, result: &FilterResult<C>, stage: PipelineStage) {`
+- [`candidate-pipeline/hydrator.rs:11`](../source/candidate-pipeline/hydrator.rs#L11) — `pub trait Hydrator<Q, C>: Any + Send + Sync`
+- [`candidate-pipeline/hydrator.rs:16`](../source/candidate-pipeline/hydrator.rs#L16) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/hydrator.rs:20`](../source/candidate-pipeline/hydrator.rs#L20) — `async fn hydrate(&self, query: &Q, candidates: &[C]) -> Vec<Result<C, String>>;`
+- [`candidate-pipeline/hydrator.rs:22`](../source/candidate-pipeline/hydrator.rs#L22) — `async fn hydrate_for_stage(`
+- [`candidate-pipeline/hydrator.rs:33`](../source/candidate-pipeline/hydrator.rs#L33) — `async fn run(`
+- [`candidate-pipeline/hydrator.rs:58`](../source/candidate-pipeline/hydrator.rs#L58) — `fn update(&self, candidate: &mut C, hydrated: C);`
+- [`candidate-pipeline/hydrator.rs:60`](../source/candidate-pipeline/hydrator.rs#L60) — `fn update_all(&self, candidates: &mut [C], hydrated: Vec<Result<C, String>>) {`
+- [`candidate-pipeline/hydrator.rs:68`](../source/candidate-pipeline/hydrator.rs#L68) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/hydrator.rs:74`](../source/candidate-pipeline/hydrator.rs#L74) — `pub trait CacheStore<K, V>: Send + Sync {`
+- [`candidate-pipeline/hydrator.rs:75`](../source/candidate-pipeline/hydrator.rs#L75) — `async fn get(&self, key: &K) -> Option<V>;`
+- [`candidate-pipeline/hydrator.rs:76`](../source/candidate-pipeline/hydrator.rs#L76) — `async fn insert(&self, key: K, value: V);`
+- [`candidate-pipeline/hydrator.rs:80`](../source/candidate-pipeline/hydrator.rs#L80) — `pub trait CachedHydrator<Q, C>: Any + Send + Sync`
+- [`candidate-pipeline/hydrator.rs:85`](../source/candidate-pipeline/hydrator.rs#L85) — `type CacheKey: Eq + Hash + Send + Sync + 'static;`
+- [`candidate-pipeline/hydrator.rs:86`](../source/candidate-pipeline/hydrator.rs#L86) — `type CacheValue: Clone + Send + Sync + 'static;`
+- [`candidate-pipeline/hydrator.rs:88`](../source/candidate-pipeline/hydrator.rs#L88) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/hydrator.rs:92`](../source/candidate-pipeline/hydrator.rs#L92) — `fn cache_store(&self) -> &dyn CacheStore<Self::CacheKey, Self::CacheValue>;`
+- [`candidate-pipeline/hydrator.rs:93`](../source/candidate-pipeline/hydrator.rs#L93) — `fn cache_key(&self, candidate: &C) -> Self::CacheKey;`
+- [`candidate-pipeline/hydrator.rs:94`](../source/candidate-pipeline/hydrator.rs#L94) — `fn cache_key_for(&self, _query: &Q, candidate: &C) -> Self::CacheKey {`
+- [`candidate-pipeline/hydrator.rs:97`](../source/candidate-pipeline/hydrator.rs#L97) — `fn cache_value(&self, hydrated: &C) -> Self::CacheValue;`
+- [`candidate-pipeline/hydrator.rs:99`](../source/candidate-pipeline/hydrator.rs#L99) — `fn hydrate_from_cache(&self, value: Self::CacheValue) -> C;`
+- [`candidate-pipeline/hydrator.rs:100`](../source/candidate-pipeline/hydrator.rs#L100) — `async fn hydrate_from_client(&self, query: &Q, candidates: &[C]) -> Vec<Result<C, String>>;`
+- [`candidate-pipeline/hydrator.rs:102`](../source/candidate-pipeline/hydrator.rs#L102) — `fn already_hydrated(&self, _candidate: &C) -> bool {`
+- [`candidate-pipeline/hydrator.rs:106`](../source/candidate-pipeline/hydrator.rs#L106) — `fn update(&self, candidate: &mut C, hydrated: C);`
+- [`candidate-pipeline/hydrator.rs:108`](../source/candidate-pipeline/hydrator.rs#L108) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/hydrator.rs:112`](../source/candidate-pipeline/hydrator.rs#L112) — `fn stat_cache(&self, cache_hits: usize, cache_misses: usize, stage: PipelineStage) {`
+- [`candidate-pipeline/hydrator.rs:140`](../source/candidate-pipeline/hydrator.rs#L140) — `fn enable(&self, query: &Q) -> bool {`
+- [`candidate-pipeline/hydrator.rs:144`](../source/candidate-pipeline/hydrator.rs#L144) — `async fn hydrate(&self, query: &Q, candidates: &[C]) -> Vec<Result<C, String>> {`
+- [`candidate-pipeline/hydrator.rs:149`](../source/candidate-pipeline/hydrator.rs#L149) — `async fn hydrate_for_stage(`
+- [`candidate-pipeline/hydrator.rs:216`](../source/candidate-pipeline/hydrator.rs#L216) — `fn update(&self, candidate: &mut C, hydrated: C) {`
+- [`candidate-pipeline/lib.rs:2`](../source/candidate-pipeline/lib.rs#L2) — `pub const SPAN_LEVEL: tracing::Level = tracing::Level::DEBUG;`
+- [`candidate-pipeline/lib.rs:4`](../source/candidate-pipeline/lib.rs#L4) — `pub const SPAN_LEVEL: tracing::Level = tracing::Level::INFO;`
+- [`candidate-pipeline/pipeline_summary.rs:10`](../source/candidate-pipeline/pipeline_summary.rs#L10) — `fn summary_name(&self) -> &'static str {`
+- [`candidate-pipeline/pipeline_summary.rs:30`](../source/candidate-pipeline/pipeline_summary.rs#L30) — `pub async fn scope<F: Future>(fut: F) -> F::Output {`
+- [`candidate-pipeline/pipeline_summary.rs:36`](../source/candidate-pipeline/pipeline_summary.rs#L36) — `pub fn emit(pipeline: &str, start: Instant, result_size: usize) {`
+- [`candidate-pipeline/pipeline_summary.rs:45`](../source/candidate-pipeline/pipeline_summary.rs#L45) — `pub(crate) fn record_source_fetched(name: &str, count: usize) {`
+- [`candidate-pipeline/pipeline_summary.rs:57`](../source/candidate-pipeline/pipeline_summary.rs#L57) — `pub struct StageStats {`
+- [`candidate-pipeline/pipeline_summary.rs:63`](../source/candidate-pipeline/pipeline_summary.rs#L63) — `pub fn begin(stage: PipelineStage) -> Self {`
+- [`candidate-pipeline/pipeline_summary.rs:70`](../source/candidate-pipeline/pipeline_summary.rs#L70) — `pub fn record_components(&self, total: usize, enabled: usize) {`
+- [`candidate-pipeline/pipeline_summary.rs:81`](../source/candidate-pipeline/pipeline_summary.rs#L81) — `pub fn finish(self) {`
+- [`candidate-pipeline/pipeline_summary.rs:91`](../source/candidate-pipeline/pipeline_summary.rs#L91) — `pub fn finish_with_size(self, size: usize) {`
+- [`candidate-pipeline/pipeline_summary.rs:103`](../source/candidate-pipeline/pipeline_summary.rs#L103) — `pub fn finish_filters(`
+- [`candidate-pipeline/pipeline_summary.rs:136`](../source/candidate-pipeline/pipeline_summary.rs#L136) — `fn latency_ms(&self) -> u64 {`
+- [`candidate-pipeline/pipeline_summary.rs:142`](../source/candidate-pipeline/pipeline_summary.rs#L142) — `struct PipelineSummary {`
+- [`candidate-pipeline/pipeline_summary.rs:147`](../source/candidate-pipeline/pipeline_summary.rs#L147) — `struct StageSummary {`
+- [`candidate-pipeline/pipeline_summary.rs:160`](../source/candidate-pipeline/pipeline_summary.rs#L160) — `fn stage_mut(&mut self, stage: PipelineStage) -> &mut StageSummary {`
+- [`candidate-pipeline/pipeline_summary.rs:175`](../source/candidate-pipeline/pipeline_summary.rs#L175) — `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {`
+- [`candidate-pipeline/pipeline_summary.rs:207`](../source/candidate-pipeline/pipeline_summary.rs#L207) — `struct Counts<'a>(&'a [(String, usize)]);`
+- [`candidate-pipeline/pipeline_summary.rs:210`](../source/candidate-pipeline/pipeline_summary.rs#L210) — `fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {`
+- [`candidate-pipeline/pipeline_summary.rs:221`](../source/candidate-pipeline/pipeline_summary.rs#L221) — `fn is_active() -> bool {`
+- [`candidate-pipeline/pipeline_summary.rs:225`](../source/candidate-pipeline/pipeline_summary.rs#L225) — `fn with_active(f: impl FnOnce(&mut PipelineSummary)) -> bool {`
+- [`candidate-pipeline/query_hydrator.rs:10`](../source/candidate-pipeline/query_hydrator.rs#L10) — `pub trait QueryHydrator<Q>: Any + Send + Sync`
+- [`candidate-pipeline/query_hydrator.rs:14`](../source/candidate-pipeline/query_hydrator.rs#L14) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/query_hydrator.rs:20`](../source/candidate-pipeline/query_hydrator.rs#L20) — `async fn run(&self, query: &Q, _stage: PipelineStage) -> Result<Q, String> {`
+- [`candidate-pipeline/query_hydrator.rs:30`](../source/candidate-pipeline/query_hydrator.rs#L30) — `async fn hydrate(&self, query: &Q) -> Result<Q, String>;`
+- [`candidate-pipeline/query_hydrator.rs:32`](../source/candidate-pipeline/query_hydrator.rs#L32) — `fn update(&self, query: &mut Q, hydrated: Q);`
+- [`candidate-pipeline/query_hydrator.rs:34`](../source/candidate-pipeline/query_hydrator.rs#L34) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/scorer.rs:9`](../source/candidate-pipeline/scorer.rs#L9) — `pub trait Scorer<Q, C>: Send + Sync`
+- [`candidate-pipeline/scorer.rs:14`](../source/candidate-pipeline/scorer.rs#L14) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/scorer.rs:20`](../source/candidate-pipeline/scorer.rs#L20) — `async fn run(`
+- [`candidate-pipeline/scorer.rs:45`](../source/candidate-pipeline/scorer.rs#L45) — `async fn score(&self, query: &Q, candidates: &[C]) -> Vec<Result<C, String>>;`
+- [`candidate-pipeline/scorer.rs:47`](../source/candidate-pipeline/scorer.rs#L47) — `fn update(&self, candidate: &mut C, scored: C);`
+- [`candidate-pipeline/scorer.rs:49`](../source/candidate-pipeline/scorer.rs#L49) — `fn update_all(&self, candidates: &mut [C], scored: Vec<Result<C, String>>) {`
+- [`candidate-pipeline/scorer.rs:57`](../source/candidate-pipeline/scorer.rs#L57) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/selector.rs:8`](../source/candidate-pipeline/selector.rs#L8) — `pub struct SelectResult<C> {`
+- [`candidate-pipeline/selector.rs:14`](../source/candidate-pipeline/selector.rs#L14) — `pub fn len(&self) -> usize {`
+- [`candidate-pipeline/selector.rs:18`](../source/candidate-pipeline/selector.rs#L18) — `pub fn is_empty(&self) -> bool {`
+- [`candidate-pipeline/selector.rs:23`](../source/candidate-pipeline/selector.rs#L23) — `pub trait Selector<Q, C>: Send + Sync`
+- [`candidate-pipeline/selector.rs:28`](../source/candidate-pipeline/selector.rs#L28) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/selector.rs:39`](../source/candidate-pipeline/selector.rs#L39) — `fn run(&self, query: &Q, candidates: Vec<C>, stage: PipelineStage) -> SelectResult<C> {`
+- [`candidate-pipeline/selector.rs:48`](../source/candidate-pipeline/selector.rs#L48) — `fn select(&self, _query: &Q, candidates: Vec<C>) -> SelectResult<C> {`
+- [`candidate-pipeline/selector.rs:64`](../source/candidate-pipeline/selector.rs#L64) — `fn score(&self, candidate: &C) -> f64;`
+- [`candidate-pipeline/selector.rs:66`](../source/candidate-pipeline/selector.rs#L66) — `fn sort(&self, candidates: Vec<C>) -> Vec<C> {`
+- [`candidate-pipeline/selector.rs:76`](../source/candidate-pipeline/selector.rs#L76) — `fn size(&self) -> Option<usize> {`
+- [`candidate-pipeline/selector.rs:80`](../source/candidate-pipeline/selector.rs#L80) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/selector.rs:84`](../source/candidate-pipeline/selector.rs#L84) — `fn stat(&self, result: &SelectResult<C>, stage: PipelineStage) {`
+- [`candidate-pipeline/side_effect.rs:8`](../source/candidate-pipeline/side_effect.rs#L8) — `pub struct SideEffectInput<Q, C> {`
+- [`candidate-pipeline/side_effect.rs:15`](../source/candidate-pipeline/side_effect.rs#L15) — `pub trait SideEffect<Q, C>: Send + Sync`
+- [`candidate-pipeline/side_effect.rs:20`](../source/candidate-pipeline/side_effect.rs#L20) — `fn enable(&self, _query: Arc<Q>) -> bool {`
+- [`candidate-pipeline/side_effect.rs:25`](../source/candidate-pipeline/side_effect.rs#L25) — `async fn run(`
+- [`candidate-pipeline/side_effect.rs:33`](../source/candidate-pipeline/side_effect.rs#L33) — `async fn side_effect(&self, input: Arc<SideEffectInput<Q, C>>) -> Result<(), String>;`
+- [`candidate-pipeline/side_effect.rs:35`](../source/candidate-pipeline/side_effect.rs#L35) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/source.rs:11`](../source/candidate-pipeline/source.rs#L11) — `pub trait Source<Q, C>: Any + Send + Sync`
+- [`candidate-pipeline/source.rs:16`](../source/candidate-pipeline/source.rs#L16) — `fn enable(&self, _query: &Q) -> bool {`
+- [`candidate-pipeline/source.rs:22`](../source/candidate-pipeline/source.rs#L22) — `async fn run(&self, query: &Q, _stage: PipelineStage) -> Result<Vec<C>, String> {`
+- [`candidate-pipeline/source.rs:35`](../source/candidate-pipeline/source.rs#L35) — `async fn source(&self, query: &Q) -> Result<Vec<C>, String>;`
+- [`candidate-pipeline/source.rs:37`](../source/candidate-pipeline/source.rs#L37) — `fn name(&self) -> &'static str {`
+- [`candidate-pipeline/util.rs:1`](../source/candidate-pipeline/util.rs#L1) — `pub fn short_type_name(full: &'static str) -> &'static str {`

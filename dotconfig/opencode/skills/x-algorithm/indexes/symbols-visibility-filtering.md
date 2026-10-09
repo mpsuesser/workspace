@@ -1,0 +1,1218 @@
+# visibility-filtering: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`visibility-filtering/clients/gizmoduck_client.rs:6`](../source/visibility-filtering/clients/gizmoduck_client.rs#L6) — `pub struct GizmoduckLookup {`
+- [`visibility-filtering/clients/gizmoduck_client.rs:10`](../source/visibility-filtering/clients/gizmoduck_client.rs#L10) — `fn author_hydration_lookup_context() -> LookupContext {`
+- [`visibility-filtering/clients/gizmoduck_client.rs:23`](../source/visibility-filtering/clients/gizmoduck_client.rs#L23) — `pub fn new(inner: Arc<dyn GizmoduckClient + Send + Sync>) -> Self {`
+- [`visibility-filtering/clients/gizmoduck_client.rs:27`](../source/visibility-filtering/clients/gizmoduck_client.rs#L27) — `pub async fn get_users(`
+- [`visibility-filtering/clients/gizmoduck_client.rs:47`](../source/visibility-filtering/clients/gizmoduck_client.rs#L47) — `fn author_lookup_context_sets_include_flags() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:11`](../source/visibility-filtering/clients/socialgraph_client.rs#L11) — `const FOLLOWS_GRAPH_ID: i32 = 1;`
+- [`visibility-filtering/clients/socialgraph_client.rs:12`](../source/visibility-filtering/clients/socialgraph_client.rs#L12) — `const BLOCKS_GRAPH_ID: i32 = 3;`
+- [`visibility-filtering/clients/socialgraph_client.rs:13`](../source/visibility-filtering/clients/socialgraph_client.rs#L13) — `const MUTE_GRAPH_ID: i32 = 23;`
+- [`visibility-filtering/clients/socialgraph_client.rs:14`](../source/visibility-filtering/clients/socialgraph_client.rs#L14) — `const MUTE_RETWEETS_GRAPH_ID: i32 = 10;`
+- [`visibility-filtering/clients/socialgraph_client.rs:15`](../source/visibility-filtering/clients/socialgraph_client.rs#L15) — `const SUPER_FOLLOWS_GRAPH_ID: i32 = 55;`
+- [`visibility-filtering/clients/socialgraph_client.rs:18`](../source/visibility-filtering/clients/socialgraph_client.rs#L18) — `pub trait SocialgraphClient: Send + Sync {`
+- [`visibility-filtering/clients/socialgraph_client.rs:19`](../source/visibility-filtering/clients/socialgraph_client.rs#L19) — `async fn batch_check_relationships(`
+- [`visibility-filtering/clients/socialgraph_client.rs:25`](../source/visibility-filtering/clients/socialgraph_client.rs#L25) — `async fn batch_check_super_follows(`
+- [`visibility-filtering/clients/socialgraph_client.rs:33`](../source/visibility-filtering/clients/socialgraph_client.rs#L33) — `pub struct FakeSocialgraphClient;`
+- [`visibility-filtering/clients/socialgraph_client.rs:38`](../source/visibility-filtering/clients/socialgraph_client.rs#L38) — `async fn batch_check_relationships(`
+- [`visibility-filtering/clients/socialgraph_client.rs:49`](../source/visibility-filtering/clients/socialgraph_client.rs#L49) — `async fn batch_check_super_follows(`
+- [`visibility-filtering/clients/socialgraph_client.rs:63`](../source/visibility-filtering/clients/socialgraph_client.rs#L63) — `fn decode_packed_ids(packed: &[u8]) -> HashSet<u64> {`
+- [`visibility-filtering/clients/socialgraph_client.rs:71`](../source/visibility-filtering/clients/socialgraph_client.rs#L71) — `fn edge_membership_query(source_id: u64, graph_id: i32, destination_ids: &[i64]) -> SelectQuery {`
+- [`visibility-filtering/clients/socialgraph_client.rs:95`](../source/visibility-filtering/clients/socialgraph_client.rs#L95) — `struct RelationshipEdges {`
+- [`visibility-filtering/clients/socialgraph_client.rs:102`](../source/visibility-filtering/clients/socialgraph_client.rs#L102) — `fn relationship_select_request(viewer_id: u64, destination_ids: &[i64]) -> SelectRequest {`
+- [`visibility-filtering/clients/socialgraph_client.rs:116`](../source/visibility-filtering/clients/socialgraph_client.rs#L116) — `fn next_edge_set(results: &mut impl Iterator<Item = Results>) -> HashSet<u64> {`
+- [`visibility-filtering/clients/socialgraph_client.rs:123`](../source/visibility-filtering/clients/socialgraph_client.rs#L123) — `fn decode_relationship_edges(results: impl IntoIterator<Item = Results>) -> RelationshipEdges {`
+- [`visibility-filtering/clients/socialgraph_client.rs:133`](../source/visibility-filtering/clients/socialgraph_client.rs#L133) — `async fn select_edge_set(`
+- [`visibility-filtering/clients/socialgraph_client.rs:161`](../source/visibility-filtering/clients/socialgraph_client.rs#L161) — `pub struct ProdSocialgraphClient {`
+- [`visibility-filtering/clients/socialgraph_client.rs:166`](../source/visibility-filtering/clients/socialgraph_client.rs#L166) — `pub async fn new(`
+- [`visibility-filtering/clients/socialgraph_client.rs:181`](../source/visibility-filtering/clients/socialgraph_client.rs#L181) — `async fn batch_check_relationships(`
+- [`visibility-filtering/clients/socialgraph_client.rs:221`](../source/visibility-filtering/clients/socialgraph_client.rs#L221) — `async fn batch_check_super_follows(`
+- [`visibility-filtering/clients/socialgraph_client.rs:249`](../source/visibility-filtering/clients/socialgraph_client.rs#L249) — `fn decode_packed_ids_empty() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:254`](../source/visibility-filtering/clients/socialgraph_client.rs#L254) — `fn decode_packed_ids_single() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:263`](../source/visibility-filtering/clients/socialgraph_client.rs#L263) — `fn decode_packed_ids_multiple() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:274`](../source/visibility-filtering/clients/socialgraph_client.rs#L274) — `fn decode_packed_ids_ignores_trailing_bytes() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:283`](../source/visibility-filtering/clients/socialgraph_client.rs#L283) — `fn relationship_select_request_packs_four_graphs_in_order() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:302`](../source/visibility-filtering/clients/socialgraph_client.rs#L302) — `fn decode_relationship_edges_by_named_fields() {`
+- [`visibility-filtering/clients/socialgraph_client.rs:320`](../source/visibility-filtering/clients/socialgraph_client.rs#L320) — `fn decode_relationship_edges_missing_slots_fail_open() {`
+- [`visibility-filtering/clock_cache.rs:10`](../source/visibility-filtering/clock_cache.rs#L10) — `const WAYS: usize = 32;`
+- [`visibility-filtering/clock_cache.rs:11`](../source/visibility-filtering/clock_cache.rs#L11) — `const SHARDS: usize = 64;`
+- [`visibility-filtering/clock_cache.rs:14`](../source/visibility-filtering/clock_cache.rs#L14) — `pub(crate) enum Lookup<V> {`
+- [`visibility-filtering/clock_cache.rs:21`](../source/visibility-filtering/clock_cache.rs#L21) — `pub(crate) struct CapacityError {`
+- [`visibility-filtering/clock_cache.rs:26`](../source/visibility-filtering/clock_cache.rs#L26) — `fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {`
+- [`visibility-filtering/clock_cache.rs:39`](../source/visibility-filtering/clock_cache.rs#L39) — `enum Mark {`
+- [`visibility-filtering/clock_cache.rs:46`](../source/visibility-filtering/clock_cache.rs#L46) — `struct Slot<V> {`
+- [`visibility-filtering/clock_cache.rs:53`](../source/visibility-filtering/clock_cache.rs#L53) — `struct Set<V> {`
+- [`visibility-filtering/clock_cache.rs:59`](../source/visibility-filtering/clock_cache.rs#L59) — `struct Shard<V> {`
+- [`visibility-filtering/clock_cache.rs:64`](../source/visibility-filtering/clock_cache.rs#L64) — `pub(crate) struct ClockCache<V> {`
+- [`visibility-filtering/clock_cache.rs:71`](../source/visibility-filtering/clock_cache.rs#L71) — `pub(crate) fn new(capacity: usize) -> Result<Self, CapacityError> {`
+- [`visibility-filtering/clock_cache.rs:104`](../source/visibility-filtering/clock_cache.rs#L104) — `pub(crate) fn inline_bytes(capacity: usize) -> Option<usize> {`
+- [`visibility-filtering/clock_cache.rs:114`](../source/visibility-filtering/clock_cache.rs#L114) — `pub(crate) fn begin_request(&self) -> u64 {`
+- [`visibility-filtering/clock_cache.rs:122`](../source/visibility-filtering/clock_cache.rs#L122) — `fn shard(&self, key: u64) -> Option<(&Mutex<Shard<V>>, usize)> {`
+- [`visibility-filtering/clock_cache.rs:139`](../source/visibility-filtering/clock_cache.rs#L139) — `pub(crate) fn insert(&self, generation: u64, key: u64, value: Option<V>) {`
+- [`visibility-filtering/clock_cache.rs:188`](../source/visibility-filtering/clock_cache.rs#L188) — `pub(crate) fn get(&self, key: u64) -> Lookup<V> {`
+- [`visibility-filtering/clock_cache.rs:211`](../source/visibility-filtering/clock_cache.rs#L211) — `pub(crate) fn entry_count(&self) -> usize {`
+- [`visibility-filtering/clock_cache.rs:223`](../source/visibility-filtering/clock_cache.rs#L223) — `pub(crate) fn capacity(&self) -> usize {`
+- [`visibility-filtering/clock_cache.rs:235`](../source/visibility-filtering/clock_cache.rs#L235) — `struct Aligned(u8);`
+- [`visibility-filtering/clock_cache.rs:237`](../source/visibility-filtering/clock_cache.rs#L237) — `fn cached<V>(value: Option<V>) -> Lookup<V> {`
+- [`visibility-filtering/clock_cache.rs:242`](../source/visibility-filtering/clock_cache.rs#L242) — `fn distinguishes_full_keys_not_found_and_empty() {`
+- [`visibility-filtering/clock_cache.rs:255`](../source/visibility-filtering/clock_cache.rs#L255) — `fn plain_and_aligned_values_evict_and_tombstone_like_authors() {`
+- [`visibility-filtering/clock_cache.rs:279`](../source/visibility-filtering/clock_cache.rs#L279) — `fn resident_generation_order_preserves_found_and_not_found() {`
+- [`visibility-filtering/clock_cache.rs:297`](../source/visibility-filtering/clock_cache.rs#L297) — `fn full_set_churn_reuses_slots_without_aliasing_keys_or_not_found() {`
+- [`visibility-filtering/clock_cache.rs:324`](../source/visibility-filtering/clock_cache.rs#L324) — `fn hits_and_refreshes_protect_old_keys_without_moving_the_hand() {`
+- [`visibility-filtering/clock_cache.rs:348`](../source/visibility-filtering/clock_cache.rs#L348) — `fn capacity_is_disabled_and_rounded() {`
+- [`visibility-filtering/clock_cache.rs:368`](../source/visibility-filtering/clock_cache.rs#L368) — `fn inline_bytes_follow_the_value_layout_and_reject_unaddressable_sizes() {`
+- [`visibility-filtering/clock_cache.rs:391`](../source/visibility-filtering/clock_cache.rs#L391) — `fn uneven_shards_fill_and_churn_with_exact_identity() {`
+- [`visibility-filtering/clock_cache.rs:401`](../source/visibility-filtering/clock_cache.rs#L401) — `fn concurrent_eviction_and_reinsertion_order_only_resident_generations() {`
+- [`visibility-filtering/config.rs:1`](../source/visibility-filtering/config.rs#L1) — `pub const ENV_DUAL_CALL_HARNESS_ENABLED: &str = "VF_DUAL_CALL_HARNESS_ENABLED";`
+- [`visibility-filtering/config.rs:2`](../source/visibility-filtering/config.rs#L2) — `pub const ENV_FALLBACK_CACHE_ENABLED: &str = "VF_FALLBACK_CACHE_ENABLED";`
+- [`visibility-filtering/config.rs:3`](../source/visibility-filtering/config.rs#L3) — `pub const ENV_CACHE_WARM_ENABLED: &str = "VF_CACHE_WARM_ENABLED";`
+- [`visibility-filtering/config.rs:4`](../source/visibility-filtering/config.rs#L4) — `pub const ENV_APP_ENV: &str = "APP_ENV";`
+- [`visibility-filtering/config.rs:5`](../source/visibility-filtering/config.rs#L5) — `pub const ENV_FS_PATH: &str = "VF_FS_PATH";`
+- [`visibility-filtering/config.rs:6`](../source/visibility-filtering/config.rs#L6) — `pub const ENV_GIZMODUCK_CLIENT_ID: &str = "VF_GIZMODUCK_CLIENT_ID";`
+- [`visibility-filtering/config.rs:7`](../source/visibility-filtering/config.rs#L7) — `pub const ENV_TWEMCACHE_CLIENT_NAME: &str = "VF_TWEMCACHE_CLIENT_NAME";`
+- [`visibility-filtering/config.rs:9`](../source/visibility-filtering/config.rs#L9) — `const DEFAULT_FS_PATH: &str = "/usr/local/config/features/visibility/main/rust_vf.yml";`
+- [`visibility-filtering/config.rs:11`](../source/visibility-filtering/config.rs#L11) — `pub fn fs_path() -> String {`
+- [`visibility-filtering/config.rs:15`](../source/visibility-filtering/config.rs#L15) — `pub(crate) fn gizmoduck_client_id() -> String {`
+- [`visibility-filtering/config.rs:22`](../source/visibility-filtering/config.rs#L22) — `pub(crate) fn twemcache_client_name() -> String {`
+- [`visibility-filtering/config.rs:26`](../source/visibility-filtering/config.rs#L26) — `pub fn resolve_gizmoduck_client_id(configured: Option<&str>, app_env: Option<&str>) -> String {`
+- [`visibility-filtering/config.rs:33`](../source/visibility-filtering/config.rs#L33) — `pub fn resolve_twemcache_client_name(configured: Option<&str>) -> String {`
+- [`visibility-filtering/config.rs:39`](../source/visibility-filtering/config.rs#L39) — `pub(crate) fn dual_call_harness_enabled() -> bool {`
+- [`visibility-filtering/config.rs:43`](../source/visibility-filtering/config.rs#L43) — `pub(crate) fn fallback_cache_enabled() -> bool {`
+- [`visibility-filtering/config.rs:47`](../source/visibility-filtering/config.rs#L47) — `pub(crate) fn author_id_fallback_enabled() -> bool {`
+- [`visibility-filtering/config.rs:53`](../source/visibility-filtering/config.rs#L53) — `pub(crate) fn author_id_fallback_capacity() -> usize {`
+- [`visibility-filtering/config.rs:61`](../source/visibility-filtering/config.rs#L61) — `pub(crate) fn cache_warm_enabled() -> bool {`
+- [`visibility-filtering/config.rs:65`](../source/visibility-filtering/config.rs#L65) — `fn parse_env_flag(value: Option<&str>) -> bool {`
+- [`visibility-filtering/config.rs:79`](../source/visibility-filtering/config.rs#L79) — `fn client_ids_default_to_historical_values_and_overrides_win() {`
+- [`visibility-filtering/config.rs:103`](../source/visibility-filtering/config.rs#L103) — `fn parses_enabled_environment_values() {`
+- [`visibility-filtering/config.rs:110`](../source/visibility-filtering/config.rs#L110) — `fn missing_or_disabled_environment_values_are_off() {`
+- [`visibility-filtering/dark_traffic_setup.rs:21`](../source/visibility-filtering/dark_traffic_setup.rs#L21) — `const CONFIG_PATH: &str = "/config/dark-traffic/dark_traffic.yaml";`
+- [`visibility-filtering/dark_traffic_setup.rs:23`](../source/visibility-filtering/dark_traffic_setup.rs#L23) — `pub const MIRROR_NAMESPACE: &str = "visibility";`
+- [`visibility-filtering/dark_traffic_setup.rs:24`](../source/visibility-filtering/dark_traffic_setup.rs#L24) — `pub const STAGING_APP_ENV: &str = "staging";`
+- [`visibility-filtering/dark_traffic_setup.rs:25`](../source/visibility-filtering/dark_traffic_setup.rs#L25) — `pub const DEVEL_APP_ENV: &str = "devel";`
+- [`visibility-filtering/dark_traffic_setup.rs:26`](../source/visibility-filtering/dark_traffic_setup.rs#L26) — `pub const MIRROR_PORT_ID: &str = "grpc";`
+- [`visibility-filtering/dark_traffic_setup.rs:27`](../source/visibility-filtering/dark_traffic_setup.rs#L27) — `pub const MIRROR_WORKLOAD_PREFIX: &str = "xai-vf-service";`
+- [`visibility-filtering/dark_traffic_setup.rs:29`](../source/visibility-filtering/dark_traffic_setup.rs#L29) — `const LISTENER_TYPE_URL: &str = "type.googleapis.com/envoy.config.listener.v3.Listener";`
+- [`visibility-filtering/dark_traffic_setup.rs:30`](../source/visibility-filtering/dark_traffic_setup.rs#L30) — `const LDS_MAX_DECODING_MESSAGE_SIZE: usize = 256 * 1024 * 1024;`
+- [`visibility-filtering/dark_traffic_setup.rs:31`](../source/visibility-filtering/dark_traffic_setup.rs#L31) — `const LDS_RESPONSE_TIMEOUT: Duration = Duration::from_secs(30);`
+- [`visibility-filtering/dark_traffic_setup.rs:32`](../source/visibility-filtering/dark_traffic_setup.rs#L32) — `const CHANNEL_CREATE_TIMEOUT: Duration = Duration::from_secs(30);`
+- [`visibility-filtering/dark_traffic_setup.rs:34`](../source/visibility-filtering/dark_traffic_setup.rs#L34) — `pub fn staging_tls_domain(dc: &str) -> String {`
+- [`visibility-filtering/dark_traffic_setup.rs:38`](../source/visibility-filtering/dark_traffic_setup.rs#L38) — `pub fn devel_tls_domain(dc: &str) -> String {`
+- [`visibility-filtering/dark_traffic_setup.rs:42`](../source/visibility-filtering/dark_traffic_setup.rs#L42) — `pub type DarkLayer = Either<DarkTrafficLayer, tower::layer::util::Identity>;`
+- [`visibility-filtering/dark_traffic_setup.rs:44`](../source/visibility-filtering/dark_traffic_setup.rs#L44) — `pub fn parse_mirror_listener(listener_name: &str) -> Option<EndpointInfo> {`
+- [`visibility-filtering/dark_traffic_setup.rs:68`](../source/visibility-filtering/dark_traffic_setup.rs#L68) — `struct XdsMirrorDiscovery {`
+- [`visibility-filtering/dark_traffic_setup.rs:74`](../source/visibility-filtering/dark_traffic_setup.rs#L74) — `async fn discover(&self) -> anyhow::Result<Vec<EndpointInfo>> {`
+- [`visibility-filtering/dark_traffic_setup.rs:82`](../source/visibility-filtering/dark_traffic_setup.rs#L82) — `async fn fetch(&self) -> anyhow::Result<Vec<EndpointInfo>> {`
+- [`visibility-filtering/dark_traffic_setup.rs:153`](../source/visibility-filtering/dark_traffic_setup.rs#L153) — `struct MirrorChannelFactory {`
+- [`visibility-filtering/dark_traffic_setup.rs:160`](../source/visibility-filtering/dark_traffic_setup.rs#L160) — `async fn create_channel(&self, ep: &EndpointInfo) -> anyhow::Result<Channel> {`
+- [`visibility-filtering/dark_traffic_setup.rs:172`](../source/visibility-filtering/dark_traffic_setup.rs#L172) — `pub fn resolve_layer() -> DarkLayer {`
+- [`visibility-filtering/dark_traffic_setup.rs:225`](../source/visibility-filtering/dark_traffic_setup.rs#L225) — `fn should_mirror(workload: Option<&str>, ordinal: Option<u32>, max_ordinal: Option<u32>) -> bool {`
+- [`visibility-filtering/dark_traffic_setup.rs:242`](../source/visibility-filtering/dark_traffic_setup.rs#L242) — `const PROD: Option<&str> = Some("xai-vf-service");`
+- [`visibility-filtering/dark_traffic_setup.rs:243`](../source/visibility-filtering/dark_traffic_setup.rs#L243) — `const CANARY: Option<&str> = Some("xai-vf-service-canary");`
+- [`visibility-filtering/dark_traffic_setup.rs:246`](../source/visibility-filtering/dark_traffic_setup.rs#L246) — `fn default_only_pod0() {`
+- [`visibility-filtering/dark_traffic_setup.rs:253`](../source/visibility-filtering/dark_traffic_setup.rs#L253) — `fn no_ordinal_disables() {`
+- [`visibility-filtering/dark_traffic_setup.rs:259`](../source/visibility-filtering/dark_traffic_setup.rs#L259) — `fn max_ordinal_threshold() {`
+- [`visibility-filtering/dark_traffic_setup.rs:268`](../source/visibility-filtering/dark_traffic_setup.rs#L268) — `fn max_ordinal_zero_disables_all() {`
+- [`visibility-filtering/dark_traffic_setup.rs:273`](../source/visibility-filtering/dark_traffic_setup.rs#L273) — `fn canary_never_mirrors() {`
+- [`visibility-filtering/dark_traffic_setup.rs:279`](../source/visibility-filtering/dark_traffic_setup.rs#L279) — `fn missing_workload_name_fails_closed() {`
+- [`visibility-filtering/dark_traffic_setup.rs:284`](../source/visibility-filtering/dark_traffic_setup.rs#L284) — `fn parse_accepts_vf_staging_and_devel_listeners() {`
+- [`visibility-filtering/dark_traffic_setup.rs:324`](../source/visibility-filtering/dark_traffic_setup.rs#L324) — `fn parse_rejects_out_of_scope_listeners() {`
+- [`visibility-filtering/evaluate_tweets.rs:13`](../source/visibility-filtering/evaluate_tweets.rs#L13) — `const REQUESTS: &str = "evaluate_tweets_requests";`
+- [`visibility-filtering/evaluate_tweets.rs:14`](../source/visibility-filtering/evaluate_tweets.rs#L14) — `const LATENCY_MS: &str = "evaluate_tweets_latency_ms";`
+- [`visibility-filtering/evaluate_tweets.rs:15`](../source/visibility-filtering/evaluate_tweets.rs#L15) — `const BATCH_SIZE: &str = "evaluate_tweets_batch_size";`
+- [`visibility-filtering/evaluate_tweets.rs:17`](../source/visibility-filtering/evaluate_tweets.rs#L17) — `pub struct EvaluateTweetsEndpoint {`
+- [`visibility-filtering/evaluate_tweets.rs:22`](../source/visibility-filtering/evaluate_tweets.rs#L22) — `pub(crate) fn new(filter_tweets: Arc<FilterTweets>) -> Self {`
+- [`visibility-filtering/evaluate_tweets.rs:26`](../source/visibility-filtering/evaluate_tweets.rs#L26) — `pub async fn handle(`
+- [`visibility-filtering/evaluate_tweets.rs:48`](../source/visibility-filtering/evaluate_tweets.rs#L48) — `async fn handle_inner(`
+- [`visibility-filtering/evaluate_tweets.rs:129`](../source/visibility-filtering/evaluate_tweets.rs#L129) — `async fn evaluate_tweets_gates_levels_and_maps_outcomes_in_order() {`
+- [`visibility-filtering/filter.rs:9`](../source/visibility-filtering/filter.rs#L9) — `pub struct FilterRequest {`
+- [`visibility-filtering/filter.rs:18`](../source/visibility-filtering/filter.rs#L18) — `pub enum EvaluationStatus {`
+- [`visibility-filtering/filter.rs:24`](../source/visibility-filtering/filter.rs#L24) — `pub struct FilterOutcome {`
+- [`visibility-filtering/filter.rs:31`](../source/visibility-filtering/filter.rs#L31) — `pub struct FilterResponse {`
+- [`visibility-filtering/filter.rs:35`](../source/visibility-filtering/filter.rs#L35) — `pub struct FilterTweets {`
+- [`visibility-filtering/filter.rs:41`](../source/visibility-filtering/filter.rs#L41) — `pub(crate) fn new(hydration_pipeline: HydrationPipeline, rule_engine: RuleEngine) -> Self {`
+- [`visibility-filtering/filter.rs:48`](../source/visibility-filtering/filter.rs#L48) — `pub async fn run(&self, request: FilterRequest) -> FilterResponse {`
+- [`visibility-filtering/filter.rs:127`](../source/visibility-filtering/filter.rs#L127) — `fn full_label_map() -> vf_pb::SafetyLabelMap {`
+- [`visibility-filtering/filter.rs:133`](../source/visibility-filtering/filter.rs#L133) — `struct FakeTwemcache;`
+- [`visibility-filtering/filter.rs:137`](../source/visibility-filtering/filter.rs#L137) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, TwemcacheOutcome> {`
+- [`visibility-filtering/filter.rs:152`](../source/visibility-filtering/filter.rs#L152) — `struct FakeManhattan;`
+- [`visibility-filtering/filter.rs:156`](../source/visibility-filtering/filter.rs#L156) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, ManhattanOutcome> {`
+- [`visibility-filtering/filter.rs:164`](../source/visibility-filtering/filter.rs#L164) — `pub(crate) fn filter_tweets() -> FilterTweets {`
+- [`visibility-filtering/filter.rs:168`](../source/visibility-filtering/filter.rs#L168) — `pub(crate) fn filter_tweets_with_gizmoduck(`
+- [`visibility-filtering/filter.rs:174`](../source/visibility-filtering/filter.rs#L174) — `pub(crate) fn safety_labels() -> Arc<SafetyLabelSource> {`
+- [`visibility-filtering/filter.rs:181`](../source/visibility-filtering/filter.rs#L181) — `pub(crate) fn filter_tweets_with_clients(`
+- [`visibility-filtering/filter.rs:220`](../source/visibility-filtering/filter.rs#L220) — `struct RecordingSocialgraph {`
+- [`visibility-filtering/filter.rs:227`](../source/visibility-filtering/filter.rs#L227) — `async fn batch_check_relationships(`
+- [`visibility-filtering/filter.rs:247`](../source/visibility-filtering/filter.rs#L247) — `async fn batch_check_super_follows(`
+- [`visibility-filtering/filter.rs:257`](../source/visibility-filtering/filter.rs#L257) — `struct PendingComposite;`
+- [`visibility-filtering/filter.rs:261`](../source/visibility-filtering/filter.rs#L261) — `async fn get_tweets_for_visibility(`
+- [`visibility-filtering/filter.rs:269`](../source/visibility-filtering/filter.rs#L269) — `fn unrestricted() -> Verdict {`
+- [`visibility-filtering/filter.rs:276`](../source/visibility-filtering/filter.rs#L276) — `fn core_client() -> Arc<MockTESClient> {`
+- [`visibility-filtering/filter.rs:300`](../source/visibility-filtering/filter.rs#L300) — `fn exclusive_tweet() -> TweetForVisibility {`
+- [`visibility-filtering/filter.rs:316`](../source/visibility-filtering/filter.rs#L316) — `fn candidate(tweet_id: u64, author_id: Option<u64>) -> RawCandidate {`
+- [`visibility-filtering/filter.rs:324`](../source/visibility-filtering/filter.rs#L324) — `async fn run_uses_only_core_and_composite_tes_calls() {`
+- [`visibility-filtering/filter.rs:364`](../source/visibility-filtering/filter.rs#L364) — `async fn composite_timeout_preserves_pure_core_author_and_relationship_features() {`
+- [`visibility-filtering/filter.rs:428`](../source/visibility-filtering/filter.rs#L428) — `async fn exclusive_content_deduplicates_tweets_and_conversation_authors() {`
+- [`visibility-filtering/filter.rs:483`](../source/visibility-filtering/filter.rs#L483) — `async fn run_preserves_order_duplicates_unresolved_authors_and_labels() {`
+- [`visibility-filtering/filter.rs:538`](../source/visibility-filtering/filter.rs#L538) — `async fn run_labels_both_occurrences_of_a_cold_id() {`
+- [`visibility-filtering/filter.rs:559`](../source/visibility-filtering/filter.rs#L559) — `async fn run_selects_policy_from_safety_level() {`
+- [`visibility-filtering/filter_tweets.rs:13`](../source/visibility-filtering/filter_tweets.rs#L13) — `pub struct FilterTweetsEndpoint {`
+- [`visibility-filtering/filter_tweets.rs:19`](../source/visibility-filtering/filter_tweets.rs#L19) — `pub(crate) fn new(`
+- [`visibility-filtering/filter_tweets.rs:29`](../source/visibility-filtering/filter_tweets.rs#L29) — `pub async fn handle(`
+- [`visibility-filtering/filter_tweets.rs:102`](../source/visibility-filtering/filter_tweets.rs#L102) — `pub(crate) fn normalize_viewer_id(raw: Option<u64>) -> Option<u64> {`
+- [`visibility-filtering/filter_tweets.rs:106`](../source/visibility-filtering/filter_tweets.rs#L106) — `pub(crate) fn parse_grpc_timeout(metadata: &MetadataMap) -> Option<Duration> {`
+- [`visibility-filtering/filter_tweets.rs:125`](../source/visibility-filtering/filter_tweets.rs#L125) — `fn to_visibility_result(outcome: FilterOutcome) -> vf_pb::TweetVisibilityResult {`
+- [`visibility-filtering/filter_tweets.rs:139`](../source/visibility-filtering/filter_tweets.rs#L139) — `async fn gizmoduck_calls(viewer_id: Option<u64>) -> usize {`
+- [`visibility-filtering/filter_tweets.rs:166`](../source/visibility-filtering/filter_tweets.rs#L166) — `async fn endpoint_treats_zero_viewer_id_as_logged_out() {`
+- [`visibility-filtering/filter_tweets.rs:173`](../source/visibility-filtering/filter_tweets.rs#L173) — `fn parse_grpc_timeout_units_and_garbage() {`
+- [`visibility-filtering/filter_tweets.rs:192`](../source/visibility-filtering/filter_tweets.rs#L192) — `fn normalize_viewer_id_cases() {`
+- [`visibility-filtering/get_safety_labels.rs:10`](../source/visibility-filtering/get_safety_labels.rs#L10) — `pub struct GetSafetyLabelsEndpoint {`
+- [`visibility-filtering/get_safety_labels.rs:15`](../source/visibility-filtering/get_safety_labels.rs#L15) — `pub fn new(safety_label_source: Arc<SafetyLabelSource>) -> Self {`
+- [`visibility-filtering/get_safety_labels.rs:21`](../source/visibility-filtering/get_safety_labels.rs#L21) — `pub async fn handle(`
+- [`visibility-filtering/get_safety_labels.rs:38`](../source/visibility-filtering/get_safety_labels.rs#L38) — `async fn handle_inner(`
+- [`visibility-filtering/get_safety_labels.rs:69`](../source/visibility-filtering/get_safety_labels.rs#L69) — `pub(crate) struct GetSafetyLabelsOutcome {`
+- [`visibility-filtering/get_safety_labels.rs:77`](../source/visibility-filtering/get_safety_labels.rs#L77) — `pub(crate) fn try_from_resolved(`
+- [`visibility-filtering/get_safety_labels.rs:117`](../source/visibility-filtering/get_safety_labels.rs#L117) — `pub(crate) fn success_count(&self) -> usize {`
+- [`visibility-filtering/get_safety_labels.rs:121`](../source/visibility-filtering/get_safety_labels.rs#L121) — `pub(crate) fn failure_count(&self) -> usize {`
+- [`visibility-filtering/get_safety_labels.rs:125`](../source/visibility-filtering/get_safety_labels.rs#L125) — `fn accounted_count(&self) -> usize {`
+- [`visibility-filtering/get_safety_labels.rs:135`](../source/visibility-filtering/get_safety_labels.rs#L135) — `fn labels_with_entry(type_id: i32) -> vf_pb::SafetyLabelMap {`
+- [`visibility-filtering/get_safety_labels.rs:154`](../source/visibility-filtering/get_safety_labels.rs#L154) — `fn try_from_resolved_reports_all_success() {`
+- [`visibility-filtering/get_safety_labels.rs:171`](../source/visibility-filtering/get_safety_labels.rs#L171) — `fn try_from_resolved_reports_partial_failure() {`
+- [`visibility-filtering/get_safety_labels.rs:197`](../source/visibility-filtering/get_safety_labels.rs#L197) — `fn try_from_resolved_reports_full_failure() {`
+- [`visibility-filtering/get_safety_labels.rs:222`](../source/visibility-filtering/get_safety_labels.rs#L222) — `fn try_from_resolved_rejects_missing_ids() {`
+- [`visibility-filtering/hydration/batch.rs:8`](../source/visibility-filtering/hydration/batch.rs#L8) — `pub enum Completeness<V> {`
+- [`visibility-filtering/hydration/batch.rs:14`](../source/visibility-filtering/hydration/batch.rs#L14) — `pub fn new(complete: bool, value: V) -> Self {`
+- [`visibility-filtering/hydration/batch.rs:22`](../source/visibility-filtering/hydration/batch.rs#L22) — `pub fn is_complete(&self) -> bool {`
+- [`visibility-filtering/hydration/batch.rs:26`](../source/visibility-filtering/hydration/batch.rs#L26) — `pub fn value(&self) -> &V {`
+- [`visibility-filtering/hydration/batch.rs:32`](../source/visibility-filtering/hydration/batch.rs#L32) — `pub fn into_value(self) -> V {`
+- [`visibility-filtering/hydration/batch.rs:38`](../source/visibility-filtering/hydration/batch.rs#L38) — `pub fn map<U>(self, f: impl FnOnce(V) -> U) -> Completeness<U> {`
+- [`visibility-filtering/hydration/batch.rs:47`](../source/visibility-filtering/hydration/batch.rs#L47) — `fn default() -> Self {`
+- [`visibility-filtering/hydration/batch.rs:53`](../source/visibility-filtering/hydration/batch.rs#L53) — `pub(crate) enum HydrationError {`
+- [`visibility-filtering/hydration/batch.rs:60`](../source/visibility-filtering/hydration/batch.rs#L60) — `pub(crate) enum Hydrated<V> {`
+- [`visibility-filtering/hydration/batch.rs:67`](../source/visibility-filtering/hydration/batch.rs#L67) — `pub(crate) fn value(&self) -> Option<&V> {`
+- [`visibility-filtering/hydration/batch.rs:76`](../source/visibility-filtering/hydration/batch.rs#L76) — `fn from(result: Result<Option<V>, E>) -> Self {`
+- [`visibility-filtering/hydration/batch.rs:85`](../source/visibility-filtering/hydration/batch.rs#L85) — `pub(crate) struct HydrationBatch<K, V> {`
+- [`visibility-filtering/hydration/batch.rs:89`](../source/visibility-filtering/hydration/batch.rs#L89) — `pub(crate) type TweetHydrationBatch<V> = HydrationBatch<TweetId, V>;`
+- [`visibility-filtering/hydration/batch.rs:90`](../source/visibility-filtering/hydration/batch.rs#L90) — `pub(crate) type AuthorHydrationBatch<V> = HydrationBatch<AuthorId, V>;`
+- [`visibility-filtering/hydration/batch.rs:93`](../source/visibility-filtering/hydration/batch.rs#L93) — `pub(crate) fn empty() -> Self {`
+- [`visibility-filtering/hydration/batch.rs:99`](../source/visibility-filtering/hydration/batch.rs#L99) — `pub(crate) fn from_results<E: Display>(`
+- [`visibility-filtering/hydration/batch.rs:111`](../source/visibility-filtering/hydration/batch.rs#L111) — `pub(crate) fn from_values(`
+- [`visibility-filtering/hydration/batch.rs:123`](../source/visibility-filtering/hydration/batch.rs#L123) — `pub(crate) fn from_hydrated(results: HashMap<K, Hydrated<V>>) -> Self {`
+- [`visibility-filtering/hydration/batch.rs:127`](../source/visibility-filtering/hydration/batch.rs#L127) — `fn from_expected(`
+- [`visibility-filtering/hydration/batch.rs:141`](../source/visibility-filtering/hydration/batch.rs#L141) — `pub(crate) fn timed_out(expected: impl IntoIterator<Item = K>) -> Self {`
+- [`visibility-filtering/hydration/batch.rs:150`](../source/visibility-filtering/hydration/batch.rs#L150) — `pub(crate) fn hydrated(&self, key: &K) -> Option<&Hydrated<V>> {`
+- [`visibility-filtering/hydration/batch.rs:154`](../source/visibility-filtering/hydration/batch.rs#L154) — `pub(crate) fn is_failed(&self, key: &K) -> bool {`
+- [`visibility-filtering/hydration/batch.rs:158`](../source/visibility-filtering/hydration/batch.rs#L158) — `pub(crate) fn into_hydrated(self) -> HashMap<K, Hydrated<V>> {`
+- [`visibility-filtering/hydration/batch.rs:162`](../source/visibility-filtering/hydration/batch.rs#L162) — `pub(crate) fn get(&self, key: &K) -> Option<&V> {`
+- [`visibility-filtering/hydration/batch.rs:166`](../source/visibility-filtering/hydration/batch.rs#L166) — `pub(crate) fn get_or_default(&self, key: &K) -> V`
+- [`visibility-filtering/hydration/batch.rs:173`](../source/visibility-filtering/hydration/batch.rs#L173) — `pub(crate) fn map_keys<K2: Eq + Hash>(self, f: impl Fn(K) -> K2) -> HydrationBatch<K2, V> {`
+- [`visibility-filtering/hydration/batch.rs:183`](../source/visibility-filtering/hydration/batch.rs#L183) — `pub(crate) fn map<V2>(self, mut f: impl FnMut(V) -> V2) -> HydrationBatch<K, V2> {`
+- [`visibility-filtering/hydration/batch.rs:200`](../source/visibility-filtering/hydration/batch.rs#L200) — `pub(crate) fn project<K2: Eq + Hash>(`
+- [`visibility-filtering/hydration/batch.rs:223`](../source/visibility-filtering/hydration/batch.rs#L223) — `fn default() -> Self {`
+- [`visibility-filtering/hydration/batch.rs:232`](../source/visibility-filtering/hydration/batch.rs#L232) — `fn batch(results: HashMap<u64, Result<Option<u32>, &str>>) -> HydrationBatch<u64, u32> {`
+- [`visibility-filtering/hydration/batch.rs:237`](../source/visibility-filtering/hydration/batch.rs#L237) — `fn found_not_found_and_failed_stay_distinguishable() {`
+- [`visibility-filtering/hydration/batch.rs:257`](../source/visibility-filtering/hydration/batch.rs#L257) — `fn absent_expected_keys_become_missing() {`
+- [`visibility-filtering/hydration/batch.rs:268`](../source/visibility-filtering/hydration/batch.rs#L268) — `fn timeout_fails_every_expected_key() {`
+- [`visibility-filtering/hydration/batch.rs:278`](../source/visibility-filtering/hydration/batch.rs#L278) — `fn map_preserves_tri_state() {`
+- [`visibility-filtering/hydration/batch.rs:292`](../source/visibility-filtering/hydration/batch.rs#L292) — `fn project_fans_source_results_out_to_new_keys() {`
+- [`visibility-filtering/hydration/batch.rs:306`](../source/visibility-filtering/hydration/batch.rs#L306) — `fn project_unknown_source_key_is_missing() {`
+- [`visibility-filtering/hydration/batch.rs:318`](../source/visibility-filtering/hydration/batch.rs#L318) — `fn duplicate_expected_keys_resolve_once() {`
+- [`visibility-filtering/hydration/batch.rs:327`](../source/visibility-filtering/hydration/batch.rs#L327) — `fn from_values_marks_present_found_and_absent_missing() {`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:10`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L10) — `const CLIENT_TIMEOUT: Duration = crate::hydration::HYDRATION_TIMEOUT;`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:11`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L11) — `const CLIENT: &str = "exclusive_content";`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:13`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L13) — `pub struct ExclusiveContentHydrator {`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:18`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L18) — `pub async fn hydrate(`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:79`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L79) — `struct MissingSuperFollows {`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:85`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L85) — `async fn batch_check_relationships(`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:93`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L93) — `async fn batch_check_super_follows(&self, _: u64, _: &[u64]) -> Option<HashMap<u64, bool>> {`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:102`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L102) — `async fn hydrate_with(`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:119`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L119) — `async fn failed_super_follow_lookup_keeps_the_control_but_is_incomplete() {`
+- [`visibility-filtering/hydration/exclusive_content_hydrator.rs:138`](../source/visibility-filtering/hydration/exclusive_content_hydrator.rs#L138) — `async fn successful_super_follow_lookup_completes_every_tweet() {`
+- [`visibility-filtering/hydration/fallback_cache.rs:12`](../source/visibility-filtering/hydration/fallback_cache.rs#L12) — `const CACHE_SHARDS: usize = 64;`
+- [`visibility-filtering/hydration/fallback_cache.rs:13`](../source/visibility-filtering/hydration/fallback_cache.rs#L13) — `const OCCUPANCY_SAMPLE_INTERVAL: u64 = 1024;`
+- [`visibility-filtering/hydration/fallback_cache.rs:16`](../source/visibility-filtering/hydration/fallback_cache.rs#L16) — `struct CacheEntry<V> {`
+- [`visibility-filtering/hydration/fallback_cache.rs:21`](../source/visibility-filtering/hydration/fallback_cache.rs#L21) — `type CacheShards<K, V> = Vec<Mutex<Cache<K, CacheEntry<V>>>>;`
+- [`visibility-filtering/hydration/fallback_cache.rs:23`](../source/visibility-filtering/hydration/fallback_cache.rs#L23) — `pub(crate) struct FallbackCache<K, V> {`
+- [`visibility-filtering/hydration/fallback_cache.rs:34`](../source/visibility-filtering/hydration/fallback_cache.rs#L34) — `pub(crate) fn new(facet: &'static str, capacity: usize) -> Self {`
+- [`visibility-filtering/hydration/fallback_cache.rs:52`](../source/visibility-filtering/hydration/fallback_cache.rs#L52) — `pub(crate) fn with_test_capacity(facet: &'static str) -> Self {`
+- [`visibility-filtering/hydration/fallback_cache.rs:56`](../source/visibility-filtering/hydration/fallback_cache.rs#L56) — `pub(crate) fn begin_request(&self) -> u64 {`
+- [`visibility-filtering/hydration/fallback_cache.rs:60`](../source/visibility-filtering/hydration/fallback_cache.rs#L60) — `pub(crate) fn resolve_hydration_batch(`
+- [`visibility-filtering/hydration/fallback_cache.rs:120`](../source/visibility-filtering/hydration/fallback_cache.rs#L120) — `fn entry_count(&self) -> usize {`
+- [`visibility-filtering/hydration/fallback_cache.rs:132`](../source/visibility-filtering/hydration/fallback_cache.rs#L132) — `fn write_entry(&self, generation: u64, key: &K, value: Option<V>) {`
+- [`visibility-filtering/hydration/fallback_cache.rs:146`](../source/visibility-filtering/hydration/fallback_cache.rs#L146) — `fn cached_entry(&self, key: &K) -> Option<CacheEntry<V>> {`
+- [`visibility-filtering/hydration/fallback_cache.rs:159`](../source/visibility-filtering/hydration/fallback_cache.rs#L159) — `fn cache_shard<'a, K, V>(shards: &'a [Mutex<Cache<K, V>>], key: &K) -> &'a Mutex<Cache<K, V>>`
+- [`visibility-filtering/hydration/fallback_cache.rs:174`](../source/visibility-filtering/hydration/fallback_cache.rs#L174) — `fn cache() -> FallbackCache<u64, String> {`
+- [`visibility-filtering/hydration/fallback_cache.rs:178`](../source/visibility-filtering/hydration/fallback_cache.rs#L178) — `fn batch(`
+- [`visibility-filtering/hydration/fallback_cache.rs:184`](../source/visibility-filtering/hydration/fallback_cache.rs#L184) — `fn failed() -> Hydrated<String> {`
+- [`visibility-filtering/hydration/fallback_cache.rs:189`](../source/visibility-filtering/hydration/fallback_cache.rs#L189) — `fn recovers_only_resident_failed_keys() {`
+- [`visibility-filtering/hydration/fallback_cache.rs:211`](../source/visibility-filtering/hydration/fallback_cache.rs#L211) — `fn authoritative_not_found_invalidates_stale_value() {`
+- [`visibility-filtering/hydration/fallback_cache.rs:225`](../source/visibility-filtering/hydration/fallback_cache.rs#L225) — `fn late_older_value_does_not_resurrect_newer_not_found() {`
+- [`visibility-filtering/hydration/fallback_cache.rs:238`](../source/visibility-filtering/hydration/fallback_cache.rs#L238) — `fn late_older_not_found_does_not_suppress_newer_value() {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:15`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L15) — `const CLIENT_TIMEOUT: Duration = crate::hydration::HYDRATION_TIMEOUT;`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:16`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L16) — `const CLIENT: &str = "gizmoduck";`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:17`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L17) — `const CACHE_CAPACITY: usize = 1_000_000;`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:19`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L19) — `pub struct GizmoduckAuthorHydrator {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:25`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L25) — `pub(crate) fn new(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:35`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L35) — `pub(crate) fn fallback_cache() -> FallbackCache<AuthorId, Completeness<AuthorFeatures>> {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:39`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L39) — `pub(crate) async fn hydrate(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:86`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L86) — `struct LabelCounts {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:91`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L91) — `fn evaluable_author_features(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:102`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L102) — `fn author_features(user_result: GizmoduckUserResult, counts: &mut LabelCounts) -> AuthorFeatures {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:130`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L130) — `fn author_label(value: LabelValue) -> Option<AuthorLabel> {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:165`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L165) — `struct FailingAfterFirstClient {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:171`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L171) — `async fn get_users(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:199`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L199) — `async fn get_users_with_perspective(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:207`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L207) — `async fn get_viewer_roles(&self, _user_id: u64) -> Result<Vec<String>> {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:211`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L211) — `async fn get_viewer_data(&self, _user_id: u64) -> Result<ViewerData> {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:215`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L215) — `async fn get_viewer_data_with_fields(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:223`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L223) — `async fn get_pcf_labels(&self, _user_ids: Vec<i64>) -> HashMap<i64, Result<PCFLabel>> {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:227`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L227) — `async fn get_profile_description_languages(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:234`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L234) — `async fn get_user_fields(&self, _user_ids: Vec<i64>) -> HashMap<i64, Result<UserFields>> {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:238`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L238) — `async fn get_by_screen_name(`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:246`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L246) — `fn candidate(tweet_id: u64, author_id: u64) -> TweetCandidateInput {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:259`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L259) — `async fn not_found_authors_default_features_and_share_one_backend_key() {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:289`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L289) — `async fn stale_recovery_uses_resident_value() {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:309`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L309) — `fn only_failed_partial_or_missing_response_states_are_incomplete() {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:345`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L345) — `fn user_with_labels(label_values: &[i32]) -> GizmoduckUserResult {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:365`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L365) — `fn every_author_label_variant_round_trips_from_its_thrift_constant() {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:396`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L396) — `fn unmodelled_thrift_labels_drop_at_conversion() {`
+- [`visibility-filtering/hydration/gizmoduck_hydrator.rs:414`](../source/visibility-filtering/hydration/gizmoduck_hydrator.rs#L414) — `fn error_and_missing_author_results_fail_open_but_stay_failed() {`
+- [`visibility-filtering/hydration/metrics.rs:14`](../source/visibility-filtering/hydration/metrics.rs#L14) — `const HYDRATOR_REQUESTS: &str = "vf_hydrator_requests";`
+- [`visibility-filtering/hydration/metrics.rs:15`](../source/visibility-filtering/hydration/metrics.rs#L15) — `const HYDRATOR_LATENCY_MS: &str = "vf_hydrator_latency_ms";`
+- [`visibility-filtering/hydration/metrics.rs:16`](../source/visibility-filtering/hydration/metrics.rs#L16) — `const HYDRATOR_KEYS: &str = "vf_hydrator_keys";`
+- [`visibility-filtering/hydration/metrics.rs:17`](../source/visibility-filtering/hydration/metrics.rs#L17) — `const HYDRATOR_TWEET_IDS: &str = "vf_hydrator_tweet_ids";`
+- [`visibility-filtering/hydration/metrics.rs:18`](../source/visibility-filtering/hydration/metrics.rs#L18) — `const HYDRATOR_BATCH_SIZE: &str = "vf_hydrator_batch_size";`
+- [`visibility-filtering/hydration/metrics.rs:19`](../source/visibility-filtering/hydration/metrics.rs#L19) — `const FALLBACK_CACHE_KEYS: &str = "vf_fallback_cache_keys";`
+- [`visibility-filtering/hydration/metrics.rs:20`](../source/visibility-filtering/hydration/metrics.rs#L20) — `const FALLBACK_CACHE_ENTRIES: &str = "vf_fallback_cache_entries";`
+- [`visibility-filtering/hydration/metrics.rs:21`](../source/visibility-filtering/hydration/metrics.rs#L21) — `const AUTHOR_LABELS: &str = "vf_author_labels";`
+- [`visibility-filtering/hydration/metrics.rs:25`](../source/visibility-filtering/hydration/metrics.rs#L25) — `pub(crate) enum HydratorOutcome {`
+- [`visibility-filtering/hydration/metrics.rs:32`](../source/visibility-filtering/hydration/metrics.rs#L32) — `pub(crate) fn batch_outcome<K, V, E>(map: &HashMap<K, Result<V, E>>) -> HydratorOutcome {`
+- [`visibility-filtering/hydration/metrics.rs:41`](../source/visibility-filtering/hydration/metrics.rs#L41) — `struct KeyedResultCounts {`
+- [`visibility-filtering/hydration/metrics.rs:51`](../source/visibility-filtering/hydration/metrics.rs#L51) — `fn from_batch<K, V>(`
+- [`visibility-filtering/hydration/metrics.rs:78`](../source/visibility-filtering/hydration/metrics.rs#L78) — `fn outcome(self) -> HydratorOutcome {`
+- [`visibility-filtering/hydration/metrics.rs:89`](../source/visibility-filtering/hydration/metrics.rs#L89) — `pub(crate) fn record_hydrator_request(`
+- [`visibility-filtering/hydration/metrics.rs:138`](../source/visibility-filtering/hydration/metrics.rs#L138) — `fn record_keyed_hydrator_request(`
+- [`visibility-filtering/hydration/metrics.rs:193`](../source/visibility-filtering/hydration/metrics.rs#L193) — `pub(crate) fn record_tes_join_latency(safety_level: SafetyLevel, elapsed: Duration) {`
+- [`visibility-filtering/hydration/metrics.rs:207`](../source/visibility-filtering/hydration/metrics.rs#L207) — `pub(crate) fn record_author_labels(mapped: usize, unmapped: usize) {`
+- [`visibility-filtering/hydration/metrics.rs:213`](../source/visibility-filtering/hydration/metrics.rs#L213) — `pub(crate) fn record_batch_size(client: &'static str, candidate_count: usize) {`
+- [`visibility-filtering/hydration/metrics.rs:223`](../source/visibility-filtering/hydration/metrics.rs#L223) — `pub(crate) fn record_fallback_cache_keys(`
+- [`visibility-filtering/hydration/metrics.rs:246`](../source/visibility-filtering/hydration/metrics.rs#L246) — `pub(crate) async fn timed_rpc<T: Default>(`
+- [`visibility-filtering/hydration/metrics.rs:274`](../source/visibility-filtering/hydration/metrics.rs#L274) — `pub(crate) async fn timed_results<K, V, E>(`
+- [`visibility-filtering/hydration/metrics.rs:298`](../source/visibility-filtering/hydration/metrics.rs#L298) — `pub(crate) async fn timed_values<K, V>(`
+- [`visibility-filtering/hydration/metrics.rs:321`](../source/visibility-filtering/hydration/metrics.rs#L321) — `async fn timed_batch<K, V, F: Future>(`
+- [`visibility-filtering/hydration/metrics.rs:348`](../source/visibility-filtering/hydration/metrics.rs#L348) — `fn incr(metric: &str, labels: &[(&str, &str)], count: u64) {`
+- [`visibility-filtering/hydration/metrics.rs:354`](../source/visibility-filtering/hydration/metrics.rs#L354) — `fn incr_nonzero(metric: &str, labels: &[(&str, &str)], count: u64) -> bool {`
+- [`visibility-filtering/hydration/metrics.rs:363`](../source/visibility-filtering/hydration/metrics.rs#L363) — `pub(crate) fn record_fallback_cache_entries(facet: &'static str, entries: usize) {`
+- [`visibility-filtering/hydration/metrics.rs:369`](../source/visibility-filtering/hydration/metrics.rs#L369) — `fn observe(metric: &str, labels: &[(&str, &str)], value: f64, buckets: HistogramBuckets) {`
+- [`visibility-filtering/hydration/metrics.rs:380`](../source/visibility-filtering/hydration/metrics.rs#L380) — `fn dashboard_generator_pins_the_author_labels_metric_name() {`
+- [`visibility-filtering/hydration/metrics.rs:394`](../source/visibility-filtering/hydration/metrics.rs#L394) — `async fn caller_deadline_cancels_a_hop_before_the_static_ceiling() {`
+- [`visibility-filtering/hydration/metrics.rs:405`](../source/visibility-filtering/hydration/metrics.rs#L405) — `async fn hop_without_caller_deadline_uses_the_static_ceiling() {`
+- [`visibility-filtering/hydration/metrics.rs:415`](../source/visibility-filtering/hydration/metrics.rs#L415) — `fn empty_batch_is_success() {`
+- [`visibility-filtering/hydration/metrics.rs:421`](../source/visibility-filtering/hydration/metrics.rs#L421) — `fn all_keys_errored_is_error() {`
+- [`visibility-filtering/hydration/metrics.rs:427`](../source/visibility-filtering/hydration/metrics.rs#L427) — `fn any_success_preserves_legacy_batch_success() {`
+- [`visibility-filtering/hydration/metrics.rs:433`](../source/visibility-filtering/hydration/metrics.rs#L433) — `fn from_batch_counts_not_found_as_success_and_missing_as_error() {`
+- [`visibility-filtering/hydration/metrics.rs:450`](../source/visibility-filtering/hydration/metrics.rs#L450) — `fn from_batch_counts_timeout_keys() {`
+- [`visibility-filtering/hydration/metrics.rs:462`](../source/visibility-filtering/hydration/metrics.rs#L462) — `async fn timed_results_outer_timeout_fails_every_expected_key() {`
+- [`visibility-filtering/hydration/metrics.rs:483`](../source/visibility-filtering/hydration/metrics.rs#L483) — `async fn timed_values_backfills_absent_expected_keys() {`
+- [`visibility-filtering/hydration/mod.rs:37`](../source/visibility-filtering/hydration/mod.rs#L37) — `pub(crate) const HYDRATION_TIMEOUT: Duration = Duration::from_secs(1);`
+- [`visibility-filtering/hydration/mod.rs:38`](../source/visibility-filtering/hydration/mod.rs#L38) — `pub(crate) const DEFAULT_REQUEST_BUDGET: Duration = Duration::from_millis(400);`
+- [`visibility-filtering/hydration/mod.rs:39`](../source/visibility-filtering/hydration/mod.rs#L39) — `pub(crate) const INBOUND_ALLOWANCE: Duration = Duration::from_millis(10);`
+- [`visibility-filtering/hydration/mod.rs:41`](../source/visibility-filtering/hydration/mod.rs#L41) — `pub(crate) fn request_context(`
+- [`visibility-filtering/hydration/mod.rs:55`](../source/visibility-filtering/hydration/mod.rs#L55) — `pub(crate) struct HydrationRequest<'a> {`
+- [`visibility-filtering/hydration/mod.rs:63`](../source/visibility-filtering/hydration/mod.rs#L63) — `pub(crate) fn new(`
+- [`visibility-filtering/hydration/mod.rs:78`](../source/visibility-filtering/hydration/mod.rs#L78) — `struct CandidateFeatures {`
+- [`visibility-filtering/hydration/mod.rs:87`](../source/visibility-filtering/hydration/mod.rs#L87) — `fn assemble(self, candidates: &[TweetCandidateInput]) -> Vec<HydratedTweetCandidate> {`
+- [`visibility-filtering/hydration/mod.rs:114`](../source/visibility-filtering/hydration/mod.rs#L114) — `pub(crate) fn tweets_per_author(candidates: &[TweetCandidateInput]) -> HashMap<AuthorId, usize> {`
+- [`visibility-filtering/hydration/mod.rs:124`](../source/visibility-filtering/hydration/mod.rs#L124) — `pub(crate) fn keyed_by_author<V>(`
+- [`visibility-filtering/hydration/mod.rs:138`](../source/visibility-filtering/hydration/mod.rs#L138) — `pub(crate) struct HydrationPipeline {`
+- [`visibility-filtering/hydration/mod.rs:147`](../source/visibility-filtering/hydration/mod.rs#L147) — `pub(crate) struct HydrationOutput {`
+- [`visibility-filtering/hydration/mod.rs:155`](../source/visibility-filtering/hydration/mod.rs#L155) — `pub(crate) fn new(`
+- [`visibility-filtering/hydration/mod.rs:185`](../source/visibility-filtering/hydration/mod.rs#L185) — `pub(crate) async fn hydrate(&self, request: HydrationRequest<'_>) -> HydrationOutput {`
+- [`visibility-filtering/hydration/mod.rs:323`](../source/visibility-filtering/hydration/mod.rs#L323) — `fn core(tweet_id: u64, author_id: u64) -> HashMap<TweetId, PureCoreData> {`
+- [`visibility-filtering/hydration/mod.rs:334`](../source/visibility-filtering/hydration/mod.rs#L334) — `fn assemble_handles_mismatched_cardinality_without_mispairing() {`
+- [`visibility-filtering/hydration/mod.rs:391`](../source/visibility-filtering/hydration/mod.rs#L391) — `fn raw(tweet_id: u64, request_author_id: Option<u64>) -> RawCandidate {`
+- [`visibility-filtering/hydration/mod.rs:399`](../source/visibility-filtering/hydration/mod.rs#L399) — `fn author_candidate_counts_deduplicate_shared_authors() {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:10`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L10) — `const CLIENT: &str = "safety_labels";`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:12`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L12) — `pub struct SafetyLabelHydrator {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:16`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L16) — `pub struct SafetyLabelHydration {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:22`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L22) — `pub async fn hydrate(`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:81`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L81) — `struct FakeTwemcache {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:87`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L87) — `async fn multi_get(`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:95`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L95) — `struct FakeLabelFetcher {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:102`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L102) — `async fn fetch_labels(`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:116`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L116) — `fn cache_key(tweet_id: u64) -> Key {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:120`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L120) — `fn cached_label() -> Value {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:127`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L127) — `fn raw_label(label_type: SafetyLabelType) -> crate::safety_label_source::codec::RawSafetyLabel {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:134`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L134) — `fn hydrator(`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:153`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L153) — `async fn hydrate_keys_results_by_tweet_id() {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:172`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L172) — `async fn hydrate_fails_open_on_lookup_errors() {`
+- [`visibility-filtering/hydration/safety_label_hydrator.rs:189`](../source/visibility-filtering/hydration/safety_label_hydrator.rs#L189) — `async fn hydrate_fails_open_on_missing_results() {`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:10`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L10) — `const CLIENT_TIMEOUT: Duration = crate::hydration::HYDRATION_TIMEOUT;`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:11`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L11) — `const CLIENT: &str = "socialgraph";`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:13`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L13) — `pub struct SocialgraphHydrator {`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:18`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L18) — `pub(crate) async fn hydrate(`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:67`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L67) — `fn candidate(tweet_id: u64, author_id: u64) -> TweetCandidateInput {`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:79`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L79) — `struct EmptyResponseSocialgraphClient;`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:83`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L83) — `async fn batch_check_relationships(`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:91`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L91) — `async fn batch_check_super_follows(`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:101`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L101) — `async fn rpc_empty_response_marks_every_key_failed() {`
+- [`visibility-filtering/hydration/socialgraph_hydrator.rs:120`](../source/visibility-filtering/hydration/socialgraph_hydrator.rs#L120) — `async fn logged_out_viewer_is_found_default_even_for_duplicate_tweets() {`
+- [`visibility-filtering/hydration/tes_composite.rs:13`](../source/visibility-filtering/hydration/tes_composite.rs#L13) — `const COLUMN: &str = "tweetypie/federated/tweetForVisibility.Tweet";`
+- [`visibility-filtering/hydration/tes_composite.rs:14`](../source/visibility-filtering/hydration/tes_composite.rs#L14) — `const OPERATION: &str = "fetch";`
+- [`visibility-filtering/hydration/tes_composite.rs:17`](../source/visibility-filtering/hydration/tes_composite.rs#L17) — `pub(crate) struct TweetForVisibility {`
+- [`visibility-filtering/hydration/tes_composite.rs:32`](../source/visibility-filtering/hydration/tes_composite.rs#L32) — `pub(crate) trait TweetForVisibilitySource: Send + Sync {`
+- [`visibility-filtering/hydration/tes_composite.rs:33`](../source/visibility-filtering/hydration/tes_composite.rs#L33) — `async fn get_tweets_for_visibility(`
+- [`visibility-filtering/hydration/tes_composite.rs:39`](../source/visibility-filtering/hydration/tes_composite.rs#L39) — `pub(crate) struct ProdTweetForVisibilitySource {`
+- [`visibility-filtering/hydration/tes_composite.rs:45`](../source/visibility-filtering/hydration/tes_composite.rs#L45) — `async fn get_tweets_for_visibility(`
+- [`visibility-filtering/hydration/tes_composite.rs:74`](../source/visibility-filtering/hydration/tes_composite.rs#L74) — `pub(crate) struct MockTweetForVisibilitySource {`
+- [`visibility-filtering/hydration/tes_composite.rs:83`](../source/visibility-filtering/hydration/tes_composite.rs#L83) — `async fn get_tweets_for_visibility(`
+- [`visibility-filtering/hydration/tes_composite.rs:101`](../source/visibility-filtering/hydration/tes_composite.rs#L101) — `pub(crate) fn decode_tweet_for_visibility(bytes: &[u8]) -> Result<Option<TweetForVisibility>> {`
+- [`visibility-filtering/hydration/tes_composite.rs:114`](../source/visibility-filtering/hydration/tes_composite.rs#L114) — `struct Tweet {`
+- [`visibility-filtering/hydration/tes_composite.rs:126`](../source/visibility-filtering/hydration/tes_composite.rs#L126) — `struct CoreData {`
+- [`visibility-filtering/hydration/tes_composite.rs:136`](../source/visibility-filtering/hydration/tes_composite.rs#L136) — `fn project(self) -> Option<TweetForVisibility> {`
+- [`visibility-filtering/hydration/tes_composite.rs:160`](../source/visibility-filtering/hydration/tes_composite.rs#L160) — `fn read_from_in_protocol(proto: &mut dyn TInputProtocol) -> thrift::Result<Self> {`
+- [`visibility-filtering/hydration/tes_composite.rs:198`](../source/visibility-filtering/hydration/tes_composite.rs#L198) — `fn write_to_out_protocol(&self, _proto: &mut dyn TOutputProtocol) -> thrift::Result<()> {`
+- [`visibility-filtering/hydration/tes_composite.rs:206`](../source/visibility-filtering/hydration/tes_composite.rs#L206) — `fn read_core_data(proto: &mut dyn TInputProtocol) -> thrift::Result<CoreData> {`
+- [`visibility-filtering/hydration/tes_composite.rs:229`](../source/visibility-filtering/hydration/tes_composite.rs#L229) — `fn skip_list_non_empty(proto: &mut dyn TInputProtocol) -> thrift::Result<bool> {`
+- [`visibility-filtering/hydration/tes_composite.rs:238`](../source/visibility-filtering/hydration/tes_composite.rs#L238) — `fn read_communities_non_empty(proto: &mut dyn TInputProtocol) -> thrift::Result<bool> {`
+- [`visibility-filtering/hydration/tes_composite.rs:272`](../source/visibility-filtering/hydration/tes_composite.rs#L272) — `type Proto<'a> = TBinaryOutputProtocol<&'a mut Vec<u8>>;`
+- [`visibility-filtering/hydration/tes_composite.rs:273`](../source/visibility-filtering/hydration/tes_composite.rs#L273) — `type Fields<'a> = &'a mut dyn FnMut(&mut Proto<'_>);`
+- [`visibility-filtering/hydration/tes_composite.rs:275`](../source/visibility-filtering/hydration/tes_composite.rs#L275) — `const TWEET_ID: i64 = 10;`
+- [`visibility-filtering/hydration/tes_composite.rs:276`](../source/visibility-filtering/hydration/tes_composite.rs#L276) — `const AUTHOR_ID: i64 = 7001;`
+- [`visibility-filtering/hydration/tes_composite.rs:277`](../source/visibility-filtering/hydration/tes_composite.rs#L277) — `const SOURCE_TWEET_ID: i64 = 9;`
+- [`visibility-filtering/hydration/tes_composite.rs:278`](../source/visibility-filtering/hydration/tes_composite.rs#L278) — `const PURE_CORE_SOURCE_TWEET_ID: u64 = 8;`
+- [`visibility-filtering/hydration/tes_composite.rs:279`](../source/visibility-filtering/hydration/tes_composite.rs#L279) — `const CONVERSATION_AUTHOR_ID: i64 = 7003;`
+- [`visibility-filtering/hydration/tes_composite.rs:280`](../source/visibility-filtering/hydration/tes_composite.rs#L280) — `const PURE_CORE_TEXT: &str = "pure core text";`
+- [`visibility-filtering/hydration/tes_composite.rs:282`](../source/visibility-filtering/hydration/tes_composite.rs#L282) — `fn field(proto: &mut Proto<'_>, id: i16, ty: TType, value: impl FnOnce(&mut Proto<'_>)) {`
+- [`visibility-filtering/hydration/tes_composite.rs:290`](../source/visibility-filtering/hydration/tes_composite.rs#L290) — `fn bare_struct(proto: &mut Proto<'_>, fields: impl FnOnce(&mut Proto<'_>)) {`
+- [`visibility-filtering/hydration/tes_composite.rs:299`](../source/visibility-filtering/hydration/tes_composite.rs#L299) — `fn structure(proto: &mut Proto<'_>, id: i16, fields: impl FnOnce(&mut Proto<'_>)) {`
+- [`visibility-filtering/hydration/tes_composite.rs:303`](../source/visibility-filtering/hydration/tes_composite.rs#L303) — `fn list(`
+- [`visibility-filtering/hydration/tes_composite.rs:318`](../source/visibility-filtering/hydration/tes_composite.rs#L318) — `fn i64_field(proto: &mut Proto<'_>, id: i16, value: i64) {`
+- [`visibility-filtering/hydration/tes_composite.rs:322`](../source/visibility-filtering/hydration/tes_composite.rs#L322) — `fn bool_field(proto: &mut Proto<'_>, id: i16, value: bool) {`
+- [`visibility-filtering/hydration/tes_composite.rs:326`](../source/visibility-filtering/hydration/tes_composite.rs#L326) — `fn encode_option(option: Fields<'_>) -> Vec<u8> {`
+- [`visibility-filtering/hydration/tes_composite.rs:337`](../source/visibility-filtering/hydration/tes_composite.rs#L337) — `fn encode_tweet(core_data: Fields<'_>, rest: Fields<'_>) -> Vec<u8> {`
+- [`visibility-filtering/hydration/tes_composite.rs:353`](../source/visibility-filtering/hydration/tes_composite.rs#L353) — `fn media_fixture(has_refs: bool, has_card: bool, entities: &[MediaEntity]) -> Vec<u8> {`
+- [`visibility-filtering/hydration/tes_composite.rs:371`](../source/visibility-filtering/hydration/tes_composite.rs#L371) — `fn restricted_media(has_key: bool, dmca: bool, allow: &[&str], deny: &[&str]) -> MediaEntity {`
+- [`visibility-filtering/hydration/tes_composite.rs:393`](../source/visibility-filtering/hydration/tes_composite.rs#L393) — `fn assemble_fixture(bytes: &[u8]) -> TweetFeatures {`
+- [`visibility-filtering/hydration/tes_composite.rs:429`](../source/visibility-filtering/hydration/tes_composite.rs#L429) — `fn pure_core_features() -> TweetFeatures {`
+- [`visibility-filtering/hydration/tes_composite.rs:440`](../source/visibility-filtering/hydration/tes_composite.rs#L440) — `fn projects_every_read_field_of_a_found_tweet() {`
+- [`visibility-filtering/hydration/tes_composite.rs:520`](../source/visibility-filtering/hydration/tes_composite.rs#L520) — `fn plain_tweet_takes_text_from_pure_core_but_not_its_retweet_source() {`
+- [`visibility-filtering/hydration/tes_composite.rs:527`](../source/visibility-filtering/hydration/tes_composite.rs#L527) — `fn media_restrictions_fold_only_across_keyed_entities() {`
+- [`visibility-filtering/hydration/tes_composite.rs:551`](../source/visibility-filtering/hydration/tes_composite.rs#L551) — `fn media_presence_comes_from_refs_or_card_reference_never_the_media_list() {`
+- [`visibility-filtering/hydration/tes_composite.rs:566`](../source/visibility-filtering/hydration/tes_composite.rs#L566) — `fn community_tweet_requires_a_nonempty_community_id_list() {`
+- [`visibility-filtering/hydration/tes_composite.rs:583`](../source/visibility-filtering/hydration/tes_composite.rs#L583) — `fn truncated_share_is_an_error_not_a_panic() {`
+- [`visibility-filtering/hydration/tes_composite.rs:598`](../source/visibility-filtering/hydration/tes_composite.rs#L598) — `fn missing_tweet_keeps_pure_core_text_and_defaults_the_rest() {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:15`](../source/visibility-filtering/hydration/tes_hydrator.rs#L15) — `const CLIENT_TIMEOUT: Duration = crate::hydration::HYDRATION_TIMEOUT;`
+- [`visibility-filtering/hydration/tes_hydrator.rs:16`](../source/visibility-filtering/hydration/tes_hydrator.rs#L16) — `const CLIENT: &str = "tes";`
+- [`visibility-filtering/hydration/tes_hydrator.rs:18`](../source/visibility-filtering/hydration/tes_hydrator.rs#L18) — `pub(crate) type AuthorIdFallbackCache = FallbackCache<TweetId, u64>;`
+- [`visibility-filtering/hydration/tes_hydrator.rs:20`](../source/visibility-filtering/hydration/tes_hydrator.rs#L20) — `pub struct TesHydrator {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:27`](../source/visibility-filtering/hydration/tes_hydrator.rs#L27) — `pub(crate) struct PureCoreHydration {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:33`](../source/visibility-filtering/hydration/tes_hydrator.rs#L33) — `pub(crate) fn new(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:45`](../source/visibility-filtering/hydration/tes_hydrator.rs#L45) — `pub(crate) fn author_id_fallback_cache(capacity: usize) -> AuthorIdFallbackCache {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:49`](../source/visibility-filtering/hydration/tes_hydrator.rs#L49) — `pub(crate) async fn fetch_pure_core(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:76`](../source/visibility-filtering/hydration/tes_hydrator.rs#L76) — `pub(crate) async fn hydrate_tweets(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:95`](../source/visibility-filtering/hydration/tes_hydrator.rs#L95) — `pub(crate) fn assemble_tweet_features(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:113`](../source/visibility-filtering/hydration/tes_hydrator.rs#L113) — `fn candidates_per_tweet(tweet_ids: &[TweetId]) -> HashMap<u64, usize> {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:121`](../source/visibility-filtering/hydration/tes_hydrator.rs#L121) — `fn resolve_pure_core(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:162`](../source/visibility-filtering/hydration/tes_hydrator.rs#L162) — `fn build_tweet_features(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:195`](../source/visibility-filtering/hydration/tes_hydrator.rs#L195) — `pub(crate) fn media_feature(entities: MediaEntities) -> MediaFeature {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:230`](../source/visibility-filtering/hydration/tes_hydrator.rs#L230) — `fn found<V>(id: u64, value: V) -> TweetHydrationBatch<V> {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:237`](../source/visibility-filtering/hydration/tes_hydrator.rs#L237) — `fn candidate(tweet_id: u64, author_id: u64) -> TweetCandidateInput {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:256`](../source/visibility-filtering/hydration/tes_hydrator.rs#L256) — `fn hydrator() -> TesHydrator {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:264`](../source/visibility-filtering/hydration/tes_hydrator.rs#L264) — `fn tweet() -> TweetForVisibility {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:281`](../source/visibility-filtering/hydration/tes_hydrator.rs#L281) — `fn tweet_candidate_counts_deduplicate_backend_keys() {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:290`](../source/visibility-filtering/hydration/tes_hydrator.rs#L290) — `fn core_batch(`
+- [`visibility-filtering/hydration/tes_hydrator.rs:311`](../source/visibility-filtering/hydration/tes_hydrator.rs#L311) — `fn failed() -> Hydrated<u64> {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:315`](../source/visibility-filtering/hydration/tes_hydrator.rs#L315) — `fn author_id_cache() -> AuthorIdFallbackCache {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:320`](../source/visibility-filtering/hydration/tes_hydrator.rs#L320) — `fn failed_pure_core_recovers_only_previously_found_author_ids() {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:344`](../source/visibility-filtering/hydration/tes_hydrator.rs#L344) — `fn without_cache_failed_pure_core_recovers_nothing() {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:354`](../source/visibility-filtering/hydration/tes_hydrator.rs#L354) — `fn assemble_preserves_composite_features_when_core_missing() {`
+- [`visibility-filtering/hydration/tes_hydrator.rs:405`](../source/visibility-filtering/hydration/tes_hydrator.rs#L405) — `fn missing_core_keeps_nullcast_drop_for_supplied_and_recovered_authors() {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:11`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L11) — `const CLIENT_TIMEOUT: Duration = crate::hydration::HYDRATION_TIMEOUT;`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:13`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L13) — `const VIEWER_QUERY_FIELDS: [QueryFields; 2] = [QueryFields::ACCOUNT, QueryFields::EXTENDED_PROFILE];`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:15`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L15) — `pub struct ViewerHydrator {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:20`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L20) — `pub async fn hydrate(`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:97`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L97) — `fn hydrator_with_viewer_data(user_id: u64, data: ViewerData) -> ViewerHydrator {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:105`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L105) — `enum ViewerLookup {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:110`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L110) — `struct BrokenViewerClient(ViewerLookup);`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:114`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L114) — `async fn get_viewer_data_with_fields(`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:125`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L125) — `async fn get_users(`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:132`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L132) — `async fn get_users_with_perspective(`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:140`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L140) — `async fn get_viewer_roles(&self, _user_id: u64) -> Result<Vec<String>> {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:144`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L144) — `async fn get_viewer_data(&self, _user_id: u64) -> Result<ViewerData> {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:148`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L148) — `async fn get_pcf_labels(&self, _user_ids: Vec<i64>) -> HashMap<i64, Result<PCFLabel>> {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:152`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L152) — `async fn get_profile_description_languages(`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:159`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L159) — `async fn get_user_fields(&self, _user_ids: Vec<i64>) -> HashMap<i64, Result<UserFields>> {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:163`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L163) — `async fn get_by_screen_name(`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:171`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L171) — `async fn hydrate_with_broken_client(lookup: ViewerLookup) -> ViewerFeatures {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:185`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L185) — `async fn rpc_error_fails_open_to_logged_in_defaults() {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:196`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L196) — `async fn rpc_timeout_fails_open_to_logged_in_defaults() {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:207`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L207) — `async fn logged_out_viewer_defaults_sensitive_media_to_false() {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:224`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L224) — `async fn account_country_code_is_hydrated_lowercased() {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:243`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L243) — `async fn existing_viewer_without_age_is_not_stated() {`
+- [`visibility-filtering/hydration/viewer_hydrator.rs:263`](../source/visibility-filtering/hydration/viewer_hydrator.rs#L263) — `async fn nonexistent_viewer_is_unknown() {`
+- [`visibility-filtering/main.rs:24`](../source/visibility-filtering/main.rs#L24) — `struct Args {`
+- [`visibility-filtering/main.rs:36`](../source/visibility-filtering/main.rs#L36) — `async fn main() -> anyhow::Result<()> {`
+- [`visibility-filtering/models/author.rs:4`](../source/visibility-filtering/models/author.rs#L4) — `pub struct AuthorFeatures {`
+- [`visibility-filtering/models/author.rs:17`](../source/visibility-filtering/models/author.rs#L17) — `pub(crate) struct CompactAuthorFeatures(NonZeroU64);`
+- [`visibility-filtering/models/author.rs:19`](../source/visibility-filtering/models/author.rs#L19) — `const COMPACT_PRESENT_BIT: NonZeroU64 = match NonZeroU64::new(1 << 63) {`
+- [`visibility-filtering/models/author.rs:23`](../source/visibility-filtering/models/author.rs#L23) — `const COMPACT_LABEL_SHIFT: u32 = 8;`
+- [`visibility-filtering/models/author.rs:24`](../source/visibility-filtering/models/author.rs#L24) — `const COMPACT_LABEL_MASK: u64 = (1 << (63 - COMPACT_LABEL_SHIFT)) - 1;`
+- [`visibility-filtering/models/author.rs:28`](../source/visibility-filtering/models/author.rs#L28) — `pub(crate) fn to_compact(self) -> CompactAuthorFeatures {`
+- [`visibility-filtering/models/author.rs:41`](../source/visibility-filtering/models/author.rs#L41) — `pub(crate) fn from_compact(compact: CompactAuthorFeatures) -> Self {`
+- [`visibility-filtering/models/author.rs:58`](../source/visibility-filtering/models/author.rs#L58) — `pub enum AuthorLabel {`
+- [`visibility-filtering/models/author.rs:73`](../source/visibility-filtering/models/author.rs#L73) — `pub struct AuthorLabelSet(u64);`
+- [`visibility-filtering/models/author.rs:77`](../source/visibility-filtering/models/author.rs#L77) — `pub fn insert(&mut self, label: AuthorLabel) {`
+- [`visibility-filtering/models/author.rs:82`](../source/visibility-filtering/models/author.rs#L82) — `pub fn has_label(self, label: AuthorLabel) -> bool {`
+- [`visibility-filtering/models/author.rs:91`](../source/visibility-filtering/models/author.rs#L91) — `fn assert_copy<T: Copy>() {}`
+- [`visibility-filtering/models/author.rs:93`](../source/visibility-filtering/models/author.rs#L93) — `const ALL_LABELS: [AuthorLabel; 11] = [`
+- [`visibility-filtering/models/author.rs:108`](../source/visibility-filtering/models/author.rs#L108) — `fn compact_is_copy_and_option_is_8_bytes() {`
+- [`visibility-filtering/models/author.rs:114`](../source/visibility-filtering/models/author.rs#L114) — `fn compact_round_trips_every_flag_combination_and_label_subset() {`
+- [`visibility-filtering/models/author.rs:142`](../source/visibility-filtering/models/author.rs#L142) — `fn author_features_is_copy_and_16_bytes_with_option_niche() {`
+- [`visibility-filtering/models/author.rs:149`](../source/visibility-filtering/models/author.rs#L149) — `fn label_set_membership() {`
+- [`visibility-filtering/models/exclusive_content.rs:2`](../source/visibility-filtering/models/exclusive_content.rs#L2) — `pub struct ExclusiveContentFeatures {`
+- [`visibility-filtering/models/mod.rs:24`](../source/visibility-filtering/models/mod.rs#L24) — `pub struct TweetId(pub u64);`
+- [`visibility-filtering/models/mod.rs:26`](../source/visibility-filtering/models/mod.rs#L26) — `pub fn tweet_timestamp_ms(tweet_id: u64) -> u64 {`
+- [`visibility-filtering/models/mod.rs:27`](../source/visibility-filtering/models/mod.rs#L27) — `const SNOWFLAKE_EPOCH_MS: u64 = 1288834974657;`
+- [`visibility-filtering/models/mod.rs:28`](../source/visibility-filtering/models/mod.rs#L28) — `const SNOWFLAKE_TIMESTAMP_SHIFT: u32 = 22;`
+- [`visibility-filtering/models/mod.rs:33`](../source/visibility-filtering/models/mod.rs#L33) — `pub struct AuthorId(u64);`
+- [`visibility-filtering/models/mod.rs:36`](../source/visibility-filtering/models/mod.rs#L36) — `pub fn get(self) -> u64 {`
+- [`visibility-filtering/models/mod.rs:42`](../source/visibility-filtering/models/mod.rs#L42) — `pub struct RawCandidate {`
+- [`visibility-filtering/models/mod.rs:48`](../source/visibility-filtering/models/mod.rs#L48) — `pub struct TweetCandidateInput {`
+- [`visibility-filtering/models/mod.rs:53`](../source/visibility-filtering/models/mod.rs#L53) — `pub fn resolve_candidate(`
+- [`visibility-filtering/models/mod.rs:68`](../source/visibility-filtering/models/mod.rs#L68) — `pub fn resolve_candidates(`
+- [`visibility-filtering/models/mod.rs:79`](../source/visibility-filtering/models/mod.rs#L79) — `pub struct HydratedTweetCandidate {`
+- [`visibility-filtering/models/mod.rs:90`](../source/visibility-filtering/models/mod.rs#L90) — `pub fn is_author_viewer(&self, viewer: Viewer) -> bool {`
+- [`visibility-filtering/models/mod.rs:94`](../source/visibility-filtering/models/mod.rs#L94) — `pub fn has_safety_label(&self, label: SafetyLabelType) -> bool {`
+- [`visibility-filtering/models/mod.rs:98`](../source/visibility-filtering/models/mod.rs#L98) — `pub fn viewer_follows_author(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:102`](../source/visibility-filtering/models/mod.rs#L102) — `pub fn has_media(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:106`](../source/visibility-filtering/models/mod.rs#L106) — `pub fn is_retweet(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:110`](../source/visibility-filtering/models/mod.rs#L110) — `pub fn has_dmca_media(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:114`](../source/visibility-filtering/models/mod.rs#L114) — `pub fn is_nullcast(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:118`](../source/visibility-filtering/models/mod.rs#L118) — `pub fn is_community_tweet(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:122`](../source/visibility-filtering/models/mod.rs#L122) — `pub fn author_has_user_label(&self, label: AuthorLabel) -> bool {`
+- [`visibility-filtering/models/mod.rs:126`](../source/visibility-filtering/models/mod.rs#L126) — `pub fn is_stale_tweet(&self) -> bool {`
+- [`visibility-filtering/models/mod.rs:145`](../source/visibility-filtering/models/mod.rs#L145) — `pub fn assemble(`
+- [`visibility-filtering/models/mod.rs:169`](../source/visibility-filtering/models/mod.rs#L169) — `fn resolve_prefers_request_author_id_without_touching_core() {`
+- [`visibility-filtering/models/mod.rs:180`](../source/visibility-filtering/models/mod.rs#L180) — `fn resolve_falls_back_to_core_when_request_author_missing() {`
+- [`visibility-filtering/models/mod.rs:197`](../source/visibility-filtering/models/mod.rs#L197) — `fn resolve_returns_none_when_unresolvable() {`
+- [`visibility-filtering/models/mod.rs:207`](../source/visibility-filtering/models/mod.rs#L207) — `fn resolve_candidates_drops_unresolved_preserving_order() {`
+- [`visibility-filtering/models/mod.rs:232`](../source/visibility-filtering/models/mod.rs#L232) — `fn resolve_candidates_uses_recovered_author_only_when_request_and_core_miss() {`
+- [`visibility-filtering/models/mod.rs:269`](../source/visibility-filtering/models/mod.rs#L269) — `fn candidate() -> HydratedTweetCandidate {`
+- [`visibility-filtering/models/mod.rs:278`](../source/visibility-filtering/models/mod.rs#L278) — `fn is_stale_tweet_when_superseded() {`
+- [`visibility-filtering/models/mod.rs:289`](../source/visibility-filtering/models/mod.rs#L289) — `fn is_stale_tweet_when_current() {`
+- [`visibility-filtering/models/mod.rs:300`](../source/visibility-filtering/models/mod.rs#L300) — `fn is_stale_tweet_when_no_edit_control() {`
+- [`visibility-filtering/models/mod.rs:305`](../source/visibility-filtering/models/mod.rs#L305) — `fn is_stale_tweet_edit_variant_superseded() {`
+- [`visibility-filtering/models/mod.rs:323`](../source/visibility-filtering/models/mod.rs#L323) — `fn is_stale_tweet_edit_variant_no_initial() {`
+- [`visibility-filtering/models/relationship.rs:2`](../source/visibility-filtering/models/relationship.rs#L2) — `pub struct ViewerAuthorRelationship {`
+- [`visibility-filtering/models/safety_labels.rs:7`](../source/visibility-filtering/models/safety_labels.rs#L7) — `pub struct SafetyLabelMap(HashSet<SafetyLabelType>);`
+- [`visibility-filtering/models/safety_labels.rs:11`](../source/visibility-filtering/models/safety_labels.rs#L11) — `pub fn new(label_types: HashSet<SafetyLabelType>) -> Self {`
+- [`visibility-filtering/models/safety_labels.rs:15`](../source/visibility-filtering/models/safety_labels.rs#L15) — `pub fn from_proto_label_types(proto: &vf_pb::SafetyLabelMap) -> Self {`
+- [`visibility-filtering/models/safety_labels.rs:26`](../source/visibility-filtering/models/safety_labels.rs#L26) — `pub fn has_label(&self, label_type: SafetyLabelType) -> bool {`
+- [`visibility-filtering/models/tweet.rs:2`](../source/visibility-filtering/models/tweet.rs#L2) — `pub struct CoreFeature {`
+- [`visibility-filtering/models/tweet.rs:8`](../source/visibility-filtering/models/tweet.rs#L8) — `pub struct MediaFeature {`
+- [`visibility-filtering/models/tweet.rs:16`](../source/visibility-filtering/models/tweet.rs#L16) — `pub struct NsfwFeature {`
+- [`visibility-filtering/models/tweet.rs:22`](../source/visibility-filtering/models/tweet.rs#L22) — `pub struct TweetFeatures {`
+- [`visibility-filtering/models/verdict.rs:5`](../source/visibility-filtering/models/verdict.rs#L5) — `pub enum Verdict {`
+- [`visibility-filtering/models/verdict.rs:14`](../source/visibility-filtering/models/verdict.rs#L14) — `pub struct Decided<T> {`
+- [`visibility-filtering/models/verdict.rs:20`](../source/visibility-filtering/models/verdict.rs#L20) — `pub enum Withholding {`
+- [`visibility-filtering/models/verdict.rs:26`](../source/visibility-filtering/models/verdict.rs#L26) — `pub struct MediaInterstitial {`
+- [`visibility-filtering/models/verdict.rs:32`](../source/visibility-filtering/models/verdict.rs#L32) — `pub struct LimitedEngagement(pub LimitedEngagementReason);`
+- [`visibility-filtering/models/verdict.rs:39`](../source/visibility-filtering/models/verdict.rs#L39) — `pub enum TombstoneReason {`
+- [`visibility-filtering/models/verdict.rs:51`](../source/visibility-filtering/models/verdict.rs#L51) — `pub enum LimitedEngagementReason {`
+- [`visibility-filtering/models/verdict.rs:56`](../source/visibility-filtering/models/verdict.rs#L56) — `pub fn unresolved_author() -> Self {`
+- [`visibility-filtering/models/viewer.rs:2`](../source/visibility-filtering/models/viewer.rs#L2) — `pub enum Viewer {`
+- [`visibility-filtering/models/viewer.rs:9`](../source/visibility-filtering/models/viewer.rs#L9) — `pub fn user_id(&self) -> Option<u64> {`
+- [`visibility-filtering/models/viewer.rs:17`](../source/visibility-filtering/models/viewer.rs#L17) — `pub const ADULT_AGE_YEARS: i32 = 18;`
+- [`visibility-filtering/models/viewer.rs:20`](../source/visibility-filtering/models/viewer.rs#L20) — `pub enum ViewerAge {`
+- [`visibility-filtering/models/viewer.rs:28`](../source/visibility-filtering/models/viewer.rs#L28) — `pub struct ViewerFeatures {`
+- [`visibility-filtering/models/viewer.rs:37`](../source/visibility-filtering/models/viewer.rs#L37) — `pub fn viewer_is_underage(&self) -> bool {`
+- [`visibility-filtering/models/viewer.rs:41`](../source/visibility-filtering/models/viewer.rs#L41) — `pub fn viewer_has_no_stated_age(&self) -> bool {`
+- [`visibility-filtering/models/viewer.rs:47`](../source/visibility-filtering/models/viewer.rs#L47) — `pub fn viewer_id(&self) -> Option<u64> {`
+- [`visibility-filtering/models/viewer.rs:51`](../source/visibility-filtering/models/viewer.rs#L51) — `pub fn viewer_is_logged_out(&self) -> bool {`
+- [`visibility-filtering/params.rs:8`](../source/visibility-filtering/params.rs#L8) — `pub const NSFW_GATING_COUNTRIES_KEY: &str = "rust_vf_nsfw_gating_countries";`
+- [`visibility-filtering/params.rs:10`](../source/visibility-filtering/params.rs#L10) — `const SCALA_NSFW_GATING_FILE: &str = "country_specific_nsfw_content_gating.yml";`
+- [`visibility-filtering/params.rs:11`](../source/visibility-filtering/params.rs#L11) — `const SCALA_NSFW_GATING_COUNTRIES_KEY: &str = "country_specific_nsfw_content_gating_countries";`
+- [`visibility-filtering/params.rs:13`](../source/visibility-filtering/params.rs#L13) — `const DRIFT_COUNTER: &str = "nsfw_gating_countries_drift";`
+- [`visibility-filtering/params.rs:15`](../source/visibility-filtering/params.rs#L15) — `pub fn default_nsfw_gating_countries() -> Vec<String> {`
+- [`visibility-filtering/params.rs:24`](../source/visibility-filtering/params.rs#L24) — `pub(crate) struct NsfwGatingCountries {`
+- [`visibility-filtering/params.rs:29`](../source/visibility-filtering/params.rs#L29) — `pub fn starting_at_default() -> Self {`
+- [`visibility-filtering/params.rs:35`](../source/visibility-filtering/params.rs#L35) — `pub fn contains(&self, country_code: &str) -> bool {`
+- [`visibility-filtering/params.rs:40`](../source/visibility-filtering/params.rs#L40) — `pub fn refresh_from(&self, feature_switches: &FeatureSwitches) {`
+- [`visibility-filtering/params.rs:45`](../source/visibility-filtering/params.rs#L45) — `pub fn refresh_and_check_drift(&self, feature_switches: &FeatureSwitches, fs_path: &str) {`
+- [`visibility-filtering/params.rs:51`](../source/visibility-filtering/params.rs#L51) — `pub fn spawn_refresh(`
+- [`visibility-filtering/params.rs:67`](../source/visibility-filtering/params.rs#L67) — `fn lowercased_codes(values: &[Value]) -> Option<Vec<String>> {`
+- [`visibility-filtering/params.rs:74`](../source/visibility-filtering/params.rs#L74) — `fn resolve_with_origin(feature_switches: &FeatureSwitches) -> (&'static str, Vec<String>) {`
+- [`visibility-filtering/params.rs:85`](../source/visibility-filtering/params.rs#L85) — `fn check_drift(origin: &str, resolved: &[String], fs_path: &str) {`
+- [`visibility-filtering/params.rs:123`](../source/visibility-filtering/params.rs#L123) — `fn scala_nsfw_gating_countries(fs_path: &str) -> Option<Vec<String>> {`
+- [`visibility-filtering/params.rs:133`](../source/visibility-filtering/params.rs#L133) — `fn set_eq(a: &[String], b: &[String]) -> bool {`
+- [`visibility-filtering/params.rs:141`](../source/visibility-filtering/params.rs#L141) — `fn engine(yaml: &str) -> FeatureSwitches {`
+- [`visibility-filtering/params.rs:146`](../source/visibility-filtering/params.rs#L146) — `fn refresh_reads_key_and_fails_open() {`
+- [`visibility-filtering/params.rs:170`](../source/visibility-filtering/params.rs#L170) — `fn malformed_value_falls_back_whole_not_partial() {`
+- [`visibility-filtering/params.rs:188`](../source/visibility-filtering/params.rs#L188) — `fn scala_list_parses_from_sibling_file_and_tolerates_absence() {`
+- [`visibility-filtering/reference_compare.rs:13`](../source/visibility-filtering/reference_compare.rs#L13) — `const COMPARED: &str = "vf_reference_compared";`
+- [`visibility-filtering/reference_compare.rs:14`](../source/visibility-filtering/reference_compare.rs#L14) — `const EXACT_MATCH: &str = "vf_reference_exact_match";`
+- [`visibility-filtering/reference_compare.rs:15`](../source/visibility-filtering/reference_compare.rs#L15) — `const DIFFERED: &str = "vf_reference_differed";`
+- [`visibility-filtering/reference_compare.rs:16`](../source/visibility-filtering/reference_compare.rs#L16) — `const ERROR: &str = "vf_reference_error";`
+- [`visibility-filtering/reference_compare.rs:17`](../source/visibility-filtering/reference_compare.rs#L17) — `const SKIPPED: &str = "vf_reference_skipped";`
+- [`visibility-filtering/reference_compare.rs:18`](../source/visibility-filtering/reference_compare.rs#L18) — `const ENABLED: &str = "vf_reference_enabled";`
+- [`visibility-filtering/reference_compare.rs:20`](../source/visibility-filtering/reference_compare.rs#L20) — `const HARNESS_LINE_MARKER: &str = "vf_reference_compare";`
+- [`visibility-filtering/reference_compare.rs:21`](../source/visibility-filtering/reference_compare.rs#L21) — `const SCHEMA_VERSION: u32 = 1;`
+- [`visibility-filtering/reference_compare.rs:22`](../source/visibility-filtering/reference_compare.rs#L22) — `const LINE_BUDGET_BYTES: usize = 12 * 1024;`
+- [`visibility-filtering/reference_compare.rs:24`](../source/visibility-filtering/reference_compare.rs#L24) — `const REFERENCE_TIMEOUT: Duration = Duration::from_millis(1500);`
+- [`visibility-filtering/reference_compare.rs:26`](../source/visibility-filtering/reference_compare.rs#L26) — `pub(crate) fn should_build_harness(`
+- [`visibility-filtering/reference_compare.rs:39`](../source/visibility-filtering/reference_compare.rs#L39) — `fn service_triple(`
+- [`visibility-filtering/reference_compare.rs:70`](../source/visibility-filtering/reference_compare.rs#L70) — `fn reference_action_label(reason: &Option<FilteredReason>) -> &'static str {`
+- [`visibility-filtering/reference_compare.rs:86`](../source/visibility-filtering/reference_compare.rs#L86) — `fn reason_token(reason: &FilteredReason) -> String {`
+- [`visibility-filtering/reference_compare.rs:99`](../source/visibility-filtering/reference_compare.rs#L99) — `fn service_verdict_str(verdict: &Verdict) -> String {`
+- [`visibility-filtering/reference_compare.rs:113`](../source/visibility-filtering/reference_compare.rs#L113) — `fn reference_verdict_str(reference: &Option<FilteredReason>) -> String {`
+- [`visibility-filtering/reference_compare.rs:124`](../source/visibility-filtering/reference_compare.rs#L124) — `pub(crate) fn is_exact_match(service: &Verdict, reference: &Option<FilteredReason>) -> bool {`
+- [`visibility-filtering/reference_compare.rs:129`](../source/visibility-filtering/reference_compare.rs#L129) — `pub(crate) struct TweetVerdict {`
+- [`visibility-filtering/reference_compare.rs:134`](../source/visibility-filtering/reference_compare.rs#L134) — `pub(crate) struct VerdictSender(tokio::sync::oneshot::Sender<Vec<TweetVerdict>>);`
+- [`visibility-filtering/reference_compare.rs:137`](../source/visibility-filtering/reference_compare.rs#L137) — `pub(crate) fn send(self, verdicts: Vec<TweetVerdict>) {`
+- [`visibility-filtering/reference_compare.rs:143`](../source/visibility-filtering/reference_compare.rs#L143) — `pub(crate) struct CompareCounts {`
+- [`visibility-filtering/reference_compare.rs:150`](../source/visibility-filtering/reference_compare.rs#L150) — `pub(crate) struct CompareContext<'a> {`
+- [`visibility-filtering/reference_compare.rs:158`](../source/visibility-filtering/reference_compare.rs#L158) — `pub(crate) struct Diff {`
+- [`visibility-filtering/reference_compare.rs:164`](../source/visibility-filtering/reference_compare.rs#L164) — `pub(crate) fn compare_batch(`
+- [`visibility-filtering/reference_compare.rs:197`](../source/visibility-filtering/reference_compare.rs#L197) — `fn batch_id() -> String {`
+- [`visibility-filtering/reference_compare.rs:207`](../source/visibility-filtering/reference_compare.rs#L207) — `struct Group<'a> {`
+- [`visibility-filtering/reference_compare.rs:213`](../source/visibility-filtering/reference_compare.rs#L213) — `fn group_diffs(diffs: &[Diff]) -> Vec<Group<'_>> {`
+- [`visibility-filtering/reference_compare.rs:233`](../source/visibility-filtering/reference_compare.rs#L233) — `fn group_slices(group: &Group<'_>, budget: usize) -> Vec<serde_json::Value> {`
+- [`visibility-filtering/reference_compare.rs:250`](../source/visibility-filtering/reference_compare.rs#L250) — `fn line_json(`
+- [`visibility-filtering/reference_compare.rs:269`](../source/visibility-filtering/reference_compare.rs#L269) — `pub(crate) fn chunk_lines(`
+- [`visibility-filtering/reference_compare.rs:304`](../source/visibility-filtering/reference_compare.rs#L304) — `pub(crate) fn comparable_request(`
+- [`visibility-filtering/reference_compare.rs:323`](../source/visibility-filtering/reference_compare.rs#L323) — `const BUILD_SHA_LEN: usize = 12;`
+- [`visibility-filtering/reference_compare.rs:324`](../source/visibility-filtering/reference_compare.rs#L324) — `const VF_IMAGE_ENV: &str = "VF_IMAGE";`
+- [`visibility-filtering/reference_compare.rs:326`](../source/visibility-filtering/reference_compare.rs#L326) — `fn resolve_build_sha(compiled: &str, image: Option<&str>) -> String {`
+- [`visibility-filtering/reference_compare.rs:341`](../source/visibility-filtering/reference_compare.rs#L341) — `fn sha_prefix(s: &str) -> Option<&str> {`
+- [`visibility-filtering/reference_compare.rs:346`](../source/visibility-filtering/reference_compare.rs#L346) — `pub struct ReferenceCompareHarness {`
+- [`visibility-filtering/reference_compare.rs:353`](../source/visibility-filtering/reference_compare.rs#L353) — `pub(crate) fn new(reference: Arc<dyn VfClient + Send + Sync>, datacenter: &str) -> Self {`
+- [`visibility-filtering/reference_compare.rs:370`](../source/visibility-filtering/reference_compare.rs#L370) — `pub(crate) fn begin_compare(`
+- [`visibility-filtering/reference_compare.rs:434`](../source/visibility-filtering/reference_compare.rs#L434) — `fn emit(&self, safety_level: SafetyLevel, counts: &CompareCounts) {`
+- [`visibility-filtering/reference_compare.rs:444`](../source/visibility-filtering/reference_compare.rs#L444) — `fn incr(&self, metric: &str, labels: &[(&str, &str)]) {`
+- [`visibility-filtering/reference_compare.rs:448`](../source/visibility-filtering/reference_compare.rs#L448) — `fn incr_nonzero(&self, metric: &str, labels: &[(&str, &str)], count: u64) {`
+- [`visibility-filtering/reference_compare.rs:470`](../source/visibility-filtering/reference_compare.rs#L470) — `fn reference_allow() -> Option<FilteredReason> {`
+- [`visibility-filtering/reference_compare.rs:474`](../source/visibility-filtering/reference_compare.rs#L474) — `fn reference_bare_drop() -> Option<FilteredReason> {`
+- [`visibility-filtering/reference_compare.rs:478`](../source/visibility-filtering/reference_compare.rs#L478) — `fn reference_safety_result(action: Action) -> Option<FilteredReason> {`
+- [`visibility-filtering/reference_compare.rs:485`](../source/visibility-filtering/reference_compare.rs#L485) — `fn reference_muted_keyword() -> Option<FilteredReason> {`
+- [`visibility-filtering/reference_compare.rs:493`](../source/visibility-filtering/reference_compare.rs#L493) — `fn service_allow() -> Verdict {`
+- [`visibility-filtering/reference_compare.rs:500`](../source/visibility-filtering/reference_compare.rs#L500) — `fn service_drop_of(reason: FilteredReason) -> Verdict {`
+- [`visibility-filtering/reference_compare.rs:507`](../source/visibility-filtering/reference_compare.rs#L507) — `fn service_drop() -> Verdict {`
+- [`visibility-filtering/reference_compare.rs:511`](../source/visibility-filtering/reference_compare.rs#L511) — `fn service_interstitial() -> Verdict {`
+- [`visibility-filtering/reference_compare.rs:525`](../source/visibility-filtering/reference_compare.rs#L525) — `fn strict_equality_no_normalization() {`
+- [`visibility-filtering/reference_compare.rs:549`](../source/visibility-filtering/reference_compare.rs#L549) — `fn comparable_request_maps_home_levels_and_skips_the_rest() {`
+- [`visibility-filtering/reference_compare.rs:573`](../source/visibility-filtering/reference_compare.rs#L573) — `fn should_build_harness_requires_flag_and_rejects_prod() {`
+- [`visibility-filtering/reference_compare.rs:582`](../source/visibility-filtering/reference_compare.rs#L582) — `fn verdict(tweet_id: u64, verdict: Verdict) -> TweetVerdict {`
+- [`visibility-filtering/reference_compare.rs:586`](../source/visibility-filtering/reference_compare.rs#L586) — `fn context() -> CompareContext<'static> {`
+- [`visibility-filtering/reference_compare.rs:596`](../source/visibility-filtering/reference_compare.rs#L596) — `fn compare_batch_counts_policy_free_and_collects_differing_pairs_only() {`
+- [`visibility-filtering/reference_compare.rs:625`](../source/visibility-filtering/reference_compare.rs#L625) — `fn verdict_grammar_encodes_action_reason_and_rule() {`
+- [`visibility-filtering/reference_compare.rs:672`](../source/visibility-filtering/reference_compare.rs#L672) — `fn muted_keyword_payload_never_reaches_the_line() {`
+- [`visibility-filtering/reference_compare.rs:678`](../source/visibility-filtering/reference_compare.rs#L678) — `fn diff(tweet_id: u64, service: &str, reference: &str) -> Diff {`
+- [`visibility-filtering/reference_compare.rs:686`](../source/visibility-filtering/reference_compare.rs#L686) — `const ID: u64 = 1_000_000_000_000_000_000;`
+- [`visibility-filtering/reference_compare.rs:689`](../source/visibility-filtering/reference_compare.rs#L689) — `fn identical_pairs_group_into_one_diffs_entry() {`
+- [`visibility-filtering/reference_compare.rs:719`](../source/visibility-filtering/reference_compare.rs#L719) — `fn lines_split_at_the_byte_budget_and_stay_self_contained() {`
+- [`visibility-filtering/reference_compare.rs:751`](../source/visibility-filtering/reference_compare.rs#L751) — `fn oversized_single_group_splits_its_id_list() {`
+- [`visibility-filtering/reference_compare.rs:775`](../source/visibility-filtering/reference_compare.rs#L775) — `type RecordedCall = (Vec<u64>, ReferenceSafetyLevel, u64, Option<String>);`
+- [`visibility-filtering/reference_compare.rs:777`](../source/visibility-filtering/reference_compare.rs#L777) — `struct FakeReference {`
+- [`visibility-filtering/reference_compare.rs:783`](../source/visibility-filtering/reference_compare.rs#L783) — `async fn get_result(`
+- [`visibility-filtering/reference_compare.rs:813`](../source/visibility-filtering/reference_compare.rs#L813) — `fn fake_harness() -> (Arc<ReferenceCompareHarness>, Arc<FakeReference>) {`
+- [`visibility-filtering/reference_compare.rs:824`](../source/visibility-filtering/reference_compare.rs#L824) — `async fn begin_compare_skips_unmappable_requests_without_calling_reference() {`
+- [`visibility-filtering/reference_compare.rs:844`](../source/visibility-filtering/reference_compare.rs#L844) — `async fn begin_compare_fetches_reference_concurrently_with_request_context() {`
+- [`visibility-filtering/rules/author_rules.rs:8`](../source/visibility-filtering/rules/author_rules.rs#L8) — `const fn author_drop(`
+- [`visibility-filtering/rules/author_rules.rs:22`](../source/visibility-filtering/rules/author_rules.rs#L22) — `pub(super) const AUTHOR_STATE_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/author_rules.rs:65`](../source/visibility-filtering/rules/author_rules.rs#L65) — `pub(super) const OON_NSFW_AUTHOR_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/author_rules.rs:84`](../source/visibility-filtering/rules/author_rules.rs#L84) — `pub(super) const OON_USER_LABEL_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/author_rules.rs:175`](../source/visibility-filtering/rules/author_rules.rs#L175) — `const LOGGED_IN: Condition = Condition::Not(Predicate::Viewer(ViewerPredicate::LoggedOut));`
+- [`visibility-filtering/rules/author_rules.rs:177`](../source/visibility-filtering/rules/author_rules.rs#L177) — `pub(super) const SOCIALGRAPH_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/author_rules.rs:222`](../source/visibility-filtering/rules/author_rules.rs#L222) — `fn author_flag_features(name: &str) -> AuthorFeatures {`
+- [`visibility-filtering/rules/author_rules.rs:238`](../source/visibility-filtering/rules/author_rules.rs#L238) — `fn author_flag_drop_axis() {`
+- [`visibility-filtering/rules/author_rules.rs:271`](../source/visibility-filtering/rules/author_rules.rs#L271) — `fn trigger_user_label(name: &str) -> AuthorLabel {`
+- [`visibility-filtering/rules/author_rules.rs:289`](../source/visibility-filtering/rules/author_rules.rs#L289) — `fn user_label_drop_axis() {`
+- [`visibility-filtering/rules/author_rules.rs:327`](../source/visibility-filtering/rules/author_rules.rs#L327) — `fn relationship_trigger(name: &str) -> (ViewerAuthorRelationship, bool, FilteredReason) {`
+- [`visibility-filtering/rules/author_rules.rs:358`](../source/visibility-filtering/rules/author_rules.rs#L358) — `fn socialgraph_relationship_axis() {`
+- [`visibility-filtering/rules/context.rs:7`](../source/visibility-filtering/rules/context.rs#L7) — `pub struct RuleContext<'a> {`
+- [`visibility-filtering/rules/context.rs:14`](../source/visibility-filtering/rules/context.rs#L14) — `pub(super) fn new(`
+- [`visibility-filtering/rules/context.rs:27`](../source/visibility-filtering/rules/context.rs#L27) — `pub fn viewer(&self) -> ViewerPredicates<'_> {`
+- [`visibility-filtering/rules/context.rs:32`](../source/visibility-filtering/rules/context.rs#L32) — `pub fn tweet(&self) -> TweetPredicates<'_> {`
+- [`visibility-filtering/rules/context.rs:37`](../source/visibility-filtering/rules/context.rs#L37) — `pub fn author(&self) -> AuthorPredicates<'_> {`
+- [`visibility-filtering/rules/context.rs:42`](../source/visibility-filtering/rules/context.rs#L42) — `pub fn takedown(&self) -> TakedownPredicates<'_> {`
+- [`visibility-filtering/rules/context.rs:47`](../source/visibility-filtering/rules/context.rs#L47) — `pub fn nsfw_gating_country(&self, country_code: &str) -> bool {`
+- [`visibility-filtering/rules/context.rs:53`](../source/visibility-filtering/rules/context.rs#L53) — `pub struct ViewerPredicates<'a> {`
+- [`visibility-filtering/rules/context.rs:59`](../source/visibility-filtering/rules/context.rs#L59) — `pub fn is_logged_out(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:64`](../source/visibility-filtering/rules/context.rs#L64) — `pub fn is_underage(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:69`](../source/visibility-filtering/rules/context.rs#L69) — `pub fn has_no_stated_age(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:74`](../source/visibility-filtering/rules/context.rs#L74) — `pub fn allows_sensitive_media(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:79`](../source/visibility-filtering/rules/context.rs#L79) — `pub fn country(&self) -> Option<&str> {`
+- [`visibility-filtering/rules/context.rs:88`](../source/visibility-filtering/rules/context.rs#L88) — `pub fn is_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:93`](../source/visibility-filtering/rules/context.rs#L93) — `pub fn follows_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:98`](../source/visibility-filtering/rules/context.rs#L98) — `pub fn blocks_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:103`](../source/visibility-filtering/rules/context.rs#L103) — `pub fn mutes_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:108`](../source/visibility-filtering/rules/context.rs#L108) — `pub fn mutes_retweets_from_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:116`](../source/visibility-filtering/rules/context.rs#L116) — `pub fn is_conversation_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:127`](../source/visibility-filtering/rules/context.rs#L127) — `pub fn super_follows_author(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:137`](../source/visibility-filtering/rules/context.rs#L137) — `pub struct TweetPredicates<'a> {`
+- [`visibility-filtering/rules/context.rs:143`](../source/visibility-filtering/rules/context.rs#L143) — `pub fn created_after(&self, unix_ms: u64) -> bool {`
+- [`visibility-filtering/rules/context.rs:148`](../source/visibility-filtering/rules/context.rs#L148) — `pub fn has_safety_label(&self, label: SafetyLabelType) -> bool {`
+- [`visibility-filtering/rules/context.rs:153`](../source/visibility-filtering/rules/context.rs#L153) — `pub fn is_retweet(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:158`](../source/visibility-filtering/rules/context.rs#L158) — `pub fn is_stale(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:163`](../source/visibility-filtering/rules/context.rs#L163) — `pub fn is_nullcast(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:168`](../source/visibility-filtering/rules/context.rs#L168) — `pub fn is_community_tweet(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:173`](../source/visibility-filtering/rules/context.rs#L173) — `pub fn has_media(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:178`](../source/visibility-filtering/rules/context.rs#L178) — `pub fn has_dmca_media(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:183`](../source/visibility-filtering/rules/context.rs#L183) — `pub fn has_nsfw_user_flag(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:188`](../source/visibility-filtering/rules/context.rs#L188) — `pub fn has_nsfw_admin_flag(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:193`](../source/visibility-filtering/rules/context.rs#L193) — `pub fn is_exclusive(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:199`](../source/visibility-filtering/rules/context.rs#L199) — `pub struct AuthorPredicates<'a> {`
+- [`visibility-filtering/rules/context.rs:205`](../source/visibility-filtering/rules/context.rs#L205) — `pub fn is_suspended(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:210`](../source/visibility-filtering/rules/context.rs#L210) — `pub fn is_deactivated(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:215`](../source/visibility-filtering/rules/context.rs#L215) — `pub fn is_erased(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:220`](../source/visibility-filtering/rules/context.rs#L220) — `pub fn is_offboarded(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:225`](../source/visibility-filtering/rules/context.rs#L225) — `pub fn is_protected(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:230`](../source/visibility-filtering/rules/context.rs#L230) — `pub fn is_nsfw_user(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:235`](../source/visibility-filtering/rules/context.rs#L235) — `pub fn is_nsfw_admin(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:240`](../source/visibility-filtering/rules/context.rs#L240) — `pub fn has_user_label(&self, label: AuthorLabel) -> bool {`
+- [`visibility-filtering/rules/context.rs:246`](../source/visibility-filtering/rules/context.rs#L246) — `pub struct TakedownPredicates<'a> {`
+- [`visibility-filtering/rules/context.rs:252`](../source/visibility-filtering/rules/context.rs#L252) — `pub fn legal_in_viewer_country(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:257`](../source/visibility-filtering/rules/context.rs#L257) — `pub fn local_laws_in_viewer_country(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:262`](../source/visibility-filtering/rules/context.rs#L262) — `fn in_viewer_country(&self, extractor: fn(&TakedownReason) -> Option<&str>) -> bool {`
+- [`visibility-filtering/rules/context.rs:276`](../source/visibility-filtering/rules/context.rs#L276) — `pub fn media_restricted_in_viewer_country(&self) -> bool {`
+- [`visibility-filtering/rules/context.rs:290`](../source/visibility-filtering/rules/context.rs#L290) — `const WORLDWIDE_COUNTRY_CODE: &str = "xx";`
+- [`visibility-filtering/rules/context.rs:291`](../source/visibility-filtering/rules/context.rs#L291) — `const WORLDWIDE_COPYRIGHT_COUNTRY_CODE: &str = "xy";`
+- [`visibility-filtering/rules/context.rs:293`](../source/visibility-filtering/rules/context.rs#L293) — `fn is_worldwide_code(country_code: &str) -> bool {`
+- [`visibility-filtering/rules/context.rs:298`](../source/visibility-filtering/rules/context.rs#L298) — `fn legal_takedown_country(reason: &TakedownReason) -> Option<&str> {`
+- [`visibility-filtering/rules/context.rs:312`](../source/visibility-filtering/rules/context.rs#L312) — `fn local_laws_takedown_country(reason: &TakedownReason) -> Option<&str> {`
+- [`visibility-filtering/rules/fixtures.rs:12`](../source/visibility-filtering/rules/fixtures.rs#L12) — `const TWEET_ID: u64 = 1;`
+- [`visibility-filtering/rules/fixtures.rs:13`](../source/visibility-filtering/rules/fixtures.rs#L13) — `const AUTHOR_ID: u64 = 100;`
+- [`visibility-filtering/rules/fixtures.rs:14`](../source/visibility-filtering/rules/fixtures.rs#L14) — `pub(crate) const VIEWER_ID: u64 = 999;`
+- [`visibility-filtering/rules/fixtures.rs:16`](../source/visibility-filtering/rules/fixtures.rs#L16) — `pub(super) fn clauses_verdict(`
+- [`visibility-filtering/rules/fixtures.rs:24`](../source/visibility-filtering/rules/fixtures.rs#L24) — `pub(super) fn assert_clauses_drop(`
+- [`visibility-filtering/rules/fixtures.rs:43`](../source/visibility-filtering/rules/fixtures.rs#L43) — `pub(super) fn assert_clauses_allow(`
+- [`visibility-filtering/rules/fixtures.rs:64`](../source/visibility-filtering/rules/fixtures.rs#L64) — `pub(super) fn assert_drops(`
+- [`visibility-filtering/rules/fixtures.rs:73`](../source/visibility-filtering/rules/fixtures.rs#L73) — `pub(super) fn assert_allows(`
+- [`visibility-filtering/rules/fixtures.rs:81`](../source/visibility-filtering/rules/fixtures.rs#L81) — `pub(crate) fn viewer(id: u64) -> ViewerFeatures {`
+- [`visibility-filtering/rules/fixtures.rs:88`](../source/visibility-filtering/rules/fixtures.rs#L88) — `pub(crate) fn author_viewer() -> ViewerFeatures {`
+- [`visibility-filtering/rules/fixtures.rs:92`](../source/visibility-filtering/rules/fixtures.rs#L92) — `pub(crate) fn logged_out_viewer() -> ViewerFeatures {`
+- [`visibility-filtering/rules/fixtures.rs:99`](../source/visibility-filtering/rules/fixtures.rs#L99) — `pub(crate) fn sensitive_opt_in_viewer() -> ViewerFeatures {`
+- [`visibility-filtering/rules/fixtures.rs:106`](../source/visibility-filtering/rules/fixtures.rs#L106) — `pub(crate) fn candidate() -> CandidateBuilder {`
+- [`visibility-filtering/rules/fixtures.rs:117`](../source/visibility-filtering/rules/fixtures.rs#L117) — `pub(crate) struct CandidateBuilder {`
+- [`visibility-filtering/rules/fixtures.rs:123`](../source/visibility-filtering/rules/fixtures.rs#L123) — `pub(crate) fn tweet_id(mut self, id: u64) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:128`](../source/visibility-filtering/rules/fixtures.rs#L128) — `pub(crate) fn author_id(mut self, id: u64) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:133`](../source/visibility-filtering/rules/fixtures.rs#L133) — `pub(crate) fn with_label(mut self, label: SafetyLabelType) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:138`](../source/visibility-filtering/rules/fixtures.rs#L138) — `pub(crate) fn with_author_user_label(mut self, label: AuthorLabel) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:143`](../source/visibility-filtering/rules/fixtures.rs#L143) — `pub(crate) fn with_tweet_features(mut self, features: TweetFeatures) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:148`](../source/visibility-filtering/rules/fixtures.rs#L148) — `pub(crate) fn with_author_features(mut self, features: AuthorFeatures) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:153`](../source/visibility-filtering/rules/fixtures.rs#L153) — `pub(crate) fn with_relationship(mut self, relationship: ViewerAuthorRelationship) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:158`](../source/visibility-filtering/rules/fixtures.rs#L158) — `pub(crate) fn followed(mut self) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:163`](../source/visibility-filtering/rules/fixtures.rs#L163) — `pub(crate) fn with_media(mut self) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:168`](../source/visibility-filtering/rules/fixtures.rs#L168) — `pub(crate) fn retweet_of(mut self, source_tweet_id: u64) -> Self {`
+- [`visibility-filtering/rules/fixtures.rs:173`](../source/visibility-filtering/rules/fixtures.rs#L173) — `pub(crate) fn build(self) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:22`](../source/visibility-filtering/rules/golden_corpus.rs#L22) — `struct Case {`
+- [`visibility-filtering/rules/golden_corpus.rs:30`](../source/visibility-filtering/rules/golden_corpus.rs#L30) — `fn allow() -> Verdict {`
+- [`visibility-filtering/rules/golden_corpus.rs:37`](../source/visibility-filtering/rules/golden_corpus.rs#L37) — `fn dropped(reason: FilteredReason, by: &'static str) -> Verdict {`
+- [`visibility-filtering/rules/golden_corpus.rs:44`](../source/visibility-filtering/rules/golden_corpus.rs#L44) — `fn blurred(reason: InterstitialReason, by: &'static str) -> Verdict {`
+- [`visibility-filtering/rules/golden_corpus.rs:57`](../source/visibility-filtering/rules/golden_corpus.rs#L57) — `fn deciders(verdict: &Verdict) -> Vec<&'static str> {`
+- [`visibility-filtering/rules/golden_corpus.rs:69`](../source/visibility-filtering/rules/golden_corpus.rs#L69) — `fn golden_corpus_pins_policy_verdicts() {`
+- [`visibility-filtering/rules/golden_corpus.rs:100`](../source/visibility-filtering/rules/golden_corpus.rs#L100) — `fn every_wired_rule_decides_a_corpus_case() {`
+- [`visibility-filtering/rules/golden_corpus.rs:122`](../source/visibility-filtering/rules/golden_corpus.rs#L122) — `fn evaluate_throughput() {`
+- [`visibility-filtering/rules/golden_corpus.rs:123`](../source/visibility-filtering/rules/golden_corpus.rs#L123) — `const PASSES: u32 = 1_000_000;`
+- [`visibility-filtering/rules/golden_corpus.rs:142`](../source/visibility-filtering/rules/golden_corpus.rs#L142) — `fn corpus_case_names_are_unique() {`
+- [`visibility-filtering/rules/golden_corpus.rs:148`](../source/visibility-filtering/rules/golden_corpus.rs#L148) — `fn cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:165`](../source/visibility-filtering/rules/golden_corpus.rs#L165) — `fn author_candidate(set: fn(&mut AuthorFeatures)) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:171`](../source/visibility-filtering/rules/golden_corpus.rs#L171) — `fn tweet_candidate(set: fn(&mut TweetFeatures)) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:177`](../source/visibility-filtering/rules/golden_corpus.rs#L177) — `fn relationship_candidate(set: fn(&mut ViewerAuthorRelationship)) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:183`](../source/visibility-filtering/rules/golden_corpus.rs#L183) — `fn labeled(label: SafetyLabelType) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:187`](../source/visibility-filtering/rules/golden_corpus.rs#L187) — `fn labeled_media(label: SafetyLabelType) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:191`](../source/visibility-filtering/rules/golden_corpus.rs#L191) — `fn user_labeled(label: AuthorLabel) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:195`](../source/visibility-filtering/rules/golden_corpus.rs#L195) — `fn user_labeled_follower(label: AuthorLabel) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:199`](../source/visibility-filtering/rules/golden_corpus.rs#L199) — `fn stale_candidate() -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:208`](../source/visibility-filtering/rules/golden_corpus.rs#L208) — `fn takedown_candidate(reason: TakedownReason) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:217`](../source/visibility-filtering/rules/golden_corpus.rs#L217) — `fn exclusive_candidate(viewer_super_follows_author: bool) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/golden_corpus.rs:226`](../source/visibility-filtering/rules/golden_corpus.rs#L226) — `fn viewer_in_country(code: &str) -> ViewerFeatures {`
+- [`visibility-filtering/rules/golden_corpus.rs:233`](../source/visibility-filtering/rules/golden_corpus.rs#L233) — `fn viewer_with_age(age: ViewerAge) -> ViewerFeatures {`
+- [`visibility-filtering/rules/golden_corpus.rs:240`](../source/visibility-filtering/rules/golden_corpus.rs#L240) — `fn no_stated_age_viewer(account_country_code: &str) -> ViewerFeatures {`
+- [`visibility-filtering/rules/golden_corpus.rs:247`](../source/visibility-filtering/rules/golden_corpus.rs#L247) — `fn nsfw_high_precision_reason() -> FilteredReason {`
+- [`visibility-filtering/rules/golden_corpus.rs:254`](../source/visibility-filtering/rules/golden_corpus.rs#L254) — `fn filter_all_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:273`](../source/visibility-filtering/rules/golden_corpus.rs#L273) — `fn baseline_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:340`](../source/visibility-filtering/rules/golden_corpus.rs#L340) — `fn author_state_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:413`](../source/visibility-filtering/rules/golden_corpus.rs#L413) — `fn relationship_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:465`](../source/visibility-filtering/rules/golden_corpus.rs#L465) — `fn tweet_label_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:555`](../source/visibility-filtering/rules/golden_corpus.rs#L555) — `fn tweet_shape_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:706`](../source/visibility-filtering/rules/golden_corpus.rs#L706) — `fn age_gating_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:755`](../source/visibility-filtering/rules/golden_corpus.rs#L755) — `fn exclusive_content_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:787`](../source/visibility-filtering/rules/golden_corpus.rs#L787) — `fn interstitial_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:788`](../source/visibility-filtering/rules/golden_corpus.rs#L788) — `const AT_CUTOFF: u64 = (1705536000000 - 1288834974657) << 22;`
+- [`visibility-filtering/rules/golden_corpus.rs:895`](../source/visibility-filtering/rules/golden_corpus.rs#L895) — `fn oon_media_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:972`](../source/visibility-filtering/rules/golden_corpus.rs#L972) — `fn oon_tweet_label_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:1096`](../source/visibility-filtering/rules/golden_corpus.rs#L1096) — `fn oon_user_label_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/golden_corpus.rs:1234`](../source/visibility-filtering/rules/golden_corpus.rs#L1234) — `fn interaction_cases() -> Vec<Case> {`
+- [`visibility-filtering/rules/metrics.rs:11`](../source/visibility-filtering/rules/metrics.rs#L11) — `const REQUESTS: &str = "filter_tweets_requests";`
+- [`visibility-filtering/rules/metrics.rs:12`](../source/visibility-filtering/rules/metrics.rs#L12) — `const LATENCY_MS: &str = "filter_tweets_latency_ms";`
+- [`visibility-filtering/rules/metrics.rs:13`](../source/visibility-filtering/rules/metrics.rs#L13) — `pub(crate) const BATCH_SIZE: &str = "filter_tweets_batch_size";`
+- [`visibility-filtering/rules/metrics.rs:14`](../source/visibility-filtering/rules/metrics.rs#L14) — `const VERDICTS: &str = "filter_tweets_verdicts";`
+- [`visibility-filtering/rules/metrics.rs:15`](../source/visibility-filtering/rules/metrics.rs#L15) — `const VERDICTS_BY_RULE: &str = "filter_tweets_verdicts_by_rule";`
+- [`visibility-filtering/rules/metrics.rs:16`](../source/visibility-filtering/rules/metrics.rs#L16) — `const LOGGED_OUT_VIEWER: &str = "filter_tweets_logged_out_viewer";`
+- [`visibility-filtering/rules/metrics.rs:17`](../source/visibility-filtering/rules/metrics.rs#L17) — `const VIEWER_ID_NORMALIZED: &str = "filter_tweets_viewer_id_normalized";`
+- [`visibility-filtering/rules/metrics.rs:18`](../source/visibility-filtering/rules/metrics.rs#L18) — `const PHASE_MS: &str = "filter_tweets_phase_ms";`
+- [`visibility-filtering/rules/metrics.rs:19`](../source/visibility-filtering/rules/metrics.rs#L19) — `const DEADLINE: &str = "filter_tweets_deadline";`
+- [`visibility-filtering/rules/metrics.rs:20`](../source/visibility-filtering/rules/metrics.rs#L20) — `const DEADLINE_REMAINING_MS: &str = "filter_tweets_deadline_remaining_ms";`
+- [`visibility-filtering/rules/metrics.rs:21`](../source/visibility-filtering/rules/metrics.rs#L21) — `const DEADLINE_OVERRUN_MS: &str = "filter_tweets_deadline_overrun_ms";`
+- [`visibility-filtering/rules/metrics.rs:25`](../source/visibility-filtering/rules/metrics.rs#L25) — `pub(crate) enum Rpc {`
+- [`visibility-filtering/rules/metrics.rs:30`](../source/visibility-filtering/rules/metrics.rs#L30) — `pub(crate) fn record_viewer_state(raw: Option<u64>, normalized: Option<u64>) {`
+- [`visibility-filtering/rules/metrics.rs:41`](../source/visibility-filtering/rules/metrics.rs#L41) — `pub(crate) struct AggregatedVerdicts {`
+- [`visibility-filtering/rules/metrics.rs:46`](../source/visibility-filtering/rules/metrics.rs#L46) — `pub(crate) fn aggregate_verdicts<'a>(`
+- [`visibility-filtering/rules/metrics.rs:59`](../source/visibility-filtering/rules/metrics.rs#L59) — `pub(crate) fn record_verdicts<'a>(`
+- [`visibility-filtering/rules/metrics.rs:88`](../source/visibility-filtering/rules/metrics.rs#L88) — `pub(crate) struct RequestMetricsGuard {`
+- [`visibility-filtering/rules/metrics.rs:96`](../source/visibility-filtering/rules/metrics.rs#L96) — `pub(crate) fn new() -> Self {`
+- [`visibility-filtering/rules/metrics.rs:100`](../source/visibility-filtering/rules/metrics.rs#L100) — `pub(crate) fn named(requests: &'static str, latency_ms: &'static str) -> Self {`
+- [`visibility-filtering/rules/metrics.rs:110`](../source/visibility-filtering/rules/metrics.rs#L110) — `pub(crate) fn mark_success(&self) {`
+- [`visibility-filtering/rules/metrics.rs:114`](../source/visibility-filtering/rules/metrics.rs#L114) — `pub(crate) fn mark_failure(&self) {`
+- [`visibility-filtering/rules/metrics.rs:118`](../source/visibility-filtering/rules/metrics.rs#L118) — `pub(crate) fn record_deadline(&self, grpc_timeout: Option<Duration>) {`
+- [`visibility-filtering/rules/metrics.rs:134`](../source/visibility-filtering/rules/metrics.rs#L134) — `pub(crate) fn record_phase(rpc: Rpc, stage: &'static str, elapsed: Duration) {`
+- [`visibility-filtering/rules/metrics.rs:142`](../source/visibility-filtering/rules/metrics.rs#L142) — `fn millis(d: Duration) -> f64 {`
+- [`visibility-filtering/rules/metrics.rs:147`](../source/visibility-filtering/rules/metrics.rs#L147) — `fn drop(&mut self) {`
+- [`visibility-filtering/rules/metrics.rs:153`](../source/visibility-filtering/rules/metrics.rs#L153) — `pub(crate) fn record_batch_size(metric: &str, size: usize) {`
+- [`visibility-filtering/rules/metrics.rs:157`](../source/visibility-filtering/rules/metrics.rs#L157) — `fn incr_nonzero(metric: &str, labels: &[(&str, &str)], count: u64) {`
+- [`visibility-filtering/rules/metrics.rs:163`](../source/visibility-filtering/rules/metrics.rs#L163) — `fn incr(metric: &str, labels: &[(&str, &str)], count: u64) {`
+- [`visibility-filtering/rules/metrics.rs:169`](../source/visibility-filtering/rules/metrics.rs#L169) — `fn observe(metric: &str, labels: &[(&str, &str)], value: f64, buckets: HistogramBuckets) {`
+- [`visibility-filtering/rules/metrics.rs:175`](../source/visibility-filtering/rules/metrics.rs#L175) — `fn observe_vm(metric: &str, labels: &[(&str, &str)], value: f64) {`
+- [`visibility-filtering/rules/metrics.rs:190`](../source/visibility-filtering/rules/metrics.rs#L190) — `fn allow() -> Verdict {`
+- [`visibility-filtering/rules/metrics.rs:197`](../source/visibility-filtering/rules/metrics.rs#L197) — `fn drop_by(rule: &'static str) -> Verdict {`
+- [`visibility-filtering/rules/metrics.rs:204`](../source/visibility-filtering/rules/metrics.rs#L204) — `fn limit_by(rule: &'static str) -> Decided<LimitedEngagement> {`
+- [`visibility-filtering/rules/metrics.rs:212`](../source/visibility-filtering/rules/metrics.rs#L212) — `fn dashboard_generator_pins_the_rpc_label() {`
+- [`visibility-filtering/rules/metrics.rs:227`](../source/visibility-filtering/rules/metrics.rs#L227) — `fn allows_only_on_mix_metric() {`
+- [`visibility-filtering/rules/metrics.rs:244`](../source/visibility-filtering/rules/metrics.rs#L244) — `fn unresolved_author_verdict_counts_on_by_rule() {`
+- [`visibility-filtering/rules/metrics.rs:258`](../source/visibility-filtering/rules/metrics.rs#L258) — `fn each_filled_slot_counts_its_own_row() {`
+- [`visibility-filtering/rules/mod.rs:16`](../source/visibility-filtering/rules/mod.rs#L16) — `pub(crate) fn test_context<'a>(`
+- [`visibility-filtering/rules/registry.rs:13`](../source/visibility-filtering/rules/registry.rs#L13) — `pub enum SafetyLevel {`
+- [`visibility-filtering/rules/registry.rs:20`](../source/visibility-filtering/rules/registry.rs#L20) — `pub(super) struct Policy<'a> {`
+- [`visibility-filtering/rules/registry.rs:26`](../source/visibility-filtering/rules/registry.rs#L26) — `pub(super) const fn new(rules: &'a [&'a [RuleClause]]) -> Self {`
+- [`visibility-filtering/rules/registry.rs:33`](../source/visibility-filtering/rules/registry.rs#L33) — `fn rules(&self) -> impl Iterator<Item = &'a RuleClause> + '_ {`
+- [`visibility-filtering/rules/registry.rs:41`](../source/visibility-filtering/rules/registry.rs#L41) — `pub(super) fn evaluate(&self, context: &RuleContext<'_>) -> Verdict {`
+- [`visibility-filtering/rules/registry.rs:86`](../source/visibility-filtering/rules/registry.rs#L86) — `fn rule_names(&self) -> impl Iterator<Item = &'static str> + '_ {`
+- [`visibility-filtering/rules/registry.rs:95`](../source/visibility-filtering/rules/registry.rs#L95) — `fn len(&self) -> usize {`
+- [`visibility-filtering/rules/registry.rs:138`](../source/visibility-filtering/rules/registry.rs#L138) — `pub struct RuleEngine {`
+- [`visibility-filtering/rules/registry.rs:144`](../source/visibility-filtering/rules/registry.rs#L144) — `pub(crate) fn for_tests() -> Self {`
+- [`visibility-filtering/rules/registry.rs:148`](../source/visibility-filtering/rules/registry.rs#L148) — `pub fn with_nsfw_gating_countries(gating_countries: Arc<NsfwGatingCountries>) -> Self {`
+- [`visibility-filtering/rules/registry.rs:154`](../source/visibility-filtering/rules/registry.rs#L154) — `fn select(level: SafetyLevel) -> &'static Policy<'static> {`
+- [`visibility-filtering/rules/registry.rs:163`](../source/visibility-filtering/rules/registry.rs#L163) — `pub fn evaluate(`
+- [`visibility-filtering/rules/registry.rs:174`](../source/visibility-filtering/rules/registry.rs#L174) — `pub(crate) fn wired_rule_names(&self, level: SafetyLevel) -> Vec<&'static str> {`
+- [`visibility-filtering/rules/registry.rs:178`](../source/visibility-filtering/rules/registry.rs#L178) — `pub fn rule_counts(&self) -> (usize, usize) {`
+- [`visibility-filtering/rules/registry.rs:192`](../source/visibility-filtering/rules/registry.rs#L192) — `fn refreshed_config_country_reaches_the_wired_rule() {`
+- [`visibility-filtering/rules/registry.rs:232`](../source/visibility-filtering/rules/registry.rs#L232) — `fn wired_rule_order_matches_pre_migration_sequence() {`
+- [`visibility-filtering/rules/registry.rs:311`](../source/visibility-filtering/rules/registry.rs#L311) — `fn home_hydration_wires_only_its_ordered_baseline_rules() {`
+- [`visibility-filtering/rules/registry.rs:344`](../source/visibility-filtering/rules/registry.rs#L344) — `enum RowClass {`
+- [`visibility-filtering/rules/registry.rs:349`](../source/visibility-filtering/rules/registry.rs#L349) — `fn row_class(spec: &RuleClause) -> RowClass {`
+- [`visibility-filtering/rules/registry.rs:358`](../source/visibility-filtering/rules/registry.rs#L358) — `fn assert_terminals_precede_restrictions(policy: &Policy, name: &str) {`
+- [`visibility-filtering/rules/registry.rs:375`](../source/visibility-filtering/rules/registry.rs#L375) — `fn terminals_precede_restrictions_and_recommendation_only_rules_are_drops() {`
+- [`visibility-filtering/rules/registry.rs:392`](../source/visibility-filtering/rules/registry.rs#L392) — `fn opaque_conditions_are_three_documented_takedown_joins() {`
+- [`visibility-filtering/rules/registry.rs:429`](../source/visibility-filtering/rules/registry.rs#L429) — `const fn always(name: &'static str, action: ActionSpec) -> RuleClause {`
+- [`visibility-filtering/rules/registry.rs:438`](../source/visibility-filtering/rules/registry.rs#L438) — `const NEVER: Condition = Condition::Opaque {`
+- [`visibility-filtering/rules/registry.rs:444`](../source/visibility-filtering/rules/registry.rs#L444) — `const UNREACHABLE: Condition = Condition::Opaque {`
+- [`visibility-filtering/rules/registry.rs:450`](../source/visibility-filtering/rules/registry.rs#L450) — `const DROP_SUSPENDED: ActionSpec = ActionSpec::Drop(FilteredReason::AuthorIsSuspended);`
+- [`visibility-filtering/rules/registry.rs:451`](../source/visibility-filtering/rules/registry.rs#L451) — `const TOMBSTONE: ActionSpec = ActionSpec::Tombstone(TombstoneReason::LocalRegulations);`
+- [`visibility-filtering/rules/registry.rs:452`](../source/visibility-filtering/rules/registry.rs#L452) — `const INTERSTITIAL_NSFW: ActionSpec = ActionSpec::Interstitial {`
+- [`visibility-filtering/rules/registry.rs:456`](../source/visibility-filtering/rules/registry.rs#L456) — `const INTERSTITIAL_UNSPECIFIED: ActionSpec = ActionSpec::Interstitial {`
+- [`visibility-filtering/rules/registry.rs:460`](../source/visibility-filtering/rules/registry.rs#L460) — `const LIMIT: ActionSpec =`
+- [`visibility-filtering/rules/registry.rs:463`](../source/visibility-filtering/rules/registry.rs#L463) — `fn context_inputs() -> (ViewerFeatures, HydratedTweetCandidate) {`
+- [`visibility-filtering/rules/registry.rs:467`](../source/visibility-filtering/rules/registry.rs#L467) — `fn withheld(value: Withholding, by: &'static str) -> Verdict {`
+- [`visibility-filtering/rules/registry.rs:526`](../source/visibility-filtering/rules/registry.rs#L526) — `fn first_terminal_returns_before_later_rules() {`
+- [`visibility-filtering/rules/registry.rs:538`](../source/visibility-filtering/rules/registry.rs#L538) — `fn tombstone_is_terminal_in_policy_order() {`
+- [`visibility-filtering/rules/registry.rs:553`](../source/visibility-filtering/rules/registry.rs#L553) — `fn each_slot_keeps_its_first_restriction() {`
+- [`visibility-filtering/rules/registry.rs:577`](../source/visibility-filtering/rules/registry.rs#L577) — `fn terminal_after_restrictions_discards_them() {`
+- [`visibility-filtering/rules/registry.rs:589`](../source/visibility-filtering/rules/registry.rs#L589) — `fn no_applying_rule_is_shown_unrestricted() {`
+- [`visibility-filtering/rules/rule_spec.rs:7`](../source/visibility-filtering/rules/rule_spec.rs#L7) — `pub(super) struct RuleClause {`
+- [`visibility-filtering/rules/rule_spec.rs:14`](../source/visibility-filtering/rules/rule_spec.rs#L14) — `pub(super) enum Condition {`
+- [`visibility-filtering/rules/rule_spec.rs:34`](../source/visibility-filtering/rules/rule_spec.rs#L34) — `pub(super) enum Predicate {`
+- [`visibility-filtering/rules/rule_spec.rs:42`](../source/visibility-filtering/rules/rule_spec.rs#L42) — `pub(super) enum TweetPredicate {`
+- [`visibility-filtering/rules/rule_spec.rs:57`](../source/visibility-filtering/rules/rule_spec.rs#L57) — `pub(super) enum AuthorPredicate {`
+- [`visibility-filtering/rules/rule_spec.rs:69`](../source/visibility-filtering/rules/rule_spec.rs#L69) — `pub(super) enum ViewerPredicate {`
+- [`visibility-filtering/rules/rule_spec.rs:82`](../source/visibility-filtering/rules/rule_spec.rs#L82) — `pub(super) enum RelationshipPredicate {`
+- [`visibility-filtering/rules/rule_spec.rs:91`](../source/visibility-filtering/rules/rule_spec.rs#L91) — `pub(super) enum Audience {`
+- [`visibility-filtering/rules/rule_spec.rs:97`](../source/visibility-filtering/rules/rule_spec.rs#L97) — `pub(super) enum ActionSpec {`
+- [`visibility-filtering/rules/rule_spec.rs:119`](../source/visibility-filtering/rules/rule_spec.rs#L119) — `pub(super) fn applies(&self, context: &RuleContext<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:127`](../source/visibility-filtering/rules/rule_spec.rs#L127) — `fn admits(self, viewer: ViewerPredicates<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:140`](../source/visibility-filtering/rules/rule_spec.rs#L140) — `fn holds(&self, context: &RuleContext<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:152`](../source/visibility-filtering/rules/rule_spec.rs#L152) — `fn holds(self, context: &RuleContext<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:164`](../source/visibility-filtering/rules/rule_spec.rs#L164) — `fn holds(self, tweet: TweetPredicates<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:183`](../source/visibility-filtering/rules/rule_spec.rs#L183) — `fn holds(self, author: AuthorPredicates<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:199`](../source/visibility-filtering/rules/rule_spec.rs#L199) — `fn holds(self, context: &RuleContext<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:215`](../source/visibility-filtering/rules/rule_spec.rs#L215) — `fn holds(self, viewer: ViewerPredicates<'_>) -> bool {`
+- [`visibility-filtering/rules/rule_spec.rs:235`](../source/visibility-filtering/rules/rule_spec.rs#L235) — `fn created_after_is_strict_at_the_unix_millisecond_boundary() {`
+- [`visibility-filtering/rules/rule_spec.rs:236`](../source/visibility-filtering/rules/rule_spec.rs#L236) — `const CUTOFF_MS: u64 = 1705536000000;`
+- [`visibility-filtering/rules/rule_spec.rs:237`](../source/visibility-filtering/rules/rule_spec.rs#L237) — `const AT_CUTOFF: u64 = (CUTOFF_MS - 1288834974657) << 22;`
+- [`visibility-filtering/rules/tweet_rules.rs:11`](../source/visibility-filtering/rules/tweet_rules.rs#L11) — `const NSFW_HIGH_PRECISION_REASON: FilteredReason = FilteredReason::SafetyResult(SafetyResult {`
+- [`visibility-filtering/rules/tweet_rules.rs:16`](../source/visibility-filtering/rules/tweet_rules.rs#L16) — `const fn label(label: SafetyLabelType) -> Condition {`
+- [`visibility-filtering/rules/tweet_rules.rs:20`](../source/visibility-filtering/rules/tweet_rules.rs#L20) — `const HAS_MEDIA: Condition = Condition::Holds(Predicate::Tweet(TweetPredicate::HasMedia));`
+- [`visibility-filtering/rules/tweet_rules.rs:21`](../source/visibility-filtering/rules/tweet_rules.rs#L21) — `const NOT_RETWEET: Condition = Condition::Not(Predicate::Tweet(TweetPredicate::IsRetweet));`
+- [`visibility-filtering/rules/tweet_rules.rs:22`](../source/visibility-filtering/rules/tweet_rules.rs#L22) — `const SENSITIVE_MEDIA_DISABLED: Condition =`
+- [`visibility-filtering/rules/tweet_rules.rs:24`](../source/visibility-filtering/rules/tweet_rules.rs#L24) — `const LOGGED_OUT: Condition = Condition::Holds(Predicate::Viewer(ViewerPredicate::LoggedOut));`
+- [`visibility-filtering/rules/tweet_rules.rs:25`](../source/visibility-filtering/rules/tweet_rules.rs#L25) — `const UNDERAGE: Condition = Condition::Holds(Predicate::Viewer(ViewerPredicate::Underage));`
+- [`visibility-filtering/rules/tweet_rules.rs:26`](../source/visibility-filtering/rules/tweet_rules.rs#L26) — `const NO_STATED_AGE: Condition = Condition::Holds(Predicate::Viewer(ViewerPredicate::NoStatedAge));`
+- [`visibility-filtering/rules/tweet_rules.rs:27`](../source/visibility-filtering/rules/tweet_rules.rs#L27) — `const IN_NSFW_GATING_COUNTRY: Condition =`
+- [`visibility-filtering/rules/tweet_rules.rs:29`](../source/visibility-filtering/rules/tweet_rules.rs#L29) — `const NSFW_MEDIA_LABEL: Condition = Condition::AnyOf(&[`
+- [`visibility-filtering/rules/tweet_rules.rs:40`](../source/visibility-filtering/rules/tweet_rules.rs#L40) — `const NSFW_FLAGGED: Condition = Condition::AnyOf(&[`
+- [`visibility-filtering/rules/tweet_rules.rs:46`](../source/visibility-filtering/rules/tweet_rules.rs#L46) — `const NSFW_TEXT_OR_CARD_LABEL: Condition = Condition::AnyOf(&[`
+- [`visibility-filtering/rules/tweet_rules.rs:52`](../source/visibility-filtering/rules/tweet_rules.rs#L52) — `const HAS_EXCLUSIVE_CONTENT: Condition =`
+- [`visibility-filtering/rules/tweet_rules.rs:54`](../source/visibility-filtering/rules/tweet_rules.rs#L54) — `const NOT_CONVERSATION_AUTHOR: Condition = Condition::Not(Predicate::Relationship(`
+- [`visibility-filtering/rules/tweet_rules.rs:57`](../source/visibility-filtering/rules/tweet_rules.rs#L57) — `const NOT_SUPER_FOLLOWER: Condition = Condition::Not(Predicate::Relationship(`
+- [`visibility-filtering/rules/tweet_rules.rs:61`](../source/visibility-filtering/rules/tweet_rules.rs#L61) — `pub(super) const TWEET_LABEL_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:112`](../source/visibility-filtering/rules/tweet_rules.rs#L112) — `const NSFW_HIGH_PRECISION_CHANGED_AT: u64 = 1705536000000;`
+- [`visibility-filtering/rules/tweet_rules.rs:114`](../source/visibility-filtering/rules/tweet_rules.rs#L114) — `pub(super) const NSFW_MEDIA_INTERSTITIALS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:171`](../source/visibility-filtering/rules/tweet_rules.rs#L171) — `pub(super) const OON_TWEET_FLAG_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:190`](../source/visibility-filtering/rules/tweet_rules.rs#L190) — `pub(super) const OON_TWEET_LABEL_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:247`](../source/visibility-filtering/rules/tweet_rules.rs#L247) — `pub(super) const EXCLUSIVE_TWEET_DROP: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:277`](../source/visibility-filtering/rules/tweet_rules.rs#L277) — `pub(super) const NSFW_AUTHOR_INTERSTITIAL: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:312`](../source/visibility-filtering/rules/tweet_rules.rs#L312) — `const fn sensitive_viewer_drop(rule_name: &'static str, when: &'static [Condition]) -> RuleClause {`
+- [`visibility-filtering/rules/tweet_rules.rs:321`](../source/visibility-filtering/rules/tweet_rules.rs#L321) — `pub(super) const SENSITIVE_VIEWER_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:375`](../source/visibility-filtering/rules/tweet_rules.rs#L375) — `pub(super) const NULLCAST_DROP: &[RuleClause] = &[RuleClause {`
+- [`visibility-filtering/rules/tweet_rules.rs:386`](../source/visibility-filtering/rules/tweet_rules.rs#L386) — `pub(super) const STALE_TWEET_DROP: &[RuleClause] = &[RuleClause {`
+- [`visibility-filtering/rules/tweet_rules.rs:396`](../source/visibility-filtering/rules/tweet_rules.rs#L396) — `pub(super) const TAKEDOWN_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:421`](../source/visibility-filtering/rules/tweet_rules.rs#L421) — `pub(super) const FILTER_ALL: &[RuleClause] = &[RuleClause {`
+- [`visibility-filtering/rules/tweet_rules.rs:428`](../source/visibility-filtering/rules/tweet_rules.rs#L428) — `pub(super) const RECS_MEDIA_DROPS: &[RuleClause] = &[`
+- [`visibility-filtering/rules/tweet_rules.rs:465`](../source/visibility-filtering/rules/tweet_rules.rs#L465) — `fn trigger_label(name: &str) -> SafetyLabelType {`
+- [`visibility-filtering/rules/tweet_rules.rs:488`](../source/visibility-filtering/rules/tweet_rules.rs#L488) — `const UNRELATED_LABEL: SafetyLabelType = SafetyLabelType::EGREGIOUS_NSFW;`
+- [`visibility-filtering/rules/tweet_rules.rs:491`](../source/visibility-filtering/rules/tweet_rules.rs#L491) — `fn tweet_label_drop_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:528`](../source/visibility-filtering/rules/tweet_rules.rs#L528) — `fn nsfw_media_interstitial_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:530`](../source/visibility-filtering/rules/tweet_rules.rs#L530) — `const AT_CUTOFF: u64 = (1705536000000 - 1288834974657) << 22;`
+- [`visibility-filtering/rules/tweet_rules.rs:598`](../source/visibility-filtering/rules/tweet_rules.rs#L598) — `fn tweet_flag_features(name: &str) -> NsfwFeature {`
+- [`visibility-filtering/rules/tweet_rules.rs:613`](../source/visibility-filtering/rules/tweet_rules.rs#L613) — `fn tweet_flag_drop_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:642`](../source/visibility-filtering/rules/tweet_rules.rs#L642) — `fn exclusive_candidate(`
+- [`visibility-filtering/rules/tweet_rules.rs:656`](../source/visibility-filtering/rules/tweet_rules.rs#L656) — `fn nsfw_author_interstitial_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:726`](../source/visibility-filtering/rules/tweet_rules.rs#L726) — `fn exclusive_content_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:766`](../source/visibility-filtering/rules/tweet_rules.rs#L766) — `fn gating_viewer(age: ViewerAge) -> ViewerFeatures {`
+- [`visibility-filtering/rules/tweet_rules.rs:774`](../source/visibility-filtering/rules/tweet_rules.rs#L774) — `fn media_label(label: SafetyLabelType) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/tweet_rules.rs:778`](../source/visibility-filtering/rules/tweet_rules.rs#L778) — `fn no_media_label(label: SafetyLabelType) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/tweet_rules.rs:784`](../source/visibility-filtering/rules/tweet_rules.rs#L784) — `fn nsfw_author_media() -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/tweet_rules.rs:794`](../source/visibility-filtering/rules/tweet_rules.rs#L794) — `fn nsfw_tweet_flag_media() -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/tweet_rules.rs:804`](../source/visibility-filtering/rules/tweet_rules.rs#L804) — `fn sensitive_clauses(name: &str) -> &'static [RuleClause] {`
+- [`visibility-filtering/rules/tweet_rules.rs:817`](../source/visibility-filtering/rules/tweet_rules.rs#L817) — `fn sensitive_firing_candidates() -> Vec<HydratedTweetCandidate> {`
+- [`visibility-filtering/rules/tweet_rules.rs:845`](../source/visibility-filtering/rules/tweet_rules.rs#L845) — `fn sensitive_viewer_content_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:872`](../source/visibility-filtering/rules/tweet_rules.rs#L872) — `fn sensitive_viewer_exemption_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:933`](../source/visibility-filtering/rules/tweet_rules.rs#L933) — `fn tes_spec(name: &str) -> &'static RuleClause {`
+- [`visibility-filtering/rules/tweet_rules.rs:942`](../source/visibility-filtering/rules/tweet_rules.rs#L942) — `fn stale_edit_control() -> Option<EditControl> {`
+- [`visibility-filtering/rules/tweet_rules.rs:949`](../source/visibility-filtering/rules/tweet_rules.rs#L949) — `fn takedown_candidate(reasons: Vec<TakedownReason>) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/tweet_rules.rs:958`](../source/visibility-filtering/rules/tweet_rules.rs#L958) — `fn viewer_with_country(country: &str) -> ViewerFeatures {`
+- [`visibility-filtering/rules/tweet_rules.rs:965`](../source/visibility-filtering/rules/tweet_rules.rs#L965) — `fn geo_candidate(allow: &[&str], deny: &[&str]) -> HydratedTweetCandidate {`
+- [`visibility-filtering/rules/tweet_rules.rs:979`](../source/visibility-filtering/rules/tweet_rules.rs#L979) — `fn filter_all_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:997`](../source/visibility-filtering/rules/tweet_rules.rs#L997) — `fn stale_and_dmca_tweet_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:1032`](../source/visibility-filtering/rules/tweet_rules.rs#L1032) — `fn takedown_country_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:1076`](../source/visibility-filtering/rules/tweet_rules.rs#L1076) — `fn takedown_worldwide_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:1130`](../source/visibility-filtering/rules/tweet_rules.rs#L1130) — `fn geo_restricted_media_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:1191`](../source/visibility-filtering/rules/tweet_rules.rs#L1191) — `fn nullcast_drop_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:1222`](../source/visibility-filtering/rules/tweet_rules.rs#L1222) — `fn no_stated_age_jurisdiction_axis() {`
+- [`visibility-filtering/rules/tweet_rules.rs:1263`](../source/visibility-filtering/rules/tweet_rules.rs#L1263) — `fn all_rule_slices() -> [&'static [RuleClause]; 16] {`
+- [`visibility-filtering/rules/tweet_rules.rs:1288`](../source/visibility-filtering/rules/tweet_rules.rs#L1288) — `fn wired_rule_names_are_unique_runs_and_nonempty() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:8`](../source/visibility-filtering/safety_label_source/cached_value.rs#L8) — `pub(crate) enum CacheLookup {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:16`](../source/visibility-filtering/safety_label_source/cached_value.rs#L16) — `pub(crate) fn decode(bytes: &[u8]) -> CacheLookup {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:23`](../source/visibility-filtering/safety_label_source/cached_value.rs#L23) — `fn decode_inner(bytes: &[u8]) -> CacheLookup {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:49`](../source/visibility-filtering/safety_label_source/cached_value.rs#L49) — `fn serialize_thrift<T: TSerializable>(val: &T) -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:56`](../source/visibility-filtering/safety_label_source/cached_value.rs#L56) — `fn cached_value_blob(status: CachedValueStatus, inner: Option<&[u8]>) -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:69`](../source/visibility-filtering/safety_label_source/cached_value.rs#L69) — `pub(crate) fn cached_value_not_found() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:73`](../source/visibility-filtering/safety_label_source/cached_value.rs#L73) — `pub(crate) fn cached_value_deleted() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:77`](../source/visibility-filtering/safety_label_source/cached_value.rs#L77) — `pub(crate) fn cached_value_do_not_cache() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:81`](../source/visibility-filtering/safety_label_source/cached_value.rs#L81) — `pub(crate) fn cached_value_found_mval() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:90`](../source/visibility-filtering/safety_label_source/cached_value.rs#L90) — `fn decode_not_found_returns_not_found() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:98`](../source/visibility-filtering/safety_label_source/cached_value.rs#L98) — `fn decode_deleted_returns_not_found() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:106`](../source/visibility-filtering/safety_label_source/cached_value.rs#L106) — `fn decode_do_not_cache_returns_miss() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:114`](../source/visibility-filtering/safety_label_source/cached_value.rs#L114) — `fn decode_garbage_returns_decode_error() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:119`](../source/visibility-filtering/safety_label_source/cached_value.rs#L119) — `fn decode_found_with_undecodable_mval_returns_decode_error() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:125`](../source/visibility-filtering/safety_label_source/cached_value.rs#L125) — `fn decode_found_with_no_value_returns_decode_error() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:131`](../source/visibility-filtering/safety_label_source/cached_value.rs#L131) — `fn decode_found_with_mval_label() {`
+- [`visibility-filtering/safety_label_source/cached_value.rs:148`](../source/visibility-filtering/safety_label_source/cached_value.rs#L148) — `fn decode_found_inner_matches_expected_proto_fixture() {`
+- [`visibility-filtering/safety_label_source/codec.rs:13`](../source/visibility-filtering/safety_label_source/codec.rs#L13) — `pub struct LkeyBytes(pub [u8; 4]);`
+- [`visibility-filtering/safety_label_source/codec.rs:16`](../source/visibility-filtering/safety_label_source/codec.rs#L16) — `pub struct MvalBytes(pub Vec<u8>);`
+- [`visibility-filtering/safety_label_source/codec.rs:19`](../source/visibility-filtering/safety_label_source/codec.rs#L19) — `pub struct RawSafetyLabel {`
+- [`visibility-filtering/safety_label_source/codec.rs:24`](../source/visibility-filtering/safety_label_source/codec.rs#L24) — `pub fn decode_mval_payload(bytes: &[u8]) -> Option<vf_pb::SafetyLabelMap> {`
+- [`visibility-filtering/safety_label_source/codec.rs:28`](../source/visibility-filtering/safety_label_source/codec.rs#L28) — `pub(crate) enum DecodeAttempt {`
+- [`visibility-filtering/safety_label_source/codec.rs:33`](../source/visibility-filtering/safety_label_source/codec.rs#L33) — `pub(crate) fn decode_raw_labels(items: &[RawSafetyLabel]) -> DecodeAttempt {`
+- [`visibility-filtering/safety_label_source/codec.rs:37`](../source/visibility-filtering/safety_label_source/codec.rs#L37) — `fn contain_decode_panic(decode: impl FnOnce() -> SafetyLabelMap) -> DecodeAttempt {`
+- [`visibility-filtering/safety_label_source/codec.rs:44`](../source/visibility-filtering/safety_label_source/codec.rs#L44) — `fn decode_raw_labels_inner(items: &[RawSafetyLabel]) -> SafetyLabelMap {`
+- [`visibility-filtering/safety_label_source/codec.rs:66`](../source/visibility-filtering/safety_label_source/codec.rs#L66) — `fn minimal_mval() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/codec.rs:70`](../source/visibility-filtering/safety_label_source/codec.rs#L70) — `fn mval_with_score() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/codec.rs:79`](../source/visibility-filtering/safety_label_source/codec.rs#L79) — `fn raw_label(lt: SafetyLabelType, mval: Vec<u8>) -> RawSafetyLabel {`
+- [`visibility-filtering/safety_label_source/codec.rs:87`](../source/visibility-filtering/safety_label_source/codec.rs#L87) — `fn decoded(items: &[RawSafetyLabel]) -> vf_pb::SafetyLabelMap {`
+- [`visibility-filtering/safety_label_source/codec.rs:95`](../source/visibility-filtering/safety_label_source/codec.rs#L95) — `fn decode_raw_labels_contains_panics() {`
+- [`visibility-filtering/safety_label_source/codec.rs:103`](../source/visibility-filtering/safety_label_source/codec.rs#L103) — `fn decode_raw_labels_preserves_label_type_on_corrupt_mval() {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:7`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L7) — `pub(crate) enum Lookup<V> {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:14`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L14) — `struct Entry<V> {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:19`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L19) — `pub(crate) struct ExpiringCache<K, V> {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:29`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L29) — `pub(crate) fn with_clock(capacity: usize, clock: Clock) -> Self {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:35`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L35) — `pub(crate) fn get(&self, key: &K) -> Lookup<V> {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:44`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L44) — `pub(crate) fn insert(&self, key: K, value: V, ttl: Duration) {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:55`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L55) — `pub(crate) fn expiry_of(&self, key: &K) -> Option<Instant> {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:64`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L64) — `const TTL: Duration = Duration::from_secs(30);`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:66`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L66) — `fn mock_cache() -> ExpiringCache<u64, u32> {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:71`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L71) — `fn absent_key_is_absent() {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:77`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L77) — `fn fresh_entry_is_returned() {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:84`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L84) — `fn entry_past_ttl_is_expired() {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:93`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L93) — `fn entry_exactly_at_ttl_is_expired() {`
+- [`visibility-filtering/safety_label_source/expiring_cache.rs:102`](../source/visibility-filtering/safety_label_source/expiring_cache.rs#L102) — `fn reinsert_restamps_expiry() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:13`](../source/visibility-filtering/safety_label_source/lookup.rs#L13) — `pub struct LookupError {`
+- [`visibility-filtering/safety_label_source/lookup.rs:19`](../source/visibility-filtering/safety_label_source/lookup.rs#L19) — `pub(crate) fn new(kind: FailureKind, message: impl Into<String>) -> Self {`
+- [`visibility-filtering/safety_label_source/lookup.rs:27`](../source/visibility-filtering/safety_label_source/lookup.rs#L27) — `pub(crate) type LookupResults = HashMap<u64, Result<vf_pb::SafetyLabelMap, LookupError>>;`
+- [`visibility-filtering/safety_label_source/lookup.rs:30`](../source/visibility-filtering/safety_label_source/lookup.rs#L30) — `pub(crate) trait TwemcacheLookup: Send + Sync {`
+- [`visibility-filtering/safety_label_source/lookup.rs:31`](../source/visibility-filtering/safety_label_source/lookup.rs#L31) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, TwemcacheOutcome>;`
+- [`visibility-filtering/safety_label_source/lookup.rs:35`](../source/visibility-filtering/safety_label_source/lookup.rs#L35) — `pub(crate) trait ManhattanLookup: Send + Sync {`
+- [`visibility-filtering/safety_label_source/lookup.rs:36`](../source/visibility-filtering/safety_label_source/lookup.rs#L36) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, ManhattanOutcome>;`
+- [`visibility-filtering/safety_label_source/lookup.rs:39`](../source/visibility-filtering/safety_label_source/lookup.rs#L39) — `pub(crate) struct RemoteSource {`
+- [`visibility-filtering/safety_label_source/lookup.rs:46`](../source/visibility-filtering/safety_label_source/lookup.rs#L46) — `pub(crate) fn new<T, M>(twemcache: Arc<T>, manhattan: Arc<M>) -> Self`
+- [`visibility-filtering/safety_label_source/lookup.rs:60`](../source/visibility-filtering/safety_label_source/lookup.rs#L60) — `pub(crate) fn with_warmer(mut self, warmer: Arc<dyn Warmer>) -> Self {`
+- [`visibility-filtering/safety_label_source/lookup.rs:65`](../source/visibility-filtering/safety_label_source/lookup.rs#L65) — `pub(crate) async fn get(&self, ids: &[u64]) -> LookupResults {`
+- [`visibility-filtering/safety_label_source/lookup.rs:148`](../source/visibility-filtering/safety_label_source/lookup.rs#L148) — `struct FakeTwemcache {`
+- [`visibility-filtering/safety_label_source/lookup.rs:154`](../source/visibility-filtering/safety_label_source/lookup.rs#L154) — `fn new(results: HashMap<u64, TwemcacheOutcome>) -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:161`](../source/visibility-filtering/safety_label_source/lookup.rs#L161) — `fn calls(&self) -> Vec<Vec<u64>> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:168`](../source/visibility-filtering/safety_label_source/lookup.rs#L168) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, TwemcacheOutcome> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:177`](../source/visibility-filtering/safety_label_source/lookup.rs#L177) — `struct FakeManhattan {`
+- [`visibility-filtering/safety_label_source/lookup.rs:183`](../source/visibility-filtering/safety_label_source/lookup.rs#L183) — `fn new(results: HashMap<u64, ManhattanOutcome>) -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:190`](../source/visibility-filtering/safety_label_source/lookup.rs#L190) — `fn calls(&self) -> Vec<Vec<u64>> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:197`](../source/visibility-filtering/safety_label_source/lookup.rs#L197) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, ManhattanOutcome> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:206`](../source/visibility-filtering/safety_label_source/lookup.rs#L206) — `struct FakeWarmer {`
+- [`visibility-filtering/safety_label_source/lookup.rs:211`](../source/visibility-filtering/safety_label_source/lookup.rs#L211) — `fn new() -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:217`](../source/visibility-filtering/safety_label_source/lookup.rs#L217) — `fn published(&self) -> Vec<Vec<u64>> {`
+- [`visibility-filtering/safety_label_source/lookup.rs:223`](../source/visibility-filtering/safety_label_source/lookup.rs#L223) — `fn warm(&self, miss_ids: Vec<u64>) {`
+- [`visibility-filtering/safety_label_source/lookup.rs:228`](../source/visibility-filtering/safety_label_source/lookup.rs#L228) — `fn empty_label_map() -> vf_pb::SafetyLabelMap {`
+- [`visibility-filtering/safety_label_source/lookup.rs:235`](../source/visibility-filtering/safety_label_source/lookup.rs#L235) — `async fn get_cache_hit_skips_manhattan() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:251`](../source/visibility-filtering/safety_label_source/lookup.rs#L251) — `async fn duplicate_ids_resolve_once_without_a_phantom_miss() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:266`](../source/visibility-filtering/safety_label_source/lookup.rs#L266) — `async fn get_cache_miss_falls_through_to_manhattan() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:282`](../source/visibility-filtering/safety_label_source/lookup.rs#L282) — `async fn get_cache_fallback_falls_through_to_manhattan() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:301`](../source/visibility-filtering/safety_label_source/lookup.rs#L301) — `async fn get_cached_not_found_skips_manhattan() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:313`](../source/visibility-filtering/safety_label_source/lookup.rs#L313) — `async fn get_twemcache_failure_resolved_by_manhattan() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:331`](../source/visibility-filtering/safety_label_source/lookup.rs#L331) — `async fn get_missing_from_manhattan_is_fetch_error() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:346`](../source/visibility-filtering/safety_label_source/lookup.rs#L346) — `async fn plain_miss_publishes_to_warmer() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:369`](../source/visibility-filtering/safety_label_source/lookup.rs#L369) — `async fn full_warm_channel_does_not_affect_fallback_result() {`
+- [`visibility-filtering/safety_label_source/lookup.rs:390`](../source/visibility-filtering/safety_label_source/lookup.rs#L390) — `async fn get_mixed_results_merges_cache_and_manhattan() {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:12`](../source/visibility-filtering/safety_label_source/manhattan.rs#L12) — `pub(crate) struct ManhattanSource {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:17`](../source/visibility-filtering/safety_label_source/manhattan.rs#L17) — `pub(crate) fn new(fetcher: Arc<dyn ManhattanLabelFetcher>) -> Self {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:24`](../source/visibility-filtering/safety_label_source/manhattan.rs#L24) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, ManhattanOutcome> {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:117`](../source/visibility-filtering/safety_label_source/manhattan.rs#L117) — `fn minimal_mval() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:121`](../source/visibility-filtering/safety_label_source/manhattan.rs#L121) — `fn mval_with_score(score: f64) -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:130`](../source/visibility-filtering/safety_label_source/manhattan.rs#L130) — `fn raw_label(lt: SafetyLabelType, mval: Vec<u8>) -> RawSafetyLabel {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:137`](../source/visibility-filtering/safety_label_source/manhattan.rs#L137) — `struct FakeLabelFetcher {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:145`](../source/visibility-filtering/safety_label_source/manhattan.rs#L145) — `fn new() -> Self {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:154`](../source/visibility-filtering/safety_label_source/manhattan.rs#L154) — `fn with_label(mut self, tweet_id: i64, lt: SafetyLabelType, score: Option<f64>) -> Self {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:166`](../source/visibility-filtering/safety_label_source/manhattan.rs#L166) — `fn with_per_key_error(mut self, tweet_id: i64, msg: &str) -> Self {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:171`](../source/visibility-filtering/safety_label_source/manhattan.rs#L171) — `fn with_batch_error(self, msg: &str) -> Self {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:177`](../source/visibility-filtering/safety_label_source/manhattan.rs#L177) — `fn with_truncated_response(mut self, len: usize) -> Self {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:185`](../source/visibility-filtering/safety_label_source/manhattan.rs#L185) — `async fn fetch_labels(`
+- [`visibility-filtering/safety_label_source/manhattan.rs:209`](../source/visibility-filtering/safety_label_source/manhattan.rs#L209) — `async fn get_with_fetcher(`
+- [`visibility-filtering/safety_label_source/manhattan.rs:217`](../source/visibility-filtering/safety_label_source/manhattan.rs#L217) — `async fn get_returns_labels() {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:233`](../source/visibility-filtering/safety_label_source/manhattan.rs#L233) — `async fn get_empty_label_list_returns_empty_label_map() {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:243`](../source/visibility-filtering/safety_label_source/manhattan.rs#L243) — `async fn get_per_key_error_returns_error_for_that_id() {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:265`](../source/visibility-filtering/safety_label_source/manhattan.rs#L265) — `async fn get_batch_error_returns_errors_for_all_ids() {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:283`](../source/visibility-filtering/safety_label_source/manhattan.rs#L283) — `async fn get_corrupt_mval_defaults_label_for_that_id() {`
+- [`visibility-filtering/safety_label_source/manhattan.rs:303`](../source/visibility-filtering/safety_label_source/manhattan.rs#L303) — `async fn get_short_response_marks_uncovered_ids_as_errors() {`
+- [`visibility-filtering/safety_label_source/metrics.rs:8`](../source/visibility-filtering/safety_label_source/metrics.rs#L8) — `const REQUESTS: &str = "safety_labels_lookup_requests";`
+- [`visibility-filtering/safety_label_source/metrics.rs:9`](../source/visibility-filtering/safety_label_source/metrics.rs#L9) — `const LATENCY_MS: &str = "safety_labels_lookup_latency_ms";`
+- [`visibility-filtering/safety_label_source/metrics.rs:10`](../source/visibility-filtering/safety_label_source/metrics.rs#L10) — `const LOOKUP_TWEET_IDS: &str = "safety_labels_lookup_tweet_ids";`
+- [`visibility-filtering/safety_label_source/metrics.rs:11`](../source/visibility-filtering/safety_label_source/metrics.rs#L11) — `const FAILURES: &str = "safety_labels_lookup_failures";`
+- [`visibility-filtering/safety_label_source/metrics.rs:12`](../source/visibility-filtering/safety_label_source/metrics.rs#L12) — `const SOURCE_REQUESTS: &str = "safety_labels_source_requests";`
+- [`visibility-filtering/safety_label_source/metrics.rs:13`](../source/visibility-filtering/safety_label_source/metrics.rs#L13) — `const SOURCE_LATENCY_MS: &str = "safety_labels_source_latency_ms";`
+- [`visibility-filtering/safety_label_source/metrics.rs:14`](../source/visibility-filtering/safety_label_source/metrics.rs#L14) — `const CACHE_KEYS: &str = "safety_labels_cache_keys";`
+- [`visibility-filtering/safety_label_source/metrics.rs:15`](../source/visibility-filtering/safety_label_source/metrics.rs#L15) — `const MANHATTAN_KEYS: &str = "safety_labels_manhattan_keys";`
+- [`visibility-filtering/safety_label_source/metrics.rs:16`](../source/visibility-filtering/safety_label_source/metrics.rs#L16) — `const CACHE_FALLBACK_KEYS: &str = "safety_labels_cache_fallback_keys";`
+- [`visibility-filtering/safety_label_source/metrics.rs:17`](../source/visibility-filtering/safety_label_source/metrics.rs#L17) — `const BATCH_SIZE: &str = "safety_labels_lookup_batch_size";`
+- [`visibility-filtering/safety_label_source/metrics.rs:18`](../source/visibility-filtering/safety_label_source/metrics.rs#L18) — `const CACHE_WARM_KEYS: &str = "safety_labels_cache_warm_keys";`
+- [`visibility-filtering/safety_label_source/metrics.rs:22`](../source/visibility-filtering/safety_label_source/metrics.rs#L22) — `pub(crate) enum RequestOutcome {`
+- [`visibility-filtering/safety_label_source/metrics.rs:31`](../source/visibility-filtering/safety_label_source/metrics.rs#L31) — `pub(crate) enum SourceOutcome {`
+- [`visibility-filtering/safety_label_source/metrics.rs:38`](../source/visibility-filtering/safety_label_source/metrics.rs#L38) — `pub(crate) enum CacheTier {`
+- [`visibility-filtering/safety_label_source/metrics.rs:45`](../source/visibility-filtering/safety_label_source/metrics.rs#L45) — `pub(crate) enum CacheResult {`
+- [`visibility-filtering/safety_label_source/metrics.rs:54`](../source/visibility-filtering/safety_label_source/metrics.rs#L54) — `pub(crate) enum ManhattanResult {`
+- [`visibility-filtering/safety_label_source/metrics.rs:61`](../source/visibility-filtering/safety_label_source/metrics.rs#L61) — `pub(crate) enum BatchStage {`
+- [`visibility-filtering/safety_label_source/metrics.rs:67`](../source/visibility-filtering/safety_label_source/metrics.rs#L67) — `pub(crate) struct RequestMetricsGuard {`
+- [`visibility-filtering/safety_label_source/metrics.rs:73`](../source/visibility-filtering/safety_label_source/metrics.rs#L73) — `pub(crate) fn new() -> Self {`
+- [`visibility-filtering/safety_label_source/metrics.rs:81`](../source/visibility-filtering/safety_label_source/metrics.rs#L81) — `pub(crate) fn mark_success(&self) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:85`](../source/visibility-filtering/safety_label_source/metrics.rs#L85) — `pub(crate) fn mark_failure(&self) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:91`](../source/visibility-filtering/safety_label_source/metrics.rs#L91) — `fn drop(&mut self) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:103`](../source/visibility-filtering/safety_label_source/metrics.rs#L103) — `pub(crate) fn record_lookup_tweet_ids(success: usize, failed: usize) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:108`](../source/visibility-filtering/safety_label_source/metrics.rs#L108) — `pub(crate) fn record_lookup_failures(kind: FailureKind, count: usize) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:112`](../source/visibility-filtering/safety_label_source/metrics.rs#L112) — `pub(crate) fn record_source_request(source: LabelSource, outcome: SourceOutcome, elapsed_ms: f64) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:121`](../source/visibility-filtering/safety_label_source/metrics.rs#L121) — `pub(crate) fn record_cache_keys(tier: CacheTier, result: CacheResult, count: usize) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:129`](../source/visibility-filtering/safety_label_source/metrics.rs#L129) — `pub(crate) fn record_manhattan_keys(result: ManhattanResult, count: usize) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:133`](../source/visibility-filtering/safety_label_source/metrics.rs#L133) — `pub(crate) fn record_cache_fallback_keys(`
+- [`visibility-filtering/safety_label_source/metrics.rs:147`](../source/visibility-filtering/safety_label_source/metrics.rs#L147) — `pub(crate) enum WarmKeyResult {`
+- [`visibility-filtering/safety_label_source/metrics.rs:155`](../source/visibility-filtering/safety_label_source/metrics.rs#L155) — `pub(crate) fn record_cache_warm_keys(result: WarmKeyResult, count: usize) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:159`](../source/visibility-filtering/safety_label_source/metrics.rs#L159) — `pub(crate) fn record_batch_size(stage: BatchStage, size: usize) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:168`](../source/visibility-filtering/safety_label_source/metrics.rs#L168) — `fn incr_nonzero(metric: &str, labels: &[(&str, &str)], count: u64) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:174`](../source/visibility-filtering/safety_label_source/metrics.rs#L174) — `fn incr(metric: &str, labels: &[(&str, &str)], count: u64) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:180`](../source/visibility-filtering/safety_label_source/metrics.rs#L180) — `fn observe(metric: &str, labels: &[(&str, &str)], value: f64, buckets: HistogramBuckets) {`
+- [`visibility-filtering/safety_label_source/metrics.rs:186`](../source/visibility-filtering/safety_label_source/metrics.rs#L186) — `fn observe_vm(metric: &str, labels: &[(&str, &str)], value: f64) {`
+- [`visibility-filtering/safety_label_source/mh_client.rs:11`](../source/visibility-filtering/safety_label_source/mh_client.rs#L11) — `const SCAN_LIMIT: u32 = 512;`
+- [`visibility-filtering/safety_label_source/mh_client.rs:12`](../source/visibility-filtering/safety_label_source/mh_client.rs#L12) — `const DEFAULT_TIMEOUT: Duration = Duration::from_millis(200);`
+- [`visibility-filtering/safety_label_source/mh_client.rs:13`](../source/visibility-filtering/safety_label_source/mh_client.rs#L13) — `const DEFAULT_RETRIES: usize = 1;`
+- [`visibility-filtering/safety_label_source/mh_client.rs:15`](../source/visibility-filtering/safety_label_source/mh_client.rs#L15) — `pub type FetchResult = Result<Vec<RawSafetyLabel>, ManhattanError>;`
+- [`visibility-filtering/safety_label_source/mh_client.rs:18`](../source/visibility-filtering/safety_label_source/mh_client.rs#L18) — `pub trait ManhattanLabelFetcher: Send + Sync {`
+- [`visibility-filtering/safety_label_source/mh_client.rs:19`](../source/visibility-filtering/safety_label_source/mh_client.rs#L19) — `async fn fetch_labels(&self, tweet_ids: &[i64]) -> Result<Vec<FetchResult>, ManhattanError>;`
+- [`visibility-filtering/safety_label_source/mh_client.rs:28`](../source/visibility-filtering/safety_label_source/mh_client.rs#L28) — `pub struct MhLabelClient {`
+- [`visibility-filtering/safety_label_source/mh_client.rs:33`](../source/visibility-filtering/safety_label_source/mh_client.rs#L33) — `pub async fn new(`
+- [`visibility-filtering/safety_label_source/mh_client.rs:51`](../source/visibility-filtering/safety_label_source/mh_client.rs#L51) — `async fn fetch_labels(&self, tweet_ids: &[i64]) -> Result<Vec<FetchResult>, ManhattanError> {`
+- [`visibility-filtering/safety_label_source/proto.rs:6`](../source/visibility-filtering/safety_label_source/proto.rs#L6) — `pub(crate) fn label_to_proto(label: SafetyLabel) -> vf_pb::SafetyLabel {`
+- [`visibility-filtering/safety_label_source/proto.rs:43`](../source/visibility-filtering/safety_label_source/proto.rs#L43) — `pub(crate) fn label_map_to_proto(`
+- [`visibility-filtering/safety_label_source/proto.rs:61`](../source/visibility-filtering/safety_label_source/proto.rs#L61) — `fn empty_label(src: SafetyLabelSource) -> SafetyLabel {`
+- [`visibility-filtering/safety_label_source/proto.rs:66`](../source/visibility-filtering/safety_label_source/proto.rs#L66) — `fn botmaker_action_to_proto() {`
+- [`visibility-filtering/safety_label_source/proto.rs:78`](../source/visibility-filtering/safety_label_source/proto.rs#L78) — `fn tool_action_to_proto() {`
+- [`visibility-filtering/safety_label_source/proto.rs:96`](../source/visibility-filtering/safety_label_source/proto.rs#L96) — `fn grok_annotation_action_to_proto() {`
+- [`visibility-filtering/safety_label_source/proto.rs:112`](../source/visibility-filtering/safety_label_source/proto.rs#L112) — `fn unmapped_variant_produces_none() {`
+- [`visibility-filtering/safety_label_source/proto.rs:121`](../source/visibility-filtering/safety_label_source/proto.rs#L121) — `fn no_source_produces_none() {`
+- [`visibility-filtering/safety_label_source/source.rs:13`](../source/visibility-filtering/safety_label_source/source.rs#L13) — `const CACHE_CAPACITY: usize = 1_000_000;`
+- [`visibility-filtering/safety_label_source/source.rs:15`](../source/visibility-filtering/safety_label_source/source.rs#L15) — `const YOUNG_TWEET_AGE: Duration = Duration::from_secs(5 * 60);`
+- [`visibility-filtering/safety_label_source/source.rs:16`](../source/visibility-filtering/safety_label_source/source.rs#L16) — `const SHORT_TTL: Duration = Duration::from_secs(30);`
+- [`visibility-filtering/safety_label_source/source.rs:17`](../source/visibility-filtering/safety_label_source/source.rs#L17) — `const LONG_TTL: Duration = Duration::from_secs(60);`
+- [`visibility-filtering/safety_label_source/source.rs:19`](../source/visibility-filtering/safety_label_source/source.rs#L19) — `fn tweet_age(tweet_id: u64, now: SystemTime) -> Option<Duration> {`
+- [`visibility-filtering/safety_label_source/source.rs:25`](../source/visibility-filtering/safety_label_source/source.rs#L25) — `fn ttl_for_tweet(tweet_id: u64, now: SystemTime) -> Option<Duration> {`
+- [`visibility-filtering/safety_label_source/source.rs:34`](../source/visibility-filtering/safety_label_source/source.rs#L34) — `pub struct SafetyLabelSource {`
+- [`visibility-filtering/safety_label_source/source.rs:40`](../source/visibility-filtering/safety_label_source/source.rs#L40) — `pub(crate) fn new(remote: Arc<RemoteSource>) -> Self {`
+- [`visibility-filtering/safety_label_source/source.rs:44`](../source/visibility-filtering/safety_label_source/source.rs#L44) — `fn with_clock(remote: Arc<RemoteSource>, clock: Clock) -> Self {`
+- [`visibility-filtering/safety_label_source/source.rs:58`](../source/visibility-filtering/safety_label_source/source.rs#L58) — `pub async fn get(`
+- [`visibility-filtering/safety_label_source/source.rs:77`](../source/visibility-filtering/safety_label_source/source.rs#L77) — `fn get_local(`
+- [`visibility-filtering/safety_label_source/source.rs:99`](../source/visibility-filtering/safety_label_source/source.rs#L99) — `fn backfill_local(`
+- [`visibility-filtering/safety_label_source/source.rs:116`](../source/visibility-filtering/safety_label_source/source.rs#L116) — `fn emit_stats(&self, hits: usize, batch_size: usize, expired: usize) {`
+- [`visibility-filtering/safety_label_source/source.rs:139`](../source/visibility-filtering/safety_label_source/source.rs#L139) — `struct FakeTwemcache {`
+- [`visibility-filtering/safety_label_source/source.rs:146`](../source/visibility-filtering/safety_label_source/source.rs#L146) — `async fn multi_get(`
+- [`visibility-filtering/safety_label_source/source.rs:155`](../source/visibility-filtering/safety_label_source/source.rs#L155) — `struct FakeLabelFetcher {`
+- [`visibility-filtering/safety_label_source/source.rs:161`](../source/visibility-filtering/safety_label_source/source.rs#L161) — `async fn fetch_labels(`
+- [`visibility-filtering/safety_label_source/source.rs:172`](../source/visibility-filtering/safety_label_source/source.rs#L172) — `fn make_source(`
+- [`visibility-filtering/safety_label_source/source.rs:179`](../source/visibility-filtering/safety_label_source/source.rs#L179) — `fn make_source_with_clock(`
+- [`visibility-filtering/safety_label_source/source.rs:187`](../source/visibility-filtering/safety_label_source/source.rs#L187) — `fn make_counting_source(`
+- [`visibility-filtering/safety_label_source/source.rs:194`](../source/visibility-filtering/safety_label_source/source.rs#L194) — `fn make_counting_source_with_clock(`
+- [`visibility-filtering/safety_label_source/source.rs:211`](../source/visibility-filtering/safety_label_source/source.rs#L211) — `fn cache_key(tweet_id: u64) -> Key {`
+- [`visibility-filtering/safety_label_source/source.rs:215`](../source/visibility-filtering/safety_label_source/source.rs#L215) — `fn cached_one_label() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/source.rs:222`](../source/visibility-filtering/safety_label_source/source.rs#L222) — `fn mval_with_score(score: f64) -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/source.rs:231`](../source/visibility-filtering/safety_label_source/source.rs#L231) — `fn raw_label(lt: SafetyLabelType, mval: Vec<u8>) -> RawSafetyLabel {`
+- [`visibility-filtering/safety_label_source/source.rs:238`](../source/visibility-filtering/safety_label_source/source.rs#L238) — `fn cached_value_not_found() -> Vec<u8> {`
+- [`visibility-filtering/safety_label_source/source.rs:242`](../source/visibility-filtering/safety_label_source/source.rs#L242) — `fn tweet_id_created_at(created_at: SystemTime) -> u64 {`
+- [`visibility-filtering/safety_label_source/source.rs:252`](../source/visibility-filtering/safety_label_source/source.rs#L252) — `fn future_tweet_id() -> u64 {`
+- [`visibility-filtering/safety_label_source/source.rs:257`](../source/visibility-filtering/safety_label_source/source.rs#L257) — `async fn get_backfills_remote_successes_into_l1() {`
+- [`visibility-filtering/safety_label_source/source.rs:277`](../source/visibility-filtering/safety_label_source/source.rs#L277) — `async fn get_does_not_backfill_future_tweet_id_into_l1() {`
+- [`visibility-filtering/safety_label_source/source.rs:291`](../source/visibility-filtering/safety_label_source/source.rs#L291) — `async fn get_merges_remote_results() {`
+- [`visibility-filtering/safety_label_source/source.rs:313`](../source/visibility-filtering/safety_label_source/source.rs#L313) — `async fn get_backfills_negative_cache_into_l1() {`
+- [`visibility-filtering/safety_label_source/source.rs:345`](../source/visibility-filtering/safety_label_source/source.rs#L345) — `async fn get_empty_input_returns_empty() {`
+- [`visibility-filtering/safety_label_source/source.rs:354`](../source/visibility-filtering/safety_label_source/source.rs#L354) — `fn young_tweet_gets_short_ttl() {`
+- [`visibility-filtering/safety_label_source/source.rs:360`](../source/visibility-filtering/safety_label_source/source.rs#L360) — `fn old_tweet_gets_long_ttl() {`
+- [`visibility-filtering/safety_label_source/source.rs:366`](../source/visibility-filtering/safety_label_source/source.rs#L366) — `fn future_tweet_is_not_cached() {`
+- [`visibility-filtering/safety_label_source/source.rs:372`](../source/visibility-filtering/safety_label_source/source.rs#L372) — `fn near_boundary_tweet_ttl_clamped_to_window() {`
+- [`visibility-filtering/safety_label_source/source.rs:381`](../source/visibility-filtering/safety_label_source/source.rs#L381) — `async fn expired_entry_is_refetched_and_restamped() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:12`](../source/visibility-filtering/safety_label_source/twemcache.rs#L12) — `const KEY_PREFIX: &str = "slm_";`
+- [`visibility-filtering/safety_label_source/twemcache.rs:14`](../source/visibility-filtering/safety_label_source/twemcache.rs#L14) — `type CacheOpResult<T> = std::result::Result<T, KVCacheError>;`
+- [`visibility-filtering/safety_label_source/twemcache.rs:17`](../source/visibility-filtering/safety_label_source/twemcache.rs#L17) — `pub(crate) trait CacheRead: Send + Sync + 'static {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:18`](../source/visibility-filtering/safety_label_source/twemcache.rs#L18) — `async fn multi_get(&self, keys: &[Key]) -> HashMap<Key, CacheOpResult<Option<Value>>>;`
+- [`visibility-filtering/safety_label_source/twemcache.rs:23`](../source/visibility-filtering/safety_label_source/twemcache.rs#L23) — `async fn multi_get(&self, keys: &[Key]) -> HashMap<Key, CacheOpResult<Option<Value>>> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:31`](../source/visibility-filtering/safety_label_source/twemcache.rs#L31) — `pub(crate) struct TwemcacheSource {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:35`](../source/visibility-filtering/safety_label_source/twemcache.rs#L35) — `fn fallback_reason(e: &KVCacheError) -> FallbackReason {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:44`](../source/visibility-filtering/safety_label_source/twemcache.rs#L44) — `struct ItemCounts {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:52`](../source/visibility-filtering/safety_label_source/twemcache.rs#L52) — `fn record_fallback(&mut self, reason: FallbackReason) {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:56`](../source/visibility-filtering/safety_label_source/twemcache.rs#L56) — `fn record_metrics(&self) {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:64`](../source/visibility-filtering/safety_label_source/twemcache.rs#L64) — `pub(crate) fn new(cache: Arc<CacheClient>) -> Self {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:69`](../source/visibility-filtering/safety_label_source/twemcache.rs#L69) — `pub(crate) fn with_cache(cache: Arc<dyn CacheRead>) -> Self {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:76`](../source/visibility-filtering/safety_label_source/twemcache.rs#L76) — `async fn get(&self, ids: &[u64]) -> HashMap<u64, TwemcacheOutcome> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:160`](../source/visibility-filtering/safety_label_source/twemcache.rs#L160) — `enum FakeTwemcacheMode {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:167`](../source/visibility-filtering/safety_label_source/twemcache.rs#L167) — `struct FakeTwemcache {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:172`](../source/visibility-filtering/safety_label_source/twemcache.rs#L172) — `fn empty() -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:178`](../source/visibility-filtering/safety_label_source/twemcache.rs#L178) — `fn with_missing_response() -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:184`](../source/visibility-filtering/safety_label_source/twemcache.rs#L184) — `fn with_per_key_error(err: KVCacheError) -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:190`](../source/visibility-filtering/safety_label_source/twemcache.rs#L190) — `fn with_data(data: Vec<u8>) -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:199`](../source/visibility-filtering/safety_label_source/twemcache.rs#L199) — `async fn multi_get(&self, keys: &[Key]) -> HashMap<Key, CacheOpResult<Option<Value>>> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:214`](../source/visibility-filtering/safety_label_source/twemcache.rs#L214) — `async fn get_with_cache(cache: Arc<dyn CacheRead>) -> HashMap<u64, TwemcacheOutcome> {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:219`](../source/visibility-filtering/safety_label_source/twemcache.rs#L219) — `async fn get_cache_hit_returns_label_map() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:229`](../source/visibility-filtering/safety_label_source/twemcache.rs#L229) — `async fn get_negative_cache_returns_empty_label_map() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:239`](../source/visibility-filtering/safety_label_source/twemcache.rs#L239) — `async fn get_cache_miss_returns_miss() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:246`](../source/visibility-filtering/safety_label_source/twemcache.rs#L246) — `async fn get_per_key_error_returns_other_fallback() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:259`](../source/visibility-filtering/safety_label_source/twemcache.rs#L259) — `async fn get_per_key_timeout_returns_timeout_fallback() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:272`](../source/visibility-filtering/safety_label_source/twemcache.rs#L272) — `async fn get_decode_error_returns_fallback() {`
+- [`visibility-filtering/safety_label_source/twemcache.rs:282`](../source/visibility-filtering/safety_label_source/twemcache.rs#L282) — `async fn get_missing_response_returns_fallback() {`
+- [`visibility-filtering/safety_label_source/types.rs:6`](../source/visibility-filtering/safety_label_source/types.rs#L6) — `pub(crate) enum LabelSource {`
+- [`visibility-filtering/safety_label_source/types.rs:13`](../source/visibility-filtering/safety_label_source/types.rs#L13) — `pub(crate) enum FallbackReason {`
+- [`visibility-filtering/safety_label_source/types.rs:25`](../source/visibility-filtering/safety_label_source/types.rs#L25) — `pub(crate) enum FailureKind {`
+- [`visibility-filtering/safety_label_source/types.rs:31`](../source/visibility-filtering/safety_label_source/types.rs#L31) — `pub(crate) enum TwemcacheOutcome {`
+- [`visibility-filtering/safety_label_source/types.rs:39`](../source/visibility-filtering/safety_label_source/types.rs#L39) — `pub(crate) enum ManhattanOutcome {`
+- [`visibility-filtering/safety_label_source/warmer.rs:10`](../source/visibility-filtering/safety_label_source/warmer.rs#L10) — `const WARM_COLUMN_PATH: &str = "visibility/baseTweetSafetyLabelMap";`
+- [`visibility-filtering/safety_label_source/warmer.rs:11`](../source/visibility-filtering/safety_label_source/warmer.rs#L11) — `const WARM_CHANNEL_CAPACITY: usize = 1024;`
+- [`visibility-filtering/safety_label_source/warmer.rs:12`](../source/visibility-filtering/safety_label_source/warmer.rs#L12) — `const WARM_LINGER: Duration = Duration::from_millis(500);`
+- [`visibility-filtering/safety_label_source/warmer.rs:13`](../source/visibility-filtering/safety_label_source/warmer.rs#L13) — `const WARM_FETCH_MAX_KEYS: usize = 50;`
+- [`visibility-filtering/safety_label_source/warmer.rs:15`](../source/visibility-filtering/safety_label_source/warmer.rs#L15) — `pub(crate) trait Warmer: Send + Sync {`
+- [`visibility-filtering/safety_label_source/warmer.rs:16`](../source/visibility-filtering/safety_label_source/warmer.rs#L16) — `fn warm(&self, miss_ids: Vec<u64>);`
+- [`visibility-filtering/safety_label_source/warmer.rs:20`](../source/visibility-filtering/safety_label_source/warmer.rs#L20) — `pub(crate) trait WarmFetcher: Send + Sync {`
+- [`visibility-filtering/safety_label_source/warmer.rs:21`](../source/visibility-filtering/safety_label_source/warmer.rs#L21) — `async fn fetch(&self, ids: &[u64]) -> usize;`
+- [`visibility-filtering/safety_label_source/warmer.rs:24`](../source/visibility-filtering/safety_label_source/warmer.rs#L24) — `pub(crate) struct StratoWarmFetcher {`
+- [`visibility-filtering/safety_label_source/warmer.rs:29`](../source/visibility-filtering/safety_label_source/warmer.rs#L29) — `pub(crate) fn new(grpc: StratoGrpc) -> Self {`
+- [`visibility-filtering/safety_label_source/warmer.rs:36`](../source/visibility-filtering/safety_label_source/warmer.rs#L36) — `async fn fetch(&self, ids: &[u64]) -> usize {`
+- [`visibility-filtering/safety_label_source/warmer.rs:56`](../source/visibility-filtering/safety_label_source/warmer.rs#L56) — `pub(crate) struct CacheWarmer {`
+- [`visibility-filtering/safety_label_source/warmer.rs:61`](../source/visibility-filtering/safety_label_source/warmer.rs#L61) — `pub(crate) fn spawn(fetcher: Arc<dyn WarmFetcher>) -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/warmer.rs:68`](../source/visibility-filtering/safety_label_source/warmer.rs#L68) — `pub(crate) fn without_drain_task(capacity: usize) -> (Self, mpsc::Receiver<Vec<u64>>) {`
+- [`visibility-filtering/safety_label_source/warmer.rs:75`](../source/visibility-filtering/safety_label_source/warmer.rs#L75) — `fn warm(&self, miss_ids: Vec<u64>) {`
+- [`visibility-filtering/safety_label_source/warmer.rs:88`](../source/visibility-filtering/safety_label_source/warmer.rs#L88) — `async fn drain(mut rx: mpsc::Receiver<Vec<u64>>, fetcher: Arc<dyn WarmFetcher>) {`
+- [`visibility-filtering/safety_label_source/warmer.rs:110`](../source/visibility-filtering/safety_label_source/warmer.rs#L110) — `struct FakeFetcher {`
+- [`visibility-filtering/safety_label_source/warmer.rs:116`](../source/visibility-filtering/safety_label_source/warmer.rs#L116) — `fn new(failed_per_batch: usize) -> Arc<Self> {`
+- [`visibility-filtering/safety_label_source/warmer.rs:123`](../source/visibility-filtering/safety_label_source/warmer.rs#L123) — `fn batches(&self) -> Vec<Vec<u64>> {`
+- [`visibility-filtering/safety_label_source/warmer.rs:130`](../source/visibility-filtering/safety_label_source/warmer.rs#L130) — `async fn fetch(&self, ids: &[u64]) -> usize {`
+- [`visibility-filtering/safety_label_source/warmer.rs:137`](../source/visibility-filtering/safety_label_source/warmer.rs#L137) — `async fn drain_lingers_then_flushes_in_chunks() {`
+- [`visibility-filtering/safety_label_source/warmer.rs:155`](../source/visibility-filtering/safety_label_source/warmer.rs#L155) — `async fn accumulation_is_capped_per_flush() {`
+- [`visibility-filtering/safety_label_source/warmer.rs:172`](../source/visibility-filtering/safety_label_source/warmer.rs#L172) — `async fn fetch_failure_does_not_stop_the_drain() {`
+- [`visibility-filtering/safety_label_source/warmer.rs:185`](../source/visibility-filtering/safety_label_source/warmer.rs#L185) — `async fn full_channel_drops_without_blocking() {`
+- [`visibility-filtering/server.rs:9`](../source/visibility-filtering/server.rs#L9) — `pub struct VFServer {`
+- [`visibility-filtering/server.rs:17`](../source/visibility-filtering/server.rs#L17) — `type Config = ();`
+- [`visibility-filtering/server.rs:19`](../source/visibility-filtering/server.rs#L19) — `async fn build(ctx: xai_x_service_builder::ServiceContext<()>) -> Self {`
+- [`visibility-filtering/server.rs:23`](../source/visibility-filtering/server.rs#L23) — `fn register(self: Arc<Self>, routes: &mut tonic::service::RoutesBuilder) {`
+- [`visibility-filtering/server.rs:33`](../source/visibility-filtering/server.rs#L33) — `pub(crate) async fn new(`
+- [`visibility-filtering/server.rs:40`](../source/visibility-filtering/server.rs#L40) — `pub(crate) fn from_endpoints(`
+- [`visibility-filtering/server.rs:55`](../source/visibility-filtering/server.rs#L55) — `async fn evaluate_tweets(`
+- [`visibility-filtering/server.rs:62`](../source/visibility-filtering/server.rs#L62) — `async fn filter_tweets(`
+- [`visibility-filtering/server.rs:69`](../source/visibility-filtering/server.rs#L69) — `async fn get_safety_labels(`
+- [`visibility-filtering/server.rs:88`](../source/visibility-filtering/server.rs#L88) — `async fn evaluate_tweets_loopback() {`
+- [`visibility-filtering/server_deps.rs:40`](../source/visibility-filtering/server_deps.rs#L40) — `const CACHE_PATH: &str = "/s/cache/safety_label_store:twemcaches";`
+- [`visibility-filtering/server_deps.rs:41`](../source/visibility-filtering/server_deps.rs#L41) — `const READINESS_PROBE_PORT: u16 = 8081;`
+- [`visibility-filtering/server_deps.rs:43`](../source/visibility-filtering/server_deps.rs#L43) — `const CLIENT_INIT_RETRY_BUDGET: Duration = Duration::from_secs(240);`
+- [`visibility-filtering/server_deps.rs:44`](../source/visibility-filtering/server_deps.rs#L44) — `const CLIENT_INIT_MAX_BACKOFF: Duration = Duration::from_secs(15);`
+- [`visibility-filtering/server_deps.rs:45`](../source/visibility-filtering/server_deps.rs#L45) — `const CLIENT_INIT_ATTEMPT_TIMEOUT: Duration = Duration::from_secs(30);`
+- [`visibility-filtering/server_deps.rs:47`](../source/visibility-filtering/server_deps.rs#L47) — `async fn init_client_with_retry<T, E, Fut>(`
+- [`visibility-filtering/server_deps.rs:105`](../source/visibility-filtering/server_deps.rs#L105) — `pub async fn build_prod_server(`
+- [`visibility-filtering/server_deps.rs:295`](../source/visibility-filtering/server_deps.rs#L295) — `async fn build_reference_compare_harness(`
+- [`visibility-filtering/server_deps.rs:338`](../source/visibility-filtering/server_deps.rs#L338) — `const CACHE_WARM_REQUEST_TIMEOUT_MS: u64 = 500;`
+- [`visibility-filtering/server_deps.rs:344`](../source/visibility-filtering/server_deps.rs#L344) — `async fn build_cache_warmer(`
+- [`visibility-filtering/server_deps.rs:379`](../source/visibility-filtering/server_deps.rs#L379) — `const STRATO_REQUEST_TIMEOUT: Duration = crate::hydration::HYDRATION_TIMEOUT;`
+- [`visibility-filtering/server_deps.rs:380`](../source/visibility-filtering/server_deps.rs#L380) — `const STRATO_CONNECT_TIMEOUT: Duration = Duration::from_millis(400);`
+- [`visibility-filtering/server_deps.rs:381`](../source/visibility-filtering/server_deps.rs#L381) — `const STRATO_APERTURE_SIZE: usize = 12;`
+- [`visibility-filtering/server_deps.rs:382`](../source/visibility-filtering/server_deps.rs#L382) — `const XDS_EAGER_RESOLUTION_TIMEOUT: Duration = Duration::from_secs(5);`
+- [`visibility-filtering/server_deps.rs:384`](../source/visibility-filtering/server_deps.rs#L384) — `struct XdsStratoParams {`
+- [`visibility-filtering/server_deps.rs:394`](../source/visibility-filtering/server_deps.rs#L394) — `async fn build_xds_strato(`
+- [`visibility-filtering/server_deps.rs:437`](../source/visibility-filtering/server_deps.rs#L437) — `async fn warm_cache(twemcache: &CacheClient) {`
+- [`visibility-filtering/server_deps.rs:468`](../source/visibility-filtering/server_deps.rs#L468) — `const WARM_FILTER_TWEETS_TWEET_ID: u64 = 20;`
+- [`visibility-filtering/server_deps.rs:469`](../source/visibility-filtering/server_deps.rs#L469) — `const WARM_FILTER_TWEETS_CONSECUTIVE: u32 = 3;`
+- [`visibility-filtering/server_deps.rs:470`](../source/visibility-filtering/server_deps.rs#L470) — `const WARM_FILTER_TWEETS_DEADLINE: Duration = Duration::from_secs(20);`
+- [`visibility-filtering/server_deps.rs:471`](../source/visibility-filtering/server_deps.rs#L471) — `const WARM_FILTER_TWEETS_SLEEP: Duration = Duration::from_millis(500);`
+- [`visibility-filtering/server_deps.rs:473`](../source/visibility-filtering/server_deps.rs#L473) — `fn warm_filter_tweets_request() -> FilterRequest {`
+- [`visibility-filtering/server_deps.rs:486`](../source/visibility-filtering/server_deps.rs#L486) — `fn filter_tweets_response_is_warm(response: &FilterResponse) -> bool {`
+- [`visibility-filtering/server_deps.rs:493`](../source/visibility-filtering/server_deps.rs#L493) — `async fn warm_filter_tweets(filter_tweets: &FilterTweets) {`
+- [`visibility-filtering/server_deps.rs:526`](../source/visibility-filtering/server_deps.rs#L526) — `async fn warm_manhattan(manhattan: &dyn ManhattanLabelFetcher) {`
+- [`visibility-filtering/server_deps.rs:549`](../source/visibility-filtering/server_deps.rs#L549) — `fn deadline_in(budget: Duration) -> tokio::time::Instant {`
+- [`visibility-filtering/server_deps.rs:554`](../source/visibility-filtering/server_deps.rs#L554) — `async fn reference_compare_harness_not_built_without_flag() {`
+- [`visibility-filtering/server_deps.rs:561`](../source/visibility-filtering/server_deps.rs#L561) — `async fn init_retry_recovers_from_transient_failures() {`
+- [`visibility-filtering/server_deps.rs:584`](../source/visibility-filtering/server_deps.rs#L584) — `async fn init_retry_gives_up_at_deadline() {`
+- [`visibility-filtering/server_deps.rs:603`](../source/visibility-filtering/server_deps.rs#L603) — `async fn init_retry_skips_attempt_when_deadline_already_passed() {`
+- [`visibility-filtering/server_deps.rs:622`](../source/visibility-filtering/server_deps.rs#L622) — `async fn init_retry_times_out_hanging_attempt() {`
+- [`visibility-filtering/server_deps.rs:645`](../source/visibility-filtering/server_deps.rs#L645) — `fn response(verdict: Verdict, status: EvaluationStatus) -> FilterResponse {`
+- [`visibility-filtering/server_deps.rs:657`](../source/visibility-filtering/server_deps.rs#L657) — `fn evaluated_verdict_is_warm() {`
+- [`visibility-filtering/server_deps.rs:669`](../source/visibility-filtering/server_deps.rs#L669) — `fn unresolved_author_verdict_is_not_warm() {`
+- [`visibility-filtering/treatment.rs:12`](../source/visibility-filtering/treatment.rs#L12) — `pub(crate) fn thrift_action(verdict: &Verdict, level: SafetyLevel) -> Option<Action> {`
+- [`visibility-filtering/treatment.rs:60`](../source/visibility-filtering/treatment.rs#L60) — `fn drop_reason(reason: &FilteredReason, level: SafetyLevel) -> Option<DropReason> {`
+- [`visibility-filtering/treatment.rs:85`](../source/visibility-filtering/treatment.rs#L85) — `fn tombstone_reason(reason: TombstoneReason) -> action::TombstoneReason {`
+- [`visibility-filtering/treatment.rs:91`](../source/visibility-filtering/treatment.rs#L91) — `fn limited_engagement_reason(reason: LimitedEngagementReason) -> action::LimitedEngagementReason {`
+- [`visibility-filtering/treatment.rs:99`](../source/visibility-filtering/treatment.rs#L99) — `pub(crate) fn proto_action(verdict: Verdict) -> (vf_pb::Action, Option<vf_pb::FilteredReason>) {`
+- [`visibility-filtering/treatment.rs:131`](../source/visibility-filtering/treatment.rs#L131) — `pub(crate) fn metric_label(verdict: &Verdict) -> &'static str {`
+- [`visibility-filtering/treatment.rs:160`](../source/visibility-filtering/treatment.rs#L160) — `pub(crate) fn decided_rows(`
+- [`visibility-filtering/treatment.rs:184`](../source/visibility-filtering/treatment.rs#L184) — `fn dropped(reason: FilteredReason) -> Verdict {`
+- [`visibility-filtering/treatment.rs:191`](../source/visibility-filtering/treatment.rs#L191) — `fn tombstoned() -> Verdict {`
+- [`visibility-filtering/treatment.rs:198`](../source/visibility-filtering/treatment.rs#L198) — `fn blur(reason: InterstitialReason) -> Decided<MediaInterstitial> {`
+- [`visibility-filtering/treatment.rs:208`](../source/visibility-filtering/treatment.rs#L208) — `fn thrift_blur(reason: InterstitialReason) -> Option<Action> {`
+- [`visibility-filtering/treatment.rs:224`](../source/visibility-filtering/treatment.rs#L224) — `fn nudity_projects_to_media_blur() {`
+- [`visibility-filtering/treatment.rs:235`](../source/visibility-filtering/treatment.rs#L235) — `fn sensitive_projects_to_media_blur() {`
+- [`visibility-filtering/treatment.rs:246`](../source/visibility-filtering/treatment.rs#L246) — `fn sensitive_user_projects_to_media_blur() {`
+- [`visibility-filtering/treatment.rs:257`](../source/visibility-filtering/treatment.rs#L257) — `fn violence_projects_to_media_blur() {`
+- [`visibility-filtering/treatment.rs:267`](../source/visibility-filtering/treatment.rs#L267) — `fn limit() -> Decided<LimitedEngagement> {`
+- [`visibility-filtering/treatment.rs:274`](../source/visibility-filtering/treatment.rs#L274) — `fn shown(`
+- [`visibility-filtering/treatment.rs:281`](../source/visibility-filtering/treatment.rs#L281) — `fn thrift_drop(reason: DropReason) -> Option<Action> {`
+- [`visibility-filtering/treatment.rs:285`](../source/visibility-filtering/treatment.rs#L285) — `struct Projected {`
+- [`visibility-filtering/treatment.rs:293`](../source/visibility-filtering/treatment.rs#L293) — `fn six_cases() -> [(Verdict, Projected); 6] {`
+- [`visibility-filtering/treatment.rs:375`](../source/visibility-filtering/treatment.rs#L375) — `fn every_verdict_case_projects_per_the_table() {`
+- [`visibility-filtering/treatment.rs:396`](../source/visibility-filtering/treatment.rs#L396) — `fn drop_reasons_without_a_canonical_form_have_no_thrift_action() {`
+- [`visibility-filtering/treatment.rs:427`](../source/visibility-filtering/treatment.rs#L427) — `fn dashboard_generator_pins_every_verdict_mix_label() {`

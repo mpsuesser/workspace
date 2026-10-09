@@ -1,0 +1,504 @@
+# scarecrow: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`scarecrow/BotmakerInitializer.scala:4`](../source/scarecrow/BotmakerInitializer.scala#L4) — `def init(): Unit`
+- [`scarecrow/GuiceNamedConstants.scala:3`](../source/scarecrow/GuiceNamedConstants.scala#L3) — `object GuiceNamedConstants {`
+- [`scarecrow/Module.scala:28`](../source/scarecrow/Module.scala#L28) — `class Module(isAdmin: Boolean) extends BotMakerAppModule(isAdmin) with Logging {`
+- [`scarecrow/Module.scala:42`](../source/scarecrow/Module.scala#L42) — `def provideTimer(runtime: TwitterRuntime): Timer = {`
+- [`scarecrow/Module.scala:48`](../source/scarecrow/Module.scala#L48) — `def provideScarecrowBotMaker(`
+- [`scarecrow/Module.scala:73`](../source/scarecrow/Module.scala#L73) — `def provideBotMakerApp(scarecrowBotMaker: ScarecrowBotMaker): BotMakerApp = {`
+- [`scarecrow/Module.scala:77`](../source/scarecrow/Module.scala#L77) — `def provideProdGauge(statsReceiver: StatsReceiver): Unit = {`
+- [`scarecrow/Module.scala:87`](../source/scarecrow/Module.scala#L87) — `def provideBotmakerInitializer(legacyScheduler: legacyloader.Scheduler): BotmakerInitializer = {`
+- [`scarecrow/Module.scala:89`](../source/scarecrow/Module.scala#L89) — `override def init(): Unit = {`
+- [`scarecrow/ScarecrowBotMaker.scala:69`](../source/scarecrow/ScarecrowBotMaker.scala#L69) — `object RecordedActionOutput {`
+- [`scarecrow/ScarecrowBotMaker.scala:70`](../source/scarecrow/ScarecrowBotMaker.scala#L70) — `override def toString: String = "RecordedActionOutput"`
+- [`scarecrow/ScarecrowBotMaker.scala:72`](../source/scarecrow/ScarecrowBotMaker.scala#L72) — `def addInputFeature[E](builder: CompilerBuilder[E], systemEvent: String): CompilerBuilder[E] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:81`](../source/scarecrow/ScarecrowBotMaker.scala#L81) — `trait RecordedActionOutput extends EventOutputCollector {`
+- [`scarecrow/ScarecrowBotMaker.scala:86`](../source/scarecrow/ScarecrowBotMaker.scala#L86) — `override def addOutputFeature(`
+- [`scarecrow/ScarecrowBotMaker.scala:105`](../source/scarecrow/ScarecrowBotMaker.scala#L105) — `override def isDefinedAt(key: String): Boolean = key match {`
+- [`scarecrow/ScarecrowBotMaker.scala:110`](../source/scarecrow/ScarecrowBotMaker.scala#L110) — `override def apply(key: String): AnyRef = key match {`
+- [`scarecrow/ScarecrowBotMaker.scala:116`](../source/scarecrow/ScarecrowBotMaker.scala#L116) — `object BotUserActionOutput {`
+- [`scarecrow/ScarecrowBotMaker.scala:117`](../source/scarecrow/ScarecrowBotMaker.scala#L117) — `override def toString: String = "BotUserActionOutput"`
+- [`scarecrow/ScarecrowBotMaker.scala:119`](../source/scarecrow/ScarecrowBotMaker.scala#L119) — `def addInputFeature[E](builder: CompilerBuilder[E], systemEvent: String): CompilerBuilder[E] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:128`](../source/scarecrow/ScarecrowBotMaker.scala#L128) — `trait BotUserActionOutput extends EventOutputCollector {`
+- [`scarecrow/ScarecrowBotMaker.scala:133`](../source/scarecrow/ScarecrowBotMaker.scala#L133) — `override def addOutputFeature(`
+- [`scarecrow/ScarecrowBotMaker.scala:152`](../source/scarecrow/ScarecrowBotMaker.scala#L152) — `override def isDefinedAt(key: String): Boolean = key match {`
+- [`scarecrow/ScarecrowBotMaker.scala:157`](../source/scarecrow/ScarecrowBotMaker.scala#L157) — `override def apply(key: String): AnyRef = key match {`
+- [`scarecrow/ScarecrowBotMaker.scala:163`](../source/scarecrow/ScarecrowBotMaker.scala#L163) — `class ScarecrowOutputCollector`
+- [`scarecrow/ScarecrowBotMaker.scala:171`](../source/scarecrow/ScarecrowBotMaker.scala#L171) — `def recursivelyCollectResponseCode(`
+- [`scarecrow/ScarecrowBotMaker.scala:185`](../source/scarecrow/ScarecrowBotMaker.scala#L185) — `override def addOutputFeature(`
+- [`scarecrow/ScarecrowBotMaker.scala:246`](../source/scarecrow/ScarecrowBotMaker.scala#L246) — `private def strValue(fv: AnyRef): String = {`
+- [`scarecrow/ScarecrowBotMaker.scala:250`](../source/scarecrow/ScarecrowBotMaker.scala#L250) — `private def booleanValue(fv: AnyRef): JBoolean = {`
+- [`scarecrow/ScarecrowBotMaker.scala:254`](../source/scarecrow/ScarecrowBotMaker.scala#L254) — `private def longValue(fv: AnyRef): JLong = fv match {`
+- [`scarecrow/ScarecrowBotMaker.scala:265`](../source/scarecrow/ScarecrowBotMaker.scala#L265) — `private def doubleValue(fv: AnyRef): JDouble = fv match {`
+- [`scarecrow/ScarecrowBotMaker.scala:270`](../source/scarecrow/ScarecrowBotMaker.scala#L270) — `private def strListValue(fv: AnyRef): JList[String] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:274`](../source/scarecrow/ScarecrowBotMaker.scala#L274) — `private def longListValue(fv: AnyRef): JList[JLong] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:278`](../source/scarecrow/ScarecrowBotMaker.scala#L278) — `private def doubleListValue(fv: AnyRef): JList[JDouble] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:282`](../source/scarecrow/ScarecrowBotMaker.scala#L282) — `private def strSetValue(fv: AnyRef): JSet[String] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:286`](../source/scarecrow/ScarecrowBotMaker.scala#L286) — `private def longSetValue(fv: AnyRef): JSet[JLong] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:290`](../source/scarecrow/ScarecrowBotMaker.scala#L290) — `private def strMapValue(fv: AnyRef): JMap[String, String] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:296`](../source/scarecrow/ScarecrowBotMaker.scala#L296) — `private def doubleMapValue(fv: AnyRef): JMap[String, JDouble] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:304`](../source/scarecrow/ScarecrowBotMaker.scala#L304) — `def unfilteredRuleResponses: JSet[RuleResponse] = super.allRuleResponses`
+- [`scarecrow/ScarecrowBotMaker.scala:306`](../source/scarecrow/ScarecrowBotMaker.scala#L306) — `override def allRuleResponses: JSet[RuleResponse] = filteredRuleResponses`
+- [`scarecrow/ScarecrowBotMaker.scala:309`](../source/scarecrow/ScarecrowBotMaker.scala#L309) — `object ScarecrowBotMaker {`
+- [`scarecrow/ScarecrowBotMaker.scala:315`](../source/scarecrow/ScarecrowBotMaker.scala#L315) — `private def isTranspiledRule(rule: BotMakerRule) =`
+- [`scarecrow/ScarecrowBotMaker.scala:320`](../source/scarecrow/ScarecrowBotMaker.scala#L320) — `class ScarecrowBotMaker(`
+- [`scarecrow/ScarecrowBotMaker.scala:355`](../source/scarecrow/ScarecrowBotMaker.scala#L355) — `override protected def createRuntime(registry: Seq[ServiceRegistry[Any]]): ScarecrowRuntime = {`
+- [`scarecrow/ScarecrowBotMaker.scala:366`](../source/scarecrow/ScarecrowBotMaker.scala#L366) — `override protected def shouldEnableContextScope: BotMakerRule => Boolean = { rule: BotMakerRule =>`
+- [`scarecrow/ScarecrowBotMaker.scala:371`](../source/scarecrow/ScarecrowBotMaker.scala#L371) — `override def packageNames: Seq[String] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:380`](../source/scarecrow/ScarecrowBotMaker.scala#L380) — `override protected def configCompilerBuilder: CompilerBuilder[ScarecrowConfigs] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:385`](../source/scarecrow/ScarecrowBotMaker.scala#L385) — `override protected def systemCompilerBuilder(`
+- [`scarecrow/ScarecrowBotMaker.scala:409`](../source/scarecrow/ScarecrowBotMaker.scala#L409) — `override def beforeStateUpdate(state: State): Unit = {`
+- [`scarecrow/ScarecrowBotMaker.scala:418`](../source/scarecrow/ScarecrowBotMaker.scala#L418) — `override def checkAppEvent(`
+- [`scarecrow/ScarecrowBotMaker.scala:450`](../source/scarecrow/ScarecrowBotMaker.scala#L450) — `override def applyActionRateLimit[R](`
+- [`scarecrow/ScarecrowBotMaker.scala:484`](../source/scarecrow/ScarecrowBotMaker.scala#L484) — `private def arlDeciderKeyForAppEnv(appName: String, env: String): String =`
+- [`scarecrow/ScarecrowBotMaker.scala:487`](../source/scarecrow/ScarecrowBotMaker.scala#L487) — `private def enableActionRateLimit(`
+- [`scarecrow/ScarecrowBotMaker.scala:498`](../source/scarecrow/ScarecrowBotMaker.scala#L498) — `private def waitingForHumanIntervention(`
+- [`scarecrow/ScarecrowBotMaker.scala:508`](../source/scarecrow/ScarecrowBotMaker.scala#L508) — `private def logRateLimitedFunctionCalls[R](`
+- [`scarecrow/ScarecrowBotMaker.scala:525`](../source/scarecrow/ScarecrowBotMaker.scala#L525) — `private def botActionAlreadyHalted(ruleId: Long, functionName: String, version: Int): Boolean = {`
+- [`scarecrow/ScarecrowBotMaker.scala:601`](../source/scarecrow/ScarecrowBotMaker.scala#L601) — `private def getActionRateLimiterFeatureName(`
+- [`scarecrow/ScarecrowBotMaker.scala:605`](../source/scarecrow/ScarecrowBotMaker.scala#L605) — `private def setBotActionHaltedState(`
+- [`scarecrow/ScarecrowBotMaker.scala:615`](../source/scarecrow/ScarecrowBotMaker.scala#L615) — `private def getEventThriftInputProviderIfExists(inputFeatures: InputProvider): InputProvider = {`
+- [`scarecrow/ScarecrowBotMaker.scala:624`](../source/scarecrow/ScarecrowBotMaker.scala#L624) — `override def isDefinedAt(x: String): Boolean = inputFeatures.isDefinedAt(x)`
+- [`scarecrow/ScarecrowBotMaker.scala:626`](../source/scarecrow/ScarecrowBotMaker.scala#L626) — `override def apply(feature: String): AnyRef =`
+- [`scarecrow/ScarecrowBotMaker.scala:636`](../source/scarecrow/ScarecrowBotMaker.scala#L636) — `private def runEvent(`
+- [`scarecrow/ScarecrowBotMaker.scala:715`](../source/scarecrow/ScarecrowBotMaker.scala#L715) — `override def addOutputFeature(`
+- [`scarecrow/ScarecrowBotMaker.scala:758`](../source/scarecrow/ScarecrowBotMaker.scala#L758) — `override def runExpression(`
+- [`scarecrow/ScarecrowBotMaker.scala:774`](../source/scarecrow/ScarecrowBotMaker.scala#L774) — `override def testSimpleListValues(`
+- [`scarecrow/ScarecrowBotMaker.scala:806`](../source/scarecrow/ScarecrowBotMaker.scala#L806) — `override def reportFunctionEvaluation(`
+- [`scarecrow/ScarecrowBotMaker.scala:882`](../source/scarecrow/ScarecrowBotMaker.scala#L882) — `object SQRLVerdictTagVisitor {`
+- [`scarecrow/ScarecrowBotMaker.scala:888`](../source/scarecrow/ScarecrowBotMaker.scala#L888) — `class SQRLVerdictTagVisitor(staticContext: StaticContext) extends ExtractorVisitorUnit {`
+- [`scarecrow/ScarecrowBotMaker.scala:893`](../source/scarecrow/ScarecrowBotMaker.scala#L893) — `override def apply(extractor: Extractor[_]): Unit = {`
+- [`scarecrow/ScarecrowBotMaker.scala:900`](../source/scarecrow/ScarecrowBotMaker.scala#L900) — `override def isDefinedAt(extractor: Extractor[_]): Boolean =`
+- [`scarecrow/ScarecrowBotMaker.scala:903`](../source/scarecrow/ScarecrowBotMaker.scala#L903) — `private def getVerdictFromExtractor(extractor: Extractor[_]): Option[BMSymbol] = {`
+- [`scarecrow/ScarecrowBotMaker.scala:915`](../source/scarecrow/ScarecrowBotMaker.scala#L915) — `private def updateVerdictMap(verdict: String): Unit = {`
+- [`scarecrow/ScarecrowBotMaker.scala:922`](../source/scarecrow/ScarecrowBotMaker.scala#L922) — `override def onRuleInit(rule: BotMakerRule): Unit = {`
+- [`scarecrow/ScarecrowBotMaker.scala:927`](../source/scarecrow/ScarecrowBotMaker.scala#L927) — `override def onRuleExit(): Unit = {`
+- [`scarecrow/ScarecrowBotMaker.scala:931`](../source/scarecrow/ScarecrowBotMaker.scala#L931) — `override def visitor: PartialFunction[Extractor[_], Unit] = _visitor`
+- [`scarecrow/ScarecrowBotMaker.scala:933`](../source/scarecrow/ScarecrowBotMaker.scala#L933) — `override def onCompletion(): Unit = {`
+- [`scarecrow/ScarecrowRuntime.scala:19`](../source/scarecrow/ScarecrowRuntime.scala#L19) — `class StaticContext {`
+- [`scarecrow/ScarecrowRuntime.scala:23`](../source/scarecrow/ScarecrowRuntime.scala#L23) — `def verdictSideEffects_=(map: JMap[String, JSet[Long]]): Unit = {`
+- [`scarecrow/ScarecrowRuntime.scala:27`](../source/scarecrow/ScarecrowRuntime.scala#L27) — `def verdictSideEffects: JMap[String, JSet[Long]] = {`
+- [`scarecrow/ScarecrowRuntime.scala:32`](../source/scarecrow/ScarecrowRuntime.scala#L32) — `object StaticContext {`
+- [`scarecrow/ScarecrowRuntime.scala:37`](../source/scarecrow/ScarecrowRuntime.scala#L37) — `case class ScarecrowRuntime(`
+- [`scarecrow/ScarecrowRuntime.scala:48`](../source/scarecrow/ScarecrowRuntime.scala#L48) — `override def debug(dbg: RuntimeDebugger): Unit = {`
+- [`scarecrow/ScarecrowRuntime.scala:52`](../source/scarecrow/ScarecrowRuntime.scala#L52) — `def botmakerDecider: Decider = fetcher10.getDecider`
+- [`scarecrow/ScarecrowRuntime.scala:54`](../source/scarecrow/ScarecrowRuntime.scala#L54) — `def systemConfigs: ScarecrowConfigs = botmaker.state.configContainer.systemConfigs`
+- [`scarecrow/ScarecrowRuntime.scala:56`](../source/scarecrow/ScarecrowRuntime.scala#L56) — `def getMigrateContext(context: Context[ScarecrowRuntime]): MigrateContext = {`
+- [`scarecrow/Server.scala:7`](../source/scarecrow/Server.scala#L7) — `object BotMakerAppMain extends ScarecrowAppServer(isAdmin = false)`
+- [`scarecrow/Server.scala:8`](../source/scarecrow/Server.scala#L8) — `object BotMakerAdminMain extends ScarecrowAppServer(isAdmin = true)`
+- [`scarecrow/Server.scala:10`](../source/scarecrow/Server.scala#L10) — `class ScarecrowAppServer(isAdmin: Boolean = false)`
+- [`scarecrow/Server.scala:21`](../source/scarecrow/Server.scala#L21) — `override def thriftWebFormsAccess =`
+- [`scarecrow/Server.scala:24`](../source/scarecrow/Server.scala#L24) — `override protected def postWarmup(): Unit = {`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:21`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L21) — `object TweetRtfApplyLabel`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:29`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L29) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:30`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L30) — `override def actionLevel: ActionLevel = ActionLevel.PROD_TANGIBLE_IMPACT_ACTION`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:31`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L31) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ActionIntakeService)`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:32`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L32) — `override def description: String =`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:53`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L53) — `override def arguments: Seq[String] = Seq[String](`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:69`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L69) — `override def evaluate(`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:102`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L102) — `object TweetRtfRemoveLabel`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:107`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L107) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:108`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L108) — `override def actionLevel: ActionLevel = ActionLevel.PROD_TANGIBLE_IMPACT_ACTION`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:109`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L109) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ActionIntakeService)`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:111`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L111) — `override def description: String =`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:120`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L120) — `override def arguments: Seq[String] =`
+- [`scarecrow/function/ActionIntakeServiceRegistry.scala:127`](../source/scarecrow/function/ActionIntakeServiceRegistry.scala#L127) — `override def evaluate(`
+- [`scarecrow/function/JsonRegistry.scala:17`](../source/scarecrow/function/JsonRegistry.scala#L17) — `object JsonParse extends FunctionUnit1[ScarecrowRuntime, Option[String], Option[AnyRef]] {`
+- [`scarecrow/function/JsonRegistry.scala:19`](../source/scarecrow/function/JsonRegistry.scala#L19) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Global`
+- [`scarecrow/function/JsonRegistry.scala:21`](../source/scarecrow/function/JsonRegistry.scala#L21) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/function/JsonRegistry.scala:23`](../source/scarecrow/function/JsonRegistry.scala#L23) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/function/JsonRegistry.scala:25`](../source/scarecrow/function/JsonRegistry.scala#L25) — `override def description: String =`
+- [`scarecrow/function/JsonRegistry.scala:31`](../source/scarecrow/function/JsonRegistry.scala#L31) — `override def arguments: Seq[String] = Seq("String encoded JSON")`
+- [`scarecrow/function/JsonRegistry.scala:33`](../source/scarecrow/function/JsonRegistry.scala#L33) — `override def evaluate(`
+- [`scarecrow/function/JsonRegistry.scala:49`](../source/scarecrow/function/JsonRegistry.scala#L49) — `private def toBasicValue(node: JsonNode): Option[AnyRef] = {`
+- [`scarecrow/function/ListRegistry.scala:14`](../source/scarecrow/function/ListRegistry.scala#L14) — `object GetLongList extends FunctionUnit1[ScarecrowRuntime, BMSymbol, JSet[JLong]] {`
+- [`scarecrow/function/ListRegistry.scala:15`](../source/scarecrow/function/ListRegistry.scala#L15) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/function/ListRegistry.scala:16`](../source/scarecrow/function/ListRegistry.scala#L16) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/function/ListRegistry.scala:17`](../source/scarecrow/function/ListRegistry.scala#L17) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/function/ListRegistry.scala:18`](../source/scarecrow/function/ListRegistry.scala#L18) — `override def description = "String ListName Return a set of long number based on the list name."`
+- [`scarecrow/function/ListRegistry.scala:19`](../source/scarecrow/function/ListRegistry.scala#L19) — `override def arguments: Seq[String] = Seq[String]("1.Symbol ListName")`
+- [`scarecrow/function/ListRegistry.scala:20`](../source/scarecrow/function/ListRegistry.scala#L20) — `override def examples: Seq[String] =`
+- [`scarecrow/function/ListRegistry.scala:23`](../source/scarecrow/function/ListRegistry.scala#L23) — `override def evaluate(context: Context[ScarecrowRuntime], name: BMSymbol): JSet[JLong] = {`
+- [`scarecrow/legacy/ActionerRegistry.scala:12`](../source/scarecrow/legacy/ActionerRegistry.scala#L12) — `object SetUserLabel`
+- [`scarecrow/legacy/ActionerRegistry.scala:25`](../source/scarecrow/legacy/ActionerRegistry.scala#L25) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/ActionerRegistry.scala:26`](../source/scarecrow/legacy/ActionerRegistry.scala#L26) — `override def actionLevel: ActionLevel = ActionLevel.PROD_TANGIBLE_IMPACT_ACTION`
+- [`scarecrow/legacy/ActionerRegistry.scala:27`](../source/scarecrow/legacy/ActionerRegistry.scala#L27) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Gizmoduck)`
+- [`scarecrow/legacy/ActionerRegistry.scala:28`](../source/scarecrow/legacy/ActionerRegistry.scala#L28) — `override def description = "Set label on a given user"`
+- [`scarecrow/legacy/ActionerRegistry.scala:29`](../source/scarecrow/legacy/ActionerRegistry.scala#L29) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/ActionerRegistry.scala:41`](../source/scarecrow/legacy/ActionerRegistry.scala#L41) — `override def evaluate(`
+- [`scarecrow/legacy/DownstreamServices.scala:5`](../source/scarecrow/legacy/DownstreamServices.scala#L5) — `object DownstreamServices {`
+- [`scarecrow/legacy/DownstreamServices.scala:7`](../source/scarecrow/legacy/DownstreamServices.scala#L7) — `case object ActionIntakeService extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:11`](../source/scarecrow/legacy/DownstreamServices.scala#L11) — `case object Eventbus extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:15`](../source/scarecrow/legacy/DownstreamServices.scala#L15) — `case object Gizmoduck extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:19`](../source/scarecrow/legacy/DownstreamServices.scala#L19) — `case object Guano extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:23`](../source/scarecrow/legacy/DownstreamServices.scala#L23) — `case object LimiterService extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:27`](../source/scarecrow/legacy/DownstreamServices.scala#L27) — `case object ManhattanBotmakerHllCounterStore extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:31`](../source/scarecrow/legacy/DownstreamServices.scala#L31) — `case object ManhattanLabelstore extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:35`](../source/scarecrow/legacy/DownstreamServices.scala#L35) — `case object ManhattanUrlReputation extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:39`](../source/scarecrow/legacy/DownstreamServices.scala#L39) — `case object Pinkstore extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:43`](../source/scarecrow/legacy/DownstreamServices.scala#L43) — `case object SlugToTweetIdStore extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:47`](../source/scarecrow/legacy/DownstreamServices.scala#L47) — `case object SocialGraphService extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:51`](../source/scarecrow/legacy/DownstreamServices.scala#L51) — `case object StratoGetUserCredV2 extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:55`](../source/scarecrow/legacy/DownstreamServices.scala#L55) — `case object StratoUserHealthScores extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:59`](../source/scarecrow/legacy/DownstreamServices.scala#L59) — `case object StratoUserHealthSignals extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:63`](../source/scarecrow/legacy/DownstreamServices.scala#L63) — `case object StratoSafetyLabels extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:67`](../source/scarecrow/legacy/DownstreamServices.scala#L67) — `case object StratoUserNsfaScore extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:71`](../source/scarecrow/legacy/DownstreamServices.scala#L71) — `case object Tweetypie extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:75`](../source/scarecrow/legacy/DownstreamServices.scala#L75) — `case object UrlToSlugStore extends DownstreamService {`
+- [`scarecrow/legacy/DownstreamServices.scala:79`](../source/scarecrow/legacy/DownstreamServices.scala#L79) — `case object XReviewIntake extends DownstreamService {`
+- [`scarecrow/legacy/Fetcher10Functions.scala:9`](../source/scarecrow/legacy/Fetcher10Functions.scala#L9) — `object GetShardHostName extends FunctionUnit0[ScarecrowRuntime, String] {`
+- [`scarecrow/legacy/Fetcher10Functions.scala:11`](../source/scarecrow/legacy/Fetcher10Functions.scala#L11) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/Fetcher10Functions.scala:12`](../source/scarecrow/legacy/Fetcher10Functions.scala#L12) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/Fetcher10Functions.scala:13`](../source/scarecrow/legacy/Fetcher10Functions.scala#L13) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/legacy/Fetcher10Functions.scala:14`](../source/scarecrow/legacy/Fetcher10Functions.scala#L14) — `override def description = "Returns the hostname of the shard of this botmaker instance."`
+- [`scarecrow/legacy/Fetcher10Functions.scala:15`](../source/scarecrow/legacy/Fetcher10Functions.scala#L15) — `override def arguments: Seq[String] = Seq[String]("")`
+- [`scarecrow/legacy/Fetcher10Functions.scala:16`](../source/scarecrow/legacy/Fetcher10Functions.scala#L16) — `override def examples: Seq[String] = Seq[String]("GetShardHostName()")`
+- [`scarecrow/legacy/Fetcher10Functions.scala:18`](../source/scarecrow/legacy/Fetcher10Functions.scala#L18) — `override def evaluate(context: com.twitter.botmaker.Context[ScarecrowRuntime]): String = {`
+- [`scarecrow/legacy/FlockRegistry.scala:13`](../source/scarecrow/legacy/FlockRegistry.scala#L13) — `object FollowerCount extends FunctionUnit1O1[ScarecrowRuntime, Long, JBoolean, Future[JLong]] {`
+- [`scarecrow/legacy/FlockRegistry.scala:15`](../source/scarecrow/legacy/FlockRegistry.scala#L15) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/FlockRegistry.scala:16`](../source/scarecrow/legacy/FlockRegistry.scala#L16) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/FlockRegistry.scala:17`](../source/scarecrow/legacy/FlockRegistry.scala#L17) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.SocialGraphService)`
+- [`scarecrow/legacy/FlockRegistry.scala:18`](../source/scarecrow/legacy/FlockRegistry.scala#L18) — `override def description = "The given user's follower count."`
+- [`scarecrow/legacy/FlockRegistry.scala:19`](../source/scarecrow/legacy/FlockRegistry.scala#L19) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/FlockRegistry.scala:21`](../source/scarecrow/legacy/FlockRegistry.scala#L21) — `override def examples: Seq[String] = Seq[String]("FollowerCount(123, TRUE)")`
+- [`scarecrow/legacy/FlockRegistry.scala:23`](../source/scarecrow/legacy/FlockRegistry.scala#L23) — `override def evaluate(`
+- [`scarecrow/legacy/FlockRegistry.scala:36`](../source/scarecrow/legacy/FlockRegistry.scala#L36) — `object IsFollowing extends FunctionUnit2[ScarecrowRuntime, Long, Long, Future[Boolean]] {`
+- [`scarecrow/legacy/FlockRegistry.scala:38`](../source/scarecrow/legacy/FlockRegistry.scala#L38) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/FlockRegistry.scala:39`](../source/scarecrow/legacy/FlockRegistry.scala#L39) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/FlockRegistry.scala:40`](../source/scarecrow/legacy/FlockRegistry.scala#L40) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.SocialGraphService)`
+- [`scarecrow/legacy/FlockRegistry.scala:41`](../source/scarecrow/legacy/FlockRegistry.scala#L41) — `override def description = "Checks Flock to see if follower is following followed."`
+- [`scarecrow/legacy/FlockRegistry.scala:42`](../source/scarecrow/legacy/FlockRegistry.scala#L42) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/FlockRegistry.scala:47`](../source/scarecrow/legacy/FlockRegistry.scala#L47) — `override def examples: Seq[String] = Seq[String]("IsFollowing(123, 456)")`
+- [`scarecrow/legacy/FlockRegistry.scala:49`](../source/scarecrow/legacy/FlockRegistry.scala#L49) — `override def evaluate(`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:12`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L12) — `object SQRLVerdictTag extends FunctionUnit1[ScarecrowRuntime, BMSymbol, Unit] {`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:13`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L13) — `override def cacheLevel: CacheLevel = ASTNode.CacheLevel.Global`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:14`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L14) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:15`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L15) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:16`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L16) — `override def description = "A function hint to group rules together using the same verdict." +`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:19`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L19) — `override def arguments: Seq[String] = Seq("verdict used to group rules together")`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:20`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L20) — `override def examples: Seq[String] = Seq("SQRLVerdictTag('BLACKLIST')")`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:21`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L21) — `override def evaluate(context: Context[ScarecrowRuntime], verdict: BMSymbol): Unit = ()`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:24`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L24) — `object GetMentionedScreenNames extends FunctionUnit1[ScarecrowRuntime, String, JList[String]] {`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:25`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L25) — `override def cacheLevel: CacheLevel = ASTNode.CacheLevel.Global`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:26`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L26) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:27`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L27) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:28`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L28) — `override def description = "Returns the mentioned screen names in a given piece of text."`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:29`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L29) — `override def arguments: Seq[String] = Seq("Text to extract screen names from")`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:30`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L30) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:34`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L34) — `override protected def initialValue = new Extractor`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:37`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L37) — `override def evaluate(context: Context[ScarecrowRuntime], text: String): JList[String] = {`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:42`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L42) — `object IsTestUser extends FunctionUnit1[ScarecrowRuntime, Long, Boolean] {`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:44`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L44) — `override def cacheLevel: CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:45`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L45) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:46`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L46) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:47`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L47) — `override def description =`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:49`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L49) — `override def arguments: Seq[String] = Seq[String]("the user ID")`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:50`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L50) — `override def examples: Seq[String] = Seq[String]("IsTestUser(2050004934)")`
+- [`scarecrow/legacy/FunctionsWithoutDownstreams.scala:52`](../source/scarecrow/legacy/FunctionsWithoutDownstreams.scala#L52) — `override def evaluate(context: Context[ScarecrowRuntime], userId: Long): Boolean = {`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:9`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L9) — `object GetUser`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:12`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L12) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:13`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L13) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:14`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L14) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Gizmoduck)`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:15`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L15) — `override def description = "get gizmoduck user given a userId"`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:16`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L16) — `override def arguments: Seq[String] = Seq[String]("user-id")`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:17`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L17) — `override def examples: Seq[String] = Seq[String]("GetUser(123)")`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:19`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L19) — `override def evaluate(`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:27`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L27) — `object GetUserIdFromScreenName extends FunctionUnit1[ScarecrowRuntime, String, Future[Long]] {`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:29`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L29) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:30`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L30) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:31`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L31) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Gizmoduck)`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:32`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L32) — `override def description = "Function to get userID given the user's screen name"`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:33`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L33) — `override def arguments: Seq[String] = Seq[String]("user ID")`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:34`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L34) — `override def examples: Seq[String] = Seq[String]("GetUserIdFromScreenName(\"testuser\")")`
+- [`scarecrow/legacy/GizmoduckRegistry.scala:36`](../source/scarecrow/legacy/GizmoduckRegistry.scala#L36) — `override def evaluate(`
+- [`scarecrow/legacy/GuanoRegistry.scala:11`](../source/scarecrow/legacy/GuanoRegistry.scala#L11) — `object AddGuanoNote`
+- [`scarecrow/legacy/GuanoRegistry.scala:16`](../source/scarecrow/legacy/GuanoRegistry.scala#L16) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/GuanoRegistry.scala:17`](../source/scarecrow/legacy/GuanoRegistry.scala#L17) — `override def actionLevel: ActionLevel = ActionLevel.PROD_OTHER_ACTION`
+- [`scarecrow/legacy/GuanoRegistry.scala:18`](../source/scarecrow/legacy/GuanoRegistry.scala#L18) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Guano)`
+- [`scarecrow/legacy/GuanoRegistry.scala:19`](../source/scarecrow/legacy/GuanoRegistry.scala#L19) — `override def description = "Add a guano note."`
+- [`scarecrow/legacy/GuanoRegistry.scala:20`](../source/scarecrow/legacy/GuanoRegistry.scala#L20) — `override def arguments: Seq[String] = Seq[String]("userId", "byUserId", "note to add")`
+- [`scarecrow/legacy/GuanoRegistry.scala:21`](../source/scarecrow/legacy/GuanoRegistry.scala#L21) — `override def examples: Seq[String] = Seq[String]("AddGuanoNote(1111, 2222, \"test note\")")`
+- [`scarecrow/legacy/GuanoRegistry.scala:23`](../source/scarecrow/legacy/GuanoRegistry.scala#L23) — `override def evaluate(`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:13`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L13) — `object AddToHLL`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:29`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L29) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:30`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L30) — `override def actionLevel: ActionLevel = ActionLevel.PROD_OTHER_ACTION`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:31`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L31) — `override def downstreams: Set[DownstreamService] =`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:33`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L33) — `override def description =`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:35`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L35) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:47`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L47) — `override def evaluate(`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:74`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L74) — `object GetHLLCount`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:88`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L88) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:89`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L89) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:90`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L90) — `override def downstreams: Set[DownstreamService] =`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:92`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L92) — `override def description =`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:94`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L94) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/HllCounterStoreRegistry.scala:105`](../source/scarecrow/legacy/HllCounterStoreRegistry.scala#L105) — `override def evaluate(`
+- [`scarecrow/legacy/LimiterRegistry.scala:14`](../source/scarecrow/legacy/LimiterRegistry.scala#L14) — `object GetFeatureCountLite`
+- [`scarecrow/legacy/LimiterRegistry.scala:25`](../source/scarecrow/legacy/LimiterRegistry.scala#L25) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/LimiterRegistry.scala:26`](../source/scarecrow/legacy/LimiterRegistry.scala#L26) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/LimiterRegistry.scala:27`](../source/scarecrow/legacy/LimiterRegistry.scala#L27) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.LimiterService)`
+- [`scarecrow/legacy/LimiterRegistry.scala:28`](../source/scarecrow/legacy/LimiterRegistry.scala#L28) — `override def description: String =`
+- [`scarecrow/legacy/LimiterRegistry.scala:35`](../source/scarecrow/legacy/LimiterRegistry.scala#L35) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/LimiterRegistry.scala:44`](../source/scarecrow/legacy/LimiterRegistry.scala#L44) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/LimiterRegistry.scala:47`](../source/scarecrow/legacy/LimiterRegistry.scala#L47) — `override def evaluate(`
+- [`scarecrow/legacy/LimiterRegistry.scala:67`](../source/scarecrow/legacy/LimiterRegistry.scala#L67) — `object IncrementFeatureCountLite`
+- [`scarecrow/legacy/LimiterRegistry.scala:72`](../source/scarecrow/legacy/LimiterRegistry.scala#L72) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Never`
+- [`scarecrow/legacy/LimiterRegistry.scala:73`](../source/scarecrow/legacy/LimiterRegistry.scala#L73) — `override def actionLevel: ActionLevel = ActionLevel.PROD_OTHER_ACTION`
+- [`scarecrow/legacy/LimiterRegistry.scala:74`](../source/scarecrow/legacy/LimiterRegistry.scala#L74) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.LimiterService)`
+- [`scarecrow/legacy/LimiterRegistry.scala:75`](../source/scarecrow/legacy/LimiterRegistry.scala#L75) — `override def description: String =`
+- [`scarecrow/legacy/LimiterRegistry.scala:82`](../source/scarecrow/legacy/LimiterRegistry.scala#L82) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/LimiterRegistry.scala:89`](../source/scarecrow/legacy/LimiterRegistry.scala#L89) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/LimiterRegistry.scala:92`](../source/scarecrow/legacy/LimiterRegistry.scala#L92) — `override def evaluate(`
+- [`scarecrow/legacy/ModelRegistry.scala:7`](../source/scarecrow/legacy/ModelRegistry.scala#L7) — `object ModelRuntime {`
+- [`scarecrow/legacy/ModelRegistry.scala:11`](../source/scarecrow/legacy/ModelRegistry.scala#L11) — `trait ModelRuntime {`
+- [`scarecrow/legacy/ModelRegistry.scala:13`](../source/scarecrow/legacy/ModelRegistry.scala#L13) — `def containsModel(modelId: String): Boolean`
+- [`scarecrow/legacy/ModelRegistry.scala:14`](../source/scarecrow/legacy/ModelRegistry.scala#L14) — `def getModel[T <: Model](modelId: String): T`
+- [`scarecrow/legacy/ModelRegistry.scala:17`](../source/scarecrow/legacy/ModelRegistry.scala#L17) — `trait ModelScarecrowRuntime extends ModelRuntime { self: ScarecrowRuntime =>`
+- [`scarecrow/legacy/ModelRegistry.scala:19`](../source/scarecrow/legacy/ModelRegistry.scala#L19) — `override def containsModel(modelId: String): Boolean = {`
+- [`scarecrow/legacy/ModelRegistry.scala:23`](../source/scarecrow/legacy/ModelRegistry.scala#L23) — `override def getModel[T <: Model](modelId: String): T = {`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:13`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L13) — `object CreateRtpReportAsyncProd`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:18`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L18) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:20`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L20) — `override def actionLevel: ActionLevel = ActionLevel.PROD_AGENT_WORKFLOW_ACTION`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:22`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L22) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Eventbus)`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:24`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L24) — `override def description: String = "Creates a report in RTP async via prod event bus."`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:26`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L26) — `override def arguments: Seq[String] = Seq(`
+- [`scarecrow/legacy/ReportServiceRegistry.scala:35`](../source/scarecrow/legacy/ReportServiceRegistry.scala#L35) — `override def evaluate(`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:13`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L13) — `object GetTweetIdsForSlugs`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:16`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L16) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:17`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L17) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:18`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L18) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.SlugToTweetIdStore)`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:19`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L19) — `override def description =`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:21`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L21) — `override def arguments: Seq[String] = Seq[String]("list of t.co slugs")`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:22`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L22) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/SlugToTweetIdStoreRegistry.scala:25`](../source/scarecrow/legacy/SlugToTweetIdStoreRegistry.scala#L25) — `override def evaluate(`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:17`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L17) — `object GetLabel extends FunctionUnit2[ScarecrowRuntime, String, String, Future[String]] {`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:19`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L19) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:20`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L20) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:21`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L21) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanLabelstore)`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:22`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L22) — `override def description: String =`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:27`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L27) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:29`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L29) — `override def examples: Seq[String] = Seq[String]("GetLabel(\"testLabelNamespace\", \"testKey\")")`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:31`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L31) — `override def evaluate(`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:50`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L50) — `class SetLabel`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:57`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L57) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:58`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L58) — `override def actionLevel: ActionLevel = ActionLevel.PROD_OTHER_ACTION`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:59`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L59) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanLabelstore)`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:60`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L60) — `override def description: String =`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:65`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L65) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:73`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L73) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:80`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L80) — `override def evaluate(`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:106`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L106) — `object SetLabel extends SetLabel`
+- [`scarecrow/legacy/SpamLabelStoreRegistry.scala:108`](../source/scarecrow/legacy/SpamLabelStoreRegistry.scala#L108) — `object SetLabelWithTtl extends SetLabel`
+- [`scarecrow/legacy/StratoRegistry.scala:25`](../source/scarecrow/legacy/StratoRegistry.scala#L25) — `object DoStratoColumnOp`
+- [`scarecrow/legacy/StratoRegistry.scala:27`](../source/scarecrow/legacy/StratoRegistry.scala#L27) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/StratoRegistry.scala:28`](../source/scarecrow/legacy/StratoRegistry.scala#L28) — `override def actionLevel: ActionLevel = ActionLevel.PROD_TANGIBLE_IMPACT_ACTION`
+- [`scarecrow/legacy/StratoRegistry.scala:29`](../source/scarecrow/legacy/StratoRegistry.scala#L29) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.StratoUserNsfaScore)`
+- [`scarecrow/legacy/StratoRegistry.scala:30`](../source/scarecrow/legacy/StratoRegistry.scala#L30) — `override def description = "Given space, path, op and args JSON string, do the strato column op"`
+- [`scarecrow/legacy/StratoRegistry.scala:31`](../source/scarecrow/legacy/StratoRegistry.scala#L31) — `override def arguments: Seq[String] = Seq("space", "path", "op", "args JSON string")`
+- [`scarecrow/legacy/StratoRegistry.scala:33`](../source/scarecrow/legacy/StratoRegistry.scala#L33) — `override def evaluate(`
+- [`scarecrow/legacy/StratoRegistry.scala:55`](../source/scarecrow/legacy/StratoRegistry.scala#L55) — `object ArgsToStratoJson extends FunctionUnit1V[ScarecrowRuntime, String, AnyRef, String] {`
+- [`scarecrow/legacy/StratoRegistry.scala:56`](../source/scarecrow/legacy/StratoRegistry.scala#L56) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Global`
+- [`scarecrow/legacy/StratoRegistry.scala:57`](../source/scarecrow/legacy/StratoRegistry.scala#L57) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/StratoRegistry.scala:58`](../source/scarecrow/legacy/StratoRegistry.scala#L58) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/legacy/StratoRegistry.scala:59`](../source/scarecrow/legacy/StratoRegistry.scala#L59) — `override def description: String =`
+- [`scarecrow/legacy/StratoRegistry.scala:61`](../source/scarecrow/legacy/StratoRegistry.scala#L61) — `override def arguments: Seq[String] = Seq("strato column op", "strato column op args")`
+- [`scarecrow/legacy/StratoRegistry.scala:63`](../source/scarecrow/legacy/StratoRegistry.scala#L63) — `override def evaluate(`
+- [`scarecrow/legacy/StratoRegistry.scala:79`](../source/scarecrow/legacy/StratoRegistry.scala#L79) — `private def checkStratoOpNumArgs(op: String, args: Seq[AnyRef], expectedNumArgs: Int): Unit = {`
+- [`scarecrow/legacy/StratoRegistry.scala:87`](../source/scarecrow/legacy/StratoRegistry.scala#L87) — `object GetTweetRtfLabels extends FunctionUnit1[ScarecrowRuntime, Long, Future[JSet[String]]] {`
+- [`scarecrow/legacy/StratoRegistry.scala:89`](../source/scarecrow/legacy/StratoRegistry.scala#L89) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/StratoRegistry.scala:91`](../source/scarecrow/legacy/StratoRegistry.scala#L91) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/StratoRegistry.scala:93`](../source/scarecrow/legacy/StratoRegistry.scala#L93) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.StratoSafetyLabels)`
+- [`scarecrow/legacy/StratoRegistry.scala:95`](../source/scarecrow/legacy/StratoRegistry.scala#L95) — `override def description =`
+- [`scarecrow/legacy/StratoRegistry.scala:98`](../source/scarecrow/legacy/StratoRegistry.scala#L98) — `override def arguments: Seq[String] = Seq[String]("the tweet id")`
+- [`scarecrow/legacy/StratoRegistry.scala:100`](../source/scarecrow/legacy/StratoRegistry.scala#L100) — `override def examples: Seq[String] = Seq[String]("GetTweetRtfLabels(12345)")`
+- [`scarecrow/legacy/StratoRegistry.scala:102`](../source/scarecrow/legacy/StratoRegistry.scala#L102) — `override def evaluate(`
+- [`scarecrow/legacy/StratoRegistry.scala:120`](../source/scarecrow/legacy/StratoRegistry.scala#L120) — `object GetUserCredV2`
+- [`scarecrow/legacy/StratoRegistry.scala:122`](../source/scarecrow/legacy/StratoRegistry.scala#L122) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/StratoRegistry.scala:123`](../source/scarecrow/legacy/StratoRegistry.scala#L123) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/StratoRegistry.scala:124`](../source/scarecrow/legacy/StratoRegistry.scala#L124) — `override def downstreams: Set[DownstreamService] = Set(`
+- [`scarecrow/legacy/StratoRegistry.scala:127`](../source/scarecrow/legacy/StratoRegistry.scala#L127) — `override def description: String =`
+- [`scarecrow/legacy/StratoRegistry.scala:129`](../source/scarecrow/legacy/StratoRegistry.scala#L129) — `override def arguments: Seq[String] = Seq("User ID")`
+- [`scarecrow/legacy/StratoRegistry.scala:130`](../source/scarecrow/legacy/StratoRegistry.scala#L130) — `override def evaluate(`
+- [`scarecrow/legacy/StratoRegistry.scala:137`](../source/scarecrow/legacy/StratoRegistry.scala#L137) — `object GetUserHealthScores`
+- [`scarecrow/legacy/StratoRegistry.scala:141`](../source/scarecrow/legacy/StratoRegistry.scala#L141) — `override def cacheLevel: CacheLevel = CacheLevel.Event`
+- [`scarecrow/legacy/StratoRegistry.scala:142`](../source/scarecrow/legacy/StratoRegistry.scala#L142) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/StratoRegistry.scala:143`](../source/scarecrow/legacy/StratoRegistry.scala#L143) — `override def downstreams: Set[DownstreamService] =`
+- [`scarecrow/legacy/StratoRegistry.scala:145`](../source/scarecrow/legacy/StratoRegistry.scala#L145) — `override def description: String =`
+- [`scarecrow/legacy/StratoRegistry.scala:147`](../source/scarecrow/legacy/StratoRegistry.scala#L147) — `override def arguments: Seq[String] = Seq("User ID", "User Health Models")`
+- [`scarecrow/legacy/StratoRegistry.scala:148`](../source/scarecrow/legacy/StratoRegistry.scala#L148) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/StratoRegistry.scala:151`](../source/scarecrow/legacy/StratoRegistry.scala#L151) — `override def evaluate(`
+- [`scarecrow/legacy/StratoRegistry.scala:170`](../source/scarecrow/legacy/StratoRegistry.scala#L170) — `object GetUserHealthSignals`
+- [`scarecrow/legacy/StratoRegistry.scala:174`](../source/scarecrow/legacy/StratoRegistry.scala#L174) — `override def cacheLevel: CacheLevel = CacheLevel.Event`
+- [`scarecrow/legacy/StratoRegistry.scala:175`](../source/scarecrow/legacy/StratoRegistry.scala#L175) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/StratoRegistry.scala:176`](../source/scarecrow/legacy/StratoRegistry.scala#L176) — `override def downstreams: Set[DownstreamService] =`
+- [`scarecrow/legacy/StratoRegistry.scala:178`](../source/scarecrow/legacy/StratoRegistry.scala#L178) — `override def description: String =`
+- [`scarecrow/legacy/StratoRegistry.scala:180`](../source/scarecrow/legacy/StratoRegistry.scala#L180) — `override def arguments: Seq[String] = Seq("User ID", "User Health Signals")`
+- [`scarecrow/legacy/StratoRegistry.scala:181`](../source/scarecrow/legacy/StratoRegistry.scala#L181) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/StratoRegistry.scala:184`](../source/scarecrow/legacy/StratoRegistry.scala#L184) — `override def evaluate(`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:11`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L11) — `object GetTweet`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:19`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L19) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:20`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L20) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:21`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L21) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Tweetypie)`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:22`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L22) — `override def description = "Fetches a Tweet from Tweetypie."`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:23`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L23) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:28`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L28) — `override def examples: Seq[String] = Seq[String]("GetTweet(123)")`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:30`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L30) — `override def evaluate(`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:44`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L44) — `object GetTweetInfo extends FunctionUnit1[ScarecrowRuntime, Long, Future[JMap[String, AnyRef]]] {`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:46`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L46) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:47`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L47) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:48`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L48) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Tweetypie)`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:49`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L49) — `override def description =`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:51`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L51) — `override def arguments: Seq[String] = Seq[String]("the tweet id")`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:52`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L52) — `override def examples: Seq[String] = Seq[String]("GetTweetInfo(123456789)")`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:54`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L54) — `override def evaluate(`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:66`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L66) — `object GetTweetText extends FunctionUnit1[ScarecrowRuntime, Long, Future[String]] {`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:70`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L70) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:71`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L71) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:72`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L72) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Tweetypie)`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:73`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L73) — `override def description = "The text of a tweet."`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:74`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L74) — `override def arguments: Seq[String] = Seq[String]("the tweet id")`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:75`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L75) — `override def examples: Seq[String] = Seq[String]("GetTweetText(123456789)")`
+- [`scarecrow/legacy/TweetServiceRegistry.scala:77`](../source/scarecrow/legacy/TweetServiceRegistry.scala#L77) — `override def evaluate(context: Context[ScarecrowRuntime], tweetId: Long): Future[String] = {`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:10`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L10) — `object GetUrls extends FunctionUnit1[ScarecrowRuntime, String, JSet[String]] {`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:12`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L12) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Global`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:13`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L13) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:14`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L14) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:15`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L15) — `override def description = "The set of URLs extracted from the given text string."`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:16`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L16) — `override def arguments: Seq[String] = Seq[String]("text string")`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:17`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L17) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlPartsRegistry.scala:20`](../source/scarecrow/legacy/UrlPartsRegistry.scala#L20) — `override def evaluate(`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:13`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L13) — `object GetUrlResolutions`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:16`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L16) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:17`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L17) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:19`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L19) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.Pinkstore)`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:21`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L21) — `override def description = "The redirect chains for a set of urls."`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:22`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L22) — `override def arguments: Seq[String] = Seq[String]("set of strings")`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:23`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L23) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlResolutionRegistry.scala:28`](../source/scarecrow/legacy/UrlResolutionRegistry.scala#L28) — `override def evaluate(`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:12`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L12) — `object GetSlugsForUrl`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:15`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L15) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:16`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L16) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:17`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L17) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.UrlToSlugStore)`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:18`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L18) — `override def description =`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:20`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L20) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:26`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L26) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlToSlugStoreRegistry.scala:29`](../source/scarecrow/legacy/UrlToSlugStoreRegistry.scala#L29) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:13`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L13) — `object GetReputationV2`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:17`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L17) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:18`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L18) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:19`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L19) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:20`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L20) — `override def description =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:22`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L22) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:24`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L24) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:29`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L29) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:40`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L40) — `object GetUrlVerdict extends FunctionUnit1[ScarecrowRuntime, String, Future[String]] {`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:42`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L42) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:43`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L43) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:44`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L44) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:45`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L45) — `override def description = "Gets the verdict for a given url"`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:46`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L46) — `override def arguments: Seq[String] = Seq[String]("url url", "verdict verdict")`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:47`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L47) — `override def examples: Seq[String] = Seq[String]("GetUrlVerdict(\"http://www.url1.com/\")")`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:49`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L49) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:61`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L61) — `object GetUrlVerdictForSingleChain`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:64`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L64) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:65`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L65) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:66`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L66) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:67`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L67) — `override def description = "The verdict (GOOD/BAD/UNKNOWN) for a single url redirect chain."`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:68`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L68) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:70`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L70) — `override def examples: Seq[String] = Seq[String]("GetUrlVerdictForSingleChain(resolutionChain)")`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:72`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L72) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:84`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L84) — `object GetUrlVerdictForSingleChainV2`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:87`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L87) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:88`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L88) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:89`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L89) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:90`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L90) — `override def description =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:92`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L92) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:94`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L94) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:97`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L97) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:108`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L108) — `object GetUrlVerdictV2`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:111`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L111) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:112`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L112) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:113`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L113) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:114`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L114) — `override def description =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:116`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L116) — `override def arguments: Seq[String] = Seq[String]("String url")`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:117`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L117) — `override def examples: Seq[String] = Seq[String]("GetUrlVerdictV2(\"twitter.com\")")`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:119`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L119) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:130`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L130) — `object DeleteUrlVerdictIf`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:135`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L135) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:136`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L136) — `override def actionLevel: ActionLevel = ActionLevel.PROD_TANGIBLE_IMPACT_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:137`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L137) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:138`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L138) — `override def description =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:140`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L140) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:142`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L142) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:149`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L149) — `override def evaluate(`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:168`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L168) — `object WriteUrlVerdictsV2`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:177`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L177) — `override def cacheLevel: CacheLevel = com.twitter.botmaker.ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:178`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L178) — `override def actionLevel: ActionLevel = ActionLevel.PROD_TANGIBLE_IMPACT_ACTION`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:179`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L179) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.ManhattanUrlReputation)`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:180`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L180) — `override def description =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:182`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L182) — `override def arguments: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:192`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L192) — `override def examples: Seq[String] =`
+- [`scarecrow/legacy/UrlVerdictRegistry.scala:198`](../source/scarecrow/legacy/UrlVerdictRegistry.scala#L198) — `override def evaluate(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:26`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L26) — `object XReviewIntakeRegistry extends TwitterPrivateModule {`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:37`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L37) — `def providesXReviewReportSubmitter(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:59`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L59) — `override def singletonShutdown(injector: Injector): Unit =`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:63`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L63) — `object CreateXReviewReportProd`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:76`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L76) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:77`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L77) — `override def actionLevel: ActionLevel = ActionLevel.PROD_AGENT_WORKFLOW_ACTION`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:78`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L78) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.XReviewIntake)`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:79`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L79) — `override def description: String =`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:85`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L85) — `override def arguments: Seq[String] = Seq(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:94`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L94) — `override def examples: Seq[String] = Seq(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:99`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L99) — `override def evaluate(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:123`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L123) — `object CreateXReviewReportStaging`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:136`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L136) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:137`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L137) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:138`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L138) — `override def downstreams: Set[DownstreamService] = Set(DownstreamServices.XReviewIntake)`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:139`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L139) — `override def description: String =`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:144`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L144) — `override def arguments: Seq[String] = Seq(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:153`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L153) — `override def examples: Seq[String] = Seq(`
+- [`scarecrow/legacy/XReviewIntakeRegistry.scala:157`](../source/scarecrow/legacy/XReviewIntakeRegistry.scala#L157) — `override def evaluate(`
+- [`scarecrow/legacy/XReviewReportBuilder.scala:9`](../source/scarecrow/legacy/XReviewReportBuilder.scala#L9) — `object XReviewReportBuilder {`
+- [`scarecrow/legacy/XReviewReportBuilder.scala:23`](../source/scarecrow/legacy/XReviewReportBuilder.scala#L23) — `def normalizeEntityType(entityType: String): Option[String] = {`
+- [`scarecrow/legacy/XReviewReportBuilder.scala:27`](../source/scarecrow/legacy/XReviewReportBuilder.scala#L27) — `def toSubmitReportRequest(`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:10`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L10) — `class XReviewReportSubmitter(`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:23`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L23) — `def submit(`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:71`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L71) — `def close(): Unit = {`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:76`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L76) — `private def clientFor(staging: Boolean): Option[XReviewIntakeClient] =`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:80`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L80) — `object XReviewReportSubmitter {`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:82`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L82) — `def apply(`
+- [`scarecrow/legacy/XReviewReportSubmitter.scala:89`](../source/scarecrow/legacy/XReviewReportSubmitter.scala#L89) — `def noop(statsReceiver: StatsReceiver): XReviewReportSubmitter =`
+- [`scarecrow/legacy/function/Log.scala:18`](../source/scarecrow/legacy/function/Log.scala#L18) — `object Log {`
+- [`scarecrow/legacy/function/Log.scala:43`](../source/scarecrow/legacy/function/Log.scala#L43) — `class Log(val exprText: String, val children: ImmutableList[ASTNode[_]])`
+- [`scarecrow/legacy/function/Log.scala:46`](../source/scarecrow/legacy/function/Log.scala#L46) — `override def getSignature: ASTNode.Signature = Log.signature`
+- [`scarecrow/legacy/function/Log.scala:48`](../source/scarecrow/legacy/function/Log.scala#L48) — `override protected def getCacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Event`
+- [`scarecrow/legacy/function/Log.scala:50`](../source/scarecrow/legacy/function/Log.scala#L50) — `override def toExtractor: Extractor[ScarecrowRuntime] = {`
+- [`scarecrow/legacy/function/Log.scala:56`](../source/scarecrow/legacy/function/Log.scala#L56) — `override def run(context: Context[ScarecrowRuntime]): Future[AnyRef] = {`
+- [`scarecrow/legacy/function/RateLimited.scala:22`](../source/scarecrow/legacy/function/RateLimited.scala#L22) — `object RateLimited {`
+- [`scarecrow/legacy/function/RateLimited.scala:48`](../source/scarecrow/legacy/function/RateLimited.scala#L48) — `class RateLimited(val exprText: String, val children: ImmutableList[ASTNode[_]])`
+- [`scarecrow/legacy/function/RateLimited.scala:50`](../source/scarecrow/legacy/function/RateLimited.scala#L50) — `override def getCacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Never`
+- [`scarecrow/legacy/function/RateLimited.scala:51`](../source/scarecrow/legacy/function/RateLimited.scala#L51) — `override def getSignature: ASTNode.Signature = RateLimited.SIGNATURE`
+- [`scarecrow/legacy/function/RateLimited.scala:53`](../source/scarecrow/legacy/function/RateLimited.scala#L53) — `override def toExtractor: Extractor[ScarecrowRuntime] = {`
+- [`scarecrow/legacy/function/RateLimited.scala:75`](../source/scarecrow/legacy/function/RateLimited.scala#L75) — `override def run(context: Context[ScarecrowRuntime]): Future[AnyRef] = {`
+- [`scarecrow/legacy/function/RateLimited.scala:94`](../source/scarecrow/legacy/function/RateLimited.scala#L94) — `override def apply(): Future[AnyRef] = {`
+- [`scarecrow/legacy/function/RateLimited.scala:100`](../source/scarecrow/legacy/function/RateLimited.scala#L100) — `override def apply(): Pair[Optional[UserAction], Future[AnyRef]] = {`
+- [`scarecrow/sys/FixBotMakerLog.scala:19`](../source/scarecrow/sys/FixBotMakerLog.scala#L19) — `object FixBotMakerLog extends FunctionUnit1[ScarecrowRuntime, BotMakerLog, BotMakerLog] {`
+- [`scarecrow/sys/FixBotMakerLog.scala:20`](../source/scarecrow/sys/FixBotMakerLog.scala#L20) — `override def cacheLevel: ASTNode.CacheLevel = ASTNode.CacheLevel.Global`
+- [`scarecrow/sys/FixBotMakerLog.scala:22`](../source/scarecrow/sys/FixBotMakerLog.scala#L22) — `override def actionLevel: ActionLevel = ActionLevel.NO_ACTION`
+- [`scarecrow/sys/FixBotMakerLog.scala:24`](../source/scarecrow/sys/FixBotMakerLog.scala#L24) — `override def downstreams: Set[DownstreamService] = Set.empty`
+- [`scarecrow/sys/FixBotMakerLog.scala:26`](../source/scarecrow/sys/FixBotMakerLog.scala#L26) — `override def description: String =`
+- [`scarecrow/sys/FixBotMakerLog.scala:29`](../source/scarecrow/sys/FixBotMakerLog.scala#L29) — `override def arguments: Seq[String] =`
+- [`scarecrow/sys/FixBotMakerLog.scala:34`](../source/scarecrow/sys/FixBotMakerLog.scala#L34) — `override def examples: Seq[String] = Nil`
+- [`scarecrow/sys/FixBotMakerLog.scala:36`](../source/scarecrow/sys/FixBotMakerLog.scala#L36) — `override def evaluate(context: Context[ScarecrowRuntime], log: BotMakerLog): BotMakerLog = {`
+- [`scarecrow/sys/FixBotMakerLog.scala:40`](../source/scarecrow/sys/FixBotMakerLog.scala#L40) — `private def fixFeatureMap(features: JMap[String, FeatureData]): JMap[String, FeatureData] = {`
+- [`scarecrow/sys/FixBotMakerLog.scala:55`](../source/scarecrow/sys/FixBotMakerLog.scala#L55) — `private def fixFeatureValue(fv: FeatureValue): FeatureValue = {`
+- [`scarecrow/sys/FixBotMakerLog.scala:89`](../source/scarecrow/sys/FixBotMakerLog.scala#L89) — `private def stringValue(x: AnyRef): String = {`
+- [`scarecrow/util/RegexUtils.scala:8`](../source/scarecrow/util/RegexUtils.scala#L8) — `object RegexUtils {`
+- [`scarecrow/util/RegexUtils.scala:29`](../source/scarecrow/util/RegexUtils.scala#L29) — `def similarLetters(codePoint: Int): String = {`
+- [`scarecrow/util/RegexUtils.scala:38`](../source/scarecrow/util/RegexUtils.scala#L38) — `def separatedLetters(string: String): String = {`
+- [`scarecrow/util/RegexUtils.scala:47`](../source/scarecrow/util/RegexUtils.scala#L47) — `def separatedLettersUnicode(string: String): String = {`
+- [`scarecrow/util/RegexUtils.scala:56`](../source/scarecrow/util/RegexUtils.scala#L56) — `def eitherSeparatedUnicode(strings: String*): String = "(?:" +`
+- [`scarecrow/util/RegexUtils.scala:61`](../source/scarecrow/util/RegexUtils.scala#L61) — `def eitherSeparated(strings: String*): String = "(?:" +`
+- [`scarecrow/util/RegexUtils.scala:68`](../source/scarecrow/util/RegexUtils.scala#L68) — `def replaceAll(`

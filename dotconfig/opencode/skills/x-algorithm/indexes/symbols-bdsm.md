@@ -1,0 +1,262 @@
+# bdsm: source symbols
+
+Mechanically extracted declarations. Search the bundled source for declarations not captured by this index.
+
+- [`bdsm/runtime/batch_prefetcher.py:32`](../source/bdsm/runtime/batch_prefetcher.py#L32) — `class _NoopTrace:`
+- [`bdsm/runtime/batch_prefetcher.py:35`](../source/bdsm/runtime/batch_prefetcher.py#L35) — `def emit(self, **kwargs):`
+- [`bdsm/runtime/batch_prefetcher.py:38`](../source/bdsm/runtime/batch_prefetcher.py#L38) — `def is_active(self, uid):`
+- [`bdsm/runtime/batch_prefetcher.py:41`](../source/bdsm/runtime/batch_prefetcher.py#L41) — `def is_active_many(self, uids):`
+- [`bdsm/runtime/batch_prefetcher.py:44`](../source/bdsm/runtime/batch_prefetcher.py#L44) — `def mark_active(self, uid):`
+- [`bdsm/runtime/batch_prefetcher.py:47`](../source/bdsm/runtime/batch_prefetcher.py#L47) — `def get_metrics(self):`
+- [`bdsm/runtime/batch_prefetcher.py:57`](../source/bdsm/runtime/batch_prefetcher.py#L57) — `def _pad_batch(batch: dict, batch_size: int) -> dict:`
+- [`bdsm/runtime/batch_prefetcher.py:60`](../source/bdsm/runtime/batch_prefetcher.py#L60) — `def _n(obj):`
+- [`bdsm/runtime/batch_prefetcher.py:74`](../source/bdsm/runtime/batch_prefetcher.py#L74) — `def _pad(obj):`
+- [`bdsm/runtime/batch_prefetcher.py:84`](../source/bdsm/runtime/batch_prefetcher.py#L84) — `def serialize_batch(`
+- [`bdsm/runtime/batch_prefetcher.py:109`](../source/bdsm/runtime/batch_prefetcher.py#L109) — `def prefetcher_loop(`
+- [`bdsm/runtime/batch_prefetcher.py:158`](../source/bdsm/runtime/batch_prefetcher.py#L158) — `def _connect_cache(kind: str, make, deadline_s: float = 300.0, retry_s: float = 5.0):`
+- [`bdsm/runtime/batch_prefetcher.py:261`](../source/bdsm/runtime/batch_prefetcher.py#L261) — `def _fetch_mh(uid: int) -> bytes | None:`
+- [`bdsm/runtime/batch_prefetcher.py:273`](../source/bdsm/runtime/batch_prefetcher.py#L273) — `def _fetch(uid: int):`
+- [`bdsm/runtime/batch_prefetcher.py:314`](../source/bdsm/runtime/batch_prefetcher.py#L314) — `def _parquet_writer():`
+- [`bdsm/runtime/batch_prefetcher.py:358`](../source/bdsm/runtime/batch_prefetcher.py#L358) — `def _flush_parquet(raw_buf, feat_buf, raw_dir, feat_dir):`
+- [`bdsm/runtime/batch_prefetcher.py:432`](../source/bdsm/runtime/batch_prefetcher.py#L432) — `def _split_member(member_str: str):`
+- [`bdsm/runtime/batch_prefetcher.py:548`](../source/bdsm/runtime/batch_prefetcher.py#L548) — `def _cat(arrays):`
+- [`bdsm/runtime/batch_prefetcher.py:791`](../source/bdsm/runtime/batch_prefetcher.py#L791) — `def _delivery_report(err, msg):`
+- [`bdsm/runtime/batch_prefetcher.py:875`](../source/bdsm/runtime/batch_prefetcher.py#L875) — `def start_health_server(metrics: dict, port: int):`
+- [`bdsm/runtime/batch_prefetcher.py:881`](../source/bdsm/runtime/batch_prefetcher.py#L881) — `def _render_prom() -> str:`
+- [`bdsm/runtime/batch_prefetcher.py:907`](../source/bdsm/runtime/batch_prefetcher.py#L907) — `class Handler(BaseHTTPRequestHandler):`
+- [`bdsm/runtime/batch_prefetcher.py:908`](../source/bdsm/runtime/batch_prefetcher.py#L908) — `def do_GET(self):`
+- [`bdsm/runtime/batch_prefetcher.py:927`](../source/bdsm/runtime/batch_prefetcher.py#L927) — `def log_message(self, *_):`
+- [`bdsm/runtime/batch_prefetcher.py:935`](../source/bdsm/runtime/batch_prefetcher.py#L935) — `def main():`
+- [`bdsm/runtime/feature_norm.py:52`](../source/bdsm/runtime/feature_norm.py#L52) — `def remap_client_platform(app_id: np.ndarray) -> np.ndarray:`
+- [`bdsm/runtime/feature_norm.py:64`](../source/bdsm/runtime/feature_norm.py#L64) — `def normalize_aseq(aseq: dict[str, np.ndarray]) -> dict[str, np.ndarray]:`
+- [`bdsm/runtime/gizmoduck_age.py:23`](../source/bdsm/runtime/gizmoduck_age.py#L23) — `def _local_cache_put(uid: int, created_at_msec: int) -> None:`
+- [`bdsm/runtime/gizmoduck_age.py:29`](../source/bdsm/runtime/gizmoduck_age.py#L29) — `def _fetch_created_at_msec(user_id: int) -> Optional[int]:`
+- [`bdsm/runtime/gizmoduck_age.py:51`](../source/bdsm/runtime/gizmoduck_age.py#L51) — `def get_user_age_hours(`
+- [`bdsm/runtime/gpu_scorer.py:29`](../source/bdsm/runtime/gpu_scorer.py#L29) — `def _file_sha256(path: str) -> str:`
+- [`bdsm/runtime/gpu_scorer.py:37`](../source/bdsm/runtime/gpu_scorer.py#L37) — `def _parse_args():`
+- [`bdsm/runtime/gpu_scorer.py:52`](../source/bdsm/runtime/gpu_scorer.py#L52) — `def _verify_pinned_weights(args) -> tuple[dict, dict, list[str]]:`
+- [`bdsm/runtime/gpu_scorer.py:86`](../source/bdsm/runtime/gpu_scorer.py#L86) — `def _start_health_server(port: int, metrics: dict, config_view: dict):`
+- [`bdsm/runtime/gpu_scorer.py:87`](../source/bdsm/runtime/gpu_scorer.py#L87) — `class H(BaseHTTPRequestHandler):`
+- [`bdsm/runtime/gpu_scorer.py:88`](../source/bdsm/runtime/gpu_scorer.py#L88) — `def do_GET(self):`
+- [`bdsm/runtime/gpu_scorer.py:98`](../source/bdsm/runtime/gpu_scorer.py#L98) — `def log_message(self, *_):`
+- [`bdsm/runtime/gpu_scorer.py:106`](../source/bdsm/runtime/gpu_scorer.py#L106) — `def _normalize_batch(batch: dict) -> dict:`
+- [`bdsm/runtime/gpu_scorer.py:115`](../source/bdsm/runtime/gpu_scorer.py#L115) — `def main() -> int:`
+- [`bdsm/runtime/gpu_scorer.py:138`](../source/bdsm/runtime/gpu_scorer.py#L138) — `def score_batch(p, hp, b):`
+- [`bdsm/runtime/gpu_scorer.py:191`](../source/bdsm/runtime/gpu_scorer.py#L191) — `def _on_delivery(err, _msg):`
+- [`bdsm/runtime/heads.py:9`](../source/bdsm/runtime/heads.py#L9) — `class Head:`
+- [`bdsm/runtime/heads.py:125`](../source/bdsm/runtime/heads.py#L125) — `def registry_hash() -> str:`
+- [`bdsm/runtime/labels.py:8`](../source/bdsm/runtime/labels.py#L8) — `def labels_to_vectors(`
+- [`bdsm/runtime/load_backbone.py:9`](../source/bdsm/runtime/load_backbone.py#L9) — `def load_params(`
+- [`bdsm/runtime/login_starter_pack_counter.py:24`](../source/bdsm/runtime/login_starter_pack_counter.py#L24) — `def _local_cache_put(uid: int, counter_ms: int) -> None:`
+- [`bdsm/runtime/login_starter_pack_counter.py:30`](../source/bdsm/runtime/login_starter_pack_counter.py#L30) — `def _local_cache_get(uid: int) -> Optional[int]:`
+- [`bdsm/runtime/login_starter_pack_counter.py:41`](../source/bdsm/runtime/login_starter_pack_counter.py#L41) — `def _fetch_counter_ms(user_id: int) -> Optional[int]:`
+- [`bdsm/runtime/login_starter_pack_counter.py:60`](../source/bdsm/runtime/login_starter_pack_counter.py#L60) — `def get_login_pack_age_minutes(`
+- [`bdsm/runtime/loss.py:7`](../source/bdsm/runtime/loss.py#L7) — `def masked_sce_focal_loss(`
+- [`bdsm/runtime/manhattan_arrow_adapter.py:11`](../source/bdsm/runtime/manhattan_arrow_adapter.py#L11) — `class _ZstdCompat:`
+- [`bdsm/runtime/manhattan_arrow_adapter.py:13`](../source/bdsm/runtime/manhattan_arrow_adapter.py#L13) — `def decompress(data: bytes) -> bytes:`
+- [`bdsm/runtime/manhattan_arrow_adapter.py:28`](../source/bdsm/runtime/manhattan_arrow_adapter.py#L28) — `def _decompress_arrow(raw_bytes: bytes) -> pa.Table:`
+- [`bdsm/runtime/manhattan_arrow_adapter.py:34`](../source/bdsm/runtime/manhattan_arrow_adapter.py#L34) — `def _extract_columns_from_arrow(`
+- [`bdsm/runtime/manhattan_arrow_adapter.py:53`](../source/bdsm/runtime/manhattan_arrow_adapter.py#L53) — `def _field_np(name, dtype=np.int64, fill=0):`
+- [`bdsm/runtime/manhattan_arrow_adapter.py:74`](../source/bdsm/runtime/manhattan_arrow_adapter.py#L74) — `def arrow_bytes_to_batch(`
+- [`bdsm/runtime/manhattan_scorer.py:9`](../source/bdsm/runtime/manhattan_scorer.py#L9) — `class ManhattanArrowReader:`
+- [`bdsm/runtime/manhattan_scorer.py:10`](../source/bdsm/runtime/manhattan_scorer.py#L10) — `def __init__(self, endpoint: str = "localhost:8080"):`
+- [`bdsm/runtime/manhattan_scorer.py:21`](../source/bdsm/runtime/manhattan_scorer.py#L21) — `def get_raw_bytes(self, user_id: int) -> bytes | None:`
+- [`bdsm/runtime/manhattan_scorer.py:42`](../source/bdsm/runtime/manhattan_scorer.py#L42) — `def get_raw_bytes_batch(`
+- [`bdsm/runtime/manhattan_scorer.py:63`](../source/bdsm/runtime/manhattan_scorer.py#L63) — `def _merge_single_user_batches(batches: list[dict], seq_len: int) -> dict:`
+- [`bdsm/runtime/manhattan_scorer.py:68`](../source/bdsm/runtime/manhattan_scorer.py#L68) — `def _concat(arrays):`
+- [`bdsm/runtime/metrics.py:6`](../source/bdsm/runtime/metrics.py#L6) — `def average_precision(y_true: np.ndarray, scores: np.ndarray) -> float:`
+- [`bdsm/runtime/model.py:12`](../source/bdsm/runtime/model.py#L12) — `class BackboneConfig:`
+- [`bdsm/runtime/model.py:24`](../source/bdsm/runtime/model.py#L24) — `def from_checkpoint_config(cls, cfg: dict) -> BackboneConfig:`
+- [`bdsm/runtime/model.py:36`](../source/bdsm/runtime/model.py#L36) — `def rms_norm(x: jax.Array, name: str) -> jax.Array:`
+- [`bdsm/runtime/model.py:42`](../source/bdsm/runtime/model.py#L42) — `def _rotate_half(x: jax.Array) -> jax.Array:`
+- [`bdsm/runtime/model.py:48`](../source/bdsm/runtime/model.py#L48) — `def _apply_rotary_pos_emb(`
+- [`bdsm/runtime/model.py:62`](../source/bdsm/runtime/model.py#L62) — `def build_time_aware_rope(`
+- [`bdsm/runtime/model.py:83`](../source/bdsm/runtime/model.py#L83) — `def _repeat_kv(x: jax.Array, n_rep: int) -> jax.Array:`
+- [`bdsm/runtime/model.py:91`](../source/bdsm/runtime/model.py#L91) — `class Backbone(hk.Module):`
+- [`bdsm/runtime/model.py:92`](../source/bdsm/runtime/model.py#L92) — `def __init__(self, config: BackboneConfig, name: str = "abuse_v3"):`
+- [`bdsm/runtime/model.py:97`](../source/bdsm/runtime/model.py#L97) — `def _build_input_embeddings(self, batch: dict) -> tuple[jax.Array, jax.Array]:`
+- [`bdsm/runtime/model.py:112`](../source/bdsm/runtime/model.py#L112) — `def semb(name: str, vocab: int, dim: int, feat: jax.Array) -> jax.Array:`
+- [`bdsm/runtime/model.py:145`](../source/bdsm/runtime/model.py#L145) — `def cont(name: str, val: jax.Array) -> jax.Array:`
+- [`bdsm/runtime/model.py:210`](../source/bdsm/runtime/model.py#L210) — `def multi_emb(name: str, vocab: int, feat: jax.Array) -> jax.Array:`
+- [`bdsm/runtime/model.py:239`](../source/bdsm/runtime/model.py#L239) — `def _transformer_layer(`
+- [`bdsm/runtime/model.py:292`](../source/bdsm/runtime/model.py#L292) — `def _transformer(`
+- [`bdsm/runtime/model.py:303`](../source/bdsm/runtime/model.py#L303) — `def encode(self, batch: dict) -> tuple[jax.Array, jax.Array, jax.Array]:`
+- [`bdsm/runtime/model.py:329`](../source/bdsm/runtime/model.py#L329) — `def build_encode_fn(config: BackboneConfig):`
+- [`bdsm/runtime/model.py:331`](../source/bdsm/runtime/model.py#L331) — `def encode_fn(batch: dict):`
+- [`bdsm/runtime/pipeline_security.py:6`](../source/bdsm/runtime/pipeline_security.py#L6) — `def kafka_ssl_config() -> dict:`
+- [`bdsm/runtime/pipeline_security.py:30`](../source/bdsm/runtime/pipeline_security.py#L30) — `class _RestrictedUnpickler(pickle.Unpickler):`
+- [`bdsm/runtime/pipeline_security.py:31`](../source/bdsm/runtime/pipeline_security.py#L31) — `def find_class(self, module, name):`
+- [`bdsm/runtime/pipeline_security.py:40`](../source/bdsm/runtime/pipeline_security.py#L40) — `def safe_pickle_loads(data: bytes):`
+- [`bdsm/runtime/score_layout.py:10`](../source/bdsm/runtime/score_layout.py#L10) — `def to_score_row(probs8: np.ndarray, head_names8: list[str]) -> np.ndarray:`
+- [`bdsm/runtime/score_layout.py:17`](../source/bdsm/runtime/score_layout.py#L17) — `def action_histogram(`
+- [`bdsm/runtime/score_layout.py:31`](../source/bdsm/runtime/score_layout.py#L31) — `def behavioral_summary(`
+- [`bdsm/runtime/score_layout.py:47`](../source/bdsm/runtime/score_layout.py#L47) — `def _dom(action_name: str) -> tuple[int, int, float]:`
+- [`bdsm/runtime/score_results_sink_focal.py:35`](../source/bdsm/runtime/score_results_sink_focal.py#L35) — `class _NoopTrace:`
+- [`bdsm/runtime/score_results_sink_focal.py:38`](../source/bdsm/runtime/score_results_sink_focal.py#L38) — `def emit(self, **kwargs):`
+- [`bdsm/runtime/score_results_sink_focal.py:41`](../source/bdsm/runtime/score_results_sink_focal.py#L41) — `def is_active(self, uid):`
+- [`bdsm/runtime/score_results_sink_focal.py:44`](../source/bdsm/runtime/score_results_sink_focal.py#L44) — `def is_active_many(self, uids):`
+- [`bdsm/runtime/score_results_sink_focal.py:47`](../source/bdsm/runtime/score_results_sink_focal.py#L47) — `def mark_active(self, uid):`
+- [`bdsm/runtime/score_results_sink_focal.py:50`](../source/bdsm/runtime/score_results_sink_focal.py#L50) — `def get_metrics(self):`
+- [`bdsm/runtime/score_results_sink_focal.py:56`](../source/bdsm/runtime/score_results_sink_focal.py#L56) — `def _challenge_salt() -> bytes:`
+- [`bdsm/runtime/score_results_sink_focal.py:77`](../source/bdsm/runtime/score_results_sink_focal.py#L77) — `def _resolve_head_names(_model_version):`
+- [`bdsm/runtime/score_results_sink_focal.py:100`](../source/bdsm/runtime/score_results_sink_focal.py#L100) — `def build_enforcement_note(head_scores_list, action_hist_list, min_actions):`
+- [`bdsm/runtime/score_results_sink_focal.py:134`](../source/bdsm/runtime/score_results_sink_focal.py#L134) — `def _build_flag_config(head_names):`
+- [`bdsm/runtime/score_results_sink_focal.py:144`](../source/bdsm/runtime/score_results_sink_focal.py#L144) — `def claim_action(`
+- [`bdsm/runtime/score_results_sink_focal.py:167`](../source/bdsm/runtime/score_results_sink_focal.py#L167) — `def pick_challenge_label(uid: int, liveness_per_10k: int, metrics=None) -> str:`
+- [`bdsm/runtime/score_results_sink_focal.py:184`](../source/bdsm/runtime/score_results_sink_focal.py#L184) — `def client_dwell_dropout(r, uid: int, args, metrics) -> bool:`
+- [`bdsm/runtime/score_results_sink_focal.py:220`](../source/bdsm/runtime/score_results_sink_focal.py#L220) — `class SinkPolicy:`
+- [`bdsm/runtime/score_results_sink_focal.py:269`](../source/bdsm/runtime/score_results_sink_focal.py#L269) — `def _load_policy(path: str | None) -> SinkPolicy:`
+- [`bdsm/runtime/score_results_sink_focal.py:313`](../source/bdsm/runtime/score_results_sink_focal.py#L313) — `class _Decision:`
+- [`bdsm/runtime/score_results_sink_focal.py:328`](../source/bdsm/runtime/score_results_sink_focal.py#L328) — `def _parse_args():`
+- [`bdsm/runtime/score_results_sink_focal.py:578`](../source/bdsm/runtime/score_results_sink_focal.py#L578) — `def _init_metrics() -> dict:`
+- [`bdsm/runtime/score_results_sink_focal.py:628`](../source/bdsm/runtime/score_results_sink_focal.py#L628) — `def _build_policy_config(args, pol):`
+- [`bdsm/runtime/score_results_sink_focal.py:741`](../source/bdsm/runtime/score_results_sink_focal.py#L741) — `def _start_health_server(args, metrics, liveness_cfg):`
+- [`bdsm/runtime/score_results_sink_focal.py:744`](../source/bdsm/runtime/score_results_sink_focal.py#L744) — `class H(BaseHTTPRequestHandler):`
+- [`bdsm/runtime/score_results_sink_focal.py:745`](../source/bdsm/runtime/score_results_sink_focal.py#L745) — `def do_GET(self):`
+- [`bdsm/runtime/score_results_sink_focal.py:763`](../source/bdsm/runtime/score_results_sink_focal.py#L763) — `def log_message(self, *_):`
+- [`bdsm/runtime/score_results_sink_focal.py:771`](../source/bdsm/runtime/score_results_sink_focal.py#L771) — `def _user_head_scores(score_row, head_names) -> list[dict]:`
+- [`bdsm/runtime/score_results_sink_focal.py:786`](../source/bdsm/runtime/score_results_sink_focal.py#L786) — `def _user_action_histogram(action_histograms, i):`
+- [`bdsm/runtime/score_results_sink_focal.py:799`](../source/bdsm/runtime/score_results_sink_focal.py#L799) — `def _decide_hard_enforcement(`
+- [`bdsm/runtime/score_results_sink_focal.py:959`](../source/bdsm/runtime/score_results_sink_focal.py#L959) — `def _cusp_lane(`
+- [`bdsm/runtime/score_results_sink_focal.py:1016`](../source/bdsm/runtime/score_results_sink_focal.py#L1016) — `def _paused_head_lane(`
+- [`bdsm/runtime/score_results_sink_focal.py:1078`](../source/bdsm/runtime/score_results_sink_focal.py#L1078) — `def _spam_bounce_lane(`
+- [`bdsm/runtime/score_results_sink_focal.py:1140`](../source/bdsm/runtime/score_results_sink_focal.py#L1140) — `def _build_bq_row(`
+- [`bdsm/runtime/score_results_sink_focal.py:1202`](../source/bdsm/runtime/score_results_sink_focal.py#L1202) — `def _publish_score_result(`
+- [`bdsm/runtime/score_results_sink_focal.py:1292`](../source/bdsm/runtime/score_results_sink_focal.py#L1292) — `def _apply_scoring_cooldowns(`
+- [`bdsm/runtime/score_results_sink_focal.py:1353`](../source/bdsm/runtime/score_results_sink_focal.py#L1353) — `def _flush_bq(bq_client, table_ref, bq_buffer, metrics):`
+- [`bdsm/runtime/score_results_sink_focal.py:1394`](../source/bdsm/runtime/score_results_sink_focal.py#L1394) — `def _log_periodic_stats(metrics, now):`
+- [`bdsm/runtime/score_results_sink_focal.py:1437`](../source/bdsm/runtime/score_results_sink_focal.py#L1437) — `def main():`
+- [`bdsm/runtime/sequence_cache.py:9`](../source/bdsm/runtime/sequence_cache.py#L9) — `def _zstd_decompress(data: bytes) -> bytes:`
+- [`bdsm/runtime/sequence_cache.py:14`](../source/bdsm/runtime/sequence_cache.py#L14) — `def _zstd_decompress(data: bytes) -> bytes:`
+- [`bdsm/runtime/sequence_cache.py:47`](../source/bdsm/runtime/sequence_cache.py#L47) — `class SequenceCacheClient:`
+- [`bdsm/runtime/sequence_cache.py:48`](../source/bdsm/runtime/sequence_cache.py#L48) — `def __init__(`
+- [`bdsm/runtime/sequence_cache.py:66`](../source/bdsm/runtime/sequence_cache.py#L66) — `def get(self, user_id: int) -> bytes | None:`
+- [`bdsm/runtime/sequence_cache.py:69`](../source/bdsm/runtime/sequence_cache.py#L69) — `def set(self, user_id: int, value: bytes, ttl_secs: int) -> None:`
+- [`bdsm/runtime/sequence_cache.py:76`](../source/bdsm/runtime/sequence_cache.py#L76) — `class RealtimeCacheClient:`
+- [`bdsm/runtime/sequence_cache.py:77`](../source/bdsm/runtime/sequence_cache.py#L77) — `def __init__(`
+- [`bdsm/runtime/sequence_cache.py:95`](../source/bdsm/runtime/sequence_cache.py#L95) — `def read_range(`
+- [`bdsm/runtime/sequence_cache.py:101`](../source/bdsm/runtime/sequence_cache.py#L101) — `def _try_import_user_action_proto():`
+- [`bdsm/runtime/sequence_cache.py:118`](../source/bdsm/runtime/sequence_cache.py#L118) — `def _proto_member_to_row(member: bytes) -> dict | None:`
+- [`bdsm/runtime/sequence_cache.py:137`](../source/bdsm/runtime/sequence_cache.py#L137) — `def _arrow_member_to_rows(member: bytes) -> list[dict]:`
+- [`bdsm/runtime/sequence_cache.py:149`](../source/bdsm/runtime/sequence_cache.py#L149) — `def _member_to_rows(member: bytes, score_ms: float) -> list[dict]:`
+- [`bdsm/runtime/sequence_cache.py:162`](../source/bdsm/runtime/sequence_cache.py#L162) — `def _coerce_row_to_struct_type(row: dict, struct_type) -> dict:`
+- [`bdsm/runtime/sequence_cache.py:189`](../source/bdsm/runtime/sequence_cache.py#L189) — `def _dedup_key(row: dict) -> tuple:`
+- [`bdsm/runtime/sequence_cache.py:198`](../source/bdsm/runtime/sequence_cache.py#L198) — `def merge_realtime_into_sequence(`
+- [`bdsm/runtime/starter_pack_follows.py:23`](../source/bdsm/runtime/starter_pack_follows.py#L23) — `def _local_cache_put(uid: int, pack_count: int) -> None:`
+- [`bdsm/runtime/starter_pack_follows.py:29`](../source/bdsm/runtime/starter_pack_follows.py#L29) — `def _local_cache_get(uid: int) -> Optional[int]:`
+- [`bdsm/runtime/starter_pack_follows.py:40`](../source/bdsm/runtime/starter_pack_follows.py#L40) — `def _fetch_pack_count(user_id: int) -> Optional[int]:`
+- [`bdsm/runtime/starter_pack_follows.py:59`](../source/bdsm/runtime/starter_pack_follows.py#L59) — `def get_followed_pack_count(`
+- [`bdsm/runtime/task_heads.py:14`](../source/bdsm/runtime/task_heads.py#L14) — `def init_head_params(emb_dim: int, hidden_dims: tuple[int, ...]) -> dict:`
+- [`bdsm/runtime/task_heads.py:27`](../source/bdsm/runtime/task_heads.py#L27) — `def head_logits(params: dict, x: jax.Array) -> jax.Array:`
+- [`bdsm/runtime/task_heads.py:36`](../source/bdsm/runtime/task_heads.py#L36) — `def load_head_params(head_checkpoint: str) -> dict:`
+- [`bdsm/rust/abuse-v3-features/src/derived.rs:4`](../source/bdsm/rust/abuse-v3-features/src/derived.rs#L4) — `pub fn compute_derived(`
+- [`bdsm/rust/abuse-v3-features/src/derived.rs:81`](../source/bdsm/rust/abuse-v3-features/src/derived.rs#L81) — `pub fn sequence_stats(f: &UserArrowFeatures, n: usize) -> (f32, f32, f32, f32, f32, f32) {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:13`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L13) — `fn get_i32(s: &StructArray, name: &str) -> Vec<i32> {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:64`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L64) — `fn get_i64(s: &StructArray, name: &str) -> Vec<i64> {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:89`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L89) — `fn get_f32(s: &StructArray, name: &str) -> Vec<f32> {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:104`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L104) — `fn get_bool(s: &StructArray, name: &str) -> Vec<bool> {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:119`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L119) — `fn get_string(s: &StructArray, name: &str) -> Vec<String> {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:140`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L140) — `fn hash_str(s: &str, modulus: u32) -> i32 {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:148`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L148) — `fn hash_i64(val: i64, modulus: u32) -> i32 {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:156`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L156) — `fn snowflake_ts_ms(tweet_id: u64) -> u64 {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:163`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L163) — `fn action_name_to_group(action_name: i32) -> i32 {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:181`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L181) — `fn action_name_to_category(action_name: i32) -> i32 {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:188`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L188) — `fn client_app_id_to_platform(app_id: i32) -> i32 {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:197`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L197) — `struct UserArrowFeatures {`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:237`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L237) — `fn extract_single_user_arrow(`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:328`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L328) — `fn extract_batch<'py>(`
+- [`bdsm/rust/abuse-v3-features/src/lib.rs:643`](../source/bdsm/rust/abuse-v3-features/src/lib.rs#L643) — `fn abuse_v3_features(m: &Bound<'_, PyModule>) -> PyResult<()> {`
+- [`bdsm/rust/accumulator/src/main.rs:19`](../source/bdsm/rust/accumulator/src/main.rs#L19) — `const USERID_OFFSET: usize = 7744;`
+- [`bdsm/rust/accumulator/src/main.rs:21`](../source/bdsm/rust/accumulator/src/main.rs#L21) — `const MIN_MSG_SIZE: usize = USERID_OFFSET + 8;`
+- [`bdsm/rust/accumulator/src/main.rs:23`](../source/bdsm/rust/accumulator/src/main.rs#L23) — `const ARROW_CONTINUATION: [u8; 4] = [0xff, 0xff, 0xff, 0xff];`
+- [`bdsm/rust/accumulator/src/main.rs:27`](../source/bdsm/rust/accumulator/src/main.rs#L27) — `struct Args {`
+- [`bdsm/rust/accumulator/src/main.rs:102`](../source/bdsm/rust/accumulator/src/main.rs#L102) — `struct Metrics {`
+- [`bdsm/rust/accumulator/src/main.rs:115`](../source/bdsm/rust/accumulator/src/main.rs#L115) — `fn new() -> Self {`
+- [`bdsm/rust/accumulator/src/main.rs:130`](../source/bdsm/rust/accumulator/src/main.rs#L130) — `struct HealthState {`
+- [`bdsm/rust/accumulator/src/main.rs:140`](../source/bdsm/rust/accumulator/src/main.rs#L140) — `struct HealthSnapshot {`
+- [`bdsm/rust/accumulator/src/main.rs:151`](../source/bdsm/rust/accumulator/src/main.rs#L151) — `fn new(`
+- [`bdsm/rust/accumulator/src/main.rs:167`](../source/bdsm/rust/accumulator/src/main.rs#L167) — `fn evaluate(&self) -> (bool, String) {`
+- [`bdsm/rust/accumulator/src/main.rs:210`](../source/bdsm/rust/accumulator/src/main.rs#L210) — `struct CooldownCache {`
+- [`bdsm/rust/accumulator/src/main.rs:217`](../source/bdsm/rust/accumulator/src/main.rs#L217) — `fn new(ttl: Duration, max_size: usize) -> Self {`
+- [`bdsm/rust/accumulator/src/main.rs:225`](../source/bdsm/rust/accumulator/src/main.rs#L225) — `fn contains_fresh(&self, uid: i64) -> bool {`
+- [`bdsm/rust/accumulator/src/main.rs:232`](../source/bdsm/rust/accumulator/src/main.rs#L232) — `fn insert(&self, uid: i64) {`
+- [`bdsm/rust/accumulator/src/main.rs:236`](../source/bdsm/rust/accumulator/src/main.rs#L236) — `fn prune(&self) {`
+- [`bdsm/rust/accumulator/src/main.rs:251`](../source/bdsm/rust/accumulator/src/main.rs#L251) — `fn len(&self) -> usize {`
+- [`bdsm/rust/accumulator/src/main.rs:256`](../source/bdsm/rust/accumulator/src/main.rs#L256) — `pub(crate) fn kafka_tls_config(cfg: &mut ClientConfig) {`
+- [`bdsm/rust/accumulator/src/main.rs:273`](../source/bdsm/rust/accumulator/src/main.rs#L273) — `fn extract_user_id_from_key(key: &[u8]) -> Option<i64> {`
+- [`bdsm/rust/accumulator/src/main.rs:294`](../source/bdsm/rust/accumulator/src/main.rs#L294) — `fn extract_user_id(payload: &[u8]) -> Option<i64> {`
+- [`bdsm/rust/accumulator/src/main.rs:314`](../source/bdsm/rust/accumulator/src/main.rs#L314) — `async fn main() -> Result<(), Box<dyn std::error::Error>> {`
+- [`bdsm/rust/accumulator/src/trace.rs:14`](../source/bdsm/rust/accumulator/src/trace.rs#L14) — `pub const TRACE_REDIS_ACTIVE_TTL_SECS: u64 = 600;`
+- [`bdsm/rust/accumulator/src/trace.rs:15`](../source/bdsm/rust/accumulator/src/trace.rs#L15) — `const FLUSH_INTERVAL_MS: u64 = 250;`
+- [`bdsm/rust/accumulator/src/trace.rs:16`](../source/bdsm/rust/accumulator/src/trace.rs#L16) — `const FLUSH_BATCH: usize = 500;`
+- [`bdsm/rust/accumulator/src/trace.rs:17`](../source/bdsm/rust/accumulator/src/trace.rs#L17) — `const CHANNEL_CAPACITY: usize = 100_000;`
+- [`bdsm/rust/accumulator/src/trace.rs:18`](../source/bdsm/rust/accumulator/src/trace.rs#L18) — `const SADD_CHANNEL_CAPACITY: usize = 200_000;`
+- [`bdsm/rust/accumulator/src/trace.rs:19`](../source/bdsm/rust/accumulator/src/trace.rs#L19) — `const SCHEMA_VERSION: i32 = 1;`
+- [`bdsm/rust/accumulator/src/trace.rs:22`](../source/bdsm/rust/accumulator/src/trace.rs#L22) — `pub struct TraceConfig {`
+- [`bdsm/rust/accumulator/src/trace.rs:34`](../source/bdsm/rust/accumulator/src/trace.rs#L34) — `pub fn from_env() -> Self {`
+- [`bdsm/rust/accumulator/src/trace.rs:61`](../source/bdsm/rust/accumulator/src/trace.rs#L61) — `pub struct TraceMetrics {`
+- [`bdsm/rust/accumulator/src/trace.rs:70`](../source/bdsm/rust/accumulator/src/trace.rs#L70) — `pub struct TraceEmitter {`
+- [`bdsm/rust/accumulator/src/trace.rs:81`](../source/bdsm/rust/accumulator/src/trace.rs#L81) — `pub struct TraceMsg {`
+- [`bdsm/rust/accumulator/src/trace.rs:97`](../source/bdsm/rust/accumulator/src/trace.rs#L97) — `pub fn disabled() -> Self {`
+- [`bdsm/rust/accumulator/src/trace.rs:109`](../source/bdsm/rust/accumulator/src/trace.rs#L109) — `pub fn new_active(config: TraceConfig) -> Self {`
+- [`bdsm/rust/accumulator/src/trace.rs:254`](../source/bdsm/rust/accumulator/src/trace.rs#L254) — `pub fn maybe_sample_consume(&self, uid: i64, partition: i32, offset: i64) {`
+- [`bdsm/rust/accumulator/src/trace.rs:291`](../source/bdsm/rust/accumulator/src/trace.rs#L291) — `pub fn is_traced(&self, uid: i64) -> bool {`
+- [`bdsm/rust/accumulator/src/trace.rs:302`](../source/bdsm/rust/accumulator/src/trace.rs#L302) — `pub fn emit_flush_decision(`
+- [`bdsm/rust/accumulator/src/trace.rs:329`](../source/bdsm/rust/accumulator/src/trace.rs#L329) — `pub fn emit_try_send_full(&self, uid: i64, partition: i32, offset: i64) {`
+- [`bdsm/rust/accumulator/src/trace.rs:350`](../source/bdsm/rust/accumulator/src/trace.rs#L350) — `fn emit_msg(&self, msg: TraceMsg) {`
+- [`bdsm/rust/accumulator/src/trace.rs:362`](../source/bdsm/rust/accumulator/src/trace.rs#L362) — `fn now_ms() -> i64 {`
+- [`bdsm/rust/accumulator/src/trace.rs:369`](../source/bdsm/rust/accumulator/src/trace.rs#L369) — `pub fn metrics_summary(m: &TraceMetrics) -> String {`
+- [`bdsm/tests/test_feature_norm.py:6`](../source/bdsm/tests/test_feature_norm.py#L6) — `def test_normalize_rewrites_action_group_from_one_hot():`
+- [`bdsm/tests/test_feature_norm.py:29`](../source/bdsm/tests/test_feature_norm.py#L29) — `def test_action_types_are_single_set_bit():`
+- [`bdsm/tests/test_heads.py:4`](../source/bdsm/tests/test_heads.py#L4) — `def test_indices_contiguous_and_unique():`
+- [`bdsm/tests/test_heads.py:8`](../source/bdsm/tests/test_heads.py#L8) — `def test_legitimate_user_is_last_head():`
+- [`bdsm/tests/test_heads.py:12`](../source/bdsm/tests/test_heads.py#L12) — `def test_eight_heads():`
+- [`bdsm/tests/test_heads.py:17`](../source/bdsm/tests/test_heads.py#L17) — `def test_flywheel_labels_unique_across_heads():`
+- [`bdsm/tests/test_heads.py:25`](../source/bdsm/tests/test_heads.py#L25) — `def test_registry_hash_pinned():`
+- [`bdsm/tests/test_heads.py:30`](../source/bdsm/tests/test_heads.py#L30) — `def test_dummy_inference_labels_are_eight_not_v4_twelve():`
+- [`bdsm/tests/test_labels.py:7`](../source/bdsm/tests/test_labels.py#L7) — `def test_impression_farmer_sets_no_head():`
+- [`bdsm/tests/test_labels.py:14`](../source/bdsm/tests/test_labels.py#L14) — `def test_dropped_head_strings_map_to_nothing():`
+- [`bdsm/tests/test_labels.py:25`](../source/bdsm/tests/test_labels.py#L25) — `def test_empty_labels_mean_legitimate_user():`
+- [`bdsm/tests/test_labels.py:33`](../source/bdsm/tests/test_labels.py#L33) — `def test_head_names_route_to_their_index():`
+- [`bdsm/tests/test_labels.py:41`](../source/bdsm/tests/test_labels.py#L41) — `def test_flywheel_strings_route_and_multi_label_unions():`
+- [`bdsm/tests/test_labels.py:48`](../source/bdsm/tests/test_labels.py#L48) — `def test_unknown_string_sets_no_head_but_not_legitimate():`
+- [`bdsm/tests/test_loss.py:10`](../source/bdsm/tests/test_loss.py#L10) — `def _toy():`
+- [`bdsm/tests/test_loss.py:17`](../source/bdsm/tests/test_loss.py#L17) — `def test_focal_stats_present_iff_gamma_positive():`
+- [`bdsm/tests/test_loss.py:26`](../source/bdsm/tests/test_loss.py#L26) — `def test_focal_downweights_easy_examples():`
+- [`bdsm/tests/test_loss.py:33`](../source/bdsm/tests/test_loss.py#L33) — `def test_masked_pairs_contribute_nothing():`
+- [`bdsm/tests/test_loss.py:44`](../source/bdsm/tests/test_loss.py#L44) — `def test_all_masked_is_finite_zero():`
+- [`bdsm/tests/test_loss.py:50`](../source/bdsm/tests/test_loss.py#L50) — `def test_smoothing_lower_bounds_loss():`
+- [`bdsm/tests/test_pipeline_security.py:7`](../source/bdsm/tests/test_pipeline_security.py#L7) — `def test_numpy_roundtrip():`
+- [`bdsm/tests/test_pipeline_security.py:14`](../source/bdsm/tests/test_pipeline_security.py#L14) — `def test_rejects_arbitrary_globals():`
+- [`bdsm/tests/test_pipeline_security.py:15`](../source/bdsm/tests/test_pipeline_security.py#L15) — `class Evil:`
+- [`bdsm/tests/test_pipeline_security.py:16`](../source/bdsm/tests/test_pipeline_security.py#L16) — `def __reduce__(self):`
+- [`bdsm/tests/test_pipeline_security.py:25`](../source/bdsm/tests/test_pipeline_security.py#L25) — `def test_tls_verification_always_on():`
+- [`bdsm/tests/test_score_layout.py:16`](../source/bdsm/tests/test_score_layout.py#L16) — `def test_to_score_row_placement():`
+- [`bdsm/tests/test_score_layout.py:24`](../source/bdsm/tests/test_score_layout.py#L24) — `def test_to_score_row_rejects_unknown_head():`
+- [`bdsm/tests/test_score_layout.py:29`](../source/bdsm/tests/test_score_layout.py#L29) — `def _mini_batch():`
+- [`bdsm/tests/test_score_layout.py:40`](../source/bdsm/tests/test_score_layout.py#L40) — `def test_action_histogram():`
+- [`bdsm/tests/test_score_layout.py:46`](../source/bdsm/tests/test_score_layout.py#L46) — `def test_behavioral_summary_dom_client_fail_safe_denominator():`
+- [`bdsm/tests/test_score_layout.py:58`](../source/bdsm/tests/test_score_layout.py#L58) — `def test_message_payload_survives_restricted_unpickler():`
+- [`bdsm/tests/test_sink_policy.py:14`](../source/bdsm/tests/test_sink_policy.py#L14) — `def _load_sink_module():`
+- [`bdsm/tests/test_sink_policy.py:24`](../source/bdsm/tests/test_sink_policy.py#L24) — `def test_shipped_policy_matches_baked_in_defaults():`
+- [`bdsm/tests/test_sink_policy.py:36`](../source/bdsm/tests/test_sink_policy.py#L36) — `def test_missing_policy_file_falls_back_to_defaults():`
+- [`bdsm/tests/test_sink_policy.py:41`](../source/bdsm/tests/test_sink_policy.py#L41) — `def test_invalid_policy_key_fails_loudly(tmp_path):`
+- [`bdsm/tests/test_sink_policy.py:49`](../source/bdsm/tests/test_sink_policy.py#L49) — `def _hist(*pairs):`
+- [`bdsm/tests/test_sink_policy.py:53`](../source/bdsm/tests/test_sink_policy.py#L53) — `def _heads(**scores):`
+- [`bdsm/tests/test_sink_policy.py:59`](../source/bdsm/tests/test_sink_policy.py#L59) — `def test_enforcement_note_gates_and_redacted_prose():`
+- [`bdsm/tests/test_sink_policy.py:75`](../source/bdsm/tests/test_sink_policy.py#L75) — `def test_enforcement_templates_are_the_redacted_sentinel():`
+- [`bdsm/tests/test_train_head.py:8`](../source/bdsm/tests/test_train_head.py#L8) — `def test_average_precision_known_values():`
+- [`bdsm/tests/test_train_head.py:14`](../source/bdsm/tests/test_train_head.py#L14) — `def test_average_precision_no_positives_is_nan():`
+- [`bdsm/tests/test_train_head.py:18`](../source/bdsm/tests/test_train_head.py#L18) — `def test_average_precision_perfect_ranking():`
+- [`bdsm/tests/test_train_head.py:24`](../source/bdsm/tests/test_train_head.py#L24) — `def test_head_param_count_under_spec_cap():`
+- [`bdsm/tests/test_train_head.py:31`](../source/bdsm/tests/test_train_head.py#L31) — `def test_head_logits_shapes_and_cap():`
+- [`bdsm/tests/test_train_head.py:48`](../source/bdsm/tests/test_train_head.py#L48) — `def test_holdout_score_labels_roundtrip():`
+- [`bdsm/tests/test_train_head.py:56`](../source/bdsm/tests/test_train_head.py#L56) — `def test_load_cached_drops_nonfinite_rows(tmp_path):`
+- [`bdsm/training/train_head.py:33`](../source/bdsm/training/train_head.py#L33) — `def load_cached(split_dir: str) -> dict:`
+- [`bdsm/training/train_head.py:69`](../source/bdsm/training/train_head.py#L69) — `def head_scores(params: dict, x: np.ndarray) -> np.ndarray:`
+- [`bdsm/training/train_head.py:79`](../source/bdsm/training/train_head.py#L79) — `def evaluate(params: dict, holdout: dict) -> dict:`
+- [`bdsm/training/train_head.py:88`](../source/bdsm/training/train_head.py#L88) — `def save_checkpoint(run_dir: str, step: int, params: dict, run_config: dict) -> None:`
+- [`bdsm/training/train_head.py:105`](../source/bdsm/training/train_head.py#L105) — `def write_holdout_scores(path: str, holdout: dict, params: dict) -> None:`
+- [`bdsm/training/train_head.py:121`](../source/bdsm/training/train_head.py#L121) — `def main() -> int:`
+- [`bdsm/training/train_head.py:178`](../source/bdsm/training/train_head.py#L178) — `def loss_fn(p, x, y, mask):`
+- [`bdsm/training/train_head.py:189`](../source/bdsm/training/train_head.py#L189) — `def train_step(p, opt_st, x, y, mask):`
