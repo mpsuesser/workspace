@@ -1,7 +1,7 @@
 {
   "plugins": [
     // "@kitlangton/opencode-session-recap",
-    "/Users/m/repos/opencode-effect-enforcer/src",
+    "/Users/m/repos/opencode-effect-enforcer/src/opencode",
     {
       "package": "/Users/m/repos/EeveE/packages/opencode/src/index.ts",
       "options": {
