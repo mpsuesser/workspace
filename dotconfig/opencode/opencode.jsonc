@@ -36,6 +36,10 @@
         "type": "remote",
         "url": "https://mcp.notion.com/mcp"
       },
+      "typefully": {
+        "type": "remote",
+        "url": "https://mcp.typefully.com/mcp"
+      },
     },
   },
   "permissions": [
