@@ -80,6 +80,11 @@
       "branch": "main",
       "description": "Full scraped documentation for Alchemy",
     },
+    "starred": {
+      "repository": "mpsuesser/starred",
+      "branch": "master",
+      "description": "A comprehensive list of all repos I've starred on GitHub (in the README.md)"
+    },
     "CurationSpace": {
       "path": "/Users/m/repos/CurationSpace",
     },
@@ -133,6 +138,12 @@
     },
     "FaradayExchange": {
       "path": "/Users/m/repos/FaradayExchange",
+    },
+    "curator": {
+      "path": "/Users/m/repos/curator",
+    },
+    "mylinkletter": {
+      "path": "/Users/m/repos/mylinkletter",
     }
   },
   "agents": {
