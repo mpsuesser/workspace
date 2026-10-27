@@ -127,27 +127,6 @@ local previousApp = nil
 --   end
 -- end)
 
--- Track focused app name in a variable (updated by appWatcher below).
--- The eventtap checks this instead of calling hs.window.focusedWindow() which
--- hits the accessibility API on every keypress and can cause macOS to kill the tap.
-local currentAppName = (hs.window.focusedWindow() and hs.window.focusedWindow():application():name()) or ""
-
--- Toggle focus for 'Zed' app with F8
--- local previousAppZed = nil
--- hs.hotkey.bind({}, 'f8', function()
---     local currentApp = hs.application.frontmostApplication()
---     if currentApp and currentApp:name() == 'Zed' then
---         -- Currently focused on Zed, switch back to previous app
---         if previousAppZed and previousAppZed:isRunning() then
---             previousAppZed:activate()
---         end
---     else
---         -- Not focused on Zed, save current app and switch to Zed
---         previousAppZed = currentApp
---         hs.application.launchOrFocus('Zed')
---     end
--- end)
-
 --------------------------------------------------------------------------------
 -- IPC: Dynamic hotkey registry (for TypeScript binding)
 --------------------------------------------------------------------------------
@@ -187,7 +166,6 @@ local contextFile = "/tmp/hs-context.json"
 
 local appWatcher = hs.application.watcher.new(function(appName, eventType, app)
     if eventType == hs.application.watcher.activated then
-        currentAppName = appName or ""
         local data = hs.json.encode({
             app = appName or "",
             bundleID = (app and app:bundleID()) or "",
@@ -200,40 +178,13 @@ end)
 appWatcher:start()
 
 --------------------------------------------------------------------------------
--- F8: focus Ghostty globally, pass through to Herdr when already focused
+-- F8 desktop switcher. Keep the object alive for event taps and IPC access.
 --------------------------------------------------------------------------------
-local ghosttyBundleID = "com.mitchellh.ghostty"
-local f8KeyCode = hs.keycodes.map.f8
-local consumeF8UntilKeyUp = false
+appSwitcher = require("app-switcher").new(hs)
+appSwitcher.start()
 
-local ghosttyFocusTap = hs.eventtap.new({
-    hs.eventtap.event.types.keyDown,
-    hs.eventtap.event.types.keyUp
-}, function(event)
-    if event:getKeyCode() ~= f8KeyCode then
-        return false
-    end
-
-    if event:getType() == hs.eventtap.event.types.keyUp then
-        if consumeF8UntilKeyUp then
-            consumeF8UntilKeyUp = false
-            return true
-        end
-        return false
-    end
-
-    if consumeF8UntilKeyUp then
-        return true
-    end
-
-    local frontmostApp = hs.application.frontmostApplication()
-    if frontmostApp and frontmostApp:bundleID() == ghosttyBundleID then
-        return false
-    end
-
-    consumeF8UntilKeyUp = true
-    hs.application.launchOrFocusByBundleID(ghosttyBundleID)
-    return true
-end)
-
-ghosttyFocusTap:start()
+local previousShutdownCallback = hs.shutdownCallback
+hs.shutdownCallback = function()
+    appSwitcher.stop()
+    if previousShutdownCallback then previousShutdownCallback() end
+end

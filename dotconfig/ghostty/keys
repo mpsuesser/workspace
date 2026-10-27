@@ -1,5 +1,5 @@
-keybind = global:f8=toggle_visibility
-# keybind = global:cmd+f8=toggle_quick_terminal
+# F8 belongs to Hammerspoon's desktop switcher (F8, then ` for Ghostty).
+keybind = global:f8=unbind
 keybind = cmd+k=unbind
 keybind = cmd+shift+p=unbind
 
