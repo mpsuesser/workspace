@@ -25,11 +25,12 @@ require("bunny"):setup({
 		{ key = "A", path = "~/repos/workspace/dotconfig/aerospace" },
 		{ key = "z", path = "~/repos/workspace/dotconfig/zed" },
 		{ key = "o", path = "~/repos/workspace/dotconfig/opencode" },
-		{ key = "s", path = "~/repos/workspace/dotconfig/pi/agent/skills" },
+		{ key = "s", path = "~/repos/workspace/dotconfig/agents/skills" },
 		{ key = "p", path = "~/repos/workspace/dotconfig/pi" },
     { key = "y", path = "~/repos/workspace/dotconfig/yazi" },
-    { key = "b", path = "~/repos/EeveE" },
 		{ key = "h", path = "~/repos/opencode-effect-enforcer" },
+		{ key = "l", path = "~/repos/LongIsland" },
+
 		-- { key = { "h", "e" }, path = "~/repos/workspace/dotconfig/helix" },
 		-- { key = { "h", "a" }, path = "~/repos/workspace/dotconfig/hammerspoon" },
 
