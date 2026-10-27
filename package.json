@@ -8,6 +8,7 @@
       "apps/*",
       "bindings/*",
       "dotconfig/*",
+      "!dotconfig/hex",
       "runtime",
       "scratchpad"
     ],
