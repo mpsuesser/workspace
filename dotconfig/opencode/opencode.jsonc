@@ -1,4 +1,30 @@
 {
+  "providers": {
+    "openai": {
+      "models": {
+        "gpt-6-astra": {
+          "limit": {
+            "input": 272000,
+          },
+        },
+        "gpt-6-astra-fast": {
+          "limit": {
+            "input": 272000,
+          },
+        },
+        "gpt-6.1-sol": {
+          "limit": {
+            "input": 272000,
+          },
+        },
+        "gpt-6.1-sol-fast": {
+          "limit": {
+            "input": 272000,
+          },
+        },
+      },
+    },
+  },
   "plugins": [
     // "@kitlangton/opencode-session-recap",
     "/Users/m/repos/opencode-effect-enforcer/src/opencode",
@@ -18,31 +44,28 @@
           "export GITHUB_PERSONAL_ACCESS_TOKEN=\"$(/opt/homebrew/bin/gh auth token)\"; exec /opt/homebrew/bin/github-mcp-server stdio --tools search_repositories --read-only",
         ],
       },
-      "linear": {
+      "curationspace-admin-dev": {
         "type": "remote",
-        "url": "https://mcp.linear.app/mcp",
+        "url": "https://admin-mcp-dev.curation.space/mcp",
+        "protocol": "2026-07-28",
+        "oauth": false,
+        "codemode": false,
+        "headers": {
+          "Authorization": "Bearer {file:/Users/m/.local/share/curationspace/credentials/admin-dev-marc-opencode-20261015-7707ac4934b5.token}"
+        }
       },
-      "marco-polo": {
+      "executor": {
         "type": "remote",
-        "url": "https://executor.sh/marco-polo/mcp",
+        "url": "https://mcp.executor.sh/mcp"
       },
-      "notion": {
-        "type": "remote",
-        "url": "https://mcp.notion.com/mcp"
-      },
-      "typefully": {
-        "type": "remote",
-        "url": "https://mcp.typefully.com/mcp"
-      },
-      "computer-use": {
-        "type": "local",
-        "command": [
-          "npx",
-          "-y",
-          "codex-computer-use-mcp@0.5.2"
-        ],
-        "cwd": "/"
-      },
+    },
+    "paper": {
+      "type": "local",
+      "command": [
+        "/Users/m/.paper/bin/paper",
+        "mcp"
+      ],
+      "enabled": true
     },
   },
   "permissions": [
