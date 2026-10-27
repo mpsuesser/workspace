@@ -2,7 +2,6 @@
   "name": "@workspace/hammerspoon-dotconfig",
   "private": true,
   "scripts": {
-    "test": "luajit tests/app-switcher-test.lua",
     "install:dotconfig": "ln -sfn \"$(pwd)\" ~/.hammerspoon"
   }
 }

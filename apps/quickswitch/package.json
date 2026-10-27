@@ -1,0 +1,10 @@
+{
+  "name": "@workspace/quickswitch",
+  "private": true,
+  "scripts": {
+    "build": "swift build -c release",
+    "check": "swift build",
+    "test": "swift test",
+    "install:app": "sh scripts/install.sh"
+  }
+}

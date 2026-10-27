@@ -1,4 +1,4 @@
-# F8 belongs to Hammerspoon's desktop switcher (F8, then ` for Ghostty).
+# F8 belongs to QuickSwitch (F8, then Q for Ghostty).
 keybind = global:f8=unbind
 keybind = cmd+k=unbind
 keybind = cmd+shift+p=unbind

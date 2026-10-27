@@ -176,15 +176,3 @@ local appWatcher = hs.application.watcher.new(function(appName, eventType, app)
     end
 end)
 appWatcher:start()
-
---------------------------------------------------------------------------------
--- F8 desktop switcher. Keep the object alive for event taps and IPC access.
---------------------------------------------------------------------------------
-appSwitcher = require("app-switcher").new(hs)
-appSwitcher.start()
-
-local previousShutdownCallback = hs.shutdownCallback
-hs.shutdownCallback = function()
-    appSwitcher.stop()
-    if previousShutdownCallback then previousShutdownCallback() end
-end
