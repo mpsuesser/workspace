@@ -33,16 +33,16 @@ _Avoid_: Client, buyer, account
 
 **Single context (most repos):** One `GLOSSARY.md` at the repo root.
 
-**Multiple contexts:** A `CONTEXT-MAP.md` at the repo root lists the contexts, where they live, and how they relate to each other:
+**Multiple contexts:** A `GLOSSARY-MAP.md` at the repo root lists the contexts, where they live, and how they relate to each other:
 
 ```md
-# Context Map
+# Glossary Map
 
 ## Contexts
 
-- [Ordering](./src/ordering/GLOSSARY.md) — receives and tracks customer orders
-- [Billing](./src/billing/GLOSSARY.md) — generates invoices and processes payments
-- [Fulfillment](./src/fulfillment/GLOSSARY.md) — manages warehouse picking and shipping
+- [Ordering](./src/ordering/GLOSSARY.md): receives and tracks customer orders
+- [Billing](./src/billing/GLOSSARY.md): generates invoices and processes payments
+- [Fulfillment](./src/fulfillment/GLOSSARY.md): manages warehouse picking and shipping
 
 ## Relationships
 
@@ -53,7 +53,7 @@ _Avoid_: Client, buyer, account
 
 The skill infers which structure applies:
 
-- If `CONTEXT-MAP.md` exists, read it to find contexts
+- If `GLOSSARY-MAP.md` exists, read it to find contexts
 - If only a root `GLOSSARY.md` exists, single context
 - If neither exists, create a root `GLOSSARY.md` lazily when the first term is resolved
 
