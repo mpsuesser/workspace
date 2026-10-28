@@ -22,8 +22,13 @@ enum SwitchError: LocalizedError {
     }
 }
 
+protocol DesktopAccess: Sendable {
+    func snapshot() async throws -> DesktopSnapshot
+    func workspace(_ name: String) async throws
+}
+
 /// Bounded subprocesses run off the UI thread. Both output streams drain concurrently.
-struct AeroSpace: Sendable {
+struct AeroSpace: DesktopAccess {
     let executable: URL
 
     init() {
@@ -98,5 +103,4 @@ struct AeroSpace: Sendable {
     }
 
     func workspace(_ name: String) async throws { _ = try await run(["workspace", name]) }
-    func revealDesktop() async throws { _ = try await run(["summon-workspace", "launcher"]) }
 }

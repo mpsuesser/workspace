@@ -89,8 +89,8 @@ import QuickSwitchCore
             return true
         }
         if type == .leftMouseUp || type == .rightMouseUp || type == .otherMouseUp {
-            // Deliver the real mouse-up before restoring the workspace. Never
-            // reactivate the source app over a dialog the user just clicked.
+            // Pass the click to the underlying app before dismissing the overlay.
+            // No activation or workspace restoration may steal its focus.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [weak self] in
                 self?.cancelAfterClick()
             }

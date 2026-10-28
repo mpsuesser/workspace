@@ -5,30 +5,6 @@ import ApplicationServices
 /// `focus --window-id` assertion. No window-server capture or private API is used.
 @MainActor final class WindowFocus {
     private var remembered: [String: AXUIElement] = [:]
-    private(set) var source: AXUIElement?
-
-    func capture(bundleID: String?, pid: pid_t?) -> (title: String?, fullscreen: Bool) {
-        source = nil
-        guard let pid else { return (nil, false) }
-        let app = AXUIElementCreateApplication(pid)
-        AXUIElementSetMessagingTimeout(app, 0.2)
-        var value: CFTypeRef?
-        guard AXUIElementCopyAttributeValue(app, kAXFocusedWindowAttribute as CFString, &value) == .success,
-              let value, CFGetTypeID(value) == AXUIElementGetTypeID() else { return (nil, false) }
-        let window = unsafeDowncast(value, to: AXUIElement.self)
-        AXUIElementSetMessagingTimeout(window, 0.2)
-        source = window
-        if let bundleID { remembered[bundleID] = window }
-        var title: CFTypeRef?
-        var fullscreen: CFTypeRef?
-        AXUIElementCopyAttributeValue(window, kAXTitleAttribute as CFString, &title)
-        AXUIElementCopyAttributeValue(window, "AXFullScreen" as CFString, &fullscreen)
-        return (title as? String, (fullscreen as? Bool) == true)
-    }
-
-    @discardableResult func restoreSource(bundleID: String) -> Bool {
-        activate(bundleID: bundleID, window: source)
-    }
 
     @discardableResult func focus(bundleID: String, title: String) -> Bool {
         if let window = remembered[bundleID], raise(window) {

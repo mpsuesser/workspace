@@ -6,6 +6,8 @@ import QuickSwitchCore
 @MainActor @Observable final class PaletteModel {
     var icons: [UInt16: NSImage] = [:]
     var highlighted: UInt16?
+    var wallpaper: NSImage?
+    var wallpaperBackdropEnabled = true
 
     static let iconDirectory = URL.applicationSupportDirectory
         .appending(path: "QuickSwitch/Icons", directoryHint: .isDirectory)
@@ -35,6 +37,14 @@ struct PaletteView: View {
 
     var body: some View {
         GeometryReader { geometry in
+            if model.wallpaperBackdropEnabled {
+                Color.black
+                if let wallpaper = model.wallpaper {
+                    Image(nsImage: wallpaper)
+                        .resizable()
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                }
+            }
             let layout = RadialLayout(size: geometry.size)
             Ellipse()
                 .fill(RadialGradient(colors: [.black.opacity(0.42), .black.opacity(0.16), .clear], center: .center, startRadius: 30, endRadius: 270))
@@ -126,19 +136,33 @@ private struct CutKey: Shape {
     }
 }
 
+@MainActor protocol PalettePresenting {
+    var usesWallpaper: Bool { get }
+    func setUsesWallpaper(_ enabled: Bool)
+    func reloadWallpapers()
+    func reloadIcons()
+    func show(on screen: NSScreen)
+    func hide()
+    func target(at globalPoint: CGPoint) -> Target?
+    func highlight(_ code: UInt16?)
+}
+
 /// A prebuilt, nonactivating, click-through panel. Only exact icon/key rectangles
 /// are intercepted by InputMonitor; empty space never blocks a system dialog.
-@MainActor final class PalettePanel {
+@MainActor final class PalettePanel: PalettePresenting {
     let model = PaletteModel()
     private let panel: NSPanel
     private var layout = RadialLayout(size: .zero)
     private var primaryTop: CGFloat = 0
+    private var wallpapers: [CGDirectDisplayID: NSImage] = [:]
+    private(set) var usesWallpaper = UserDefaults.standard.object(forKey: "wallpaperBackdrop") as? Bool ?? true
 
     init() {
         panel = NSPanel(contentRect: .zero, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         panel.isOpaque = false
         panel.backgroundColor = .clear
         panel.hasShadow = false
+        panel.animationBehavior = .none
         panel.hidesOnDeactivate = false
         panel.ignoresMouseEvents = true
         panel.isReleasedWhenClosed = false
@@ -146,15 +170,30 @@ private struct CutKey: Shape {
         panel.collectionBehavior = [.canJoinAllSpaces, .stationary, .ignoresCycle, .fullScreenAuxiliary]
         panel.contentView = NSHostingView(rootView: PaletteView(model: model))
         model.loadIcons()
+        reloadWallpapers()
+        if let screen = NSScreen.main ?? NSScreen.screens.first {
+            prepare(on: screen)
+            panel.contentView?.layoutSubtreeIfNeeded()
+            panel.displayIfNeeded()
+        }
     }
 
     func show(on screen: NSScreen) {
+        prepare(on: screen)
+        panel.orderFrontRegardless()
+        panel.displayIfNeeded()
+    }
+
+    private func prepare(on screen: NSScreen) {
         let frame = screen.visibleFrame
         primaryTop = NSScreen.screens.first?.frame.maxY ?? 0
         layout = RadialLayout(size: frame.size)
         model.highlighted = nil
-        panel.setFrame(frame, display: true)
-        panel.orderFrontRegardless()
+        model.wallpaperBackdropEnabled = usesWallpaper
+        let display = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID
+        let wallpaper = display.flatMap { wallpapers[$0] }
+        if model.wallpaper !== wallpaper { model.wallpaper = wallpaper }
+        if panel.frame != frame { panel.setFrame(frame, display: true) }
     }
 
     func target(at globalPoint: CGPoint) -> Target? {
@@ -164,4 +203,55 @@ private struct CutKey: Shape {
     }
 
     func hide() { panel.orderOut(nil); model.highlighted = nil }
+    func reloadIcons() { model.loadIcons() }
+    func setUsesWallpaper(_ enabled: Bool) {
+        usesWallpaper = enabled
+        UserDefaults.standard.set(enabled, forKey: "wallpaperBackdrop")
+        model.wallpaperBackdropEnabled = enabled
+    }
+
+    /// File access and full image decoding happen outside the F8 path.
+    func reloadWallpapers() {
+        var prepared: [CGDirectDisplayID: NSImage] = [:]
+        for screen in NSScreen.screens {
+            guard let display = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID,
+                  let url = NSWorkspace.shared.desktopImageURL(for: screen),
+                  let source = NSImage(contentsOf: url),
+                  let image = WallpaperBackdrop.render(source, screenFrame: screen.frame,
+                      visibleFrame: screen.visibleFrame, scale: screen.backingScaleFactor) else { continue }
+            prepared[display] = image
+        }
+        wallpapers = prepared
+    }
+    func highlight(_ code: UInt16?) { model.highlighted = code }
+}
+
+/// Rasterize an aspect-fill wallpaper at display resolution, cropped to the area
+/// below the menu bar. This reads the wallpaper file, never the user's windows.
+@MainActor enum WallpaperBackdrop {
+    static func render(_ source: NSImage, screenFrame: CGRect, visibleFrame: CGRect, scale: CGFloat) -> NSImage? {
+        guard source.size.width > 0, source.size.height > 0,
+              visibleFrame.width > 0, visibleFrame.height > 0, scale > 0,
+              let bitmap = NSBitmapImageRep(bitmapDataPlanes: nil,
+                  pixelsWide: Int(visibleFrame.width * scale), pixelsHigh: Int(visibleFrame.height * scale),
+                  bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+                  colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0),
+              let context = NSGraphicsContext(bitmapImageRep: bitmap) else { return nil }
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = context
+        defer { NSGraphicsContext.restoreGraphicsState() }
+        context.imageInterpolation = .high
+        let transform = NSAffineTransform()
+        transform.scale(by: scale)
+        transform.concat()
+        let factor = max(screenFrame.width / source.size.width, screenFrame.height / source.size.height)
+        let size = CGSize(width: source.size.width * factor, height: source.size.height * factor)
+        let rect = CGRect(x: screenFrame.midX - size.width / 2 - visibleFrame.minX,
+            y: screenFrame.midY - size.height / 2 - visibleFrame.minY, width: size.width, height: size.height)
+        source.draw(in: rect, from: .zero, operation: .copy, fraction: 1)
+        bitmap.size = visibleFrame.size
+        let image = NSImage(size: visibleFrame.size)
+        image.addRepresentation(bitmap)
+        return image
+    }
 }

@@ -1,6 +1,7 @@
 # QuickSwitch
 
-A native AppKit menu-bar app with a SwiftUI radial palette over the real desktop.
+A native AppKit menu-bar app with a SwiftUI radial palette over your windows,
+with an optional preloaded wallpaper backdrop (on by default).
 Requires macOS 15+, Swift 6, and AeroSpace (tested with 0.20.3-Beta).
 
 Tap **F8** (or remapped Caps Lock), then:
@@ -14,7 +15,7 @@ Tap **F8** (or remapped Caps Lock), then:
 | W   | Linear               |
 | E   | Rex Beta             |
 
-**Escape** or **F8** returns to the source workspace/window. Targets follow the
+**Escape** or **F8** dismisses the overlay without changing focus or workspaces. Targets follow the
 keyboard order: **Q W E** above **A S D**, evenly spaced at 60° intervals.
 The tight radial has compact cut-corner keycaps inside, transparent marks
 just outside, linked by faint signal traces. Acid-green legends and edge lighting
@@ -40,21 +41,28 @@ Set `QUICKSWITCH_INSTALL_DIR` to change the installation folder. Quit the app be
 reinstalling. If macOS rejects an existing authorization after a rebuild, remove
 QuickSwitch from Accessibility and add the installed app again.
 
-## Desktop ownership
+## Instant overlay
 
-AeroSpace owns window/workspace management only. Keep its reserved `launcher`
-workspace empty. QuickSwitch rejects an occupied launcher and native-fullscreen
-source windows. Existing target windows are focused without being moved; missing
-apps open only after restoring the source workspace. App/window activation uses
-native Accessibility, not AeroSpace's `focus` command (which can assert on
-floating windows in 0.20.3-Beta). Cross-monitor choices also
-restore the source display first. CLI waits are bounded, with parallel snapshot
-reads. Fast buffered choices skip revealing the desktop altogether.
+F8 shows a nonactivating, animation-free panel without Accessibility queries,
+subprocesses, wallpaper file reads, minimization, or workspace changes. Your windows
+remain underneath it. Escape simply removes the panel; there is nothing to restore.
 
-Crash recovery records the return workspace before revealing the desktop. On
-relaunch, recovery runs only if the focused workspace is still `launcher`. Use
-**Recover Desktop** for a failed restoration. Normal quitting restores before
-exiting. AeroSpace must already be running and enabled.
+The **Wallpaper Backdrop** menu toggle switches between your wallpaper and a
+transparent overlay. Wallpaper files are decoded into display-sized bitmaps at
+startup and after display changes, never on F8. Choose **Reload Wallpaper** after
+changing your wallpaper. Static wallpapers use an aspect-fill crop; dynamic/live
+wallpapers show the image available from macOS, not their live animation. The
+backdrop is not the real desktop: empty-space clicks still pass to the underlying
+app and dismiss the picker. No screenshot or Screen Recording access is needed.
+
+AeroSpace is consulted only after you choose an app, to locate its existing
+workspace. Existing windows are focused without moving them. App/window activation
+uses native Accessibility, not AeroSpace's `focus` command (which can assert on
+floating windows in 0.20.3-Beta). If workspace lookup fails, native app activation
+is still attempted. CLI waits remain bounded.
+
+**Recover Desktop** handles a leftover recovery record from older versions only.
+New picker sessions never use `launcher` or create a desktop recovery record.
 
 Errors appear in the menu bar only, never in a popup or focus-stealing window.
 Open the warning icon to read or dismiss an error. QuickSwitch never restarts

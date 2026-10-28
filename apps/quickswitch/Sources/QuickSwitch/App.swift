@@ -65,7 +65,10 @@ import SwiftUI
             }
         }
         observers.append(NotificationCenter.default.addObserver(forName: NSApplication.didChangeScreenParametersNotification,
-            object: nil, queue: .main) { [weak self] _ in MainActor.assumeIsolated { self?.controller.cancel() } })
+            object: nil, queue: .main) { [weak self] _ in MainActor.assumeIsolated {
+                self?.controller.cancel()
+                self?.controller.palette.reloadWallpapers()
+            } })
     }
 
     private func rebuildMenu() {
@@ -92,6 +95,8 @@ import SwiftUI
             ("QuickSwitch · F8", #selector(showSwitcher)),
             ("Enable Accessibility…", #selector(requestPermission)),
             ("Recover Desktop", #selector(recover)),
+            ("Wallpaper Backdrop", #selector(toggleWallpaper)),
+            ("Reload Wallpaper", #selector(reloadWallpaper)),
             ("Open Icon Overrides", #selector(openIcons)),
             ("Launch at Login", #selector(toggleLogin)),
             ("Quit QuickSwitch", #selector(quit))
@@ -99,12 +104,18 @@ import SwiftUI
             let entry = NSMenuItem(title: title, action: action, keyEquivalent: "")
             entry.target = self
             if action == #selector(toggleLogin) { entry.state = SMAppService.mainApp.status == .enabled ? .on : .off }
+            if action == #selector(toggleWallpaper) { entry.state = controller.palette.usesWallpaper ? .on : .off }
             menu.addItem(entry)
         }
         item?.menu = menu
     }
 
     @objc private func showSwitcher() { controller.toggle() }
+    @objc private func toggleWallpaper() {
+        controller.palette.setUsesWallpaper(!controller.palette.usesWallpaper)
+        rebuildMenu()
+    }
+    @objc private func reloadWallpaper() { controller.palette.reloadWallpapers() }
     @objc private func requestPermission() {
         let options = ["AXTrustedCheckOptionPrompt": true] as CFDictionary
         _ = AXIsProcessTrustedWithOptions(options)
@@ -120,7 +131,7 @@ import SwiftUI
         do {
             try FileManager.default.createDirectory(at: PaletteModel.iconDirectory, withIntermediateDirectories: true)
             NSWorkspace.shared.open(PaletteModel.iconDirectory)
-            controller.palette.model.loadIcons()
+            controller.palette.reloadIcons()
         } catch { showError(error.localizedDescription) }
     }
     @objc private func toggleLogin() {
